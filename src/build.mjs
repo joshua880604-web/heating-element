@@ -25,7 +25,7 @@ const guideLookup = new Map(guides.map(guide => [guide.slug, guide]));
 const productsTrail = [['Products', '/products/']];
 const heatingTrail = [...productsTrail, ['Heating Elements', '/heating-elements/']];
 const applicationsTrail = [['Applications', '/applications/']];
-const resourcesTrail = [['Guides', '/resources/']];
+const guidesTrail = [['Guides', '/guides/']];
 const glossaryTrail = [['Glossary', '/glossary/']];
 const aboutTrail = [['About Us', '/about-us/']];
 const quoteTrail = [['Request a Quote', '/request-a-quote/']];
@@ -34,7 +34,7 @@ const nav = [
   ['/', 'Home', navPath => navPath === '/'],
   ['/products/', 'Products', navPath => /^\/(products|heating-elements|thermocouples|temperature-sensors)\//.test(navPath)],
   ['/applications/', 'Applications', navPath => navPath === '/applications/'],
-  ['/resources/', 'Guides', navPath => navPath.startsWith('/resources/')],
+  ['/guides/', 'Guides', navPath => navPath.startsWith('/guides/')],
   ['/glossary/', 'Glossary', navPath => navPath === '/glossary/'],
   ['/about-us/', 'About Us', navPath => navPath === '/about-us/'],
 ];
@@ -213,7 +213,7 @@ ${symbols}
   <div class="container footer-grid">
     <div>${brandMark()}<p>${escape(companyName)}<br><span lang="zh-CN">${escape(chineseCompanyName)}</span></p></div>
     <nav aria-label="Product families"><strong>Products</strong><a href="/thermocouples/">Industrial Thermocouples</a><a href="/heating-elements/tubular-heaters/">Tubular Heaters</a><a href="/heating-elements/">Heating Elements</a></nav>
-    <nav aria-label="Footer navigation"><strong>Explore</strong><a href="/applications/">Applications</a><a href="/resources/">Guides</a><a href="/glossary/">Glossary</a><a href="/about-us/">About Us</a><a href="/request-a-quote/">Request a Quote</a></nav>
+    <nav aria-label="Footer navigation"><strong>Explore</strong><a href="/applications/">Applications</a><a href="/guides/">Guides</a><a href="/glossary/">Glossary</a><a href="/about-us/">About Us</a><a href="/request-a-quote/">Request a Quote</a></nav>
     <div class="footer-contact"><strong>Contact Sales</strong>${salesContacts()}</div>
   </div>
   <div class="container footer-bottom"><small>© ${new Date().getUTCFullYear()} ${escape(brand)}</small><small>Made to specification</small></div>
@@ -256,7 +256,7 @@ function related(ids) {
 function selectionGuides(slugs) {
   return `<ul class="link-list">${slugs.map(slug => {
     const guide = guideLookup.get(slug);
-    return `<li><a href="/resources/${guide.slug}/">${escape(guide.name)} ${icon('arrow')}</a></li>`;
+    return `<li><a href="/guides/${guide.slug}/">${escape(guide.name)} ${icon('arrow')}</a></li>`;
   }).join('')}</ul>`;
 }
 
@@ -417,22 +417,22 @@ const guideGroups = [
   ['Temperature Measurement', guides.filter(guide => guide.group === 'sensing')],
   ['Electric Heating', guides.filter(guide => guide.group === 'heating')],
 ];
-await page('/resources/', 'Thermocouple & Heating Element Selection Guides', 'Browse engineering guides on thermocouple types, grounded junctions, Pt100 RTDs, heater selection and surface watt density.', `
-${pageIntro('Engineering resources', 'Heating & Temperature Sensor Guides', 'Compare temperature sensors, match heaters to your process and prepare specifications before requesting a quote.', resourcesTrail)}
+await page('/guides/', 'Thermocouple & Heating Element Selection Guides', 'Browse engineering guides on thermocouple types, grounded junctions, Pt100 RTDs, heater selection and surface watt density.', `
+${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Compare temperature sensors, match heaters to your process and prepare specifications before requesting a quote.', guidesTrail)}
 <div class="section"><div class="container guide-library">
   ${guideGroups.map(([heading, entries]) => `<section><h2>${heading}</h2><div class="resource-grid">
-    ${entries.map(guide => `<article class="resource-card"><a href="/resources/${guide.slug}/"><h3>${escape(guide.name)}</h3><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}
+    ${entries.map(guide => `<article class="resource-card"><a href="/guides/${guide.slug}/"><h3>${escape(guide.name)}</h3><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}
   </div></section>`).join('')}
   ${questionsSection('Which Guide Should I Read First?', [
     ['Where should I start for a sensor or heater project?', 'For a sensor, start with thermocouple type and instrument compatibility, then review junction construction or compare an RTD. For a heater, match the heater family to the medium and mounting, then use the watt density guide to review the active surface area.'],
   ])}
   ${btn('Browse the Glossary', '/glossary/', 'secondary')}
 </div></div>
-`, { trail: resourcesTrail, type: 'CollectionPage', items: guideGroups.flatMap(([, entries]) =>
-  entries.map(guide => ({ name: guide.name, path: `/resources/${guide.slug}/` }))) });
+`, { trail: guidesTrail, type: 'CollectionPage', items: guideGroups.flatMap(([, entries]) =>
+  entries.map(guide => ({ name: guide.name, path: `/guides/${guide.slug}/` }))) });
 for (const guide of guides) {
-  const trail = [...resourcesTrail, [guide.name]];
-  await page(`/resources/${guide.slug}/`, guide.name, guide.description, `
+  const trail = [...guidesTrail, [guide.name]];
+  await page(`/guides/${guide.slug}/`, guide.name, guide.description, `
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
   <article class="prose">
@@ -465,7 +465,7 @@ ${pageIntro('Engineering resources', 'Industrial Heating & Thermocouple Glossary
   </section>`).join('')}
   <p class="empty-state" data-glossary-empty hidden>No matching terms. Try a shorter search or clear the field.</p>
 </div></section>
-${callout('Compare products and specifications', 'Use the engineering guides to compare sensor types, heater families and watt density.', 'Read the Guides', '/resources/')}
+${callout('Compare products and specifications', 'Use the engineering guides to compare sensor types, heater families and watt density.', 'Read the Guides', '/guides/')}
 `, { trail: glossaryTrail, type: 'CollectionPage', terms: glossary });
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
@@ -569,7 +569,7 @@ if (origin) {
     ]],
     ['Product configurations', additional.filter(product => product.parent)],
     ['Engineering guides', guides.map(guide => ({
-      name: guide.name, path: `/resources/${guide.slug}/`,
+      name: guide.name, path: `/guides/${guide.slug}/`,
     }))],
     ['Applications and inquiries', [
       { name: 'Industrial Applications', path: '/applications/' },
@@ -579,7 +579,7 @@ if (origin) {
     ['Optional', [
       { name: 'Home', path: '/' },
       { name: 'Industrial Product Catalog', path: '/products/' },
-      { name: 'Selection Guides', path: '/resources/' },
+      { name: 'Selection Guides', path: '/guides/' },
       { name: 'Industrial Heating & Thermocouple Glossary', path: '/glossary/' },
       ...additional.filter(product => !product.parent),
     ]],

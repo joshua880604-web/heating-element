@@ -12,12 +12,12 @@ export const glossary = [
   {
     id: 'cold-end', name: 'Cold End',
     definition: 'The length of a heater outside the active heated section, often near a termination or mounting point. Adjacent hot sections can still transfer heat into the cold end.',
-    related: ['Heating Element Watt Density', '/resources/heating-element-watt-density/'],
+    related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
   },
   {
     id: 'cold-junction-compensation', name: 'Cold-Junction Compensation',
     definition: 'A correction an instrument applies for the temperature at the thermocouple reference connection so it can convert measured voltage into the temperature at the sensing junction.',
-    related: ['Thermocouple vs. RTD', '/resources/thermocouple-vs-rtd/'],
+    related: ['Thermocouple vs. RTD', '/guides/thermocouple-vs-rtd/'],
   },
   {
     id: 'duct-heater', name: 'Duct Heater',
@@ -42,7 +42,7 @@ export const glossary = [
   {
     id: 'grounded-junction', name: 'Grounded Junction',
     definition: 'A thermocouple junction bonded to the probe sheath. The bond creates an electrical connection to the sheath and can affect thermal response.',
-    related: ['Grounded vs. Ungrounded Thermocouples', '/resources/grounded-vs-ungrounded-thermocouples/'],
+    related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
     id: 'heat-trace-cable', name: 'Heat Trace Cable',
@@ -52,7 +52,7 @@ export const glossary = [
   {
     id: 'heated-length', name: 'Heated Length',
     definition: 'The active length over which an element generates heat. Use heated length, rather than overall length, when calculating cylindrical sheath area for watt density.',
-    related: ['Heating Element Watt Density', '/resources/heating-element-watt-density/'],
+    related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
   },
   {
     id: 'hot-runner-coil-heater', name: 'Hot Runner Coil Heater',
@@ -97,7 +97,7 @@ export const glossary = [
   {
     id: 'rtd', name: 'RTD',
     definition: 'A resistance temperature detector uses the change in electrical resistance of a sensing element to determine temperature. Pt100 is a common platinum RTD type.',
-    related: ['Thermocouple vs. RTD', '/resources/thermocouple-vs-rtd/'],
+    related: ['Thermocouple vs. RTD', '/guides/thermocouple-vs-rtd/'],
   },
   {
     id: 'screw-plug-immersion-heater', name: 'Screw Plug Immersion Heater',
@@ -117,7 +117,7 @@ export const glossary = [
   {
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
-    related: ['Thermocouple Types and Selection', '/resources/thermocouple-types/'],
+    related: ['Thermocouple Types and Selection', '/guides/thermocouple-types/'],
   },
   {
     id: 'thermowell', name: 'Thermowell',
@@ -147,11 +147,11 @@ export const glossary = [
   {
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
     definition: 'A thermocouple junction separated from the metal sheath by insulation. This construction provides electrical isolation between the junction and sheath.',
-    related: ['Grounded vs. Ungrounded Thermocouples', '/resources/grounded-vs-ungrounded-thermocouples/'],
+    related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
     id: 'watt-density', name: 'Watt Density',
     definition: 'Electrical power divided by active heating surface area, often expressed in W/cm² or W/in². For a cylindrical tubular sheath, surface area is π times sheath diameter times active heated length.',
-    related: ['Heating Element Watt Density', '/resources/heating-element-watt-density/'],
+    related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
   },
 ];
