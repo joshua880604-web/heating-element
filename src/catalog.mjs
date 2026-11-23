@@ -11,9 +11,20 @@ export const groups = {
 
 export const products = [
   {
-    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', featured: true, image: 'industrial-temperature-probes-photo',
-    imageAlt: 'Industrial temperature probes with metal connection heads and protective sleeves at the Lichengda workshop',
-    photograph: { width: 750, height: 1000, caption: 'Temperature probe assemblies with connection heads' },
+    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', featured: true, image: 'thermocouples',
+    imageAlt: 'Illustration of threaded thermocouple probes with braided leads',
+    photographs: [
+      {
+        image: 'flange-mounted-probes-photo', width: 900, height: 675,
+        alt: 'Metal temperature probes with round mounting flanges and coiled white leads',
+        caption: 'Flange-mounted probes with lead wires',
+      },
+      {
+        image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
+        alt: 'Industrial temperature probes with metal connection heads and blue protective sleeves',
+        caption: 'Temperature probe assemblies with connection heads',
+      },
+    ],
     title: 'Industrial Thermocouples & Custom Probes',
     description: 'Specify industrial thermocouples by type, sheath, insertion length, junction and mount. Compare threaded probes, bayonet assemblies and OEM configurations.',
     text: 'Build-to-spec thermocouple probes and assemblies for industrial temperature measurement.',
@@ -96,9 +107,14 @@ export const products = [
     ],
   },
   {
-    id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'ceramic-band-heaters-photo',
-    imageAlt: 'Stacks of metal band heaters showing their ceramic lining and clamping hardware',
-    photograph: { width: 720, height: 540, caption: 'Ceramic band heaters with clamp hardware' },
+    id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
+    photographs: [
+      {
+        image: 'ceramic-band-heaters-photo', width: 720, height: 540,
+        alt: 'Stacks of metal band heaters showing their ceramic lining and clamping hardware',
+        caption: 'Ceramic band heaters with clamp hardware',
+      },
+    ],
     title: 'Mica & Ceramic Band Heaters for Barrels and Nozzles',
     description: 'Compare mica and ceramic band heaters for injection molding and extrusion. Specify barrel diameter, width, clamp style, lead exit, voltage and wattage.',
     text: 'Mica and ceramic band heaters for barrels, nozzles and cylindrical assemblies.',
@@ -149,6 +165,18 @@ export const products = [
     id: 'threaded-thermocouple', path: thermo + 'threaded-probes/', parent: 'thermocouples', group: 'sensing',
     name: 'Threaded Thermocouple Probes', image: 'thermocouples',
     imageAlt: 'Illustration of threaded thermocouple probe configurations with braided leads',
+    photographs: [
+      {
+        image: 'threaded-probes-braided-leads-photo', width: 750, height: 1000,
+        alt: 'Straight metal probes with threaded mounting fittings and coiled braided leads',
+        caption: 'Threaded probes with braided leads',
+      },
+      {
+        image: 'threaded-probe-fittings-photo', width: 750, height: 1000,
+        alt: 'Close-up of threaded probe bodies with hex shoulders, short tips and green leads',
+        caption: 'Thread and sensing-tip detail',
+      },
+    ],
     title: 'Custom Threaded Thermocouple Probes',
     description: 'Specify a threaded thermocouple probe by thread form, sealing face, insertion length, sensor type, junction, working temperature and lead termination.',
     text: 'Thread-mounted thermocouple probes configured to fit equipment ports and sensing positions.',
@@ -166,6 +194,13 @@ export const products = [
   },
   {
     id: 'mineral-insulated', path: thermo + 'mineral-insulated/', parent: 'thermocouples', group: 'sensing', name: 'Mineral Insulated Thermocouples', image: 'mineral-insulated',
+    photographs: [
+      {
+        image: 'coiled-metal-sheathed-probes-photo', width: 750, height: 1000,
+        alt: 'Coiled metal-sheathed probes and armored lead wires with spade terminals',
+        caption: 'Coiled probe assemblies and armored leads',
+      },
+    ],
     title: 'Mineral Insulated (MI) Thermocouple Probes',
     description: 'Configure metal-sheathed mineral insulated thermocouples by alloy type, diameter, insertion length, junction, bend requirements and termination.',
     text: 'Metal-sheathed MI probes specified for insertion, routing and process conditions.',
@@ -180,9 +215,19 @@ export const products = [
     ],
   },
   {
-    id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature-thermocouples-photo',
-    imageAlt: 'Three high-temperature thermocouple probes with ceramic protection tubes and connector leads on a workbench',
-    photograph: { width: 750, height: 1000, caption: 'Thermocouple probes with ceramic protection tubes' },
+    id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature',
+    photographs: [
+      {
+        image: 'long-ceramic-thermocouple-probes-photo', width: 750, height: 1000,
+        alt: 'Long white ceramic thermocouple protection tubes with rectangular plug connectors',
+        caption: 'Long ceramic probes with plug connectors',
+      },
+      {
+        image: 'high-temperature-thermocouples-photo', width: 750, height: 1000,
+        alt: 'Three thermocouple probes with ceramic protection tubes, metal sleeves and connector leads',
+        caption: 'Ceramic protection tubes with metal sleeves',
+      },
+    ],
     title: 'High Temperature Thermocouples for Furnaces & Kilns',
     description: 'Specify a high temperature furnace or kiln thermocouple by peak and continuous temperature, atmosphere, protection tube and insertion depth.',
     text: 'Temperature assemblies specified for furnaces, kilns and elevated-temperature processes.',
@@ -215,6 +260,13 @@ export const products = [
     id: 'sensor-accessories', path: '/temperature-sensors/accessories/', group: 'sensing', name: 'Thermocouple Accessories',
     image: 'sensor-accessories',
     imageAlt: 'Illustration of a thermowell, thermocouple connectors and extension wire',
+    photographs: [
+      {
+        image: 'thermocouple-plug-connectors-photo', width: 750, height: 1000,
+        alt: 'Yellow two-pin thermocouple plugs fitted to braided leads on metal probes',
+        caption: 'Two-pin connectors and braided thermocouple leads',
+      },
+    ],
     title: 'Thermocouple Extension Wire, Connectors & Thermowells',
     description: 'Specify thermocouple extension wire, connectors, terminal heads and thermowells by sensor type, polarity, temperature, mounting and process conditions.',
     text: 'Protect and connect sensor assemblies with specified thermowells, wires and connectors.',

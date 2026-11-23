@@ -47,12 +47,15 @@ const btn = (text, href, style = 'primary', iconName = 'arrow') => `<a class="bu
 const sectionHead = (label, title, copy = '') => `<div class="section-heading"><div><p class="eyebrow">${escape(label)}</p><h2>${escape(title)}</h2></div>${copy ? `<p>${escape(copy)}</p>` : ''}</div>`;
 const quoteLink = (id = '') => `/request-a-quote/${id ? '?product=' + encodeURIComponent(id) : ''}`;
 const photo = product => product.image && existsSync(resolve(staticRoot, 'assets', product.image + '.webp'));
-const coolPhotos = new Set(['immersion-heaters', 'finned-tubular-heaters', 'mineral-insulated', 'coil-heaters', 'rtd']);
-const imageStyle = product => {
-  if (product.photograph) return ' product-photo';
-  return coolPhotos.has(product.image) ? ' cool-photo' : '';
-};
-const imageDimensions = product => product.photograph ?? { width: 512, height: 512 };
+const coolPhotos = new Set(['immersion-heaters', 'finned-tubular-heaters', 'mineral-insulated', 'high-temperature', 'coil-heaters', 'rtd']);
+const photoTone = product => coolPhotos.has(product.image) ? ' cool-photo' : '';
+
+function photoFigure({ image, width, height, alt, caption }) {
+  return `<figure>
+    <img src="/assets/${image}.webp" width="${width}" height="${height}" loading="lazy" decoding="async" alt="${escape(alt)}">
+    <figcaption>${escape(caption)}</figcaption>
+  </figure>`;
+}
 
 function brandMark() {
   return `<a class="brand" href="/" aria-label="${escape(brand)} home"><img src="/assets/mark.svg" width="38" height="38" alt=""><span>${escape(brand.toUpperCase())}<small>INDUSTRIAL HEATING</small></span></a>`;
@@ -237,8 +240,7 @@ function pageIntro(kicker, title, copy, trail) {
 }
 
 function card(product) {
-  const { width, height } = imageDimensions(product);
-  const visual = photo(product) ? `<div class="card-image${imageStyle(product)}"><img src="/assets/${product.image}.webp" width="${width}" height="${height}" loading="lazy" alt=""></div>` : '';
+  const visual = photo(product) ? `<div class="card-image${photoTone(product)}"><img src="/assets/${product.image}.webp" width="512" height="512" loading="lazy" alt=""></div>` : '';
   return `<article class="product-card" data-group="${product.group}" data-search="${escape([product.name, product.text, ...product.options, product.use].join(' '))}">
     <a href="${product.path}" class="card-link">
       ${visual}
@@ -367,8 +369,6 @@ for (const product of products) {
   const relatedProducts = [...new Set([...children, ...product.related.map(id => lookup.get(id))])];
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
-  const { width, height } = imageDimensions(product);
-  const imageCaption = product.photograph?.caption ?? 'Illustrative configuration';
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
@@ -376,7 +376,7 @@ for (const product of products) {
     <p class="eyebrow">${groups[product.group]}</p>
     <h1>${escape(product.name)}</h1><p class="intro-copy">${escape(product.intro)}</p>
     <div class="actions">${btn('Request a Quote', quoteLink(product.id), 'primary', 'external')}${btn('View Specifications', '#specifications', 'secondary', '')}</div>
-  </div>${image ? `<figure class="detail-image${imageStyle(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="${width}" height="${height}"><figcaption>${escape(imageCaption)}</figcaption></figure>` : ''}</div>
+  </div>${image ? `<figure class="detail-image${photoTone(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}
@@ -385,6 +385,10 @@ for (const product of products) {
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
   <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
+  ${product.photographs?.length ? `<section class="product-photos" aria-labelledby="product-photos-heading">
+    <h2 id="product-photos-heading">Product Photos</h2>
+    <div class="product-photos-grid">${product.photographs.map(photoFigure).join('')}</div>
+  </section>` : ''}
   <div class="detail-support">
     ${questionsSection('Ordering Questions', product.questions)}
     <section class="use-case"><h2>Selection Guides</h2>${selectionGuides(product.guides)}</section>
@@ -511,10 +515,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
   <section class="workshop" aria-labelledby="workshop-heading">
     <h2 id="workshop-heading">Inside the Workshop</h2>
     <div class="workshop-gallery">
-      ${workshopPhotos.map(({ image, alt, caption }) => `<figure>
-        <img src="/assets/${image}.webp" width="960" height="720" loading="lazy" decoding="async" alt="${escape(alt)}">
-        <figcaption>${escape(caption)}</figcaption>
-      </figure>`).join('')}
+      ${workshopPhotos.map(photo => photoFigure({ ...photo, width: 960, height: 720 })).join('')}
     </div>
   </section>
   ${questionsSection('Working with Lichengda', [
