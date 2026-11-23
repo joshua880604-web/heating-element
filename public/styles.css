@@ -318,6 +318,15 @@ svg:not(.symbols) {
   font-size: 1.075rem;
   line-height: 1.62;
 }
+.hero-copy a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: #ff906b;
+  text-underline-offset: 0.18em;
+}
+.hero-copy a:hover {
+  color: #ff906b;
+}
 .actions {
   display: flex;
   align-items: center;
@@ -794,6 +803,28 @@ svg:not(.symbols) {
 .use-case p {
   color: var(--muted);
   margin-top: 7px;
+}
+.detail-support {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 19px;
+  margin-top: 19px;
+}
+.detail-support .use-case {
+  margin-top: 0;
+}
+.ordering-questions {
+  margin: 13px 0 0;
+}
+.ordering-questions dt {
+  font-weight: 700;
+}
+.ordering-questions dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.ordering-questions dd + dt {
+  margin-top: 15px;
 }
 .resource-grid {
   display: grid;

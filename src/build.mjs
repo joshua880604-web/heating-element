@@ -20,6 +20,12 @@ const inquiryEmail = `mailto:${encodeURIComponent(email).replace('%40', '@')}?su
 const whatsApp = `https://wa.me/${whatsAppNumber.replace(/\D/g, '')}`;
 
 const lookup = new Map(products.map(product => [product.id, product]));
+const guideLookup = new Map(guides.map(guide => [guide.slug, guide]));
+const productsTrail = [['Products', '/products/']];
+const heatingTrail = [...productsTrail, ['Heating Elements', '/heating-elements/']];
+const applicationsTrail = [['Applications', '/applications/']];
+const resourcesTrail = [['Resources', '/resources/']];
+const quoteTrail = [['Request a Quote', '/request-a-quote/']];
 const paths = [];
 const nav = [
   ['/', 'Home', navPath => navPath === '/'],
@@ -50,7 +56,77 @@ function salesContacts() {
   </address>`;
 }
 
-function layout({ path, title, description, body }) {
+function searchMetadata({ path, title, description, trail, type, article, image }) {
+  if (!origin) return '';
+
+  const url = origin + path;
+  const organizationId = origin + '/#organization';
+  const websiteId = origin + '/#website';
+  const graph = [{
+    '@type': type,
+    '@id': url + '#webpage',
+    url,
+    name: title,
+    description,
+    inLanguage: 'en',
+    isPartOf: { '@id': websiteId },
+    ...(trail.length ? { breadcrumb: { '@id': url + '#breadcrumb' } } : {}),
+  }];
+
+  if (path === '/') {
+    graph.push({
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: brand,
+      legalName: chineseCompanyName,
+      url,
+      email,
+    }, {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url,
+      name: brand,
+      inLanguage: 'en',
+      publisher: { '@id': organizationId },
+    });
+  }
+  if (trail.length) {
+    graph.push({
+      '@type': 'BreadcrumbList',
+      '@id': url + '#breadcrumb',
+      itemListElement: [['Home', '/'], ...trail].map(([name, href], index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name,
+        item: origin + (href || path),
+      })),
+    });
+  }
+  if (article) {
+    graph.push({
+      '@type': 'Article',
+      '@id': url + '#article',
+      headline: title,
+      description,
+      inLanguage: 'en',
+      mainEntityOfPage: { '@id': url + '#webpage' },
+      publisher: { '@id': organizationId },
+    });
+  }
+  const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
+    .replaceAll('<', '\\u003c');
+  return `<link rel="canonical" href="${escape(url)}">
+<meta property="og:type" content="${article ? 'article' : 'website'}">
+<meta property="og:site_name" content="${escape(brand)}">
+<meta property="og:title" content="${escape(title)}">
+<meta property="og:description" content="${escape(description)}">
+<meta property="og:url" content="${escape(url)}">
+<meta property="og:image" content="${escape(origin + image)}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">${json}</script>`;
+}
+
+function layout({ path, title, description, body, trail, type, article, image }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
@@ -62,7 +138,7 @@ function layout({ path, title, description, body }) {
 <title>${escape(title)} | ${escape(brand)}</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
-${origin ? `<link rel="canonical" href="${escape(origin + path)}">` : ''}
+${searchMetadata({ path, title, description, trail, type, article, image })}
 ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heating.webp">' : ''}
 <script type="module" src="/site.js"></script>
 </head>
@@ -91,15 +167,17 @@ ${symbols}
 </html>`;
 }
 
-async function page(path, title, description, body) {
+async function page(path, title, description, body, {
+  trail = [], type = 'WebPage', article = false, image = '/assets/industrial-heating.webp',
+} = {}) {
   paths.push(path);
   const destination = resolve(dist, '.' + path, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
-  await writeFile(destination, layout({ path, title, description, body }));
+  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image }));
 }
 
 function crumb(items) {
-  return `<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li>${items.map(([name, href]) => `<li>${href ? `<a href="${escape(href)}">${escape(name)}</a>` : `<span aria-current="page">${escape(name)}</span>`}</li>`).join('')}</ol></nav>`;
+  return `<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li>${items.map(([name, href], index) => `<li>${index === items.length - 1 ? `<span aria-current="page">${escape(name)}</span>` : `<a href="${escape(href)}">${escape(name)}</a>`}</li>`).join('')}</ol></nav>`;
 }
 
 function pageIntro(kicker, title, copy, trail) {
@@ -118,6 +196,13 @@ function card(product) {
 
 function related(ids) {
   return `<ul class="link-list">${ids.map(id => lookup.get(id)).filter(Boolean).map(product => `<li><a href="${product.path}">${escape(product.name)} ${icon('arrow')}</a></li>`).join('')}</ul>`;
+}
+
+function selectionGuides(slugs) {
+  return `<ul class="link-list">${slugs.map(slug => {
+    const guide = guideLookup.get(slug);
+    return `<li><a href="/resources/${guide.slug}/">${escape(guide.name)} ${icon('arrow')}</a></li>`;
+  }).join('')}</ul>`;
 }
 
 function filters() {
@@ -156,7 +241,7 @@ const home = `
   <div class="container hero-inner">
     <p class="eyebrow hero-eyebrow">Industrial heating &amp; temperature sensing</p>
     <h1>Industrial Heat.<br><span>Built to Spec.</span></h1>
-    <p class="hero-copy">Custom thermocouples, tubular heaters and heating elements for industrial equipment and OEM projects.</p>
+    <p class="hero-copy">Custom <a href="/thermocouples/">industrial thermocouples</a>, <a href="/heating-elements/tubular-heaters/">tubular heaters</a> and heating elements for OEM equipment and process applications.</p>
     <div class="actions">${btn('Explore Products', '#products')}${btn('Request a Quote', quoteLink(), 'outline', '')}</div>
   </div>
 </section>
@@ -175,36 +260,39 @@ ${callout('Have a drawing or a part to replace?', 'Share the operating condition
 
 await rm(dist, { recursive: true, force: true });
 await cp(staticRoot, dist, { recursive: true });
-await page('/', 'Custom Industrial Thermocouples & Heating Elements', 'Build-to-spec industrial thermocouples, tubular heaters and heating elements for OEM equipment and process heating. Browse the catalog and prepare an RFQ.', home);
+await page('/', 'Custom Thermocouples & Industrial Heating Elements', 'Source custom industrial thermocouples, tubular heaters and heating elements for OEM equipment. Browse configurations and prepare a quote by drawing.', home);
 
 await page('/products/', 'Industrial Product Catalog', 'Browse custom industrial thermocouples, RTDs, tubular heaters, immersion heaters and specialty heating elements.', `
-${pageIntro('Product catalog', 'Industrial Product Catalog', 'Browse made-to-spec industrial temperature sensors and heating elements.', [['Products']])}
+${pageIntro('Product catalog', 'Industrial Product Catalog', 'Browse made-to-spec industrial temperature sensors and heating elements.', productsTrail)}
 <section class="section catalog-section catalog-page"><div class="container">${catalog(products, true)}</div></section>
 ${callout('Need a custom configuration?', 'Share your application, dimensions and requirements to prepare a quote request.')}
-`);
+`, { trail: productsTrail, type: 'CollectionPage' });
 
 await page('/heating-elements/', 'Custom Industrial Heating Elements', 'Browse custom industrial heating elements including tubular, immersion, cartridge, band and specialty heaters.', `
-${pageIntro('Industrial heating', 'Industrial Heating Elements', 'Choose a heater family based on the medium, required output and installation geometry.', [['Products', '/products/'], ['Heating Elements']])}
+${pageIntro('Industrial heating', 'Industrial Heating Elements', 'Compare custom tubular, immersion, cartridge, band and flexible heaters by the medium, required output and installation geometry.', heatingTrail)}
 <section class="section catalog-section catalog-page"><div class="container">${catalog(products.filter(p => p.group !== 'sensing'))}</div></section>
 ${callout('Specify a custom heating element', 'Include voltage, wattage, operating conditions and a drawing or dimensions.')}
-`);
+`, { trail: heatingTrail, type: 'CollectionPage' });
 
 for (const product of products) {
   const parent = lookup.get(product.parent);
-  const trail = [['Products', '/products/']];
-  if (product.group !== 'sensing') trail.push(['Heating Elements', '/heating-elements/']);
+  const trail = [...(product.group === 'sensing' ? productsTrail : heatingTrail)];
   if (parent) trail.push([parent.name, parent.path]);
   trail.push([product.name]);
   const children = products.filter(item => item.parent === product.id);
   const alternatives = products.filter(item => item.group === product.group && item.id !== product.id && item.parent !== product.id).slice(0, 3);
-  await page(product.path, `Custom ${product.name}`, product.text, `
+  const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
+  const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
+  const questions = product.questions || [];
+  const guidesForProduct = product.guides || [];
+  await page(product.path, product.title || `Custom ${product.name}`, product.description || product.text, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
   <div class="detail-grid${photo(product) ? '' : ' text-only'}"><div>
     <p class="eyebrow">${groups[product.group]}</p>
     <h1>${escape(product.name)}</h1><p class="intro-copy">${escape(product.intro)}</p>
     <div class="actions">${btn('Request a Quote', quoteLink(product.id), 'primary', 'external')}${btn('View Specifications', '#specifications', 'secondary', '')}</div>
-  </div>${photo(product) ? `<figure class="detail-image${photoTone(product)}"><img src="/assets/${product.image}.webp" alt="${escape(product.name)} configuration illustration" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
+  </div>${image ? `<figure class="detail-image${photoTone(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}
@@ -213,37 +301,43 @@ for (const product of products) {
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
   <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
+  ${questions.length || guidesForProduct.length ? `<div class="detail-support">
+    ${questions.length ? `<section class="use-case"><h2>Ordering Questions</h2><dl class="ordering-questions">${questions.map(([question, answer]) =>
+      `<dt>${escape(question)}</dt><dd>${escape(answer)}</dd>`).join('')}</dl></section>` : ''}
+    ${guidesForProduct.length ? `<section class="use-case"><h2>Selection Guides</h2>${selectionGuides(guidesForProduct)}</section>` : ''}
+  </div>` : ''}
 </div></section>
 <section class="section related-section"><div class="container">
   ${sectionHead('Product catalog', children.length ? 'Configuration Families' : 'Related Products')}
   ${catalog(children.length ? children : alternatives)}
 </div></section>
 ${callout('Request this configuration', 'Include your technical requirements, target quantity and any supporting drawings.', 'Request a Quote', quoteLink(product.id))}
-`);
+`, { trail, type: 'ItemPage', image });
 }
 
 await page('/applications/', 'Industrial Heating & Sensing Applications', 'Find heating and sensing products for plastics, process air, liquid heating and packaging tooling.', `
-${pageIntro('Industries', 'Industrial Applications', 'Find a suitable starting point for specifying heating and sensing components in your equipment.', [['Applications']])}
+${pageIntro('Industries', 'Industrial Applications', 'Find a suitable starting point for specifying heating and sensing components in your equipment.', applicationsTrail)}
 <section class="section"><div class="container">${applicationsGrid()}</div></section>
 ${callout('Working on an OEM project?', 'Share the equipment and operating conditions to start your custom inquiry.')}
-`);
+`, { trail: applicationsTrail, type: 'CollectionPage' });
 
-await page('/resources/', 'Industrial Heating & Sensing Selection Guides', 'Read thermocouple selection, junction and heating-element guides for industrial equipment.', `
-${pageIntro('Resources', 'Selection Guides', 'Compare thermocouple constructions and specify the right heater family for your equipment.', [['Resources']])}
+await page('/resources/', 'Industrial Heating & Sensing Selection Guides', 'Compare thermocouples and RTDs, choose a heating element, and learn how to calculate surface watt density for a custom heater.', `
+${pageIntro('Resources', 'Selection Guides', 'Compare temperature sensors, choose a heater family and calculate surface watt density for your equipment.', resourcesTrail)}
 <section class="section"><div class="container resource-grid">${guides.map(guide => `<article class="resource-card"><a href="/resources/${guide.slug}/"><p class="eyebrow">Selection guide</p><h2>${escape(guide.name)}</h2><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}</div></section>
-`);
+`, { trail: resourcesTrail, type: 'CollectionPage' });
 for (const guide of guides) {
+  const trail = [...resourcesTrail, [guide.name]];
   await page(`/resources/${guide.slug}/`, guide.name, guide.description, `
-${pageIntro('Selection guide', guide.name, guide.description, [['Resources', '/resources/'], [guide.name]])}
+${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid"><article class="prose">${guide.sections.map(([title, copy]) => `<section><h2>${escape(title)}</h2><p>${escape(copy)}</p></section>`).join('')}</article><aside class="spec-card"><h2>Related Products</h2>${related(guide.related)}</aside></div></section>
 ${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.')}
-`);
+`, { trail, article: true });
 }
 
 const productOptions = Object.entries(groups).map(([id, label]) => `<optgroup label="${label}">${products.filter(p => p.group === id).map(p => `<option value="${p.id}" data-specs="${escape(p.specs.join(' · '))}">${escape(p.name)}</option>`).join('')}</optgroup>`).join('');
 
 await page('/request-a-quote/', 'Request a Custom Quote', 'Prepare a custom quote request for industrial thermocouples and heating elements with requirements and drawings.', `
-${pageIntro('Made to specification', 'Request a Quote', 'Tell us what you need to heat or measure. Include your drawing or dimensions so the configuration can be reviewed.', [['Request a Quote']])}
+${pageIntro('Made to specification', 'Request a Quote', 'Tell us what you need to heat or measure. Include your drawing or dimensions so the configuration can be reviewed.', quoteTrail)}
 <section class="section"><div class="container quote-grid">
   <form class="quote-form" method="post" data-email="${escape(email)}">
     <h2>Project Details</h2>
@@ -263,7 +357,7 @@ ${pageIntro('Made to specification', 'Request a Quote', 'Tell us what you need t
   </form>
   <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><div class="quote-contact"><h3>Contact Sales</h3><p>Download your RFQ, review it, and send the draft by email. You can also contact us directly.</p>${salesContacts()}</div></aside>
 </div></section>
-`);
+`, { trail: quoteTrail, type: 'ContactPage' });
 
 const robots = 'User-agent: *\nAllow: /\n' + (origin ? `Sitemap: ${origin}/sitemap.xml\n` : '');
 await writeFile(resolve(dist, 'robots.txt'), robots);
