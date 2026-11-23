@@ -24,7 +24,7 @@ Use the actual hosting domain for the production build.
 SITE_URL='https://example.com' npm run build
 ```
 
-Publish the contents of `dist/` to a static host at the root of the configured domain. The build adds canonical URLs, a sitemap and a sitemap reference in robots.txt when `SITE_URL` is set.
+Publish the contents of `dist/` to a static host at the root of the configured domain. The build adds canonical URLs, a sitemap, a sitemap reference in robots.txt and a curated `llms.txt` index when `SITE_URL` is set.
 
 The site displays Lichengda as the brand and the English and Chinese company names in the footer. The current logo mark is provisional, and the product illustrations should be replaced with approved product photography before public launch.
 

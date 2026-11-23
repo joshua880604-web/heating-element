@@ -364,5 +364,38 @@ await writeFile(resolve(dist, 'robots.txt'), robots);
 if (origin) {
   const urlset = paths.map(path => `<url><loc>${escape(origin + path)}</loc></url>`).join('\n');
   await writeFile(resolve(dist, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urlset + '\n</urlset>\n');
+
+  const featured = products.filter(product => product.featured);
+  const sections = [
+    ['Main product pages', [
+      ...featured,
+      { name: 'Industrial Heating Elements', path: '/heating-elements/', text: 'Browse heating elements by product family and installation requirements.' },
+    ]],
+    ['Engineering guides', guides.map(guide => ({
+      name: guide.name, path: `/resources/${guide.slug}/`, text: guide.description,
+    }))],
+    ['Applications and inquiries', [
+      { name: 'Industrial Applications', path: '/applications/', text: 'Heating and sensing applications for plastics, process air, liquids and packaging.' },
+      { name: 'Request a Quote', path: '/request-a-quote/', text: 'Prepare an inquiry with a drawing, dimensions, operating conditions and quantity.' },
+    ]],
+    ['Optional', [
+      { name: 'Home', path: '/', text: 'Overview of the company and its heating and temperature sensing products.' },
+      { name: 'Industrial Product Catalog', path: '/products/', text: 'Search the complete product catalog.' },
+      { name: 'Selection Guides', path: '/resources/', text: 'Browse all guides.' },
+      ...products.filter(product => !product.featured),
+    ]],
+  ];
+  const lists = sections.map(([heading, links]) => [
+    `## ${heading}`,
+    '',
+    ...links.map(({ name, path, text }) => `- [${name}](${origin}${path}): ${text}`),
+  ].join('\n'));
+  const llms = [
+    `# ${brand} Industrial Heating`,
+    '> Custom industrial thermocouples, tubular heaters and heating elements for OEM equipment and process applications.',
+    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Product images are illustrative.`,
+    ...lists,
+  ].join('\n\n');
+  await writeFile(resolve(dist, 'llms.txt'), llms + '\n');
 }
 console.log(`Built ${paths.length} static pages in dist/`);
