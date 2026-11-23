@@ -47,8 +47,12 @@ const btn = (text, href, style = 'primary', iconName = 'arrow') => `<a class="bu
 const sectionHead = (label, title, copy = '') => `<div class="section-heading"><div><p class="eyebrow">${escape(label)}</p><h2>${escape(title)}</h2></div>${copy ? `<p>${escape(copy)}</p>` : ''}</div>`;
 const quoteLink = (id = '') => `/request-a-quote/${id ? '?product=' + encodeURIComponent(id) : ''}`;
 const photo = product => product.image && existsSync(resolve(staticRoot, 'assets', product.image + '.webp'));
-const coolPhotos = new Set(['immersion-heaters', 'finned-tubular-heaters', 'mineral-insulated', 'high-temperature', 'coil-heaters', 'rtd']);
-const photoTone = product => coolPhotos.has(product.image) ? ' cool-photo' : '';
+const coolPhotos = new Set(['immersion-heaters', 'finned-tubular-heaters', 'mineral-insulated', 'coil-heaters', 'rtd']);
+const imageStyle = product => {
+  if (product.photograph) return ' product-photo';
+  return coolPhotos.has(product.image) ? ' cool-photo' : '';
+};
+const imageDimensions = product => product.photograph ?? { width: 512, height: 512 };
 
 function brandMark() {
   return `<a class="brand" href="/" aria-label="${escape(brand)} home"><img src="/assets/mark.svg" width="38" height="38" alt=""><span>${escape(brand.toUpperCase())}<small>INDUSTRIAL HEATING</small></span></a>`;
@@ -233,7 +237,8 @@ function pageIntro(kicker, title, copy, trail) {
 }
 
 function card(product) {
-  const visual = photo(product) ? `<div class="card-image${photoTone(product)}"><img src="/assets/${product.image}.webp" width="512" height="512" loading="lazy" alt=""></div>` : '';
+  const { width, height } = imageDimensions(product);
+  const visual = photo(product) ? `<div class="card-image${imageStyle(product)}"><img src="/assets/${product.image}.webp" width="${width}" height="${height}" loading="lazy" alt=""></div>` : '';
   return `<article class="product-card" data-group="${product.group}" data-search="${escape([product.name, product.text, ...product.options, product.use].join(' '))}">
     <a href="${product.path}" class="card-link">
       ${visual}
@@ -362,14 +367,16 @@ for (const product of products) {
   const relatedProducts = [...new Set([...children, ...product.related.map(id => lookup.get(id))])];
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
+  const { width, height } = imageDimensions(product);
+  const imageCaption = product.photograph?.caption ?? 'Illustrative configuration';
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
-  <div class="detail-grid${photo(product) ? '' : ' text-only'}"><div>
+  <div class="detail-grid${image ? '' : ' text-only'}"><div>
     <p class="eyebrow">${groups[product.group]}</p>
     <h1>${escape(product.name)}</h1><p class="intro-copy">${escape(product.intro)}</p>
     <div class="actions">${btn('Request a Quote', quoteLink(product.id), 'primary', 'external')}${btn('View Specifications', '#specifications', 'secondary', '')}</div>
-  </div>${image ? `<figure class="detail-image${photoTone(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
+  </div>${image ? `<figure class="detail-image${imageStyle(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="${width}" height="${height}"><figcaption>${escape(imageCaption)}</figcaption></figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}
@@ -458,6 +465,23 @@ ${callout('Compare products and specifications', 'Use the engineering guides to 
 `, { trail: glossaryTrail, type: 'CollectionPage', terms: glossary });
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
+const workshopPhotos = [
+  {
+    image: 'lichengda-workshop',
+    alt: 'Lichengda workshop with a cable reel feeding a machine beside an operator',
+    caption: 'Workshop equipment and workstations',
+  },
+  {
+    image: 'lichengda-cable-assembly',
+    alt: 'Operator using hand tools to assemble braided leads at a workbench',
+    caption: 'Cable assembly at the workbench',
+  },
+  {
+    image: 'lichengda-sensor-packaging',
+    alt: 'Temperature probe assemblies with coiled leads in individual bags',
+    caption: 'Individually packed temperature probes',
+  },
+];
 await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'Meet Xiamen Lichengda Precision Manufacturing Co., Ltd., a made-to-spec supplier of industrial thermocouples, temperature sensors and heating elements.', `
 ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
 <div class="section"><div class="container">
@@ -484,6 +508,15 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       <div class="actions">${btn('Request a Quote', quoteLink(), 'primary', 'external')}</div>
     </aside>
   </div>
+  <section class="workshop" aria-labelledby="workshop-heading">
+    <h2 id="workshop-heading">Inside the Workshop</h2>
+    <div class="workshop-gallery">
+      ${workshopPhotos.map(({ image, alt, caption }) => `<figure>
+        <img src="/assets/${image}.webp" width="960" height="720" loading="lazy" decoding="async" alt="${escape(alt)}">
+        <figcaption>${escape(caption)}</figcaption>
+      </figure>`).join('')}
+    </div>
+  </section>
   ${questionsSection('Working with Lichengda', [
     ['Can Lichengda review an existing heater or sensor drawing?', 'Yes. Send the drawing or part reference, the actual operating conditions and the quantity. Include notes on any differences from the existing design, such as a new mount, a different electrical supply or a change in the process medium.'],
   ])}

@@ -11,8 +11,9 @@ export const groups = {
 
 export const products = [
   {
-    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', featured: true, image: 'thermocouples',
-    imageAlt: 'Illustration of threaded thermocouple probes with braided leads',
+    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', featured: true, image: 'industrial-temperature-probes-photo',
+    imageAlt: 'Industrial temperature probes with metal connection heads and protective sleeves at the Lichengda workshop',
+    photograph: { width: 750, height: 1000, caption: 'Temperature probe assemblies with connection heads' },
     title: 'Industrial Thermocouples & Custom Probes',
     description: 'Specify industrial thermocouples by type, sheath, insertion length, junction and mount. Compare threaded probes, bayonet assemblies and OEM configurations.',
     text: 'Build-to-spec thermocouple probes and assemblies for industrial temperature measurement.',
@@ -95,7 +96,9 @@ export const products = [
     ],
   },
   {
-    id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
+    id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'ceramic-band-heaters-photo',
+    imageAlt: 'Stacks of metal band heaters showing their ceramic lining and clamping hardware',
+    photograph: { width: 720, height: 540, caption: 'Ceramic band heaters with clamp hardware' },
     title: 'Mica & Ceramic Band Heaters for Barrels and Nozzles',
     description: 'Compare mica and ceramic band heaters for injection molding and extrusion. Specify barrel diameter, width, clamp style, lead exit, voltage and wattage.',
     text: 'Mica and ceramic band heaters for barrels, nozzles and cylindrical assemblies.',
@@ -177,7 +180,9 @@ export const products = [
     ],
   },
   {
-    id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature',
+    id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature-thermocouples-photo',
+    imageAlt: 'Three high-temperature thermocouple probes with ceramic protection tubes and connector leads on a workbench',
+    photograph: { width: 750, height: 1000, caption: 'Thermocouple probes with ceramic protection tubes' },
     title: 'High Temperature Thermocouples for Furnaces & Kilns',
     description: 'Specify a high temperature furnace or kiln thermocouple by peak and continuous temperature, atmosphere, protection tube and insertion depth.',
     text: 'Temperature assemblies specified for furnaces, kilns and elevated-temperature processes.',
