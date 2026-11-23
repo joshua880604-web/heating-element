@@ -458,14 +458,13 @@ ${callout('Compare products and specifications', 'Use the engineering guides to 
 `, { trail: glossaryTrail, type: 'CollectionPage', terms: glossary });
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
-const hasFactoryPhoto = existsSync(resolve(staticRoot, '.' + factoryPhoto));
 await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'Meet Xiamen Lichengda Precision Manufacturing Co., Ltd., a made-to-spec supplier of industrial thermocouples, temperature sensors and heating elements.', `
 ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
 <div class="section"><div class="container">
-  ${hasFactoryPhoto ? `<figure class="about-photo">
-    <img src="${factoryPhoto}" width="2048" height="683" alt="Exterior of the Lichengda factory buildings and main entrance">
+  <figure class="about-photo">
+    <img src="${factoryPhoto}" width="2172" height="724" alt="Exterior of the Lichengda factory buildings and main entrance">
     <figcaption>Lichengda factory exterior</figcaption>
-  </figure>` : ''}
+  </figure>
   <div class="guide-grid">
     <div class="prose">
       <section>
@@ -489,7 +488,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
     ['Can Lichengda review an existing heater or sensor drawing?', 'Yes. Send the drawing or part reference, the actual operating conditions and the quantity. Include notes on any differences from the existing design, such as a new mount, a different electrical supply or a change in the process medium.'],
   ])}
 </div></div>
-`, { trail: aboutTrail, type: 'AboutPage', image: hasFactoryPhoto ? factoryPhoto : undefined });
+`, { trail: aboutTrail, type: 'AboutPage', image: factoryPhoto });
 
 const productOptions = Object.entries(groups).map(([id, label]) => `<optgroup label="${label}">${products.filter(p => p.group === id).map(p => `<option value="${p.id}" data-specs="${escape(p.specs.join(' · '))}">${escape(p.name)}</option>`).join('')}</optgroup>`).join('');
 
