@@ -1,0 +1,12 @@
+{
+  "name": "heating-element",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node src/build.mjs",
+    "dev": "node src/build.mjs && node src/serve.mjs",
+    "start": "node src/serve.mjs"
+  }
+}
