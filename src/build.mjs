@@ -527,11 +527,13 @@ if (origin) {
   await writeFile(resolve(dist, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urlset + '\n</urlset>\n');
 
   const featured = products.filter(product => product.featured);
+  const additional = products.filter(product => !product.featured);
   const sections = [
     ['Main product pages', [
       ...featured,
       { name: 'Industrial Heating Elements', path: '/heating-elements/' },
     ]],
+    ['Product configurations', additional.filter(product => product.parent)],
     ['Engineering guides', guides.map(guide => ({
       name: guide.name, path: `/resources/${guide.slug}/`,
     }))],
@@ -545,7 +547,7 @@ if (origin) {
       { name: 'Industrial Product Catalog', path: '/products/' },
       { name: 'Selection Guides', path: '/resources/' },
       { name: 'Industrial Heating & Thermocouple Glossary', path: '/glossary/' },
-      ...products.filter(product => !product.featured),
+      ...additional.filter(product => !product.parent),
     ]],
   ];
   const lists = sections.map(([heading, links]) => [

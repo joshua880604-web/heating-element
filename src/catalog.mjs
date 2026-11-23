@@ -1,6 +1,7 @@
 const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
 const thermo = '/thermocouples/';
+const strip = '/heating-elements/strip-heaters/';
 
 export const groups = {
   sensing: 'Temperature Sensors',
@@ -54,7 +55,7 @@ export const products = [
     options: ['Straight and formed elements', 'Fin and sheath material selection', 'Terminal and mounting arrangements'],
     specs: ['Airflow and operating temperature', 'Voltage, phase and wattage', 'Element and fin envelope', 'Mounting method and terminal orientation'],
     use: 'Applications include process-air heating, drying equipment and duct assemblies with defined airflow.',
-    related: ['tubular-heaters', 'duct-heaters', 'strip-heaters'],
+    related: ['tubular-heaters', 'duct-heaters', 'finned-strip-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['When does a finned tubular heater make sense?', 'Consider a finned element when the heater will transfer heat to moving air. Fins provide additional surface area. Specify the minimum airflow, maximum inlet temperature, mounting clearance and maximum fin diameter so the assembly can be evaluated in the duct.'],
@@ -73,7 +74,7 @@ export const products = [
     questions: [
       ['When should I ask about an over-the-side immersion heater?', 'An over-the-side configuration may fit an open tank when access is available from above. Provide the rim geometry, operating liquid levels and clearance to remove the heater. The heated section must remain submerged during operation.'],
       ['When should I specify a flanged or screw plug immersion heater?', 'Match the vessel connection first. A flanged assembly fits a compatible flange, while a screw plug fits a specified threaded port. Also check insertion clearance, available immersion length, operating pressure and how the heater will be removed for service.'],
-      ['What should I include when requesting an oil immersion heater?', 'Provide the oil grade, minimum and maximum temperatures, heating time or flow rate, and whether the oil is still or circulated. Include the tank volume or dimensions and any deposit or fouling concerns.'],
+      ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
@@ -121,7 +122,7 @@ export const products = [
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
     ],
-    related: ['type-j', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
+    related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
     guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
   },
   {
@@ -133,10 +134,29 @@ export const products = [
     options: ['Threaded and bayonet mounting', 'Exposed or sheathed probes', 'Connector and terminal-head configurations'],
     specs: ['Continuous and peak temperature', 'Probe dimensions and materials', 'Junction type and mounting', 'Lead length and termination'],
     use: 'Type J sensors are used in selected plastics machinery, hot tooling and existing industrial temperature measurement systems.',
-    related: ['type-k', 'band-heaters', 'sensor-accessories'],
+    related: ['type-k', 'threaded-thermocouple', 'band-heaters', 'sensor-accessories'],
     guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     questions: [
       ['Can a Type J thermocouple replace a Type K probe with the same mounting?', 'The external fit alone is insufficient. Type J and Type K produce different voltage-to-temperature relationships. The instrument input, extension wiring and connector must match the sensor type. Confirm the operating environment and probe construction before selecting a replacement.'],
+    ],
+  },
+  {
+    id: 'threaded-thermocouple', path: thermo + 'threaded-probes/', parent: 'thermocouples', group: 'sensing',
+    name: 'Threaded Thermocouple Probes', image: 'thermocouples',
+    imageAlt: 'Illustration of threaded thermocouple probe configurations with braided leads',
+    title: 'Custom Threaded Thermocouple Probes',
+    description: 'Specify a threaded thermocouple probe by thread form, sealing face, insertion length, sensor type, junction, working temperature and lead termination.',
+    text: 'Thread-mounted thermocouple probes configured to fit equipment ports and sensing positions.',
+    intro: 'A threaded thermocouple probe uses a threaded body or fitting to mount the sensor in an equipment port. Match the thread and sealing interface, then specify the position of the sensing tip from the installed reference face.',
+    options: ['Fixed-thread probe body or compression fitting by application', 'Type K, Type J or other thermocouple input as specified', 'Grounded, ungrounded or exposed junction', 'Lead, connector or terminal-head termination'],
+    specs: ['Thread standard, pitch and usable thread length', 'Sealing interface and mating-port drawing', 'Probe diameter and insertion length from the installed reference face', 'Medium, operating temperature, pressure if applicable and instrument input'],
+    use: 'Typical inquiries include probes for threaded ports on plastic processing equipment, heated tooling and process equipment. For a replacement, include the mating-port drawing or existing part photo and the room available for lead exit.',
+    related: ['thermocouples', 'type-k', 'type-j', 'mineral-insulated', 'sensor-accessories'],
+    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+    questions: [
+      ['Where do I measure the insertion length for a threaded probe?', 'Use the reference face shown on the installed drawing and measure along the probe axis to the tip. For a gasketed connection, identify the seated face. For a tapered thread, show the installed position and intended tip location in the mating port.'],
+      ['When should I use a fixed thread or a compression fitting?', 'A fixed-thread probe is specified around a set installed position. A compression fitting can allow axial adjustment during assembly, depending on its design. Include the adjustment range, sealing requirements and where the tip must sit during operation.'],
+      ['Which details identify a replacement threaded thermocouple?', 'Send the thread form and pitch, probe diameter, approximate insertion length, alloy type and termination. Include a drawing or a label photo if available, and identify the process medium with its continuous and peak operating temperatures.'],
     ],
   },
   {
@@ -148,7 +168,7 @@ export const products = [
     options: ['Single or dual sensing circuits', 'Grounded and ungrounded constructions', 'Straight or pre-formed sheaths', 'Compression fitting and fixed mounts'],
     specs: ['Thermocouple type and junction', 'Sheath diameter, length and material', 'Minimum bend or routing requirements', 'Mounting and termination'],
     use: 'MI assemblies are often used in industrial furnaces, process equipment and machinery where probes need mechanical protection.',
-    related: ['type-k', 'high-temperature', 'thermocouples', 'sensor-accessories'],
+    related: ['type-k', 'threaded-thermocouple', 'high-temperature', 'thermocouples', 'sensor-accessories'],
     guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-types'],
     questions: [
       ['What is a mineral insulated thermocouple?', 'An MI thermocouple contains conductors separated by compacted mineral insulation within a metal sheath. When specifying a routed or formed probe, include the sheath material and diameter, bend locations, junction type and a drawing of the installed path.'],
@@ -208,7 +228,7 @@ export const products = [
     options: ['Flange connection by drawing', 'Element bundle and sheath options', 'Terminal enclosure requirements'],
     specs: ['Flange standard and face details', 'Fluid, temperature and pressure', 'Immersion depth and clearance', 'Voltage, phase and wattage'],
     use: 'Used for tanks and vessels where the heater is installed through a flanged connection.',
-    related: ['immersion-heaters', 'screw-plug-immersion', 'circulation-heaters'],
+    related: ['immersion-heaters', 'screw-plug-immersion', 'over-the-side-immersion', 'circulation-heaters'],
     guides: ['heating-element-watt-density'],
     questions: [
       ['What flange details are needed for a replacement immersion heater?', 'Provide the flange standard or drawing, nominal size, pressure class, facing and bolt pattern. Show the insertion length from the mounting face and the internal vessel clearance. Include the fluid, operating pressure and power requirements.'],
@@ -223,10 +243,28 @@ export const products = [
     options: ['Threaded plug connection', 'Single or multiple elements', 'Lead and terminal enclosure choices'],
     specs: ['Thread standard and size', 'Fluid type and temperature', 'Insertion envelope', 'Voltage, phase and wattage'],
     use: 'Typical projects include water and oil heating through a threaded tank port.',
-    related: ['immersion-heaters', 'flanged-immersion', 'circulation-heaters'],
+    related: ['immersion-heaters', 'flanged-immersion', 'over-the-side-immersion', 'circulation-heaters'],
     guides: ['heating-element-watt-density'],
     questions: [
       ['Can threaded immersion heaters with similar-looking plugs be interchanged?', 'Confirm thread form, pitch, size and sealing method before choosing the plug. A tapered and a parallel thread can look similar while requiring different fittings. Also verify the immersion length and clearance from the threaded port to the vessel wall.'],
+    ],
+  },
+  {
+    id: 'over-the-side-immersion', path: immersion + 'over-the-side/', parent: 'immersion-heaters', group: 'tubular',
+    name: 'Over-the-Side Immersion Heaters',
+    title: 'Over-the-Side Immersion Heaters for Open Tanks',
+    description: 'Specify a custom over-the-side immersion heater by tank rim geometry, minimum liquid level, fluid, heated depth, mounting clearance and electrical load.',
+    text: 'Top-entry immersion elements configured for open tanks and compatible process liquids.',
+    intro: 'An over-the-side immersion heater enters an open tank from above and mounts at the rim or on a support. It can suit tanks with top access. The layout must keep the active section submerged at the minimum operating liquid level and leave enough clearance to remove the assembly.',
+    options: ['Rim or support mounting by tank drawing', 'Vertical drop and formed active section by tank geometry', 'Sheath and cold-zone length selected for the medium and liquid level', 'Lead or terminal enclosure placement above the intended liquid level'],
+    specs: ['Tank dimensions, rim profile and mounting details', 'Minimum and maximum liquid levels, including operating changes', 'Liquid chemistry, working temperatures and warm-up time', 'Heated depth, removal clearance, voltage, phase and target power'],
+    use: 'Typical projects involve open process tanks with overhead access for installation and service. Include the positions of racks, baskets, vessel walls, tank covers and other obstructions in the drawing.',
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    questions: [
+      ['When does an over-the-side heater suit a process tank?', 'Consider this mounting when the vessel can be accessed from above and the rim or an independent support can carry the assembly. Confirm the path for insertion and removal. A flanged or screw plug design uses a compatible tank connection instead.'],
+      ['How do I specify immersion depth and the cold zone?', 'Show the mounting reference, minimum liquid level, tank bottom and the boundaries of the heated section on the drawing. These dimensions define where the unheated section passes through the liquid surface and where the active section remains submerged.'],
+      ['What must be checked before choosing the sheath and power?', 'Provide the liquid composition, volume, operating temperature range and warm-up target. Include agitation or flow, possible deposits, minimum level and the available electrical supply so the element surface loading and materials can be evaluated.'],
     ],
   },
   {
@@ -260,7 +298,7 @@ export const products = [
     ],
   },
   {
-    id: 'strip-heaters', path: '/heating-elements/strip-heaters/', group: 'specialty', name: 'Strip Heaters', image: 'strip-heaters',
+    id: 'strip-heaters', path: strip, group: 'specialty', name: 'Strip Heaters', image: 'strip-heaters',
     title: 'Custom Strip Heaters: Flat, Mica & Finned',
     description: 'Specify flat, mica, ceramic or finned strip heaters by mounting length, width, voltage, wattage, terminal location and contact surface or airflow.',
     text: 'Flat or finned heating strips for solid surfaces and air heating assemblies.',
@@ -272,6 +310,24 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['What is the difference between a flat strip heater and a finned strip heater?', 'A flat strip can transfer heat to a mating surface when properly mounted. A finned strip increases exposed surface area for air heating. Include the available mounting space and either the contact conditions or minimum airflow for the application.'],
+    ],
+  },
+  {
+    id: 'finned-strip-heaters', path: strip + 'finned/', parent: 'strip-heaters', group: 'specialty',
+    name: 'Finned Strip Heaters',
+    title: 'Custom Finned Strip Heaters for Air Heating',
+    description: 'Specify a finned strip heater for process air by strip length, overall fin profile, mounting centers, airflow, voltage, wattage and terminals.',
+    text: 'Flat-bodied air heating elements with fins, sized to the airflow path and installation envelope.',
+    intro: 'A finned strip heater uses fins on a flat strip assembly to increase surface area for air heating. Choose the strip and fin envelope to suit the air path, support points and electrical clearances.',
+    options: ['Strip length and mounting-hole centers by equipment drawing', 'Fin envelope with clearance for airflow and nearby parts', 'Terminal locations and lead or screw connection by specification', 'Material and surface loading review for the air temperature and process environment'],
+    specs: ['Overall length, strip width, fin height and mounting centers', 'Minimum and maximum airflow, inlet and outlet temperatures', 'Supply voltage, phase, target wattage and duty cycle', 'Terminal clearance, air direction and installation orientation'],
+    use: 'Applications include equipment enclosures with defined ventilation and industrial dryers or ducts that can support a straight strip assembly. Share the flow path and any obstructions around the fins.',
+    related: ['strip-heaters', 'finned-tubular-heaters', 'duct-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    questions: [
+      ['How does a finned strip heater differ from a finned tubular heater?', 'Both use fins to transfer heat to air. A finned strip has a flat body and is typically specified by width, fin profile and mounting centers. A finned tubular heater uses a round sheath, so sheath diameter and element geometry are key inputs.'],
+      ['Which dimensions matter for a replacement finned strip heater?', 'Show the overall strip and fin envelope, heated length, distance between mounting centers and terminal location. Include the direction of airflow, electrical rating and available clearance around the existing element.'],
+      ['Why does minimum airflow matter?', 'Airflow affects heat transfer away from the fins and therefore the operating temperature of the element. Provide the minimum and maximum normal flow and the required air temperature rise. Include details of temperature limits or airflow controls used in the equipment.'],
     ],
   },
   {
@@ -401,19 +457,19 @@ export const applications = [
     id: 'plastics', name: 'Plastics, Injection Molding & Extrusion', icon: 'cube',
     description: 'Match band heaters to barrels, coil heaters to hot runner nozzles, and cartridge heaters to mold or die bores. Place a thermocouple at the required measurement point.',
     specification: 'Include barrel or nozzle diameter, bore dimensions, heated zones, surface temperature and lead clearance.',
-    ids: ['band-heaters', 'coil-heaters', 'cartridge-heaters', 'thermocouples'],
+    ids: ['band-heaters', 'coil-heaters', 'cartridge-heaters', 'threaded-thermocouple'],
   },
   {
     id: 'process-air', name: 'Process Air, Ovens & Dryers', icon: 'factory',
     description: 'Compare tubular or finned elements for moving air, and infrared elements for radiant heating of a target. Review the sensor assembly for oven temperatures and cycling.',
     specification: 'Include duct or oven dimensions, operating temperatures, minimum airflow and electrical supply.',
-    ids: ['tubular-heaters', 'finned-tubular-heaters', 'duct-heaters', 'infrared-heaters', 'high-temperature'],
+    ids: ['tubular-heaters', 'finned-tubular-heaters', 'finned-strip-heaters', 'duct-heaters', 'infrared-heaters', 'high-temperature'],
   },
   {
     id: 'liquid-heating', name: 'Water, Oil & Process Liquid Heating', icon: 'drop',
     description: 'Use an immersion configuration inside the tank, or a circulation heater where liquid flows through a chamber. Choose the temperature probe for the process and instrument.',
     specification: 'Include fluid composition, tank volume or flow, liquid levels, pressure, temperature rise and vessel connection.',
-    ids: ['immersion-heaters', 'circulation-heaters', 'rtd'],
+    ids: ['immersion-heaters', 'over-the-side-immersion', 'circulation-heaters', 'rtd'],
   },
   {
     id: 'packaging', name: 'Packaging, Sealing Jaws & Tooling', icon: 'tool',
@@ -429,11 +485,12 @@ export const guides = [
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
     readNext: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
-    related: ['thermocouples', 'type-k', 'type-j', 'high-temperature'],
+    related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'high-temperature'],
     sections: [
       ['Choose an alloy type', 'K, J, T, N and E are common base-metal types. R, S and B are noble-metal types often considered for high-temperature processes. Match the type to the instrument input, required accuracy, process atmosphere and operating temperature.'],
       ['Compare Type K and Type J', 'Type K uses nickel-based conductors and is widely used for general industrial measurement. Type J uses an iron positive conductor that may need protection in oxidizing or moisture-prone service. For a replacement, confirm which type the instrument is configured to read, then compare the full probe assembly limits.'],
       ['Define the complete assembly', 'The alloy type is only one input. Sheath, insulation, junction, connector and extension wire can impose their own limits. Include expected peak temperature, probe depth, vibration and the mounting interface in a request.'],
+      ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.'],
       ['Decide how to connect it', 'Match the extension cable and connector to the thermocouple type and instrument. Document any required terminal head, miniature plug or bare wire termination.'],
     ],
   },
@@ -455,12 +512,13 @@ export const guides = [
     description: 'Choose an industrial heating element by heating medium, installation geometry, temperature target and electrical load. Compare tubular and cartridge heaters.',
     answer: ['How do I choose an industrial heating element?', 'Identify what the heater must warm and how heat will reach it. Match the heater family to the fluid, moving air, solid contact or radiant load. Then check the available geometry, supply and required temperature rise.'],
     readNext: ['heating-element-watt-density'],
-    related: ['tubular-heaters', 'immersion-heaters', 'cartridge-heaters'],
+    related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters'],
     sections: [
       ['Start with heat transfer', 'An element may heat a solid tool by contact, heat fluid by immersion, heat air moving around it or transfer heat by radiation. Define the medium and typical operating cycle first.'],
       ['Fit the available space', 'Record the installation envelope, heated length, mounting points and lead exit. Cartridge heaters are often fitted into bores, while tubular elements can be formed around a defined envelope.'],
       ['Define the electrical and thermal requirements', 'Specify voltage, phase, operating temperature and power if known. Watt density depends on heated surface area and should be considered with materials, flow and the operating conditions. Include minimum and maximum operating conditions in the inquiry.'],
       ['Compare tubular and cartridge heaters', 'A formed tubular element fits an envelope and can be evaluated for air, liquid or contact heating. A cartridge heater fits a cylindrical bore in a mold, die or tool. The choice affects what you specify: sheath and bend geometry for tubular elements, bore fit and lead exit for cartridge heaters.'],
+      ['Compare installation options for air and liquid heating', 'For moving air, check whether the equipment supports a flat finned strip or a round finned tubular element and give the minimum airflow. For a liquid tank, start with the available flange, threaded port or top access. A top-entry design needs room for installation and enough liquid to cover the heated section.'],
     ],
   },
   {

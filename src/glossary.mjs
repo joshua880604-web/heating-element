@@ -25,6 +25,11 @@ export const glossary = [
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
   },
   {
+    id: 'finned-strip-heater', name: 'Finned Strip Heater',
+    definition: 'A flat-bodied electric heating element with fins that add surface area for air heating. The strip and fin profile determine the mounting and airflow clearances.',
+    related: ['Finned Strip Heaters', '/heating-elements/strip-heaters/finned/'],
+  },
+  {
     id: 'finned-tubular-heater', name: 'Finned Tubular Heater',
     definition: 'A tubular heating element with metal fins around its sheath. The fins increase the exposed area available to transfer heat to moving air.',
     related: ['Finned Tubular Heaters', '/heating-elements/tubular-heaters/finned/'],
@@ -67,12 +72,17 @@ export const glossary = [
   {
     id: 'insertion-length', name: 'Insertion Length',
     definition: 'The distance a probe or immersion heater extends from a specified reference face into the equipment, typically measured from the seating surface shown on its drawing.',
-    related: ['Industrial Thermocouples', '/thermocouples/'],
+    related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
   },
   {
     id: 'mineral-insulated-thermocouple', name: 'Mineral Insulated (MI) Thermocouple',
     definition: 'A thermocouple construction in which compacted mineral insulation separates the conductors within a metal sheath.',
     related: ['Mineral Insulated Thermocouples', '/thermocouples/mineral-insulated/'],
+  },
+  {
+    id: 'over-the-side-immersion-heater', name: 'Over-the-Side Immersion Heater',
+    definition: 'An immersion heater that enters an open tank from above and is mounted at the rim or on a support. The active section operates below the minimum liquid level.',
+    related: ['Over-the-Side Immersion Heaters', '/heating-elements/immersion-heaters/over-the-side/'],
   },
   {
     id: 'pt100', name: 'Pt100',
@@ -113,6 +123,11 @@ export const glossary = [
     id: 'thermowell', name: 'Thermowell',
     definition: 'A closed-end protective fitting that separates a temperature sensor from a process fluid. Its material, mounting and bore must suit the vessel and the probe.',
     related: ['Thermocouple Accessories', '/temperature-sensors/accessories/'],
+  },
+  {
+    id: 'threaded-thermocouple-probe', name: 'Threaded Thermocouple Probe',
+    definition: 'A thermocouple installed through a threaded body or fitting. Thread form, sealing interface and insertion length from the installed reference face determine its fit.',
+    related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
   },
   {
     id: 'tubular-heating-element', name: 'Tubular Heating Element',
