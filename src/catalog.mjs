@@ -127,6 +127,8 @@ export const products = [
   },
   {
     id: 'type-j', path: thermo + 'type-j/', parent: 'thermocouples', group: 'sensing', name: 'Type J Thermocouples',
+    image: 'type-j',
+    imageAlt: 'Illustration of Type J thermocouple probes with threaded fittings and connectors',
     title: 'Type J Thermocouple Probes for Industrial Tooling',
     description: 'Configure Type J thermocouples for heated tooling and existing Type J inputs. Specify a bayonet or threaded mount, junction, probe size and leads.',
     text: 'Type J assemblies for industrial equipment and existing Type J instruments.',
@@ -206,6 +208,8 @@ export const products = [
   },
   {
     id: 'sensor-accessories', path: '/temperature-sensors/accessories/', group: 'sensing', name: 'Thermocouple Accessories',
+    image: 'sensor-accessories',
+    imageAlt: 'Illustration of a thermowell, thermocouple connectors and extension wire',
     title: 'Thermocouple Extension Wire, Connectors & Thermowells',
     description: 'Specify thermocouple extension wire, connectors, terminal heads and thermowells by sensor type, polarity, temperature, mounting and process conditions.',
     text: 'Protect and connect sensor assemblies with specified thermowells, wires and connectors.',
@@ -236,6 +240,8 @@ export const products = [
   },
   {
     id: 'screw-plug-immersion', path: immersion + 'screw-plug/', parent: 'immersion-heaters', group: 'tubular', name: 'Screw Plug Immersion Heaters',
+    image: 'screw-plug-immersion',
+    imageAlt: 'Illustration of a threaded brass plug with stainless steel immersion elements',
     title: 'Screw Plug Immersion Heaters for Threaded Ports',
     description: 'Specify a screw plug immersion heater by thread form and size, liquid, insertion clearance, wattage, voltage and terminal enclosure requirements.',
     text: 'Threaded immersion assemblies sized around your port and fluid conditions.',
@@ -252,6 +258,8 @@ export const products = [
   {
     id: 'over-the-side-immersion', path: immersion + 'over-the-side/', parent: 'immersion-heaters', group: 'tubular',
     name: 'Over-the-Side Immersion Heaters',
+    image: 'over-the-side-immersion',
+    imageAlt: 'Illustration of a top-entry immersion heater with a mounting bracket and bent immersion section',
     title: 'Over-the-Side Immersion Heaters for Open Tanks',
     description: 'Specify a custom over-the-side immersion heater by tank rim geometry, minimum liquid level, fluid, heated depth, mounting clearance and electrical load.',
     text: 'Top-entry immersion elements configured for open tanks and compatible process liquids.',
@@ -269,6 +277,8 @@ export const products = [
   },
   {
     id: 'circulation-heaters', path: '/heating-elements/circulation-heaters/', group: 'tubular', name: 'Circulation Heaters',
+    image: 'circulation-heaters',
+    imageAlt: 'Illustration of an in-line circulation heater with a cylindrical chamber and fluid connections',
     title: 'Industrial Circulation Heaters for Process Fluids',
     description: 'Specify an industrial circulation heater by fluid, minimum and maximum flow, required temperature rise, pressure, electrical supply and connections.',
     text: 'Flow-through process heating assemblies for specified flow and temperature rise.',
@@ -315,6 +325,8 @@ export const products = [
   {
     id: 'finned-strip-heaters', path: strip + 'finned/', parent: 'strip-heaters', group: 'specialty',
     name: 'Finned Strip Heaters',
+    image: 'finned-strip-heaters',
+    imageAlt: 'Illustration of flat finned strip heater assemblies',
     title: 'Custom Finned Strip Heaters for Air Heating',
     description: 'Specify a finned strip heater for process air by strip length, overall fin profile, mounting centers, airflow, voltage, wattage and terminals.',
     text: 'Flat-bodied air heating elements with fins, sized to the airflow path and installation envelope.',
@@ -347,6 +359,8 @@ export const products = [
   },
   {
     id: 'infrared-heaters', path: '/heating-elements/infrared-heaters/', group: 'specialty', name: 'Infrared Heating Elements',
+    image: 'infrared-heaters',
+    imageAlt: 'Illustration of quartz infrared heater elements with ceramic end caps',
     title: 'Quartz & Ceramic Infrared Heating Elements',
     description: 'Specify an industrial infrared heating element by quartz or ceramic format, target surface, working distance, exposure pattern, voltage and mounting.',
     text: 'Quartz and ceramic radiant elements for process equipment and drying systems.',
@@ -362,6 +376,8 @@ export const products = [
   },
   {
     id: 'ptc-ceramic-heaters', path: '/heating-elements/ptc-ceramic-heaters/', group: 'specialty', name: 'PTC & Ceramic Heating Elements',
+    image: 'ptc-ceramic-heaters',
+    imageAlt: 'Illustration of a finned PTC heating module and ceramic element',
     title: 'PTC Heating Elements & Resistive Ceramic Heaters',
     description: 'Specify PTC and ceramic heating elements by voltage, temperature target, contact or airflow conditions, mounting and duty cycle.',
     text: 'Ceramic heating configurations sized to your electrical and thermal requirements.',
@@ -377,6 +393,8 @@ export const products = [
   },
   {
     id: 'open-coil-heaters', path: '/heating-elements/open-coil-heaters/', group: 'specialty', name: 'Open-Coil Heaters & Resistance Wire',
+    image: 'open-coil-heaters',
+    imageAlt: 'Illustration of an open heating coil on ceramic supports and a reel of resistance wire',
     title: 'Open Coil Heating Elements & Resistance Heating Wire',
     description: 'Specify industrial open coil heating elements and resistance wire by alloy, resistance, coil geometry, voltage, airflow and support requirements.',
     text: 'Resistance wire and open-coil elements for designed heating assemblies.',
@@ -392,6 +410,8 @@ export const products = [
   },
   {
     id: 'heating-cables', path: '/heating-elements/heating-cables/', group: 'specialty', name: 'Heating & Heat Trace Cables',
+    image: 'heating-cables',
+    imageAlt: 'Illustration of a coil of heat trace cable',
     title: 'Heat Trace Cables & Self-Regulating Heating Cable',
     description: 'Specify custom heat trace cable for pipes or equipment by maintained temperature, ambient exposure, heated length, insulation and supply voltage.',
     text: 'Heating cable configurations for temperature maintenance and equipment protection.',
@@ -407,6 +427,8 @@ export const products = [
   },
   {
     id: 'duct-heaters', path: '/heating-elements/duct-heaters/', group: 'tubular', name: 'Duct & Process Air Heaters',
+    image: 'duct-heaters',
+    imageAlt: 'Illustration of a framed duct heater with tubular elements and a terminal enclosure',
     title: 'Industrial Duct Heaters & Process Air Heating Elements',
     description: 'Specify an electric duct heater by duct cross-section, minimum airflow, temperature rise, voltage, phase and controls interface for process air.',
     text: 'Element assemblies specified for duct geometry, airflow and process temperature.',
@@ -422,6 +444,8 @@ export const products = [
   },
   {
     id: 'crankcase-heaters', path: '/heating-elements/crankcase-heaters/', group: 'specialty', name: 'Crankcase Heaters',
+    image: 'crankcase-heaters',
+    imageAlt: 'Illustration of a narrow compressor crankcase band heater with leads',
     title: 'Custom Compressor Crankcase Heaters',
     description: 'Specify a replacement or OEM crankcase heater by compressor model, fit, voltage, wattage, mounting and lead termination for refrigeration equipment.',
     text: 'Compressor crankcase heaters configured for the installation and electrical supply.',
@@ -437,6 +461,8 @@ export const products = [
   },
   {
     id: 'defrost-heaters', path: '/heating-elements/defrost-heaters/', group: 'tubular', name: 'Defrost Heaters',
+    image: 'defrost-heaters',
+    imageAlt: 'Illustration of a formed refrigeration defrost heating element with leads',
     title: 'Defrost Heating Elements for Refrigeration Equipment',
     description: 'Specify a custom tubular defrost heating element by evaporator geometry, bend layout, voltage, wattage, end seals and mounting arrangement.',
     text: 'Shaped defrost elements for equipment with established mounting and terminal geometry.',
