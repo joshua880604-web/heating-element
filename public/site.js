@@ -58,6 +58,47 @@ if (catalog) {
   if (new URLSearchParams(location.search).has('search')) search.focus();
 }
 
+const glossary = document.querySelector('[data-glossary]');
+if (glossary) {
+  const search = glossary.querySelector('#glossary-search');
+  const status = glossary.querySelector('#glossary-status');
+  const empty = glossary.querySelector('[data-glossary-empty]');
+  const alphabets = new Map([...glossary.querySelectorAll('.glossary-alphabet a')]
+    .map(link => [link.hash.slice(1), link]));
+  const groups = [...glossary.querySelectorAll('.glossary-group')].map(section => ({
+    section,
+    link: alphabets.get(section.id),
+    entries: [...section.querySelectorAll('.glossary-term')].map(entry => ({
+      entry,
+      text: (entry.querySelector('dt').textContent + ' ' + entry.querySelector('dd p').textContent).toLowerCase(),
+    })),
+  }));
+
+  function filterTerms() {
+    const words = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let count = 0;
+    for (const { section, link, entries } of groups) {
+      let hasMatches = false;
+      for (const { entry, text } of entries) {
+        const match = words.every(word => text.includes(word));
+        entry.hidden = !match;
+        if (match) {
+          count += 1;
+          hasMatches = true;
+        }
+      }
+      section.hidden = !hasMatches;
+      link.hidden = !hasMatches;
+    }
+    status.textContent = `${count} ${count === 1 ? 'term' : 'terms'}`;
+    empty.hidden = count > 0;
+  }
+
+  glossary.querySelector('.glossary-tools').hidden = false;
+  search.addEventListener('input', filterTerms);
+  filterTerms();
+}
+
 const quote = document.querySelector('.quote-form');
 if (quote) {
   const product = quote.querySelector('#quote-product');

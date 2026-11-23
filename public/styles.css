@@ -602,7 +602,7 @@ svg:not(.symbols) {
 .application .tile-icon {
   margin-bottom: 15px;
 }
-.application h2 {
+.application :is(h2, h3) {
   font-size: 1.23rem;
   letter-spacing: -0.03em;
 }
@@ -851,7 +851,7 @@ svg:not(.symbols) {
   display: flex;
   flex-direction: column;
 }
-.resource-card h2 {
+.resource-card h3 {
   font-size: 1.28rem;
   margin-bottom: 8px;
 }
@@ -861,8 +861,127 @@ svg:not(.symbols) {
 .guide-grid {
   grid-template-columns: 2fr 1fr;
 }
+.guide-library {
+  display: grid;
+  gap: 25px;
+}
+.guide-library > section > h2 {
+  margin-bottom: 16px;
+}
+.guide-library > .use-case {
+  margin-top: 0;
+}
+.guide-library > .button {
+  justify-self: start;
+}
+.glossary-tools {
+  display: grid;
+  gap: 7px;
+  max-width: 500px;
+  margin-bottom: 18px;
+}
+.glossary-tools label {
+  font-weight: 700;
+}
+.glossary-tools input {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--ink);
+}
+.glossary-tools p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.glossary-alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 24px;
+}
+.glossary-alphabet a {
+  display: grid;
+  min-width: 36px;
+  min-height: 36px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  font-weight: 700;
+}
+.glossary-alphabet a:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+.glossary-group + .glossary-group {
+  margin-top: 29px;
+}
+.glossary-group h2 {
+  font-size: 1.45rem;
+}
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 315px), 1fr));
+  gap: 14px;
+  margin: 9px 0 0;
+}
+.glossary-term {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 16px 18px;
+}
+.glossary-term dt {
+  font-weight: 800;
+}
+.glossary-term dd {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+.glossary-link {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--accent-dark);
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.glossary-link:hover {
+  text-decoration: underline;
+}
+.glossary-link svg {
+  width: 15px;
+  height: 15px;
+}
+.about-photo {
+  margin: 0 0 29px;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+}
+.about-photo figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 7px;
+}
+.guide-grid > aside > p {
+  margin-top: 9px;
+  color: var(--muted);
+}
 .prose section + section {
   margin-top: 22px;
+}
+.guide-answer {
+  margin-top: 0;
+}
+.read-next {
+  margin-top: 24px;
 }
 .prose h2 {
   font-size: 1.45rem;
@@ -946,9 +1065,14 @@ svg:not(.symbols) {
   .container {
     width: calc(100% - 58px);
   }
-  .site-nav,
+  .site-nav {
+    gap: 12px;
+  }
+  .site-nav a {
+    font-size: 12.5px;
+  }
   .header-inner {
-    gap: 19px;
+    gap: 10px;
   }
   .header-actions {
     gap: 7px;
@@ -1063,8 +1187,9 @@ svg:not(.symbols) {
     display: none;
   }
   .site-nav {
-    justify-content: space-between;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 10px;
   }
   .site-nav a {
     font-size: 12.5px;
