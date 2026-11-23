@@ -262,8 +262,19 @@ svg:not(.symbols) {
   min-height: 478px;
   display: grid;
   align-items: center;
-  background: #151a1e url("/assets/industrial-heating.webp") center right/cover
-    no-repeat;
+  overflow: clip;
+  background: #10171d;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  width: min(100%, 1536px);
+  aspect-ratio: 3;
+  background: url("/assets/industrial-heating.webp") center / cover no-repeat;
+  mask-image: linear-gradient(transparent, #000 7%);
 }
 .hero::before {
   content: "";
@@ -987,7 +998,9 @@ svg:not(.symbols) {
   }
   .hero {
     min-height: 435px;
-    background-position: 65% center;
+  }
+  .hero::after {
+    width: 128%;
   }
   .hero::before {
     background: linear-gradient(
@@ -1057,15 +1070,31 @@ svg:not(.symbols) {
     font-size: 12.5px;
   }
   .hero {
-    background-position: 63% center;
     min-height: 425px;
   }
+  .hero::after {
+    width: 146%;
+  }
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      #10171d 0%,
+      #10171d 39%,
+      #10171dc9 54%,
+      #10171d47 72%,
+      transparent 88%
+    );
+  }
   .hero-inner {
-    padding-block: 51px;
+    padding-block: 18px 104px;
   }
   .hero-copy {
     max-width: 310px;
     font-size: 0.96rem;
+    margin-top: 14px;
+  }
+  .hero .actions {
+    margin-top: 16px;
   }
   .hero-eyebrow,
   .eyebrow {
