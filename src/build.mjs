@@ -86,34 +86,35 @@ function searchMetadata({ path, title, description, trail, type, article, image,
     ...(trail.length ? { breadcrumb: { '@id': url + '#breadcrumb' } } : {}),
     ...(image ? { primaryImageOfPage: { '@type': 'ImageObject', url: origin + image } } : {}),
   };
-  const graph = [webPage];
-
-  if (path === '/') {
-    webPage.about = { '@id': organizationId };
-    graph.push({
-      '@type': 'Organization',
-      '@id': organizationId,
-      name: brand,
-      legalName: chineseCompanyName,
-      url,
+  const graph = [webPage, {
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: brand,
+    alternateName: companyName,
+    legalName: chineseCompanyName,
+    url: origin + '/',
+    logo: { '@type': 'ImageObject', url: origin + '/assets/mark.svg' },
+    email,
+    description: 'Made-to-spec industrial thermocouples, RTD sensors and electric heating elements for OEM equipment and process applications.',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
       email,
-      description: 'Made-to-spec industrial thermocouples, RTD sensors and electric heating elements for OEM equipment and process applications.',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        email,
-        url: origin + '/request-a-quote/',
-      },
-    }, {
-      '@type': 'WebSite',
-      '@id': websiteId,
-      url,
-      name: brand,
-      inLanguage: 'en',
-      publisher: { '@id': organizationId },
-    });
+      url: origin + '/request-a-quote/',
+    },
+  }, {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: origin + '/',
+    name: brand,
+    inLanguage: 'en',
+    publisher: { '@id': organizationId },
+  }];
+
+  if (path === '/' || type === 'AboutPage' || type === 'ContactPage') {
+    webPage.about = { '@id': organizationId };
   }
-  if (type === 'AboutPage' || type === 'ContactPage') webPage.about = { '@id': organizationId };
+  if (type === 'AboutPage') webPage.mainEntity = { '@id': organizationId };
   if (trail.length) {
     graph.push({
       '@type': 'BreadcrumbList',
@@ -314,7 +315,7 @@ function callout(title, copy, label = 'Request a Quote', href = quoteLink()) {
 
 function applicationsGrid(heading, withSpecifications = false) {
   return `<div class="application-grid">${applications.map(app => `<article class="application" id="${app.id}">
-    <span class="tile-icon">${icon(app.icon)}</span><${heading}>${escape(app.name)}</${heading}><p>${escape(app.description)}</p>
+    <span class="tile-icon">${icon(app.icon)}</span><${heading}>${withSpecifications ? escape(app.name) : `<a href="/applications/#${app.id}">${escape(app.name)}</a>`}</${heading}><p>${escape(app.description)}</p>
     ${withSpecifications ? `<p><strong>For your RFQ</strong> ${escape(app.specification)}</p>` : ''}
     ${related(app.ids)}${withSpecifications ? `
     <h3 class="read-next">Selection Guides</h3>${selectionGuides(app.guides)}` : ''}
@@ -470,6 +471,7 @@ for (const guide of guides) {
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
   <article class="prose">
+    <p class="guide-byline">By <a href="/about-us/">${escape(brand)}</a></p>
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
     ${guide.sections.map(section => referenceSection(section)).join('')}
   </article>
@@ -601,14 +603,15 @@ if (origin) {
   const urlset = [...pageDescriptions.keys()].map(path => `<url><loc>${escape(origin + path)}</loc></url>`).join('\n');
   await writeFile(resolve(dist, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urlset + '\n</urlset>\n');
 
-  const featured = products.filter(product => product.featured);
-  const additional = products.filter(product => !product.featured);
   const sections = [
-    ['Main product pages', [
-      ...featured,
+    ['Website and product catalog', [
+      { name: 'Home', path: '/' },
+      { name: 'Industrial Product Catalog', path: '/products/' },
       { name: 'Industrial Heating Elements', path: '/heating-elements/' },
     ]],
-    ['Product configurations', additional.filter(product => product.parent)],
+    ...Object.entries(groups).map(([group, label]) => [
+      label, products.filter(product => product.group === group),
+    ]),
     ['Engineering guides and glossary', [
       { name: 'Selection Guides', path: '/guides/' },
       ...guides.map(guide => ({ name: guide.name, path: `/guides/${guide.slug}/` })),
@@ -619,11 +622,6 @@ if (origin) {
       { name: 'About Lichengda', path: '/about-us/' },
       { name: 'Request a Quote', path: '/request-a-quote/' },
     ]],
-    ['Optional', [
-      { name: 'Home', path: '/' },
-      { name: 'Industrial Product Catalog', path: '/products/' },
-      ...additional.filter(product => !product.parent),
-    ]],
   ];
   const lists = sections.map(([heading, links]) => [
     `## ${heading}`,
@@ -633,7 +631,7 @@ if (origin) {
   const llms = [
     `# ${brand} Industrial Heating`,
     '> Custom industrial thermocouples, tubular heaters and heating elements for OEM equipment and process applications.',
-    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Product images are illustrative.`,
+    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory and workshop.`,
     ...lists,
   ].join('\n\n');
   await writeFile(resolve(dist, 'llms.txt'), llms + '\n');

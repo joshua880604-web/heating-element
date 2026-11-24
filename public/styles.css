@@ -606,6 +606,12 @@ svg:not(.symbols) {
   font-size: 1.23rem;
   letter-spacing: -0.03em;
 }
+.application h3 a,
+.guide-byline a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
 .application p {
   font-size: 0.85rem;
   color: var(--muted);
@@ -1077,6 +1083,10 @@ svg:not(.symbols) {
 }
 .prose section + section {
   margin-top: 22px;
+}
+.guide-byline {
+  margin-bottom: 12px;
+  font-size: 0.85rem;
 }
 .guide-answer {
   margin-top: 0;
