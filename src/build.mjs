@@ -555,6 +555,13 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       <div class="actions">${btn('Request a Quote', quoteLink(), 'primary', 'external')}</div>
     </aside>
   </div>
+  <div class="about-photo about-reception" id="reception">
+    ${photoFigure({
+      image: 'lichengda-reception', width: 1400, height: 788,
+      alt: 'Lichengda reception wall with the company logo and name in Chinese and English',
+      caption: 'Lichengda reception',
+    })}
+  </div>
   <section class="workshop" aria-labelledby="workshop-heading">
     <h2 id="workshop-heading">Inside the Workshop</h2>
     <div class="workshop-gallery">
@@ -631,7 +638,7 @@ if (origin) {
   const llms = [
     `# ${brand} Industrial Heating`,
     '> Custom industrial thermocouples, tubular heaters and heating elements for OEM equipment and process applications.',
-    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory and workshop.`,
+    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory exterior, reception and workshop.`,
     ...lists,
   ].join('\n\n');
   await writeFile(resolve(dist, 'llms.txt'), llms + '\n');

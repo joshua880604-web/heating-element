@@ -2,7 +2,7 @@ export const glossary = [
   {
     id: 'bayonet-thermocouple', name: 'Bayonet Thermocouple',
     definition: 'A thermocouple with a bayonet cap that engages a matching adapter. Some assemblies use a spring to maintain contact between the probe tip and the measurement surface.',
-    related: ['Industrial Thermocouples', '/thermocouples/'],
+    related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
     id: 'cartridge-heater', name: 'Cartridge Heater',
@@ -48,6 +48,11 @@ export const glossary = [
     id: 'flanged-immersion-heater', name: 'Flanged Immersion Heater',
     definition: 'An immersion heater mounted through a vessel flange. The flange establishes the mounting and sealing interface, while the heated sections extend into the liquid.',
     related: ['Flanged Immersion Heaters', '/heating-elements/immersion-heaters/flanged/'],
+  },
+  {
+    id: 'flanged-thermocouple', name: 'Flanged Thermocouple',
+    definition: 'A thermocouple probe mounted by a flange. The mating face provides the reference for the installed insertion length and the probe position.',
+    related: ['Flanged Thermocouple Probes', '/thermocouples/flanged/'],
   },
   {
     id: 'grounded-junction', name: 'Grounded Junction',
@@ -188,6 +193,11 @@ export const glossary = [
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',
     definition: 'A flexible heater with a resistive element incorporated into a silicone rubber construction, shaped to fit a surface, enclosure or assembly.',
     related: ['Flexible & Silicone Rubber Heaters', '/heating-elements/flexible-heaters/'],
+  },
+  {
+    id: 'surface-mount-thermocouple', name: 'Surface-Mount Thermocouple',
+    definition: 'A contact temperature sensor fixed against an equipment surface at the measurement point. The mounting interface, surface shape and contact conditions affect the reading.',
+    related: ['Surface-Mount Thermocouples', '/thermocouples/surface-mount/'],
   },
   {
     id: 'thermocouple', name: 'Thermocouple',
