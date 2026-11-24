@@ -40,6 +40,11 @@ export const glossary = [
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
+    id: 'fine-wire-thermocouple', name: 'Fine-Wire Thermocouple',
+    definition: 'A thermocouple with small-diameter conductors joined at a small sensing bead. Wire size, bead geometry, mounting and the measurement medium affect the response.',
+    related: ['Fine-Wire Thermocouples', '/thermocouples/fine-wire/'],
+  },
+  {
     id: 'finned-strip-heater', name: 'Finned Strip Heater',
     definition: 'A flat-bodied electric heating element with fins that add surface area for air heating. The strip and fin profile determine the mounting and airflow clearances.',
     related: ['Finned Strip Heaters', '/heating-elements/strip-heaters/finned/'],
@@ -143,6 +148,11 @@ export const glossary = [
     id: 'over-the-side-immersion-heater', name: 'Over-the-Side Immersion Heater',
     definition: 'An immersion heater that enters an open tank from above and is mounted at the rim or on a support. The active section operates below the minimum liquid level.',
     related: ['Over-the-Side Immersion Heaters', '/heating-elements/immersion-heaters/over-the-side/'],
+  },
+  {
+    id: 'platinum-rhodium-thermocouple', name: 'Platinum–Rhodium Thermocouple',
+    definition: 'A platinum-based thermocouple family covering Types S, R and B. Each type has its own alloy pair and temperature-to-voltage reference relationship.',
+    related: ['Platinum–Rhodium Thermocouples', '/thermocouples/high-temperature/#platinum-rhodium'],
   },
   {
     id: 'pt100', name: 'Pt100',
@@ -253,6 +263,11 @@ export const glossary = [
     id: 'type-b-thermocouple', name: 'Type B Thermocouple',
     definition: 'A high-temperature thermocouple with a platinum–30% rhodium positive leg and a platinum–6% rhodium negative leg. Specify the protected assembly and compatible instrument for the required measurement interval.',
     related: ['Type B Thermocouples', '/thermocouples/type-b/'],
+  },
+  {
+    id: 'type-c-thermocouple', name: 'Type C Thermocouple',
+    definition: 'A tungsten–rhenium thermocouple with a tungsten–5% rhenium positive leg and a tungsten–26% rhenium negative leg. Its use depends on the atmosphere, protection and instrument input.',
+    related: ['Type C Tungsten–Rhenium Thermocouples', '/thermocouples/type-c/'],
   },
   {
     id: 'type-e-thermocouple', name: 'Type E Thermocouple',

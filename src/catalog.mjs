@@ -804,6 +804,68 @@ export const products = [
     guides: ['thermocouple-wire-color-code', 'thermowell-selection-guide', 'thermocouple-types'],
   },
   {
+    id: 'fine-wire-thermocouples', path: thermo + 'fine-wire/', parent: 'thermocouples', group: 'sensing',
+    name: 'Fine-Wire Thermocouples',
+    image: 'fine-wire-thermocouples',
+    imageAlt: 'Illustration of two fine thermocouple wires joined at an exposed measuring bead with a miniature connector',
+    title: 'Custom Fine-Wire Exposed Junction Thermocouples',
+    description: 'Specify a fine-wire thermocouple by wire diameter, exposed bead geometry, test conditions, lead insulation and instrument connection.',
+    text: 'Fine-wire probes with an exposed measuring bead for test fixtures and response-sensitive measurements.',
+    intro: 'A fine-wire thermocouple joins two small conductors at an exposed measuring bead. Specify the bead position, wire diameter and exposed length. Include the flow or contact conditions at the junction so response and mechanical support can be evaluated for the test setup.',
+    options: ['Exposed welded junction sized to the measurement location', 'Wire alloy pair and insulation specified for the test', 'Lead length and miniature connector or bare-lead termination by drawing'],
+    specs: ['Thermocouple type, wire diameter, bead dimensions or target size, and exposed length', 'Measurement medium, normal and peak temperatures, flow and required response time', 'Bead location, lead support and strain relief, and any electrical isolation requirement', 'Lead length and insulation, compatible connector, polarity convention and instrument input'],
+    selection: [
+      'Specify the Fine-Wire Junction and Test Setup',
+      'Show the intended measurement point and how the wires will be supported. Include the allowable junction size and length of bare wire at the tip.',
+      { table: [
+        ['Drawing detail', 'What to include'],
+        ['Bead and wire', 'Thermocouple type, conductor diameter or wire gauge, target bead size, and exposed length from the insulation to the bead.'],
+        [['Medium and response', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Medium, flow around the junction, temperature step or test cycle, and the response-time criterion if specified.'],
+        ['Routing and support', 'Lead path, strain relief, vibration, electrical contact with the surrounding fixture, and clearance at the measurement point.'],
+        [['Insulation and termination', '/guides/thermocouple-wire-color-code/'], 'Insulation material or rating, cable length, connector or lead-end dimensions, and matching instrument input.'],
+      ] },
+    ],
+    use: 'Typical inquiries include test fixtures, transient measurements and temperature mapping in a compatible medium.',
+    questions: [
+      ['What is a fine-wire exposed junction thermocouple?', 'Two fine thermocouple conductors meet at an exposed measuring bead. The bead is directly exposed to the measurement environment, and its size and wire support are specified for the setup.'],
+      ['What affects the response of a fine-wire thermocouple?', 'Wire diameter, bead size, local flow and how the lead wires conduct heat affect the reading and response time. Share the intended mounting, medium and temperature change used in the test.'],
+      ['What details are needed if the junction touches a surface?', 'Provide the surface material, attachment method, location of the wire supports and electrical isolation requirements. Include the operating temperature and any motion at the contact point.'],
+    ],
+    related: ['type-k', 'type-t', 'surface-mount-thermocouple', 'mineral-insulated'],
+    guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'how-thermocouples-work'],
+  },
+  {
+    id: 'type-c', path: thermo + 'type-c/', parent: 'thermocouples', group: 'sensing',
+    name: 'Type C Tungsten–Rhenium Thermocouples',
+    image: 'type-c',
+    imageAlt: 'Illustration of a Type C thermocouple element with a twin-bore ceramic insulator and exposed junction',
+    title: 'Type C Tungsten–Rhenium Thermocouple Inquiries',
+    description: 'Request a Type C thermocouple review by alloy designation, furnace atmosphere, temperature cycle, junction support, protection and instrument input.',
+    text: 'Type C thermocouple configurations reviewed for specified vacuum or compatible controlled-atmosphere furnaces.',
+    intro: 'Type C designates a tungsten–rhenium thermocouple with a tungsten–5% rhenium positive leg and a tungsten–26% rhenium negative leg. For a project inquiry, send the temperature profile, the atmosphere at the hot junction and the drawing for the furnace installation. The construction and availability are reviewed for those conditions.',
+    options: ['Element, insulator and protection construction reviewed by application', 'Junction position and support layout by furnace drawing', 'Type C termination and compatible measuring circuit specified for the installation'],
+    specs: ['Type C alloy designation and instrument input, continuous and peak temperatures, dwell time and cycle', 'Vacuum level or process gas composition through heat-up, operation and cool-down', 'Hot junction position, insulator or protection requirements, insertion and supported length', 'Mount and lead arrangement, transition temperature, and instrument or feedthrough specifications'],
+    selection: [
+      'Specify the Type C Furnace Atmosphere and Assembly',
+      'Provide the installation drawing and the gas or vacuum conditions at the measuring junction throughout the cycle. Confirm the reference characteristic required by your instrument.',
+      { table: [
+        ['Application input', 'What to send'],
+        ['Atmosphere at the junction', 'Vacuum level or gas composition, oxygen exposure during the cycle and any process deposits or material contact.'],
+        ['Temperature profile', 'Normal and peak temperatures, time at peak, heating and cooling cycle, and the required instrument measurement span.'],
+        [['Protection and support', thermo + 'high-temperature/'], 'Junction location, tube or insulator requirements, support points, orientation and connection dimensions.'],
+        [['Instrumentation and wiring', '/guides/thermocouple-wire-color-code/'], 'Type C input or reference characteristic, cable or feedthrough details, polarity and the expected temperature at each transition.'],
+      ] },
+    ],
+    use: 'Typical inquiries include vacuum furnaces and compatible controlled-atmosphere equipment specified for Type C measurement.',
+    questions: [
+      ['What is a Type C thermocouple?', 'It is a thermocouple pairing tungsten–5% rhenium and tungsten–26% rhenium. Specify the Type C reference characteristic and compatible terminals and wiring for the instrument.'],
+      ['Why does the atmosphere matter for a Type C element?', 'Tungsten–rhenium alloys are susceptible to oxidation at elevated temperatures. Share the gas composition or vacuum level, including any exposure during heat-up or cool-down, to review the construction for the furnace.'],
+      ['What temperature limits should I specify in a Type C inquiry?', 'Give the required continuous and peak temperatures, duration and number of cycles, instrument measurement interval and temperature at the lead transition. The insulator, atmosphere, protection and termination each affect the assembly limits.'],
+    ],
+    related: ['high-temperature', 'type-b', 'type-r', 'sensor-accessories'],
+    guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'how-thermocouples-work'],
+  },
+  {
     id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature',
     photographs: [
       {
@@ -818,11 +880,21 @@ export const products = [
       },
     ],
     title: 'High Temperature Thermocouples for Furnaces & Kilns',
-    description: 'Specify a high temperature furnace or kiln thermocouple by peak and continuous temperature, atmosphere, protection tube and insertion depth.',
-    text: 'Temperature assemblies specified for furnaces, kilns and elevated-temperature processes.',
+    description: 'Compare Type S, R and B platinum–rhodium thermocouples and specify furnace or kiln probes by atmosphere, protection tube and insertion depth.',
+    text: 'Furnace and kiln probes, including platinum–rhodium Types S, R and B.',
     intro: 'Select a high-temperature assembly using the peak and continuous temperatures, process atmosphere and required service life. The protection tube and mounting must suit the installation.',
     options: ['Base- and noble-metal types by application', 'Metal or ceramic protection tubes', 'Replaceable elements and terminal heads'],
     specs: ['Continuous temperature, peak temperature, dwell time and thermal cycling', 'Furnace atmosphere, contaminants and exposure at the measuring point', 'Protection tube material, insertion length and unsupported span', 'Mounting layout, terminal-head temperature and instrument input'],
+    comparison: [
+      'Platinum–Rhodium Thermocouples',
+      'Types S, R and B use platinum–rhodium alloys for furnace and kiln measurements. Match the instrument input to the specified alloy pair. Share the working temperature, atmosphere and mounting dimensions to review the protected assembly.',
+      { anchor: 'platinum-rhodium', table: [
+        ['Type', 'Positive conductor', 'Negative conductor'],
+        [['Type S', thermo + 'type-s/'], 'Platinum–10% rhodium', 'Platinum'],
+        [['Type R', thermo + 'type-r/'], 'Platinum–13% rhodium', 'Platinum'],
+        [['Type B', thermo + 'type-b/'], 'Platinum–30% rhodium', 'Platinum–6% rhodium'],
+      ] },
+    ],
     selection: [
       'Furnace Thermocouple Protection and Operating Conditions',
       'Specify the probe as an assembly. The sensing alloys, protection tube, mount and terminal can reach different temperatures and each has its own service conditions.',
@@ -835,7 +907,7 @@ export const products = [
       ] },
     ],
     use: 'Applications include furnaces, kilns, heat treatment and other controlled high-temperature environments.',
-    related: ['type-s', 'type-r', 'type-b', 'type-n', 'mineral-insulated', 'type-k', 'sensor-accessories'],
+    related: ['type-s', 'type-r', 'type-b', 'type-c', 'type-n', 'mineral-insulated', 'type-k', 'sensor-accessories'],
     guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     questions: [
       ['When should I specify a ceramic protection tube for a furnace thermocouple?', 'Consider a ceramic protection tube when its material suits the furnace atmosphere and temperature. Include thermal cycling, possible mechanical impact, insertion depth and mounting. Sensor alloy and protection tube limits should be evaluated together.'],
@@ -1511,8 +1583,8 @@ export const guides = [
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
     readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
-    related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature'],
-    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple'],
+    related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature', 'type-c'],
+    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple', 'platinum-rhodium-thermocouple', 'type-c-thermocouple'],
     sections: [
       ['Compare thermocouple types by application', 'K, J, T, N and E are common base-metal types. R, S and B use platinum-based alloys. Start with the instrument input, normal and peak temperatures, and process atmosphere, then check the limits of the protected assembly.', {
         table: [
@@ -1548,15 +1620,15 @@ export const guides = [
     description: 'Compare grounded, ungrounded and exposed thermocouple junctions by electrical isolation, thermal response, sheath protection and process exposure.',
     answer: ['What is the difference between grounded and ungrounded junctions?', 'In a grounded thermocouple, the sensing junction is bonded to the sheath. In an ungrounded thermocouple, insulation separates the junction from the sheath. Compare electrical isolation and response for the complete probe.'],
     readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
-    terms: ['grounded-junction', 'ungrounded-junction', 'exposed-junction', 'thermocouple-response-time', 'dual-element-thermocouple'],
-    related: ['thermocouples', 'mineral-insulated', 'dual-element-thermocouples'],
+    terms: ['grounded-junction', 'ungrounded-junction', 'exposed-junction', 'thermocouple-response-time', 'dual-element-thermocouple', 'fine-wire-thermocouple'],
+    related: ['thermocouples', 'mineral-insulated', 'dual-element-thermocouples', 'fine-wire-thermocouples'],
     sections: [
       ['Compare the three junction constructions', 'Compare junctions in the intended process. Sheath diameter, mounting, medium and flow can change the response of the assembled probe.', {
         table: [
           ['Junction', 'Connection to sheath', 'When to consider it'],
           ['Grounded', 'The sensing junction is bonded to the sheath.', 'Direct thermal contact can help response. Review electrical connection to the sheath and the instrument ground arrangement.'],
           ['Ungrounded', 'Insulation separates the junction and sheath.', 'Consider for electrical isolation from the sheath. Check the response for the same probe diameter and installation.'],
-          ['Exposed', 'The junction is directly exposed to the process medium.', 'Consider for fast response in a compatible environment. Review abrasion, corrosion and other loads on the exposed conductors.'],
+          [['Exposed', thermo + 'fine-wire/'], 'The junction is directly exposed to the process medium.', 'Consider for fast response in a compatible environment. Review abrasion, corrosion and other loads on the exposed conductors.'],
         ],
       }],
       ['Compare response in the actual assembly', 'Compare probes of the same type and diameter in the intended medium. Junction construction affects thermal response, but sheath diameter, immersion depth, flow and contact with a surface can also change the reading and response time.'],

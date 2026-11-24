@@ -62,7 +62,8 @@ const photoTones = [
     id: 'warm',
     source: [234, 231, 235],
     images: ['oil-immersion-heaters', 'cartridge-heaters-with-thermocouple', 'type-n', 'type-r', 'type-b',
-      'thermowells', 'polyimide-heaters', 'silicone-rubber-heaters', 'quartz-infrared-heating-elements'],
+      'thermowells', 'polyimide-heaters', 'silicone-rubber-heaters', 'quartz-infrared-heating-elements',
+      'fine-wire-thermocouples', 'type-c'],
   },
   {
     id: 'neutral',
@@ -313,9 +314,9 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
-function referenceSection([title, copy, { table, diagram } = {}], className = '') {
+function referenceSection([title, copy, { table, diagram, anchor } = {}], className = '') {
   const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
-  return `<section${className ? ` class="${className}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
+  return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
     ${table ? `<div class="reference-table"><table>
       <caption class="sr-only">${escape(title)}</caption>
       <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
@@ -468,6 +469,7 @@ for (const product of products) {
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
+  ${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
   ${product.photographs?.length ? `<section class="product-photos" aria-labelledby="product-photos-heading">
