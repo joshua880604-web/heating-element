@@ -33,7 +33,7 @@ const quoteTrail = [['Request a Quote', '/request-a-quote/']];
 const pageDescriptions = new Map();
 const nav = [
   ['/', 'Home', navPath => navPath === '/'],
-  ['/products/', 'Products', navPath => /^\/(products|heating-elements|thermocouples|temperature-sensors)\//.test(navPath)],
+  ['/products/', 'Products', navPath => /^\/(products|heating-elements|thermocouples|temperature-sensors|temperature-controls)\//.test(navPath)],
   ['/applications/', 'Applications', navPath => navPath === '/applications/'],
   ['/guides/', 'Guides', navPath => navPath.startsWith('/guides/')],
   ['/glossary/', 'Glossary', navPath => navPath === '/glossary/'],
@@ -84,7 +84,8 @@ const photoTones = [
       'pid-temperature-controllers', 'commercial-dishwasher-heating-elements',
       'ds18b20-sensors', 'solid-state-relays', 'rtd-temperature-transmitters',
       'water-boiler-heating-elements', 'titanium-immersion-heaters', 'drum-immersion-heaters',
-      'type-k-exhaust-gas-thermocouples', 'food-steamer-heating-elements'],
+      'type-k-exhaust-gas-thermocouples', 'food-steamer-heating-elements', 'split-sheath-cartridge-heaters',
+      'ntc-thermistor-probes', 'thermocouple-temperature-transmitters'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];

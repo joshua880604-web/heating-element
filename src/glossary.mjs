@@ -165,6 +165,11 @@ export const glossary = [
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
   },
   {
+    id: 'ntc-thermistor', name: 'NTC Thermistor',
+    definition: 'A temperature-sensitive resistor whose resistance decreases as temperature rises. Specify the nominal resistance at 25 °C and the resistance–temperature curve or beta value with its reference temperatures.',
+    related: ['NTC Thermistor Probes', '/temperature-sensors/ntc-thermistor-probes/'],
+  },
+  {
     id: 'over-the-side-immersion-heater', name: 'Over-the-Side Immersion Heater',
     definition: 'An immersion heater that enters an open tank from above and is mounted at the rim or on a support. The active section operates below the minimum liquid level.',
     related: ['Over-the-Side Immersion Heaters', '/heating-elements/immersion-heaters/over-the-side/'],
@@ -245,6 +250,11 @@ export const glossary = [
     related: ['Solid-State Relays for Heating Elements', '/temperature-controls/solid-state-relays/'],
   },
   {
+    id: 'split-sheath-cartridge-heater', name: 'Split-Sheath Cartridge Heater',
+    definition: 'A cartridge heater with a longitudinal division in the sheath that allows its sections to move as the heater warms. Fit depends on the finished bore tolerance and operating conditions.',
+    related: ['Split-Sheath Cartridge Heaters', '/heating-elements/cartridge-heaters/split-sheath/'],
+  },
+  {
     id: 'surface-mount-thermocouple', name: 'Surface-Mount Thermocouple',
     definition: 'A contact temperature sensor fixed against an equipment surface at the measurement point. The mounting interface, surface shape and contact conditions affect the reading.',
     related: ['Surface-Mount Thermocouples', '/thermocouples/surface-mount/'],
@@ -273,6 +283,11 @@ export const glossary = [
     id: 'thermocouple-response-time', name: 'Thermocouple Response Time',
     definition: 'The time a thermocouple assembly takes to indicate a specified fraction of a temperature step. The specified fraction, probe construction, medium, flow and mounting are needed to compare measurements.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'thermocouple-transmitter', name: 'Thermocouple Transmitter',
+    definition: 'An instrument that converts a thermocouple signal to an output such as 4–20 mA. It uses the configured thermocouple type and cold-junction compensation to calculate temperature and scales it to the specified output span.',
+    related: ['4–20 mA Thermocouple Transmitters', '/temperature-controls/thermocouple-transmitters/'],
   },
   {
     id: 'thermowell', name: 'Thermowell',
