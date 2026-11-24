@@ -800,6 +800,22 @@ svg:not(.symbols) {
 .spec-card li::marker {
   color: var(--accent-dark);
 }
+.product-selection {
+  margin-top: 28px;
+}
+.heating-selection {
+  margin-bottom: 32px;
+}
+.product-selection h2,
+.heating-selection h2 {
+  font-size: 1.45rem;
+}
+.product-selection p,
+.heating-selection p {
+  max-width: 72ch;
+  margin-top: 7px;
+  color: var(--muted);
+}
 .use-case {
   background: #fff;
   border: 1px solid var(--line);
@@ -864,34 +880,40 @@ svg:not(.symbols) {
 .guide-grid > .prose {
   min-width: 0;
 }
-.guide-table,
-.guide-wiring {
+.reference-table,
+.reference-diagram {
   margin-top: 12px;
 }
-.guide-table {
+.reference-table {
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 7px;
 }
-.guide-table table {
+.reference-table table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
   font-size: 0.875rem;
   text-align: left;
 }
-.guide-table th,
-.guide-table td {
+.reference-table th,
+.reference-table td {
   padding: 9px clamp(5px, 1.4vw, 14px);
+  overflow-wrap: anywhere;
   vertical-align: top;
 }
-.guide-table thead th {
+.reference-table thead th {
   background: #f0f3f5;
 }
-.guide-table tbody tr {
+.reference-table tbody tr {
   border-top: 1px solid var(--line);
 }
-.guide-wiring pre {
+.reference-table a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+.reference-diagram pre {
   margin: 0;
   padding: 14px 12px;
   overflow-x: auto;
@@ -901,7 +923,7 @@ svg:not(.symbols) {
   color: var(--ink);
   font: 600 clamp(0.72rem, 2.9vw, 0.92rem) / 1 ui-monospace, monospace;
 }
-.guide-wiring figcaption {
+.reference-diagram figcaption {
   margin-top: 6px;
   color: var(--muted);
   font-size: 0.85rem;
@@ -1247,6 +1269,12 @@ svg:not(.symbols) {
   }
 }
 @media (max-width: 530px) {
+  :is(.product-selection, .heating-selection) .reference-table table {
+    table-layout: fixed;
+  }
+  :is(.product-selection, .heating-selection) .reference-table thead th:first-child {
+    width: 34%;
+  }
   .workshop-gallery {
     grid-template-columns: 1fr;
   }

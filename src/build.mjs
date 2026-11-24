@@ -261,14 +261,15 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
-function guideSection([title, copy, { table, diagram } = {}]) {
-  return `<section><h2>${escape(title)}</h2><p>${escape(copy)}</p>
-    ${table ? `<div class="guide-table"><table>
+function referenceSection([title, copy, { table, diagram } = {}], className = '') {
+  const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
+  return `<section${className ? ` class="${className}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
+    ${table ? `<div class="reference-table"><table>
       <caption class="sr-only">${escape(title)}</caption>
       <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
-      <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${escape(row)}</th>${cells.map(cell => `<td>${escape(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
+      <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${cell(row)}</th>${cells.map(value => `<td>${cell(value)}</td>`).join('')}</tr>`).join('')}</tbody>
     </table></div>` : ''}
-    ${diagram ? `<figure class="guide-wiring">
+    ${diagram ? `<figure class="reference-diagram">
       <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
       <figcaption>${escape(diagram[0])}</figcaption>
     </figure>` : ''}
@@ -363,12 +364,27 @@ ${callout('Need a custom configuration?', 'Share your application, dimensions an
 `, { trail: productsTrail, type: 'CollectionPage', items: catalogOrder(products) });
 
 const heatingProducts = products.filter(product => product.group !== 'sensing');
-await page('/heating-elements/', 'Industrial Heating Elements & Custom Electric Heaters', 'Compare custom electric heating elements for air, liquids, tooling and equipment surfaces. Specify the heating medium, installation geometry and power.', `
-${pageIntro('Industrial heating', 'Industrial Heating Elements', 'Compare custom electric heating elements by how heat reaches the load. Start with the medium, then review mounting, geometry, operating temperature and electrical supply.', heatingTrail)}
+const heatingSelection = [
+  'Choose an Element by Medium and Mount',
+  'Start with the material being heated and the space available. Lichengda reviews custom heating element inquiries against the operating conditions and equipment drawing.',
+  { table: [
+    ['Heating method', 'Product family', 'Include in your inquiry'],
+    ['Moving air through a duct or chamber', ['Finned tubular heaters', lookup.get('finned-tubular-heaters').path], 'Minimum airflow, inlet and target temperatures, and the space across the air path.'],
+    ['Direct contact with liquid in a tank', ['Immersion heaters', lookup.get('immersion-heaters').path], 'Fluid chemistry, minimum liquid level, operating pressure and the available tank opening.'],
+    ['Contact through a bore in tooling', ['Cartridge heaters', lookup.get('cartridge-heaters').path], 'Bore diameter and tolerance, usable depth, heated zone and lead exit.'],
+    ['Contact around a barrel or nozzle', ['Band heaters', lookup.get('band-heaters').path], 'Outside diameter, usable width, interruptions in the contact surface and terminal clearance.'],
+    ['Radiation to a surface', ['Infrared heating elements', lookup.get('infrared-heaters').path], 'Target material, stand-off distance, exposed area and production speed or dwell time.'],
+    ['Heat along a pipe or vessel wall', ['Heat trace cables', lookup.get('heating-cables').path], 'Pipe size and length, insulation, minimum ambient temperature and target maintenance temperature.'],
+  ] },
+];
+
+await page('/heating-elements/', 'Industrial Heating Elements & Custom Electric Heaters', 'Compare custom industrial heating elements by medium and mount. Find tubular, immersion, cartridge, band and infrared heaters for OEM equipment.', `
+${pageIntro('Industrial heating', 'Industrial Heating Elements', 'Find made-to-spec electric heating elements for air, liquids, tooling and equipment surfaces. Compare heater types by how the heat reaches the load and where the element mounts.', heatingTrail)}
 <section class="section catalog-section catalog-page"><div class="container">
+  ${referenceSection(heatingSelection, 'heating-selection')}
   ${catalog(heatingProducts)}
   ${questionsSection('Selecting an Electric Heating Element', [
-    ['Which heater families fit different heating methods?', 'For moving air, compare tubular, finned tubular and duct heaters. For water, oil or another compatible liquid, compare immersion and circulation heaters. For a solid tool, consider cartridges, bands, strips or flexible heaters based on contact geometry. For non-contact heating, evaluate infrared elements.'],
+    ['What should I send to replace an industrial heating element?', 'Include the existing part number or a photo of its markings, measured dimensions, voltage and wattage. Add the process medium and working temperature, plus the connector or lead layout. Show any changes to the original mounting or operating conditions on the drawing.'],
     ['What determines whether a custom heating element can be used?', 'Voltage and power are only part of the specification. Confirm the heated length, sheath or insulation, available heat transfer, duty cycle, mounting and termination. Share the minimum and maximum operating conditions when evaluating a design.'],
   ])}
 </div></section>
@@ -399,6 +415,7 @@ for (const product of products) {
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
+  ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
   ${product.photographs?.length ? `<section class="product-photos" aria-labelledby="product-photos-heading">
     <h2 id="product-photos-heading">Product Photos</h2>
@@ -453,7 +470,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
   <article class="prose">
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
-    ${guide.sections.map(guideSection).join('')}
+    ${guide.sections.map(section => referenceSection(section)).join('')}
   </article>
   <aside class="spec-card">
     <h2>Related Products</h2>${related(guide.related)}
