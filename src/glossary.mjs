@@ -30,6 +30,11 @@ export const glossary = [
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
   },
   {
+    id: 'dual-element-thermocouple', name: 'Dual Element Thermocouple',
+    definition: 'A probe with two thermocouple sensing elements and two identified lead pairs in one assembly. Specify both junction positions and any isolation requirements between the circuits and the sheath.',
+    related: ['Dual Element Thermocouples', '/thermocouples/dual-element/'],
+  },
+  {
     id: 'exposed-junction', name: 'Exposed Junction',
     definition: 'A thermocouple junction where the joined conductors are exposed to the measurement medium. Direct exposure can reduce response time when the conductors can tolerate the environment.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
@@ -203,6 +208,11 @@ export const glossary = [
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'thermocouple-connection-head', name: 'Thermocouple Connection Head',
+    definition: 'An enclosure at the probe termination where sensor leads connect to field wiring. The head layout is specified by cable entry, terminals, installed clearance and operating temperature.',
+    related: ['Thermocouples with Connection Heads', '/thermocouples/connection-head/'],
   },
   {
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',

@@ -8,6 +8,12 @@ const flexible = '/heating-elements/flexible-heaters/';
 const infrared = '/heating-elements/infrared-heaters/';
 const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
 
+const connectionHeadPhoto = {
+  image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
+  alt: 'Metal connection heads and blue protective sleeves on industrial temperature probes',
+  caption: 'Probe assemblies with connection heads for field wiring',
+};
+
 export const groups = {
   sensing: 'Temperature Sensors',
   tubular: 'Tubular & Immersion',
@@ -24,11 +30,7 @@ export const products = [
         alt: 'Round mounting flanges on temperature probes with white leads',
         caption: 'Flange-mounted probes with direct lead wiring',
       },
-      {
-        image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
-        alt: 'Metal connection heads and blue protective sleeves on industrial temperature probes',
-        caption: 'Probe assemblies with connection heads for field wiring',
-      },
+      connectionHeadPhoto,
     ],
     title: 'Industrial Thermocouples & Custom Probes',
     description: 'Specify custom industrial thermocouples for OEM equipment. Compare threaded, flanged, surface-mount and spring-loaded bayonet probe configurations.',
@@ -37,7 +39,7 @@ export const products = [
     options: ['Base-metal types K, J, T, N and E', 'High-temperature types R, S and B', 'Mineral-insulated and protection-tube assemblies', 'Threaded, flanged, surface and bayonet mounting'],
     specs: ['Thermocouple type and instrument input', 'Process medium, continuous and peak temperatures, and sheath material', 'Probe diameter and insertion length from the installed reference face', 'Mount dimensions, junction, connector and lead length'],
     selection: [
-      'Industrial Thermocouple Mounts and Connections',
+      'Industrial Thermocouple Configurations and Connections',
       'Locate the sensing point on the equipment drawing. Choose the mount that fixes the probe at that point and the wiring termination that suits the instrument and service access.',
       { table: [
         ['Configuration', 'Installation', 'Include in your inquiry'],
@@ -45,14 +47,15 @@ export const products = [
         [['Flange-mounted probe', thermo + 'flanged/'], 'A flange sets the mounting plane and supports an inserted probe.', 'Flange size and pattern, mating face, probe depth and process pressure if applicable.'],
         [['Spring-loaded bayonet probe', thermo + 'spring-loaded/'], 'A spring holds the tip at a contact point in tooling.', 'Adapter geometry, installed spring travel and the required contact point.'],
         [['Surface-mount thermocouple', thermo + 'surface-mount/'], 'A contact lug or pad measures at the equipment surface.', 'Contact position, surface shape, fastening method and lead clearance.'],
-        [['Connection head', '/temperature-sensors/accessories/'], 'A head provides a terminal point for field wiring above the mount.', 'Head clearance, cable entry, thermocouple type and lead termination.'],
+        [['Connection-head thermocouple', thermo + 'connection-head/'], 'A head provides a terminal point for field wiring above the mount.', 'Head clearance, cable entry, thermocouple type and lead termination.'],
+        [['Dual element thermocouple', thermo + 'dual-element/'], 'Two sensing elements are housed in a single probe assembly.', 'Junction positions, the input for each circuit, grounding and separate lead identification.'],
       ] },
     ],
     use: 'Typical integration points include heat-treatment furnaces, plastics machinery, process vessels, industrial ovens and heated tooling.',
     questions: [
       ['How should I specify a threaded or spring-loaded thermocouple?', 'For a threaded probe, identify the thread standard, sealing interface and insertion length from the seating face. For a spring-loaded assembly, include the installed travel and mating feature so the tip can stay in contact at the measurement point.'],
       ['What should I specify for a replacement thermocouple probe?', 'Match the instrument input and thermocouple type first. Then check the insertion length, sheath diameter, mounting thread or flange, junction and electrical termination. A drawing or label photo can help identify the original configuration.'],
-      ['How do I choose between a probe and a thermocouple assembly with a connection head?', 'Use the available installation space and wiring interface to decide. A probe with leads or a plug can fit compact equipment. A terminal head provides a connection point for field wiring where the mounting and environment support it.'],
+      ['When should I specify a thermocouple with a connection head?', 'Specify a connection head when the installation calls for a terminal point for field wiring near the probe. Check the head temperature, cable entry, lid access and clearance around the mount.'],
       ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance and service history. If a probe fails early, share whether the reading drifted, became intermittent or went open circuit, along with the operating conditions and original drawing.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
@@ -724,7 +727,7 @@ export const products = [
       'Send the installed route for a formed mineral insulated thermocouple. Evaluate the bends with the actual sheath material, outside diameter and internal construction.',
       { table: [
         ['Probe detail', 'Drawing or application input'],
-        ['Sheath and circuits', 'Give the outside diameter, sheath material, overall length and single or dual circuit requirement. Identify where the probe enters the process.'],
+        [['Sheath and sensing circuits', thermo + 'dual-element/'], 'Give the outside diameter, sheath material, overall length and single or dual circuit requirement. Identify where the probe enters the process.'],
         ['Bending and routing', 'Draw each bend and its centerline radius. Show nearby hardware, planned supports and any area that must stay straight for the mount or transition.'],
         [['Grounded or ungrounded junction', '/guides/grounded-vs-ungrounded-thermocouples/'], 'State the isolation or response requirement at the measuring point and the device that reads the signal.'],
         ['Transition to extension leads', 'Locate the transition and connector on the drawing and give the temperatures and clearance at both points.'],
@@ -736,6 +739,69 @@ export const products = [
     questions: [
       ['What is a mineral insulated thermocouple?', 'An MI thermocouple contains conductors separated by compacted mineral insulation within a metal sheath. When specifying a routed or formed probe, include the sheath material and diameter, bend locations, junction type and a drawing of the installed path.'],
     ],
+  },
+  {
+    id: 'dual-element-thermocouples', path: thermo + 'dual-element/', parent: 'thermocouples', group: 'sensing',
+    name: 'Dual Element Thermocouples',
+    image: 'dual-element-thermocouples',
+    imageAlt: 'Illustration of a single sheathed dual element probe with two separate braided leads and connectors',
+    title: 'Custom Dual Element Thermocouples & Duplex Probes',
+    description: 'Specify a dual element thermocouple by the two sensor inputs, junction locations, sheath dimensions, installation and wiring diagram.',
+    text: 'Duplex thermocouple assemblies with two sensing elements and separately identified circuits in one probe.',
+    intro: 'A dual element thermocouple houses two sensing elements in one probe assembly. It can provide readings to a controller and a separate monitor through two identified pairs. Show both junction locations, the installation dimensions and the instrument inputs on the drawing.',
+    options: ['Dual sensing circuits in a sheathed assembly', 'Junction position and isolation by drawing', 'Separate lead and connector identification for each circuit'],
+    specs: ['Instrument input and thermocouple type for each circuit', 'Junction locations, sheath diameter, material and installed insertion length', 'Grounding or electrical isolation requirements, working temperature and process atmosphere', 'Lead lengths, polarity, connector type and identification for each pair'],
+    selection: [
+      'Specify Both Circuits in a Duplex Thermocouple',
+      'Use one probe drawing to locate the sensing elements and show how each pair terminates. Include the instrument data for both inputs.',
+      { table: [
+        ['Drawing detail', 'What to specify'],
+        [['Sheath and mount', '/thermocouples/mineral-insulated/'], 'Sheath material, diameter, available depth, seating reference and fittings.'],
+        [['Junctions and isolation', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Junction locations relative to the tip, response target and electrical isolation requirements between the elements and sheath.'],
+        ['Measurement inputs', 'Model and thermocouple input for controller and monitor, normal and peak temperatures, and process exposure.'],
+        [['Lead pairs', '/guides/thermocouple-wire-color-code/'], 'Lead length, insulation, polarity and connector format for each input. Mark each pair on the wiring diagram.'],
+      ] },
+    ],
+    use: 'Applications to review include equipment that uses one probe location for temperature control and a separate temperature recording or monitoring input.',
+    questions: [
+      ['What is a dual element thermocouple?', 'It is a single probe with two thermocouple sensing elements and two identified lead pairs. The junctions, sheath and wiring must be specified for the installed assembly.'],
+      ['Can both circuits use separate instruments?', 'Specify the instrument model and sensor input for each circuit. Include the grounding arrangement, electrical isolation requirements and wiring diagram so the circuit layout can be reviewed.'],
+      ['Will both channels read the same temperature?', 'Junction position, heat flow, sensor tolerance and instrument error affect the measurements. Mark the intended locations and give the acceptable difference if the process specifies one.'],
+    ],
+    related: ['mineral-insulated', 'connection-head-thermocouples', 'threaded-thermocouple', 'type-k'],
+    guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-types'],
+  },
+  {
+    id: 'connection-head-thermocouples', path: thermo + 'connection-head/', parent: 'thermocouples', group: 'sensing',
+    name: 'Thermocouples with Connection Heads',
+    image: 'connection-head-thermocouples',
+    imageAlt: 'Illustration of a complete thermocouple probe with a threaded fitting and a metal terminal connection head',
+    photographs: [connectionHeadPhoto],
+    title: 'Custom Thermocouples with Connection Heads',
+    description: 'Specify a thermocouple with a connection head by probe dimensions, threaded or flanged mount, cable entry, terminal layout and installed conditions.',
+    text: 'Complete thermocouple probes with a connection head for field wiring.',
+    intro: 'A thermocouple with a connection head combines the sensing probe with a terminal enclosure for field wiring. Show the process mounting, installed insertion length, head orientation and available service clearance in the equipment drawing.',
+    options: ['Threaded or flanged installation by the mating drawing', 'Direct process insertion or matched thermowell configuration by application', 'Terminal, cable entry and head clearance to suit the installation'],
+    specs: ['Sensor type, junction, process medium and continuous and peak temperatures', 'Mating thread or flange, installed insertion length and sheath dimensions', 'Head size, orientation, cable entry size and thread, and working temperature at the head', 'Terminal layout and instrument input, with thermowell bore and depth for thermowell installations'],
+    selection: [
+      'Specify the Process Mount and Connection Head',
+      'Locate the sensing tip, seating face and head on a section drawing. Include space for cable routing and service access at the top.',
+      { table: [
+        ['Assembly detail', 'What to send'],
+        [['Mounting and insertion', '/thermocouples/threaded-probes/'], 'Thread or flange drawing, sealing interface, insertion length from the installed reference face and clearance at the mount.'],
+        [['Probe or thermowell fit', '/temperature-sensors/accessories/thermowells/'], 'Sheath and process conditions for direct insertion. For a thermowell, provide usable bore depth, diameter and probe seating details.'],
+        ['Head and cable entry', 'Head orientation and working temperature, gland or conduit thread, cable diameter, cover clearance and expected exposure.'],
+        [['Terminals and input', '/guides/thermocouple-wire-color-code/'], 'Thermocouple type, polarity convention, circuit count, terminal wiring and instrument input. If a transmitter is specified, include its signal and space requirements.'],
+      ] },
+    ],
+    use: 'Typical applications include equipment and process installations with field wiring and an accessible termination above the probe mount.',
+    questions: [
+      ['What is a thermocouple connection head?', 'A connection head is the enclosure where the sensor wires meet the field wiring. Specify the cable entry, terminal layout and head temperature for the application.'],
+      ['What should I verify for a replacement connection-head assembly?', 'Match the process mount and insertion depth, identify the sensor type, and confirm the head orientation, cable entry and available service clearance. Send the original label or drawing if available.'],
+      ['How do I specify a probe for an existing thermowell?', 'Give the thermowell entry connection, usable bore depth and diameter, and the required probe seating arrangement. Include the instrument input and the space around the connection head.'],
+    ],
+    related: ['threaded-thermocouple', 'flanged-thermocouple', 'thermowells', 'sensor-accessories', 'dual-element-thermocouples'],
+    guides: ['thermocouple-wire-color-code', 'thermowell-selection-guide', 'thermocouple-types'],
   },
   {
     id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature',
@@ -1482,8 +1548,8 @@ export const guides = [
     description: 'Compare grounded, ungrounded and exposed thermocouple junctions by electrical isolation, thermal response, sheath protection and process exposure.',
     answer: ['What is the difference between grounded and ungrounded junctions?', 'In a grounded thermocouple, the sensing junction is bonded to the sheath. In an ungrounded thermocouple, insulation separates the junction from the sheath. Compare electrical isolation and response for the complete probe.'],
     readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
-    terms: ['grounded-junction', 'ungrounded-junction', 'exposed-junction', 'thermocouple-response-time'],
-    related: ['thermocouples', 'mineral-insulated'],
+    terms: ['grounded-junction', 'ungrounded-junction', 'exposed-junction', 'thermocouple-response-time', 'dual-element-thermocouple'],
+    related: ['thermocouples', 'mineral-insulated', 'dual-element-thermocouples'],
     sections: [
       ['Compare the three junction constructions', 'Compare junctions in the intended process. Sheath diameter, mounting, medium and flow can change the response of the assembled probe.', {
         table: [
@@ -1609,9 +1675,9 @@ export const guides = [
   {
     slug: 'thermocouple-wire-color-code', group: 'sensing', name: 'Thermocouple Wire Color Codes and Polarity',
     description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J, T, E and N. Specify compatible Type R and Type B cables and polarity.',
-    related: ['type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'sensor-accessories'],
+    related: ['type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'connection-head-thermocouples', 'sensor-accessories'],
     readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-types'],
-    terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'iec-60584-3'],
+    terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'thermocouple-connection-head', 'iec-60584-3'],
     answer: ['What color is the negative thermocouple wire?', 'For Types K, J, T, E and N, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],
     sections: [
       ['US and IEC conductor colors', 'The chart compares insulated conductor colors. Jacket colors vary with cable grade and standard. Older assemblies may follow a different national convention.', {

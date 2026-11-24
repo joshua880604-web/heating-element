@@ -67,7 +67,8 @@ const photoTones = [
   {
     id: 'neutral',
     source: [235, 235, 237],
-    images: ['spring-loaded-thermocouple', 'surface-mount-thermocouple', 'flanged-thermocouple', 'defrost-heaters'],
+    images: ['spring-loaded-thermocouple', 'surface-mount-thermocouple', 'flanged-thermocouple', 'defrost-heaters',
+      'dual-element-thermocouples', 'connection-head-thermocouples'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
