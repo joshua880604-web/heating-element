@@ -79,7 +79,9 @@ const photoTones = [
       'sauna-heating-elements', 'ceramic-thermocouple-protection-tubes',
       'high-density-cartridge-heaters', 'steam-table-heating-elements', 'silicone-drum-heaters',
       'pt1000-sensors', 'high-temperature-lead-wire', 'magnetic-thermocouples',
-      '3d-printer-cartridge-heaters', 'cast-in-aluminum-heaters', 'pellet-stove-igniters'],
+      '3d-printer-cartridge-heaters', 'cast-in-aluminum-heaters', 'pellet-stove-igniters',
+      'carbon-fiber-infrared-heating-elements', 'deep-fryer-heating-elements', 'needle-thermocouples',
+      'pid-temperature-controllers'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
@@ -415,19 +417,19 @@ await cp(staticRoot, dist, { recursive: true });
 await page('/', 'Custom Thermocouples & Industrial Heating Elements', 'Lichengda supplies made-to-spec industrial thermocouples, tubular heaters and heating elements for OEM equipment. Review configurations and request a quote.', home,
   { image: '/assets/industrial-heating.webp' });
 
-await page('/products/', 'Industrial Heater & Temperature Sensor Catalog', 'Find industrial temperature sensors, tubular and immersion heaters, and specialty elements. Compare product options and RFQ requirements.', `
-${pageIntro('Product catalog', 'Temperature Sensor & Heater Catalog', 'Search temperature sensors, tubular and immersion heaters, and specialty elements. Open a product family to see configurations, installation details and related selection guides.', productsTrail)}
+await page('/products/', 'Industrial Heaters, Sensors & Temperature Controls', 'Find industrial temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Compare configurations and RFQ requirements.', `
+${pageIntro('Product catalog', 'Industrial Heating, Sensing & Controls', 'Search temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Open a product family for installation details and selection guides.', productsTrail)}
 <section class="section catalog-section catalog-page"><div class="container">
   ${catalog(products, true)}
   ${questionsSection('How to Use the Product Catalog', [
-    ['Which product group should I start with?', 'Choose Temperature Sensors for a probe, thermowell or connector. Choose Tubular & Immersion for formed tubular elements and fluid heating assemblies. Choose Specialty Heaters for cartridges, bands, strips, cables and flexible elements.'],
+    ['Which product group should I start with?', 'Choose Temperature Sensors for probes, thermowells and connectors, Tubular & Immersion for formed elements and liquid heaters, Specialty Heaters for cartridges, bands, strips, cables and flexible elements, or Temperature Controls for a PID controller.'],
     ['How can I narrow down a product when I only have a drawing?', 'Look for the device function and the mounting interface first. A threaded probe points to a sensor family; a cylindrical bore can indicate a cartridge heater; a heated loop through a tank port suggests an immersion configuration. Include uncertain details in the RFQ.'],
   ])}
 </div></section>
 ${callout('Need a custom configuration?', 'Share your application, dimensions and requirements to prepare a quote request.')}
 `, { trail: productsTrail, type: 'CollectionPage', items: catalogOrder(products) });
 
-const heatingProducts = products.filter(product => product.group !== 'sensing');
+const heatingProducts = products.filter(product => product.group === 'tubular' || product.group === 'specialty');
 const heatingSelection = [
   'Choose an Element by Medium and Mount',
   'Start with the material being heated and the space available. Lichengda reviews custom heating element inquiries against the operating conditions and equipment drawing.',
@@ -457,7 +459,7 @@ ${callout('Specify a custom heating element', 'Include voltage, wattage, operati
 
 for (const product of products) {
   const parent = lookup.get(product.parent);
-  const trail = [...(product.group === 'sensing' ? productsTrail : heatingTrail)];
+  const trail = [...(heatingProducts.includes(product) ? heatingTrail : productsTrail)];
   if (parent) trail.push([parent.name, parent.path]);
   trail.push([product.name]);
   const children = products.filter(item => item.parent === product.id);
@@ -643,8 +645,8 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
 
 const productOptions = Object.entries(groups).map(([id, label]) => `<optgroup label="${label}">${products.filter(p => p.group === id).map(p => `<option value="${p.id}" data-specs="${escape(p.specs.join(' · '))}">${escape(p.name)}</option>`).join('')}</optgroup>`).join('');
 
-await page('/request-a-quote/', 'Request a Quote for Custom Thermocouples or Heaters', 'Prepare an RFQ for a custom industrial thermocouple or heating element. Add dimensions, operating conditions, quantity and drawings for a sales review.', `
-${pageIntro('Made to specification', 'Request a Quote', 'Choose a product family and describe what it must heat or measure. Add quantities, operating conditions and a drawing so the configuration can be reviewed.', quoteTrail)}
+await page('/request-a-quote/', 'Request a Quote for Custom Thermocouples or Heaters', 'Prepare an RFQ for a custom industrial sensor, heating element or temperature controller. Add quantities, operating conditions and drawings for review.', `
+${pageIntro('Made to specification', 'Request a Quote', 'Choose a product family and describe the equipment and operating conditions. Include the quantity, dimensions or wiring requirements and any drawings.', quoteTrail)}
 <section class="section"><div class="container quote-grid">
   <form class="quote-form" method="post" data-email="${escape(email)}">
     <h2>Project Details</h2>
@@ -662,7 +664,7 @@ ${pageIntro('Made to specification', 'Request a Quote', 'Choose a product family
     </div>
     <div class="form-actions"><button class="button button-primary" type="submit" disabled>Download RFQ ${icon('arrow')}</button><p class="form-hint" id="quote-feedback" role="status" aria-live="polite"></p></div>
   </form>
-  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><div class="quote-contact"><h3>Contact Sales</h3><p>Download your RFQ, review it, and send the draft by email. You can also contact us directly.</p>${salesContacts()}</div></aside>
+  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><h3>Temperature controls</h3><p>Sensor input, control output, controller supply and panel cutout.</p><div class="quote-contact"><h3>Contact Sales</h3><p>Download your RFQ, review it, and send the draft by email. You can also contact us directly.</p>${salesContacts()}</div></aside>
 </div><div class="container">
   ${questionsSection('Preparing and Sending Your RFQ', [
     ['What happens when I choose Download RFQ?', 'The form prepares an email draft with your specifications and any selected attachments. Open the downloaded draft in your email client, review it and send it to the sales address shown on this page.'],
@@ -704,7 +706,7 @@ if (origin) {
   ].join('\n'));
   const llms = [
     `# ${brand} Industrial Heating`,
-    '> Custom industrial thermocouples, tubular heaters and heating elements for OEM equipment and process applications.',
+    '> Custom industrial thermocouples, electric heaters and temperature controls for OEM equipment and process applications.',
     `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory exterior, reception and workshop.`,
     ...lists,
   ].join('\n\n');

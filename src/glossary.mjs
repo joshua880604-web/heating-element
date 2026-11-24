@@ -160,6 +160,11 @@ export const glossary = [
     related: ['Over-the-Side Immersion Heaters', '/heating-elements/immersion-heaters/over-the-side/'],
   },
   {
+    id: 'pid-temperature-control', name: 'PID Temperature Control',
+    definition: 'A control method that adjusts an output using proportional, integral and derivative terms derived from the difference between the measured temperature and setpoint.',
+    related: ['PID Temperature Controllers', '/temperature-controls/pid/'],
+  },
+  {
     id: 'platinum-rhodium-thermocouple', name: 'Platinum–Rhodium Thermocouple',
     definition: 'A platinum-based thermocouple family covering Types S, R and B. Each type has its own alloy pair and temperature-to-voltage reference relationship.',
     related: ['Platinum–Rhodium Thermocouples', '/thermocouples/high-temperature/#platinum-rhodium'],

@@ -38,6 +38,7 @@ export const groups = {
   sensing: 'Temperature Sensors',
   tubular: 'Tubular & Immersion',
   specialty: 'Specialty Heaters',
+  controls: 'Temperature Controls',
 };
 
 export const products = [
@@ -307,6 +308,7 @@ export const products = [
         ['Oil grade and viscosity', 'Identify the lubricant, hydraulic oil or heat-transfer fluid. Include the cold-start temperature and available viscosity and film-temperature data.'],
         [['Heat-up and surface loading', '/guides/heating-element-watt-density/'], 'Give oil mass or volume, required heat-up time, temperature rise and heat loss if known. Describe agitation, sludge or existing deposits.'],
         ['Tank fit and oil level', 'Show the process connection, active length, insertion depth and removal clearance. Mark the minimum oil level relative to the heated section.'],
+        [['Deep fryer heating elements', immersion + 'oil/deep-fryer/'], 'For a commercial fryer, send the oil well drawing, heater profile, basket clearance and original rating for each element.'],
         [['Flow-through oil heating', '/heating-elements/circulation-heaters/'], 'For a separate flow-through chamber, provide the minimum and normal flow, inlet and outlet temperatures and operating pressure.'],
       ] },
     ],
@@ -317,6 +319,34 @@ export const products = [
       ['What should the tank drawing show?', 'Identify the mounting reference face, available insertion length, the normal and minimum oil levels, and clearance for removal. Include any specified temperature-sensing, low-level or over-temperature protection interfaces.'],
     ],
     related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
+  },
+  {
+    id: 'deep-fryer-heating-elements', path: immersion + 'oil/deep-fryer/', parent: 'oil-immersion-heaters', group: 'tubular',
+    name: 'Deep Fryer Heating Elements', image: 'deep-fryer-heating-elements',
+    imageAlt: 'Illustration of a formed tubular fryer element with parallel runs and a stainless mounting plate',
+    title: 'Custom Deep Fryer Heating Elements for Commercial Equipment',
+    description: 'Specify a commercial deep fryer heating element by tube profile, oil well, mounting, minimum oil level, voltage and power per element.',
+    text: 'Formed tubular immersion elements configured for commercial fryer oil wells.',
+    intro: 'A deep fryer heating element transfers heat directly to the cooking oil through a wetted metal sheath. Send the original part drawing or measured profile, mounting and oil well dimensions, and the electrical rating per element. State the minimum operating oil level and required clearances to the basket and well.',
+    options: ['Formed tube and heated area reviewed against the oil well drawing', 'Cold ends, seals and mounting interface by equipment specification', 'Voltage, power and terminal arrangement by original part or OEM requirements'],
+    specs: ['Fryer model or drawing, original heater marking and quantity', 'Tube diameter and bend profile, mount dimensions, cold-end length and clearances to the basket and well', 'Oil type, minimum oil level, operating temperature and cleaning cycle', 'Voltage, wattage per element, number of elements and temperature-control or limit interfaces'],
+    selection: [
+      'Match the Fryer Oil Well, Tube Profile and Mounting',
+      'Use the fryer mounting face as the drawing reference. Show the oil well, basket envelope, heated section and terminal positions in the installed orientation.',
+      { table: [
+        ['Fit and operation', 'What to provide'],
+        ['Tube and mount', 'Give the tube profile, hole spacing, bend radii, gasket interface and access for removal. Show any hinge or lift clearance where the fryer uses it.'],
+        ['Oil and heated span', 'Mark the active section relative to the lowest operating oil level. Include oil type, temperature, heat-up needs and cleaning conditions.'],
+        ['Per-element rating and control', 'Provide voltage and wattage per element, the element count, wiring diagram and sensor or limit interfaces. Include appliance nameplate details separately.'],
+      ] },
+    ],
+    use: 'Typical inquiries include OEM commercial fryers and made-to-drawing replacements for open oil well equipment.',
+    questions: [
+      ['What do I need to quote a replacement deep fryer element?', 'Provide the fryer model or original part number, an element photo, tube profile and mounting dimensions, oil well depth, original rating and lead or terminal layout.'],
+      ['Why do the heated span and minimum oil level matter?', 'Oil carries heat away from the active sheath. Show the profile, cold ends and minimum oil level so the heated surface, placement and surface loading can be reviewed together.'],
+    ],
+    related: ['oil-immersion-heaters', 'immersion-heaters', 'steam-table-heating-elements', 'pid-temperature-controllers'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
@@ -638,6 +668,7 @@ export const products = [
         ['Sheath and protection', 'Process atmosphere, exposure time at peak temperature, diameter, and whether the probe needs a protection tube.'],
         [['Sensing junction', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Grounded, ungrounded or exposed construction, plus response-time and electrical isolation requirements.'],
         [['Installation', thermo + 'threaded-probes/'], 'Show the sensing point, installed insertion length and any threads, flange or contact mount.'],
+        [['Needle insertion probe', thermo + 'needle-probes/'], 'For a pointed Type K probe, specify the needle diameter, tip shape and usable insertion depth.'],
         [['Electrical connection', '/guides/thermocouple-wire-color-code/'], 'Type K input, compatible lead and connector type, polarity convention and temperature at the termination.'],
       ] },
     ],
@@ -647,8 +678,36 @@ export const products = [
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
     ],
-    related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
+    related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'high-temperature', 'sensor-accessories', 'pid-temperature-controllers'],
     guides: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+  },
+  {
+    id: 'needle-thermocouples', path: thermo + 'needle-probes/', parent: 'thermocouples', group: 'sensing',
+    name: 'Needle Thermocouple Probes', image: 'needle-thermocouples',
+    imageAlt: 'Illustration of a pointed needle thermocouple with a handle, braided lead and miniature plug',
+    title: 'Custom Type K Needle Thermocouple Probes',
+    description: 'Specify a Type K needle thermocouple probe by needle diameter, tapered tip, insertion depth, temperature range, handle and instrument connector.',
+    text: 'Pointed Type K insertion thermocouples configured to the measurement depth and instrument connection.',
+    intro: 'A needle thermocouple uses a narrow pointed sheath to reach a defined measurement depth in a penetrable material. Specify the Type K input, needle dimensions and the required position of the sensing junction. Show the available clearance and any constraints on the grip or cable.',
+    options: ['Needle diameter, taper and sensing depth by drawing', 'Grip, sheath and junction reviewed for the measurement conditions', 'Lead length and Type K termination by instrument connection'],
+    specs: ['Needle diameter, tip profile, usable insertion depth and sensing junction location', 'Medium, insertion method, measurement temperature range and required response', 'Handle and transition clearance, cable exposure, flex conditions and cleaning requirements', 'Type K instrument input, connector or bare leads, cable length and polarity convention'],
+    selection: [
+      'Specify the Needle Tip, Insertion and Sensing Location',
+      'Describe what the probe will enter and where the material temperature needs to be measured. Mark the distance from the sensing point to the tip and the usable needle span on the drawing.',
+      { table: [
+        ['Design input', 'What to provide'],
+        ['Needle geometry', 'Give the shaft diameter, pointed profile, overall needle length and required depth of insertion. Include space for the probe behind the measuring site.'],
+        [['Junction and response', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Provide the medium, measuring range, response target and any isolation requirement. Mark where the junction should sit relative to the tip.'],
+        [['Type K connection', thermo + 'type-k/'], 'Specify the instrument input, lead insulation and length, connector format and temperature at the handle or transition.'],
+      ] },
+    ],
+    use: 'Typical inquiries include insertion measurement in compatible soft materials, production samples and test fixtures.',
+    questions: [
+      ['How do I specify needle thermocouple insertion depth?', 'Mark the depth from the sample surface to the intended sensing point. Give the required shaft length and clearance, and show the junction position relative to the tip.'],
+      ['What affects the response of a needle thermocouple?', 'The sheath diameter, junction construction, medium and insertion affect response. Include actual contact conditions and the response target so the assembly can be reviewed for the measurement.'],
+    ],
+    related: ['type-k', 'fine-wire-thermocouples', 'thermocouple-connectors'],
+    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
   },
   {
     id: 'type-j', path: thermo + 'type-j/', parent: 'thermocouples', group: 'sensing', name: 'Type J Thermocouples',
@@ -1244,7 +1303,7 @@ export const products = [
       ] },
     ],
     use: 'RTDs are frequently considered for process monitoring where measurement stability and repeatability are important.',
-    related: ['type-k', 'thermocouples', 'sensor-accessories'],
+    related: ['type-k', 'thermocouples', 'sensor-accessories', 'pid-temperature-controllers'],
     guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd'],
     questions: [
       ['What is an RTD sensor and how does it work?', 'An RTD is a resistance temperature detector. In a platinum RTD such as a Pt100 or Pt1000, the element resistance rises with temperature. The instrument applies a small measuring current, reads the resulting voltage and converts the resistance to temperature using the configured platinum curve.'],
@@ -1884,6 +1943,7 @@ export const products = [
       { table: [
         ['Design input', 'What to send'],
         ['Tube and heated span', 'Tube diameter, overall length, active length and position of unheated ends. Show which part of the emitter faces the work.'],
+        [['Carbon fiber quartz tubes', infrared + 'quartz/carbon-fiber/'], 'Specify the carbon filament, heated length, end supports and power distribution for the radiant zone.'],
         ['Mount and reflector', 'End support dimensions, orientation, spacing between emitters, reflector shape and clearance for wiring and service.'],
         ['Target exposure', 'Target material, surface finish, area, starting and target temperature, and its movement or dwell time under the emitter.'],
         [['Power and operating cycle', '/guides/choose-a-heating-element/'], 'Voltage and wattage per tube or zone, control method, on-time and exposure to dust, moisture or vibration.'],
@@ -1896,6 +1956,34 @@ export const products = [
       ['What changes when the target moves on a conveyor?', 'Line speed and the length of the heating zone determine how long each section passes under the heaters. Specify the usual speed range, required temperature and emitter arrangement to review the process.'],
     ],
     related: ['infrared-heaters', 'ceramic-infrared-heating-elements', 'ptc-ceramic-heaters', 'finned-tubular-heaters'],
+    guides: ['choose-a-heating-element'],
+  },
+  {
+    id: 'carbon-fiber-infrared-heating-elements', path: infrared + 'quartz/carbon-fiber/', parent: 'quartz-infrared-heating-elements', group: 'specialty',
+    name: 'Carbon Fiber Infrared Heating Elements', image: 'carbon-fiber-infrared-heating-elements',
+    imageAlt: 'Illustration of a quartz heating tube with a dark carbon fiber filament, ceramic end caps and braided leads',
+    title: 'Custom Carbon Fiber Infrared Heating Elements',
+    description: 'Specify a carbon fiber infrared heating element by quartz tube dimensions, active length, end caps, reflector layout, working distance and power.',
+    text: 'Carbon fiber quartz infrared heating tubes configured for radiant drying, curing and preheating.',
+    intro: 'A carbon fiber infrared heating element uses a carbon resistance filament inside a quartz tube to radiate heat toward a work surface. Define the tube and end support dimensions, the available working distance and power for each zone. Include the target material, process cycle and reflector layout.',
+    options: ['Quartz tube diameter and active span by drawing', 'Ceramic ends, support spacing and leads by equipment layout', 'Emitter spacing and electrical load by radiant zone'],
+    specs: ['Tube diameter, overall and heated lengths, end cap dimensions and support positions', 'Work surface material and finish, target area, emitter distance and reflector geometry', 'Voltage, watts per emitter or zone, duty cycle and lead or terminal requirements', 'Line speed or exposure time, target surface temperature, and cooling or ventilation conditions'],
+    selection: [
+      'Match the Carbon Fiber Tube to the Radiant Zone',
+      'Use a section view of the machine to locate the quartz tube, reflector and work surface. Mark the heated span and service clearance at both ends.',
+      { table: [
+        ['Design point', 'What to provide'],
+        ['Tube and ends', 'Give the tube diameter, overall and active lengths, end cap and mounting dimensions, and lead layout. Include the original marking for replacements.'],
+        ['Target position and exposure', 'Describe the surface material and finish, working distance, exposed width, reflector shape and expected line speed or dwell time.'],
+        ['Electrical and controls', 'Provide voltage, power by element or zone, the duty and the control cycle, and temperatures near the end caps and leads.'],
+      ] },
+    ],
+    use: 'Typical inquiries include infrared drying, coating cure and radiant preheating in production equipment.',
+    questions: [
+      ['What defines the active length of a carbon fiber quartz tube?', 'Use the drawing or original part specification to mark the radiating span of the filament and the extent of the tube and ends. Share all three dimensions when the working zone has a fixed size.'],
+      ['Why is the working distance needed for an infrared tube quote?', 'Distance, emitter spacing and reflector shape influence the area exposed and heat distribution. Include these dimensions along with the target material and process cycle.'],
+    ],
+    related: ['quartz-infrared-heating-elements', 'ceramic-infrared-heating-elements', 'pid-temperature-controllers'],
     guides: ['choose-a-heating-element'],
   },
   {
@@ -2154,6 +2242,35 @@ export const products = [
       ['What should a drawing for a replacement defrost heating element include?', 'Show the overall shape, mounting points, tube diameter, terminal ends, seals and lead exit. Include the original electrical rating and control cycle. Clearance from the evaporator, drain and nearby materials matters when fitting a replacement.'],
     ],
   },
+  {
+    id: 'pid-temperature-controllers', path: '/temperature-controls/pid/', group: 'controls',
+    name: 'PID Temperature Controllers', image: 'pid-temperature-controllers',
+    imageAlt: 'Illustration of a panel-mount digital PID temperature controller with two displays',
+    title: 'PID Temperature Controllers for Industrial Heaters',
+    description: 'Specify a panel-mount PID temperature controller by thermocouple or RTD input, output signal, supply voltage, cutout and heater circuit.',
+    text: 'Digital PID temperature controls specified to the sensor, output interface and panel.',
+    intro: 'A PID temperature controller reads a sensor, compares the measurement with a setpoint and adjusts its output. For a heater control inquiry, specify the exact sensor input, the required output to the switching or power stage and the panel dimensions. Include the controller supply and any alarm or independent temperature limit requirements.',
+    options: ['Thermocouple or RTD input by sensor and controller specification', 'Relay, SSR drive or analog output reviewed against the equipment circuit', 'Panel size, power supply and alarm requirements by drawing'],
+    specs: ['Thermocouple type or RTD curve and wire count, process range and required measurement accuracy', 'Control output type, switching or power device and heater supply and load', 'Controller supply voltage, face size, panel cutout and depth for terminals and wiring', 'Setpoint and operating cycle, alarm contacts and any independent limit requirements'],
+    selection: [
+      'Match the Sensor Input, Power Interface and Panel',
+      'Provide the control drawing, sensor model and wiring diagram. For a replacement, include the original controller model and terminal legend and measure the panel cutout.',
+      { table: [
+        ['Fit check', 'What to specify'],
+        [['Thermocouple or RTD input', '/guides/thermocouple-vs-rtd/'], 'Give the thermocouple type or the RTD nominal resistance, curve and wire count. Confirm the required measuring interval.'],
+        ['Output to the heater circuit', 'Give relay contact, SSR drive or analog signal requirements. Identify the external power device, heater voltage and load so the output interface can be checked.'],
+        ['Panel fit and supply', 'Specify controller supply voltage, face and cutout dimensions, panel thickness and clearance behind the terminals.'],
+        ['Alarms and limits', 'Specify any alarm contacts, separate temperature sensors or independent protection functions required by the equipment.'],
+      ] },
+    ],
+    use: 'Typical inquiries include temperature control for industrial heaters, test fixtures and heated OEM equipment.',
+    questions: [
+      ['Can a PID controller work with both a thermocouple and an RTD?', 'Input modes depend on the controller model. Specify the thermocouple type or RTD curve and wiring so the input configuration can be checked.'],
+      ['What do I provide for a controller with an external solid-state relay?', 'Send the relay input specification, required control output, heater supply and load, and the existing circuit drawing. The drive signal and power device must be compatible.'],
+    ],
+    related: ['type-k', 'rtd', 'cartridge-heaters'],
+    guides: ['thermocouple-vs-rtd', 'choose-a-heating-element'],
+  },
 ];
 
 export const applications = [
@@ -2311,7 +2428,7 @@ export const guides = [
   {
     slug: 'thermocouple-vs-rtd', group: 'sensing', name: 'Thermocouple vs. RTD (Pt100) for Industrial Measurement',
     description: 'Compare thermocouple and Pt100 RTD signals, wiring, temperature requirements and instrument compatibility for industrial sensor selection.',
-    related: ['thermocouples', 'type-k', 'rtd'],
+    related: ['thermocouples', 'type-k', 'rtd', 'pid-temperature-controllers'],
     answer: ['When should I choose a thermocouple or a Pt100 RTD?', 'Consider a thermocouple for elevated temperatures or a small measuring junction. Consider a Pt100 RTD when stability and repeatability matter within its working range. Confirm that the instrument supports the chosen input and wiring.'],
     readNext: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     sections: [
