@@ -21,6 +21,12 @@ const ceramicBandHeaterPhoto = {
   caption: 'Ceramic band heaters with clamp hardware',
 };
 
+const thermocoupleConnectorPhoto = {
+  image: 'thermocouple-plug-connectors-photo', width: 750, height: 1000,
+  alt: 'Yellow two-pin thermocouple plugs fitted to braided leads on metal probes',
+  caption: 'Two-pin connectors fitted to braided thermocouple leads',
+};
+
 export const groups = {
   sensing: 'Temperature Sensors',
   tubular: 'Tubular & Immersion',
@@ -87,6 +93,7 @@ export const products = [
         ['Multi-bend', 'The tube follows the equipment envelope or keeps clear of internal parts.', 'Centerline profile, radius at each bend and clearance to each obstruction.'],
         ['Single-ended', 'Both electrical connections leave one tube end.', 'Terminal arrangement, unheated lead end and clearance for the wiring.'],
         ['Double-ended', 'Electrical connections leave opposite tube ends. A U shape can bring those ends to one side of the equipment.', 'Terminal arrangement and cold-end length at each tube end.'],
+        [['Industrial oven elements', tubular + 'industrial-oven/'], 'An oven or dryer needs a shaped element for a defined heating zone and air path.', 'Mounting hole spacing, support points, airflow or radiant exposure, and wattage per zone.'],
       ], diagram: [
         'Straight double-ended example. T marks a terminal, C a cold end and H the active heated span.',
         ['T    C          H          C     T', '●────────┬══════════════┬────────●'],
@@ -106,10 +113,10 @@ export const products = [
   {
     id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', featured: true, image: 'finned-tubular-heaters',
     title: 'Finned Tubular Heaters for Forced Air & Ducts',
-    description: 'Compare straight, U-shaped and W-shaped finned tubular heaters. Specify your profile, fin spacing, airflow, mounting and terminal clearance.',
+    description: 'Compare U-shaped, W-shaped and flange-mounted finned tubular heaters. Specify tube profile, fin spacing, airflow, mounting and terminal clearance.',
     text: 'Finned tubular elements for forced-air heating, duct assemblies and industrial ovens.',
     intro: 'Fins increase surface area for heat transfer to air. Share the airflow conditions and installation dimensions to scope an element for a duct, enclosure or oven.',
-    options: ['Straight, U-shaped and W-shaped elements by drawing', 'Fin and sheath material selection', 'Terminal and mounting arrangements'],
+    options: ['Straight, U-shaped and W-shaped elements by drawing', 'Fin and sheath material selection', 'Flange plates, brackets and terminal layouts by drawing'],
     specs: ['Minimum and normal airflow, inlet temperature and target outlet temperature', 'Voltage, phase and wattage', 'Tube diameter, maximum fin diameter, fin pitch and overall shape', 'Mounting points, flow direction and terminal clearance'],
     selection: [
       'Finned Tubular Heater Geometry for Forced Air',
@@ -119,6 +126,7 @@ export const products = [
         ['Tube and fins', 'Sheath diameter, maximum outside fin diameter and fin pitch if replacing an existing element. Give the centerline profile for a formed tube.'],
         ['U-shaped finned tube', 'Mark the distance between the two legs, the return bend radius, the finned length and the terminal projection from the mounting face.'],
         ['W-shaped finned tube', 'Draw the complete centerline profile with each bend and leg spacing. Mark where the fins stop near bends, supports and terminals.'],
+        ['Flange-mounted finned tube', 'Show the flange outline and thickness, cutout dimensions, mounting hole spacing and tube projection from the mounting face. Check service clearance on both sides.'],
         ['Air path', 'Flow direction, minimum and normal airflow, inlet temperature and allowable pressure drop if specified. Show surrounding walls or obstructions.'],
         ['Mount and terminals', 'Mounting and support locations, clearance around the fins and space to access the terminals.'],
         [['Flat finned strip option', strip + 'finned/'], 'Use strip width, fin height and mounting centers when the equipment drawing shows a flat strip body.'],
@@ -126,7 +134,7 @@ export const products = [
     ],
     use: 'Applications include process-air heating, drying equipment and duct assemblies with defined airflow.',
     variants: {
-      title: 'U- and W-Shaped Finned Tubular Heaters',
+      title: 'U-Shaped, W-Shaped and Flange-Mounted Finned Heaters',
       photos: [
         {
           image: 'u-shaped-finned-tubular-heater', width: 600, height: 600,
@@ -138,13 +146,57 @@ export const products = [
           alt: 'W-shaped finned tubular heater with multiple parallel finned runs and two electrical terminals',
           caption: 'W-shaped finned tubular heater · Huashi reference photo',
         },
+        {
+          image: 'flange-mounted-finned-tubular-heater', width: 600, height: 600,
+          alt: 'Multiple finned tubular elements mounted through a rectangular flange plate with corner mounting holes',
+          caption: 'Flange-mounted finned heater · Huashi reference photo',
+        },
       ],
     },
-    related: ['tubular-heaters', 'duct-heaters', 'finned-strip-heaters'],
+    related: ['tubular-heaters', 'industrial-oven-heating-elements', 'duct-heaters', 'finned-strip-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['When does a finned tubular heater make sense?', 'Consider a finned element when the heater will transfer heat to moving air. Fins provide additional surface area. Specify the minimum airflow, maximum inlet temperature, mounting clearance and maximum fin diameter so the assembly can be evaluated in the duct.'],
     ],
+  },
+  {
+    id: 'industrial-oven-heating-elements', path: tubular + 'industrial-oven/', parent: 'tubular-heaters', group: 'tubular',
+    name: 'Industrial Oven Heating Elements', image: 'industrial-oven-heating-elements',
+    imageAlt: 'Illustration of a formed tubular oven heating element with a flat mounting plate and two electrical terminals',
+    title: 'Custom Industrial Oven Heating Elements for OEM Equipment',
+    description: 'Specify custom industrial oven heating elements for ovens and dryers by tube profile, mounting holes, active length, airflow, voltage and wattage per zone.',
+    text: 'Straight and formed tubular heating elements made to drawing for industrial ovens, dryers and heated chambers.',
+    intro: 'An industrial oven heating element is a metal-sheathed resistance heater shaped to fit a heating zone in an oven or dryer. Send the mounting and tube profile drawing with the zone power and operating temperature. Include minimum airflow for forced convection or the spacing to the load for a radiant arrangement.',
+    options: ['Straight, U-shaped or multi-bend tube profiles by drawing', 'Plain or finned construction by air path and heater envelope', 'Mounting plates, brackets and terminal orientation to suit the equipment'],
+    specs: ['Tube diameter, centerline bend radii, mounting hole spacing and inside support points', 'Active heated length, cold ends, terminal projection and wiring clearance', 'Supply voltage, phase, total power and power per element or zone', 'Chamber temperature, duty cycle, minimum airflow for convection and any cleaning or exposure conditions'],
+    selection: [
+      'Specify the Oven Heating Zone and Mounting',
+      'Use the oven wall or mounting plate as the reference for the installed tube dimensions. Show the space to install or withdraw the element and any nearby sheet metal or airflow baffles.',
+      { table: [
+        ['Drawing detail', 'What to provide'],
+        ['Tube profile and supports', 'Show bend centerlines, active length, cold ends, mounting hole centers and support points. Include space for expansion along the hot span.'],
+        ['Forced convection zone', 'Give the minimum and normal airflow across the element, air direction, inlet and target temperatures, and any airflow baffles.'],
+        ['Radiant arrangement', 'Show the heated target, distance to the element and nearby shields or reflectors. Provide the required heating cycle.'],
+        ['Electrical layout', 'Identify supply voltage and phase, the power of each zone, terminal locations and cold-end length at the wall.'],
+      ] },
+    ],
+    use: 'Custom elements are considered for industrial batch ovens, drying chambers and conveyor ovens. Provide an equipment drawing or an existing part reference for a replacement.',
+    variants: {
+      title: 'Straight Oven Element Reference',
+      photos: [
+        {
+          image: 'straight-oven-element-reference', width: 600, height: 600,
+          alt: 'Straight tubular oven heating elements with electrical terminals at opposite ends',
+          caption: 'Straight tubular oven elements · Huashi reference photo',
+        },
+      ],
+    },
+    questions: [
+      ['Can you quote an industrial oven heating element from an existing part?', 'Send an overall photo, electrical nameplate or original part reference, and measured tube profile, hole spacing and terminal positions. Include heated and unheated lengths if available and describe oven temperature and airflow.'],
+      ['What is the difference between a plain and finned oven heater?', 'A plain tubular element transfers heat from its sheath. A finned tubular element adds surface area for a moving air stream. Review the air path, minimum airflow, mounting space and required heat output before choosing a construction.'],
+    ],
+    related: ['tubular-heaters', 'finned-tubular-heaters', 'duct-heaters', 'high-temperature'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
     id: 'immersion-heaters', path: immersion, group: 'tubular', name: 'Industrial Immersion Heaters', featured: true, image: 'immersion-heaters',
@@ -161,6 +213,7 @@ export const products = [
       { table: [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
         ['Water', 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
+        [['Clamp-mounted tank connection', immersion + 'tri-clamp/'], 'Mating ferrule drawing, clamp and gasket details, operating pressure and insertion depth.', 'Match the sealing geometry, confirm submergence and check withdrawal clearance.'],
         [['Oil reservoirs and thermal fluid tanks', immersion + 'oil/'], 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
         [['Chemical tanks and process baths', immersion + 'ptfe/'], 'Chemical composition and concentration, continuous and peak temperatures, agitation and cleaning solutions.', 'Review each wetted material against the process and cleaning cycle. Select the active surface area and mounting for the tank conditions.'],
         [['Circulating liquid', '/heating-elements/circulation-heaters/'], 'Minimum and normal flow, inlet and target outlet temperatures, pressure and port sizes.', 'Verify heat removal across the flow range and the equipment’s temperature and flow protection.'],
@@ -1018,13 +1071,7 @@ export const products = [
     id: 'sensor-accessories', path: accessories, group: 'sensing', name: 'Thermocouple Accessories',
     image: 'sensor-accessories',
     imageAlt: 'Illustration of a thermowell, thermocouple connectors and extension wire',
-    photographs: [
-      {
-        image: 'thermocouple-plug-connectors-photo', width: 750, height: 1000,
-        alt: 'Yellow two-pin thermocouple plugs fitted to braided leads on metal probes',
-        caption: 'Two-pin connectors and braided thermocouple leads',
-      },
-    ],
+    photographs: [thermocoupleConnectorPhoto],
     title: 'Thermocouple Accessories: Thermowells, Connectors & Cable',
     description: 'Find thermocouple accessories including thermowells, connectors, terminal heads and extension cables. Match each part to the probe and installation.',
     text: 'Protect and connect sensor assemblies with specified thermowells, wires and connectors.',
@@ -1037,7 +1084,8 @@ export const products = [
       { table: [
         ['Accessory', 'What to specify'],
         [['Extension or compensating cable', accessories + 'extension-wire/'], 'Thermocouple type, approved cable designation, length, color convention and temperature at both terminations.'],
-        ['Connector or terminal head', 'Connector format or head mounting, polarity, cable entry, clearance and environment at the connection.'],
+        [['Thermocouple connector', accessories + 'connectors/'], 'Plug or socket, connector size, thermocouple type and polarity, cable entry and ambient temperature.'],
+        [['Connection head assembly', thermo + 'connection-head/'], 'Head mounting, terminal layout, cable entry and space to open the cover.'],
         [['Custom thermowell', accessories + 'thermowells/'], 'Process connection, insertion length, probe diameter and bore fit. Include fluid, pressure and flow when relevant.'],
         ['Protection tube', 'Required tube material, mounting, wall and probe dimensions, process atmosphere and temperature cycle.'],
       ] },
@@ -1075,7 +1123,37 @@ export const products = [
       ['What is the difference between thermocouple extension wire and compensating cable?', 'Extension wire uses conductors of the same nominal alloys as the thermocouple pair. Compensating cable uses different alloys to match the required output over a specified temperature interval. Check the designation and transition temperatures for the circuit.'],
       ['Which color code should I specify for Type K extension wire?', 'Specify the standard used by the assembly. Type K positive and negative conductors are yellow and red under US ANSI/ASTM conventions, and green and white under IEC 60584-3. Check cable and terminal markings before connecting.'],
     ],
-    related: ['sensor-accessories', 'connection-head-thermocouples', 'type-k', 'type-n'],
+    related: ['thermocouple-connectors', 'sensor-accessories', 'connection-head-thermocouples', 'type-k', 'type-n'],
+    guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
+  },
+  {
+    id: 'thermocouple-connectors', path: accessories + 'connectors/', parent: 'sensor-accessories', group: 'sensing',
+    name: 'Thermocouple Connectors', image: 'thermocouple-connectors',
+    imageAlt: 'Illustration of a miniature thermocouple plug with two flat blades and a socket with two slots',
+    photographs: [thermocoupleConnectorPhoto],
+    title: 'Thermocouple Connectors | Standard & Miniature Plugs',
+    description: 'Specify standard and miniature thermocouple connectors by plug or socket, thermocouple type, pin layout, polarity, cable size and ambient temperature.',
+    text: 'Standard and miniature thermocouple plugs and sockets specified for the sensor and its mating connector.',
+    intro: 'A thermocouple connector joins a probe or extension cable to a matching plug or socket in the measurement circuit. Confirm the thermocouple type and the physical fit before choosing the connector. Contact materials and polarity must suit the circuit.',
+    options: ['Standard round-pin and miniature flat-pin formats by mating connector', 'Male plug, female socket or mating pair', 'Cable or panel mounting reviewed against the drawing and operating environment'],
+    specs: ['Thermocouple type, wiring standard and required contact or terminal markings', 'Existing connector make or drawing, pin shape and spacing, and mating dimensions', 'Plug, socket or pair, mounting arrangement, conductor gauge and cable outside diameter', 'Ambient temperature at the plug, exposure conditions, quantity and any required strain relief'],
+    selection: [
+      'Match Connector Size, Contact Materials and Polarity',
+      'Identify the existing connector from its markings or send a dimensioned front view. The physical format, contact alloy compatibility and polarity all matter.',
+      { table: [
+        ['Selection detail', 'What to specify'],
+        ['Standard round-pin format', 'Confirm pin spacing and diameters, body clearance and required cable entry. Specify plug or mating socket.'],
+        ['Miniature flat-pin format', 'Confirm blade size, spacing and orientation. Mark the mating side on the drawing if the connector goes into a recessed input.'],
+        [['Thermocouple type and wiring colors', '/guides/thermocouple-wire-color-code/'], 'Specify the calibrated thermocouple type and wiring convention. Match the positive and negative markings through the connector.'],
+        [['Cable fit', accessories + 'extension-wire/'], 'Give the conductor size, finished cable diameter, lead configuration and required strain relief.'],
+      ] },
+    ],
+    use: 'Common applications include removable industrial probes, panel connections and field extensions for compatible thermocouple inputs.',
+    questions: [
+      ['How do I tell whether a thermocouple connector is standard or miniature?', 'Standard connectors typically use round pins. Miniature connectors typically have flat blades. Confirm the dimensions and contact materials of the mating connector before ordering.'],
+      ['Is the housing color enough to identify a thermocouple connector?', 'Housing color follows the applicable wiring convention and can vary by standard. Check the marked thermocouple type, contact materials and polarity with the probe and instrument documentation.'],
+    ],
+    related: ['sensor-accessories', 'thermocouple-extension-wire', 'connection-head-thermocouples', 'type-k'],
     guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
   },
   {
@@ -1150,6 +1228,45 @@ export const products = [
     questions: [
       ['What flange details are needed for a replacement immersion heater?', 'Provide the flange standard or drawing, nominal size, pressure class, facing and bolt pattern. Show the insertion length from the mounting face and the internal vessel clearance. Include the fluid, operating pressure and power requirements.'],
     ],
+  },
+  {
+    id: 'tri-clamp-immersion-heaters', path: immersion + 'tri-clamp/', parent: 'immersion-heaters', group: 'tubular',
+    name: 'Tri-Clamp Immersion Heaters', image: 'tri-clamp-immersion-heaters',
+    imageAlt: 'Illustration of a stainless steel tubular immersion heater with a circular clamp ferrule and terminal enclosure',
+    title: 'Custom Tri-Clamp Immersion Heaters for Process Tanks',
+    description: 'Specify a custom Tri-Clamp immersion heater by ferrule dimensions, gasket, liquid, insertion depth, operating pressure, voltage and wattage.',
+    text: 'Clamp-mounted tubular immersion heaters built to suit the mating ferrule, vessel geometry and process conditions.',
+    intro: 'A Tri-Clamp immersion heater mounts through a vessel ferrule using a clamp and gasket. Send the mating connection drawing and tank conditions to review the sealing interface, insertion length and power. The heater, ferrule, clamp and gasket should be evaluated together at the specified pressure and temperature.',
+    options: ['Clamp ferrule interface by mating connection drawing', 'Element profile, heated length and sheath selection by liquid and vessel geometry', 'Terminal enclosure and cable entry by installation requirements'],
+    specs: ['Ferrule standard, nominal connection size, flange outside diameter and seal face drawing', 'Liquid composition, operating pressure and temperature, minimum liquid level and cleaning cycle', 'Insertion depth from the sealing face, maximum element envelope and space to remove it', 'Voltage, phase, wattage, cable direction and any specified enclosure requirements'],
+    selection: [
+      'Match the Ferrule, Gasket and Tank Clearance',
+      'Include a section view of the installed connection with the sealing face as the reference. Provide drawings of the vessel ferrule, clamp and gasket so the connection geometry and operating limits can be checked.',
+      { table: [
+        ['Fit check', 'What to confirm'],
+        ['Ferrule and seal', 'Identify the connection standard, mating face profile and flange dimensions. Include the gasket material and clamp specification, and give normal and peak pressure and temperature.'],
+        ['Internal clearance and liquid level', 'Show the distance from the sealing face to the nearest internal obstruction, element insertion and the minimum liquid level relative to the heated section.'],
+        ['Liquid and heat load', 'Include the liquid composition, working volume, starting and target temperatures, required heat-up time and any deposits or cleaning chemicals.'],
+        ['Service access', 'Show clearance for the enclosure, wiring and clamp, and the path to withdraw the element from the tank.'],
+      ] },
+    ],
+    use: 'Clamp-mounted heaters can be evaluated for compatible liquid tanks and OEM equipment where the connection must allow element removal for service.',
+    variants: {
+      title: 'Clamp Connection Reference',
+      photos: [
+        {
+          image: 'clamp-mounted-immersion-heater-reference', width: 600, height: 600,
+          alt: 'Clamp-mounted liquid heating element with a U-shaped tube and circular ferrule',
+          caption: 'Clamp-mounted liquid heating element · Huashi reference photo',
+        },
+      ],
+    },
+    questions: [
+      ['Is the nominal Tri-Clamp size enough to specify the heater connection?', 'Provide the matching ferrule drawing and standard, including flange outside diameter and seal face dimensions. Include the gasket and clamp details to confirm the complete connection.'],
+      ['How is insertion depth measured for a clamp-mounted immersion heater?', 'Show the insertion dimension from the ferrule sealing face to the furthest point of the element on the installed drawing. Also mark the heated section, lowest liquid level and available removal clearance.'],
+    ],
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'thermowells'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
     id: 'screw-plug-immersion', path: immersion + 'screw-plug/', parent: 'immersion-heaters', group: 'tubular', name: 'Screw Plug Immersion Heaters',
@@ -1651,14 +1768,14 @@ export const applications = [
     id: 'process-air', name: 'Process Air, Ovens & Dryers', icon: 'factory',
     description: 'Compare tubular or finned elements for moving air, and infrared elements for radiant heating of a target. Review the sensor assembly for oven temperatures and cycling.',
     specification: 'Share the duct or oven opening, flow direction, minimum and normal airflow, inlet and target outlet temperatures, and the available electrical supply.',
-    ids: ['tubular-heaters', 'finned-tubular-heaters', 'finned-strip-heaters', 'duct-heaters', 'infrared-heaters', 'high-temperature'],
+    ids: ['industrial-oven-heating-elements', 'tubular-heaters', 'finned-tubular-heaters', 'finned-strip-heaters', 'duct-heaters', 'infrared-heaters', 'high-temperature'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
     id: 'liquid-heating', name: 'Water, Oil & Process Liquid Heating', icon: 'drop',
     description: 'Use an immersion configuration inside the tank, or a circulation heater where liquid flows through a chamber. Choose the temperature probe for the process and instrument.',
     specification: 'Share the liquid composition and vessel connection. For a tank give liquid levels, working volume and heat-up time. For circulation give the flow range, pressure and required temperature rise.',
-    ids: ['immersion-heaters', 'over-the-side-immersion', 'circulation-heaters', 'rtd'],
+    ids: ['immersion-heaters', 'tri-clamp-immersion-heaters', 'over-the-side-immersion', 'circulation-heaters', 'rtd'],
     guides: ['immersion-heater-sizing', 'thermowell-selection-guide'],
   },
   {
@@ -1772,6 +1889,7 @@ export const guides = [
           ['Tubular form', 'Selection detail'],
           [['Straight or formed', tubular], 'Use the equipment envelope, centerline bends, active length and where the terminals emerge.'],
           [['Finned for moving air', tubular + 'finned/'], 'Review fin clearance, normal and minimum airflow, and pressure drop.'],
+          [['Industrial oven heating elements', tubular + 'industrial-oven/'], 'Give the heater zone layout, support and mounting hole positions, airflow or radiant exposure, and power per zone.'],
           [['Immersion assembly', immersion], 'Match the vessel connection, liquid chemistry, insertion length and minimum liquid level.'],
         ],
       }],
@@ -1868,7 +1986,7 @@ export const guides = [
   {
     slug: 'thermocouple-wire-color-code', group: 'sensing', name: 'Thermocouple Wire Color Codes and Polarity',
     description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J, T, E and N. Specify compatible Type R and Type B cables and polarity.',
-    related: ['thermocouple-extension-wire', 'type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'connection-head-thermocouples', 'sensor-accessories'],
+    related: ['thermocouple-connectors', 'thermocouple-extension-wire', 'type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'connection-head-thermocouples', 'sensor-accessories'],
     readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-types'],
     terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'thermocouple-connection-head', 'iec-60584-3'],
     answer: ['What color is the negative thermocouple wire?', 'For Types K, J, T, E and N, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],
@@ -1941,7 +2059,7 @@ export const guides = [
   {
     slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing Guide',
     description: 'Estimate immersion heater wattage for tank heat-up, compare mounting types, and check minimum liquid level, sheath material and watt density.',
-    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion', 'ptfe-immersion-heaters', 'oil-immersion-heaters'],
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'tri-clamp-immersion-heaters', 'over-the-side-immersion', 'ptfe-immersion-heaters', 'oil-immersion-heaters'],
     readNext: ['heating-element-watt-density', 'choose-a-heating-element'],
     terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],
     answer: ['How do I size an immersion heater for a tank?', 'Multiply the liquid mass by its specific heat and the required temperature rise, then divide by the allowed heat-up time. Add the heat needed for the vessel and other loads plus heat losses during warm-up. Use the minimum liquid level, available power and safe surface loading to evaluate the heater construction.'],
@@ -1953,7 +2071,7 @@ export const guides = [
           ['Mount', 'What to supply'],
           ['Screw plug', 'Thread standard and size, port clearance and seating or sealing details'],
           ['Flanged', 'Flange drawing, pressure class, facing and bolt pattern'],
-          [['Clamp-mounted', immersion + '#specifications'], 'Mating ferrule standard and size, seal and clamp details, operating temperature and pressure'],
+          [['Clamp-mounted', immersion + 'tri-clamp/'], 'Mating ferrule standard and size, seal and clamp details, operating temperature and pressure'],
           ['Over-the-side', 'Rim geometry, tank depth, minimum liquid level and removal access'],
         ],
       }],
