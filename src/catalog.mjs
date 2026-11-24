@@ -1,6 +1,7 @@
 const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
 const cartridge = '/heating-elements/cartridge-heaters/';
+const band = '/heating-elements/band-heaters/';
 const thermo = '/thermocouples/';
 const accessories = '/temperature-sensors/accessories/';
 const strip = '/heating-elements/strip-heaters/';
@@ -12,6 +13,12 @@ const connectionHeadPhoto = {
   image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
   alt: 'Metal connection heads and blue protective sleeves on industrial temperature probes',
   caption: 'Probe assemblies with connection heads for field wiring',
+};
+
+const ceramicBandHeaterPhoto = {
+  image: 'ceramic-band-heaters-photo', width: 720, height: 540,
+  alt: 'Stacks of metal band heaters showing their ceramic lining and clamping hardware',
+  caption: 'Ceramic band heaters with clamp hardware',
 };
 
 export const groups = {
@@ -99,10 +106,10 @@ export const products = [
   {
     id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', featured: true, image: 'finned-tubular-heaters',
     title: 'Finned Tubular Heaters for Forced Air & Ducts',
-    description: 'Specify finned tubular heating elements for forced air by round sheath diameter, fin diameter and pitch, minimum airflow, mounting and terminal clearance.',
+    description: 'Compare straight, U-shaped and W-shaped finned tubular heaters. Specify your profile, fin spacing, airflow, mounting and terminal clearance.',
     text: 'Finned tubular elements for forced-air heating, duct assemblies and industrial ovens.',
     intro: 'Fins increase surface area for heat transfer to air. Share the airflow conditions and installation dimensions to scope an element for a duct, enclosure or oven.',
-    options: ['Straight and formed elements', 'Fin and sheath material selection', 'Terminal and mounting arrangements'],
+    options: ['Straight, U-shaped and W-shaped elements by drawing', 'Fin and sheath material selection', 'Terminal and mounting arrangements'],
     specs: ['Minimum and normal airflow, inlet temperature and target outlet temperature', 'Voltage, phase and wattage', 'Tube diameter, maximum fin diameter, fin pitch and overall shape', 'Mounting points, flow direction and terminal clearance'],
     selection: [
       'Finned Tubular Heater Geometry for Forced Air',
@@ -110,12 +117,29 @@ export const products = [
       { table: [
         ['Design detail', 'What to provide'],
         ['Tube and fins', 'Sheath diameter, maximum outside fin diameter and fin pitch if replacing an existing element. Give the centerline profile for a formed tube.'],
+        ['U-shaped finned tube', 'Mark the distance between the two legs, the return bend radius, the finned length and the terminal projection from the mounting face.'],
+        ['W-shaped finned tube', 'Draw the complete centerline profile with each bend and leg spacing. Mark where the fins stop near bends, supports and terminals.'],
         ['Air path', 'Flow direction, minimum and normal airflow, inlet temperature and allowable pressure drop if specified. Show surrounding walls or obstructions.'],
         ['Mount and terminals', 'Mounting and support locations, clearance around the fins and space to access the terminals.'],
         [['Flat finned strip option', strip + 'finned/'], 'Use strip width, fin height and mounting centers when the equipment drawing shows a flat strip body.'],
       ] },
     ],
     use: 'Applications include process-air heating, drying equipment and duct assemblies with defined airflow.',
+    variants: {
+      title: 'U- and W-Shaped Finned Tubular Heaters',
+      photos: [
+        {
+          image: 'u-shaped-finned-tubular-heater', width: 600, height: 600,
+          alt: 'U-shaped finned tubular heater with two parallel finned legs and a single return bend',
+          caption: 'U-shaped finned tubular heater · Huashi reference photo',
+        },
+        {
+          image: 'w-shaped-finned-tubular-heater', width: 600, height: 600,
+          alt: 'W-shaped finned tubular heater with multiple parallel finned runs and two electrical terminals',
+          caption: 'W-shaped finned tubular heater · Huashi reference photo',
+        },
+      ],
+    },
     related: ['tubular-heaters', 'duct-heaters', 'finned-strip-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
@@ -303,16 +327,10 @@ export const products = [
     guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'heating-element-watt-density'],
   },
   {
-    id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
-    photographs: [
-      {
-        image: 'ceramic-band-heaters-photo', width: 720, height: 540,
-        alt: 'Stacks of metal band heaters showing their ceramic lining and clamping hardware',
-        caption: 'Ceramic band heaters with clamp hardware',
-      },
-    ],
-    title: 'Mica & Ceramic Band Heaters for Barrels and Nozzles',
-    description: 'Compare mica and ceramic band heaters for injection molding and extrusion. Specify barrel diameter, width, clamp style, lead exit, voltage and wattage.',
+    id: 'band-heaters', path: band, group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
+    photographs: [ceramicBandHeaterPhoto],
+    title: 'Custom Band Heaters for Injection Molding & Extrusion',
+    description: 'Compare mica and ceramic band heater configurations for barrels and nozzles. Specify diameter, width, clamp style and electrical connections.',
     text: 'Mica and ceramic band heaters for barrels, nozzles and cylindrical assemblies.',
     intro: 'Band heaters fit around cylindrical equipment. Define the barrel diameter, available width, cutouts and terminal position before requesting a configuration.',
     options: ['Mica and ceramic constructions', 'One-piece or split bands', 'Nozzle and barrel variants', 'Mounting lugs and cutouts'],
@@ -322,8 +340,8 @@ export const products = [
       'Start with the measured outside diameter of the barrel and the space around it. Identify the circumferential position of holes, protrusions and terminals on the drawing.',
       { table: [
         ['Configuration', 'Confirm before quoting'],
-        ['Mica-insulated band', 'Check the available radial space, surface fit and clamp arrangement for the thinner layered construction.'],
-        ['Ceramic-insulated band', 'Account for the thickness of the ceramic insulation, outer cover and clamping hardware. Provide the target barrel temperature and surrounding clearance.'],
+        [['Mica band heaters', band + 'mica/'], 'Check the available radial space, surface fit and clamp arrangement for the thinner layered construction.'],
+        [['Ceramic band heaters', band + 'ceramic/'], 'Account for the thickness of the ceramic insulation, outer cover and clamping hardware. Provide the target barrel temperature and surrounding clearance.'],
         ['One-piece or split installation', 'Show how the band can be fitted and removed. Mark any split lines, clamp positions and separate power leads on the drawing.'],
         ['Terminal and connection layout', 'Locate the terminal block or lead exit relative to the clamp and cutouts. Include the permitted direction and space for cable routing.'],
       ] },
@@ -334,6 +352,63 @@ export const products = [
     questions: [
       ['How do mica and ceramic band heaters differ?', 'Mica bands typically use a thin layered construction. Ceramic bands use ceramic insulation around the heating winding. Compare the allowable thickness, barrel temperature, heat loss, mounting clearance and terminal position for the actual barrel or nozzle.'],
     ],
+  },
+  {
+    id: 'mica-band-heaters', path: band + 'mica/', parent: 'band-heaters', group: 'specialty', name: 'Mica Band Heaters',
+    image: 'mica-band-heaters',
+    imageAlt: 'Illustration of a thin mica band heater with a screw clamp and two insulated terminals',
+    title: 'Custom Mica Band Heaters for Barrels & Nozzles',
+    description: 'Specify a custom mica band heater for injection molding or extrusion by barrel diameter, band width, voltage, wattage, clamping and terminal orientation.',
+    text: 'Thin mica-insulated heater bands configured to fit cylindrical barrels and nozzles.',
+    intro: 'A mica band heater uses thin mica insulation around a resistance element inside a metal band. Specify the measured barrel or nozzle dimensions and the surface temperature to review a heater for a compact installation.',
+    options: ['One-piece or split construction by installation drawing', 'Lead wires or insulated screw terminals', 'Application-specific clamping and cutouts'],
+    specs: ['Measured outside diameter, usable band width and available radial space', 'Supply voltage, total wattage and power per section if split', 'Operating surface temperature, duty cycle and nearby obstructions', 'Clamp position, terminal orientation, lead length and hole locations'],
+    selection: [
+      'Specify a Mica Band Heater by Drawing',
+      'Provide an end view for the clamp and terminals, and a side view for width and openings. Include a photo of the installed heater when replacing an existing band.',
+      { table: [
+        ['Drawing detail', 'What to confirm'],
+        ['Barrel contact', 'Measure the outside diameter at the heating zone and mark grooves, steps or gaps that could interrupt band contact.'],
+        ['Installation access', 'Show how the heater will pass over the barrel or how a split band will be fitted around it.'],
+        ['Leads and terminals', 'Mark the terminal position relative to the clamp. Include the available cable bend space and any cover or guard.'],
+      ] },
+    ],
+    use: 'Mica band heaters are used on injection molding barrels, extrusion equipment and nozzles with a defined cylindrical heating area.',
+    questions: [
+      ['What dimensions do you need to quote a mica band heater?', 'Send the outside diameter of the barrel or nozzle, band width, radial clearance and the position of clamps, terminals and cutouts. Include voltage, wattage and operating temperature.'],
+      ['Can a mica band heater be made in two sections?', 'Specify where the joints and clamps can sit, how each section can be installed, and whether the sections need separate connections. The split layout is reviewed with the drawing.'],
+    ],
+    related: ['band-heaters', 'ceramic-band-heaters', 'coil-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+  },
+  {
+    id: 'ceramic-band-heaters', path: band + 'ceramic/', parent: 'band-heaters', group: 'specialty', name: 'Ceramic Band Heaters',
+    image: 'ceramic-band-heaters',
+    imageAlt: 'Illustration of a ceramic-lined band heater with a metal shell, screw clamp and red leads',
+    photographs: [ceramicBandHeaterPhoto],
+    title: 'Custom Ceramic Band Heaters for Extrusion & Molding',
+    description: 'Specify custom ceramic band heaters for extrusion and injection molding barrels by diameter, width, radial clearance, electrical load and lead exit.',
+    text: 'Ceramic-insulated heater bands configured for injection molding and extrusion barrels.',
+    intro: 'A ceramic band heater uses ceramic segments to support and insulate the heating winding around a cylindrical surface. Share the barrel drawing and operating temperature to review the band thickness, mounting and lead routing.',
+    options: ['Single or split band layout by drawing', 'Clamp and terminal orientation by installation', 'Electrical load and connections specified for each heating zone'],
+    specs: ['Barrel outside diameter, heated width and maximum allowable outside envelope', 'Voltage, wattage per zone and any separate feeds', 'Normal and peak barrel temperatures and heating cycle', 'Clamp access, guard clearance, openings and lead exit direction'],
+    selection: [
+      'Allow Space for the Ceramic Band and Terminations',
+      'Mark the clearances at the guard and nearby equipment in the installed position. Account for the ceramic layer, outer shell, clamp projection and electrical terminations.',
+      { table: [
+        ['Installation detail', 'What to confirm'],
+        ['Heated zone', 'Provide the usable width and show adjacent heater bands, probe openings and mounting features.'],
+        ['Radial envelope', 'Include clearance for the band construction, the fasteners and access to tighten or remove the clamp.'],
+        ['Electrical connections', 'Identify the voltage and power per band or section, lead exit location and any terminal enclosure.'],
+      ] },
+    ],
+    use: 'Ceramic bands are used on extrusion and injection molding barrels with space for the insulated construction and its terminations.',
+    questions: [
+      ['How do I check whether a ceramic band will fit an existing barrel?', 'Send the barrel diameter and width, then measure the available space around the barrel including covers and nearby fittings. Show where the clamps and leads can be reached after installation.'],
+      ['What information is needed for a multi-zone barrel?', 'Mark the length and location of each heating zone. Give the voltage, desired wattage and connection layout for each zone, and show any sensor or cooling features between the bands.'],
+    ],
+    related: ['band-heaters', 'mica-band-heaters', 'coil-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
     id: 'type-k', path: thermo + 'type-k/', parent: 'thermocouples', group: 'sensing', name: 'Type K Thermocouples', image: 'thermocouples',
@@ -950,8 +1025,8 @@ export const products = [
         caption: 'Two-pin connectors and braided thermocouple leads',
       },
     ],
-    title: 'Thermocouple Extension Wire, Connectors & Thermowells',
-    description: 'Specify thermocouple extension wire, connectors, terminal heads and thermowells by sensor type, polarity, temperature, mounting and process conditions.',
+    title: 'Thermocouple Accessories: Thermowells, Connectors & Cable',
+    description: 'Find thermocouple accessories including thermowells, connectors, terminal heads and extension cables. Match each part to the probe and installation.',
     text: 'Protect and connect sensor assemblies with specified thermowells, wires and connectors.',
     intro: 'Match the accessory to the sensor type and installation. Extension wiring, connectors and protection components need to suit the instrument, process and mechanical interface.',
     options: ['Extension and compensation wire', 'Connectors and terminal heads', 'Thermowells and protection tubes'],
@@ -961,7 +1036,7 @@ export const products = [
       'Identify the accessory and which part of the measurement chain it serves. Match electrical accessories to the sensor type and mechanical accessories to the probe and process connection.',
       { table: [
         ['Accessory', 'What to specify'],
-        [['Extension or compensating cable', '/guides/thermocouple-wire-color-code/'], 'Thermocouple type, approved cable designation, length, color convention and temperature at both terminations.'],
+        [['Extension or compensating cable', accessories + 'extension-wire/'], 'Thermocouple type, approved cable designation, length, color convention and temperature at both terminations.'],
         ['Connector or terminal head', 'Connector format or head mounting, polarity, cable entry, clearance and environment at the connection.'],
         [['Custom thermowell', accessories + 'thermowells/'], 'Process connection, insertion length, probe diameter and bore fit. Include fluid, pressure and flow when relevant.'],
         ['Protection tube', 'Required tube material, mounting, wall and probe dimensions, process atmosphere and temperature cycle.'],
@@ -973,6 +1048,35 @@ export const products = [
     questions: [
       ['What should match when ordering thermocouple extension wire and connectors?', 'Confirm the thermocouple type, polarity and compatible extension wire or connector materials. Also include the applicable wiring standard, cable insulation temperature and connector format. For a thermowell, supply process conditions and the mounting and insertion dimensions.'],
     ],
+  },
+  {
+    id: 'thermocouple-extension-wire', path: accessories + 'extension-wire/', parent: 'sensor-accessories', group: 'sensing', name: 'Thermocouple Extension & Compensating Wire',
+    image: 'thermocouple-extension-wire',
+    imageAlt: 'Illustration of coiled braided thermocouple extension wire with a yellow and red conductor pair',
+    title: 'Custom Thermocouple Extension & Compensating Wire',
+    description: 'Specify thermocouple extension wire or compensating cable by thermocouple type, cable grade, conductor size, insulation, shielding and termination.',
+    text: 'Extension and compensating cable configured for the thermocouple type, wiring standard and installation.',
+    intro: 'Thermocouple extension and compensating wire carry the sensor signal from the probe or connection head to an instrument. Select the cable designation for the thermocouple type and the temperature at each transition. Specify the wiring standard and routing conditions with the inquiry.',
+    options: ['Extension or compensating grade matched to the thermocouple circuit', 'Conductor size, insulation, jacket and shielding by installation', 'Cut lengths and terminations by wiring drawing'],
+    specs: ['Thermocouple type, instrument input and required cable designation', 'ANSI/ASTM, IEC or other specified wiring convention and polarity', 'Conductor size, cable length, insulation and shielding requirements', 'Temperature at both transitions, routing environment and connector or terminal details'],
+    selection: [
+      'Match the Cable Grade and Polarity',
+      'Use the probe and instrument documentation to identify compatible cable. Check the thermoelectric temperature interval for the selected cable grade and the separate temperature limits of its insulation and jacket.',
+      { table: [
+        ['Selection detail', 'What to specify'],
+        ['Extension wire', 'Extension-grade conductors use the same nominal alloys as the corresponding thermocouple pair. Provide the cable designation and expected transition temperatures.'],
+        ['Compensating cable', 'Compensating alloys reproduce the required thermoelectric behavior over a specified temperature interval. Confirm the approved grade for the sensor circuit.'],
+        [['Color code and polarity', '/guides/thermocouple-wire-color-code/'], 'Include the wiring standard and identify the positive and negative terminals at the head, connector and instrument.'],
+        ['Routing and termination', 'Specify cable length, conductor size, shielding, flexing, ambient temperature and connector or stripped-end details.'],
+      ] },
+    ],
+    use: 'Used between thermocouple probes, connection heads, field panels and compatible instrument inputs in industrial equipment.',
+    questions: [
+      ['What is the difference between thermocouple extension wire and compensating cable?', 'Extension wire uses conductors of the same nominal alloys as the thermocouple pair. Compensating cable uses different alloys to match the required output over a specified temperature interval. Check the designation and transition temperatures for the circuit.'],
+      ['Which color code should I specify for Type K extension wire?', 'Specify the standard used by the assembly. Type K positive and negative conductors are yellow and red under US ANSI/ASTM conventions, and green and white under IEC 60584-3. Check cable and terminal markings before connecting.'],
+    ],
+    related: ['sensor-accessories', 'connection-head-thermocouples', 'type-k', 'type-n'],
+    guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
   },
   {
     id: 'thermowells', path: accessories + 'thermowells/', parent: 'sensor-accessories', group: 'sensing', name: 'Custom Thermowells',
@@ -1007,23 +1111,40 @@ export const products = [
   {
     id: 'flanged-immersion', path: immersion + 'flanged/', parent: 'immersion-heaters', group: 'tubular', name: 'Flanged Immersion Heaters', image: 'immersion-heaters',
     title: 'Flanged Immersion Heaters for Industrial Tanks',
-    description: 'Specify a custom flanged immersion heater by flange standard and rating, fluid composition, immersion depth, operating pressure and electrical load.',
+    description: 'Compare round and square flange immersion heaters. Specify the vessel connection, bolt pattern, fluid, installed depth and electrical load.',
     text: 'Flange-mounted immersion assemblies for process vessels and tanks.',
     intro: 'Specify the vessel flange and operating conditions when requesting a custom flanged immersion assembly.',
-    options: ['Flange connection by drawing', 'Element bundle and sheath options', 'Terminal enclosure requirements'],
+    options: ['Round or square flange connection by drawing', 'Element bundle and sheath options', 'Terminal enclosure requirements'],
     specs: ['Flange standard, nominal size, pressure class, facing and bolt pattern', 'Liquid composition, working temperature, pressure and minimum liquid level', 'Insertion length from the flange face, bundle envelope and removal clearance', 'Terminal enclosure and entry orientation, voltage, phase and wattage'],
     selection: [
       'Flanged Immersion Heater Drawing Requirements',
       'Use the vessel flange face as the reference for bundle dimensions. Check the flange and complete heater assembly against the actual fluid, temperature and operating pressure.',
       { table: [
         ['Drawing area', 'What to mark'],
-        ['Flange interface', 'Standard, nominal size, pressure class, face type, gasket seating area, and bolt count, diameter and pitch circle.'],
+        ['Flange interface', 'Standard and pressure class where applicable, face type, thickness, gasket seat, and bolt hole count and diameter.'],
+        ['Round flange', 'Specify the outside diameter, bolt circle diameter and angular hole positions. Use the mating face as the depth reference.'],
+        ['Square flange', 'Mark the outside width and length, hole spacing in both directions and the orientation of the bundle and terminals on the drawing.'],
         ['Inside the vessel', 'Insertion length from the mating face, maximum bundle envelope, active section and the minimum liquid level in the installed orientation.'],
         ['Outside the vessel', 'Terminal box position, cable entry, access to the flange bolts and space to withdraw the assembly.'],
         [['Heat-up and materials', '/guides/immersion-heater-sizing/'], 'Liquid and working volume, heat-up time or target power, fluid conditions and cleaning cycle.'],
       ] },
     ],
     use: 'Used for tanks and vessels where the heater is installed through a flanged connection.',
+    variants: {
+      title: 'Round and Square Flange Heater Configurations',
+      photos: [
+        {
+          image: 'round-flange-immersion-heater', width: 600, height: 600,
+          alt: 'Round immersion heater flange with bolt holes around the circular plate',
+          caption: 'Round flange detail · Huashi reference photo',
+        },
+        {
+          image: 'square-flange-immersion-heater', width: 600, height: 600,
+          alt: 'Square immersion heater flange with four corner mounting holes and a tubular bundle',
+          caption: 'Square flange immersion heater · Huashi reference photo',
+        },
+      ],
+    },
     related: ['immersion-heaters', 'screw-plug-immersion', 'over-the-side-immersion', 'circulation-heaters'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
     questions: [
@@ -1747,7 +1868,7 @@ export const guides = [
   {
     slug: 'thermocouple-wire-color-code', group: 'sensing', name: 'Thermocouple Wire Color Codes and Polarity',
     description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J, T, E and N. Specify compatible Type R and Type B cables and polarity.',
-    related: ['type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'connection-head-thermocouples', 'sensor-accessories'],
+    related: ['thermocouple-extension-wire', 'type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'connection-head-thermocouples', 'sensor-accessories'],
     readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-types'],
     terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'thermocouple-connection-head', 'iec-60584-3'],
     answer: ['What color is the negative thermocouple wire?', 'For Types K, J, T, E and N, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],

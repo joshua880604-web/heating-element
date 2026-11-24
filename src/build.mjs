@@ -71,6 +71,11 @@ const photoTones = [
     images: ['spring-loaded-thermocouple', 'surface-mount-thermocouple', 'flanged-thermocouple', 'defrost-heaters',
       'dual-element-thermocouples', 'connection-head-thermocouples'],
   },
+  {
+    id: 'cable-and-band',
+    source: [234, 233, 238],
+    images: ['thermocouple-extension-wire', 'mica-band-heaters', 'ceramic-band-heaters'],
+  },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
@@ -471,6 +476,10 @@ for (const product of products) {
   </div>
   ${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
+  ${product.variants ? `<section class="product-photos product-variants" aria-labelledby="product-variants-heading">
+    <h2 id="product-variants-heading">${escape(product.variants.title)}</h2>
+    <div class="product-photos-grid">${product.variants.photos.map(photoFigure).join('')}</div>
+  </section>` : ''}
   <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
   ${product.photographs?.length ? `<section class="product-photos" aria-labelledby="product-photos-heading">
     <h2 id="product-photos-heading">Product Photos</h2>

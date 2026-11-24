@@ -227,7 +227,7 @@ export const glossary = [
   {
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',
     definition: 'A cable that extends a thermocouple circuit to an instrument or terminal block. Its extension-grade conductors match the nominal alloys of the thermocouple pair and are rated for a specified temperature interval.',
-    related: ['Thermocouple Wire Color Codes and Polarity', '/guides/thermocouple-wire-color-code/'],
+    related: ['Thermocouple Extension & Compensating Wire', '/temperature-sensors/accessories/extension-wire/'],
   },
   {
     id: 'thermocouple-polarity', name: 'Thermocouple Polarity',

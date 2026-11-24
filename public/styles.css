@@ -1086,6 +1086,17 @@ svg.photo-filters {
   object-fit: contain;
   background: #f0f3f5;
 }
+.product-variants figure {
+  background: #eeedf0;
+  border-radius: 7px;
+  isolation: isolate;
+}
+.product-variants img {
+  mix-blend-mode: multiply;
+}
+.product-variants figcaption {
+  padding: 0 12px 12px;
+}
 .guide-grid > aside > p {
   margin-top: 9px;
   color: var(--muted);
