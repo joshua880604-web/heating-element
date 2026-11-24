@@ -15,6 +15,11 @@ export const glossary = [
     related: ['Custom Cartridge Heaters', '/heating-elements/cartridge-heaters/'],
   },
   {
+    id: 'ceramic-infrared-heating-element', name: 'Ceramic Infrared Heating Element',
+    definition: 'A radiant heater in which an electrical resistance conductor heats a ceramic body. Face profile, emitter spacing and working distance affect how radiation reaches the work surface.',
+    related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
+  },
+  {
     id: 'cold-end', name: 'Cold End',
     definition: 'The length of a heater outside the active heated section, often near a termination or mounting point. Adjacent hot sections can still transfer heat into the cold end.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
