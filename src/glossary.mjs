@@ -165,6 +165,11 @@ export const glossary = [
     related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
   },
   {
+    id: 'mica-strip-heater', name: 'Mica Strip Heater',
+    definition: 'A flat heater with an electrical resistance element insulated by mica. The contact face, mounting pressure and heated area determine how heat is transferred into the equipment.',
+    related: ['Mica Strip Heaters', '/heating-elements/strip-heaters/mica/'],
+  },
+  {
     id: 'mineral-insulated-thermocouple', name: 'Mineral Insulated (MI) Thermocouple',
     definition: 'A thermocouple construction in which compacted mineral insulation separates the conductors within a metal sheath.',
     related: ['Mineral Insulated Thermocouples', '/thermocouples/mineral-insulated/'],
@@ -315,6 +320,11 @@ export const glossary = [
     related: ['Thermowell Selection Guide', '/guides/thermowell-selection-guide/'],
   },
   {
+    id: 'threaded-rtd-probe', name: 'Threaded RTD Probe',
+    definition: 'A resistance temperature probe with a threaded fitting that locates the sensor in a port or thermowell. Specify the thread, sealing reference, insertion depth and instrument input.',
+    related: ['Threaded RTD Probes', '/temperature-sensors/rtd/threaded-probes/'],
+  },
+  {
     id: 'threaded-thermocouple-probe', name: 'Threaded Thermocouple Probe',
     definition: 'A thermocouple installed through a threaded body or fitting. Thread form, sealing interface and insertion length from the installed reference face determine its fit.',
     related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
@@ -373,6 +383,11 @@ export const glossary = [
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
     definition: 'A thermocouple junction separated from the metal sheath by insulation. This construction provides electrical isolation between the junction and sheath.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'washing-machine-heating-element', name: 'Washing Machine Heating Element',
+    definition: 'A tubular heater that transfers heat to wash water in a washing machine tub. Its installed profile, gasket, retention and terminals must match the washer assembly.',
+    related: ['Washing Machine Heating Elements', '/heating-elements/immersion-heaters/washing-machine/'],
   },
   {
     id: 'watt-density', name: 'Watt Density',
