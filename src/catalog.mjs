@@ -47,9 +47,10 @@ export const products = [
       ['How should I specify a threaded or spring-loaded thermocouple?', 'For a threaded probe, identify the thread standard, sealing interface and insertion length from the seating face. For a spring-loaded assembly, include the installed travel and mating feature so the tip can stay in contact at the measurement point.'],
       ['What should I specify for a replacement thermocouple probe?', 'Match the instrument input and thermocouple type first. Then check the insertion length, sheath diameter, mounting thread or flange, junction and electrical termination. A drawing or label photo can help identify the original configuration.'],
       ['How do I choose between a probe and a thermocouple assembly with a connection head?', 'Use the available installation space and wiring interface to decide. A probe with leads or a plug can fit compact equipment. A terminal head provides a connection point for field wiring where the mounting and environment support it.'],
+      ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance and service history. If a probe fails early, share whether the reading drifted, became intermittent or went open circuit, along with the operating conditions and original drawing.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
-    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
+    guides: ['how-thermocouples-work', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
   },
   {
     id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', featured: true, image: 'tubular-heaters',
@@ -77,6 +78,7 @@ export const products = [
     ],
     use: 'Tubular elements are considered for heated equipment including ovens, process air systems, tanks and defrost assemblies. The sheath and watt density need to suit the medium and conditions.',
     questions: [
+      ['What is a tubular heater?', 'A tubular heater encloses a resistance conductor in a metal sheath with electrical insulation between them. Power heats the conductor, and heat passes through the sheath to the surrounding air, liquid or contact surface. The sheath shape, material and surface loading are selected for the installation.'],
       ['What is the difference between a single-ended and double-ended tubular heater?', 'The terms describe where electrical connections leave the element. Choose the terminal layout to match available wiring access and the heated and unheated sections on the drawing. Include photographs or a wiring sketch for a replacement.'],
       ['What drawing details are useful for a formed tubular heater?', 'Show the tube diameter, centerline bend dimensions, leg spacing, heated length, cold ends and terminal orientation. Include mounting locations and any clearances around the element.'],
       ['Can the same tubular heater design be used in air and liquid?', 'Review each application separately. Airflow, fluid type and movement, sheath compatibility and watt density determine the sheath temperature and how effectively the element transfers heat.'],
@@ -121,6 +123,7 @@ export const products = [
     ],
     use: 'Typical projects include water tanks, oil reservoirs and process vessels where the elements can remain submerged during operation.',
     questions: [
+      ['What is an industrial immersion heater and how does it work?', 'An industrial immersion heater uses electrical resistance to heat a metal sheath in direct contact with a compatible liquid. It can warm a tank or heat liquid as it flows through an assembly. Submergence and fluid movement help carry heat away from the active section. The vessel connection and liquid chemistry determine which construction to review.'],
       ['When should I ask about an over-the-side immersion heater?', 'An over-the-side configuration may fit an open tank when access is available from above. Provide the rim geometry, operating liquid levels and clearance to remove the heater. The heated section must remain submerged during operation.'],
       ['When should I specify a flanged or screw plug immersion heater?', 'Match the vessel connection first. A flanged assembly fits a compatible flange, while a screw plug fits a specified threaded port. Also check insertion clearance, available immersion length, operating pressure and how the heater will be removed for service.'],
       ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
@@ -151,7 +154,8 @@ export const products = [
     related: ['type-k', 'strip-heaters', 'coil-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
-      ['What affects the fit of a cartridge heater in a mold or sealing jaw?', 'Send the measured bore diameter, tolerance, usable depth and heated zone. Fit and contact affect heat transfer to the tooling. If a cartridge heater with a thermocouple is required, include the sensor type, junction location and separate power and sensor lead requirements.'],
+      ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
+      ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Confirm that the active section is in the intended heating zone and the leads have room at the exit. If the heater includes a thermocouple, identify its lead pair and input separately from the power leads.'],
     ],
   },
   {
@@ -197,6 +201,7 @@ export const products = [
     ],
     use: 'Type K assemblies are frequently selected for furnaces, hot tooling and process temperature monitoring.',
     questions: [
+      ['What is a Type K thermocouple?', 'Type K identifies a thermocouple with a nickel-chromium positive leg and a nickel-aluminum negative leg. The instrument uses the Type K voltage-to-temperature reference function. When choosing a probe, also specify the junction, sheath, mounting and compatible extension cable.'],
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
     ],
@@ -336,6 +341,7 @@ export const products = [
     related: ['type-k', 'thermocouples', 'sensor-accessories'],
     guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd'],
     questions: [
+      ['What is an RTD sensor and how does it work?', 'An RTD is a resistance temperature detector. In a platinum RTD such as a Pt100 or Pt1000, the element resistance rises with temperature. The instrument applies a small measuring current, reads the resulting voltage and converts the resistance to temperature using the configured platinum curve.'],
       ['How do I choose the wiring for a Pt100 temperature sensor?', 'Match the instrument input first. Two-wire measurement includes lead resistance. Three-wire measurement can compensate for balanced lead resistance. Four-wire measurement separates the current and voltage paths. Send the wiring diagram, lead length and required tolerance.'],
     ],
   },
@@ -647,10 +653,38 @@ export const applications = [
 
 export const guides = [
   {
+    slug: 'how-thermocouples-work', group: 'sensing', name: 'What Is a Thermocouple and How Does It Work?',
+    description: 'Learn how a thermocouple generates a millivolt signal, how cold-junction compensation works, and what an industrial probe measures.',
+    answer: ['What is a thermocouple?', 'A thermocouple is a temperature sensor made from two different conductors joined at a sensing junction. The two conductors produce a small voltage that depends on the sensing and reference temperatures. An instrument converts this voltage to temperature using the reference function for the thermocouple type.'],
+    related: ['thermocouples', 'type-k', 'high-temperature', 'sensor-accessories'],
+    readNext: ['thermocouple-types', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
+    terms: ['thermocouple', 'seebeck-effect', 'reference-junction', 'cold-junction-compensation'],
+    sections: [
+      ['How does a thermocouple work?', 'The Seebeck effect produces a voltage along a conductor when its ends are at different temperatures. Two dissimilar conductors develop different voltages. Joining them at the sensing end allows the instrument to measure the difference at the reference end. The alloy pair determines how much the voltage changes with temperature.', {
+        diagram: [
+          'The conductors meet at the sensing junction on the left. The positive and negative connections on the right go to the measuring instrument.',
+          ['Sensing end      Instrument', '┌── Alloy A ───────── (+)', '│', '└── Alloy B ───────── (−)'],
+        ],
+      }],
+      ['What is a reference junction?', 'The reference junction is where the thermocouple conductors transition to the input circuit, often at the instrument terminals. Its temperature can differ from the sensing tip and can change as the enclosure warms up. Cold-junction compensation uses the measured reference temperature to correct the voltage before applying the temperature conversion.'],
+      ['How much voltage does a thermocouple produce?', 'Thermocouple signals are typically measured in millivolts. For example, the NIST ITS-90 reference table gives about 4.096 mV for a Type K junction at 100 °C with a 0 °C reference. If the reference is instead at 25 °C, the measured voltage is about 3.096 mV. The instrument compensates for that reference temperature and uses the Type K reference function to recover the sensing temperature.'],
+      ['What changes when the junction is built into a probe?', 'A probe adds mechanical protection, mounting and a wiring connection around the sensing junction. Those choices affect where the probe measures, how fast it responds and what environments it can tolerate.', {
+        table: [
+          ['Part of the assembly', 'What it affects'],
+          ['Measuring junction', 'The effective sensing location, electrical isolation and thermal response.'],
+          ['Sheath or protection tube', 'Resistance to the process environment and the rate of heat transfer to the junction.'],
+          ['Mount and insertion length', 'Probe position in a vessel, duct or tool.'],
+          ['Extension wire and connector', 'Polarity and compatibility with the selected type and instrument.'],
+        ],
+      }],
+      ['What are thermocouples used for?', 'Industrial thermocouples measure temperatures in furnaces, heated tools, process vessels and ducts. For an OEM replacement, match the type configured at the instrument and the installed sensing position. Share the working atmosphere and temperatures together with the drawing, because the same alloy type can be built into probes with different mounting and working limits.'],
+    ],
+  },
+  {
     slug: 'thermocouple-types', group: 'sensing', name: 'Thermocouple Types and Selection',
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
-    readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'high-temperature'],
     sections: [
       ['Choose an alloy type', 'K, J, T, N and E are common base-metal types. R, S and B are noble-metal types often considered for high-temperature processes. Match the type to the instrument input, required accuracy, process atmosphere and operating temperature.'],
@@ -717,13 +751,13 @@ export const guides = [
   },
   {
     slug: 'pt100-wiring-diagram', group: 'sensing', name: 'Pt100 RTD Wiring Diagram for 2, 3 and 4 Wires',
-    description: 'Read 2-, 3- and 4-wire Pt100 RTD wiring diagrams and match the element leads to your temperature transmitter, PLC input or controller.',
+    description: 'Use 2-, 3- and 4-wire Pt100 diagrams to identify leads, check RTD resistance and match the sensor to your transmitter, PLC input or controller.',
     related: ['rtd', 'sensor-accessories'],
     readNext: ['pt100-vs-pt1000', 'thermocouple-vs-rtd'],
     terms: ['pt100', 'rtd', 'rtd-self-heating'],
     answer: ['How do I wire a Pt100 RTD?', 'Identify the two ends of the platinum element and select the matching RTD input mode. A two-wire sensor has one lead per end, a three-wire sensor has two leads at one end, and a four-wire sensor has two leads at each end. Match these pairs to the terminal drawing for your instrument.'],
     sections: [
-      ['Identify the element ends', 'A and B in these diagrams are the ends of one Pt100 sensing element. A1 and A2 share one end, and B1 and B2 share the other. With the probe isolated from the instrument, a resistance reading across the element will be near 100 Ω at 0 °C and higher at room temperature. A measurement between leads sharing one end includes the resistance of the leads. Use the probe drawing to identify the pairs, especially for dual-element assemblies.'],
+      ['Identify the element ends', 'A and B in these diagrams are the ends of one Pt100 sensing element. A1 and A2 share one end, and B1 and B2 share the other. Use the probe drawing to identify the pairs, especially for dual-element assemblies.'],
       ['Two-wire Pt100 wiring', 'Two leads complete the measuring circuit. The instrument sees the element resistance plus the resistance of both leads. Check the expected lead resistance at the installed length when evaluating measurement error.', {
         diagram: ['One lead to each end of the element', ['A ──────────[ Pt100 ]────────── B']],
       }],
@@ -732,6 +766,15 @@ export const guides = [
       }],
       ['Four-wire Pt100 wiring', 'Each end has a current lead and a voltage-sense lead. With a compatible four-wire input, the voltage measurement excludes most of the drop along the current leads. Connect each pair to the instrument terminals marked for that end of the element.', {
         diagram: ['Two leads to each end of the element', ['A1 ────────┐             ┌────── B1', 'A2 ────────┴──[ Pt100 ]──┴────── B2']],
+      }],
+      ['How do I check an RTD sensor?', 'Isolate power to the instrument input and disconnect the sensor. Let the probe stabilize at a known temperature. Use a resistance meter across leads from opposite ends and compare the reading with the curve for that RTD. At 25 °C, a nominal IEC 60751 Pt100 measures about 109.7 Ω and a Pt1000 about 1,097 Ω, before lead resistance and tolerance. A spot check can identify common wiring faults. Verify calibration separately when the process requires it.', {
+        table: [
+          ['Observation', 'What to check'],
+          ['Low resistance between leads on the same end', 'That reading can be normal for a shared element end. Identify the opposite lead pair and measure across the element.'],
+          ['Open or overrange across the element', 'Confirm the selected meter range and check for a disconnected terminal, broken lead or open element.'],
+          ['Unusually low resistance across the element', 'Double-check the lead pairing before checking for a short across the leads or inside the probe.'],
+          ['Normal probe reading with an incorrect controller reading', 'Verify the selected Pt100 or Pt1000 curve, wire count and terminal assignments at the input.'],
+        ],
       }],
       ['Check the transmitter or PLC input', 'Set the input to the correct platinum curve and wire count. The manufacturer’s diagram specifies terminal numbers, any jumpers for supported two-wire connections, and shield termination. For a custom probe, send the instrument model, lead length, wiring mode, operating temperature and the required system accuracy.'],
     ],

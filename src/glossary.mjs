@@ -22,7 +22,7 @@ export const glossary = [
   {
     id: 'cold-junction-compensation', name: 'Cold-Junction Compensation',
     definition: 'A correction an instrument applies for the temperature at the thermocouple reference connection so it can convert measured voltage into the temperature at the sensing junction.',
-    related: ['Thermocouple vs. RTD', '/guides/thermocouple-vs-rtd/'],
+    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
   },
   {
     id: 'duct-heater', name: 'Duct Heater',
@@ -155,6 +155,11 @@ export const glossary = [
     related: ['PTC & Ceramic Heating Elements', '/heating-elements/ptc-ceramic-heaters/'],
   },
   {
+    id: 'reference-junction', name: 'Reference Junction',
+    definition: 'The connection where thermocouple conductors transition to the measuring circuit, also called the cold junction. The instrument uses its temperature to calculate the sensing-junction temperature.',
+    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
     id: 'rtd', name: 'RTD',
     definition: 'A resistance temperature detector uses the change in electrical resistance of a sensing element to determine temperature. Pt100 is a common platinum RTD type.',
     related: ['Thermocouple vs. RTD', '/guides/thermocouple-vs-rtd/'],
@@ -170,6 +175,11 @@ export const glossary = [
     related: ['Screw Plug Immersion Heaters', '/heating-elements/immersion-heaters/screw-plug/'],
   },
   {
+    id: 'seebeck-effect', name: 'Seebeck Effect',
+    definition: 'The development of an electrical potential along a conductor in a temperature gradient. The different responses of the two conductor materials produce a thermocouple’s measurable voltage.',
+    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
     id: 'sheath', name: 'Sheath',
     definition: 'The outer protective tube of a sheathed sensor or heater. Material and thickness affect compatibility with the process, mechanical protection and heat transfer.',
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
@@ -182,7 +192,7 @@ export const glossary = [
   {
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
-    related: ['Thermocouple Types and Selection', '/guides/thermocouple-types/'],
+    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
   },
   {
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',
