@@ -50,6 +50,11 @@ export const glossary = [
     related: ['Dual Element Thermocouples', '/thermocouples/dual-element/'],
   },
   {
+    id: 'exhaust-gas-temperature', name: 'Exhaust Gas Temperature (EGT)',
+    definition: 'Temperature measured at a defined point in an exhaust stream. Probe insertion, gas flow, sensor construction and installation affect the measured value and response.',
+    related: ['Type K Exhaust Gas Thermocouples', '/thermocouples/exhaust-gas/'],
+  },
+  {
     id: 'exposed-junction', name: 'Exposed Junction',
     definition: 'A thermocouple junction where the joined conductors are exposed to the measurement medium. Direct exposure can reduce response time when the conductors can tolerate the environment.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],

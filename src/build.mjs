@@ -83,7 +83,8 @@ const photoTones = [
       'carbon-fiber-infrared-heating-elements', 'deep-fryer-heating-elements', 'needle-thermocouples',
       'pid-temperature-controllers', 'commercial-dishwasher-heating-elements',
       'ds18b20-sensors', 'solid-state-relays', 'rtd-temperature-transmitters',
-      'water-boiler-heating-elements', 'titanium-immersion-heaters'],
+      'water-boiler-heating-elements', 'titanium-immersion-heaters', 'drum-immersion-heaters',
+      'type-k-exhaust-gas-thermocouples', 'food-steamer-heating-elements'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
