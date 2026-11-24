@@ -1,5 +1,6 @@
 const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
+const cartridge = '/heating-elements/cartridge-heaters/';
 const thermo = '/thermocouples/';
 const strip = '/heating-elements/strip-heaters/';
 
@@ -82,6 +83,7 @@ export const products = [
       ['What is a tubular heater?', 'A tubular heater encloses a resistance conductor in a metal sheath with electrical insulation between them. Power heats the conductor, and heat passes through the sheath to the surrounding air, liquid or contact surface. The sheath shape, material and surface loading are selected for the installation.'],
       ['What is the difference between a single-ended and double-ended tubular heater?', 'The terms describe where electrical connections leave the element. Choose the terminal layout to match available wiring access and the heated and unheated sections on the drawing. Include photographs or a wiring sketch for a replacement.'],
       ['What drawing details are useful for a formed tubular heater?', 'Show the tube diameter, centerline bend dimensions, leg spacing, heated length, cold ends and terminal orientation. Include mounting locations and any clearances around the element.'],
+      ['What should I specify for an industrial oven heating element?', 'Send a drawing of the oven or dryer that shows the heater envelope, support points, active length, cold ends and terminal positions. Include the operating air temperature, minimum airflow for a convection oven, supply voltage and wattage per zone. For a replacement, give the original part reference and any changes to the air path or mounting.'],
       ['Can the same tubular heater design be used in air and liquid?', 'Review each application separately. Airflow, fluid type and movement, sheath compatibility and watt density determine the sheath temperature and how effectively the element transfers heat.'],
     ],
     related: ['finned-tubular-heaters', 'immersion-heaters', 'duct-heaters', 'defrost-heaters'],
@@ -117,11 +119,11 @@ export const products = [
     id: 'immersion-heaters', path: immersion, group: 'tubular', name: 'Industrial Immersion Heaters', featured: true, image: 'immersion-heaters',
     imageAlt: 'Illustration of a flanged immersion heater with multiple tubular elements',
     title: 'Industrial Immersion Heaters for Water & Oil',
-    description: 'Size and specify industrial immersion heaters for water, oil and process liquids. Compare flange, screw plug and tank-rim mounting for custom projects.',
+    description: 'Specify custom industrial immersion heaters for water, oil and chemical tanks. Compare flange, screw plug, clamp and tank-rim mounting.',
     text: 'Configurable immersion assemblies for water, oil and other compatible process fluids.',
     intro: 'Industrial immersion heaters transfer heat directly into water, oil or another compatible process fluid. Start with the fluid composition, target temperature and tank connection. Those inputs inform the sheath, surface watt density and mounting style.',
-    options: ['Flanged assemblies', 'Screw plug assemblies', 'Over-the-side mounting', 'Tank and circulation system integration'],
-    specs: ['Liquid composition, starting and target temperatures, and warm-up time', 'Tank volume, minimum liquid level or circulation flow', 'Voltage, phase and wattage if known', 'Port or rim drawing, operating pressure, insertion depth and removal clearance'],
+    options: ['Flanged assemblies', 'Screw plug assemblies', 'Clamp-mounted assemblies by connection drawing', 'Over-the-side mounting', 'Tank and circulation system integration'],
+    specs: ['Liquid composition, starting and target temperatures, and warm-up time', 'Tank volume, minimum liquid level or circulation flow', 'Voltage, phase and wattage if known', 'Port or rim drawing, operating pressure, insertion depth and removal clearance', 'For a clamp mount, the mating ferrule standard, connection dimensions and gasket requirements'],
     selection: [
       'Specify an Immersion Heater by Liquid',
       'Share the liquid and operating conditions so the sheath and watt density can be reviewed. For tank service, show the lowest operating liquid level and the heated zone in the installed orientation.',
@@ -129,7 +131,7 @@ export const products = [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
         ['Water', 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
         ['Heat-transfer oil', 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
-        ['Other process liquids', 'Composition and concentration, operating temperature and pressure, and cleaning chemicals.', 'Check the sheath, seal and mounting materials against the liquid and cleaning cycle.'],
+        [['Chemical tanks and process baths', immersion + 'ptfe/'], 'Chemical composition and concentration, continuous and peak temperatures, agitation and cleaning solutions.', 'Review each wetted material against the process and cleaning cycle. Select the active surface area and mounting for the tank conditions.'],
         [['Circulating liquid', '/heating-elements/circulation-heaters/'], 'Minimum and normal flow, inlet and target outlet temperatures, pressure and port sizes.', 'Verify heat removal across the flow range and the equipment’s temperature and flow protection.'],
       ] },
     ],
@@ -138,13 +140,44 @@ export const products = [
       ['What is an industrial immersion heater and how does it work?', 'An industrial immersion heater uses electrical resistance to heat a metal sheath in direct contact with a compatible liquid. It can warm a tank or heat liquid as it flows through an assembly. Submergence and fluid movement help carry heat away from the active section. The vessel connection and liquid chemistry determine which construction to review.'],
       ['When should I ask about an over-the-side immersion heater?', 'An over-the-side configuration may fit an open tank when access is available from above. Provide the rim geometry, operating liquid levels and clearance to remove the heater. The heated section must remain submerged during operation.'],
       ['When should I specify a flanged or screw plug immersion heater?', 'Match the vessel connection first. A flanged assembly fits a compatible flange, while a screw plug fits a specified threaded port. Also check insertion clearance, available immersion length, operating pressure and how the heater will be removed for service.'],
+      ['How do I specify a clamp-mounted immersion heater?', 'Send the mating ferrule drawing and connection standard, including the nominal size, outside diameter and sealing face. For a Tri-Clamp connection, include the clamp and gasket specification, operating pressure and temperature, insertion depth, supply voltage and wattage.'],
       ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
   },
   {
-    id: 'cartridge-heaters', path: '/heating-elements/cartridge-heaters/', group: 'specialty', name: 'Cartridge Heaters', featured: true, image: 'cartridge-heaters',
+    id: 'ptfe-immersion-heaters', path: immersion + 'ptfe/', parent: 'immersion-heaters', group: 'tubular', name: 'PTFE Immersion Heaters',
+    image: 'ptfe-immersion-heater',
+    imageAlt: 'Reference photo of an L-shaped PTFE immersion heater with a coiled active section and a terminal head',
+    title: 'Custom PTFE Immersion Heaters for Chemical Tanks',
+    description: 'Specify a PTFE immersion heater for a chemical tank by bath composition, temperature, liquid level, element geometry, mounting and electrical load.',
+    text: 'PTFE immersion heater configurations for compatible chemical baths and process tanks.',
+    intro: 'Consider a PTFE immersion heater when the process calls for a fluoropolymer surface in contact with the bath. Share the liquid composition and concentration, process and cleaning temperatures, and tank drawing. These inputs determine which construction can be quoted for your installation.',
+    options: ['Wetted PTFE construction by chemical compatibility review', 'Active section geometry and mounting matched to the tank', 'Terminal head or lead arrangement by application'],
+    specs: ['Bath constituents and concentrations, operating and peak temperatures, and cleaning agents', 'Tank dimensions, minimum liquid level, agitation and clearance around the active section', 'Mounting and support drawing, with insertion depth and access for removal', 'Voltage, phase, target wattage or heat-up time, and level and temperature control requirements'],
+    selection: [
+      'Specify a PTFE Heater for the Bath',
+      'Start with the chemistry and temperature wherever the heater touches the liquid. Use the tank drawing to show the active section, the lowest expected liquid level and any parts that move near the heater.',
+      { table: [
+        ['Design detail', 'What to send'],
+        ['Wetted materials', 'A bath composition or process specification, including concentration ranges, cleaning chemicals, solids and possible abrasion.'],
+        ['Placement and supports', 'The tank section drawing, insertion depth, rim or bracket details, and clearance from baskets, fixtures and tank walls.'],
+        [['Power and surface loading', '/guides/heating-element-watt-density/'], 'The working volume, start and target temperatures, allowed heat-up time, voltage and phase. Include normal and minimum agitation or flow if applicable.'],
+        [['Liquid level and controls', '/guides/immersion-heater-sizing/'], 'Show the minimum operating level relative to the heated section. Describe the equipment’s low-level and over-temperature protection requirements.'],
+      ] },
+    ],
+    use: 'Applications to review include chemical process tanks, surface-treatment baths and plating lines that require compatible wetted materials.',
+    questions: [
+      ['How do I check whether PTFE suits a chemical bath?', 'Provide the full liquid chemistry and concentration, temperature range, cleaning cycle and mechanical exposure. The compatibility review covers the wetted heater surface and any seals, supports or fittings that contact the bath.'],
+      ['What affects the power rating of a PTFE immersion heater?', 'The required heat-up rate determines the load. The available heated area, fluoropolymer construction, liquid movement and deposits affect how that load can be transferred into the bath. Share these inputs with the tank drawing so the surface loading can be evaluated.'],
+      ['What mounting detail does a tank-rim design need?', 'Show the rim profile, mounting or support dimensions, installation clearance, and distance from the rim to the heated section. Mark the lowest operating liquid level and the path for removing the heater during service.'],
+    ],
+    related: ['immersion-heaters', 'over-the-side-immersion', 'flanged-immersion'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
+  },
+  {
+    id: 'cartridge-heaters', path: cartridge, group: 'specialty', name: 'Cartridge Heaters', featured: true, image: 'cartridge-heaters',
     title: 'Custom Cartridge Heaters for Molds, Dies & Tooling',
     description: 'Specify custom cartridge heaters for molds and dies. Compare bore tolerance, heated and cold lengths, lead exit and integrated thermocouple requirements.',
     text: 'Compact cylindrical heaters for dies, molds, sealing jaws and other heated tooling.',
@@ -156,7 +189,7 @@ export const products = [
       'Mark the heater body, the bore and the area of the tool that must be heated. These dimensions determine insertion depth, heat transfer and the space available for connections.',
       { table: [
         ['Drawing field', 'What to include'],
-        ['Bore and fit', 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal.'],
+        [['Bore and fit', cartridge + 'miniature/'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, compare miniature cartridge heater configurations.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         ['Power and temperature', 'Supply voltage, power or heat-up target, normal tool temperature and operating cycle.'],
         ['Lead exit and sensor', 'Lead length, exit direction and bend clearance. For an integrated thermocouple, mark the junction and identify power and sensor leads separately.'],
@@ -169,6 +202,37 @@ export const products = [
       ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
       ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Confirm that the active section is in the intended heating zone and the leads have room at the exit. If the heater includes a thermocouple, identify its lead pair and input separately from the power leads.'],
     ],
+  },
+  {
+    id: 'miniature-cartridge-heaters', path: cartridge + 'miniature/', parent: 'cartridge-heaters', group: 'specialty',
+    name: 'Miniature Cartridge Heaters',
+    image: 'miniature-cartridge-heater',
+    imageAlt: 'Reference photo of three short miniature cartridge heaters with red sleeves and braided leads',
+    title: 'Custom Miniature Cartridge Heaters for Small Bores',
+    description: 'Specify a miniature cartridge heater by bore tolerance, body and heated length, lead routing, voltage and power for compact OEM tooling.',
+    text: 'Small-diameter cartridge heaters matched to compact bores and limited lead clearance.',
+    intro: 'A miniature cartridge heater fits into a small cylindrical bore in a fixture, instrument or compact tool. Specify the actual bore diameter and tolerance, where the tool needs heat, and the space available for the leads. Those dimensions are used to review the heater body, heated length and electrical rating.',
+    options: ['Small-diameter and short heater bodies by drawing', 'Active and unheated lengths matched to the tool', 'Lead length, insulation and exit orientation by installation'],
+    specs: ['Measured bore diameter and tolerance, usable depth, tool material and heater body envelope', 'Heated length, unheated lead end and installed position', 'Voltage, target wattage, working tool temperature and duty cycle', 'Lead exit direction, bend clearance, length, insulation and termination'],
+    selection: [
+      'Specify a Small-Diameter Cartridge Heater',
+      'Mark the bore entrance and the working zone on the tool drawing. Use the bore as the dimensional reference and locate the lead exit outside the working zone where the design permits.',
+      { table: [
+        ['Drawing detail', 'What to check'],
+        ['Bore fit and insertion', 'Give the measured bore diameter and tolerance, usable depth, actual installed depth and access to remove the heater.'],
+        ['Active and unheated sections', 'Locate the heating zone and mark where the sheath leaves the bore. Show any minimum unheated length requested near the lead exit.'],
+        [['Power and temperature', '/guides/heating-element-watt-density/'], 'Give the supply voltage, target power or heat-up requirement, tool material, operating temperature and duty cycle.'],
+        ['Lead routing', 'Include lead length, nearby hot surfaces, exit clearance, required bend direction and the connection location.'],
+      ] },
+    ],
+    use: 'Typical inquiries include compact sealing tools, small dies, laboratory fixtures and OEM assemblies with limited space for an inserted heater.',
+    questions: [
+      ['What is a miniature cartridge heater?', 'It is a cylindrical resistance heater sized for a small bore or a short installation depth. Specify the bore, heated length, lead exit and electrical requirements together to evaluate the fit and heat transfer.'],
+      ['How do I specify a replacement for a small bore?', 'Send the original drawing, part reference or marked measurements. Include the actual bore diameter and tolerance, usable depth, heater body length, installed heating zone, original voltage and wattage, and the space available at the lead exit.'],
+      ['How does a smaller body affect heater watt density?', 'A smaller active sheath area gives a higher watt density at the same power. Include the actual fit and working temperature so the power, heated length and heat transfer into the tool can be reviewed together.'],
+    ],
+    related: ['cartridge-heaters', 'coil-heaters', 'type-k'],
+    guides: ['heating-element-watt-density', 'choose-a-heating-element'],
   },
   {
     id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
@@ -1181,7 +1245,7 @@ export const guides = [
   {
     slug: 'heating-element-watt-density', group: 'heating', name: 'Heating Element Watt Density',
     description: 'Calculate heating element watt density from active sheath area. Compare a single tubular element with separately powered zones in a heater bundle.',
-    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters'],
+    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'miniature-cartridge-heaters'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
     readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
     sections: [
@@ -1312,7 +1376,7 @@ export const guides = [
   {
     slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing Guide',
     description: 'Estimate immersion heater wattage for tank heat-up, compare mounting types, and check minimum liquid level, sheath material and watt density.',
-    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion'],
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion', 'ptfe-immersion-heaters'],
     readNext: ['heating-element-watt-density', 'choose-a-heating-element'],
     terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],
     answer: ['How do I size an immersion heater for a tank?', 'Multiply the liquid mass by its specific heat and the required temperature rise, then divide by the allowed heat-up time. Add the heat needed for the vessel and other loads plus heat losses during warm-up. Use the minimum liquid level, available power and safe surface loading to evaluate the heater construction.'],
@@ -1324,6 +1388,7 @@ export const guides = [
           ['Mount', 'What to supply'],
           ['Screw plug', 'Thread standard and size, port clearance and seating or sealing details'],
           ['Flanged', 'Flange drawing, pressure class, facing and bolt pattern'],
+          [['Clamp-mounted', immersion + '#specifications'], 'Mating ferrule standard and size, seal and clamp details, operating temperature and pressure'],
           ['Over-the-side', 'Rim geometry, tank depth, minimum liquid level and removal access'],
         ],
       }],
