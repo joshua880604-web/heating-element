@@ -77,7 +77,9 @@ const photoTones = [
     images: ['thermocouple-extension-wire', 'mica-band-heaters', 'ceramic-band-heaters',
       'industrial-oven-heating-elements', 'thermocouple-connectors', 'tri-clamp-immersion-heaters',
       'sauna-heating-elements', 'ceramic-thermocouple-protection-tubes',
-      'high-density-cartridge-heaters', 'steam-table-heating-elements'],
+      'high-density-cartridge-heaters', 'steam-table-heating-elements', 'silicone-drum-heaters',
+      'pt1000-sensors', 'high-temperature-lead-wire', 'magnetic-thermocouples',
+      '3d-printer-cartridge-heaters', 'cast-in-aluminum-heaters', 'pellet-stove-igniters'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];

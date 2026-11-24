@@ -177,7 +177,7 @@ export const glossary = [
   {
     id: 'pt1000-sensor', name: 'Pt1000 Sensor',
     definition: 'A platinum resistance temperature detector with a nominal resistance of 1,000 ohms at 0 °C. It requires an input configured for the Pt1000 curve and the probe’s wiring.',
-    related: ['Pt100 vs. Pt1000 RTD Sensors', '/guides/pt100-vs-pt1000/'],
+    related: ['Pt1000 Temperature Sensors', '/temperature-sensors/rtd/pt1000/'],
   },
   {
     id: 'ptc-heating-element', name: 'PTC Heating Element',
