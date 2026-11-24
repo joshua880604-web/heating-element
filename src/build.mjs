@@ -48,8 +48,57 @@ const btn = (text, href, style = 'primary', iconName = 'arrow') => `<a class="bu
 const sectionHead = (label, title, copy = '') => `<div class="section-heading"><div><p class="eyebrow">${escape(label)}</p><h2>${escape(title)}</h2></div>${copy ? `<p>${escape(copy)}</p>` : ''}</div>`;
 const quoteLink = (id = '') => `/request-a-quote/${id ? '?product=' + encodeURIComponent(id) : ''}`;
 const photo = product => product.image && existsSync(resolve(staticRoot, 'assets', product.image + '.webp'));
-const coolPhotos = new Set(['immersion-heaters', 'finned-tubular-heaters', 'mineral-insulated', 'high-temperature', 'coil-heaters', 'rtd']);
-const photoTone = product => coolPhotos.has(product.image) ? ' cool-photo' : '';
+const photoBackground = [238, 237, 240]; // Matches the catalog backdrop in styles.css.
+const photoTones = [
+  {
+    id: 'cool',
+    source: [231, 234, 237],
+    images: ['finned-tubular-heaters', 'immersion-heaters', 'type-j', 'mineral-insulated', 'high-temperature',
+      'rtd', 'sensor-accessories', 'screw-plug-immersion', 'over-the-side-immersion', 'circulation-heaters',
+      'finned-strip-heaters', 'coil-heaters', 'infrared-heaters', 'ptc-ceramic-heaters', 'open-coil-heaters',
+      'heating-cables', 'duct-heaters', 'crankcase-heaters'],
+  },
+  {
+    id: 'warm',
+    source: [234, 231, 235],
+    images: ['oil-immersion-heaters', 'cartridge-heaters-with-thermocouple', 'type-n', 'type-r', 'type-b',
+      'thermowells', 'polyimide-heaters', 'silicone-rubber-heaters', 'quartz-infrared-heating-elements'],
+  },
+  {
+    id: 'neutral',
+    source: [235, 235, 237],
+    images: ['spring-loaded-thermocouple', 'surface-mount-thermocouple', 'flanged-thermocouple', 'defrost-heaters'],
+  },
+  { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
+];
+const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
+
+function photoToneStyle(product) {
+  const id = photoToneByImage.get(product.image);
+  return id ? ` style="--photo-tone: url(#photo-tone-${id})"` : '';
+}
+
+function photoToneFilter({ id, source }) {
+  // Map a narrow range around the source backdrop to the common background.
+  // Keep darker tones, and roll the correction back to white at the highlights.
+  const darkEnd = 175;
+  const channels = ['R', 'G', 'B'].map((name, channel) => {
+    const bottom = source[channel] - 5;
+    const top = source[channel] + 5;
+    const target = photoBackground[channel];
+    const values = Array.from({ length: 33 }, (_, index) => {
+      const value = index * 255 / 32;
+      const lowerTransition = Math.min(1, Math.max(0, (value - darkEnd) / (bottom - darkEnd)));
+      const upperTransition = Math.max(0, (value - top) / (255 - top));
+      const mapped = Math.min(value, darkEnd) + lowerTransition * (target - darkEnd) + upperTransition * (255 - target);
+      return (mapped / 255).toFixed(4);
+    });
+    return `<feFunc${name} type="table" tableValues="${values.join(' ')}"/>`;
+  });
+  return `<filter id="photo-tone-${id}" color-interpolation-filters="sRGB"><feComponentTransfer>${channels.join('')}</feComponentTransfer></filter>`;
+}
+
+const photoFilters = `<svg class="photo-filters" aria-hidden="true"><defs>${photoTones.map(photoToneFilter).join('')}</defs></svg>`;
 
 function photoFigure({ image, width, height, alt, caption }) {
   return `<figure>
@@ -202,6 +251,7 @@ ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heatin
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 ${symbols}
+${photoFilters}
 <header class="site-header">
   <div class="container header-inner">
     ${brandMark()}
@@ -242,7 +292,7 @@ function pageIntro(kicker, title, copy, trail) {
 }
 
 function card(product) {
-  const visual = photo(product) ? `<div class="card-image${photoTone(product)}"><img src="/assets/${product.image}.webp" width="512" height="512" loading="lazy" alt=""></div>` : '';
+  const visual = photo(product) ? `<div class="card-image"${photoToneStyle(product)}><img src="/assets/${product.image}.webp" width="512" height="512" loading="lazy" alt=""></div>` : '';
   return `<article class="product-card" data-group="${product.group}" data-search="${escape([product.name, product.text, ...product.options, product.use].join(' '))}">
     <a href="${product.path}" class="card-link">
       ${visual}
@@ -409,7 +459,7 @@ for (const product of products) {
     <p class="eyebrow">${groups[product.group]}</p>
     <h1>${escape(product.name)}</h1><p class="intro-copy">${escape(product.intro)}</p>
     <div class="actions">${btn('Request a Quote', quoteLink(product.id), 'primary', 'external')}${btn('View Specifications', '#specifications', 'secondary', '')}</div>
-  </div>${image ? `<figure class="detail-image${photoTone(product)}"><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
+  </div>${image ? `<figure class="detail-image"${photoToneStyle(product)}><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}

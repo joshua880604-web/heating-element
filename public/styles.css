@@ -444,16 +444,25 @@ svg:not(.symbols) {
 .card-link:focus-visible {
   outline-offset: -4px;
 }
+svg.photo-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.card-image,
+.detail-image {
+  background: #eeedf0;
+}
 .card-image {
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1.86;
-  background: var(--photo-bg, #eeedf0);
   overflow: hidden;
 }
 .card-image img,
 .detail-image img {
+  filter: var(--photo-tone, none);
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -467,9 +476,6 @@ svg:not(.symbols) {
   height: 100%;
   object-fit: contain;
   transition: transform 0.28s;
-}
-.cool-photo {
-  --photo-bg: #e7ebee;
 }
 .product-card:hover img {
   transform: scale(1.045);
@@ -764,7 +770,6 @@ svg:not(.symbols) {
   grid-template-columns: 1fr;
 }
 .detail-image {
-  background: var(--photo-bg, #eeedf0);
   border: 1px solid #e1e6e9;
   border-radius: 8px;
   overflow: hidden;
