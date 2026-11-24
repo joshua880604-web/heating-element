@@ -316,7 +316,8 @@ function applicationsGrid(heading, withSpecifications = false) {
   return `<div class="application-grid">${applications.map(app => `<article class="application" id="${app.id}">
     <span class="tile-icon">${icon(app.icon)}</span><${heading}>${escape(app.name)}</${heading}><p>${escape(app.description)}</p>
     ${withSpecifications ? `<p><strong>For your RFQ</strong> ${escape(app.specification)}</p>` : ''}
-    ${related(app.ids)}
+    ${related(app.ids)}${withSpecifications ? `
+    <h3 class="read-next">Selection Guides</h3>${selectionGuides(app.guides)}` : ''}
   </article>`).join('')}</div>`;
 }
 
