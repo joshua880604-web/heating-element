@@ -81,7 +81,8 @@ const photoTones = [
       'pt1000-sensors', 'high-temperature-lead-wire', 'magnetic-thermocouples',
       '3d-printer-cartridge-heaters', 'cast-in-aluminum-heaters', 'pellet-stove-igniters',
       'carbon-fiber-infrared-heating-elements', 'deep-fryer-heating-elements', 'needle-thermocouples',
-      'pid-temperature-controllers'],
+      'pid-temperature-controllers', 'commercial-dishwasher-heating-elements',
+      'ds18b20-sensors', 'solid-state-relays'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
@@ -422,7 +423,7 @@ ${pageIntro('Product catalog', 'Industrial Heating, Sensing & Controls', 'Search
 <section class="section catalog-section catalog-page"><div class="container">
   ${catalog(products, true)}
   ${questionsSection('How to Use the Product Catalog', [
-    ['Which product group should I start with?', 'Choose Temperature Sensors for probes, thermowells and connectors, Tubular & Immersion for formed elements and liquid heaters, Specialty Heaters for cartridges, bands, strips, cables and flexible elements, or Temperature Controls for a PID controller.'],
+    ['Which product group should I start with?', 'Choose Temperature Sensors for probes, thermowells and connectors, Tubular & Immersion for formed elements and liquid heaters, Specialty Heaters for cartridges, bands, strips, cables and flexible elements, or Temperature Controls for PID controllers and solid-state relays.'],
     ['How can I narrow down a product when I only have a drawing?', 'Look for the device function and the mounting interface first. A threaded probe points to a sensor family; a cylindrical bore can indicate a cartridge heater; a heated loop through a tank port suggests an immersion configuration. Include uncertain details in the RFQ.'],
   ])}
 </div></section>

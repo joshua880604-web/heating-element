@@ -35,6 +35,11 @@ export const glossary = [
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
   },
   {
+    id: 'ds18b20', name: 'DS18B20 Temperature Sensor',
+    definition: 'A digital temperature sensor that sends readings over a 1-Wire interface. Specify the host, power mode and enclosure or probe sealing for the installation.',
+    related: ['Waterproof DS18B20 Temperature Sensors', '/temperature-sensors/ds18b20/'],
+  },
+  {
     id: 'duct-heater', name: 'Duct Heater',
     definition: 'An assembly that heats air passing through a duct. Minimum airflow, inlet temperature, required temperature rise and duct dimensions are inputs to selection.',
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
@@ -223,6 +228,11 @@ export const glossary = [
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',
     definition: 'A flexible heater with a resistive element incorporated into a silicone rubber construction, shaped to fit a surface, enclosure or assembly.',
     related: ['Silicone Rubber Heaters', '/heating-elements/flexible-heaters/silicone-rubber/'],
+  },
+  {
+    id: 'solid-state-relay', name: 'Solid-State Relay',
+    definition: 'A relay that switches a load with semiconductor devices. For heater control, match its input to the controller and check load voltage, current and heat dissipation.',
+    related: ['Solid-State Relays for Heating Elements', '/temperature-controls/solid-state-relays/'],
   },
   {
     id: 'surface-mount-thermocouple', name: 'Surface-Mount Thermocouple',
