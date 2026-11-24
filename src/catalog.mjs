@@ -2,6 +2,7 @@ const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
 const cartridge = '/heating-elements/cartridge-heaters/';
 const thermo = '/thermocouples/';
+const accessories = '/temperature-sensors/accessories/';
 const strip = '/heating-elements/strip-heaters/';
 
 export const groups = {
@@ -130,7 +131,7 @@ export const products = [
       { table: [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
         ['Water', 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
-        ['Heat-transfer oil', 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
+        [['Oil reservoirs and thermal fluid tanks', immersion + 'oil/'], 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
         [['Chemical tanks and process baths', immersion + 'ptfe/'], 'Chemical composition and concentration, continuous and peak temperatures, agitation and cleaning solutions.', 'Review each wetted material against the process and cleaning cycle. Select the active surface area and mounting for the tank conditions.'],
         [['Circulating liquid', '/heating-elements/circulation-heaters/'], 'Minimum and normal flow, inlet and target outlet temperatures, pressure and port sizes.', 'Verify heat removal across the flow range and the equipment’s temperature and flow protection.'],
       ] },
@@ -145,6 +146,36 @@ export const products = [
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
+  },
+  {
+    id: 'oil-immersion-heaters', path: immersion + 'oil/', parent: 'immersion-heaters', group: 'tubular', name: 'Oil Immersion Heaters',
+    image: 'oil-immersion-heaters',
+    imageAlt: 'Illustration of a flanged oil immersion heater with U-shaped elements and a terminal enclosure',
+    title: 'Custom Oil Immersion Heaters for Industrial Tanks',
+    description: 'Specify an industrial oil immersion heater by oil grade, cold-start viscosity, heat-up duty, minimum liquid level and the tank connection.',
+    text: 'Made-to-spec immersion heaters for lubrication, hydraulic and heat-transfer oil reservoirs.',
+    intro: 'An oil immersion heater warms oil in a tank or reservoir by transferring heat from its wetted sheath. Provide the oil grade, starting and target temperatures, and the tank drawing. The oil condition and movement near the element guide the heated area, watt density and placement.',
+    options: ['Flange or screw plug mounting by tank drawing', 'Heated length and surface loading matched to the oil and heat-up duty', 'Terminal and control interfaces specified for the installation'],
+    specs: ['Oil grade and viscosity at start-up and operating temperature, plus any supplier limits for bulk and film temperature', 'Working volume, lowest operating oil level, heat-up time and target temperature', 'Tank port drawing, insertion depth, flow or agitation, and service clearance', 'Voltage, phase, power or heating duty, and level and temperature control requirements'],
+    selection: [
+      'Size an Oil Immersion Heater for the Reservoir',
+      'Send the oil datasheet and the tank drawing together. Include the cold-start conditions, the warm-up target and the lowest oil level while the heater is energized.',
+      { table: [
+        ['Design input', 'What to provide'],
+        ['Oil grade and viscosity', 'Identify the lubricant, hydraulic oil or heat-transfer fluid. Include the cold-start temperature and available viscosity and film-temperature data.'],
+        [['Heat-up and surface loading', '/guides/heating-element-watt-density/'], 'Give oil mass or volume, required heat-up time, temperature rise and heat loss if known. Describe agitation, sludge or existing deposits.'],
+        ['Tank fit and oil level', 'Show the process connection, active length, insertion depth and removal clearance. Mark the minimum oil level relative to the heated section.'],
+        [['Flow-through oil heating', '/heating-elements/circulation-heaters/'], 'For a separate flow-through chamber, provide the minimum and normal flow, inlet and outlet temperatures and operating pressure.'],
+      ] },
+    ],
+    use: 'Applications include hydraulic reservoirs, lubrication oil tanks and heat-transfer oil systems with a compatible wetted assembly.',
+    questions: [
+      ['What determines the watt density for an oil immersion heater?', 'Review the oil supplier’s temperature limits together with viscosity, motion around the element, deposits and active sheath area. A cold or stagnant oil can remove heat more slowly, so include the lowest starting temperature and minimum agitation.'],
+      ['How does film temperature affect an oil heater design?', 'Film temperature describes the temperature of the oil close to the heater surface. It depends on heat transfer from the sheath into the oil. Give the oil supplier’s limits for both the bulk liquid and the film so the allowable surface loading can be reviewed.'],
+      ['What should the tank drawing show?', 'Identify the mounting reference face, available insertion length, the normal and minimum oil levels, and clearance for removal. Include any specified temperature-sensing, low-level or over-temperature protection interfaces.'],
+    ],
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
     id: 'ptfe-immersion-heaters', path: immersion + 'ptfe/', parent: 'immersion-heaters', group: 'tubular', name: 'PTFE Immersion Heaters',
@@ -192,7 +223,7 @@ export const products = [
         [['Bore and fit', cartridge + 'miniature/'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, compare miniature cartridge heater configurations.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         ['Power and temperature', 'Supply voltage, power or heat-up target, normal tool temperature and operating cycle.'],
-        ['Lead exit and sensor', 'Lead length, exit direction and bend clearance. For an integrated thermocouple, mark the junction and identify power and sensor leads separately.'],
+        [['Lead exit and integrated thermocouple', cartridge + 'with-thermocouple/'], 'Lead length, exit direction and bend clearance. For an integrated thermocouple, mark the junction and identify power and sensor leads separately.'],
       ] },
     ],
     use: 'Common integration points include injection molds, extrusion dies, packaging sealing jaws and laboratory tooling.',
@@ -233,6 +264,37 @@ export const products = [
     ],
     related: ['cartridge-heaters', 'coil-heaters', 'type-k'],
     guides: ['heating-element-watt-density', 'choose-a-heating-element'],
+  },
+  {
+    id: 'cartridge-heaters-with-thermocouple', path: cartridge + 'with-thermocouple/', parent: 'cartridge-heaters', group: 'specialty',
+    name: 'Cartridge Heaters with Thermocouples',
+    image: 'cartridge-heaters-with-thermocouple',
+    imageAlt: 'Illustration of a cylindrical cartridge heater with two power leads and two thermocouple leads',
+    title: 'Custom Cartridge Heaters with Built-In Thermocouples',
+    description: 'Specify a cartridge heater with a built-in thermocouple by bore fit, heater rating, sensor type, junction position and lead requirements.',
+    text: 'Cylindrical heaters with a built-in thermocouple specified for local temperature measurement.',
+    intro: 'A cartridge heater with a built-in thermocouple combines a resistance heater and a temperature-sensing junction in one body. Mark the intended junction position on the drawing alongside the heated zone and installation depth. Specify the heater power circuit and the thermocouple input at the controller.',
+    options: ['Thermocouple type and junction position by drawing', 'Body dimensions and heated length matched to the bore', 'Identified power and sensor leads with specified routing and termination'],
+    specs: ['Bore dimensions and tolerance, available depth, tool material and measured working temperature', 'Voltage, wattage, duty cycle, heated length and unheated lead end', 'Thermocouple type, junction location measured from the chosen datum, and isolation requirements', 'Power and sensor lead lengths, exit direction, labeling and controller input'],
+    selection: [
+      'Specify the Heater and Built-In Thermocouple Together',
+      'Dimension the body and sensor junction from the same reference, such as the heater tip. Include the tool drawing so the measurable point can be reviewed in the installed position.',
+      { table: [
+        ['Drawing detail', 'What to send'],
+        [['Bore and active length', cartridge], 'Bore diameter and tolerance, usable depth, installed position, heated zone and clearance near the lead exit.'],
+        [['Junction and sensing point', '/guides/grounded-vs-ungrounded-thermocouples/'], 'A length from the defined datum to the desired thermocouple junction. Include any grounded or ungrounded construction requirement.'],
+        [['Sensor input and wiring', '/guides/thermocouple-wire-color-code/'], 'Controller input type, thermocouple alloy type, polarity convention and the required extension cable or connector. Label the sensor pair on the wiring drawing.'],
+        ['Power leads and routing', 'Supply voltage and wattage, lead insulation and length, connection method, expected temperature at the exit and space to bend and route the leads.'],
+      ] },
+    ],
+    use: 'Applications include sealing jaws, heated tooling and compact OEM assemblies where local temperature feedback is needed at the heater location.',
+    questions: [
+      ['What does the built-in thermocouple measure?', 'It measures the temperature at its junction within the heater assembly. The temperature at the tool surface depends on bore fit, distance from the junction, heater power and the operating cycle. Identify the point the process needs to control when choosing a sensing location.'],
+      ['How should I identify the power and thermocouple wires?', 'Include the wiring diagram and expected lead marking, with the supply voltage and thermocouple type stated separately. Match the thermocouple polarity and extension cable to the controller input.'],
+      ['Can the thermocouple junction be specified on the drawing?', 'Show the desired sensing point relative to the heater tip or mounting reference, and mark the active section and unheated end. Include any isolation requirement so the available junction constructions can be reviewed.'],
+    ],
+    related: ['cartridge-heaters', 'miniature-cartridge-heaters', 'thermocouples', 'type-k'],
+    guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'heating-element-watt-density'],
   },
   {
     id: 'band-heaters', path: '/heating-elements/band-heaters/', group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
@@ -647,7 +709,7 @@ export const products = [
     ],
   },
   {
-    id: 'sensor-accessories', path: '/temperature-sensors/accessories/', group: 'sensing', name: 'Thermocouple Accessories',
+    id: 'sensor-accessories', path: accessories, group: 'sensing', name: 'Thermocouple Accessories',
     image: 'sensor-accessories',
     imageAlt: 'Illustration of a thermowell, thermocouple connectors and extension wire',
     photographs: [
@@ -670,7 +732,7 @@ export const products = [
         ['Accessory', 'What to specify'],
         [['Extension or compensating cable', '/guides/thermocouple-wire-color-code/'], 'Thermocouple type, approved cable designation, length, color convention and temperature at both terminations.'],
         ['Connector or terminal head', 'Connector format or head mounting, polarity, cable entry, clearance and environment at the connection.'],
-        [['Thermowell', '/guides/thermowell-selection-guide/'], 'Process connection, insertion length, probe diameter and bore fit. Include fluid, pressure and flow when relevant.'],
+        [['Custom thermowell', accessories + 'thermowells/'], 'Process connection, insertion length, probe diameter and bore fit. Include fluid, pressure and flow when relevant.'],
         ['Protection tube', 'Required tube material, mounting, wall and probe dimensions, process atmosphere and temperature cycle.'],
       ] },
     ],
@@ -680,6 +742,36 @@ export const products = [
     questions: [
       ['What should match when ordering thermocouple extension wire and connectors?', 'Confirm the thermocouple type, polarity and compatible extension wire or connector materials. Also include the applicable wiring standard, cable insulation temperature and connector format. For a thermowell, supply process conditions and the mounting and insertion dimensions.'],
     ],
+  },
+  {
+    id: 'thermowells', path: accessories + 'thermowells/', parent: 'sensor-accessories', group: 'sensing', name: 'Custom Thermowells',
+    image: 'thermowells',
+    imageAlt: 'Illustration of flanged and threaded metal thermowells with closed process ends',
+    title: 'Custom Threaded & Flanged Thermowells',
+    description: 'Specify custom thermowells for thermocouples and RTDs by process connection, material, insertion length, probe fit and service conditions.',
+    text: 'Threaded and flanged thermowells sized for the process connection and the temperature probe.',
+    intro: 'A thermowell is a closed-end fitting that separates a thermocouple or RTD from the process fluid. Specify the vessel or pipe connection, the desired insertion length, and the sensor dimensions on the same drawing. Include the process conditions needed to review the material and mechanical design.',
+    options: ['Threaded and flanged process connections by drawing', 'Stem profile and material by service conditions', 'Sensor entry and bore dimensions matched to the probe installation'],
+    specs: ['Process connection standard, thread or flange dimensions, sealing interface and installed reference face', 'Insertion length from the process connection, stem outline and clearance in the pipe or vessel', 'Sensor diameter, installed length, bore depth, internal clearance and sensor connection', 'Fluid composition, temperature, pressure, and flow conditions for mechanical review'],
+    selection: [
+      'Match the Thermowell to the Process and Probe',
+      'Use a section view of the installed assembly. Mark the process connection reference face, tip position in the fluid, and available clearance to remove the sensor.',
+      { table: [
+        ['Drawing input', 'What to specify'],
+        [['Process connection', '/guides/thermowell-selection-guide/'], 'For a threaded fit, give the thread form and sealing details. For a flange, give its standard, size, facing, rating and gasket interface.'],
+        ['Insertion and stem', 'Show the installed reference face and the tip location relative to the nozzle, pipe wall or vessel internals. Provide the stem outline and any diameter limits.'],
+        [['Probe fit', '/temperature-sensors/rtd/'], 'Give the sensor diameter, installed length, seating or spring travel, sensor connection and the access needed to withdraw it.'],
+        ['Process and flow', 'Provide normal and peak temperature and pressure, fluid composition, line size and normal and maximum flow. Include any required mechanical or wake frequency evaluation criteria.'],
+      ] },
+    ],
+    use: 'Typical applications include pipeline or vessel temperature measurement with a removable thermocouple or RTD in a compatible thermowell.',
+    questions: [
+      ['How do I measure thermowell insertion length?', 'Identify the installed process connection reference on the drawing and measure from that face to the thermowell tip. Include the wall or nozzle length so the depth into the process can be determined.'],
+      ['What dimensions keep the sensor fitted to the thermowell?', 'Specify the bore diameter and usable depth, probe diameter and insertion length, and the connection at the top. Show the intended seating position and include spring travel when the probe uses a spring-loaded fitting.'],
+      ['What data is needed for flow-induced loading review?', 'Provide the pipe and nozzle dimensions, installed stem profile and fluid properties, including density and viscosity. Include normal and maximum flow, process pressure and temperature, and any applicable standard or evaluation requirement.'],
+    ],
+    related: ['sensor-accessories', 'flanged-thermocouple', 'threaded-thermocouple', 'rtd'],
+    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd'],
   },
   {
     id: 'flanged-immersion', path: immersion + 'flanged/', parent: 'immersion-heaters', group: 'tubular', name: 'Flanged Immersion Heaters', image: 'immersion-heaters',
@@ -1245,7 +1337,7 @@ export const guides = [
   {
     slug: 'heating-element-watt-density', group: 'heating', name: 'Heating Element Watt Density',
     description: 'Calculate heating element watt density from active sheath area. Compare a single tubular element with separately powered zones in a heater bundle.',
-    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'miniature-cartridge-heaters'],
+    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
     readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
     sections: [
@@ -1355,7 +1447,7 @@ export const guides = [
   {
     slug: 'thermowell-selection-guide', group: 'sensing', name: 'Thermowell Selection Guide',
     description: 'Specify a thermowell by process connection, material, insertion length and probe fit. Identify the pressure and flow inputs needed for mechanical review.',
-    related: ['sensor-accessories', 'flanged-thermocouple', 'thermocouples', 'rtd', 'threaded-thermocouple'],
+    related: ['thermowells', 'sensor-accessories', 'flanged-thermocouple', 'thermocouples', 'rtd', 'threaded-thermocouple'],
     readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
     terms: ['thermowell', 'thermowell-insertion-length', 'thermocouple-response-time'],
     answer: ['How do I choose a thermowell?', 'Start with the process connection, fluid, operating conditions and the place where temperature needs to be measured. Specify the insertion length and the probe bore from the same assembly drawing. Confirm material compatibility, pressure rating and flow-induced loading for the actual installation.'],
@@ -1376,7 +1468,7 @@ export const guides = [
   {
     slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing Guide',
     description: 'Estimate immersion heater wattage for tank heat-up, compare mounting types, and check minimum liquid level, sheath material and watt density.',
-    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion', 'ptfe-immersion-heaters'],
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion', 'ptfe-immersion-heaters', 'oil-immersion-heaters'],
     readNext: ['heating-element-watt-density', 'choose-a-heating-element'],
     terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],
     answer: ['How do I size an immersion heater for a tank?', 'Multiply the liquid mass by its specific heat and the required temperature rise, then divide by the allowed heat-up time. Add the heat needed for the vessel and other loads plus heat losses during warm-up. Use the minimum liquid level, available power and safe surface loading to evaluate the heater construction.'],
