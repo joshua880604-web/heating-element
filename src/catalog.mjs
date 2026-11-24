@@ -148,17 +148,17 @@ export const products = [
         {
           image: 'u-shaped-finned-tubular-heater', width: 600, height: 600,
           alt: 'U-shaped finned tubular heater with two parallel finned legs and a single return bend',
-          caption: 'U-shaped finned tubular heater · Huashi reference photo',
+          caption: 'U-shaped finned tubular heater · Reference photo',
         },
         {
           image: 'w-shaped-finned-tubular-heater', width: 600, height: 600,
           alt: 'W-shaped finned tubular heater with multiple parallel finned runs and two electrical terminals',
-          caption: 'W-shaped finned tubular heater · Huashi reference photo',
+          caption: 'W-shaped finned tubular heater · Reference photo',
         },
         {
           image: 'flange-mounted-finned-tubular-heater', width: 600, height: 600,
           alt: 'Multiple finned tubular elements mounted through a rectangular flange plate with corner mounting holes',
-          caption: 'Flange-mounted finned heater · Huashi reference photo',
+          caption: 'Flange-mounted finned heater · Reference photo',
         },
       ],
     },
@@ -196,7 +196,7 @@ export const products = [
         {
           image: 'straight-oven-element-reference', width: 600, height: 600,
           alt: 'Straight tubular oven heating elements with electrical terminals at opposite ends',
-          caption: 'Straight tubular oven elements · Huashi reference photo',
+          caption: 'Straight tubular oven elements · Reference photo',
         },
       ],
     },
@@ -235,17 +235,17 @@ export const products = [
         {
           image: 'side-entry-sauna-element-reference', width: 600, height: 600,
           alt: 'Sauna heating element with an L-shaped outline and two terminal legs raised at one side',
-          caption: 'Side-entry profile · Huashi reference photo',
+          caption: 'Side-entry profile · Reference photo',
         },
         {
           image: 'flat-sauna-element-reference', width: 600, height: 600,
           alt: 'Flat serpentine sauna heating element with parallel runs and centered terminal legs',
-          caption: 'Flat serpentine profile · Huashi reference photo',
+          caption: 'Flat serpentine profile · Reference photo',
         },
         {
           image: 'angled-sauna-element-reference', width: 600, height: 600,
           alt: 'Multi-pass sauna heating element with a diagonal outer run and two off-center terminals',
-          caption: 'Angled profile · Huashi reference photo',
+          caption: 'Angled profile · Reference photo',
         },
       ],
     },
@@ -471,7 +471,7 @@ export const products = [
         {
           image: 'right-angle-cartridge-heater-reference', width: 600, height: 600,
           alt: 'Cartridge heater with a straight main body, right-angle lead end and two red wires',
-          caption: 'Right-angle lead exit · Huashi reference photo',
+          caption: 'Right-angle lead exit · Reference photo',
         },
       ],
     },
@@ -1637,12 +1637,12 @@ export const products = [
         {
           image: 'round-flange-immersion-heater', width: 600, height: 600,
           alt: 'Round immersion heater flange with bolt holes around the circular plate',
-          caption: 'Round flange detail · Huashi reference photo',
+          caption: 'Round flange detail · Reference photo',
         },
         {
           image: 'square-flange-immersion-heater', width: 600, height: 600,
           alt: 'Square immersion heater flange with four corner mounting holes and a tubular bundle',
-          caption: 'Square flange immersion heater · Huashi reference photo',
+          caption: 'Square flange immersion heater · Reference photo',
         },
       ],
     },
@@ -1680,7 +1680,7 @@ export const products = [
         {
           image: 'clamp-mounted-immersion-heater-reference', width: 600, height: 600,
           alt: 'Clamp-mounted liquid heating element with a U-shaped tube and circular ferrule',
-          caption: 'Clamp-mounted liquid heating element · Huashi reference photo',
+          caption: 'Clamp-mounted liquid heating element · Reference photo',
         },
       ],
     },
@@ -1719,7 +1719,7 @@ export const products = [
         {
           image: 't-shaped-steam-table-element-reference', width: 600, height: 600,
           alt: 'T-shaped steam table tubular element with a wide lower loop and two central terminals',
-          caption: 'T-shaped wet-well heating element · Huashi reference photo',
+          caption: 'T-shaped wet-well heating element · Reference photo',
         },
       ],
     },
@@ -1785,12 +1785,12 @@ export const products = [
         {
           image: 'squared-food-steamer-element-reference', width: 600, height: 600,
           alt: 'Three squared U-shaped food steamer elements with parallel legs and bent corners',
-          caption: 'Squared steamer element profiles · Huashi reference photo',
+          caption: 'Squared steamer element profiles · Reference photo',
         },
         {
           image: 'curved-food-steamer-element-reference', width: 600, height: 600,
           alt: 'Three curved U-shaped food steamer heating elements with different widths',
-          caption: 'Curved steamer element profiles · Huashi reference photo',
+          caption: 'Curved steamer element profiles · Reference photo',
         },
       ],
     },
