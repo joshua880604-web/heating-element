@@ -240,6 +240,11 @@ export const glossary = [
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
   },
   {
+    id: 'type-b-thermocouple', name: 'Type B Thermocouple',
+    definition: 'A high-temperature thermocouple with a platinum–30% rhodium positive leg and a platinum–6% rhodium negative leg. Specify the protected assembly and compatible instrument for the required measurement interval.',
+    related: ['Type B Thermocouples', '/thermocouples/type-b/'],
+  },
+  {
     id: 'type-e-thermocouple', name: 'Type E Thermocouple',
     definition: 'A nickel-chromium and copper–nickel thermocouple with relatively high thermoelectric output per degree over many practical temperature intervals. Use the Type E instrument input and matching wiring.',
     related: ['Type E Thermocouples', '/thermocouples/type-e/'],
@@ -253,6 +258,16 @@ export const glossary = [
     id: 'type-k-thermocouple', name: 'Type K Thermocouple',
     definition: 'A thermocouple type that uses two nickel-based alloys. The application limits of a Type K probe also depend on its sheath, junction, leads and operating conditions.',
     related: ['Type K Thermocouples', '/thermocouples/type-k/'],
+  },
+  {
+    id: 'type-n-thermocouple', name: 'Type N Thermocouple',
+    definition: 'A thermocouple that pairs a nickel–chromium–silicon positive leg with a nickel–silicon negative leg. It is considered for elevated-temperature applications where stability matters.',
+    related: ['Type N Thermocouples', '/thermocouples/type-n/'],
+  },
+  {
+    id: 'type-r-thermocouple', name: 'Type R Thermocouple',
+    definition: 'A platinum-based thermocouple with a platinum–13% rhodium positive leg and a platinum negative leg. A furnace assembly is specified by its protection tube, installation and Type R instrument input.',
+    related: ['Type R Thermocouples', '/thermocouples/type-r/'],
   },
   {
     id: 'type-s-thermocouple', name: 'Type S Thermocouple',

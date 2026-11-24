@@ -6,6 +6,7 @@ const accessories = '/temperature-sensors/accessories/';
 const strip = '/heating-elements/strip-heaters/';
 const flexible = '/heating-elements/flexible-heaters/';
 const infrared = '/heating-elements/infrared-heaters/';
+const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
 
 export const groups = {
   sensing: 'Temperature Sensors',
@@ -475,6 +476,96 @@ export const products = [
     guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples'],
   },
   {
+    id: 'type-n', path: thermo + 'type-n/', parent: 'thermocouples', group: 'sensing', name: 'Type N Thermocouples',
+    image: 'type-n',
+    imageAlt: 'Illustration of a metal-sheathed Type N thermocouple probe with a threaded fitting and braided lead',
+    title: 'Custom Type N Thermocouple Probes & Assemblies',
+    description: 'Specify a custom Type N thermocouple by sheath, junction, installed depth, process atmosphere and compatible Type N extension wiring.',
+    text: 'Type N probes for elevated-temperature service with compatible instruments and specified mounting.',
+    intro: 'A Type N thermocouple uses a nickel–chromium–silicon positive leg and a nickel–silicon negative leg. Consider Type N for elevated-temperature processes where stability is important. For a custom probe, describe the atmosphere, exposure duration, sheath and instrument input alongside the drawing.',
+    options: ['Metal-sheathed or mineral-insulated configurations reviewed by application', 'Junction and mounting selected for the sensing location', 'Type N leads, connector or terminal-head termination'],
+    specs: ['Continuous and peak temperatures, time at peak, thermal cycling and process atmosphere', 'Sheath material and diameter, insertion length and mounting dimensions', 'Junction construction, response target and electrical isolation requirements', 'Type N instrument input, extension wire designation, termination and lead temperature'],
+    selection: [
+      'Specify the Type N Probe and Extension Wiring',
+      'Show the installed sensing point, mounting reference and lead exit. Document the temperatures at each location so the sheath, transition and wiring can be reviewed together.',
+      { table: [
+        ['Selection detail', 'What to send'],
+        ['Temperature and exposure', 'Normal and peak temperatures, time at peak, heating and cooling cycles, and any gases, deposits or vibration at the sensing point.'],
+        [['Sheath and installation', thermo + 'mineral-insulated/'], 'Sheath material, outside diameter, bend or support location, and insertion measured from the installed reference face.'],
+        [['Sensing junction', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Required junction construction, response or electrical isolation, and where the measurement is needed.'],
+        [['Type N cable and instrument', '/guides/thermocouple-wire-color-code/'], 'Instrument or transmitter model, specified cable designation and color standard, connector format and expected temperature at the transition.'],
+      ] },
+    ],
+    use: 'Typical inquiries include furnaces, heat-treatment equipment and other elevated-temperature applications using Type N instrumentation.',
+    questions: [
+      ['What is a Type N thermocouple used for?', 'Type N is a nickel-based thermocouple often considered for stability at elevated temperatures. Match the instrument to Type N and evaluate the sheath and junction for the atmosphere, duration and temperature cycle.'],
+      ['How should I read the Type N temperature range?', 'The NIST ITS-90 reference function gives the Type N temperature-to-voltage relationship. Confirm the instrument supports Type N and the required measurement span. Specify the continuous and peak conditions so the sheath, junction, insulation and leads can be reviewed for the installation.'],
+      ['Which extension wire should I specify for a Type N probe?', 'Specify the Type N cable designation, applicable wiring standard, lead length and temperature at the probe-to-cable junction. Confirm the connector polarity and the Type N instrument input.'],
+    ],
+    related: ['type-k', 'mineral-insulated', 'threaded-thermocouple', 'high-temperature'],
+    guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples'],
+  },
+  {
+    id: 'type-r', path: thermo + 'type-r/', parent: 'thermocouples', group: 'sensing', name: 'Type R Thermocouples',
+    image: 'type-r',
+    imageAlt: 'Illustration of a Type R thermocouple with a ceramic protection tube, threaded adapter and cable',
+    title: 'Custom Type R Thermocouples for Furnaces & Kilns',
+    description: 'Specify a custom Type R furnace thermocouple by protection tube, insertion depth, atmosphere, continuous temperature and compatible wiring.',
+    text: 'Platinum–rhodium Type R probes configured for furnace and kiln measurements.',
+    intro: 'A Type R thermocouple pairs a platinum–13% rhodium positive leg with a platinum negative leg. For a furnace or kiln probe, give the installed insertion length, protection tube dimensions, normal and peak temperatures, and exposure to the furnace atmosphere.',
+    options: ['Protection tube material and dimensions reviewed for the furnace atmosphere', 'Mounting and insertion depth matched to the equipment drawing', 'Type R connection head or lead termination by application'],
+    specs: ['Normal and peak furnace temperatures, dwell time and thermal cycling', 'Atmosphere, contaminants and possible contact with furnace materials', 'Protection tube diameter, installation reference face, insertion depth and supported length', 'Type R instrument input, cable designation, termination and expected connection temperature'],
+    selection: [
+      'Specify a Type R Furnace Probe',
+      'Send a cross-section of the furnace wall or kiln port. Locate the probe tip, mount and external termination. Specify where the protected element passes through the hot zone.',
+      { table: [
+        ['Assembly detail', 'What to specify'],
+        ['Furnace exposure', 'Setpoint, peak temperature, time at peak, heating and cooling rates, and gases, dust or vapors around the probe.'],
+        [['Protection tube', thermo + 'high-temperature/'], 'Material or compatibility requirements, diameter, insertion depth and any pilot hole or guide sleeve that the tube must pass through.'],
+        ['Mounting and support', 'Installed reference face, wall or nozzle thickness, tube orientation, support locations and removal clearance.'],
+        [['Type R wire and instrument', '/guides/thermocouple-wire-color-code/'], 'Type R input, cable designation and color standard, expected termination temperature and connector or terminal layout.'],
+      ] },
+    ],
+    use: 'Consider Type R assemblies for furnace, kiln and process equipment specified for a Type R temperature input.',
+    questions: [
+      ['What is a Type R thermocouple?', 'Type R is a platinum-based thermocouple with a platinum–13% rhodium positive leg and a platinum negative leg. Specify a Type R input and compatible wiring for the measurement chain.'],
+      ['What determines the working temperature range of a Type R probe?', 'Review the process atmosphere, exposure time, protection tube, insulation, and temperatures at the mount and connection. The ITS-90 reference interval describes the electrical signal. The assembly is reviewed against the installed conditions.'],
+      ['How do I identify Type R wire color and polarity?', 'Find the cable designation and color standard on the assembly documentation. Confirm the wire polarity at the Type R instrument and check the allowed temperature at the transition to the extension or compensating cable.'],
+    ],
+    related: ['type-s', 'type-b', 'high-temperature', 'sensor-accessories'],
+    guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'how-thermocouples-work'],
+  },
+  {
+    id: 'type-b', path: thermo + 'type-b/', parent: 'thermocouples', group: 'sensing', name: 'Type B Thermocouples',
+    image: 'type-b',
+    imageAlt: 'Illustration of a Type B furnace thermocouple with a flanged ceramic protection tube and terminal head',
+    title: 'Custom Type B Thermocouples for High-Temperature Furnaces',
+    description: 'Specify a Type B thermocouple by furnace temperature profile, atmosphere, ceramic protection tube, installed support and terminal head requirements.',
+    text: 'Type B assemblies for specified high-temperature furnace measurements with a compatible input.',
+    intro: 'Type B thermocouples use a platinum–30% rhodium positive leg and a platinum–6% rhodium negative leg. For a high-temperature furnace probe, provide the temperature profile and atmosphere, plus the location of the hot junction, support and terminal head.',
+    options: ['Protection tube and support by furnace drawing', 'Insertion depth and mounting interface matched to the installation', 'Type B terminal head and compatible instrument wiring as specified'],
+    specs: ['Continuous and peak temperatures, dwell time, and lower limit of the control or measurement interval', 'Furnace atmosphere, possible contaminants and exposure to thermal cycling', 'Protection tube diameter, installed orientation, unsupported span and mounting layout', 'Type B controller or transmitter input, terminal head clearance and temperature at the wiring connection'],
+    selection: [
+      'Specify the Type B Furnace Assembly and Terminal Head',
+      'Provide the furnace drawing and specify the operating temperatures at the sensing tip and at the external terminal. Include the geometry of the tube support and room for service access.',
+      { table: [
+        ['Application detail', 'What to include'],
+        ['Temperature profile', 'Normal and peak temperatures, time at peak, how often the furnace cycles, and the lowest temperature the controller needs to measure.'],
+        [['Tube and atmosphere', thermo + 'high-temperature/'], 'Furnace atmosphere and deposits, ceramic protection tube dimensions or material requirements, and possible contact with furnace internals.'],
+        [['Mount and support', thermo + 'flanged/'], 'Mounting reference, flange or adapter drawing, insertion depth, orientation and exposed length between support points.'],
+        [['Head and wiring', '/guides/thermocouple-wire-color-code/'], 'Type B input, connector or terminal specification, cable entry, clearance, and allowable temperature at the head and any cable transitions.'],
+      ] },
+    ],
+    use: 'Applications to review include high-temperature furnaces and kilns that specify a Type B measurement input and a protected sensing assembly.',
+    questions: [
+      ['What temperature range should I specify for a Type B thermocouple?', 'Provide the continuous, peak and minimum temperatures the installed system must measure. The Type B voltage changes slowly near ambient temperature. Confirm the instrument’s measurement interval and review the protection tube and wiring at their installed temperatures.'],
+      ['What details should I send for a Type B thermocouple with a connection head?', 'Show the head position, cable entry, service clearance and connection temperature on the drawing. Include the Type B controller or transmitter, approved wiring specification, and mounting and insertion dimensions.'],
+      ['How should I specify a Type B ceramic protection tube?', 'Provide the furnace atmosphere, continuous and peak temperatures, thermal cycling, tube diameter, insertion depth and orientation. Show support points and any exposed span so the probe construction can be considered for the actual mount.'],
+    ],
+    related: ['type-r', 'type-s', 'high-temperature', 'flanged-thermocouple'],
+    guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'how-thermocouples-work'],
+  },
+  {
     id: 'threaded-thermocouple', path: thermo + 'threaded-probes/', parent: 'thermocouples', group: 'sensing',
     name: 'Threaded Thermocouple Probes', image: 'thermocouples',
     imageAlt: 'Illustration of threaded thermocouple probe configurations with braided leads',
@@ -678,7 +769,7 @@ export const products = [
       ] },
     ],
     use: 'Applications include furnaces, kilns, heat treatment and other controlled high-temperature environments.',
-    related: ['type-s', 'mineral-insulated', 'type-k', 'sensor-accessories'],
+    related: ['type-s', 'type-r', 'type-b', 'type-n', 'mineral-insulated', 'type-k', 'sensor-accessories'],
     guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     questions: [
       ['When should I specify a ceramic protection tube for a furnace thermocouple?', 'Consider a ceramic protection tube when its material suits the furnace atmosphere and temperature. Include thermal cycling, possible mechanical impact, insertion depth and mounting. Sensor alloy and protection tube limits should be evaluated together.'],
@@ -1355,7 +1446,7 @@ export const guides = [
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
     readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature'],
-    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-s-thermocouple'],
+    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple'],
     sections: [
       ['Compare thermocouple types by application', 'K, J, T, N and E are common base-metal types. R, S and B use platinum-based alloys. Start with the instrument input, normal and peak temperatures, and process atmosphere, then check the limits of the protected assembly.', {
         table: [
@@ -1363,13 +1454,24 @@ export const guides = [
           [['K', thermo + 'type-k/'], 'General industrial use, including ovens and process equipment, subject to the atmosphere and sheath.'],
           [['J', thermo + 'type-j/'], 'Heated tooling and systems configured for Type J. Review protection for the iron leg in moisture or oxidizing conditions.'],
           [['T', thermo + 'type-t/'], 'Often considered for measurements at lower temperatures. Verify the probe and lead construction for the environment.'],
-          ['N', 'Consider for base-metal service where stability at elevated temperatures is important. Check instrument support.'],
+          [['N', thermo + 'type-n/'], 'Consider for base-metal service where stability at elevated temperatures is important. Check instrument support.'],
           [['E', thermo + 'type-e/'], 'Produces a relatively large thermoelectric signal for a given temperature change. Confirm the intended measurement range and input.'],
+          [['R', thermo + 'type-r/'], 'Platinum–13% rhodium and platinum pair for furnace or kiln service. Confirm the Type R input, protection and insertion depth.'],
           [['S', thermo + 'type-s/'], 'Platinum and platinum–10% rhodium pair for selected furnace and kiln measurements. Review protection tube material and mounting.'],
-          [['R and B', thermo + 'high-temperature/'], 'Other platinum-based options for high-temperature measurements. Match the specified type, protection tube and instrument input.'],
+          [['B', thermo + 'type-b/'], 'Two platinum–rhodium legs for selected high-temperature service. Check the measurement interval, tube support and terminal head temperature.'],
         ],
       }],
       ['Compare Type K and Type J', 'Type K uses nickel-based conductors and is widely used for general industrial measurement. Type J uses an iron positive conductor that may need protection in oxidizing or moisture-prone service. For a replacement, confirm which type the instrument is configured to read, then compare the full probe assembly limits.'],
+      ['Compare Type N and Type K', 'Both use nickel-based alloys. Type N is often considered when stability during extended exposure to elevated temperatures is important. Compare behavior for the actual thermal cycle and atmosphere, and configure the instrument and wiring for the selected type.'],
+      ['Compare Type R and Type S', 'Both use a platinum negative leg. The positive leg contains 13% rhodium in Type R and 10% in Type S. Each has its own voltage-to-temperature reference function. Confirm the required instrument input and the specified furnace protection tube, mount and wiring.'],
+      ['Read the ITS-90 reference intervals', 'These NIST reference functions describe thermoelectric voltage over a defined temperature interval. To specify a probe, confirm the instrument span and review the sheath or protection tube, atmosphere, exposure duration, insulation and lead connection at their installed temperatures.', {
+        table: [
+          ['Type', 'NIST ITS-90 reference function interval'],
+          [['N', thermo + 'type-n/'], ['−270 to 1,300 °C', nistThermocoupleReference]],
+          [['R', thermo + 'type-r/'], ['−50 to 1,768.1 °C', nistThermocoupleReference]],
+          [['B', thermo + 'type-b/'], ['0 to 1,820 °C', nistThermocoupleReference]],
+        ],
+      }],
       ['Define the complete assembly', 'The alloy type is only one input. Sheath, insulation, junction, connector and extension wire can impose their own limits. Include expected peak temperature, probe depth, vibration and the mounting interface in a request.'],
       ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.'],
       ['Decide how to connect it', 'Match the extension cable and connector to the thermocouple type and instrument. Document any required terminal head, miniature plug or bare wire termination.'],
@@ -1506,11 +1608,11 @@ export const guides = [
   },
   {
     slug: 'thermocouple-wire-color-code', group: 'sensing', name: 'Thermocouple Wire Color Codes and Polarity',
-    description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J, T and E. Match polarity, extension wire and connectors to the instrument.',
-    related: ['type-k', 'type-j', 'sensor-accessories'],
+    description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J, T, E and N. Specify compatible Type R and Type B cables and polarity.',
+    related: ['type-k', 'type-j', 'type-n', 'type-r', 'type-b', 'sensor-accessories'],
     readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-types'],
     terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'iec-60584-3'],
-    answer: ['What color is the negative thermocouple wire?', 'For Types K, J, T and E, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],
+    answer: ['What color is the negative thermocouple wire?', 'For Types K, J, T, E and N, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],
     sections: [
       ['US and IEC conductor colors', 'The chart compares insulated conductor colors. Jacket colors vary with cable grade and standard. Older assemblies may follow a different national convention.', {
         table: [
@@ -1519,10 +1621,18 @@ export const guides = [
           ['J', 'White', 'Red', 'Black', 'White'],
           ['T', 'Blue', 'Red', 'Brown', 'White'],
           ['E', 'Purple', 'Red', 'Violet', 'White'],
+          [['N', thermo + 'type-n/'], 'Orange', 'Red', 'Pink', 'White'],
         ],
       }],
       ['Identify the pair before making a connection', 'Read the printing on the cable or probe label. Check the type and polarity markings on the connector and the input terminals. Set the transmitter to the same alloy type. If the markings are unclear, identify the assembly from its part documentation or verify its response with a known reference before putting it into service.'],
       ['Extension wire and compensating cable', 'Extension-grade cable uses conductors of the same nominal composition as the corresponding thermocouple pair. Compensating cable uses different alloys chosen to reproduce the needed thermoelectric behavior over a specified temperature interval. Select an approved cable designation for the thermocouple and verify the range for the junctions and the insulation.'],
+      ['Type R and Type B cable and polarity', 'Match the extension or compensating cable designation to the instrument and probe documentation. Use the conductor colors specified for that cable grade and standard, and verify polarity at the connector and input. Include the expected temperature at each transition in the wiring specification.', {
+        table: [
+          ['Type', 'What to check'],
+          [['R', thermo + 'type-r/'], 'Type R input, cable grade and color standard, connector polarity and allowed transition temperature.'],
+          [['B', thermo + 'type-b/'], 'Type B input and measurement interval, compatible cable designation, head terminal markings and transition temperature.'],
+        ],
+      }],
       ['Specify a replacement cable or connector', 'Send the type, color standard, connector format, lead length and maximum cable temperature. For a junction box or extension run, include the expected temperature at both ends and any shield or abrasion requirements.'],
     ],
   },
