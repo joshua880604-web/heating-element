@@ -94,6 +94,7 @@ export const products = [
         ['Single-ended', 'Both electrical connections leave one tube end.', 'Terminal arrangement, unheated lead end and clearance for the wiring.'],
         ['Double-ended', 'Electrical connections leave opposite tube ends. A U shape can bring those ends to one side of the equipment.', 'Terminal arrangement and cold-end length at each tube end.'],
         [['Industrial oven elements', tubular + 'industrial-oven/'], 'An oven or dryer needs a shaped element for a defined heating zone and air path.', 'Mounting hole spacing, support points, airflow or radiant exposure, and wattage per zone.'],
+        [['Sauna heating elements', tubular + 'sauna/'], 'A formed element fits the heating compartment of an electric sauna stove.', 'Tube profile, support spacing, terminal location and electrical rating per element.'],
       ], diagram: [
         'Straight double-ended example. T marks a terminal, C a cold end and H the active heated span.',
         ['T    C          H          C     T', '●────────┬══════════════┬────────●'],
@@ -196,6 +197,56 @@ export const products = [
       ['What is the difference between a plain and finned oven heater?', 'A plain tubular element transfers heat from its sheath. A finned tubular element adds surface area for a moving air stream. Review the air path, minimum airflow, mounting space and required heat output before choosing a construction.'],
     ],
     related: ['tubular-heaters', 'finned-tubular-heaters', 'duct-heaters', 'high-temperature'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+  },
+  {
+    id: 'sauna-heating-elements', path: tubular + 'sauna/', parent: 'tubular-heaters', group: 'tubular',
+    name: 'Sauna Heating Elements', image: 'sauna-heating-elements',
+    imageAlt: 'Illustration of a multi-pass tubular sauna heating element with two adjacent terminals',
+    title: 'Custom Sauna Heating Elements for Electric Stoves',
+    description: 'Request an OEM sauna heating element by tube profile, stove drawing, mounting, terminal layout, voltage and wattage per element.',
+    text: 'Formed tubular heating elements for electric sauna stoves, reviewed to your drawing or original part dimensions.',
+    intro: 'A sauna heating element is a formed metal-sheathed resistance heater for an electric sauna stove. Each custom inquiry is reviewed against the stove drawing or original part dimensions and the electrical rating of the individual element. Include how the heater sits inside the stone basket and where the terminals leave the housing.',
+    options: ['Flat serpentine, side-entry and angled tube profiles by drawing', 'Support and cold-end geometry to match the stove layout', 'Terminal format and electrical rating reviewed per element'],
+    specs: ['Stove drawing or model and original element reference, including nameplate and part photos when available', 'Tube diameter, bend profile, overall envelope, mount spacing and support locations', 'Voltage across one element, wattage per element, element count and wiring diagram', 'Active length, unheated ends, terminal type and clearances to the basket, guard and housing'],
+    selection: [
+      'Match the Tube Profile, Supports and Element Rating',
+      'Measure the element from its mounting reference and show it in the installed orientation. A dimensioned front view and a side view help distinguish a flat element from one with an offset. Include the original terminal connection details.',
+      { table: [
+        ['Drawing input', 'What to provide'],
+        ['Tube and bend profile', 'Show overall height and width, tube diameter, bend radii and pass spacing. Mark any offsets, return bends and the active heated span.'],
+        ['Mount and installed clearance', 'Locate the support tabs or brackets, terminal opening and mounting holes. Show the clearance to the stone basket, guard and nearby elements.'],
+        ['Cold ends and terminals', 'Give the unheated length and the terminal spacing and projection at the housing. Identify the terminal style and lead clearance.'],
+        ['Rating of one element', 'Provide the specified voltage across one element, its wattage, number of elements and connection diagram. Include the appliance rating as a separate reference.'],
+      ] },
+    ],
+    use: 'Applications include OEM electric sauna stoves and replacement inquiries where the original element drawing, dimensions and rating are available for review.',
+    variants: {
+      title: 'Sauna Heating Element Profile Examples',
+      photos: [
+        {
+          image: 'side-entry-sauna-element-reference', width: 600, height: 600,
+          alt: 'Sauna heating element with an L-shaped outline and two terminal legs raised at one side',
+          caption: 'Side-entry profile · Huashi reference photo',
+        },
+        {
+          image: 'flat-sauna-element-reference', width: 600, height: 600,
+          alt: 'Flat serpentine sauna heating element with parallel runs and centered terminal legs',
+          caption: 'Flat serpentine profile · Huashi reference photo',
+        },
+        {
+          image: 'angled-sauna-element-reference', width: 600, height: 600,
+          alt: 'Multi-pass sauna heating element with a diagonal outer run and two off-center terminals',
+          caption: 'Angled profile · Huashi reference photo',
+        },
+      ],
+    },
+    questions: [
+      ['What should I send to request a custom sauna heating element?', 'Provide the stove model or assembly drawing, an original element photo, the measured tube and mounting geometry, the terminal layout and the voltage and wattage marked on the element. Include where it fits inside the stove.'],
+      ['Which power rating should I specify for a multi-element sauna stove?', 'Give the rated wattage and voltage across each element, the element count and the wiring diagram. Include the total stove power separately so the individual element rating can be reviewed.'],
+      ['What determines whether a replacement sauna element will fit?', 'Compare the tube and bends, support and terminal positions, and clearances with the installed drawing. Confirm the original element rating and the stove manufacturer’s service requirements before ordering.'],
+    ],
+    related: ['tubular-heaters', 'industrial-oven-heating-elements', 'finned-tubular-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
@@ -1923,6 +1974,7 @@ export const guides = [
           [['Straight or formed', tubular], 'Use the equipment envelope, centerline bends, active length and where the terminals emerge.'],
           [['Finned for moving air', tubular + 'finned/'], 'Review fin clearance, normal and minimum airflow, and pressure drop.'],
           [['Industrial oven heating elements', tubular + 'industrial-oven/'], 'Give the heater zone layout, support and mounting hole positions, airflow or radiant exposure, and power per zone.'],
+          [['Sauna heating elements', tubular + 'sauna/'], 'Provide the tube profile, stove support and terminal positions, clearance to the stone basket, and voltage and wattage per element.'],
           [['Immersion assembly', immersion], 'Match the vessel connection, liquid chemistry, insertion length and minimum liquid level.'],
         ],
       }],
