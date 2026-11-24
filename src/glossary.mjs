@@ -240,6 +240,11 @@ export const glossary = [
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
   },
   {
+    id: 'type-e-thermocouple', name: 'Type E Thermocouple',
+    definition: 'A nickel-chromium and copper–nickel thermocouple with relatively high thermoelectric output per degree over many practical temperature intervals. Use the Type E instrument input and matching wiring.',
+    related: ['Type E Thermocouples', '/thermocouples/type-e/'],
+  },
+  {
     id: 'type-j-thermocouple', name: 'Type J Thermocouple',
     definition: 'An iron–copper-nickel thermocouple. The probe, extension wire and instrument input must match Type J for the measurement to use the correct voltage-to-temperature relationship.',
     related: ['Type J Thermocouples', '/thermocouples/type-j/'],
@@ -248,6 +253,16 @@ export const glossary = [
     id: 'type-k-thermocouple', name: 'Type K Thermocouple',
     definition: 'A thermocouple type that uses two nickel-based alloys. The application limits of a Type K probe also depend on its sheath, junction, leads and operating conditions.',
     related: ['Type K Thermocouples', '/thermocouples/type-k/'],
+  },
+  {
+    id: 'type-s-thermocouple', name: 'Type S Thermocouple',
+    definition: 'A platinum-based thermocouple with a platinum–10% rhodium positive leg and a platinum negative leg. It is used in selected furnace and kiln applications with a compatible instrument input and protection tube.',
+    related: ['Type S Thermocouples', '/thermocouples/type-s/'],
+  },
+  {
+    id: 'type-t-thermocouple', name: 'Type T Thermocouple',
+    definition: 'A copper and copper–nickel thermocouple often used for lower-temperature measurement. Select the probe, lead insulation and termination for the installed environment.',
+    related: ['Type T Thermocouples', '/thermocouples/type-t/'],
   },
   {
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
