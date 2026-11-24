@@ -38,7 +38,7 @@ export const products = [
       ['How do I choose between a probe and a thermocouple assembly with a connection head?', 'Use the available installation space and wiring interface to decide. A probe with leads or a plug can fit compact equipment. A terminal head provides a connection point for field wiring where the mounting and environment support it.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
-    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
   },
   {
     id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', featured: true, image: 'tubular-heaters',
@@ -89,7 +89,7 @@ export const products = [
       ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
   },
   {
     id: 'cartridge-heaters', path: '/heating-elements/cartridge-heaters/', group: 'specialty', name: 'Cartridge Heaters', featured: true, image: 'cartridge-heaters',
@@ -142,7 +142,7 @@ export const products = [
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
     ],
     related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
-    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    guides: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
   },
   {
     id: 'type-j', path: thermo + 'type-j/', parent: 'thermocouples', group: 'sensing', name: 'Type J Thermocouples',
@@ -156,7 +156,7 @@ export const products = [
     specs: ['Continuous and peak temperature', 'Probe dimensions and materials', 'Junction type and mounting', 'Lead length and termination'],
     use: 'Type J sensors are used in selected plastics machinery, hot tooling and existing industrial temperature measurement systems.',
     related: ['type-k', 'threaded-thermocouple', 'band-heaters', 'sensor-accessories'],
-    guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+    guides: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     questions: [
       ['Can a Type J thermocouple replace a Type K probe with the same mounting?', 'The external fit alone is insufficient. Type J and Type K produce different voltage-to-temperature relationships. The instrument input, extension wiring and connector must match the sensor type. Confirm the operating environment and probe construction before selecting a replacement.'],
     ],
@@ -251,7 +251,7 @@ export const products = [
     specs: ['Element and wiring configuration', 'Temperature range and accuracy requirement', 'Sheath, length and mount', 'Connector or terminal details'],
     use: 'RTDs are frequently considered for process monitoring where measurement stability and repeatability are important.',
     related: ['type-k', 'thermocouples', 'sensor-accessories'],
-    guides: ['thermocouple-vs-rtd'],
+    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd'],
     questions: [
       ['How do I choose the wiring for a Pt100 temperature sensor?', 'Match the instrument input first. Two-wire measurement includes lead resistance. Three-wire measurement can compensate for balanced lead resistance. Four-wire measurement separates the current and voltage paths. Send the wiring diagram, lead length and required tolerance.'],
     ],
@@ -275,7 +275,7 @@ export const products = [
     specs: ['Sensor type and connection standard', 'Process conditions and material', 'Thread or flange and dimensions', 'Drawing, quantity and termination'],
     use: 'Accessories are specified alongside replacement probes and new instrument installations.',
     related: ['thermocouples', 'type-k', 'mineral-insulated', 'rtd'],
-    guides: ['thermocouple-types', 'thermocouple-vs-rtd'],
+    guides: ['thermocouple-wire-color-code', 'thermowell-selection-guide', 'thermocouple-types', 'thermocouple-vs-rtd'],
     questions: [
       ['What should match when ordering thermocouple extension wire and connectors?', 'Confirm the thermocouple type, polarity and compatible extension wire or connector materials. Also include the applicable wiring standard, cable insulation temperature and connector format. For a thermowell, supply process conditions and the mounting and insertion dimensions.'],
     ],
@@ -290,7 +290,7 @@ export const products = [
     specs: ['Flange standard and face details', 'Fluid, temperature and pressure', 'Immersion depth and clearance', 'Voltage, phase and wattage'],
     use: 'Used for tanks and vessels where the heater is installed through a flanged connection.',
     related: ['immersion-heaters', 'screw-plug-immersion', 'over-the-side-immersion', 'circulation-heaters'],
-    guides: ['heating-element-watt-density'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
     questions: [
       ['What flange details are needed for a replacement immersion heater?', 'Provide the flange standard or drawing, nominal size, pressure class, facing and bolt pattern. Show the insertion length from the mounting face and the internal vessel clearance. Include the fluid, operating pressure and power requirements.'],
     ],
@@ -307,7 +307,7 @@ export const products = [
     specs: ['Thread standard and size', 'Fluid type and temperature', 'Insertion envelope', 'Voltage, phase and wattage'],
     use: 'Typical projects include water and oil heating through a threaded tank port.',
     related: ['immersion-heaters', 'flanged-immersion', 'over-the-side-immersion', 'circulation-heaters'],
-    guides: ['heating-element-watt-density'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
     questions: [
       ['Can threaded immersion heaters with similar-looking plugs be interchanged?', 'Confirm thread form, pitch, size and sealing method before choosing the plug. A tapered and a parallel thread can look similar while requiring different fittings. Also verify the immersion length and clearance from the threaded port to the vessel wall.'],
     ],
@@ -325,7 +325,7 @@ export const products = [
     specs: ['Tank dimensions, rim profile and mounting details', 'Minimum and maximum liquid levels, including operating changes', 'Liquid chemistry, working temperatures and warm-up time', 'Heated depth, removal clearance, voltage, phase and target power'],
     use: 'Typical projects involve open process tanks with overhead access for installation and service. Include the positions of racks, baskets, vessel walls, tank covers and other obstructions in the drawing.',
     related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: ['immersion-heater-sizing', 'choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['When does an over-the-side heater suit a process tank?', 'Consider this mounting when the vessel can be accessed from above and the rim or an independent support can carry the assembly. Confirm the path for insertion and removal. A flanged or screw plug design uses a compatible tank connection instead.'],
       ['How do I specify immersion depth and the cold zone?', 'Show the mounting reference, minimum liquid level, tank bottom and the boundaries of the heated section on the drawing. These dimensions define where the unheated section passes through the liquid surface and where the active section remains submerged.'],
@@ -567,7 +567,7 @@ export const guides = [
     slug: 'thermocouple-types', group: 'sensing', name: 'Thermocouple Types and Selection',
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
-    readNext: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'high-temperature'],
     sections: [
       ['Choose an alloy type', 'K, J, T, N and E are common base-metal types. R, S and B are noble-metal types often considered for high-temperature processes. Match the type to the instrument input, required accuracy, process atmosphere and operating temperature.'],
@@ -582,6 +582,7 @@ export const guides = [
     description: 'Compare grounded, ungrounded and exposed thermocouple junctions by electrical isolation, thermal response, sheath protection and process exposure.',
     answer: ['What is the difference between grounded and ungrounded junctions?', 'In a grounded thermocouple, the sensing junction is bonded to the sheath. In an ungrounded thermocouple, insulation separates the junction from the sheath. Compare electrical isolation and response for the complete probe.'],
     readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
+    terms: ['grounded-junction', 'ungrounded-junction', 'exposed-junction', 'thermocouple-response-time'],
     related: ['thermocouples', 'mineral-insulated'],
     sections: [
       ['Grounded junction', 'The sensing junction is bonded to the sheath. Direct contact can improve thermal response, while the electrical connection can matter in installations with ground loops or noise.'],
@@ -594,7 +595,7 @@ export const guides = [
     slug: 'choose-a-heating-element', group: 'heating', name: 'How to Choose an Industrial Heating Element',
     description: 'Choose an industrial heating element by heating medium, installation geometry, temperature target and electrical load. Compare tubular and cartridge heaters.',
     answer: ['How do I choose an industrial heating element?', 'Identify what the heater must warm and how heat will reach it. Match the heater family to the fluid, moving air, solid contact or radiant load. Then check the available geometry, supply and required temperature rise.'],
-    readNext: ['heating-element-watt-density'],
+    readNext: ['immersion-heater-sizing', 'heating-element-watt-density'],
     related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters'],
     sections: [
       ['Start with heat transfer', 'An element may heat a solid tool by contact, heat fluid by immersion, heat air moving around it or transfer heat by radiation. Define the medium and typical operating cycle first.'],
@@ -602,6 +603,7 @@ export const guides = [
       ['Define the electrical and thermal requirements', 'Specify voltage, phase, operating temperature and power if known. Watt density depends on heated surface area and should be considered with materials, flow and the operating conditions. Include minimum and maximum operating conditions in the inquiry.'],
       ['Compare tubular and cartridge heaters', 'A formed tubular element fits an envelope and can be evaluated for air, liquid or contact heating. A cartridge heater fits a cylindrical bore in a mold, die or tool. The choice affects what you specify: sheath and bend geometry for tubular elements, bore fit and lead exit for cartridge heaters.'],
       ['Compare installation options for air and liquid heating', 'For moving air, check whether the equipment supports a flat finned strip or a round finned tubular element and give the minimum airflow. For a liquid tank, start with the available flange, threaded port or top access. A top-entry design needs room for installation and enough liquid to cover the heated section.'],
+      ['Specify the sheath material for the working medium', 'Record the liquid chemistry or air atmosphere, minimum flow, maximum temperature and cleaning process. For alloy callouts such as 800 or 840, provide the complete material designation or datasheet so chemical compatibility, allowable sheath temperature and forming constraints can be reviewed.'],
     ],
   },
   {
@@ -609,7 +611,7 @@ export const guides = [
     description: 'Compare thermocouple and Pt100 RTD signals, wiring, temperature requirements and instrument compatibility for industrial sensor selection.',
     related: ['thermocouples', 'type-k', 'rtd'],
     answer: ['When should I choose a thermocouple or a Pt100 RTD?', 'Consider a thermocouple for elevated temperatures or a small measuring junction. Consider a Pt100 RTD when stability and repeatability matter within its working range. Confirm that the instrument supports the chosen input and wiring.'],
-    readNext: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+    readNext: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     sections: [
       ['How each sensor measures temperature', 'A thermocouple produces a small voltage related to the temperatures at its measuring junction and reference junction. The instrument compensates for the reference junction. A Pt100 RTD uses the resistance of platinum, nominally 100 ohms at 0 °C. Its instrument measures resistance using an excitation current.'],
       ['Compare the usable temperature range and response', 'A thermocouple is often considered for elevated temperatures and applications that need a small junction. A platinum RTD is often considered when stability and repeatability within its operating range are more important. Response time and usable temperature depend on the full assembly, including the sheath, diameter, mounting and process medium.'],
@@ -622,12 +624,141 @@ export const guides = [
     description: 'Learn how to calculate surface watt density and what airflow, liquid conditions and mounting to specify for a custom tubular or immersion heater.',
     related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
-    readNext: ['choose-a-heating-element'],
+    readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
     sections: [
       ['What surface watt density measures', 'Surface watt density is electrical power divided by the active surface area of the element, typically expressed in W/cm² or W/in². At the same power, an element with a smaller active area has a higher watt density. How hot its sheath gets also depends on how quickly heat leaves that surface.'],
       ['Calculate watt density for a round tubular element', 'Use the sheath diameter and active heated length in consistent units. For the cylindrical surface, area is π × diameter × heated length. For example, a 100 W element with a 10 mm sheath and 100 mm of active heated length has an area of about 31.4 cm² and a watt density of about 3.2 W/cm². Exclude unheated ends. This example shows the calculation only.'],
       ['Account for the process medium', 'Air velocity, liquid flow, oil viscosity, deposits and contact with a solid block all change heat transfer. An immersion heater also depends on adequate submergence. For a finned element, distinguish the tube surface used to specify watt density from the fin area that helps transfer heat into air.'],
       ['What to include in an RFQ', 'Share target power and voltage, sheath or bore dimensions, the active heated length and mounting. For air or liquid service, include minimum and maximum flow, medium and temperature. For a cartridge heater, include the bore fit, heated material and operating cycle.'],
+    ],
+  },
+  {
+    slug: 'pt100-wiring-diagram', group: 'sensing', name: 'Pt100 RTD Wiring Diagram for 2, 3 and 4 Wires',
+    description: 'Read 2-, 3- and 4-wire Pt100 RTD wiring diagrams and match the element leads to your temperature transmitter, PLC input or controller.',
+    related: ['rtd', 'sensor-accessories'],
+    readNext: ['pt100-vs-pt1000', 'thermocouple-vs-rtd'],
+    terms: ['pt100', 'rtd', 'rtd-self-heating'],
+    answer: ['How do I wire a Pt100 RTD?', 'Identify the two ends of the platinum element and select the matching RTD input mode. A two-wire sensor has one lead per end, a three-wire sensor has two leads at one end, and a four-wire sensor has two leads at each end. Match these pairs to the terminal drawing for your instrument.'],
+    sections: [
+      ['Identify the element ends', 'A and B in these diagrams are the ends of one Pt100 sensing element. A1 and A2 share one end, and B1 and B2 share the other. With the probe isolated from the instrument, a resistance reading across the element will be near 100 Ω at 0 °C and higher at room temperature. A measurement between leads sharing one end includes the resistance of the leads. Use the probe drawing to identify the pairs, especially for dual-element assemblies.'],
+      ['Two-wire Pt100 wiring', 'Two leads complete the measuring circuit. The instrument sees the element resistance plus the resistance of both leads. Check the expected lead resistance at the installed length when evaluating measurement error.', {
+        diagram: ['One lead to each end of the element', ['A ──────────[ Pt100 ]────────── B']],
+      }],
+      ['Three-wire Pt100 wiring', 'Two leads connect to the same end of the element. A compatible three-wire input estimates lead resistance and compensates for it when the relevant lead resistances match. Use matched wire lengths and gauges through cable extensions and terminations.', {
+        diagram: ['A1 and A2 connect to the same end', ['A1 ────────┐', 'A2 ────────┴──[ Pt100 ]──────── B']],
+      }],
+      ['Four-wire Pt100 wiring', 'Each end has a current lead and a voltage-sense lead. With a compatible four-wire input, the voltage measurement excludes most of the drop along the current leads. Connect each pair to the instrument terminals marked for that end of the element.', {
+        diagram: ['Two leads to each end of the element', ['A1 ────────┐             ┌────── B1', 'A2 ────────┴──[ Pt100 ]──┴────── B2']],
+      }],
+      ['Check the transmitter or PLC input', 'Set the input to the correct platinum curve and wire count. The manufacturer’s diagram specifies terminal numbers, any jumpers for supported two-wire connections, and shield termination. For a custom probe, send the instrument model, lead length, wiring mode, operating temperature and the required system accuracy.'],
+    ],
+  },
+  {
+    slug: 'pt100-vs-pt1000', group: 'sensing', name: 'Pt100 vs. Pt1000 RTD Sensors',
+    description: 'Compare Pt100 and Pt1000 resistance, lead-wire error, self-heating and instrument compatibility before specifying a platinum RTD.',
+    related: ['rtd', 'sensor-accessories'],
+    readNext: ['pt100-wiring-diagram', 'thermocouple-vs-rtd'],
+    terms: ['pt1000-sensor', 'iec-60751', 'pt100-tolerance-class', 'rtd-self-heating'],
+    answer: ['What is the difference between Pt100 and Pt1000?', 'A Pt100 has a nominal resistance of 100 Ω at 0 °C. A Pt1000 has 1,000 Ω at 0 °C. For the same platinum curve, the Pt1000 changes resistance by ten times as much per degree. The instrument must support the chosen nominal resistance and wiring.'],
+    sections: [
+      ['Compare resistance and wiring', 'The nominal values below use the IEC 60751 platinum curve. Sensitivity is averaged from 0 °C to 100 °C and varies with temperature.', {
+        table: [
+          ['Measurement', 'Pt100', 'Pt1000'],
+          ['Nominal resistance at 0 °C', '100 Ω', '1,000 Ω'],
+          ['Nominal resistance at 100 °C', '138.5 Ω', '1,385 Ω'],
+          ['Average sensitivity from 0 to 100 °C', '0.385 Ω/°C', '3.85 Ω/°C'],
+          ['Instrument input', 'Pt100 curve and wire count', 'Pt1000 curve and wire count'],
+        ],
+      }],
+      ['Estimate lead-wire error', 'In a two-wire circuit, 2 Ω of total lead resistance corresponds to about 5.2 °C error for Pt100 or 0.52 °C for Pt1000 using the average sensitivity in the table. This example assumes constant lead resistance. Three-wire and four-wire inputs with compatible probes can reduce lead error when a longer cable or tighter tolerance is required.'],
+      ['Check excitation and self-heating', 'An RTD dissipates electrical power from the measuring current. At the same current a Pt1000 dissipates more power than a Pt100 at the same temperature. Use the excitation specified for the input and element. Probe size, mounting and the process medium affect how much sensor temperature rises.'],
+      ['Check whether the sensors can be interchanged', 'Choose the type supported by the controller or transmitter. A replacement also needs the correct wire count, tolerance class, insertion dimensions and sheath. The complete error budget includes the element, lead wiring, electronics, mounting and any thermal gradients.'],
+    ],
+  },
+  {
+    slug: 'thermocouple-wire-color-code', group: 'sensing', name: 'Thermocouple Wire Color Codes and Polarity',
+    description: 'Compare US ANSI/ASTM and IEC thermocouple wire colors for Types K, J and T, and match polarity, extension wire and connectors.',
+    related: ['type-k', 'type-j', 'sensor-accessories'],
+    readNext: ['type-k-vs-type-j-thermocouple', 'thermocouple-types'],
+    terms: ['thermocouple-polarity', 'thermocouple-extension-wire', 'iec-60584-3'],
+    answer: ['What color is the negative thermocouple wire?', 'For common Type K, J and T pairs, the negative conductor is red under US ANSI/ASTM conventions and white under IEC 60584-3. Check the marked thermocouple type, the applicable standard and the instrument terminals before wiring.'],
+    sections: [
+      ['US and IEC conductor colors', 'The chart compares insulated conductor colors. Jacket colors vary with cable grade and standard. Older assemblies may follow a different national convention.', {
+        table: [
+          ['Type', 'US +', 'US −', 'IEC +', 'IEC −'],
+          ['K', 'Yellow', 'Red', 'Green', 'White'],
+          ['J', 'White', 'Red', 'Black', 'White'],
+          ['T', 'Blue', 'Red', 'Brown', 'White'],
+        ],
+      }],
+      ['Identify the pair before making a connection', 'Read the printing on the cable or probe label. Check the type and polarity markings on the connector and the input terminals. Set the transmitter to the same alloy type. If the markings are unclear, identify the assembly from its part documentation or verify its response with a known reference before putting it into service.'],
+      ['Extension wire and compensating cable', 'Extension-grade cable uses conductors of the same nominal composition as the corresponding thermocouple pair. Compensating cable uses different alloys chosen to reproduce the needed thermoelectric behavior over a specified temperature interval. Select an approved cable designation for the thermocouple and verify the range for the junctions and the insulation.'],
+      ['Specify a replacement cable or connector', 'Send the type, color standard, connector format, lead length and maximum cable temperature. For a junction box or extension run, include the expected temperature at both ends and any shield or abrasion requirements.'],
+    ],
+  },
+  {
+    slug: 'type-k-vs-type-j-thermocouple', group: 'sensing', name: 'Type K vs. Type J Thermocouples',
+    description: 'Compare Type K and Type J thermocouple alloys, process conditions, wiring and controller compatibility for industrial probes.',
+    related: ['type-k', 'type-j', 'thermocouples', 'high-temperature'],
+    readNext: ['thermocouple-types', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples'],
+    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'iec-60584'],
+    answer: ['When should I choose Type K or Type J?', 'Choose the thermocouple type required by the instrument, then verify the probe assembly against the process. Type K is commonly considered for higher-temperature service. Type J often suits compatible equipment with an existing Type J input. Its iron conductor needs protection in conditions that promote oxidation or corrosion.'],
+    sections: [
+      ['Compare the alloys and installation', 'K and J generate different thermoelectric voltages at the same temperature. Check the conductor combination and complete signal chain when selecting a replacement.', {
+        table: [
+          ['Selection factor', 'Type K', 'Type J'],
+          ['Positive leg', 'Nickel-chromium alloy', 'Iron'],
+          ['Negative leg', 'Nickel-aluminum alloy', 'Copper-nickel alloy'],
+          ['US lead colors', 'Yellow + / red −', 'White + / red −'],
+          ['Input and extension cable', 'Type K', 'Type J'],
+        ],
+      }],
+      ['Check the working range of the assembled probe', 'Reference tables describe the voltage–temperature relationship of the alloy pair. The usable range depends on wire diameter, sheath, insulation, junction, protection and atmosphere. Include continuous and peak temperatures, duration and thermal cycling when asking for a range.'],
+      ['Match the process atmosphere', 'Assess moisture, oxidation and contaminants when using iron-based Type J. Type K performance also depends on atmosphere and protection, especially at elevated temperatures. Share the operating environment and any existing probe failure so the sheath and installation can be reviewed.'],
+      ['Check the measurement chain before switching types', 'Confirm the instrument supports the requested type and select its matching input mode. Check extension wire, connector and cold-junction compensation. Match the original probe’s insertion, sheath diameter and junction construction if response time or fit matters.'],
+    ],
+  },
+  {
+    slug: 'thermowell-selection-guide', group: 'sensing', name: 'Thermowell Selection Guide',
+    description: 'Specify a thermowell by process connection, material, insertion length and probe fit. Identify the pressure and flow inputs needed for mechanical review.',
+    related: ['sensor-accessories', 'thermocouples', 'rtd', 'threaded-thermocouple'],
+    readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
+    terms: ['thermowell', 'thermowell-insertion-length', 'thermocouple-response-time'],
+    answer: ['How do I choose a thermowell?', 'Start with the process connection, fluid, operating conditions and the place where temperature needs to be measured. Specify the insertion length and the probe bore from the same assembly drawing. Confirm material compatibility, pressure rating and flow-induced loading for the actual installation.'],
+    sections: [
+      ['Choose the process connection', 'A thermowell encloses the sensor and isolates it from the process fluid. Match the vessel or pipe connection and check access to withdraw the sensor.', {
+        table: [
+          ['Connection', 'Drawing details'],
+          ['Threaded', 'Thread standard, size, sealing method and installed reference face'],
+          ['Flanged', 'Flange standard, pressure class, facing, size and gasket interface'],
+          ['Weld-in', 'Pipe or vessel geometry, weld preparation and material compatibility'],
+        ],
+      }],
+      ['Measure insertion length and probe fit', 'Identify the reference face and distance from it to the thermowell tip on the drawing. Account for the nozzle or pipe wall so the tip reaches representative process flow. Confirm the bore diameter, bore depth and sensor seating, and allow room for removal. A spring-loaded probe can maintain tip contact when the assembly is designed for it.'],
+      ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. In flowing service, include or identify the pipe diameter, flow velocity, density and viscosity for the mechanical review. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.'],
+      ['Account for measurement response', 'A thermowell adds metal mass and an interface between the process and probe. Bore clearance, wall thickness, immersion and process flow affect response time. If a response limit applies, specify the medium and the definition of response time used in the acceptance test.'],
+    ],
+  },
+  {
+    slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing Guide',
+    description: 'Estimate immersion heater wattage for tank heat-up, compare mounting types, and check minimum liquid level, sheath material and watt density.',
+    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'over-the-side-immersion'],
+    readNext: ['heating-element-watt-density', 'choose-a-heating-element'],
+    terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],
+    answer: ['How do I size an immersion heater for a tank?', 'Multiply the liquid mass by its specific heat and the required temperature rise, then divide by the allowed heat-up time. Add the heat needed for the vessel and other loads plus heat losses during warm-up. Use the minimum liquid level, available power and safe surface loading to evaluate the heater construction.'],
+    sections: [
+      ['Calculate the heat-up power', 'With mass in kilograms, specific heat in kJ/(kg·°C), temperature rise in °C and time in seconds, mass × specific heat × temperature rise ÷ time gives kilowatts. For 100 L of water at approximately 100 kg, heating from 20 °C to 60 °C in 60 minutes requires about 4.65 kW to heat the water alone. Account for the vessel, evaporation, process loads and ambient heat losses before selecting a rating.'],
+      ['Distinguish warm-up, holding and flow-through loads', 'For holding temperature, estimate the steady heat losses and any heat carried away by the process. For continuous flow, multiply mass flow in kg/s by specific heat and the required temperature rise to estimate ideal power in kW. Check conditions across the flow range, as low flow can raise element surface temperature at a given power.'],
+      ['Match the heater to the tank opening', 'Check the available opening, insertion clearance and how the heater can be removed for service.', {
+        table: [
+          ['Mount', 'What to supply'],
+          ['Screw plug', 'Thread standard and size, port clearance and seating or sealing details'],
+          ['Flanged', 'Flange drawing, pressure class, facing and bolt pattern'],
+          ['Over-the-side', 'Rim geometry, tank depth, minimum liquid level and removal access'],
+        ],
+      }],
+      ['Verify surface loading and submergence', 'Divide the power by the total active sheath surface area to estimate watt density. Check the liquid chemistry, viscosity, agitation, deposit buildup and sheath compatibility. Show the active section and the minimum operating level on the drawing, including any level changes during operation. Define independent low-level and over-temperature protection for the equipment as appropriate to the design.'],
+      ['Prepare the sizing inputs for a quote', 'Send the working volume or flow, start and target temperatures, allowed warm-up time, liquid composition, operating pressure, minimum level, mounting and available voltage and phase. Include the tank drawing and any heat-loss estimate so the rating and element layout can be reviewed together.'],
     ],
   },
 ];

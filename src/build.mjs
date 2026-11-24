@@ -22,6 +22,7 @@ const whatsApp = `https://wa.me/${whatsAppNumber.replace(/\D/g, '')}`;
 
 const lookup = new Map(products.map(product => [product.id, product]));
 const guideLookup = new Map(guides.map(guide => [guide.slug, guide]));
+const termLookup = new Map(glossary.map(term => [term.id, term]));
 const productsTrail = [['Products', '/products/']];
 const heatingTrail = [...productsTrail, ['Heating Elements', '/heating-elements/']];
 const applicationsTrail = [['Applications', '/applications/']];
@@ -260,6 +261,20 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
+function guideSection([title, copy, { table, diagram } = {}]) {
+  return `<section><h2>${escape(title)}</h2><p>${escape(copy)}</p>
+    ${table ? `<div class="guide-table"><table>
+      <caption class="sr-only">${escape(title)}</caption>
+      <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
+      <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${escape(row)}</th>${cells.map(cell => `<td>${escape(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
+    </table></div>` : ''}
+    ${diagram ? `<figure class="guide-wiring">
+      <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
+      <figcaption>${escape(diagram[0])}</figcaption>
+    </figure>` : ''}
+  </section>`;
+}
+
 function questionsSection(title, questions) {
   return `<section class="use-case"><h2>${escape(title)}</h2><dl class="ordering-questions">${questions.map(([question, answer]) =>
     `<dt>${escape(question)}</dt><dd>${escape(answer)}</dd>`).join('')}</dl></section>`;
@@ -417,8 +432,8 @@ const guideGroups = [
   ['Temperature Measurement', guides.filter(guide => guide.group === 'sensing')],
   ['Electric Heating', guides.filter(guide => guide.group === 'heating')],
 ];
-await page('/guides/', 'Thermocouple & Heating Element Selection Guides', 'Browse engineering guides on thermocouple types, grounded junctions, Pt100 RTDs, heater selection and surface watt density.', `
-${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Compare temperature sensors, match heaters to your process and prepare specifications before requesting a quote.', guidesTrail)}
+await page('/guides/', 'Thermocouple, RTD & Heating Element Guides', 'Find Pt100 wiring diagrams, thermocouple color codes, thermowell selection, immersion heater sizing and watt density guides.', `
+${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Find wiring diagrams, compare thermocouples and platinum RTDs, and size electric heaters for industrial equipment.', guidesTrail)}
 <div class="section"><div class="container guide-library">
   ${guideGroups.map(([heading, entries]) => `<section><h2>${heading}</h2><div class="resource-grid">
     ${entries.map(guide => `<article class="resource-card"><a href="/guides/${guide.slug}/"><h3>${escape(guide.name)}</h3><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}
@@ -432,21 +447,29 @@ ${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Compar
   entries.map(guide => ({ name: guide.name, path: `/guides/${guide.slug}/` }))) });
 for (const guide of guides) {
   const trail = [...guidesTrail, [guide.name]];
+  const terms = (guide.terms || []).map(id => termLookup.get(id));
   await page(`/guides/${guide.slug}/`, guide.name, guide.description, `
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
   <article class="prose">
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
-    ${guide.sections.map(([title, copy]) => `<section><h2>${escape(title)}</h2><p>${escape(copy)}</p></section>`).join('')}
+    ${guide.sections.map(guideSection).join('')}
   </article>
-  <aside class="spec-card"><h2>Related Products</h2>${related(guide.related)}<h2 class="read-next">Read Next</h2>${selectionGuides(guide.readNext)}<a class="glossary-link" href="/glossary/">Browse the glossary ${icon('arrow')}</a></aside>
+  <aside class="spec-card">
+    <h2>Related Products</h2>${related(guide.related)}
+    <h2 class="read-next">Read Next</h2>${selectionGuides(guide.readNext)}
+    ${terms.length ? `<h2 class="read-next">Glossary Terms</h2><ul class="link-list">
+      ${terms.map(term => `<li><a href="/glossary/#${term.id}">${escape(term.name)} ${icon('arrow')}</a></li>`).join('')}
+    </ul>` : ''}
+    <a class="glossary-link" href="/glossary/">Browse the glossary ${icon('arrow')}</a>
+  </aside>
 </div></section>
 ${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.')}
 `, { trail, article: true });
 }
 
 const alphabet = Object.entries(Object.groupBy(glossary, term => term.name[0]));
-await page('/glossary/', 'Industrial Heating & Thermocouple Glossary', 'Look up industrial heating and temperature measurement terms, from Type K thermocouples and Pt100 RTDs to immersion heaters and watt density.', `
+await page('/glossary/', 'Industrial Heating & Thermocouple Glossary', 'Look up terms for thermocouples, Pt100 and Pt1000 RTDs, IEC temperature sensor standards, thermowells, and immersion heater sizing.', `
 ${pageIntro('Engineering resources', 'Industrial Heating & Thermocouple Glossary', 'Look up terms used in heater drawings, thermocouple specifications and temperature measurement. Each definition links to a related product or guide.', glossaryTrail)}
 <section class="section catalog-section"><div class="container" data-glossary>
   <div class="glossary-tools" role="search" hidden>
@@ -568,9 +591,11 @@ if (origin) {
       { name: 'Industrial Heating Elements', path: '/heating-elements/' },
     ]],
     ['Product configurations', additional.filter(product => product.parent)],
-    ['Engineering guides', guides.map(guide => ({
-      name: guide.name, path: `/guides/${guide.slug}/`,
-    }))],
+    ['Engineering guides and glossary', [
+      { name: 'Selection Guides', path: '/guides/' },
+      ...guides.map(guide => ({ name: guide.name, path: `/guides/${guide.slug}/` })),
+      { name: 'Industrial Heating & Thermocouple Glossary', path: '/glossary/' },
+    ]],
     ['Applications and inquiries', [
       { name: 'Industrial Applications', path: '/applications/' },
       { name: 'About Lichengda', path: '/about-us/' },
@@ -579,8 +604,6 @@ if (origin) {
     ['Optional', [
       { name: 'Home', path: '/' },
       { name: 'Industrial Product Catalog', path: '/products/' },
-      { name: 'Selection Guides', path: '/guides/' },
-      { name: 'Industrial Heating & Thermocouple Glossary', path: '/glossary/' },
       ...additional.filter(product => !product.parent),
     ]],
   ];

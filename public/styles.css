@@ -861,6 +861,51 @@ svg:not(.symbols) {
 .guide-grid {
   grid-template-columns: 2fr 1fr;
 }
+.guide-grid > .prose {
+  min-width: 0;
+}
+.guide-table,
+.guide-wiring {
+  margin-top: 12px;
+}
+.guide-table {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+.guide-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.875rem;
+  text-align: left;
+}
+.guide-table th,
+.guide-table td {
+  padding: 9px clamp(5px, 1.4vw, 14px);
+  vertical-align: top;
+}
+.guide-table thead th {
+  background: #f0f3f5;
+}
+.guide-table tbody tr {
+  border-top: 1px solid var(--line);
+}
+.guide-wiring pre {
+  margin: 0;
+  padding: 14px 12px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #f0f3f5;
+  color: var(--ink);
+  font: 600 clamp(0.72rem, 2.9vw, 0.92rem) / 1 ui-monospace, monospace;
+}
+.guide-wiring figcaption {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 .guide-library {
   display: grid;
   gap: 25px;
