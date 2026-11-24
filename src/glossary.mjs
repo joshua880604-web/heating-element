@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bulb-and-capillary-thermostat', name: 'Bulb and Capillary Thermostat',
+    definition: 'A mechanical temperature switch that senses at a remote bulb. A sealed capillary carries the pressure change from the bulb to the switch mechanism.',
+    related: ['Bulb and Capillary Thermostats', '/temperature-controls/capillary-thermostats/'],
+  },
+  {
     id: 'cartridge-heater', name: 'Cartridge Heater',
     definition: 'A cylindrical electric heater designed to transfer heat to a solid material through a fitted bore, such as a mold, die or sealing jaw.',
     related: ['Custom Cartridge Heaters', '/heating-elements/cartridge-heaters/'],
@@ -88,6 +93,11 @@ export const glossary = [
     id: 'grounded-junction', name: 'Grounded Junction',
     definition: 'A thermocouple junction bonded to the probe sheath. The bond creates an electrical connection to the sheath and can affect thermal response.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'halogen-heating-element', name: 'Halogen Heating Element',
+    definition: 'A radiant element with a heated tungsten filament inside a halogen-filled quartz envelope. The filament span and reflector help define the heated area.',
+    related: ['Halogen Infrared Heating Elements', '/heating-elements/infrared-heaters/quartz/halogen/'],
   },
   {
     id: 'heat-trace-cable', name: 'Heat Trace Cable',
@@ -288,6 +298,11 @@ export const glossary = [
     id: 'thermocouple-transmitter', name: 'Thermocouple Transmitter',
     definition: 'An instrument that converts a thermocouple signal to an output such as 4–20 mA. It uses the configured thermocouple type and cold-junction compensation to calculate temperature and scales it to the specified output span.',
     related: ['4–20 mA Thermocouple Transmitters', '/temperature-controls/thermocouple-transmitters/'],
+  },
+  {
+    id: 'thermostat-switching-differential', name: 'Thermostat Switching Differential',
+    definition: 'The temperature difference between the points where a thermostat changes and returns its switch state in normal operation. Give both switching temperatures and the contact action when specifying a heater control.',
+    related: ['Immersion Heaters with Thermostats', '/heating-elements/immersion-heaters/with-thermostat/'],
   },
   {
     id: 'thermowell', name: 'Thermowell',

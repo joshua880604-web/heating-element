@@ -63,7 +63,8 @@ const photoTones = [
     source: [234, 231, 235],
     images: ['oil-immersion-heaters', 'cartridge-heaters-with-thermocouple', 'type-n', 'type-r', 'type-b',
       'thermowells', 'polyimide-heaters', 'silicone-rubber-heaters', 'quartz-infrared-heating-elements',
-      'ceramic-infrared-heating-elements', 'fine-wire-thermocouples', 'type-c'],
+      'ceramic-infrared-heating-elements', 'fine-wire-thermocouples', 'type-c', 'thermostatic-immersion-heaters',
+      'capillary-thermostats', 'halogen-infrared-heating-elements'],
   },
   {
     id: 'neutral',
