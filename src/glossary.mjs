@@ -192,7 +192,7 @@ export const glossary = [
   {
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',
     definition: 'A flexible heater with a resistive element incorporated into a silicone rubber construction, shaped to fit a surface, enclosure or assembly.',
-    related: ['Flexible & Silicone Rubber Heaters', '/heating-elements/flexible-heaters/'],
+    related: ['Silicone Rubber Heaters', '/heating-elements/flexible-heaters/silicone-rubber/'],
   },
   {
     id: 'surface-mount-thermocouple', name: 'Surface-Mount Thermocouple',

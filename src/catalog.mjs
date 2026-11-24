@@ -4,6 +4,8 @@ const cartridge = '/heating-elements/cartridge-heaters/';
 const thermo = '/thermocouples/';
 const accessories = '/temperature-sensors/accessories/';
 const strip = '/heating-elements/strip-heaters/';
+const flexible = '/heating-elements/flexible-heaters/';
+const infrared = '/heating-elements/infrared-heaters/';
 
 export const groups = {
   sensing: 'Temperature Sensors',
@@ -888,9 +890,9 @@ export const products = [
     ],
   },
   {
-    id: 'flexible-heaters', path: '/heating-elements/flexible-heaters/', group: 'specialty', name: 'Flexible & Silicone Rubber Heaters', image: 'flexible-heaters',
-    title: 'Custom Silicone Rubber & Polyimide Flexible Heaters',
-    description: 'Configure silicone rubber heater pads, polyimide heaters or etched foil elements by outline, heat pattern, attachment, lead position and electrical load.',
+    id: 'flexible-heaters', path: flexible, group: 'specialty', name: 'Flexible Heaters', image: 'flexible-heaters',
+    title: 'Custom Flexible Heaters for Industrial Equipment',
+    description: 'Compare flexible heater materials for OEM equipment by outline, active area, attachment, lead exit and electrical load. See silicone rubber and polyimide options.',
     text: 'Low-profile heating pads shaped to fit equipment surfaces and enclosures.',
     intro: 'Start with the available contact surface, power and operating temperature. The substrate, pattern and attachment method depend on the assembly.',
     options: ['Silicone rubber pads', 'Polyimide and etched-foil configurations', 'Custom outlines and cutouts'],
@@ -900,7 +902,8 @@ export const products = [
       'Mark the areas that can receive heat, the openings to leave clear and the positions of leads and sensors. Share the surface material and the method used to retain the heater against it.',
       { table: [
         ['Design detail', 'What to include'],
-        ['Silicone rubber or polyimide', 'Specify available thickness, curvature, temperature at the surface and exposure to moisture or cleaning. An etched-foil circuit may be used within a specified heater construction.'],
+        [['Silicone rubber heater pads', flexible + 'silicone-rubber/'], 'Specify the mating surface, any curvature, the required attachment and exposure to moisture or cleaning.'],
+        [['Polyimide film heaters', flexible + 'polyimide/'], 'Give the available thickness, the active pattern, the position of cutouts and the envelope for the reinforced lead tab.'],
         ['Outline and heated area', 'Dimension the outer shape, holes, cutouts and any separate heating zones. Identify sections that need to stay unheated.'],
         ['Attachment', 'Describe the mating surface and any adhesive, clamp pressure or removable mounting requirement. State whether the heater flexes while installed.'],
         ['Leads and sensing point', 'Mark lead exit direction, bend clearance, supply requirements and the preferred temperature measurement location.'],
@@ -912,6 +915,67 @@ export const products = [
     questions: [
       ['How do I choose between a silicone rubber heater and a polyimide heater?', 'Compare the required thickness, profile, flexing during installation, operating temperature and bond to the heated surface. Send an outline with cutouts, the mounting surface material and adhesive or retention requirements. Material suitability depends on the complete heater construction.'],
     ],
+  },
+  {
+    id: 'polyimide-heaters', path: flexible + 'polyimide/', parent: 'flexible-heaters', group: 'specialty', name: 'Polyimide Film Heaters',
+    image: 'polyimide-heaters',
+    imageAlt: 'Illustration of an amber polyimide film heater with a visible etched foil pattern and two leads',
+    title: 'Custom Polyimide Film Heaters for Compact Assemblies',
+    description: 'Specify a thin polyimide film heater by outline, etched foil pattern, mounting thickness, adhesive or retention, lead exit, voltage and wattage.',
+    text: 'Low-profile polyimide film heaters patterned for confined spaces and defined heating zones.',
+    intro: 'A polyimide film heater can fit a compact assembly with limited space for a heating layer. The film can carry an etched resistive foil pattern shaped to the required heating area. Send the available thickness, drawing of the contact surface, and position of the leads and cutouts.',
+    options: ['Etched foil pattern and active area by drawing', 'Custom outline, holes and unheated keep-out areas', 'Lead tab, mounting and electrical connections specified for the assembly'],
+    specs: ['Heater outline, thickness limit, position and dimensions of holes or cutouts', 'Active heating zones and areas to remain clear, available voltage and power by zone', 'Mating surface material, finish, curvature, attachment and working temperatures', 'Lead tab location, exit direction, available clearance and required termination'],
+    selection: [
+      'Specify the Polyimide Film Heater and Active Pattern',
+      'Provide the heater outline and mating surface in the same drawing. Mark the active area, cutouts, unheated margins and the location where the leads leave the film.',
+      { table: [
+        ['Design detail', 'What to send'],
+        ['Film envelope', 'Outline dimensions and tolerances, maximum installed thickness, hole and slot dimensions, and clearances at nearby components.'],
+        [['Foil pattern and electrical load', '/guides/heating-element-watt-density/'], 'Voltage, wattage and duty cycle. Mark separate heat zones and any areas that need to remain unheated.'],
+        ['Bond and contour', 'Mating surface material and finish, installed bend radius, attachment method and thermal cycling. Describe any motion during use.'],
+        ['Lead tab and sensing', 'Show the lead tab position, thickness clearance, lead length and bend space. Locate any specified temperature sensor on the assembly drawing.'],
+      ] },
+    ],
+    use: 'Typical inquiries include instrument assemblies, compact enclosures and fixtures with a limited installation envelope.',
+    questions: [
+      ['What determines the usable temperature of a polyimide film heater?', 'The complete laminate, attachment, lead insulation and heat transfer into the mating surface determine the operating limits. Include temperature at the bonding surface and lead tab, plus the normal heating cycle and peak conditions.'],
+      ['Can a polyimide film heater fit a curved surface?', 'Send the installed curvature and the assembly method. Distinguish a fixed contour from repeated movement during service, and identify the lead tab position relative to the bend.'],
+      ['What should a drawing show around holes and cutouts?', 'Dimension the openings, required edge clearance and areas where heat is needed. Include the mounting orientation and lead tab location so the circuit can be laid out within the usable film.'],
+    ],
+    related: ['flexible-heaters', 'silicone-rubber-heaters', 'strip-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+  },
+  {
+    id: 'silicone-rubber-heaters', path: flexible + 'silicone-rubber/', parent: 'flexible-heaters', group: 'specialty',
+    name: 'Silicone Rubber Heaters',
+    image: 'silicone-rubber-heaters',
+    imageAlt: 'Illustration of an orange rectangular silicone rubber heater pad with a molded lead exit',
+    title: 'Custom Silicone Rubber Heaters & Heating Pads',
+    description: 'Specify a silicone rubber heating pad by surface shape, heat zones, attachment, lead location and wattage for industrial equipment.',
+    text: 'Silicone rubber heater pads configured for contact heating on flat and contoured surfaces.',
+    intro: 'A silicone rubber heater pad transfers heat into the equipment surface it contacts. Specify the panel, tool or enclosure shape, the active heating area, and how the pad will stay in contact during operation. Include the working temperatures and what the pad and leads will be exposed to.',
+    options: ['Flat or contoured mounting surface review', 'Pad outline, cutouts and heated zones by drawing', 'Attachment, lead exit and temperature-sensing requirements by assembly'],
+    specs: ['Contact surface shape and material, surface finish, thickness limits and any bend radius', 'Heater outline, heated area, holes, unheated margins, voltage and wattage', 'Retention or bonding requirements, temperature cycle, moisture and cleaning exposure', 'Lead exit location, insulation, length, termination and sensing or control requirements'],
+    selection: [
+      'Specify a Silicone Rubber Heating Pad',
+      'Show the surface, pad outline and attachment points on the same drawing. Identify the areas where the pad contacts the equipment throughout the operating cycle.',
+      { table: [
+        ['Installation detail', 'What to specify'],
+        ['Contact surface', 'Give sizes for a flat face or the radius and wrap length for a contoured installation. Include surface finish and any protrusions or seams.'],
+        ['Heat layout', 'Mark holes and clearances, areas that must stay cool, and the power or temperature target for each heated zone.'],
+        ['Attachment and exposure', 'Describe the bonding or mechanical retention arrangement, removal requirements and exposure to moisture, cleaning agents or repeated thermal cycles.'],
+        [['Lead exit and sensing', '/guides/choose-a-heating-element/'], 'Show the lead exit direction and available bend space. Mark the temperature-sensing position and any specified control or limit device.'],
+      ] },
+    ],
+    use: 'Applications include platen surfaces, machine housings, enclosures and custom fixtures that transfer heat through contact.',
+    questions: [
+      ['How should a silicone rubber heater pad be attached?', 'The attachment depends on the surface material, temperature cycle and whether the pad must be removable. Describe the surface finish, bonding or clamping arrangement, and how contact is maintained across the active area.'],
+      ['Can the pad have holes or areas that stay cool?', 'Mark each cutout and unheated area on the drawing. Include the position of mounting screws and the lead outlet so the available heating area can be reviewed.'],
+      ['Where should I specify the temperature-sensing point?', 'Show the process point that the controller needs to measure. Include the target surface, expected temperature range and any separate temperature limit or control requirements.'],
+    ],
+    related: ['flexible-heaters', 'polyimide-heaters', 'strip-heaters'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
     id: 'strip-heaters', path: strip, group: 'specialty', name: 'Strip Heaters', image: 'strip-heaters',
@@ -996,10 +1060,10 @@ export const products = [
     ],
   },
   {
-    id: 'infrared-heaters', path: '/heating-elements/infrared-heaters/', group: 'specialty', name: 'Infrared Heating Elements',
+    id: 'infrared-heaters', path: infrared, group: 'specialty', name: 'Infrared Heating Elements',
     image: 'infrared-heaters',
     imageAlt: 'Illustration of quartz infrared heater elements with ceramic end caps',
-    title: 'Quartz & Ceramic Infrared Heating Elements',
+    title: 'Custom Industrial Infrared Heating Elements',
     description: 'Specify industrial quartz or ceramic infrared heating elements by target material, working distance, exposure time, reflector layout and operating conditions.',
     text: 'Quartz and ceramic radiant elements for process equipment and drying systems.',
     intro: 'Radiant heating inquiries depend on the target surface, distance and required exposure pattern. Provide machine layout and cycle time where available.',
@@ -1011,6 +1075,7 @@ export const products = [
       { table: [
         ['Selection input', 'What to specify'],
         ['Target and exposure', 'Material, surface finish, heated area, starting and target temperatures, and line speed or dwell time.'],
+        [['Quartz infrared heating elements', infrared + 'quartz/'], 'For a quartz tube, give the active and overall lengths, support spacing, reflector shape and lead or terminal clearances.'],
         ['Emitter and reflector layout', 'Available distance to the target, element spacing, reflector outline and any nearby surfaces the radiant field should avoid.'],
         ['Mounting and environment', 'Element orientation, support spacing, terminal clearance, and dust, moisture or ventilation around the assembly.'],
         ['Power and timing', 'Supply voltage, available power and heating zone layout. State the required warm-up time and on-off or modulated control cycle.'],
@@ -1022,6 +1087,37 @@ export const products = [
     questions: [
       ['What determines whether an infrared element fits a process?', 'Consider how the target material absorbs radiant heat, the working distance, required heated area and time under the element. Include the reflector or machine layout, target temperature and exposure cycle when comparing quartz and ceramic formats.'],
     ],
+  },
+  {
+    id: 'quartz-infrared-heating-elements', path: infrared + 'quartz/', parent: 'infrared-heaters', group: 'specialty',
+    name: 'Quartz Infrared Heating Elements',
+    image: 'quartz-infrared-heating-elements',
+    imageAlt: 'Illustration of a clear quartz tube heater with a resistance coil, ceramic ends and braided leads',
+    title: 'Custom Quartz Infrared Heating Elements for Process Equipment',
+    description: 'Specify a quartz infrared heating element by tube and heated length, emitter spacing, voltage, reflector layout and target exposure.',
+    text: 'Quartz tube emitters matched to radiant drying, curing and equipment layouts.',
+    intro: 'A quartz infrared heating element delivers radiant heat from a tube emitter to an exposed target surface. Share the target material, tube dimensions, mounting drawing and distance from the emitter to the target. For a conveyor process, include the line speed and available heating length.',
+    options: ['Quartz tube dimensions and active length by equipment drawing', 'End support and termination position matched to the installation', 'Emitter layout and electrical load by heating zone'],
+    specs: ['Tube diameter, overall and active lengths, end fittings and support spacing', 'Target material and area, emitter-to-target distance, reflector and equipment layout', 'Required surface temperature, line speed or dwell time, duty and operating environment', 'Supply voltage, wattage per element or zone, and lead, terminal and control requirements'],
+    selection: [
+      'Specify a Quartz Tube Emitter and Its Working Distance',
+      'Provide a machine section drawing that shows the quartz emitter, its supports, the reflector and the target path. For a replacement, include the original element marking and connection drawing.',
+      { table: [
+        ['Design input', 'What to send'],
+        ['Tube and heated span', 'Tube diameter, overall length, active length and position of unheated ends. Show which part of the emitter faces the work.'],
+        ['Mount and reflector', 'End support dimensions, orientation, spacing between emitters, reflector shape and clearance for wiring and service.'],
+        ['Target exposure', 'Target material, surface finish, area, starting and target temperature, and its movement or dwell time under the emitter.'],
+        [['Power and operating cycle', '/guides/choose-a-heating-element/'], 'Voltage and wattage per tube or zone, control method, on-time and exposure to dust, moisture or vibration.'],
+      ] },
+    ],
+    use: 'Typical inquiries include non-contact drying, curing and radiant heating in industrial processing equipment.',
+    questions: [
+      ['What should I send for a replacement quartz heating element?', 'Include the original marking, voltage and wattage, measured tube diameter and overall length, active heated span and terminal layout. Show the supports, reflector and clearance around the existing element.'],
+      ['How does working distance affect infrared heating?', 'The working distance and reflector position affect the area covered and how radiant heat is distributed. Provide the target dimensions, heater spacing, surface material and desired exposure so the layout can be reviewed.'],
+      ['What changes when the target moves on a conveyor?', 'Line speed and the length of the heating zone determine how long each section passes under the heaters. Specify the usual speed range, required temperature and emitter arrangement to review the process.'],
+    ],
+    related: ['infrared-heaters', 'ptc-ceramic-heaters', 'finned-tubular-heaters'],
+    guides: ['choose-a-heating-element'],
   },
   {
     id: 'ptc-ceramic-heaters', path: '/heating-elements/ptc-ceramic-heaters/', group: 'specialty', name: 'PTC & Ceramic Heating Elements',
@@ -1316,6 +1412,14 @@ export const guides = [
           [['Straight or formed', tubular], 'Use the equipment envelope, centerline bends, active length and where the terminals emerge.'],
           [['Finned for moving air', tubular + 'finned/'], 'Review fin clearance, normal and minimum airflow, and pressure drop.'],
           [['Immersion assembly', immersion], 'Match the vessel connection, liquid chemistry, insertion length and minimum liquid level.'],
+        ],
+      }],
+      ['Review surface and radiant heating layouts', 'For a contact heater, show the mating surface and the available attachment area. For a radiant emitter, give the target position and the working distance.', {
+        table: [
+          ['Heater', 'Drawing input'],
+          [['Polyimide film heater', flexible + 'polyimide/'], 'Thickness limit, film outline, active pattern and lead tab clearance.'],
+          [['Silicone rubber heater pad', flexible + 'silicone-rubber/'], 'Surface shape, pad footprint, contact or retention method and lead exit.'],
+          [['Quartz infrared element', infrared + 'quartz/'], 'Tube length, support spacing, working distance and reflector layout.'],
         ],
       }],
       ['Specify the sheath material for the working medium', 'Record the liquid chemistry or air atmosphere, minimum flow, maximum temperature and cleaning process. For alloy callouts such as 800 or 840, provide the complete material designation or datasheet so chemical compatibility, allowable sheath temperature and forming constraints can be reviewed.'],
