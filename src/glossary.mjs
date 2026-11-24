@@ -20,6 +20,11 @@ export const glossary = [
     related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
   },
   {
+    id: 'ceramic-thermocouple-protection-tube', name: 'Ceramic Thermocouple Protection Tube',
+    definition: 'A ceramic tube that shields a thermocouple sensing element during furnace or kiln service. Its material, bore, wall thickness and supports depend on the installed geometry, atmosphere and thermal cycle.',
+    related: ['Ceramic Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/'],
+  },
+  {
     id: 'cold-end', name: 'Cold End',
     definition: 'The length of a heater outside the active heated section, often near a termination or mounting point. Adjacent hot sections can still transfer heat into the cold end.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],

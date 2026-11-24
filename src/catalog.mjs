@@ -27,6 +27,12 @@ const thermocoupleConnectorPhoto = {
   caption: 'Two-pin connectors fitted to braided thermocouple leads',
 };
 
+const ceramicProbePhoto = {
+  image: 'long-ceramic-thermocouple-probes-photo', width: 750, height: 1000,
+  alt: 'Long ceramic protection tubes fitted to thermocouple probe assemblies on a workbench',
+  caption: 'Ceramic protection tubes fitted to thermocouple assemblies',
+};
+
 export const groups = {
   sensing: 'Temperature Sensors',
   tubular: 'Tubular & Immersion',
@@ -264,6 +270,7 @@ export const products = [
       { table: [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
         ['Water', 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
+        [['Commercial steam table wells', immersion + 'steam-table/'], 'Well dimensions, mounting hole layout, minimum water level and original element rating.', 'Review the tube profile, seals, immersion of the active section and available terminal clearance.'],
         [['Clamp-mounted tank connection', immersion + 'tri-clamp/'], 'Mating ferrule drawing, clamp and gasket details, operating pressure and insertion depth.', 'Match the sealing geometry, confirm submergence and check withdrawal clearance.'],
         [['Oil reservoirs and thermal fluid tanks', immersion + 'oil/'], 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
         [['Chemical tanks and process baths', immersion + 'ptfe/'], 'Chemical composition and concentration, continuous and peak temperatures, agitation and cleaning solutions.', 'Review each wetted material against the process and cleaning cycle. Select the active surface area and mounting for the tank conditions.'],
@@ -357,16 +364,57 @@ export const products = [
         [['Bore and fit', cartridge + 'miniature/'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, compare miniature cartridge heater configurations.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         ['Power and temperature', 'Supply voltage, power or heat-up target, normal tool temperature and operating cycle.'],
+        [['High watt density in a compact bore', cartridge + 'high-density/'], 'Include active surface area and bore tolerance so the power and heat transfer can be reviewed together.'],
+        ['Right-angle lead exit', 'Mark the bore entry, length of the cold end and exit angle. Show how much room is available for the formed lead end, wiring and removal.'],
         [['Lead exit and integrated thermocouple', cartridge + 'with-thermocouple/'], 'Lead length, exit direction and bend clearance. For an integrated thermocouple, mark the junction and identify power and sensor leads separately.'],
       ] },
     ],
     use: 'Common integration points include injection molds, extrusion dies, packaging sealing jaws and laboratory tooling.',
+    variants: {
+      title: 'Right-Angle Cartridge Heater Lead Exit',
+      photos: [
+        {
+          image: 'right-angle-cartridge-heater-reference', width: 600, height: 600,
+          alt: 'Cartridge heater with a straight main body, right-angle lead end and two red wires',
+          caption: 'Right-angle lead exit · Huashi reference photo',
+        },
+      ],
+    },
     related: ['type-k', 'strip-heaters', 'coil-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
       ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Confirm that the active section is in the intended heating zone and the leads have room at the exit. If the heater includes a thermocouple, identify its lead pair and input separately from the power leads.'],
     ],
+  },
+  {
+    id: 'high-density-cartridge-heaters', path: cartridge + 'high-density/', parent: 'cartridge-heaters', group: 'specialty',
+    name: 'High Density Cartridge Heaters', image: 'high-density-cartridge-heaters',
+    imageAlt: 'Illustration of cylindrical cartridge heaters with sealed tips and insulated leads',
+    title: 'Custom High Density Cartridge Heaters for Tooling',
+    description: 'Specify a high density cartridge heater by bore tolerance, sheath diameter, active length, electrical load, tool material and operating temperature.',
+    text: 'High watt density cartridge heating for molds, dies and sealing jaws with limited bore space.',
+    intro: 'A high density cartridge heater delivers electrical power over a small active sheath area in a tool bore. Review the bore tolerance, heated length and required power together. The achievable loading depends on how well the installed heater transfers heat into the tooling.',
+    options: ['Active and unheated lengths by tooling drawing', 'Body dimensions and bore fit reviewed for the operating temperature', 'Lead exit, insulation and termination matched to the installation'],
+    specs: ['Measured bore diameter and tolerance, usable depth, surface condition and tool material', 'Heater diameter, active length, unheated ends and available clearance for extraction', 'Voltage, watts per heater, target temperature, warm-up time and operating duty', 'Lead routing and exit temperature, temperature sensor position and control cycling'],
+    selection: [
+      'Match Surface Watt Density to the Tool Bore',
+      'Specify the power and active sheath area together. Include the actual tool bore and operating conditions so the load and fit can be reviewed at temperature.',
+      { table: [
+        ['Design check', 'What to provide'],
+        [['Surface watt density', '/guides/heating-element-watt-density/'], 'Give watts per heater, sheath diameter and active heated length. Identify the unheated ends on the drawing.'],
+        ['Bore fit and thermal contact', 'Provide the bore diameter and tolerance, usable depth, finish and material. For a replacement, include any wear, deposits or damage.'],
+        ['Active zone and control', 'Locate the heated span and temperature sensor within the tool. Include the required warm-up time, operating temperature and duty cycle.'],
+        ['Lead end and service access', 'Mark the lead exit direction, clearance at the bore opening, maximum temperature near the leads and the path for removing the heater.'],
+      ] },
+    ],
+    use: 'Applications include injection molds, extrusion dies and sealing jaws that need heat within a defined bore and heating zone.',
+    questions: [
+      ['How do you calculate cartridge heater watt density?', 'Divide power by the active cylindrical sheath area. For a uniformly heated section, use π × sheath diameter × active heated length, with consistent units. Mark any unheated ends or separate heating zones.'],
+      ['Can I use a higher wattage in the same cartridge bore?', 'Review the actual bore fit, active length, tool material, temperature and controller duty before changing power. Higher power in the same area increases surface watt density and can increase the sheath temperature.'],
+    ],
+    related: ['cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
+    guides: ['heating-element-watt-density', 'choose-a-heating-element'],
   },
   {
     id: 'miniature-cartridge-heaters', path: cartridge + 'miniature/', parent: 'cartridge-heaters', group: 'specialty',
@@ -615,7 +663,7 @@ export const products = [
       { table: [
         ['Assembly decision', 'What to include'],
         ['Temperature profile', 'Give the normal setpoint, peak exposure, dwell time and heating and cooling cycle.'],
-        [['Protection tube', thermo + 'high-temperature/'], 'Identify expected gases, vapors, deposits and contact materials so the protection tube and contamination risk can be reviewed.'],
+        [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Identify expected gases, vapors, deposits and contact materials so the protection tube and contamination risk can be reviewed.'],
         ['Mount and support', 'Show the mounting plane, wall thickness, probe diameter, insertion depth and unsupported length. Specify whether the tube is horizontal or vertical.'],
         ['Wiring at the head', 'Give the expected connection temperature, the Type S instrument input and any specified extension or compensating cable designation.'],
       ] },
@@ -703,7 +751,7 @@ export const products = [
       { table: [
         ['Assembly detail', 'What to specify'],
         ['Furnace exposure', 'Setpoint, peak temperature, time at peak, heating and cooling rates, and gases, dust or vapors around the probe.'],
-        [['Protection tube', thermo + 'high-temperature/'], 'Material or compatibility requirements, diameter, insertion depth and any pilot hole or guide sleeve that the tube must pass through.'],
+        [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Material or compatibility requirements, diameter, insertion depth and any pilot hole or guide sleeve that the tube must pass through.'],
         ['Mounting and support', 'Installed reference face, wall or nozzle thickness, tube orientation, support locations and removal clearance.'],
         [['Type R wire and instrument', '/guides/thermocouple-wire-color-code/'], 'Type R input, cable designation and color standard, expected termination temperature and connector or terminal layout.'],
       ] },
@@ -733,7 +781,7 @@ export const products = [
       { table: [
         ['Application detail', 'What to include'],
         ['Temperature profile', 'Normal and peak temperatures, time at peak, how often the furnace cycles, and the lowest temperature the controller needs to measure.'],
-        [['Tube and atmosphere', thermo + 'high-temperature/'], 'Furnace atmosphere and deposits, ceramic protection tube dimensions or material requirements, and possible contact with furnace internals.'],
+        [['Tube and atmosphere', accessories + 'ceramic-protection-tubes/'], 'Furnace atmosphere and deposits, ceramic protection tube dimensions or material requirements, and possible contact with furnace internals.'],
         [['Mount and support', thermo + 'flanged/'], 'Mounting reference, flange or adapter drawing, insertion depth, orientation and exposed length between support points.'],
         [['Head and wiring', '/guides/thermocouple-wire-color-code/'], 'Type B input, connector or terminal specification, cable entry, clearance, and allowable temperature at the head and any cable transitions.'],
       ] },
@@ -1047,11 +1095,7 @@ export const products = [
   {
     id: 'high-temperature', path: thermo + 'high-temperature/', parent: 'thermocouples', group: 'sensing', name: 'High Temperature Thermocouples', image: 'high-temperature',
     photographs: [
-      {
-        image: 'long-ceramic-thermocouple-probes-photo', width: 750, height: 1000,
-        alt: 'Long white ceramic thermocouple protection tubes with rectangular plug connectors',
-        caption: 'Long ceramic probes with plug connectors',
-      },
+      ceramicProbePhoto,
       {
         image: 'high-temperature-thermocouples-photo', width: 750, height: 1000,
         alt: 'Three thermocouple probes with ceramic protection tubes, metal sleeves and connector leads',
@@ -1080,7 +1124,7 @@ export const products = [
       { table: [
         ['Assembly decision', 'Information to include'],
         ['Continuous and peak temperature', 'Document the normal setpoint, maximum exposure, time at the peak and heating or cooling cycles.'],
-        ['Ceramic protection tube', 'Give the furnace atmosphere, supported length, orientation and exposure to thermal shock or impact. The photos below show examples of ceramic-tube construction.'],
+        [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Give the furnace atmosphere, supported length, orientation and exposure to thermal shock or impact. The photos below show examples of ceramic-tube construction.'],
         ['Metal protection tube', 'Give the atmosphere and process contaminants, expected mechanical loads and tube dimensions. Confirm compatibility at the actual operating temperature.'],
         ['Mount and connection head', 'Show the furnace wall, probe insertion, support and temperature at the external head or connector.'],
       ] },
@@ -1138,7 +1182,7 @@ export const products = [
         [['Thermocouple connector', accessories + 'connectors/'], 'Plug or socket, connector size, thermocouple type and polarity, cable entry and ambient temperature.'],
         [['Connection head assembly', thermo + 'connection-head/'], 'Head mounting, terminal layout, cable entry and space to open the cover.'],
         [['Custom thermowell', accessories + 'thermowells/'], 'Process connection, insertion length, probe diameter and bore fit. Include fluid, pressure and flow when relevant.'],
-        ['Protection tube', 'Required tube material, mounting, wall and probe dimensions, process atmosphere and temperature cycle.'],
+        [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Required tube material, mounting, wall and probe dimensions, process atmosphere and temperature cycle.'],
       ] },
     ],
     use: 'Accessories are specified alongside replacement probes and new instrument installations.',
@@ -1206,6 +1250,36 @@ export const products = [
     ],
     related: ['sensor-accessories', 'thermocouple-extension-wire', 'connection-head-thermocouples', 'type-k'],
     guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
+  },
+  {
+    id: 'ceramic-thermocouple-protection-tubes', path: accessories + 'ceramic-protection-tubes/', parent: 'sensor-accessories', group: 'sensing',
+    name: 'Ceramic Thermocouple Protection Tubes', image: 'ceramic-thermocouple-protection-tubes',
+    imageAlt: 'Illustration of white ceramic protection tubes showing an open bore and a closed tip',
+    photographs: [ceramicProbePhoto],
+    title: 'Custom Ceramic Thermocouple Protection Tubes',
+    description: 'Request a ceramic thermocouple protection tube for a furnace or kiln by material, bore and wall dimensions, insertion depth, support and atmosphere.',
+    text: 'Ceramic protection tubes reviewed to furnace, kiln and thermocouple assembly drawings.',
+    intro: 'A ceramic thermocouple protection tube surrounds a sensing element in a furnace or kiln. For a tube inquiry, send the tube and installed assembly drawings so the ceramic grade, wall dimensions, unsupported length and fit around the sensor can be reviewed together.',
+    options: ['Ceramic grade reviewed against the furnace atmosphere and thermal cycle', 'Outer diameter, bore and closed-tip geometry by drawing', 'Mounting and support matched to the probe assembly'],
+    specs: ['Required ceramic grade if specified, outside and inside diameters, wall thickness and tip form', 'Overall and usable bore lengths, insertion depth and probe clearance at the closed end', 'Furnace gas, deposits, continuous and peak temperatures, and heat-up and cool-down cycles', 'Orientation, support and mounting positions, unsupported span and possible impact'],
+    selection: [
+      'Match Ceramic Tube Fit, Support and Furnace Exposure',
+      'Provide a section drawing through the furnace wall and the protection tube. Mark the sensor tip position, insertion datum and exposed tube length.',
+      { table: [
+        ['Selection input', 'What to provide'],
+        ['Bore and tip fit', 'Show the outside diameter, internal bore, tolerance, wall thickness, usable depth and sensor diameter. Give the required clearance to the closed tip.'],
+        [['Furnace atmosphere and cycling', thermo + 'high-temperature/'], 'Describe the operating gas, vapors or deposits, normal and peak temperatures, dwell time and heating or cooling rates.'],
+        ['Mounting and supported length', 'Mark the support points, installed orientation, exposed span, wall or sleeve clearance and room to withdraw the tube.'],
+        ['Tube or assembly scope', 'Identify whether the inquiry is for the ceramic tube alone or for a complete thermocouple assembly. For a complete assembly, include the sensor type and termination.'],
+      ] },
+    ],
+    use: 'Typical inquiries include furnace and kiln assemblies or replacement ceramic tubes for protected Type S, R and B thermocouples.',
+    questions: [
+      ['How do I specify a replacement ceramic thermocouple tube?', 'Send the original drawing or dimensions, including outside and inside diameters, overall length, usable bore depth and tip shape. Include the probe fit, mounting and furnace conditions.'],
+      ['How does thermal cycling affect protection tube selection?', 'Temperature gradients across a ceramic tube can create thermal stress. Include heating and cooling rates, insertion conditions, exposure cycle and installed supports when requesting a material and geometry review.'],
+    ],
+    related: ['high-temperature', 'type-s', 'type-r', 'type-b', 'sensor-accessories'],
+    guides: ['thermocouple-types'],
   },
   {
     id: 'thermowells', path: accessories + 'thermowells/', parent: 'sensor-accessories', group: 'sensing', name: 'Custom Thermowells',
@@ -1317,6 +1391,45 @@ export const products = [
       ['How is insertion depth measured for a clamp-mounted immersion heater?', 'Show the insertion dimension from the ferrule sealing face to the furthest point of the element on the installed drawing. Also mark the heated section, lowest liquid level and available removal clearance.'],
     ],
     related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'thermowells'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
+  },
+  {
+    id: 'steam-table-heating-elements', path: immersion + 'steam-table/', parent: 'immersion-heaters', group: 'tubular',
+    name: 'Steam Table Heating Elements', image: 'steam-table-heating-elements',
+    imageAlt: 'Illustration of a T-shaped tubular steam table heating element with two mounting terminals',
+    title: 'Custom Steam Table Heating Elements for Wet Wells',
+    description: 'Specify a custom steam table heating element for a commercial wet well by tube shape, well dimensions, mounting holes, water level and electrical rating.',
+    text: 'Formed immersion elements configured for commercial steam tables and food-warming wells.',
+    intro: 'A wet-well steam table heating element transfers heat directly to the water in the pan well. Send the equipment drawing or original heater dimensions, the minimum operating water level and the electrical rating of the element. The mounting and tube profile are reviewed for each well.',
+    options: ['T-shaped or formed tubular profiles by well drawing', 'Mounting holes, gasket seats and terminal projection matched to the well', 'Heated span, cold ends and supply rating reviewed for the operating water level'],
+    specs: ['Equipment model or drawing, original part reference and photo of any electrical marking', 'Well length, width and depth, mounting hole diameters and spacing, and seal details', 'Tube diameter, overall profile, active length, cold ends and clearance to the pan or drain', 'Voltage, wattage per element, minimum water level, water quality and cleaning cycle'],
+    selection: [
+      'Match the Well, Mounting Holes and Water Level',
+      'Show the heater in the installed orientation. Use the well mounting face as the reference for tube height and terminal projection.',
+      { table: [
+        ['Drawing input', 'What to provide'],
+        ['Tube profile and well clearance', 'Show the overall width, depth and return bends. Mark nearby pans, drains and any supports.'],
+        ['Mounting and seals', 'Give hole centers and diameters, mounting thickness, gasket seat dimensions and terminal access outside the well.'],
+        [['Minimum water level', '/guides/immersion-heater-sizing/'], 'Show the lowest water line and the active section so submergence can be reviewed. Include cleaning conditions and any scale or deposits.'],
+        ['Electrical rating', 'Give voltage and wattage per element, number of elements per well and the equipment wiring diagram or nameplate.'],
+      ] },
+    ],
+    use: 'Typical inquiries include wet-well commercial steam tables and buffet warming equipment where the tubular element heats the water beneath food pans.',
+    variants: {
+      title: 'T-Shaped Steam Table Element Reference',
+      photos: [
+        {
+          image: 't-shaped-steam-table-element-reference', width: 600, height: 600,
+          alt: 'T-shaped steam table tubular element with a wide lower loop and two central terminals',
+          caption: 'T-shaped wet-well heating element · Huashi reference photo',
+        },
+      ],
+    },
+    questions: [
+      ['What should I provide to request a replacement steam table heating element?', 'Send a model or original part number, photos and measured dimensions. Include the mounting hole spacing, gasket details, original voltage and wattage and minimum operating water level.'],
+      ['Why does the minimum water level matter?', 'The water carries heat away from the active sheath. Show the heated section relative to the lowest normal water level, and include the existing level and temperature protection requirements.'],
+    ],
+    related: ['immersion-heaters', 'screw-plug-immersion', 'flanged-immersion'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
@@ -2006,7 +2119,7 @@ export const guides = [
   {
     slug: 'heating-element-watt-density', group: 'heating', name: 'Heating Element Watt Density',
     description: 'Calculate heating element watt density from active sheath area. Compare a single tubular element with separately powered zones in a heater bundle.',
-    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
+    related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'high-density-cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
     readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
     sections: [
@@ -2159,6 +2272,7 @@ export const guides = [
           ['Flanged', 'Flange drawing, pressure class, facing and bolt pattern'],
           [['Clamp-mounted', immersion + 'tri-clamp/'], 'Mating ferrule standard and size, seal and clamp details, operating temperature and pressure'],
           ['Over-the-side', 'Rim geometry, tank depth, minimum liquid level and removal access'],
+          [['Steam table wet well', immersion + 'steam-table/'], 'Well and mounting hole dimensions, seal and terminal details, and minimum operating water level'],
         ],
       }],
       ['Verify surface loading and submergence', 'Divide the power by the total active sheath surface area to estimate watt density. Check the liquid chemistry, viscosity, agitation, deposit buildup and sheath compatibility. Show the active section and the minimum operating level on the drawing, including any level changes during operation. Define independent low-level and over-temperature protection for the equipment as appropriate to the design.'],

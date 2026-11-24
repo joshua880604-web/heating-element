@@ -76,7 +76,8 @@ const photoTones = [
     source: [234, 233, 238],
     images: ['thermocouple-extension-wire', 'mica-band-heaters', 'ceramic-band-heaters',
       'industrial-oven-heating-elements', 'thermocouple-connectors', 'tri-clamp-immersion-heaters',
-      'sauna-heating-elements'],
+      'sauna-heating-elements', 'ceramic-thermocouple-protection-tubes',
+      'high-density-cartridge-heaters', 'steam-table-heating-elements'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
