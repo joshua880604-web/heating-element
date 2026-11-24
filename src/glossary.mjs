@@ -210,6 +210,11 @@ export const glossary = [
     related: ['Pt100 vs. Pt1000 RTD Sensors', '/guides/pt100-vs-pt1000/'],
   },
   {
+    id: 'rtd-temperature-transmitter', name: 'RTD Temperature Transmitter',
+    definition: 'A device that converts an RTD resistance measurement to an output signal, such as 4–20 mA. The input curve, wire count and temperature scale must match the sensor and receiving instrument.',
+    related: ['4–20 mA RTD Temperature Transmitters', '/temperature-controls/rtd-transmitters/'],
+  },
+  {
     id: 'screw-plug-immersion-heater', name: 'Screw Plug Immersion Heater',
     definition: 'An immersion heater with a threaded plug for mounting into a matching tank or vessel port. Thread form, size, sealing and insertion clearance are key dimensions.',
     related: ['Screw Plug Immersion Heaters', '/heating-elements/immersion-heaters/screw-plug/'],
