@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Aluminum Foil Heaters', '/heating-elements/flexible-heaters/aluminum-foil/'],
   },
   {
+    id: 'aluminum-platen-heater', name: 'Aluminum Platen Heater',
+    definition: 'An electrically heated aluminum plate that transfers heat through a tooling or process face. Specify the contact geometry, heating zones, sensor locations and the test conditions for temperature uniformity.',
+    related: ['Aluminum Platen Heaters', '/heating-elements/cast-in-heaters/aluminum-platens/'],
+  },
+  {
     id: 'autoclave-heating-element', name: 'Autoclave Heating Element',
     definition: 'A heater that supplies heat to water in an autoclave steam generator. The equipment drawing defines the connection, tube envelope, operating conditions and electrical rating.',
     related: ['Autoclave Heating Elements', '/heating-elements/immersion-heaters/autoclave/'],
@@ -320,6 +325,11 @@ export const glossary = [
     related: ['Coil & Hot Runner Heaters', '/heating-elements/coil-heaters/'],
   },
   {
+    id: 'hydraulic-tank-immersion-heater', name: 'Hydraulic Tank Immersion Heater',
+    definition: 'An element that heats hydraulic fluid directly in a reservoir. The fluid’s cold viscosity, operating level and permitted film temperature guide the heater design.',
+    related: ['Hydraulic Tank Immersion Heaters', '/heating-elements/immersion-heaters/oil/hydraulic-tanks/'],
+  },
+  {
     id: 'ibc-tote-immersion-heater', name: 'IBC Tote Immersion Heater',
     definition: 'A submerged element mounted through an opening in a compatible intermediate bulk container. Review the support, tube clearance, liquid level and container material for the installation.',
     related: ['IBC Tote Immersion Heaters', '/heating-elements/immersion-heaters/ibc-tote/'],
@@ -430,6 +440,11 @@ export const glossary = [
     related: ['Miniature Sheathed Thermocouples', '/thermocouples/mineral-insulated/miniature/'],
   },
   {
+    id: 'miniature-thermocouple-connector', name: 'Miniature Thermocouple Connector',
+    definition: 'A compact plug or socket for a thermocouple circuit, typically with two flat contacts. Match the blade dimensions, polarity and contact materials to the sensor type and mating connector.',
+    related: ['Miniature Thermocouple Connectors', '/temperature-sensors/accessories/connectors/miniature/'],
+  },
+  {
     id: 'minimum-submergence', name: 'Minimum Submergence',
     definition: 'The minimum liquid coverage required above the active section of an immersion heater for its specified installation. The reference point, mounting orientation and level limits belong on the heater or tank drawing.',
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
@@ -518,6 +533,11 @@ export const glossary = [
     id: 'quartz-immersion-heater', name: 'Quartz Immersion Heater',
     definition: 'An electric heater that transfers heat into a liquid through a quartz sheath. The bath chemistry, level, tube supports and cleaning conditions determine suitability.',
     related: ['Quartz Immersion Heaters', '/heating-elements/immersion-heaters/quartz/'],
+  },
+  {
+    id: 'quartz-thermocouple-protection-tube', name: 'Quartz Thermocouple Protection Tube',
+    definition: 'A fused-silica sleeve used to separate a temperature probe from its surroundings. Check the usable bore, support, process atmosphere and temperature cycle for the selected grade.',
+    related: ['Quartz Thermocouple Protection Tubes', '/temperature-sensors/accessories/quartz-protection-tubes/'],
   },
   {
     id: 'radiator-heating-element', name: 'Radiator Heating Element',
@@ -673,6 +693,11 @@ export const glossary = [
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'thermocouple-bayonet-adapter', name: 'Thermocouple Bayonet Adapter',
+    definition: 'A threaded mounting part with a pin that engages a slotted probe cap. Its installed height and locking geometry help determine tip position and spring travel.',
+    related: ['Thermocouple Bayonet Adapters', '/temperature-sensors/accessories/bayonet-adapters/'],
   },
   {
     id: 'thermocouple-connection-head', name: 'Thermocouple Connection Head',
@@ -843,6 +868,11 @@ export const glossary = [
     id: 'wireless-thermocouple-system', name: 'Wireless Thermocouple System',
     definition: 'A thermocouple, transmitter and compatible receiver or gateway used to report readings remotely. Specify the input, site conditions, reporting interval and receiving interface.',
     related: ['Wireless Thermocouple Systems', '/temperature-controls/wireless-thermocouples/'],
+  },
+  {
+    id: 'wire-wound-rtd-element', name: 'Wire-Wound RTD Element',
+    definition: 'A resistance temperature sensing element made from fine wire wound on or within an insulating support. Confirm the nominal resistance, temperature curve and construction for the intended probe.',
+    related: ['Wire-Wound Platinum RTD Elements', '/temperature-sensors/rtd/wire-wound-elements/'],
   },
   {
     id: 'zero-cross-switching', name: 'Zero-Cross Switching',
