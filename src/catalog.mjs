@@ -345,7 +345,8 @@ export const products = [
       'Share the liquid and operating conditions so the sheath and watt density can be reviewed. For tank service, show the lowest operating liquid level and the heated zone in the installed orientation.',
       { table: [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
-        ['Water', 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
+        [['Water heat-up power and time', '/guides/immersion-heater-sizing/#water-heating-calculator'], 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
+        [['Replacement circuit checks', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'Original heater marking or drawing, rated voltage and power per circuit, and any cold resistance readings.', 'Compare the readings with the equipment specification and review the sheath and mount for the liquid and duty.'],
         [['Electric water boilers', immersion + 'water-boiler/'], 'Port or flange drawing, working water level, operating pressure and required heat output.', 'Confirm the mating connection, sheath loading and installed clearance.'],
         [['Tankless water heater elements', immersion + 'tankless-water-heaters/'], 'Flow chamber and seal drawing, minimum flow, supply and equipment test requirements.', 'Check the element profile, terminal fit and duty against the approved assembly.'],
         [['Water distillers', immersion + 'water-distiller/'], 'Send the boiling chamber and original heater drawing, operating water levels and element rating.', 'Match the tube profile, seal and clearances for cleaning.'],
@@ -370,6 +371,8 @@ export const products = [
     use: 'Typical projects include water tanks, oil reservoirs and process vessels where the elements can remain submerged during operation.',
     questions: [
       ['What is an industrial immersion heater and how does it work?', 'An industrial immersion heater uses electrical resistance to heat a metal sheath in direct contact with a compatible liquid. It can warm a tank or heat liquid as it flows through an assembly. Submergence and fluid movement help carry heat away from the active section. The vessel connection and liquid chemistry determine which construction to review.'],
+      ['What size immersion heater do I need, and how long will it take to heat the tank?', 'Use the liquid volume or mass, specific heat, starting and target temperatures and allowed heat-up time to estimate power. If the available power is fixed, use it to estimate heat-up time. Include the tank, heat losses and process load when selecting wattage. Use the tank opening and minimum liquid level to check the installed element size.'],
+      ['How can I check whether an immersion heater element needs replacing?', 'Use the equipment service procedure to isolate the element and check cold resistance at the specified power terminals. Compare the reading with the equipment specification, and have the required insulation test performed separately. For a replacement inquiry, send the rating label, connection drawing, readings and operating conditions.'],
       ['When should I ask about an over-the-side immersion heater?', 'An over-the-side configuration may fit an open tank when access is available from above. Provide the rim geometry, operating liquid levels and clearance to remove the heater. The heated section must remain submerged during operation.'],
       ['When should I specify a flanged or screw plug immersion heater?', 'Match the vessel connection first. A flanged assembly fits a compatible flange, while a screw plug fits a specified threaded port. Also check insertion clearance, available immersion length, operating pressure and how the heater will be removed for service.'],
       ['How do I specify a clamp-mounted immersion heater?', 'Send the mating ferrule drawing and connection standard, including the nominal size, outside diameter and sealing face. For a Tri-Clamp connection, include the clamp and gasket specification, operating pressure and temperature, insertion depth, supply voltage and wattage.'],
@@ -798,6 +801,7 @@ export const products = [
       { table: [
         ['Drawing field', 'What to include'],
         [['Bore and fit', cartridge + 'miniature/'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, compare miniature cartridge heater configurations.'],
+        [['Installation checks', '/guides/choose-a-heating-element/#cartridge-heater-installation'], 'Check the bore and heater fit, insertion depth, retention, wiring clearance and sensor position against the equipment drawing.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         [['High temperature power leads', '/heating-elements/high-temperature-lead-wire/'], 'Include the current, lead insulation, lead exit temperature and equipment termination.'],
         ['Power and temperature', 'Supply voltage, power or heat-up target, normal tool temperature and operating cycle.'],
@@ -826,7 +830,8 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
     questions: [
       ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
-      ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Confirm that the active section is in the intended heating zone and the leads have room at the exit. If the heater includes a thermocouple, identify its lead pair and input separately from the power leads.'],
+      ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Match the installed depth and retention to the drawing so the active section aligns with the heating zone. Allow lead clearance and identify any thermocouple pair separately from the power leads.'],
+      ['Why can a cartridge heater overheat inside the bore?', 'Poor fit or deposits can reduce heat transfer from the sheath into the tool. Excess power for the active area or a sensor that misses the hot zone can also raise the sheath temperature. Provide the measured bore and heater diameters, active length, wattage and sensor location when investigating repeated failures.'],
     ],
   },
   {
@@ -5810,6 +5815,16 @@ export const guides = [
       ['Compare tubular and cartridge heaters', 'A formed tubular element fits an envelope and can be evaluated for air, liquid or contact heating. A cartridge heater fits a cylindrical bore in a mold, die or tool. The choice affects what you specify: sheath and bend geometry for tubular elements, bore fit and lead exit for cartridge heaters.', {
         links: [['Right-angle cartridge heaters for limited lead clearance', cartridge + 'right-angle/']],
       }],
+      ['Check the installation of a cartridge heater', 'Use the equipment drawing and the heater specification to confirm bore fit and insertion depth. Isolate power before replacing the element. Mark the active and cold sections from the installed reference face.', {
+        anchor: 'cartridge-heater-installation',
+        table: [
+          ['Check', 'What to verify'],
+          [['Bore and heater fit', cartridge], 'Measure the actual bore diameter and usable depth. Check straightness, surface condition and the clearance required by the heater and tool specifications.'],
+          ['Insertion and retention', 'Align the active length with the area to be heated. Verify the specified retention method, any expansion clearance and space to remove the heater later.'],
+          [['Lead routing and sensing', cartridge + 'with-thermocouple/'], 'Keep wiring clear of pinch points and within its rated temperature. Identify power leads and any separate sensor pair, and confirm that the sensor measures the intended control location.'],
+          [['Electrical rating', '/guides/heating-element-resistance/'], 'Match voltage and power per circuit to the drawing before energizing. For a resistance check, compare a cold reading from the specified isolated circuit with the heater specification.'],
+        ],
+      }],
       ['Compare installation options for air and liquid heating', 'For moving air, check whether the equipment supports a flat finned strip or a round finned tubular element and give the minimum airflow. For a liquid tank, start with the available flange, threaded port or top access. A top-entry design needs room for installation and enough liquid to cover the heated section.', {
         links: [
           ['Electrical enclosure heaters for condensation control', '/heating-elements/enclosure-heaters/'],
@@ -6110,7 +6125,17 @@ export const guides = [
     terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],
     answer: ['How do I size an immersion heater for a tank?', 'Multiply the liquid mass by its specific heat and the required temperature rise, then divide by the allowed heat-up time. Add the heat needed for the vessel and other loads plus heat losses during warm-up. Use the minimum liquid level, available power and safe surface loading to evaluate the heater construction.'],
     sections: [
-      ['Calculate the heat-up power', 'With mass in kilograms, specific heat in kJ/(kg·°C), temperature rise in °C and time in seconds, mass × specific heat × temperature rise ÷ time gives kilowatts. For 100 L of water at approximately 100 kg, heating from 20 °C to 60 °C in 60 minutes requires about 4.65 kW to heat the water alone. Account for the vessel, evaporation, process loads and ambient heat losses before selecting a rating.'],
+      ['Calculate heat-up power or time', 'With mass in kilograms, specific heat in kJ/(kg·°C) and temperature rise in °C, their product gives the energy in kJ. Divide that energy by the allowed time in seconds to estimate power in kW. If you know the available power in kW, divide the energy by the power to estimate time in seconds.', {
+        table: [
+          ['Example for 100 L of water from 20 °C to 60 °C', 'Ideal water-only result'],
+          ['Reach the target in 60 minutes', 'About 4.65 kW.'],
+          ['Use a heater delivering 6 kW', 'About 46.5 minutes.'],
+        ],
+        links: [
+          ['Calculate water heat-up power or time', '#water-heating-calculator'],
+          ['Review tank layout and element selection', immersion],
+        ],
+      }],
       ['Distinguish warm-up, holding and flow-through loads', 'For holding temperature, estimate the steady heat losses and any heat carried away by the process. For continuous flow, multiply mass flow in kg/s by specific heat and the required temperature rise to estimate ideal power in kW. Check conditions across the flow range, as low flow can raise element surface temperature at a given power.'],
       ['Match the heater to the tank opening', 'Check the available opening, insertion clearance and how the heater can be removed for service.', {
         table: [
