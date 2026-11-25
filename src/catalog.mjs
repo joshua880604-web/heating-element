@@ -8,6 +8,8 @@ const accessories = '/temperature-sensors/accessories/';
 const strip = '/heating-elements/strip-heaters/';
 const flexible = '/heating-elements/flexible-heaters/';
 const infrared = '/heating-elements/infrared-heaters/';
+const heatingCables = '/heating-elements/heating-cables/';
+const circulation = '/heating-elements/circulation-heaters/';
 const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
 const typeKMillivoltChart = '/guides/how-to-test-a-thermocouple/#type-k-millivolt-chart';
 
@@ -82,6 +84,7 @@ export const products = [
         [['Flange-mounted probe', thermo + 'flanged/'], 'A flange sets the mounting plane and supports an inserted probe.', 'Flange size and pattern, mating face, probe depth and process pressure if applicable.'],
         [['Spring-loaded bayonet probe', thermo + 'spring-loaded/'], 'A spring holds the tip at a contact point in tooling.', 'Adapter geometry, installed spring travel and the required contact point.'],
         [['Surface-mount thermocouple', thermo + 'surface-mount/'], 'A contact lug or pad measures at the equipment surface.', 'Contact position, surface shape, fastening method and lead clearance.'],
+        [['Handheld thermocouple probe', thermo + 'handheld-probes/'], 'A handled probe is positioned manually for a spot measurement.', 'Surface or insertion geometry, temperature at the grip and instrument connector.'],
         [['Pipe clamp thermocouple', thermo + 'surface-mount/pipe-clamp/'], 'A clamp holds the sensing contact against the outside wall of a pipe.', 'Actual pipe outside diameter, surface condition and space around the clamp.'],
         [['Waterproof thermocouple probe', thermo + 'waterproof/'], 'A sealed probe and lead transition can be reviewed for wet service.', 'Exposure at the probe, cable transition and connector, plus the liquid, temperature and immersion conditions.'],
         [['Autoclave thermocouple', thermo + 'autoclave/'], 'A fitted probe measures temperature at the location specified in steam equipment.', 'Original equipment drawing, insertion depth, seal and instrument input.'],
@@ -354,6 +357,7 @@ export const products = [
         [['Clamp-mounted tank connection', immersion + 'tri-clamp/'], 'Mating ferrule drawing, clamp and gasket details, operating pressure and insertion depth.', 'Match the sealing geometry, confirm submergence and check withdrawal clearance.'],
         [['Oil reservoirs and thermal fluid tanks', immersion + 'oil/'], 'Oil grade, working temperature, available agitation or flow, viscosity data and fouling history.', 'Review the allowable film temperature and heating surface area with the oil supplier’s data.'],
         [['Chemical tanks and process baths', immersion + 'ptfe/'], 'Chemical composition and concentration, continuous and peak temperatures, agitation and cleaning solutions.', 'Review each wetted material against the process and cleaning cycle. Select the active surface area and mounting for the tank conditions.'],
+        [['Electroplating tanks', immersion + 'plating-tanks/'], 'State the bath chemistry, working temperature, tank lining and clearance to racks or anodes.', 'Review wetted materials, surface loading, clearance and submergence together.'],
         [['Titanium-sheathed immersion heaters', immersion + 'titanium/'], 'Bath constituents, concentration, temperature, specified titanium grade and tank drawing.', 'Review wetted parts, exposed metals, submergence and surface loading for the bath.'],
         [['Circulating liquid', '/heating-elements/circulation-heaters/'], 'Minimum and normal flow, inlet and target outlet temperatures, pressure and port sizes.', 'Verify heat removal across the flow range and the equipment’s temperature and flow protection.'],
       ] },
@@ -483,7 +487,7 @@ export const products = [
       ['What affects the power rating of a PTFE immersion heater?', 'The required heat-up rate determines the load. The available heated area, fluoropolymer construction, liquid movement and deposits affect how that load can be transferred into the bath. Share these inputs with the tank drawing so the surface loading can be evaluated.'],
       ['What mounting detail does a tank-rim design need?', 'Show the rim profile, mounting or support dimensions, installation clearance, and distance from the rim to the heated section. Mark the lowest operating liquid level and the path for removing the heater during service.'],
     ],
-    related: ['titanium-immersion-heaters', 'immersion-heaters', 'over-the-side-immersion', 'flanged-immersion'],
+    related: ['plating-tank-heaters', 'titanium-immersion-heaters', 'immersion-heaters', 'over-the-side-immersion', 'flanged-immersion'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
   },
   {
@@ -511,7 +515,35 @@ export const products = [
       ['What do I send to review a titanium heater for a chemical bath?', 'Provide the constituents, concentration ranges, working and cleaning temperatures, and any required titanium grade. Include wetted hardware, seal materials and operating conditions.'],
       ['Which tank dimensions affect the heater layout?', 'Show the mounting datum, available insertion length, clearance from tank walls and fixtures, supports and lowest liquid level. Mark the required heated section and service access.'],
     ],
-    related: ['immersion-heaters', 'ptfe-immersion-heaters', 'over-the-side-immersion'],
+    related: ['plating-tank-heaters', 'immersion-heaters', 'ptfe-immersion-heaters', 'over-the-side-immersion'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
+  },
+  {
+    id: 'plating-tank-heaters', path: immersion + 'plating-tanks/', parent: 'immersion-heaters', group: 'tubular',
+    name: 'Plating Tank Heaters', image: 'plating-tank-heaters',
+    imageAlt: 'Illustration of a dark-sheathed U-shaped immersion heater with an offset tank-rim mount and terminal enclosure',
+    title: 'Custom Immersion Heaters for Electroplating Tanks',
+    description: 'Specify a plating tank heater by bath chemistry, temperature, minimum liquid level, lining, rack clearance, wetted materials and mounting.',
+    text: 'Immersion heaters for electroplating baths, configured to the liquid chemistry and tank layout.',
+    intro: 'A plating tank heater transfers heat directly to an electroplating or surface-treatment bath. Send the bath formulation and operating temperatures with a tank section drawing. The bath and cleaning conditions determine the wetted materials. The tank lining, fixtures and lowest operating level determine where the heated section can fit.',
+    options: ['PTFE-sheathed or titanium constructions reviewed for the specified chemistry', 'Over-the-side or other specified mount by tank drawing', 'Heated span, supports and terminal position by installed conditions'],
+    specs: ['Bath constituents and concentrations, operating and peak temperatures, cleaning solutions and agitation', 'Tank working volume, lining, lowest liquid level and available clearance around racks, parts and anodes', 'Starting temperature, target temperature, warm-up time, supply voltage and phase', 'Mounting dimensions, removal path, cable route and required low-level and over-temperature protection'],
+    selection: [
+      'Match the Bath Chemistry, Mount and Heated Area',
+      'Show the heater in its operating position with the lowest liquid level, tank lining, racks and perimeter clearance marked.',
+      { table: [
+        ['Configuration', 'Include in your inquiry'],
+        [['PTFE-sheathed element', immersion + 'ptfe/'], 'Give the complete bath chemistry and cleaning cycle to review the fluoropolymer, seals and supports. Include agitation and any deposits.'],
+        [['Titanium-sheathed element', immersion + 'titanium/'], 'Specify the bath formulation, temperature and any required titanium grade. Identify the materials of all wetted hardware.'],
+        [['Over-the-side mounting', immersion + 'over-the-side/'], 'Show the tank rim, heated span below the lowest liquid level, clearances to lining and racks, and room to remove the assembly.'],
+      ] },
+    ],
+    use: 'Typical inquiries include electroplating, surface treatment and associated process baths with specified chemistry and temperature control.',
+    questions: [
+      ['Should I choose PTFE or titanium for a plating tank?', 'Review compatibility for the exact bath and cleaning conditions. Provide the full chemistry, concentration and temperature, including any additives and the materials of the supports, seals and fittings.'],
+      ['How do I size an immersion heater for a plating bath?', 'Give the working volume, starting and target temperatures, warm-up time and expected tank heat losses. Include minimum liquid level, agitation and heated surface area so the specified power can be reviewed for the bath.'],
+    ],
+    related: ['ptfe-immersion-heaters', 'titanium-immersion-heaters', 'over-the-side-immersion', 'heater-control-panels'],
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
@@ -1686,7 +1718,7 @@ export const products = [
         ['Sensing surface', 'Mark the measurement location, contact area, surface material and shape. Include curvature or features that affect fit.'],
         [['Ring lug or sensing bolt', thermo + 'surface-mount/bolt-on/'], 'Dimension the fastener or pad footprint and the contact side. Show the available height and lead exit.'],
         [['Pipe clamp', thermo + 'surface-mount/pipe-clamp/'], 'Give the measured pipe outside diameter, access around the pipe, surface temperature and clearance for the lead.'],
-        ['Handheld surface probe', 'For temporary contact readings, give the face shape and approach angle, handle clearance and the desired contact location. State surface temperature and the time available for a reading.'],
+        [['Handheld surface probe', thermo + 'handheld-probes/'], 'For temporary contact readings, give the face shape and approach angle, handle clearance and the desired contact location. State surface temperature and the time available for a reading.'],
         ['Retention and environment', 'Show the fastener or clamp and any vibration, nearby heat source or airflow that can affect contact and the measured temperature.'],
         [['Magnetic mounting', thermo + 'surface-mount/magnetic/'], 'For a magnetically compatible surface, give its shape, finish, temperature and the available base footprint.'],
         ['Lead routing', 'Locate the exit, expected temperature at the lead transition, available bend clearance and compatible instrument connection.'],
@@ -1699,6 +1731,34 @@ export const products = [
     ],
     related: ['surface-mount-rtd-probes', 'spring-loaded-thermocouple', 'type-k', 'type-j', 'sensor-accessories'],
     guides: ['how-thermocouples-work', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+  },
+  {
+    id: 'handheld-thermocouple-probes', path: thermo + 'handheld-probes/', parent: 'thermocouples', group: 'sensing',
+    name: 'Handheld Thermocouple Probes', image: 'handheld-thermocouple-probes',
+    imageAlt: 'Illustration of two handheld thermocouple probes with surface and pointed tips, insulated grips and miniature plugs',
+    title: 'Handheld Thermocouple Probes for Surface and Insertion Measurements',
+    description: 'Choose a handheld thermocouple probe by surface or insertion tip, stem length, handle clearance, temperature, thermocouple type and connector.',
+    text: 'Handled probes for temporary surface checks or insertion measurements with a compatible thermocouple instrument.',
+    intro: 'A handheld thermocouple probe is positioned manually for spot temperature measurement with a compatible meter. Select a contact tip for an external surface or a stem for insertion into the specified medium. Provide the temperature at the tip and grip, available access and the instrument input.',
+    options: ['Contact tip for a specified flat or curved surface', 'Insertion stem with tip diameter and usable length by application', 'Grip, stem angle, cable and thermocouple plug by instrument and access'],
+    specs: ['Measurement location, surface or medium, normal and peak temperatures and required reading time', 'Contact footprint or insertion depth, stem diameter and angle, grip clearance and cable exit', 'Thermocouple type, junction or isolation requirement, instrument input and connector dimensions', 'Cable length, working conditions at the grip and lead, cleaning requirements and quantity'],
+    selection: [
+      'Choose the Probe Tip, Grip and Instrument Connection',
+      'Show the measurement point and direction of approach. Describe the needed repeatability and the available time at the measuring point.',
+      { table: [
+        ['Probe selection', 'Include in your inquiry'],
+        [['Surface contact tip', thermo + 'surface-mount/'], 'Give the accessible contact area, curvature, surface finish, temperature and clearance for the stem and handle.'],
+        [['Insertion stem', thermo + 'needle-probes/'], 'Identify the medium, required insertion length, tip shape and usable approach space. Include cleaning conditions and grip clearance.'],
+        [['Meter or input', accessories + 'connectors/'], 'Give the instrument model or input type, connector format and polarity convention, plus lead length and routing requirements.'],
+      ] },
+    ],
+    use: 'Typical inquiries include industrial maintenance, equipment checks and spot readings during process setup.',
+    questions: [
+      ['Can I use the same handheld probe for surfaces and insertion?', 'Choose the tip for the measurement. A surface contact needs a face that sits against the material. An insertion probe needs the correct stem profile, immersion depth and compatibility with the medium.'],
+      ['Will a handheld thermocouple probe fit my meter?', 'Match the thermocouple type as well as the plug format and polarity. Send the meter model and a photo of its input or the connector drawing.'],
+    ],
+    related: ['thermocouples', 'surface-mount-thermocouple', 'needle-thermocouples', 'thermocouple-connectors'],
+    guides: ['thermocouple-types', 'thermocouple-wire-color-code'],
   },
   {
     id: 'bolt-on-thermocouples', path: thermo + 'surface-mount/bolt-on/', parent: 'surface-mount-thermocouple', group: 'sensing',
@@ -2096,6 +2156,7 @@ export const products = [
         ['Assembly decision', 'Information to include'],
         ['Continuous and peak temperature', 'Document the normal setpoint, maximum exposure, time at the peak and heating or cooling cycles.'],
         [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Give the furnace atmosphere, supported length, orientation and exposure to thermal shock or impact. The photos below show examples of ceramic-tube construction.'],
+        [['Silicon carbide protection tube', accessories + 'ceramic-protection-tubes/silicon-carbide/'], 'Give the material grade, furnace conditions, tube drawing and sensor assembly requirements.'],
         [['Kiln thermocouple assembly', thermo + 'high-temperature/kiln/'], 'Show the hot face of the kiln wall, probe projection into the chamber, controller input and firing cycle.'],
         ['Metal protection tube', 'Give the atmosphere and process contaminants, expected mechanical loads and tube dimensions. Confirm compatibility at the actual operating temperature.'],
         ['Mount and connection head', 'Show the furnace wall, probe insertion, support and temperature at the external head or connector.'],
@@ -2653,6 +2714,7 @@ export const products = [
         ['Selection input', 'What to provide'],
         ['Bore and tip fit', 'Show the outside diameter, internal bore, tolerance, wall thickness, usable depth and sensor diameter. Give the required clearance to the closed tip.'],
         [['Furnace atmosphere and cycling', thermo + 'high-temperature/'], 'Describe the operating gas, vapors or deposits, normal and peak temperatures, dwell time and heating or cooling rates.'],
+        [['Silicon carbide protection tubes', accessories + 'ceramic-protection-tubes/silicon-carbide/'], 'Give the specified silicon carbide grade, atmosphere, temperature cycle and supported span. State whether a tube or complete assembly is needed.'],
         ['Mounting and supported length', 'Mark the support points, installed orientation, exposed span, wall or sleeve clearance and room to withdraw the tube.'],
         ['Tube or assembly scope', 'Identify whether the inquiry is for the ceramic tube alone or for a complete thermocouple assembly. For a complete assembly, include the sensor type and termination.'],
       ] },
@@ -2663,6 +2725,34 @@ export const products = [
       ['How does thermal cycling affect protection tube selection?', 'Temperature gradients across a ceramic tube can create thermal stress. Include heating and cooling rates, insertion conditions, exposure cycle and installed supports when requesting a material and geometry review.'],
     ],
     related: ['high-temperature', 'kiln-thermocouples', 'type-s', 'type-r', 'type-b', 'sensor-accessories'],
+    guides: ['thermocouple-types'],
+  },
+  {
+    id: 'silicon-carbide-thermocouple-protection-tubes', path: accessories + 'ceramic-protection-tubes/silicon-carbide/', parent: 'ceramic-thermocouple-protection-tubes', group: 'sensing',
+    name: 'Silicon Carbide Thermocouple Protection Tubes', image: 'silicon-carbide-thermocouple-protection-tubes',
+    imageAlt: 'Illustration of dark silicon carbide thermocouple protection tubes showing an open bore and a closed tip',
+    title: 'Custom Silicon Carbide Thermocouple Protection Tubes',
+    description: 'Specify a silicon carbide thermocouple protection tube or probe assembly by ceramic grade, bore, tip shape, support and furnace conditions.',
+    text: 'Silicon carbide protection tubes and matched thermocouple assemblies for specified furnace conditions.',
+    intro: 'A silicon carbide thermocouple protection tube surrounds a sensor in a high-temperature installation. For a replacement tube or complete probe, provide the silicon carbide grade if specified, the working atmosphere and the installed drawing. Temperature capability and compatibility depend on the grade and the full assembly.',
+    options: ['Individual protection tube or complete thermocouple assembly', 'Silicon carbide grade, outside diameter, bore and tip dimensions by application', 'Mount, support, sensor type and termination by assembly drawing'],
+    specs: ['Required silicon carbide grade, original part or material specification, and any inspection requirements', 'Outside diameter, bore, wall thickness, overall length, usable bore depth, tip geometry and fit', 'Furnace atmosphere, deposits, continuous and peak temperatures, dwell and heating or cooling cycle', 'Installed orientation and supports, exposed span, probe dimensions and termination when supplied as an assembly'],
+    selection: [
+      'Match the Silicon Carbide Grade, Tube Dimensions and Probe',
+      'Send a furnace section drawing with the support, exposed length, insertion depth and position of the sensing tip.',
+      { table: [
+        ['Selection detail', 'Include in your inquiry'],
+        ['Grade and furnace conditions', 'Identify the existing material specification where available. Include furnace atmosphere, vapors or deposits, peak temperature and the rates of heating and cooling.'],
+        ['Tube geometry and supports', 'Give the outer diameter, bore, usable length, tip form and tolerances. Mark support locations, mounting clearance and installed orientation.'],
+        [['Tube or complete probe', thermo + 'high-temperature/'], 'Specify tube-only supply or include sensor type, insertion depth, inner insulation or sheath requirements, and terminal head or lead details for an assembly.'],
+      ] },
+    ],
+    use: 'Typical inquiries include replacement protection tubes and fitted probes for industrial furnaces, kilns and high-temperature equipment with defined operating conditions.',
+    questions: [
+      ['Can I order a silicon carbide tube on its own?', 'A tube-only inquiry needs the grade, drawing, support and service conditions. For a complete probe, also include the thermocouple type, sensor dimensions and connection requirements.'],
+      ['What temperature can a silicon carbide protection tube withstand?', 'Review the limit for the selected grade and assembly under the actual furnace atmosphere, loading and thermal cycle. Provide continuous and peak temperatures and time at peak.'],
+    ],
+    related: ['ceramic-thermocouple-protection-tubes', 'high-temperature', 'kiln-thermocouples', 'sensor-accessories'],
     guides: ['thermocouple-types'],
   },
   {
@@ -3057,7 +3147,7 @@ export const products = [
       ] },
     ],
     use: 'Typical projects involve open process tanks with overhead access for installation and service. Include the positions of racks, baskets, vessel walls, tank covers and other obstructions in the drawing.',
-    related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
+    related: ['plating-tank-heaters', 'immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'circulation-heaters'],
     guides: ['immersion-heater-sizing', 'choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['When does an over-the-side heater suit a process tank?', 'Consider this mounting when the vessel can be accessed from above and the rim or an independent support can carry the assembly. Confirm the path for insertion and removal. A flanged or screw plug design uses a compatible tank connection instead.'],
@@ -3094,7 +3184,7 @@ export const products = [
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
-    id: 'circulation-heaters', path: '/heating-elements/circulation-heaters/', group: 'tubular', name: 'Circulation Heaters',
+    id: 'circulation-heaters', path: circulation, group: 'tubular', name: 'Circulation Heaters',
     image: 'circulation-heaters',
     imageAlt: 'Illustration of an in-line circulation heater with a cylindrical chamber and fluid connections',
     title: 'Industrial Circulation Heaters for Process Fluids',
@@ -3120,6 +3210,34 @@ export const products = [
     questions: [
       ['How is a circulation heater different from a tank immersion heater?', 'A circulation heater transfers heat as fluid passes through a heater chamber. Power depends on flow and temperature rise, while the minimum operating flow affects element cooling. For a tank heater, the liquid inventory and time to reach temperature are also key sizing inputs.'],
     ],
+  },
+  {
+    id: 'compressed-air-heaters', path: circulation + 'compressed-air/', parent: 'circulation-heaters', group: 'tubular',
+    name: 'In-Line Compressed Air Heaters', image: 'compressed-air-heaters',
+    imageAlt: 'Illustration of a cylindrical in-line air heater chamber with two pipe connections and a terminal enclosure',
+    title: 'In-Line Compressed Air Heaters for Industrial Process Air',
+    description: 'Specify an electric compressed air heater assembly by air flow, pressure, inlet and outlet temperatures, pressure drop and pipe connections.',
+    text: 'Electric in-line assemblies for specified compressed air flow, pressure and outlet temperature.',
+    intro: 'An in-line compressed air heater warms air as it flows through a chamber connected to the process line. Supply the flow range and its reference conditions, inlet pressure and temperature, target outlet temperature and allowable pressure drop. The chamber, fittings and protective controls are reviewed against the equipment specification.',
+    options: ['Complete heater chamber with heating elements and terminal arrangement by drawing', 'Inlet and outlet connections and mounting by line layout', 'Temperature measurement, flow proving and limit interfaces by equipment specification'],
+    specs: ['Minimum, normal and maximum air flow, with measurement units and reference temperature and pressure', 'Air quality and moisture, normal and maximum inlet conditions, target outlet temperature and allowable pressure drop', 'Design pressure, pipe connection drawings, installation orientation and required compliance documentation', 'Supply voltage and phase, control signals, temperature limit and minimum-flow protection requirements'],
+    selection: [
+      'Specify Air Flow, Temperature Rise and Pressure Requirements',
+      'Send the line drawing and operating envelope. Include startup and reduced-flow conditions, where the heater may receive less cooling air.',
+      { table: [
+        ['Review input', 'Include in your inquiry'],
+        ['Air flow and temperature rise', 'Give mass flow or the reference pressure and temperature for a volumetric rate. State minimum and maximum flow, supply temperature and target outlet temperature.'],
+        ['Chamber and connections', 'Give operating and design pressures, the allowable pressure drop, inlet and outlet connection sizes, air quality and space for the heater.'],
+        [['Controls and documentation', '/temperature-controls/heater-control-panels/'], 'Specify voltage, phase, airflow and temperature sensing, required interlocks and limits, and project documentation and testing requirements.'],
+      ] },
+    ],
+    use: 'Typical inquiries include compressed air preheating and industrial equipment with a defined air flow and temperature requirement.',
+    questions: [
+      ['What flow value is needed for a compressed air heater?', 'Give minimum, normal and maximum flow. Specify the temperature and pressure if the rate is volumetric, and identify whether it is referenced to standard conditions or actual line conditions.'],
+      ['What else is needed for an in-line heater quote?', 'Provide the operating and design pressures, target outlet temperature, allowable pressure drop and connection drawings. Include the required flow proving, temperature limits and test documentation.'],
+    ],
+    related: ['circulation-heaters', 'duct-heaters', 'tubular-heaters', 'heater-control-panels'],
+    guides: ['choose-a-heating-element'],
   },
   {
     id: 'flexible-heaters', path: flexible, group: 'specialty', name: 'Flexible Heaters', image: 'flexible-heaters',
@@ -3701,10 +3819,10 @@ export const products = [
     ],
   },
   {
-    id: 'heating-cables', path: '/heating-elements/heating-cables/', group: 'specialty', name: 'Heating & Heat Trace Cables',
+    id: 'heating-cables', path: heatingCables, group: 'specialty', name: 'Heating & Heat Trace Cables',
     image: 'heating-cables',
     imageAlt: 'Illustration of a coil of heat trace cable',
-    title: 'Heat Trace Cables & Self-Regulating Heating Cable',
+    title: 'Industrial Heat Trace Cables for Pipes & Equipment',
     description: 'Specify custom heat trace cable for pipes or equipment by maintained temperature, ambient exposure, heated length, insulation and supply voltage.',
     text: 'Heating cable configurations for temperature maintenance and equipment protection.',
     intro: 'Scope a heating cable using target maintenance temperature, insulation, supply voltage and the installation environment.',
@@ -3715,6 +3833,8 @@ export const products = [
       'Start with the surface temperature to maintain and the expected heat loss. Include the complete circuit and the sections where the pipe or equipment loses more heat.',
       { table: [
         ['Input', 'What to include'],
+        [['Self-regulating heating cable', heatingCables + 'self-regulating/'], 'Submit the required power at maintenance temperature, minimum startup temperature, voltage and circuit lengths.'],
+        [['Constant wattage heating cable', heatingCables + 'constant-wattage/'], 'Submit the specified output per unit length, run lengths, zone layout, and sensor and control requirements.'],
         ['Pipe or vessel geometry', 'Outside diameter or surface dimensions, material and traced length. Mark valves, flanges, supports and dead legs.'],
         ['Insulation and environment', 'Insulation type and thickness, minimum ambient temperature, exposure to wind or washdown and any area classification specified by the project.'],
         ['Process temperatures', 'Target maintenance temperature and maximum exposure, including shutdown and cleaning conditions. State whether the duty is freeze protection or process temperature maintenance.'],
@@ -3727,6 +3847,62 @@ export const products = [
     questions: [
       ['When should I consider self-regulating heat trace cable?', 'Consider it where heat loss or temperature varies along the installation. Specify the pipe or equipment material, insulation, minimum ambient temperature, maintenance temperature and supply voltage. Include circuit length and control requirements in the inquiry.'],
     ],
+  },
+  {
+    id: 'self-regulating-heating-cables', path: heatingCables + 'self-regulating/', parent: 'heating-cables', group: 'specialty',
+    name: 'Self-Regulating Heating Cables', image: 'self-regulating-heating-cables',
+    imageAlt: 'Illustration of a coiled black self-regulating heat trace cable with a cutaway end',
+    title: 'Self-Regulating Heating Cable for Pipe Heat Tracing',
+    description: 'Specify self-regulating heating cable by pipe heat loss, maintenance temperature, minimum startup temperature, voltage and circuit length.',
+    text: 'Self-regulating heat trace cable for pipe freeze protection and specified process temperatures.',
+    intro: 'A self-regulating heating cable uses a temperature-sensitive resistive core. As a section of cable gets warmer, it produces less heat at that location. For a quote, provide heat loss at the target maintenance temperature and the lowest startup temperature so output and circuit limits can be reviewed together.',
+    options: ['Output grade and supply voltage by calculated heat loss', 'Jacket and termination requirements by installation environment', 'Circuit lengths, controls and accessories reviewed with the installation design'],
+    specs: ['Pipe outside diameter and material, traced length and layout, insulation and heat-loss estimate', 'Target maintenance temperature, coldest startup ambient and highest process or cleaning exposure', 'Supply voltage, individual circuit lengths, number of circuits and required control and protection', 'Outdoor or washdown exposure, required cable jacket or approval and termination points'],
+    selection: [
+      'Match Heat Output at Temperature and Check Cold Start',
+      'Send a line drawing with insulation details, the intended maintenance temperature and the location of each feed and termination.',
+      { table: [
+        ['Sizing input', 'Include in your inquiry'],
+        ['Output at maintenance temperature', 'Give calculated heat loss per unit length, pipe size and material, insulation and target pipe temperature. Include fittings and other locations with extra heat loss.'],
+        ['Cold startup and circuit lengths', 'Provide the lowest startup temperature, supply voltage and length of each circuit. Specify the required protection and switching arrangement.'],
+        ['Exposure and termination', 'Give peak exposure during operation and cleaning, site conditions, specified approvals and the routing of leads and end terminations.'],
+      ] },
+    ],
+    use: 'Typical inquiries include freeze protection and temperature maintenance on insulated process lines and equipment.',
+    questions: [
+      ['How does self-regulating heat trace work?', 'The resistance of the core increases as its temperature rises. That section then draws less current and produces less heat, while colder sections can draw more current. Cable output and circuit limits still depend on the selected product and operating conditions.'],
+      ['Why does the lowest startup temperature matter?', 'The cable can draw more current when cold. Give the lowest expected startup temperature, voltage and run length to check the permissible circuit length and protection for the selected cable.'],
+    ],
+    related: ['heating-cables', 'constant-wattage-heating-cables', 'heater-control-panels', 'high-temperature-lead-wire'],
+    guides: ['choose-a-heating-element'],
+  },
+  {
+    id: 'constant-wattage-heating-cables', path: heatingCables + 'constant-wattage/', parent: 'heating-cables', group: 'specialty',
+    name: 'Constant Wattage Heating Cables', image: 'constant-wattage-heating-cables',
+    imageAlt: 'Illustration of a coiled constant wattage heating cable with one end showing the metallic braid and insulated conductors',
+    title: 'Constant Wattage Heating Cable for Industrial Heat Tracing',
+    description: 'Specify constant wattage heating cable by output per unit length, supply voltage, circuit layout, temperature limits, construction and controls.',
+    text: 'Industrial heat trace circuits rated for a specified output per unit length at the design supply.',
+    intro: 'A constant wattage heating cable is rated for a specified output per unit length at its design supply. Specify the heat loss, run lengths and temperatures, then check the available construction and control requirements. Cutting and termination depend on whether the cable is designed with parallel heating zones or as a series circuit.',
+    options: ['Rated watts per metre or foot and voltage by circuit design', 'Cable construction, jacket and terminations by installation requirements', 'Temperature sensing and switching requirements by zone'],
+    specs: ['Pipe or equipment layout, insulation details, heated lengths, heat loss and required watts per unit length', 'Voltage, number of circuits, intended layout and any existing cable reference', 'Target temperature, minimum ambient, maximum exposure and sensor and control positions', 'Jacket and termination needs, cable clearance and project-specific approvals or testing'],
+    selection: [
+      'Specify Rated Output and Divide the Installation Into Circuits',
+      'Mark each circuit, its supply point, the heated run and the required measurement point on the drawing.',
+      { table: [
+        ['Selection detail', 'Include in your inquiry'],
+        ['Heat load and supply', 'Provide the required output per unit length, design voltage, heated length, insulation and process temperature for each zone.'],
+        ['Cable construction', 'Give the cable type or original model, each run length and the termination layout. Check the permissible lengths and cutting rules for the specified construction.'],
+        [['Control and exposure', '/temperature-controls/heater-control-panels/'], 'Specify setpoints, sensor locations, temperature limits and peak cable exposure, including cleaning and shutdown conditions.'],
+      ] },
+    ],
+    use: 'Typical inquiries include traced industrial pipe or equipment runs with a defined heat load and temperature control plan.',
+    questions: [
+      ['Can a constant wattage cable be cut to length?', 'Check the construction and manufacturer’s instructions. A parallel-zone cable can have specified cut positions or zone increments. A series cable normally uses a designed circuit length and resistance.'],
+      ['What needs to match when replacing a constant wattage cable?', 'Provide the original cable construction, supply voltage, watts per unit length, installed circuit length, jacket and terminations. Include the operating temperatures and circuit protection requirements.'],
+    ],
+    related: ['heating-cables', 'self-regulating-heating-cables', 'heater-control-panels', 'high-temperature-lead-wire'],
+    guides: ['choose-a-heating-element', 'heating-element-resistance'],
   },
   {
     id: 'high-temperature-lead-wire', path: '/heating-elements/high-temperature-lead-wire/', group: 'specialty',
@@ -3778,7 +3954,7 @@ export const products = [
       ] },
     ],
     use: 'Typical projects include process ventilation, drying equipment and industrial air ducts.',
-    related: ['finned-tubular-heaters', 'tubular-heaters', 'open-coil-heaters'],
+    related: ['compressed-air-heaters', 'finned-tubular-heaters', 'tubular-heaters', 'open-coil-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['What is required to size a duct heater for process air?', 'Provide the duct dimensions, minimum and maximum airflow, inlet and target outlet temperatures, supply and mounting. Include airflow proving and temperature-limit requirements for the system so the heater can be evaluated at reduced flow as well as normal operation.'],
@@ -4203,6 +4379,8 @@ export const guides = [
           ['Melt bolt thermocouples for extruder ports', thermo + 'melt-bolt/'],
           ['Pipe clamp thermocouples for wall temperature', thermo + 'surface-mount/pipe-clamp/'],
           ['Compression fitting thermocouples for adjustable insertion', thermo + 'threaded-probes/compression-fitting/'],
+          ['Handheld thermocouple probes for spot measurements', thermo + 'handheld-probes/'],
+          ['Silicon carbide protection tubes for specified furnace conditions', accessories + 'ceramic-protection-tubes/silicon-carbide/'],
         ],
       }],
       ['Decide how to connect it', 'Match the extension cable and connector to the thermocouple type and instrument. Document any required terminal head, miniature plug or bare wire termination.'],
@@ -4299,13 +4477,18 @@ export const guides = [
         links: [
           ['Heater control panels and zone load schedules', '/temperature-controls/heater-control-panels/'],
           ['Ceramic terminal blocks for heater power wiring', '/temperature-controls/ceramic-terminal-blocks/'],
+          ['Self-regulating heating cable and cold startup', heatingCables + 'self-regulating/'],
+          ['Constant wattage heating cable and circuit layout', heatingCables + 'constant-wattage/'],
         ],
       }],
       ['Compare tubular and cartridge heaters', 'A formed tubular element fits an envelope and can be evaluated for air, liquid or contact heating. A cartridge heater fits a cylindrical bore in a mold, die or tool. The choice affects what you specify: sheath and bend geometry for tubular elements, bore fit and lead exit for cartridge heaters.', {
         links: [['Right-angle cartridge heaters for limited lead clearance', cartridge + 'right-angle/']],
       }],
       ['Compare installation options for air and liquid heating', 'For moving air, check whether the equipment supports a flat finned strip or a round finned tubular element and give the minimum airflow. For a liquid tank, start with the available flange, threaded port or top access. A top-entry design needs room for installation and enough liquid to cover the heated section.', {
-        links: [['Electrical enclosure heaters for condensation control', '/heating-elements/enclosure-heaters/']],
+        links: [
+          ['Electrical enclosure heaters for condensation control', '/heating-elements/enclosure-heaters/'],
+          ['In-line compressed air heater selection', circulation + 'compressed-air/'],
+        ],
       }],
       ['Compare types of tubular heating elements', 'A metal-sheathed tubular element can take different shapes to fit the heating zone. The shape and the medium together determine which measurements belong on the drawing.', {
         table: [
@@ -4587,6 +4770,7 @@ export const guides = [
           [['Autoclave steam generator', immersion + 'autoclave/'], 'Equipment drawing, approved sealing interface, bundle clearance and rated power per circuit'],
           [['Drum or pail', immersion + 'drum/'], 'Opening or rim geometry, support arrangement, insertion depth, minimum fill and withdrawal path'],
           [['IBC tote', immersion + 'ibc-tote/'], 'Tote material, access opening, support drawing, minimum fill and installed clearances'],
+          [['Plating tank', immersion + 'plating-tanks/'], 'Bath formulation, operating temperatures, tank lining, rack clearance and minimum liquid level'],
         ],
       }],
       ['Verify surface loading and submergence', 'Divide the power by the total active sheath surface area to estimate watt density. Check the liquid chemistry, viscosity, agitation, deposit buildup and sheath compatibility. Show the active section and the minimum operating level on the drawing, including any level changes during operation. Define independent low-level and over-temperature protection for the equipment as appropriate to the design.'],

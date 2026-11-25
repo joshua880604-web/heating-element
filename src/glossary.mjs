@@ -105,9 +105,19 @@ export const glossary = [
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
   },
   {
+    id: 'compressed-air-heater', name: 'Compressed Air Heater',
+    definition: 'An in-line assembly that heats air as it flows through a chamber. Specify air flow and its reference conditions, pressure, temperature rise and allowable pressure drop.',
+    related: ['In-Line Compressed Air Heaters', '/heating-elements/circulation-heaters/compressed-air/'],
+  },
+  {
     id: 'compression-fitting-thermocouple', name: 'Compression Fitting Thermocouple',
     definition: 'A sheathed thermocouple mounted using a ferrule and fitting. Specify the sheath diameter, process connection, sealing requirement and installed sensing depth.',
     related: ['Compression Fitting Thermocouples', '/thermocouples/threaded-probes/compression-fitting/'],
+  },
+  {
+    id: 'constant-wattage-heating-cable', name: 'Constant Wattage Heating Cable',
+    definition: 'A heat trace cable rated for a specified output per unit length at the design supply. Construction, circuit length and the temperature controls determine how it is specified.',
+    related: ['Constant Wattage Heating Cables', '/heating-elements/heating-cables/constant-wattage/'],
   },
   {
     id: 'ds18b20', name: 'DS18B20 Temperature Sensor',
@@ -223,6 +233,11 @@ export const glossary = [
     id: 'heated-length', name: 'Heated Length',
     definition: 'The active length over which an element generates heat. Use heated length, rather than overall length, when calculating cylindrical sheath area for watt density.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
+  },
+  {
+    id: 'handheld-thermocouple-probe', name: 'Handheld Thermocouple Probe',
+    definition: 'A handled temperature probe for spot measurements with a compatible thermocouple instrument. Select the tip for surface contact or insertion and match the connector to the instrument input.',
+    related: ['Handheld Thermocouple Probes', '/thermocouples/handheld-probes/'],
   },
   {
     id: 'heater-control-panel', name: 'Heater Control Panel',
@@ -350,6 +365,11 @@ export const glossary = [
     related: ['Pipe Clamp Thermocouples', '/thermocouples/surface-mount/pipe-clamp/'],
   },
   {
+    id: 'plating-tank-heater', name: 'Plating Tank Heater',
+    definition: 'An immersion heater for an electroplating or surface-treatment bath. Selection depends on bath chemistry, temperature, minimum liquid level and clearance inside the tank.',
+    related: ['Plating Tank Heaters', '/heating-elements/immersion-heaters/plating-tanks/'],
+  },
+  {
     id: 'pt100', name: 'Pt100',
     definition: 'A platinum resistance temperature detector with a nominal resistance of 100 ohms at 0 °C. The instrument and wiring configuration are part of the measurement.',
     related: ['RTD & Pt100 Sensors', '/temperature-sensors/rtd/'],
@@ -420,9 +440,19 @@ export const glossary = [
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
   },
   {
+    id: 'self-regulating-heating-cable', name: 'Self-Regulating Heating Cable',
+    definition: 'A heat trace cable whose temperature-sensitive core reduces local heat output as the cable gets warmer. Check rated output at maintenance temperature and cold startup current for the selected cable.',
+    related: ['Self-Regulating Heating Cables', '/heating-elements/heating-cables/self-regulating/'],
+  },
+  {
     id: 'silicon-carbide-heating-element', name: 'Silicon Carbide Heating Element',
     definition: 'A ceramic resistance element used in furnaces and kilns. The rod geometry, hot and cold lengths and electrical reference conditions are specified for the installation.',
     related: ['Silicon Carbide Heating Elements', '/heating-elements/silicon-carbide-heating-elements/'],
+  },
+  {
+    id: 'silicon-carbide-protection-tube', name: 'Silicon Carbide Protection Tube',
+    definition: 'A ceramic tube that surrounds a temperature sensor in high-temperature service. Match the silicon carbide grade, atmosphere, thermal cycle, tube geometry and support to the installation.',
+    related: ['Silicon Carbide Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/silicon-carbide/'],
   },
   {
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',

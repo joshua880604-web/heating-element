@@ -106,7 +106,13 @@ const photoTones = [
     images: ['enclosure-heaters', 'ceramic-power-terminal-blocks', 'pipe-clamp-thermocouples',
       'compression-fitting-thermocouples', 'threaded-thermowells', 'flanged-thermowells'],
   },
-  { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
+  {
+    id: 'blue-gray',
+    source: [225, 227, 231],
+    images: ['type-t', 'type-s', 'type-e', 'self-regulating-heating-cables', 'compressed-air-heaters',
+      'constant-wattage-heating-cables', 'handheld-thermocouple-probes',
+      'silicon-carbide-thermocouple-protection-tubes', 'plating-tank-heaters'],
+  },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
 
