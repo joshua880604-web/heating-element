@@ -10,6 +10,16 @@ export const glossary = [
     related: ['Autoclave Heating Elements', '/heating-elements/immersion-heaters/autoclave/'],
   },
   {
+    id: 'autoclave-thermocouple', name: 'Autoclave Thermocouple',
+    definition: 'A temperature probe fitted to the measuring point specified for an autoclave. Its mount, seal, installed depth and instrument input must match the equipment drawing.',
+    related: ['Autoclave Thermocouples', '/thermocouples/autoclave/'],
+  },
+  {
+    id: 'band-heater-with-thermocouple', name: 'Band Heater with Thermocouple',
+    definition: 'A band heater assembly with a thermocouple at a defined sensing point. The heater load and the thermocouple circuit have separate wiring requirements.',
+    related: ['Band Heaters with Thermocouples', '/heating-elements/band-heaters/with-thermocouple/'],
+  },
+  {
     id: 'bayonet-thermocouple', name: 'Bayonet Thermocouple',
     definition: 'A thermocouple with a bayonet cap that engages a matching adapter. Some assemblies use a spring to maintain contact between the probe tip and the measurement surface.',
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
@@ -55,6 +65,11 @@ export const glossary = [
     related: ['Cast Iron Plate Heaters', '/heating-elements/cast-iron-heaters/'],
   },
   {
+    id: 'ceramic-cartridge-heater', name: 'Ceramic Cartridge Heater',
+    definition: 'A compact resistance heater with a ceramic body supporting or insulating its heating element. Body fit, active zone and termination are specified to the assembly.',
+    related: ['Ceramic Cartridge Heaters', '/heating-elements/cartridge-heaters/ceramic/'],
+  },
+  {
     id: 'ceramic-infrared-heating-element', name: 'Ceramic Infrared Heating Element',
     definition: 'A radiant heater in which an electrical resistance conductor heats a ceramic body. Face profile, emitter spacing and working distance affect how radiation reaches the work surface.',
     related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
@@ -68,6 +83,11 @@ export const glossary = [
     id: 'ceramic-thermocouple-protection-tube', name: 'Ceramic Thermocouple Protection Tube',
     definition: 'A ceramic tube that shields a thermocouple sensing element during furnace or kiln service. Its material, bore, wall thickness and supports depend on the installed geometry, atmosphere and thermal cycle.',
     related: ['Ceramic Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/'],
+  },
+  {
+    id: 'coil-immersion-heater', name: 'Coil Immersion Heater',
+    definition: 'A tubular immersion element formed into a spiral or helix. Its outline must fit the vessel and its active turns must operate below the specified minimum liquid level.',
+    related: ['Coil Immersion Heaters', '/heating-elements/immersion-heaters/coil/'],
   },
   {
     id: 'cold-end', name: 'Cold End',
@@ -85,9 +105,19 @@ export const glossary = [
     related: ['Waterproof DS18B20 Temperature Sensors', '/temperature-sensors/ds18b20/'],
   },
   {
+    id: 'distiller-heating-element', name: 'Distiller Heating Element',
+    definition: 'A heater that supplies heat to the feedwater in a water distiller. The boiling chamber, minimum operating water level and sealing interface define its installation.',
+    related: ['Water Distiller Heating Elements', '/heating-elements/immersion-heaters/water-distiller/'],
+  },
+  {
     id: 'duct-heater', name: 'Duct Heater',
     definition: 'An assembly that heats air passing through a duct. Minimum airflow, inlet temperature, required temperature rise and duct dimensions are inputs to selection.',
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
+  },
+  {
+    id: 'dual-element-rtd', name: 'Dual-Element RTD',
+    definition: 'A resistance temperature probe with two separately wired sensing elements. Specify the sensing positions, lead groups and instrument inputs for both circuits.',
+    related: ['Dual-Element RTD Probes', '/temperature-sensors/rtd/dual-element/'],
   },
   {
     id: 'dual-element-thermocouple', name: 'Dual Element Thermocouple',
@@ -118,6 +148,11 @@ export const glossary = [
     id: 'fine-wire-thermocouple', name: 'Fine-Wire Thermocouple',
     definition: 'A thermocouple with small-diameter conductors joined at a small sensing bead. Wire size, bead geometry, mounting and the measurement medium affect the response.',
     related: ['Fine-Wire Thermocouples', '/thermocouples/fine-wire/'],
+  },
+  {
+    id: 'finned-cartridge-heater', name: 'Finned Cartridge Heater',
+    definition: 'A cylindrical cartridge heater with fins for transferring heat to moving air and electrical leads at one end. Specify the fin envelope, airflow and available wiring clearance.',
+    related: ['Finned Cartridge Heaters', '/heating-elements/cartridge-heaters/finned/'],
   },
   {
     id: 'finned-strip-heater', name: 'Finned Strip Heater',
@@ -240,6 +275,11 @@ export const glossary = [
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
   },
   {
+    id: 'mosi2-heating-element', name: 'MoSi2 Heating Element',
+    definition: 'A furnace resistance element made from molybdenum disilicide. Its hot section, terminal legs and support arrangement are specified for the original furnace.',
+    related: ['MoSi2 Heating Elements', '/heating-elements/mosi2-heating-elements/'],
+  },
+  {
     id: 'nozzle-band-heater', name: 'Nozzle Band Heater',
     definition: 'A compact band heater clamped around a molding or extrusion nozzle. Its fit depends on the nozzle diameter, available width, clamp access and lead clearance.',
     related: ['Nozzle Band Heaters', '/heating-elements/band-heaters/nozzle/'],
@@ -283,6 +323,11 @@ export const glossary = [
     id: 'ptc-heating-element', name: 'PTC Heating Element',
     definition: 'A heating element designed around a positive temperature coefficient of resistance. Its resistance rises with temperature over the designed operating region, changing power at a fixed supply voltage.',
     related: ['PTC & Ceramic Heating Elements', '/heating-elements/ptc-ceramic-heaters/'],
+  },
+  {
+    id: 'radiator-heating-element', name: 'Radiator Heating Element',
+    definition: 'An electric immersion rod that transfers heat to the fill medium in a compatible radiator. Match its mount, installed dimensions, rating and controls to the radiator drawing.',
+    related: ['Electric Radiator Heating Elements', '/heating-elements/immersion-heaters/radiator/'],
   },
   {
     id: 'reference-junction', name: 'Reference Junction',
@@ -330,6 +375,11 @@ export const glossary = [
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
   },
   {
+    id: 'silicon-carbide-heating-element', name: 'Silicon Carbide Heating Element',
+    definition: 'A ceramic resistance element used in furnaces and kilns. The rod geometry, hot and cold lengths and electrical reference conditions are specified for the installation.',
+    related: ['Silicon Carbide Heating Elements', '/heating-elements/silicon-carbide-heating-elements/'],
+  },
+  {
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',
     definition: 'A flexible heater with a resistive element incorporated into a silicone rubber construction, shaped to fit a surface, enclosure or assembly.',
     related: ['Silicone Rubber Heaters', '/heating-elements/flexible-heaters/silicone-rubber/'],
@@ -343,6 +393,11 @@ export const glossary = [
     id: 'split-sheath-cartridge-heater', name: 'Split-Sheath Cartridge Heater',
     definition: 'A cartridge heater with a longitudinal division in the sheath that allows its sections to move as the heater warms. Fit depends on the finished bore tolerance and operating conditions.',
     related: ['Split-Sheath Cartridge Heaters', '/heating-elements/cartridge-heaters/split-sheath/'],
+  },
+  {
+    id: 'spring-loaded-rtd', name: 'Spring-Loaded RTD',
+    definition: 'A resistance temperature probe with a spring that holds its tip against a specified contact point. The mount, installed travel and pocket dimensions determine the fit.',
+    related: ['Spring-Loaded RTD Probes', '/temperature-sensors/rtd/spring-loaded/'],
   },
   {
     id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
@@ -362,7 +417,7 @@ export const glossary = [
   {
     id: 'thermocouple-connection-head', name: 'Thermocouple Connection Head',
     definition: 'An enclosure at the probe termination where sensor leads connect to field wiring. The head layout is specified by cable entry, terminals, installed clearance and operating temperature.',
-    related: ['Thermocouples with Connection Heads', '/thermocouples/connection-head/'],
+    related: ['Thermocouple Connection Head Housings', '/temperature-sensors/accessories/connection-heads/'],
   },
   {
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',
