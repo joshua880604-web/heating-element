@@ -30,6 +30,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bearing-metal-thermocouple', name: 'Bearing Metal Thermocouple',
+    definition: 'A thermocouple fitted to a specified point in a bearing pad or shell. Match the sensing depth, pocket, retention, lubrication exposure and monitor input to the assembly.',
+    related: ['Bearing Metal Thermocouples', '/thermocouples/bearing-metal/'],
+  },
+  {
     id: 'bearing-rtd', name: 'Bearing RTD',
     definition: 'A resistance temperature detector fitted to a pocket in a stationary bearing shell or housing. The pocket and probe dimensions locate the sensing point, and the cable route must clear the moving parts.',
     related: ['Bearing RTD Probes', '/temperature-sensors/rtd/bearing-probes/'],
@@ -160,6 +165,11 @@ export const glossary = [
     related: ['Water Distiller Heating Elements', '/heating-elements/immersion-heaters/water-distiller/'],
   },
   {
+    id: 'drain-pan-heating-element', name: 'Drain Pan Heating Element',
+    definition: 'A heater positioned along the water path in a refrigeration drain pan to help keep defrost water moving to the outlet. Match the tray, heated route, mount and lead seals.',
+    related: ['Refrigeration Drain Pan Heating Elements', '/heating-elements/defrost-heaters/drain-pans/'],
+  },
+  {
     id: 'dry-block-calibrator', name: 'Dry Block Calibrator',
     definition: 'A controlled temperature source with an insert that accepts temperature probes for comparison measurements. Bore fit, immersion depth and the reference setup affect the result.',
     related: ['Dry Block Temperature Calibrators', '/temperature-controls/dry-block-calibrators/'],
@@ -258,6 +268,11 @@ export const glossary = [
     id: 'flanged-thermowell', name: 'Flanged Thermowell',
     definition: 'A closed-end probe housing mounted by a bolted flange. Match the mating flange and nozzle and review the stem and bore for the probe and process conditions.',
     related: ['Flanged Thermowells', '/temperature-sensors/accessories/thermowells/flanged/'],
+  },
+  {
+    id: 'gas-turbine-exhaust-thermocouple', name: 'Gas Turbine Exhaust Thermocouple',
+    definition: 'A temperature probe mounted at a specified measurement point in a stationary turbine exhaust system. The installation drawing defines insertion depth, orientation and channel assignment.',
+    related: ['Gas Turbine Exhaust Thermocouples', '/thermocouples/high-temperature/gas-turbine-exhaust/'],
   },
   {
     id: 'grounded-junction', name: 'Grounded Junction',
@@ -368,6 +383,16 @@ export const glossary = [
     id: 'immersion-heater-dry-firing', name: 'Immersion Heater Dry Firing',
     definition: 'Energizing a liquid immersion heater with part or all of its active section above the liquid. The reduced heat removal can cause the heater sheath to overheat.',
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
+  },
+  {
+    id: 'impulse-sealer-heating-element', name: 'Impulse Sealer Heating Element',
+    definition: 'A resistance ribbon or wire that heats briefly in a sealing jaw. Specify the active span, profile, terminals, cold resistance and insulation stack for the machine.',
+    related: ['Impulse Sealer Heating Elements', '/heating-elements/open-coil-heaters/nichrome/impulse-sealers/'],
+  },
+  {
+    id: 'incubator-heating-element', name: 'Incubator Heating Element',
+    definition: 'An element that warms the air in a hatching cabinet. Match the tube profile, active length and electrical rating to the cabinet airflow and mounting requirements.',
+    related: ['Incubator Heating Elements', '/heating-elements/tubular-heaters/incubators/'],
   },
   {
     id: 'industrial-digital-thermometer', name: 'Industrial Digital Thermometer',
@@ -563,6 +588,11 @@ export const glossary = [
     id: 'reference-junction', name: 'Reference Junction',
     definition: 'The connection where thermocouple conductors transition to the measuring circuit, also called the cold junction. The instrument uses its temperature to calculate the sensing-junction temperature.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'reference-thermometer', name: 'Reference Thermometer',
+    definition: 'A thermometer used as the comparison standard during a temperature check or calibration. Specify its calibrated range, uncertainty, probe and readout configuration, and fit in the temperature source.',
+    related: ['Reference Thermometers for Calibration', '/temperature-sensors/digital-thermometers/reference/'],
   },
   {
     id: 'retractable-melt-bolt-thermocouple', name: 'Retractable Melt Bolt Thermocouple',
