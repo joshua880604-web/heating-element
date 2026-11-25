@@ -28,6 +28,12 @@ const thermocoupleConnectorPhoto = {
   caption: 'Two-pin connectors fitted to braided thermocouple leads',
 };
 
+const thermocoupleProbePlugPhoto = {
+  image: 'thermocouple-probes-with-plugs-photo', width: 750, height: 1000,
+  alt: 'Straight metal probes with red plug housings beside probes with coiled braided leads',
+  caption: 'Plug-mounted and braided-lead probe configurations',
+};
+
 const ceramicProbePhoto = {
   image: 'long-ceramic-thermocouple-probes-photo', width: 750, height: 1000,
   alt: 'Long ceramic protection tubes fitted to thermocouple probe assemblies on a workbench',
@@ -52,6 +58,12 @@ export const products = [
         caption: 'Flange-mounted probes with direct lead wiring',
       },
       connectionHeadPhoto,
+      thermocoupleProbePlugPhoto,
+      {
+        image: 'coiled-temperature-probes-photo', width: 960, height: 720,
+        alt: 'Straight metal temperature probes with coiled white cables on a factory workbench',
+        caption: 'Temperature probe assemblies with coiled leads',
+      },
     ],
     title: 'Industrial Thermocouples & Custom Probes',
     description: 'Specify custom industrial thermocouples for OEM equipment. Compare threaded, flanged, surface-mount and spring-loaded bayonet probe configurations.',
@@ -1647,7 +1659,7 @@ export const products = [
     id: 'thermocouple-connectors', path: accessories + 'connectors/', parent: 'sensor-accessories', group: 'sensing',
     name: 'Thermocouple Connectors', image: 'thermocouple-connectors',
     imageAlt: 'Illustration of a miniature thermocouple plug with two flat blades and a socket with two slots',
-    photographs: [thermocoupleConnectorPhoto],
+    photographs: [thermocoupleConnectorPhoto, thermocoupleProbePlugPhoto],
     title: 'Thermocouple Connectors | Standard & Miniature Plugs',
     description: 'Specify standard and miniature thermocouple connectors by plug or socket, thermocouple type, pin layout, polarity, cable size and ambient temperature.',
     text: 'Standard and miniature thermocouple plugs and sockets specified for the sensor and its mating connector.',
