@@ -626,6 +626,50 @@ svg.photo-filters {
   color: var(--muted);
   margin-top: 8px;
 }
+.application-grid-scenes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.application-grid-scenes .application {
+  overflow: hidden;
+  padding: 0;
+}
+.application-scene img {
+  width: 100%;
+  height: auto;
+  background: var(--soft);
+}
+.application-scene figcaption {
+  padding: 10px 22px 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.application-scene figcaption span {
+  margin-right: 6px;
+  color: var(--accent-dark);
+  font-weight: 680;
+}
+.application-content {
+  padding: 16px 22px 22px;
+}
+.application-content h2 {
+  font-size: 1.42rem;
+}
+.application-content p {
+  font-size: 0.92rem;
+}
+.application-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.application-links h3 {
+  font-size: 0.94rem;
+}
+.application-links .link-list {
+  margin-top: 8px;
+}
 .link-list {
   list-style: none;
   padding: 0;
@@ -1363,6 +1407,9 @@ svg.photo-filters {
   .resource-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .application-grid-scenes {
+    grid-template-columns: 1fr;
+  }
   .section {
     padding-block: 48px;
   }
@@ -1416,6 +1463,9 @@ svg.photo-filters {
   }
 }
 @media (max-width: 530px) {
+  .application-links {
+    grid-template-columns: 1fr;
+  }
   :is(.product-selection, .heating-selection) .reference-table table {
     table-layout: fixed;
   }

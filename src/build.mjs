@@ -435,13 +435,29 @@ function callout(title, copy, label = 'Request a Quote', href = quoteLink()) {
   return `<section class="callout"><div class="container callout-inner"><div><h2>${escape(title)}</h2><p>${escape(copy)}</p></div>${btn(label, href, 'primary', 'external')}</div></section>`;
 }
 
-function applicationsGrid(heading, withSpecifications = false) {
+function applicationsGrid() {
   return `<div class="application-grid">${applications.map(app => `<article class="application" id="${app.id}">
-    <span class="tile-icon">${icon(app.icon)}</span><${heading}>${withSpecifications ? escape(app.name) : `<a href="/applications/#${app.id}">${escape(app.name)}</a>`}</${heading}><p>${escape(app.description)}</p>
-    ${withSpecifications ? `<p><strong>For your RFQ</strong> ${escape(app.specification)}</p>` : ''}
-    ${related(app.ids)}${withSpecifications ? `
-    <h3 class="read-next">Selection Guides</h3>${selectionGuides(app.guides)}` : ''}
+    <span class="tile-icon">${icon(app.icon)}</span><h3><a href="/applications/#${app.id}">${escape(app.name)}</a></h3><p>${escape(app.description)}</p>
+    ${related(app.ids)}
   </article>`).join('')}</div>`;
+}
+
+function applicationSceneCard(app, index) {
+  return `<article class="application" id="${app.id}">
+    <figure class="application-scene">
+      <img src="${escape(app.scene.src)}" alt="${escape(app.scene.alt)}" width="960" height="540" ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>
+      <figcaption><span>Illustration</span> ${escape(app.scene.caption)}</figcaption>
+    </figure>
+    <div class="application-content">
+      <h2>${escape(app.name)}</h2>
+      <p>${escape(app.description)}</p>
+      <p><strong>For your RFQ</strong> ${escape(app.specification)}</p>
+      <div class="application-links">
+        <div><h3>Related Products</h3>${related(app.ids)}</div>
+        <div><h3>Selection Guides</h3>${selectionGuides(app.guides)}</div>
+      </div>
+    </div>
+  </article>`;
 }
 
 const homeProducts = catalogOrder([
@@ -474,7 +490,7 @@ ${capabilities()}
 </div></section>
 <section class="section"><div class="container">
   ${sectionHead('Applications', 'Find Parts by Application', 'Choose a starting point based on the process or equipment you are designing or sourcing for.')}
-  ${applicationsGrid('h3')}
+  ${applicationsGrid()}
 </div></section>
 ${callout('Have a drawing or a part to replace?', 'Share the operating conditions, required dimensions and order quantity so the configuration can be reviewed.')}
 `;
@@ -575,13 +591,13 @@ ${callout('Request this configuration', 'Include your technical requirements, ta
 await page('/applications/', 'Industrial Heating Applications for OEM Equipment', 'Find heating elements and sensors for injection molding, extrusion, industrial ovens, process tanks and packaging equipment. Compare inputs for each RFQ.', `
 ${pageIntro('Industries', 'Industrial Heating & Sensing Applications', 'Find suitable heating elements and temperature sensors for plastics machinery, process air, liquid heating and packaging. Start with the equipment and heat transfer conditions.', applicationsTrail)}
 <section class="section"><div class="container">
-  ${applicationsGrid('h2', true)}
+  <div class="application-grid application-grid-scenes">${applications.map(applicationSceneCard).join('')}</div>
   ${questionsSection('When the Equipment Requires Both Heat and Measurement', [
     ['Should the heater and temperature sensor be specified together?', 'For a heated machine or process vessel, identify the heating zone, measurement point and control input before selecting parts. Send a layout showing both locations, intended temperature and duty cycle so the heater and probe can be evaluated in the same equipment.'],
   ])}
 </div></section>
 ${callout('Working on an OEM project?', 'Share the equipment and operating conditions to start your custom inquiry.')}
-`, { trail: applicationsTrail, type: 'CollectionPage', items: applications.map(app => ({ name: app.name, path: `/applications/#${app.id}` })) });
+`, { trail: applicationsTrail, type: 'CollectionPage', image: applications[0].scene.src, items: applications.map(app => ({ name: app.name, path: `/applications/#${app.id}` })) });
 
 const guideCalculators = {
   'heater-resistance': {

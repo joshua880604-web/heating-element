@@ -6079,6 +6079,11 @@ export const products = [
 export const applications = [
   {
     id: 'plastics', name: 'Plastics, Injection Molding & Extrusion', icon: 'cube',
+    scene: {
+      src: '/assets/application-plastics.webp',
+      alt: 'Three metal band heaters wrapped around an extrusion barrel with a threaded temperature probe between the bands',
+      caption: 'Band heaters and a thermocouple mounted on an extrusion barrel',
+    },
     description: 'Match band heaters to barrels, coil heaters to hot runner nozzles, and cartridge heaters to mold or die bores. Place a thermocouple at the required measurement point.',
     specification: 'Share the machine or tool drawing, barrel or nozzle diameter, bore dimensions, heated zones and lead clearance. Mark the sensor contact or insertion point.',
     ids: ['band-heaters', 'coil-heaters', 'cartridge-heaters', 'threaded-thermocouple'],
@@ -6086,6 +6091,11 @@ export const applications = [
   },
   {
     id: 'process-air', name: 'Process Air, Ovens & Dryers', icon: 'factory',
+    scene: {
+      src: '/assets/application-process-air.webp',
+      alt: 'Finned tubular heaters spanning the inside of an industrial air duct, with a probe projecting through the sidewall',
+      caption: 'Finned tubular heaters and a temperature probe inside a process air duct',
+    },
     description: 'Compare tubular or finned elements for moving air, and infrared elements for radiant heating of a target. Review the sensor assembly for oven temperatures and cycling.',
     specification: 'Share the duct or oven opening, flow direction, minimum and normal airflow, inlet and target outlet temperatures, and the available electrical supply.',
     ids: ['industrial-oven-heating-elements', 'tubular-heaters', 'finned-tubular-heaters', 'finned-strip-heaters', 'duct-heaters', 'infrared-heaters', 'high-temperature'],
@@ -6093,6 +6103,11 @@ export const applications = [
   },
   {
     id: 'liquid-heating', name: 'Water, Oil & Process Liquid Heating', icon: 'drop',
+    scene: {
+      src: '/assets/application-liquid-heating.webp',
+      alt: 'A bolted immersion heater terminal enclosure on the lower side of a stainless tank with an RTD in a separate port above it',
+      caption: 'A flanged immersion heater and a separate RTD port on a process tank',
+    },
     description: 'Use an immersion configuration inside the tank, or a circulation heater where liquid flows through a chamber. Choose the temperature probe for the process and instrument.',
     specification: 'Share the liquid composition and vessel connection. For a tank give liquid levels, working volume and heat-up time. For circulation give the flow range, pressure and required temperature rise.',
     ids: ['immersion-heaters', 'tri-clamp-immersion-heaters', 'over-the-side-immersion', 'circulation-heaters', 'rtd'],
@@ -6100,6 +6115,11 @@ export const applications = [
   },
   {
     id: 'packaging', name: 'Packaging, Sealing Jaws & Tooling', icon: 'tool',
+    scene: {
+      src: '/assets/application-packaging.webp',
+      alt: 'Heater leads and a separate temperature probe connection on a packaging sealing jaw above clear film',
+      caption: 'Cartridge heater leads and a temperature probe at a sealing jaw',
+    },
     description: 'Consider a cartridge heater for a sealing jaw bore, a strip heater for a flat surface, and a flexible heater where space is limited. Specify the sensor near the controlled zone.',
     specification: 'Share jaw or fixture dimensions, heating zones, cycle time, lead exit and sensor position. Mark the measured bore or flat contact surface on the drawing.',
     ids: ['cartridge-heaters', 'strip-heaters', 'flexible-heaters', 'type-k'],
