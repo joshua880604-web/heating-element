@@ -665,6 +665,11 @@ export const glossary = [
     related: ['Temperature Limit Controllers', '/temperature-controls/temperature-limit-controllers/'],
   },
   {
+    id: 'thermistor-beta-value', name: 'Thermistor Beta Value',
+    definition: 'A constant in kelvin that describes how an NTC thermistor’s resistance changes between a specified temperature pair. A designation such as B25/85 uses 25 °C and 85 °C as its reference points.',
+    related: ['NTC Thermistor Resistance Curve', '/guides/ntc-thermistor-guide/#ntc-resistance-curve'],
+  },
+  {
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],

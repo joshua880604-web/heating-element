@@ -2675,20 +2675,23 @@ export const products = [
       'For a replacement, start with the controller data and original probe drawing. A nominal resistance alone does not identify the full sensor curve.',
       { table: [
         ['Selection input', 'What to provide'],
-        [['Resistance curve', '/glossary/#ntc-thermistor'], 'State R25, tolerance and the required resistance table. If using a beta value, supply the temperature pair used to define it.'],
+        [['Resistance curve and beta value', '/guides/ntc-thermistor-guide/#ntc-resistance-curve'], 'State R25, tolerance and the required resistance table. If using a beta value, supply the temperature pair used to define it.'],
         ['Threaded mounting', 'Give the thread standard, pitch and sealing feature. Measure the distance from the installed seating face to the sensing tip.'],
         ['Straight probe mounting', 'Give the sheath diameter, usable depth and contact or insertion arrangement. Include the exposure at the cable transition.'],
         [['Controller and cable', '/temperature-sensors/ds18b20/'], 'Confirm a resistance-measuring input for the NTC probe. A DS18B20 probe uses a digital interface. Share the controller input circuit, pinout and lead details.'],
+        [['Check the existing probe', '/guides/ntc-thermistor-guide/#test-ntc-thermistor'], 'If you have test results, include the measured resistance, reference temperature and whether the probe was disconnected from the controller.'],
       ] },
     ],
     use: 'Typical inquiries include threaded or sealed probes for machinery and appliances with a specified NTC input.',
     questions: [
       ['How can I check an NTC thermistor probe with a multimeter?', 'With the probe isolated from the controller, measure its resistance at a known, stable temperature and compare it with the specified resistance curve and tolerance. Record the temperature and any lead or connector resistance that matters to the reading.'],
       ['Will any 10 kΩ NTC probe work with the same controller?', 'Confirm the curve and tolerance as well as 10 kΩ at 25 °C. Two thermistors with the same R25 can produce different resistance readings at other temperatures.'],
+      ['What does the beta value tell me when choosing an NTC probe?', 'The beta value describes how steeply resistance changes over a specified pair of temperatures. Compare beta values defined using the same temperature pair. Use the controller’s required resistance table and tolerance when checking a replacement across the full operating range.'],
+      ['Can an NTC probe replace a PTC thermistor?', 'An NTC probe decreases in resistance as it warms. A PTC element increases in resistance over its specified operating region. Check the sensor function and the input’s required resistance curve before choosing a replacement.'],
       ['What dimensions do I need for a threaded thermistor probe?', 'Provide the thread standard and pitch, sealing face, insertion depth, and cable exit clearance. Include the medium, temperature and pressure if the port is part of a process vessel.'],
     ],
     related: ['rtd', 'pt1000-sensors', 'ds18b20-sensors'],
-    guides: ['thermocouple-vs-rtd'],
+    guides: ['ntc-thermistor-guide', 'thermocouple-vs-rtd'],
   },
   {
     id: 'sensor-accessories', path: accessories, group: 'sensing', name: 'Thermocouple Accessories',
@@ -5586,6 +5589,45 @@ export const applications = [
 
 export const guides = [
   {
+    slug: 'ntc-thermistor-guide', group: 'sensing', name: 'What Is an NTC Thermistor? Selection & Testing',
+    description: 'Learn how NTC thermistors work, compare NTC and PTC sensors, and test a replacement temperature probe against its resistance curve.',
+    quoteProduct: 'ntc-thermistor-probes',
+    answer: ['What is an NTC thermistor?', 'An NTC thermistor is a temperature-sensitive resistor with a negative temperature coefficient. Its resistance decreases as it gets warmer. A compatible controller reads that resistance and uses the specified resistance–temperature curve to report temperature.'],
+    readNext: ['thermocouple-vs-rtd', 'temperature-sensor-calibration'],
+    related: ['ntc-thermistor-probes', 'rtd', 'pt1000-sensors', 'ds18b20-sensors'],
+    terms: ['ntc-thermistor', 'thermistor-beta-value', 'rtd'],
+    sections: [
+      ['How an NTC thermistor works', 'A typical controller measures the voltage in a divider that contains the thermistor and a known resistor. The voltage changes as the sensor resistance changes. The direction of that voltage change depends on the circuit and measuring point. Probe position, thermal contact and heat from the measuring current affect how closely the element follows the process temperature.'],
+      ['Compare NTC and PTC thermistors', 'The coefficient describes how resistance changes with temperature in the specified operating region. Check the device curve and the function it performs in the circuit.', {
+        table: [
+          ['Type', 'Resistance as temperature rises', 'Typical application'],
+          [['NTC thermistor', '/temperature-sensors/ntc-thermistor-probes/'], 'Decreases.', 'Temperature measurement or feedback to a controller that supports the curve.'],
+          ['PTC thermistor', 'Increases in its specified operating region.', 'Some PTC designs provide a sharp resistance change for overtemperature detection.'],
+        ],
+      }],
+      ['Match R25 and the resistance–temperature curve', 'R25 is the nominal resistance at 25 °C. The beta value describes the curve over a specified pair of temperatures. In the simple beta approximation, R(T) = R25 × exp[B × (1/T − 1/298.15)], where T is in kelvin. The example shows how two sensors can share the same R25 and differ once they warm up. Use the specified resistance table and tolerance for selection and acceptance.', {
+        anchor: 'ntc-resistance-curve',
+        table: [
+          ['Illustrative beta-model inputs', 'Resistance at 25 °C', 'Approximate resistance at 50 °C'],
+          ['B25/85 = 3,435 K', '10.0 kΩ', '4.10 kΩ'],
+          ['B25/85 = 3,950 K', '10.0 kΩ', '3.59 kΩ'],
+        ],
+      }],
+      ['How to test an NTC thermistor probe with a multimeter', 'Follow the equipment isolation procedure before disconnecting the probe. Use a reference thermometer and let the sensing tip reach a stable temperature at each test point. Choose a test setup compatible with the probe and cable seal.', {
+        anchor: 'test-ntc-thermistor',
+        table: [
+          ['Step', 'What to check'],
+          ['1. Measure the disconnected probe', 'Measure resistance across the sensor terminals. Record the reference temperature and reading, then compare with the specified curve and tolerance.'],
+          ['2. Repeat at another known temperature', 'Use a point within the probe’s rated range. An NTC reading should fall as the tip warms. Check the resistance at both points against the specified resistance table.'],
+          ['3. Check the measurement chain', 'If the probe agrees with its table, verify the controller’s configured curve and wiring. If the reading is open or unstable, check the terminals and cable before evaluating the sensor.'],
+        ],
+      }],
+      ['What to send for a replacement probe', 'Provide the original part reference, controller model and resistance table or R25 and beta value with its temperature pair. Include the tolerance, operating range, mount, insertion length, seal, cable and pinout. Record the temperatures used for any resistance checks.', {
+        links: [['Specify an NTC thermistor probe', '/temperature-sensors/ntc-thermistor-probes/']],
+      }],
+    ],
+  },
+  {
     slug: 'temperature-sensor-calibration', group: 'sensing', name: 'Thermocouple and RTD Calibration Guide',
     description: 'Learn how to calibrate thermocouples and Pt100 or Pt1000 RTDs with a reference, and verify instrument inputs and 4–20 mA transmitters separately.',
     quoteProduct: 'dry-block-calibrators',
@@ -5918,9 +5960,9 @@ export const guides = [
   {
     slug: 'thermocouple-vs-rtd', group: 'sensing', name: 'Thermocouple vs. RTD (Pt100) for Industrial Measurement',
     description: 'Compare thermocouple and Pt100 RTD signals, wiring, temperature requirements and instrument compatibility for industrial sensor selection.',
-    related: ['thermocouples', 'type-k', 'rtd', 'duct-temperature-sensors', 'pid-temperature-controllers', 'ds18b20-sensors'],
+    related: ['thermocouples', 'type-k', 'rtd', 'duct-temperature-sensors', 'pid-temperature-controllers', 'ntc-thermistor-probes', 'ds18b20-sensors'],
     answer: ['When should I choose a thermocouple or a Pt100 RTD?', 'Consider a thermocouple for elevated temperatures or a small measuring junction. Consider a Pt100 RTD when stability and repeatability matter within its working range. Confirm that the instrument supports the chosen input and wiring.'],
-    readNext: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+    readNext: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'ntc-thermistor-guide'],
     sections: [
       ['How each sensor measures temperature', 'A thermocouple produces a small voltage related to the temperatures at its measuring junction and reference junction. The instrument compensates for the reference junction. A Pt100 RTD uses the resistance of platinum, nominally 100 ohms at 0 °C. Its instrument measures resistance using an excitation current.'],
       ['Compare the usable temperature range and response', 'A thermocouple is often considered for elevated temperatures and applications that need a small junction. A platinum RTD is often considered when stability and repeatability within its operating range are more important. Response time and usable temperature depend on the full assembly, including the sheath, diameter, mounting and process medium.'],
