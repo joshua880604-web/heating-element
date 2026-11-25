@@ -135,7 +135,9 @@ const photoTones = [
     images: ['nichrome-heating-elements', 'controlled-heating-tapes', 'tankless-water-heater-elements',
       'thermocouple-calibrators', 'thermocouple-vacuum-gauge-tubes', 'rtd-connectors',
       'coffee-machine-heating-elements', 'temperature-calibration-baths', 'rtd-calibrators',
-      'multipoint-thermocouples', 'silicon-nitride-thermocouple-protection-tubes', 'industrial-unit-heaters'],
+      'multipoint-thermocouples', 'silicon-nitride-thermocouple-protection-tubes', 'industrial-unit-heaters',
+      'heat-trace-controllers', 'thermocouple-welders', 'hot-runner-temperature-controllers',
+      'brew-kettle-heating-elements', 'ceramic-fiber-heaters', 'quartz-immersion-heaters'],
   },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));

@@ -45,6 +45,11 @@ export const glossary = [
     related: ['Bolt-On Thermocouples', '/thermocouples/surface-mount/bolt-on/'],
   },
   {
+    id: 'brew-kettle-heating-element', name: 'Brew Kettle Heating Element',
+    definition: 'An immersion heater fitted to an electric brewing kettle. Heated sheath area, minimum liquid level and cleaning access are part of the vessel specification.',
+    related: ['Brew Kettle Heating Elements', '/heating-elements/immersion-heaters/brew-kettle/'],
+  },
+  {
     id: 'bulb-and-capillary-thermostat', name: 'Bulb and Capillary Thermostat',
     definition: 'A mechanical temperature switch that senses at a remote bulb. A sealed capillary carries the pressure change from the bulb to the switch mechanism.',
     related: ['Bulb and Capillary Thermostats', '/temperature-controls/capillary-thermostats/'],
@@ -68,6 +73,11 @@ export const glossary = [
     id: 'ceramic-cartridge-heater', name: 'Ceramic Cartridge Heater',
     definition: 'A compact resistance heater with a ceramic body supporting or insulating its heating element. Body fit, active zone and termination are specified to the assembly.',
     related: ['Ceramic Cartridge Heaters', '/heating-elements/cartridge-heaters/ceramic/'],
+  },
+  {
+    id: 'ceramic-fiber-heater', name: 'Ceramic Fiber Heater',
+    definition: 'A furnace heater module with an electrical resistance element mounted in a formed ceramic fiber insulation body. The hot-face shape and zone layout match the chamber.',
+    related: ['Ceramic Fiber Heaters', '/heating-elements/ceramic-fiber-heaters/'],
   },
   {
     id: 'ceramic-infrared-heating-element', name: 'Ceramic Infrared Heating Element',
@@ -250,6 +260,11 @@ export const glossary = [
     related: ['Heat Trace Cables', '/heating-elements/heating-cables/'],
   },
   {
+    id: 'heat-trace-controller', name: 'Heat Trace Controller',
+    definition: 'A device that switches or monitors electric tracing circuits for freeze protection or process temperature maintenance. Its inputs and load ratings depend on the sensing layout and cable circuit.',
+    related: ['Industrial Heat Trace Controllers', '/temperature-controls/heat-trace-controllers/'],
+  },
+  {
     id: 'heated-length', name: 'Heated Length',
     definition: 'The active length over which an element generates heat. Use heated length, rather than overall length, when calculating cylindrical sheath area for watt density.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
@@ -318,6 +333,11 @@ export const glossary = [
     id: 'iec-60751', name: 'IEC 60751',
     definition: 'The IEC standard for industrial platinum resistance thermometers and temperature sensors. It specifies the nominal temperature–resistance relationship and tolerance classes for covered platinum RTDs.',
     related: ['Pt100 vs. Pt1000 RTD Sensors', '/guides/pt100-vs-pt1000/'],
+  },
+  {
+    id: 'hot-runner-temperature-controller', name: 'Hot Runner Temperature Controller',
+    definition: 'A controller for the nozzle and manifold heater zones in an injection mold. Match the heater loads, thermocouple types and connector pinout for each zone.',
+    related: ['Hot Runner Temperature Controllers', '/temperature-controls/hot-runner-controllers/'],
   },
   {
     id: 'immersion-heater', name: 'Immersion Heater',
@@ -468,6 +488,11 @@ export const glossary = [
     id: 'pvc-conduit-heater', name: 'PVC Conduit Heater',
     definition: 'A wrap heater that warms a specified section of PVC conduit for bending. Its active length, fit and control requirements depend on the conduit dimensions, material and allowable heating conditions.',
     related: ['PVC Conduit Bending Heaters', '/heating-elements/flexible-heaters/pvc-conduit-heaters/'],
+  },
+  {
+    id: 'quartz-immersion-heater', name: 'Quartz Immersion Heater',
+    definition: 'An electric heater that transfers heat into a liquid through a quartz sheath. The bath chemistry, level, tube supports and cleaning conditions determine suitability.',
+    related: ['Quartz Immersion Heaters', '/heating-elements/immersion-heaters/quartz/'],
   },
   {
     id: 'radiator-heating-element', name: 'Radiator Heating Element',
@@ -638,6 +663,11 @@ export const glossary = [
     id: 'thermocouple-feedthrough', name: 'Thermocouple Feedthrough',
     definition: 'A sealed interface for routing thermocouple circuits through a chamber wall. Specify the flange, seal performance, contact materials and polarity of each pair.',
     related: ['Thermocouple Vacuum Feedthroughs', '/temperature-sensors/accessories/vacuum-feedthroughs/'],
+  },
+  {
+    id: 'thermocouple-junction-welder', name: 'Thermocouple Junction Welder',
+    definition: 'A device that joins a specified pair of thermocouple wires to form a measuring junction. Select it by alloy pair, wire diameters, junction geometry and production needs.',
+    related: ['Thermocouple Junction Welders', '/temperature-sensors/accessories/thermocouple-welders/'],
   },
   {
     id: 'thermocouple-polarity', name: 'Thermocouple Polarity',
