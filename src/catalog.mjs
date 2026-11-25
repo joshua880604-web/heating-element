@@ -3880,11 +3880,12 @@ export const products = [
         ['Drawing detail', 'What to provide'],
         ['Element form', 'Dimension the hot-section diameter, bend and leg centers. Give terminal diameter and length and the required transition position.'],
         ['Mounting and atmosphere', 'Mark the wall or roof openings, supports and orientation. Provide the furnace atmosphere, temperature range and thermal cycle.'],
-        ['Electrical inputs', 'Include the original element grade or specification, terminal arrangement and available power and control data for the installed circuit.'],
+        [['Electrical inputs', '/guides/choose-a-heating-element/#furnace-heater-materials'], 'Include the original element grade or specification, terminal arrangement and available power and control data for the installed circuit.'],
       ] },
     ],
     use: 'Typical inquiries include custom and replacement heating elements for industrial heat-treatment, sintering and laboratory furnaces.',
     questions: [
+      ['Can MoSi2 replace silicon carbide heating elements?', 'A change from SiC to MoSi2 requires a review of the furnace and power circuit. Compare the hot-zone geometry, supports, atmosphere and electrical behavior during startup and normal operation. Provide the original element grade and drawings so the supply and controller can be checked for the proposed element.'],
       ['What dimensions matter when replacing a U-shaped MoSi2 element?', 'Match the hot section, cold legs, bend outline and leg centers. Include lining thickness, support position, installed electrical specification and original material grade.'],
       ['Which operating conditions should go in the quote request?', 'Give the furnace atmosphere, operating and peak temperatures, cycle, support arrangement and electrical requirements. Include any known contamination at the element.'],
     ],
@@ -5266,6 +5267,7 @@ export const products = [
     ],
     use: 'Typical inquiries include injection molds with coil heaters on the nozzles and separate heating zones in the manifold.',
     questions: [
+      ['How does a hot runner temperature controller work?', 'Each channel compares its thermocouple reading with the setpoint and adjusts power to the assigned heater. Verify that each sensor input and heater output belong to the same mold zone. Use the wiring schedule and connector pinout to confirm that pairing.'],
       ['Can a hot runner controller be matched by the number of zones alone?', 'Provide the heater load, thermocouple type and full pinout for each zone in addition to the zone count. The controller output and cable must match the mold wiring.'],
       ['Which zones should be listed in the quote request?', 'List nozzle and manifold zones separately and include the heater load, sensor type and connector pins for each. Identify spare capacity or special startup requirements.'],
     ],
@@ -5319,11 +5321,12 @@ export const products = [
         [['Hot-face and module dimensions', '/glossary/#ceramic-fiber-heater'], 'Show the flat or curved profile, module thickness and location of any seams, fasteners or sensors.'],
         ['Furnace atmosphere and cycle', 'State the atmosphere, vapors or deposits, operating temperature range, dwell and frequency of heating and cooling cycles.'],
         [['Circuit load and temperature sensing', thermo + 'high-temperature/'], 'Provide the supply, required load per zone and sensor positions. Include space for terminals and service access.'],
-        ['Insulation and supports', 'Identify the adjacent lining, installed supports, insulation requirements and how the module will be removed for service.'],
+        [['Insulation and supports', '/guides/choose-a-heating-element/#furnace-heater-materials'], 'Identify the adjacent lining, installed supports, insulation requirements and how the module will be removed for service.'],
       ] },
     ],
     use: 'Typical inquiries include thermal processing chambers and OEM furnace equipment that require the heat source and insulation in one module.',
     questions: [
+      ['How does ceramic fiber insulation affect heat loss in a furnace heater module?', 'Ceramic fiber slows heat flow from the hot face toward the furnace shell. The resistance element supplies the heat. Share the insulation thickness, seam and support layout, and target cold-face temperature to review heat loss through the module.'],
       ['Can a ceramic fiber heater follow a curved chamber wall?', 'A curved module can be reviewed from a chamber drawing. Include inner and outer radii, heated length, panel gaps, mounting method and terminal locations.'],
       ['What determines the usable temperature of a module?', 'Review the specific element and insulation materials together with the atmosphere, heat cycling and required load. Provide normal and peak temperatures and dwell times so the assembly can be assessed.'],
     ],
@@ -5866,12 +5869,14 @@ export const guides = [
         ],
       }],
       ['Specify the sheath material for the working medium', 'Record the liquid chemistry or air atmosphere, minimum flow, maximum temperature and cleaning process. For alloy callouts such as 800 or 840, provide the complete material designation or datasheet so chemical compatibility, allowable sheath temperature and forming constraints can be reviewed.'],
-      ['Match furnace element materials and geometry', 'Use the furnace drawing, atmosphere and original electrical specification to identify the element construction and support requirements.', {
+      ['Match furnace element materials and geometry', 'Use the furnace drawing, atmosphere and original electrical specification to identify the element construction and support requirements. When changing between silicon carbide and MoSi2, check the available voltage and current, startup behavior, control range and mounting against the proposed element.', {
+        anchor: 'furnace-heater-materials',
         table: [
           ['Element', 'What to specify'],
           [['Silicon carbide heating elements', '/heating-elements/silicon-carbide-heating-elements/'], 'Rod profile, hot and cold lengths, terminal clearance and resistance reference conditions.'],
           [['Nichrome heating elements', '/heating-elements/open-coil-heaters/nichrome/'], 'Specified alloy, finished coil geometry, support points and cold resistance reference temperature.'],
           [['MoSi2 heating elements', '/heating-elements/mosi2-heating-elements/'], 'Hot and cold section diameters, leg centers, wall openings and terminal layout.'],
+          [['Ceramic fiber heater modules', '/heating-elements/ceramic-fiber-heaters/'], 'Module thickness, hot-face geometry, insulation seams, heat zones and support layout.'],
         ],
       }],
     ],
