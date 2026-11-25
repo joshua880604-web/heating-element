@@ -95,7 +95,7 @@ export const products = [
       ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance and service history. If a probe fails early, share whether the reading drifted, became intermittent or went open circuit, along with the operating conditions and original drawing.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
-    guides: ['how-thermocouples-work', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
+    guides: ['how-thermocouples-work', 'thermocouple-types', 'how-to-test-a-thermocouple', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
   },
   {
     id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', featured: true, image: 'tubular-heaters',
@@ -106,6 +106,16 @@ export const products = [
     intro: 'Custom tubular heating elements are specified by tube shape, sheath, electrical load and mounting. Share your drawing or available envelope, along with the heating medium, for a straight, U-shaped or multi-bend OEM tubular heater.',
     options: ['Straight, U-shaped and multi-bend forms', 'Single-ended and double-ended layouts', 'Sheath and terminal choices by application', 'Mounting brackets, fittings and flanges'],
     specs: ['Tube diameter, overall envelope, bend centerline radii and mounting points', 'Voltage, phase and target wattage', 'Heated length, cold ends and terminal locations', 'Heating medium, flow or clearance, and operating temperatures'],
+    comparison: [
+      'Low Watt Density Tubular Heating Elements',
+      'A lower surface watt density spreads the electrical load over more active sheath area. If the equipment envelope is fixed, compare longer heated spans, more elements or lower power per element for the same process duty.',
+      { anchor: 'low-watt-density', table: [
+        ['Design input', 'What to compare'],
+        [['Active sheath area and power', '/guides/heating-element-watt-density/#watt-density-calculator'], 'Use the tube outside diameter, active length along the centerline and watts per element. Check each powered zone separately.'],
+        ['Heat transfer conditions', 'Provide liquid grade or air composition, minimum flow, operating temperature, any film temperature limit and expected deposits.'],
+        ['Installed envelope', 'Show the mount, spacing between heated runs and clearance to the vessel or duct. For immersion, mark the lowest normal liquid level.'],
+      ] },
+    ],
     selection: [
       'Tubular Heating Element Shapes and Terminations',
       'A drawing for a custom tubular heater should locate the active heated span, the cold ends and each terminal. For a formed element, give the bend centerline radii, leg spacing and mounting clearances.',
@@ -799,6 +809,16 @@ export const products = [
     intro: 'Specify a Type K thermocouple probe for the working atmosphere, mounting and instrument input. The sheath, junction, insulation and leads determine the working range of the assembled probe.',
     options: ['Probe, surface and assembly constructions', 'Grounded, ungrounded and exposed junctions', 'Miniature connector, leads or terminal head'],
     specs: ['Continuous and peak temperatures, exposure time and atmosphere', 'Sheath material, diameter and installed insertion length', 'Mount and junction construction', 'K-compatible termination, instrument input and extension cable'],
+    comparison: [
+      'Type K Thermocouple Temperature Range',
+      'The NIST ITS-90 Type K reference function covers −270 to 1,372 °C. The usable range and measurement accuracy of an installed probe depend on its materials, the process and the input instrument.',
+      { anchor: 'temperature-range', table: [
+        ['Temperature or accuracy check', 'What it tells you'],
+        [['NIST Type K reference function', nistThermocoupleReference], 'Provides the expected thermoelectric voltage with the reference junction at 0 °C. Use the reference data or a Type K instrument for conversion.'],
+        ['Probe assembly working range', 'Confirm continuous and peak exposure at the tip, process atmosphere, sheath and insulation, plus operating temperatures at the cable transition and connector.'],
+        [['Installed accuracy and troubleshooting', '/guides/how-to-test-a-thermocouple/'], 'Check probe tolerance, insertion and the instrument input, reference junction compensation and wiring. Include the required accuracy over your working interval.'],
+      ] },
+    ],
     selection: [
       'Specify a Type K Probe Assembly',
       'Confirm operating conditions at both the sensing tip and the lead exit. These locations can reach different temperatures and may require different materials.',
@@ -819,7 +839,7 @@ export const products = [
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
     ],
     related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'high-temperature', 'sensor-accessories', 'thermocouple-temperature-transmitters', 'pid-temperature-controllers'],
-    guides: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    guides: ['type-k-vs-type-j-thermocouple', 'how-to-test-a-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
   },
   {
     id: 'type-k-exhaust-gas-thermocouples', path: thermo + 'exhaust-gas/', parent: 'type-k', group: 'sensing',
@@ -2897,7 +2917,7 @@ export const guides = [
     quoteProduct: 'thermocouples',
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
-    readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd', 'how-to-test-a-thermocouple'],
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature', 'type-c'],
     terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple', 'platinum-rhodium-thermocouple', 'type-c-thermocouple'],
     sections: [
@@ -2920,6 +2940,7 @@ export const guides = [
       ['Read the ITS-90 reference intervals', 'These NIST reference functions describe thermoelectric voltage over a defined temperature interval. To specify a probe, confirm the instrument span and review the sheath or protection tube, atmosphere, exposure duration, insulation and lead connection at their installed temperatures.', {
         table: [
           ['Type', 'NIST ITS-90 reference function interval'],
+          [['K', thermo + 'type-k/#temperature-range'], ['−270 to 1,372 °C', nistThermocoupleReference]],
           [['N', thermo + 'type-n/'], ['−270 to 1,300 °C', nistThermocoupleReference]],
           [['R', thermo + 'type-r/'], ['−50 to 1,768.1 °C', nistThermocoupleReference]],
           [['B', thermo + 'type-b/'], ['0 to 1,820 °C', nistThermocoupleReference]],
@@ -2928,6 +2949,37 @@ export const guides = [
       ['Define the complete assembly', 'The alloy type is only one input. Sheath, insulation, junction, connector and extension wire can impose their own limits. Include expected peak temperature, probe depth, vibration and the mounting interface in a request.'],
       ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.'],
       ['Decide how to connect it', 'Match the extension cable and connector to the thermocouple type and instrument. Document any required terminal head, miniature plug or bare wire termination.'],
+    ],
+  },
+  {
+    slug: 'how-to-test-a-thermocouple', group: 'sensing', name: 'How to Test an Industrial Thermocouple',
+    description: 'Test industrial thermocouple continuity, sheath isolation and millivolt response. See how a Type K reference reading changes with terminal temperature.',
+    quoteProduct: 'thermocouples',
+    related: ['thermocouples', 'type-k', 'threaded-thermocouple', 'thermocouple-extension-wire', 'thermocouple-connectors'],
+    readNext: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-types'],
+    terms: ['cold-junction-compensation', 'thermocouple-polarity', 'thermocouple-response-time'],
+    answer: ['How do I test a thermocouple with a multimeter?', 'With the probe isolated from the instrument and process equipment, check continuity between its two leads. Compare lead-to-sheath continuity with the specified junction type. Then use a DC millivolt meter and a controlled temperature source to check signal polarity and response. Use a thermocouple meter or calibrator for a compensated temperature reading.'],
+    sections: [
+      ['Identify the probe and isolate the measurement circuit', 'Record the thermocouple type, junction, terminal polarity and the fault shown by the instrument. Follow the equipment isolation procedure before disconnecting the leads. Use a controlled bench setup to test a probe that has been safely removed. This procedure covers industrial thermocouple measurement probes.'],
+      ['Check conductor continuity and sheath isolation', 'Check resistance across the disconnected thermocouple leads. The expected reading depends on alloy, wire size and length. Use the probe wiring diagram when an assembly has more than one sensing circuit.', {
+        table: [
+          ['Meter observation', 'What to check'],
+          ['Open or overrange across the two leads', 'Verify meter contact and any intermediate connections. Compare readings at successive accessible terminations to trace an open probe or cable.'],
+          ['Intermittent reading during a stationary bench check', 'Check loose terminals, damaged flex points and the lead transition for intermittent contact.'],
+          [['Continuity from a lead to the sheath', '/guides/grounded-vs-ungrounded-thermocouples/'], 'A grounded junction has an electrical connection to the sheath. An ungrounded junction calls for isolation under its specified test conditions.'],
+          ['Stable resistance across the lead pair', 'The circuit has continuity. Check the millivolt response and, where required, calibration separately.'],
+        ],
+      }],
+      ['Check millivolt polarity and response', 'Connect the probe to the DC millivolt input with the expected polarity. Apply a known temperature change to the sensing tip while keeping the reference connections together at a stable, known temperature. Compare the reading with the difference between the reference table values for the tip and the reference connections.', {
+        table: [
+          ['Type K example', 'Expected result'],
+          [['100 °C tip and 0 °C reference', nistThermocoupleReference], 'Approximately +4.096 mV at the specified polarity.'],
+          [['100 °C tip and 25 °C reference', nistThermocoupleReference], 'Approximately +3.096 mV, the difference between about 4.096 mV and 1.000 mV.'],
+          [['Tip and reference at the same temperature', '/glossary/#cold-junction-compensation'], 'Approximately 0 mV. A raw millivolt reading reflects the difference between the junction temperatures.'],
+        ],
+      }],
+      ['Check the controller if the probe responds', 'Confirm the instrument is set to the correct thermocouple type. Compare its terminal polarity and extension cable designation with the probe. Check that the instrument reference compensation uses the temperature at the actual reference connections. For calibration, compare against a traceable reference at the required test points.'],
+      ['What to send when replacing an industrial probe', 'Share the sensor drawing or original marking, type, junction, mount and installed insertion length. Include process temperature, atmosphere, lead details, instrument model and the symptom you observed.'],
     ],
   },
   {
@@ -3001,8 +3053,10 @@ export const guides = [
     ],
   },
   {
-    slug: 'heating-element-watt-density', group: 'heating', name: 'Heating Element Watt Density',
-    description: 'Calculate heating element watt density from active sheath area. Compare a single tubular element with separately powered zones in a heater bundle.',
+    slug: 'heating-element-watt-density', group: 'heating', name: 'Heating Element Watt Density & Calculator',
+    description: 'Use the watt density calculator for a round tubular heater. Enter power, active heated length and sheath diameter in millimeters or inches.',
+    calculator: 'watt-density',
+    quoteProduct: 'tubular-heaters',
     related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'high-density-cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
     readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
@@ -3010,7 +3064,12 @@ export const guides = [
       ['What surface watt density measures', 'Surface watt density is electrical power divided by the active surface area of the element, typically expressed in W/cm² or W/in². At the same power, an element with a smaller active area has a higher watt density. How hot its sheath gets also depends on how quickly heat leaves that surface.'],
       ['Calculate watt density for a round tubular element', 'Use the sheath diameter and active heated length in consistent units. For the cylindrical surface, area is π × diameter × heated length. For example, a 100 W element with a 10 mm sheath and 100 mm of active heated length has an area of about 31.4 cm² and a watt density of about 3.2 W/cm². Exclude unheated ends. This example shows the calculation only.'],
       ['Check total surface area and separate heating zones', 'For a bundle, add the active surface areas of its elements when calculating an average across the assembly. Also check each separately powered zone. For example, two 10 mm tubes with 80 mm and 120 mm of active length have about 62.8 cm² of total active area. With 120 W in each tube, the bundle average is about 3.8 W/cm². The shorter tube is about 4.8 W/cm² and the longer tube about 3.2 W/cm².'],
-      ['Account for the process medium', 'Air velocity, liquid flow, oil viscosity, deposits and contact with a solid block all change heat transfer. An immersion heater also depends on adequate submergence. For a finned element, distinguish the tube surface used to specify watt density from the fin area that helps transfer heat into air.'],
+      ['Account for the process medium', 'Air velocity, liquid flow, oil viscosity, deposits and contact with a solid block all change heat transfer. An immersion heater also depends on adequate submergence. For a finned element, distinguish the tube surface used to specify watt density from the fin area that helps transfer heat into air.', {
+        table: [
+          ['Heating design', 'Selection detail'],
+          [['Low watt density tubular heater', tubular + '#low-watt-density'], 'Send the operating medium, available heated length and heat-up or holding duty so the layout and allowable surface loading can be evaluated.'],
+        ],
+      }],
       ['What to include in an RFQ', 'Share target power and voltage, sheath or bore dimensions, the active heated length and mounting. For air or liquid service, include minimum and maximum flow, medium and temperature. For a cartridge heater, include the bore fit, heated material and operating cycle.'],
     ],
   },
@@ -3148,8 +3207,10 @@ export const guides = [
     ],
   },
   {
-    slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing Guide',
-    description: 'Estimate immersion heater wattage for tank heat-up, compare mounting types, and check minimum liquid level, sheath material and watt density.',
+    slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing & Water Heating Calculator',
+    description: 'Estimate water heat-up power or time, then review the immersion heater mount, minimum liquid level and watt density for the tank.',
+    calculator: 'water-heating',
+    quoteProduct: 'immersion-heaters',
     related: ['immersion-heaters', 'flanged-immersion', 'screw-plug-immersion', 'tri-clamp-immersion-heaters', 'over-the-side-immersion', 'ptfe-immersion-heaters', 'oil-immersion-heaters'],
     readNext: ['heating-element-watt-density', 'choose-a-heating-element'],
     terms: ['minimum-submergence', 'immersion-heater-dry-firing', 'heater-sheath-temperature', 'watt-density'],

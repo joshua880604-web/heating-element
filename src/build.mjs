@@ -522,12 +522,52 @@ ${pageIntro('Industries', 'Industrial Heating & Sensing Applications', 'Find sui
 ${callout('Working on an OEM project?', 'Share the equipment and operating conditions to start your custom inquiry.')}
 `, { trail: applicationsTrail, type: 'CollectionPage', items: applications.map(app => ({ name: app.name, path: `/applications/#${app.id}` })) });
 
+const guideCalculators = {
+  'watt-density': {
+    title: 'Tubular Heater Watt Density Calculator',
+    instructions: 'Enter the power and dimensions of one round tubular element. Measure the active heated span along the tube centerline, excluding cold ends. The calculation uses the round sheath surface.',
+    fields: `
+      <label>Length units<select name="lengthUnit"><option value="mm">Millimeters (mm)</option><option value="in">Inches (in)</option></select></label>
+      <label>Element power (W)<input name="power" type="number" inputmode="decimal" min="0" step="any" required></label>
+      <label>Sheath outside diameter<input name="diameter" type="number" inputmode="decimal" min="0" step="any" required></label>
+      <label>Active heated length<input name="length" type="number" inputmode="decimal" min="0" step="any" required></label>`,
+  },
+  'water-heating': {
+    title: 'Water Heating Power and Time Calculator',
+    instructions: 'Estimate the ideal heat-up power or time for liquid water at atmospheric pressure. Allow separately for the tank, losses and other loads when sizing the heater.',
+    fields: `
+      <label class="full">Calculate<select name="mode"><option value="power">Required heat-up power</option><option value="time">Heat-up time</option></select></label>
+      <label>Water volume<input name="volume" type="number" inputmode="decimal" min="0" step="any" required></label>
+      <label>Volume units<select name="volumeUnit"><option value="l">Liters (L)</option><option value="gal">US gallons (gal)</option></select></label>
+      <label class="full">Temperature units<select name="temperatureUnit"><option value="c">Celsius (°C)</option><option value="f">Fahrenheit (°F)</option></select></label>
+      <label>Starting water temperature<input name="start" type="number" inputmode="decimal" step="any" required></label>
+      <label>Target water temperature<input name="target" type="number" inputmode="decimal" step="any" required></label>
+      <label class="full"><span data-amount-label>Allowed heat-up time (minutes)</span><input name="amount" type="number" inputmode="decimal" min="0" step="any" required></label>`,
+  },
+};
+
+function guideCalculator(kind) {
+  const { title, instructions, fields } = guideCalculators[kind];
+  return `<section class="spec-card" id="${kind}-calculator" aria-labelledby="${kind}-calculator-title">
+    <h2 id="${kind}-calculator-title">${escape(title)}</h2><p>${escape(instructions)}</p>
+    <form class="engineering-calculator" data-calculator="${kind}" aria-labelledby="${kind}-calculator-title">
+      <fieldset disabled>
+        <div class="form-grid">${fields}</div>
+        <div class="form-actions"><button class="button button-primary" type="submit">Calculate</button></div>
+      </fieldset>
+      <output class="calculator-result" aria-live="polite" aria-atomic="true"></output>
+      <noscript><p class="form-hint">Use the formula and worked example below to calculate manually.</p></noscript>
+    </form>
+  </section>
+  <script type="module" src="/calculators.js"></script>`;
+}
+
 const guideGroups = [
   ['Temperature Measurement', guides.filter(guide => guide.group === 'sensing')],
   ['Electric Heating', guides.filter(guide => guide.group === 'heating')],
 ];
-await page('/guides/', 'Thermocouple, RTD & Heating Element Guides', 'Find Pt100 wiring diagrams, thermocouple color codes, thermowell selection, immersion heater sizing and watt density guides.', `
-${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Find wiring diagrams, compare thermocouples and platinum RTDs, and size electric heaters for industrial equipment.', guidesTrail)}
+await page('/guides/', 'Thermocouple, RTD & Heating Element Guides', 'Find thermocouple testing steps, Pt100 wiring diagrams, thermowell selection and calculators for immersion heater sizing and watt density.', `
+${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Test a thermocouple, find wiring diagrams, compare sensors, and calculate heat-up power and heater watt density.', guidesTrail)}
 <div class="section"><div class="container guide-library">
   ${guideGroups.map(([heading, entries]) => `<section><h2>${heading}</h2><div class="resource-grid">
     ${entries.map(guide => `<article class="resource-card"><a href="/guides/${guide.slug}/"><h3>${escape(guide.name)}</h3><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}
@@ -548,6 +588,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
   <article class="prose">
     <p class="guide-byline">By <a href="/about-us/">${escape(brand)}</a></p>
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
+    ${guide.calculator ? guideCalculator(guide.calculator) : ''}
     ${guide.sections.map(section => referenceSection(section)).join('')}
   </article>
   <aside class="spec-card">
