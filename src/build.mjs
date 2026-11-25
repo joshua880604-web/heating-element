@@ -30,6 +30,8 @@ const guidesTrail = [['Guides', '/guides/']];
 const glossaryTrail = [['Glossary', '/glossary/']];
 const aboutTrail = [['About Us', '/about-us/']];
 const quoteTrail = [['Request a Quote', '/request-a-quote/']];
+const capacityAnchor = 'production-capacity';
+const capacityPath = aboutTrail[0][1] + '#' + capacityAnchor;
 const pageDescriptions = new Map();
 const nav = [
   ['/', 'Home', navPath => navPath === '/'],
@@ -435,7 +437,10 @@ ${capabilities()}
 <section class="section catalog-section" id="products"><div class="container">
   ${sectionHead('Product catalog', 'Explore Our Products', 'Start with the product family, then specify the dimensions, materials and electrical requirements for your equipment.')}
   ${catalog(products.filter(p => p.featured))}
-  <div class="catalog-footer">${btn('View All Products', '/products/', 'secondary')}</div>
+  <div class="catalog-footer">
+    ${btn('View All Products', '/products/', 'secondary')}
+    <a class="capacity-link" href="${capacityPath}">Production Capacity &amp; Lead Times</a>
+  </div>
   ${questionsSection('Made-to-Spec Heating and Sensing', [
     ['What products does Lichengda make to specification?', 'The catalog covers industrial thermocouples and RTD assemblies for measuring temperature, plus tubular, immersion, cartridge, band and specialty heaters for transferring heat. Configurations are reviewed against the application and drawing.'],
     ['How do I request an OEM or replacement part?', 'Share the part function, dimensions, operating conditions and quantity. For a heater, provide voltage and power if known. For a sensor, provide its type and instrument input. An existing drawing, part number or label photo can help identify a replacement.'],
@@ -667,6 +672,17 @@ ${callout('Compare products and specifications', 'Use the engineering guides to 
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
 const businessLicense = '/assets/lichengda-business-license-redacted.webp';
+const capacityColumns = ['Sample lead time', 'Bulk lead time', 'Monthly capacity', 'MOQ'];
+const productionCapacity = [
+  ['Cartridge Heaters', '3–5 days', '7–12 days', '40,000 pcs', '5 pcs'],
+  ['Tubular Heaters', '3–5 days', '7–15 days', '25,000 pcs', '5 pcs'],
+  ['Immersion Heaters', '5–7 days', '10–15 days', '5,000 pcs', '1 pc'],
+  ['Band Heaters', '3–5 days', '7–12 days', '10,000 pcs', '2 pcs'],
+  ['Flexible Heaters', '5–7 days', '10–15 days', '15,000 pcs', '5 pcs'],
+  ['Ceramic Heaters', '5–7 days', '10–15 days', '8,000 pcs', '5 pcs'],
+  ['Thermocouples & RTDs', '3–5 days', '7–12 days', '20,000 pcs', '5 pcs'],
+  ['Custom Heating Elements', '5–10 days', '10–20 days', 'Project-based', '1 pc'],
+];
 const workshopPhotos = [
   {
     image: 'lichengda-workshop',
@@ -684,7 +700,7 @@ const workshopPhotos = [
     caption: 'Individually packed temperature probes',
   },
 ];
-await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'Meet Xiamen Lichengda Precision Manufacturing Co., Ltd., a made-to-spec supplier of industrial thermocouples, temperature sensors and heating elements.', `
+await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'See Lichengda’s Xiamen factory and typical production capacity, sample and bulk lead times, and minimum order quantities for industrial heaters and sensors.', `
 ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
 <div class="section"><div class="container">
   <figure class="about-photo">
@@ -701,6 +717,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       <section>
         <h2>From Drawing to Quotation</h2>
         <p>Start with a drawing, part dimensions or a photo of an existing component. Add the working medium, temperature, mounting and required quantity. Include voltage and wattage for heaters, and the sensor type, junction and instrument input for temperature probes.</p>
+        <p class="capacity-jump"><a class="capacity-link" href="${capacityPath}">Check lead times and minimum order quantities</a></p>
       </section>
       <div class="about-photo about-reception" id="reception">
         ${photoFigure({
@@ -724,6 +741,25 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       </section>
     </aside>
   </div>
+  <section class="production-capacity" id="${capacityAnchor}" aria-labelledby="production-capacity-heading">
+    <div class="section-heading">
+      <h2 id="production-capacity-heading">Production Capacity &amp; Lead Times</h2>
+      <p id="production-capacity-scope">Typical production figures for standard configurations.</p>
+    </div>
+    <div class="reference-table capacity-table">
+      <table role="table" aria-labelledby="production-capacity-heading" aria-describedby="production-capacity-scope production-capacity-note">
+        <thead role="rowgroup"><tr role="row">
+          <th scope="col" role="columnheader">Product category</th>
+          ${capacityColumns.map(column => `<th scope="col" role="columnheader">${escape(column)}</th>`).join('')}
+        </tr></thead>
+        <tbody role="rowgroup">${productionCapacity.map(([category, ...values]) => `<tr role="row">
+          <th scope="row" role="rowheader">${escape(category)}</th>
+          ${values.map((value, index) => `<td role="cell"><span class="capacity-cell-label" aria-hidden="true">${escape(capacityColumns[index])}</span> ${escape(value)}</td>`).join('')}
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>
+    <p class="capacity-note" id="production-capacity-note">Lead times are estimates. We confirm timing after reviewing your specifications, material availability and order quantity.</p>
+  </section>
   <section class="workshop" aria-labelledby="workshop-heading">
     <h2 id="workshop-heading">Inside the Workshop</h2>
     <div class="workshop-gallery">
@@ -764,7 +800,7 @@ ${pageIntro('Made to specification', 'Request a Quote', 'Share your equipment sp
       <p class="form-hint" id="quote-feedback" role="status" aria-live="polite"></p>
     </div>
   </form>
-  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><h3>Temperature controls</h3><p>Sensor input, control output, controller supply and panel cutout.</p><div class="quote-contact"><h3>Contact Sales</h3>${salesContacts()}</div></aside>
+  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><h3>Temperature controls</h3><p>Sensor input, control output, controller supply and panel cutout.</p><p class="capacity-jump"><a class="capacity-link" href="${capacityPath}">Check lead times and minimum order quantities</a></p><div class="quote-contact"><h3>Contact Sales</h3>${salesContacts()}</div></aside>
 </div><div class="container">
   ${questionsSection('Preparing and Sending Your RFQ', [
     ['How do I send my RFQ?', 'Open the prefilled message in WhatsApp or your email app and send it there. Add files in the chat, or use Download RFQ to save an email draft with the selected files. Open that draft in your email app to review and send it.'],
@@ -808,6 +844,7 @@ if (origin) {
     `# ${brand} Industrial Heating`,
     '> Custom industrial thermocouples, electric heaters and temperature controls for OEM equipment and process applications.',
     `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory exterior, reception and workshop.`,
+    `See [production capacity, lead times and minimum order quantities](${origin}${capacityPath}) for typical standard configurations. Lead times are estimates and are confirmed after specifications, availability of materials and order quantity are reviewed.`,
     ...lists,
   ].join('\n\n');
   await writeFile(resolve(dist, 'llms.txt'), llms + '\n');
