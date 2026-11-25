@@ -25,6 +25,11 @@ export const glossary = [
     related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
   },
   {
+    id: 'ceramic-strip-heater', name: 'Ceramic Strip Heater',
+    definition: 'A strip or channel heater with ceramic insulation around its resistance element. The installed profile, terminal clearance and heat transfer path determine its configuration.',
+    related: ['Ceramic Strip Heaters', '/heating-elements/strip-heaters/ceramic/'],
+  },
+  {
     id: 'ceramic-thermocouple-protection-tube', name: 'Ceramic Thermocouple Protection Tube',
     definition: 'A ceramic tube that shields a thermocouple sensing element during furnace or kiln service. Its material, bore, wall thickness and supports depend on the installed geometry, atmosphere and thermal cycle.',
     related: ['Ceramic Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/'],
@@ -83,6 +88,11 @@ export const glossary = [
     id: 'flanged-immersion-heater', name: 'Flanged Immersion Heater',
     definition: 'An immersion heater mounted through a vessel flange. The flange establishes the mounting and sealing interface, while the heated sections extend into the liquid.',
     related: ['Flanged Immersion Heaters', '/heating-elements/immersion-heaters/flanged/'],
+  },
+  {
+    id: 'flanged-rtd-probe', name: 'Flanged RTD Probe',
+    definition: 'A resistance temperature probe mounted by a flange. The flange and installed seating face define the mounting interface and the reference for probe insertion depth.',
+    related: ['Flanged RTD Probes', '/temperature-sensors/rtd/flanged-probes/'],
   },
   {
     id: 'flanged-thermocouple', name: 'Flanged Thermocouple',
@@ -388,6 +398,11 @@ export const glossary = [
     id: 'washing-machine-heating-element', name: 'Washing Machine Heating Element',
     definition: 'A tubular heater that transfers heat to wash water in a washing machine tub. Its installed profile, gasket, retention and terminals must match the washer assembly.',
     related: ['Washing Machine Heating Elements', '/heating-elements/immersion-heaters/washing-machine/'],
+  },
+  {
+    id: 'waterproof-thermocouple', name: 'Waterproof Thermocouple',
+    definition: 'A thermocouple probe assembly specified for wet service. Evaluate the sheath and cable transition against the liquid and exposure, and define the conditions at the termination separately.',
+    related: ['Waterproof Thermocouple Probes', '/thermocouples/waterproof/'],
   },
   {
     id: 'watt-density', name: 'Watt Density',

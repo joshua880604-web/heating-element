@@ -87,7 +87,8 @@ const photoTones = [
       'water-boiler-heating-elements', 'titanium-immersion-heaters', 'drum-immersion-heaters',
       'type-k-exhaust-gas-thermocouples', 'food-steamer-heating-elements', 'split-sheath-cartridge-heaters',
       'ntc-thermistor-probes', 'thermocouple-temperature-transmitters', 'threaded-rtd-probes',
-      'mica-strip-heaters', 'washing-machine-heating-elements'],
+      'mica-strip-heaters', 'washing-machine-heating-elements', 'flanged-rtd-probes', 'waterproof-thermocouples',
+      'ceramic-strip-heaters'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
