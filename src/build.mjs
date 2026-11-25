@@ -398,7 +398,7 @@ const home = `
     <p class="eyebrow hero-eyebrow">Industrial heating &amp; temperature sensing</p>
     <h1>Industrial Heat.<br><span>Built to Spec.</span></h1>
     <p class="hero-copy">Custom <a href="/thermocouples/">industrial thermocouples</a>, <a href="/heating-elements/tubular-heaters/">tubular heaters</a> and heating elements for OEM equipment and process applications.</p>
-    <div class="actions">${btn('Explore Products', '#products')}${btn('Request a Quote', quoteLink(), 'outline', '')}</div>
+    <div class="actions">${btn('Request a Quote', quoteLink(), 'primary', '')}${btn('Explore Products', '#products', 'outline')}</div>
   </div>
 </section>
 ${capabilities()}
@@ -559,7 +559,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
     <a class="glossary-link" href="/glossary/">Browse the glossary ${icon('arrow')}</a>
   </aside>
 </div></section>
-${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.')}
+${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.', 'Request a Quote', quoteLink(guide.quoteProduct))}
 `, { trail, article: true });
 }
 
@@ -651,29 +651,36 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
 
 const productOptions = Object.entries(groups).map(([id, label]) => `<optgroup label="${label}">${products.filter(p => p.group === id).map(p => `<option value="${p.id}" data-specs="${escape(p.specs.join(' · '))}">${escape(p.name)}</option>`).join('')}</optgroup>`).join('');
 
-await page('/request-a-quote/', 'Request a Quote for Custom Thermocouples or Heaters', 'Prepare an RFQ for a custom industrial sensor, heating element or temperature controller. Add quantities, operating conditions and drawings for review.', `
-${pageIntro('Made to specification', 'Request a Quote', 'Choose a product family and describe the equipment and operating conditions. Include the quantity, dimensions or wiring requirements and any drawings.', quoteTrail)}
+await page('/request-a-quote/', 'Request a Quote for Custom Thermocouples or Heaters', 'Share an RFQ for a custom industrial sensor, heating element or temperature controller by WhatsApp or email. Include operating conditions and any drawings.', `
+${pageIntro('Made to specification', 'Request a Quote', 'Share your equipment specifications in WhatsApp or email. Include the quantity, dimensions or wiring requirements, and any drawings you have.', quoteTrail)}
 <section class="section"><div class="container quote-grid">
-  <form class="quote-form" method="post" data-email="${escape(email)}">
+  <form class="quote-form" method="post" data-email="${escape(email)}" data-whatsapp="${escape(whatsApp)}">
     <h2>Project Details</h2>
-    <p class="form-hint">Fields marked * are required.</p><noscript><p>Enable JavaScript to download an RFQ.</p></noscript>
+    <p class="form-hint">Fields marked * are required.</p><noscript><p>Use the email or WhatsApp link under Contact Sales to send your specifications.</p></noscript>
     <div class="form-grid">
       <label class="full">Product family *<select name="product" id="quote-product" required><option value="">Select a product family</option>${productOptions}<option value="other">Other custom product</option></select></label>
       <label>Your name *<input name="name" autocomplete="name" required maxlength="120"></label>
-      <label>Work email *<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+      <label>Work email<input name="email" type="email" autocomplete="email" maxlength="160"></label>
       <label>Company<input name="company" autocomplete="organization" maxlength="160"></label>
       <label>Destination country<input name="country" autocomplete="country-name" maxlength="100"></label>
       <label>Quantity<input type="number" name="quantity" min="1" max="100000000" placeholder="e.g. 100"></label>
       <label>Application<input name="application" maxlength="200" placeholder="e.g. Packaging sealing jaw"></label>
       <div class="full"><label>Technical requirements *<textarea name="requirements" rows="5" required maxlength="6000" aria-describedby="spec-hint"></textarea></label><p class="form-hint" id="spec-hint">Include dimensions, operating conditions and any required materials.</p></div>
-      <div class="full"><label>Drawings or photos<input type="file" name="drawings" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.dxf,.dwg,.step,.stp" aria-describedby="file-hint"></label><p class="form-hint" id="file-hint">PDF, images or CAD files. Up to 10 MB combined.</p></div>
+      <div class="full"><label>Drawings or photos<input type="file" name="drawings" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.dxf,.dwg,.step,.stp" aria-describedby="file-hint"></label><p class="form-hint" id="file-hint">Add files in WhatsApp after opening the chat, or download an email draft with attachments. PDF, images or CAD files, up to 10 MB combined per draft.</p></div>
     </div>
-    <div class="form-actions"><button class="button button-primary" type="submit" disabled>Download RFQ ${icon('arrow')}</button><p class="form-hint" id="quote-feedback" role="status" aria-live="polite"></p></div>
+    <div class="form-actions">
+      <div class="quote-actions">
+        <button class="button button-primary" type="submit" value="whatsapp" disabled>Open WhatsApp ${icon('external')}</button>
+        <button class="button button-secondary" type="submit" value="email" disabled>Open Email Draft</button>
+        <button class="button button-secondary" type="submit" value="download" disabled>Download RFQ</button>
+      </div>
+      <p class="form-hint" id="quote-feedback" role="status" aria-live="polite"></p>
+    </div>
   </form>
-  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><h3>Temperature controls</h3><p>Sensor input, control output, controller supply and panel cutout.</p><div class="quote-contact"><h3>Contact Sales</h3><p>Download your RFQ, review it, and send the draft by email. You can also contact us directly.</p>${salesContacts()}</div></aside>
+  <aside class="spec-card quote-aside"><h2>What to Include</h2><h3>Thermocouples</h3><p>Sensor type, working temperature, probe dimensions, sheath, junction and termination.</p><h3>Heating elements</h3><p>Voltage, wattage, heating medium, installation geometry and mounting.</p><h3>Temperature controls</h3><p>Sensor input, control output, controller supply and panel cutout.</p><div class="quote-contact"><h3>Contact Sales</h3>${salesContacts()}</div></aside>
 </div><div class="container">
   ${questionsSection('Preparing and Sending Your RFQ', [
-    ['What happens when I choose Download RFQ?', 'The form prepares an email draft with your specifications and any selected attachments. Open the downloaded draft in your email client, review it and send it to the sales address shown on this page.'],
+    ['How do I send my RFQ?', 'Open the prefilled message in WhatsApp or your email app and send it there. Add files in the chat, or use Download RFQ to save an email draft with the selected files. Open that draft in your email app to review and send it.'],
     ['Can I request a quote without a finished drawing?', 'Yes. Include the equipment model or part number if known, the installed dimensions, the application, and any photos of markings or mounting. State the required operating conditions and which dimensions are still to be confirmed.'],
   ])}
 </div></section>

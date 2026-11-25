@@ -105,7 +105,8 @@ if (quote) {
   const specs = quote.querySelector('#spec-hint');
   const feedback = quote.querySelector('#quote-feedback');
   const attachments = quote.elements.drawings;
-  const submit = quote.querySelector('button[type="submit"]');
+  const actions = [...quote.querySelectorAll('button[type="submit"]')];
+  const emailAction = quote.querySelector('button[value="email"]');
   const maxBytes = 10 * 1024 * 1024;
   const types = new Map([
     ['pdf', 'application/pdf'], ['png', 'image/png'], ['jpg', 'image/jpeg'],
@@ -126,11 +127,13 @@ if (quote) {
   if ([...product.options].some(option => option.value === initialProduct)) product.value = initialProduct;
   setSpecHint();
   product.addEventListener('change', setSpecHint);
-  attachments.addEventListener('change', () => {
-    attachments.setCustomValidity('');
+  function updateAttachmentActions() {
+    emailAction.hidden = attachments.files.length > 0;
     feedback.textContent = '';
-  });
-  submit.disabled = false;
+  }
+  attachments.addEventListener('change', updateAttachmentActions);
+  updateAttachmentActions();
+  actions.forEach(action => { action.disabled = false; });
 
   function base64(bytes) {
     let binary = '';
@@ -148,19 +151,33 @@ if (quote) {
     return encodeURIComponent(name).replace(/['()*]/g, char => '%' + char.charCodeAt(0).toString(16));
   }
 
-  async function draft(files, fields, productName) {
-    const encoder = new TextEncoder();
-    const text = [
+  function inquiryText(fields, productName) {
+    return [
       `Product family: ${productName}`,
       ...[['Name', 'name'], ['Work email', 'email'], ['Company', 'company'], ['Destination country', 'country'], ['Quantity', 'quantity'], ['Application', 'application']]
         .filter(([, key]) => fields.get(key)?.trim())
         .map(([label, key]) => `${label}: ${fields.get(key).trim()}`),
       '', 'Technical requirements', fields.get('requirements').trim(),
     ].join('\r\n');
+  }
+
+  function openDraft(url, newTab = false) {
+    const link = document.createElement('a');
+    link.href = url;
+    if (newTab) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    document.body.append(link);
+    link.click();
+    link.remove();
+  }
+
+  async function draft(files, subject, text) {
     const headers = ['X-Unsent: 1', 'MIME-Version: 1.0'];
     if (quote.dataset.email) headers.push(`To: ${quote.dataset.email}`);
-    headers.push(`Subject: RFQ - ${productName}`);
-    const body = ['Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', mimeBase64(encoder.encode(text))];
+    headers.push(`Subject: ${subject}`);
+    const body = ['Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', mimeBase64(new TextEncoder().encode(text))];
     if (!files.length) return [...headers, ...body].join('\r\n');
 
     const boundary = 'rfq-' + globalThis.crypto.getRandomValues(new Uint32Array(3)).join('-');
@@ -178,39 +195,63 @@ if (quote) {
 
   quote.addEventListener('submit', async event => {
     event.preventDefault();
-    const files = [...attachments.files];
-    if (files.some(file => !types.has(extension(file.name)))) {
-      attachments.setCustomValidity('Choose PDF, image or CAD files in one of the listed formats.');
-      attachments.reportValidity();
-      return;
-    }
-    if (files.reduce((total, file) => total + file.size, 0) > maxBytes) {
-      attachments.setCustomValidity('Choose files with a combined size of 10 MB or less.');
-      attachments.reportValidity();
-      return;
-    }
+    const channel = event.submitter?.value || 'whatsapp';
     const fields = new FormData(quote);
     if (!fields.get('name').trim() || !fields.get('requirements').trim()) {
       feedback.textContent = 'Enter your name and technical requirements.';
       return;
     }
+    const files = [...attachments.files];
+    const productId = product.value;
+    const productName = product.selectedOptions[0].textContent;
+    const subject = `RFQ - ${productName}`;
+    const text = inquiryText(fields, productName);
+    if (channel === 'whatsapp') {
+      const url = new URL(quote.dataset.whatsapp);
+      url.searchParams.set('text', `${subject}\n\n${text.replaceAll('\r\n', '\n')}`);
+      if (url.href.length > 8000) {
+        feedback.textContent = 'This message is too long to open in WhatsApp. Shorten the requirements or use Download RFQ.';
+        return;
+      }
+      openDraft(url.href, true);
+      feedback.textContent = files.length
+        ? 'Review the message in WhatsApp, add your drawings in the chat and tap Send.'
+        : 'Review the message and tap Send in WhatsApp.';
+      return;
+    }
+    if (channel === 'email' && !files.length) {
+      const recipient = encodeURIComponent(quote.dataset.email).replace('%40', '@');
+      const url = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      if (url.length <= 2000) {
+        openDraft(url);
+        feedback.textContent = 'Review and send the draft in your email app.';
+        return;
+      }
+    }
+    if (files.some(file => !types.has(extension(file.name)))) {
+      feedback.textContent = 'Choose PDF, image or CAD files in one of the listed formats for the email draft.';
+      return;
+    }
+    if (files.reduce((total, file) => total + file.size, 0) > maxBytes) {
+      feedback.textContent = 'Choose files with a combined size of 10 MB or less for the email draft.';
+      return;
+    }
 
-    submit.disabled = true;
+    actions.forEach(action => { action.disabled = true; });
     try {
-      const productName = product.selectedOptions[0].textContent;
-      const content = await draft(files, fields, productName);
+      const content = await draft(files, subject, text);
       const link = document.createElement('a');
-      link.download = `RFQ-${product.value}.eml`;
+      link.download = `RFQ-${productId}.eml`;
       link.href = URL.createObjectURL(new Blob([content], { type: 'message/rfc822' }));
       document.body.append(link);
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(link.href), 30000);
-      feedback.textContent = 'RFQ downloaded. Review the draft before sending.';
+      feedback.textContent = 'Open the downloaded RFQ in your email app to review and send it.';
     } catch {
       feedback.textContent = 'The RFQ could not be prepared. Check your files and try again.';
     } finally {
-      submit.disabled = false;
+      actions.forEach(action => { action.disabled = false; });
     }
   });
 }

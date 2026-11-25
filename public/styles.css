@@ -1172,6 +1172,11 @@ svg.photo-filters {
 .form-actions {
   margin-top: 20px;
 }
+.quote-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .form-actions .form-hint {
   min-height: 19px;
 }

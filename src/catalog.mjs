@@ -70,6 +70,9 @@ export const products = [
         [['Surface-mount thermocouple', thermo + 'surface-mount/'], 'A contact lug or pad measures at the equipment surface.', 'Contact position, surface shape, fastening method and lead clearance.'],
         [['Connection-head thermocouple', thermo + 'connection-head/'], 'A head provides a terminal point for field wiring above the mount.', 'Head clearance, cable entry, thermocouple type and lead termination.'],
         [['Dual element thermocouple', thermo + 'dual-element/'], 'Two sensing elements are housed in a single probe assembly.', 'Junction positions, the input for each circuit, grounding and separate lead identification.'],
+      ], diagram: [
+        'Threaded probe drawing example. Measure insertion length from the installed seating face of the fitting to the probe tip. Mark the sensing junction separately if its position is specified.',
+        ['Head   Fitting           Probe tip', '[ ]────[###]│────────────────────●', '           │<─ Insertion length ─>│'],
       ] },
     ],
     use: 'Typical integration points include heat-treatment furnaces, plastics machinery, process vessels, industrial ovens and heated tooling.',
@@ -102,6 +105,7 @@ export const products = [
         ['Single-ended', 'Both electrical connections leave one tube end.', 'Terminal arrangement, unheated lead end and clearance for the wiring.'],
         ['Double-ended', 'Electrical connections leave opposite tube ends. A U shape can bring those ends to one side of the equipment.', 'Terminal arrangement and cold-end length at each tube end.'],
         [['Industrial oven elements', tubular + 'industrial-oven/'], 'An oven or dryer needs a shaped element for a defined heating zone and air path.', 'Mounting hole spacing, support points, airflow or radiant exposure, and wattage per zone.'],
+        [['Finned tubular elements', tubular + 'finned/'], 'An air stream passes over the extended surface of fins.', 'Minimum airflow, fin outside dimensions and mounting clearance.'],
         [['Sauna heating elements', tubular + 'sauna/'], 'A formed element fits the heating compartment of an electric sauna stove.', 'Tube profile, support spacing, terminal location and electrical rating per element.'],
       ], diagram: [
         'Straight double-ended example. T marks a terminal, C a cold end and H the active heated span.',
@@ -2878,6 +2882,7 @@ export const guides = [
   },
   {
     slug: 'thermocouple-types', group: 'sensing', name: 'Thermocouple Types and Selection',
+    quoteProduct: 'thermocouples',
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
     readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
@@ -2934,6 +2939,7 @@ export const guides = [
   },
   {
     slug: 'choose-a-heating-element', group: 'heating', name: 'How to Choose an Industrial Heating Element',
+    quoteProduct: 'tubular-heaters',
     description: 'Choose an industrial heating element by heating medium, installation geometry, temperature target and electrical load. Compare tubular and cartridge heaters.',
     answer: ['How do I choose an industrial heating element?', 'Identify what the heater must warm and how heat will reach it. Match the heater family to the fluid, moving air, solid contact or radiant load. Then check the available geometry, supply and required temperature rise.'],
     readNext: ['immersion-heater-sizing', 'heating-element-watt-density'],
@@ -2998,8 +3004,9 @@ export const guides = [
   },
   {
     slug: 'pt100-wiring-diagram', group: 'sensing', name: 'Pt100 RTD Wiring Diagram for 2, 3 and 4 Wires',
+    quoteProduct: 'rtd',
     description: 'Use 2-, 3- and 4-wire Pt100 diagrams to identify leads, check RTD resistance and match the sensor to your transmitter, PLC input or controller.',
-    related: ['rtd', 'rtd-temperature-transmitters', 'sensor-accessories'],
+    related: ['rtd', 'threaded-rtd-probes', 'rtd-temperature-transmitters', 'sensor-accessories'],
     readNext: ['pt100-vs-pt1000', 'thermocouple-vs-rtd'],
     terms: ['pt100', 'rtd', 'rtd-self-heating'],
     answer: ['How do I wire a Pt100 RTD?', 'Identify the two ends of the platinum element and select the matching RTD input mode. A two-wire sensor has one lead per end, a three-wire sensor has two leads at one end, and a four-wire sensor has two leads at each end. Match these pairs to the terminal drawing for your instrument.'],
@@ -3024,6 +3031,13 @@ export const guides = [
         ],
       }],
       ['Check the transmitter or PLC input', 'Set the input to the correct platinum curve and wire count. The manufacturer’s diagram specifies terminal numbers, any jumpers for supported two-wire connections, and shield termination. For a custom probe, send the instrument model, lead length, wiring mode, operating temperature and the required system accuracy.'],
+      ['Match the replacement probe to the installation', 'Once you know the wire count and the instrument input, compare the installed probe dimensions. Use the mating port and seating face as the reference for a threaded assembly.', {
+        table: [
+          ['Replacement type', 'Check before requesting a quote'],
+          [['Threaded RTD probe', rtd + 'threaded-probes/'], 'Match the thread, seal, insertion depth and lead clearance. Give the Pt100 input and wire count separately.'],
+          [['Pt100 or Pt1000 without a specified mount', rtd], 'Share the original sheath drawing, operating temperature and required instrument curve.'],
+        ],
+      }],
     ],
   },
   {
