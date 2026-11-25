@@ -1,5 +1,10 @@
 export const glossary = [
   {
+    id: 'aluminum-foil-heater', name: 'Aluminum Foil Heater',
+    definition: 'A low-profile heater with an insulated resistance element and an aluminum foil facing that spreads heat into the mating surface. Its outline, heated area and mounting method depend on the equipment.',
+    related: ['Aluminum Foil Heaters', '/heating-elements/flexible-heaters/aluminum-foil/'],
+  },
+  {
     id: 'bayonet-thermocouple', name: 'Bayonet Thermocouple',
     definition: 'A thermocouple with a bayonet cap that engages a matching adapter. Some assemblies use a spring to maintain contact between the probe tip and the measurement surface.',
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
@@ -200,6 +205,11 @@ export const glossary = [
     related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
   },
   {
+    id: 'kiln-thermocouple', name: 'Kiln Thermocouple',
+    definition: 'A thermocouple assembly that measures temperature at a specified location in a kiln. The probe type, protection tube, hot-face projection and firing conditions determine the assembly requirements.',
+    related: ['Kiln Thermocouples', '/thermocouples/high-temperature/kiln/'],
+  },
+  {
     id: 'mica-strip-heater', name: 'Mica Strip Heater',
     definition: 'A flat heater with an electrical resistance element insulated by mica. The contact face, mounting pressure and heated area determine how heat is transferred into the equipment.',
     related: ['Mica Strip Heaters', '/heating-elements/strip-heaters/mica/'],
@@ -283,6 +293,11 @@ export const glossary = [
     id: 'rtd-temperature-transmitter', name: 'RTD Temperature Transmitter',
     definition: 'A device that converts an RTD resistance measurement to an output signal, such as 4–20 mA. The input curve, wire count and temperature scale must match the sensor and receiving instrument.',
     related: ['4–20 mA RTD Temperature Transmitters', '/temperature-controls/rtd-transmitters/'],
+  },
+  {
+    id: 'sanitary-rtd', name: 'Sanitary RTD',
+    definition: 'A resistance temperature probe fitted to a hygienic process connection. Specify the mating fitting, wetted materials and finish, insertion depth and cleaning conditions for the assembly.',
+    related: ['Sanitary RTD Probes', '/temperature-sensors/rtd/sanitary/'],
   },
   {
     id: 'screw-plug-immersion-heater', name: 'Screw Plug Immersion Heater',

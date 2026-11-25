@@ -90,7 +90,8 @@ const photoTones = [
       'mica-strip-heaters', 'washing-machine-heating-elements', 'flanged-rtd-probes', 'waterproof-thermocouples',
       'ceramic-strip-heaters', 'bimetal-thermometers', 'surface-mount-rtd-probes', 'electric-grill-heating-elements',
       'bearing-rtd-probes', 'right-angle-cartridge-heaters', 'cast-iron-plate-heaters',
-      'nozzle-band-heaters', 'bimetal-temperature-switches', 'thermocouple-terminal-blocks'],
+      'nozzle-band-heaters', 'bimetal-temperature-switches', 'thermocouple-terminal-blocks',
+      'kiln-thermocouples', 'sanitary-rtd-probes', 'aluminum-foil-heaters'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
