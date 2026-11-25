@@ -103,11 +103,11 @@ export const products = [
     id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', featured: true, image: 'tubular-heaters',
     imageAlt: 'Illustration of formed tubular heating elements with threaded terminals',
     title: 'Custom Tubular Heaters & Tubular Heating Elements',
-    description: 'Specify OEM tubular heating elements in straight, U-shaped and multi-bend forms. Show the heated length, cold ends, terminals and mounting on your drawing.',
+    description: 'Request straight, U-shaped or multi-bend tubular heating elements to drawing. Specify active length, cold ends, mounting and watts per circuit.',
     text: 'Straight and formed tubular heating elements configured for your geometry and operating conditions.',
-    intro: 'Custom tubular heating elements are specified by tube shape, sheath, electrical load and mounting. Share your drawing or available envelope, along with the heating medium, for a straight, U-shaped or multi-bend OEM tubular heater.',
+    intro: 'A tubular heating element transfers heat through a metal sheath. For a custom tubular heater, send the tube profile and mounting dimensions, mark the active heated length and cold ends, and specify the medium, voltage and watts per circuit.',
     options: ['Straight, U-shaped and multi-bend forms', 'Single-ended and double-ended layouts', 'Sheath and terminal choices by application', 'Mounting brackets, fittings and flanges'],
-    specs: ['Tube diameter, overall envelope, bend centerline radii and mounting points', 'Voltage, phase and target wattage', 'Heated length, cold ends and terminal locations', 'Heating medium, flow or clearance, and operating temperatures'],
+    specs: ['Sheath outside diameter, overall envelope, bend centerline radii, leg spacing and mounting hole centers', 'Supply voltage and phase, voltage and watts per heating circuit, and connection diagram', 'Active length and cold ends measured along the tube centerline, terminal projection and wiring clearance', 'Medium and flow conditions, normal and peak temperatures, sheath material if specified and required quantity'],
     comparison: [
       'Low Watt Density Tubular Heating Elements',
       'A lower surface watt density spreads the electrical load over more active sheath area. If the equipment envelope is fixed, compare longer heated spans, more elements or lower power per element for the same process duty.',
@@ -120,8 +120,8 @@ export const products = [
     ],
     selection: [
       'Tubular Heating Element Shapes and Terminations',
-      'A drawing for a custom tubular heater should locate the active heated span, the cold ends and each terminal. For a formed element, give the bend centerline radii, leg spacing and mounting clearances.',
-      { table: [
+      'Use the mounting face as a reference for installed dimensions. Measure the active heated length and each cold end along the tube centerline. Show an end view to identify terminal spacing and direction.',
+      { anchor: 'tubular-heater-drawing', table: [
         ['Form or termination', 'When to consider it', 'Show on the drawing'],
         ['Straight', 'An unobstructed run through a duct, housing or heating assembly.', 'Overall length, sheath diameter, support positions and heated span.'],
         ['U-shaped', 'Two parallel legs fit the available opening and bring both terminal ends to the same side.', 'Leg lengths and spacing, bend centerline radius and the terminal projection.'],
@@ -130,7 +130,7 @@ export const products = [
         ['Double-ended', 'Electrical connections leave opposite tube ends. A U shape can bring those ends to one side of the equipment.', 'Terminal arrangement and cold-end length at each tube end.'],
         [['Industrial oven elements', tubular + 'industrial-oven/'], 'An oven or dryer needs a shaped element for a defined heating zone and air path.', 'Mounting hole spacing, support points, airflow or radiant exposure, and wattage per zone.'],
         [['Electric grill heating elements', tubular + 'electric-grill/'], 'An electric grill needs a shaped element that fits under or above the cooking surface.', 'Distance to the cooking surface, support points, terminal locations and zone power.'],
-        [['Finned tubular elements', tubular + 'finned/'], 'An air stream passes over the extended surface of fins.', 'Minimum airflow, fin outside dimensions and mounting clearance.'],
+        [['Finned tubular elements', tubular + 'finned/#finned-heater-drawing'], 'An air stream passes over the extended surface of fins.', 'Minimum airflow, fin outside dimensions and mounting clearance.'],
         [['Sauna heating elements', tubular + 'sauna/'], 'A formed element fits the heating compartment of an electric sauna stove.', 'Tube profile, support spacing, terminal location and electrical rating per element.'],
       ], diagram: [
         'Straight double-ended example. T marks a terminal, C a cold end and H the active heated span.',
@@ -142,6 +142,7 @@ export const products = [
       ['What is a tubular heater?', 'A tubular heater encloses a resistance conductor in a metal sheath with electrical insulation between them. Power heats the conductor, and heat passes through the sheath to the surrounding air, liquid or contact surface. The sheath shape, material and surface loading are selected for the installation.'],
       ['What is the difference between a single-ended and double-ended tubular heater?', 'The terms describe where electrical connections leave the element. Choose the terminal layout to match available wiring access and the heated and unheated sections on the drawing. Include photographs or a wiring sketch for a replacement.'],
       ['What drawing details are useful for a formed tubular heater?', 'Show the tube diameter, centerline bend dimensions, leg spacing, heated length, cold ends and terminal orientation. Include mounting locations and any clearances around the element.'],
+      ['What do I send for a replacement tubular heating element?', 'Provide a photo of the markings, existing drawing or measured tube profile, mounting hole centers and terminal dimensions. Include the heating medium, wiring diagram and operating temperatures. If the active length or cold ends are unknown, mark them as unknown so they can be reviewed with the operating conditions.'],
       ['What should I specify for an industrial oven heating element?', 'Send a drawing of the oven or dryer that shows the heater envelope, support points, active length, cold ends and terminal positions. Include the operating air temperature, minimum airflow for a convection oven, supply voltage and wattage per zone. For a replacement, give the original part reference and any changes to the air path or mounting.'],
       ['Can the same tubular heater design be used in air and liquid?', 'Review each application separately. Airflow, fluid type and movement, sheath compatibility and watt density determine the sheath temperature and how effectively the element transfers heat.'],
     ],
@@ -150,22 +151,22 @@ export const products = [
   },
   {
     id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', featured: true, image: 'finned-tubular-heaters',
-    title: 'Finned Tubular Heaters for Forced Air & Ducts',
-    description: 'Compare U-shaped, W-shaped and flange-mounted finned tubular heaters. Specify tube profile, fin spacing, airflow, mounting and terminal clearance.',
+    title: 'Custom Finned Tubular Heaters for Air & Ducts',
+    description: 'Specify a custom U-shaped, W-shaped or flange-mounted finned tubular heater by minimum airflow, fin diameter, tube profile and mounting dimensions.',
     text: 'Finned tubular elements for forced-air heating, duct assemblies and industrial ovens.',
-    intro: 'Fins increase surface area for heat transfer to air. Share the airflow conditions and installation dimensions to scope an element for a duct, enclosure or oven.',
+    intro: 'A finned tubular heater uses fins around a round metal sheath to transfer heat to moving air. For a custom element, send the duct cross-section, normal and minimum airflow, tube shape and fin envelope along with the electrical ratings.',
     options: ['Straight, U-shaped and W-shaped elements by drawing', 'Fin and sheath material selection', 'Flange plates, brackets and terminal layouts by drawing'],
-    specs: ['Minimum and normal airflow, inlet temperature and target outlet temperature', 'Voltage, phase and wattage', 'Tube diameter, maximum fin diameter, fin pitch and overall shape', 'Mounting points, flow direction and terminal clearance'],
+    specs: ['Duct cross-section, air direction, minimum and normal airflow, maximum inlet temperature and target outlet temperature', 'Supply voltage and phase, voltage and watts per heating circuit, and zone layout', 'Sheath diameter, fin outside diameter and pitch, finned and heated lengths, and tube centerline profile', 'Mounting hole centers, terminal projection, fin clearance, allowable pressure drop and required quantity'],
     selection: [
       'Finned Tubular Heater Geometry for Forced Air',
-      'Start with the round sheath and the space available for its fins. Bring the minimum operating airflow and the drawing of the air path together so the element can be reviewed at low flow as well as normal operation.',
-      { table: [
+      'For a formed finned tubular heating element, show the tube centerline and the outside envelope of the fins. Mark which areas are heated and which areas carry fins so both clearances and heat transfer can be reviewed.',
+      { anchor: 'finned-heater-drawing', table: [
         ['Design detail', 'What to provide'],
-        ['Tube and fins', 'Sheath diameter, maximum outside fin diameter and fin pitch if replacing an existing element. Give the centerline profile for a formed tube.'],
+        ['Tube and fins', 'Specify sheath diameter, maximum fin outside diameter and the pitch between adjacent fins or turns. For formed tubing, show the bare sections near bends and supports.'],
         ['U-shaped finned tube', 'Mark the distance between the two legs, the return bend radius, the finned length and the terminal projection from the mounting face.'],
         ['W-shaped finned tube', 'Draw the complete centerline profile with each bend and leg spacing. Mark where the fins stop near bends, supports and terminals.'],
         ['Flange-mounted finned tube', 'Show the flange outline and thickness, cutout dimensions, mounting hole spacing and tube projection from the mounting face. Check service clearance on both sides.'],
-        ['Air path', 'Flow direction, minimum and normal airflow, inlet temperature and allowable pressure drop if specified. Show surrounding walls or obstructions.'],
+        ['Air path', 'Show the duct width and height, flow direction and any obstructions. Give minimum and normal airflow, specify inlet conditions for volumetric flow, and include the pressure-drop limit where applicable.'],
         ['Mount and terminals', 'Mounting and support locations, clearance around the fins and space to access the terminals.'],
         [['Flat finned strip option', strip + 'finned/'], 'Use strip width, fin height and mounting centers when the equipment drawing shows a flat strip body.'],
       ] },
@@ -195,6 +196,8 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['When does a finned tubular heater make sense?', 'Consider a finned element when the heater will transfer heat to moving air. Fins provide additional surface area. Specify the minimum airflow, maximum inlet temperature, mounting clearance and maximum fin diameter so the assembly can be evaluated in the duct.'],
+      ['Why does minimum airflow matter for a finned tubular heater?', 'At the same electrical power, less air moving across the fins can raise the sheath temperature. Provide the lowest airflow expected while the heater is powered, including conditions at startup or with a loaded filter.'],
+      ['What do I send for a replacement finned tubular heater?', 'Send the voltage and wattage markings, photos of the finned tube and its terminals, and the duct dimensions. Include fin diameter and pitch, mounting hole spacing, cold ends, minimum airflow and terminal clearance.'],
     ],
   },
   {
@@ -836,12 +839,12 @@ export const products = [
   },
   {
     id: 'type-k', path: thermo + 'type-k/', parent: 'thermocouples', group: 'sensing', name: 'Type K Thermocouples', image: 'thermocouples',
-    title: 'Type K Thermocouple Probes & Assemblies',
-    description: 'Specify a custom Type K thermocouple probe by temperature and atmosphere, sheath, insertion length, junction, mount and instrument connection.',
+    title: 'Custom Type K Thermocouple Probes & Assemblies',
+    description: 'Specify a custom Type K thermocouple probe by operating temperature, sheath diameter, installation depth, junction and K-type connection.',
     text: 'Type K probes and assemblies with application-specific connections and mounting.',
-    intro: 'Specify a Type K thermocouple probe for the working atmosphere, mounting and instrument input. The sheath, junction, insulation and leads determine the working range of the assembled probe.',
+    intro: 'A Type K thermocouple uses nickel-alloy conductors to measure temperature. For a custom Type K probe, mark the sensing point, sheath dimensions and mount on your drawing. Include the process atmosphere, temperature at the tip and cable transition, and the instrument connection.',
     options: ['Probe, surface and assembly constructions', 'Grounded, ungrounded and exposed junctions', 'Miniature connector, leads or terminal head'],
-    specs: ['Continuous and peak temperatures, exposure time and atmosphere', 'Sheath material, diameter and installed insertion length', 'Mount and junction construction', 'K-compatible termination, instrument input and extension cable'],
+    specs: ['Continuous and peak temperatures, exposure time, process medium and atmosphere at the tip', 'Sheath material and diameter, mounting reference face and tip insertion depth', 'Mounting thread or flange dimensions, junction construction and any isolation or response-time requirement', 'Type K instrument input, cable length and insulation, connector or terminal head, and required quantity'],
     comparison: [
       'Type K Thermocouple Temperature Range',
       'The NIST ITS-90 Type K reference function covers −270 to 1,372 °C. The usable range and measurement accuracy of an installed probe depend on its materials, the process and the input instrument.',
@@ -854,12 +857,14 @@ export const products = [
     ],
     selection: [
       'Specify a Type K Probe Assembly',
-      'Confirm operating conditions at both the sensing tip and the lead exit. These locations can reach different temperatures and may require different materials.',
-      { table: [
+      'Mark where the junction must measure temperature and which surface locates the probe after installation. Give dimensions from that reference and specify separate temperatures for the tip and lead transition.',
+      { anchor: 'type-k-probe-drawing', table: [
         ['Assembly decision', 'What to specify'],
         ['Sheath and protection', 'Process atmosphere, exposure time at peak temperature, diameter, and whether the probe needs a protection tube.'],
         [['Sensing junction', '/guides/grounded-vs-ungrounded-thermocouples/'], 'Grounded, ungrounded or exposed construction, plus response-time and electrical isolation requirements.'],
-        [['Installation', thermo + 'threaded-probes/'], 'Show the sensing point, installed insertion length and any threads, flange or contact mount.'],
+        [['Threaded probe', thermo + 'threaded-probes/'], 'Specify the mating thread standard and size, sealing face and tip depth from the installed reference.'],
+        [['Flanged probe', thermo + 'flanged/'], 'Give the flange standard, bolt pattern and sealing face. Measure the installed depth from the flange face to the probe tip.'],
+        [['Surface contact probe', thermo + 'surface-mount/'], 'Show the sensing contact point, pad or lug footprint, fastening and lead exit. Specify the surface temperature at that point.'],
         [['Needle insertion probe', thermo + 'needle-probes/'], 'For a pointed Type K probe, specify the needle diameter, tip shape and usable insertion depth.'],
         [['Exhaust gas temperature probe', thermo + 'exhaust-gas/'], 'Mark the sensing point in the exhaust stream, fitting dimensions, insertion depth and conditions at the lead transition.'],
         [['Electrical connection', '/guides/thermocouple-wire-color-code/'], 'Type K input, compatible lead and connector type, polarity convention and temperature at the termination.'],
@@ -870,6 +875,7 @@ export const products = [
       ['What is a Type K thermocouple?', 'Type K identifies a thermocouple with a nickel-chromium positive leg and a nickel-aluminum negative leg. The instrument uses the Type K voltage-to-temperature reference function. When choosing a probe, also specify the junction, sheath, mounting and compatible extension cable.'],
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
+      ['What do you need to quote a replacement Type K thermocouple?', 'Send the original drawing or photos of the probe, fitting and termination. Include the sheath diameter, installed insertion depth, mounting and grounding details, cable length and the Type K input used by the instrument. Flag any unknown dimensions or changes in service conditions.'],
     ],
     related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'waterproof-thermocouples', 'high-temperature', 'sensor-accessories', 'thermocouple-temperature-transmitters', 'pid-temperature-controllers'],
     guides: ['type-k-vs-type-j-thermocouple', 'how-to-test-a-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
@@ -3130,7 +3136,9 @@ export const guides = [
         ],
       }],
       ['Define the complete assembly', 'The alloy type is only one input. Sheath, insulation, junction, connector and extension wire can impose their own limits. Include expected peak temperature, probe depth, vibration and the mounting interface in a request.'],
-      ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.'],
+      ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.', {
+        links: [['Type K probe drawing checklist', thermo + 'type-k/#type-k-probe-drawing']],
+      }],
       ['Decide how to connect it', 'Match the extension cable and connector to the thermocouple type and instrument. Document any required terminal head, miniature plug or bare wire termination.'],
     ],
   },
@@ -3227,8 +3235,8 @@ export const guides = [
       ['Compare types of tubular heating elements', 'A metal-sheathed tubular element can take different shapes to fit the heating zone. The shape and the medium together determine which measurements belong on the drawing.', {
         table: [
           ['Tubular form', 'Selection detail'],
-          [['Straight or formed', tubular], 'Use the equipment envelope, centerline bends, active length and where the terminals emerge.'],
-          [['Finned for moving air', tubular + 'finned/'], 'Review fin clearance, normal and minimum airflow, and pressure drop.'],
+          [['Straight or formed tubular heaters', tubular + '#tubular-heater-drawing'], 'Use the equipment envelope, centerline bends, active length and where the terminals emerge.'],
+          [['Finned tubular heaters for moving air', tubular + 'finned/#finned-heater-drawing'], 'Review fin clearance, normal and minimum airflow, and pressure drop.'],
           [['Industrial oven heating elements', tubular + 'industrial-oven/'], 'Give the heater zone layout, support and mounting hole positions, airflow or radiant exposure, and power per zone.'],
           [['Electric grill heating elements', tubular + 'electric-grill/#grill-element-drawing'], 'Show the mount, grate clearance, tube shape and terminal projection. Include the voltage and watts per circuit.'],
           [['Sauna heating elements', tubular + 'sauna/'], 'Provide the tube profile, stove support and terminal positions, clearance to the stone basket, and voltage and wattage per element.'],
