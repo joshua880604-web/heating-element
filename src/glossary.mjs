@@ -255,6 +255,11 @@ export const glossary = [
     related: ['Industrial Electrically Heated Hoses', '/heating-elements/flexible-heaters/heated-hoses/'],
   },
   {
+    id: 'heater-tape-with-controller', name: 'Heater Tape with Controller',
+    definition: 'A flexible surface heater paired with temperature control. Specify the contact path, active dimensions, sensor position, load and equipment temperature limits.',
+    related: ['Flexible Heating Tapes with Controllers', '/heating-elements/flexible-heaters/heating-tapes-with-controller/'],
+  },
+  {
     id: 'heater-control-panel', name: 'Heater Control Panel',
     definition: 'A cabinet that houses the controls and power interfaces specified for one or more heater circuits. Define the supply, zone loads, sensor inputs and protection requirements.',
     related: ['Heater Control Panels', '/temperature-controls/heater-control-panels/'],
@@ -365,6 +370,11 @@ export const glossary = [
     related: ['MoSi2 Heating Elements', '/heating-elements/mosi2-heating-elements/'],
   },
   {
+    id: 'nichrome-heating-element', name: 'Nichrome Heating Element',
+    definition: 'An electric resistance heating component made with a nickel–chromium alloy. Specify the alloy, geometry, supports and cold resistance at a stated reference temperature.',
+    related: ['Nichrome Heating Elements', '/heating-elements/open-coil-heaters/nichrome/'],
+  },
+  {
     id: 'nozzle-band-heater', name: 'Nozzle Band Heater',
     definition: 'A compact band heater clamped around a molding or extrusion nozzle. Its fit depends on the nozzle diameter, available width, clamp access and lead clearance.',
     related: ['Nozzle Band Heaters', '/heating-elements/band-heaters/nozzle/'],
@@ -443,6 +453,11 @@ export const glossary = [
     id: 'rtd', name: 'RTD',
     definition: 'A resistance temperature detector uses the change in electrical resistance of a sensing element to determine temperature. Pt100 is a common platinum RTD type.',
     related: ['Thermocouple vs. RTD', '/guides/thermocouple-vs-rtd/'],
+  },
+  {
+    id: 'rtd-connector', name: 'RTD Connector',
+    definition: 'A detachable connection for a resistance temperature detector circuit. Match the mating shell, keying and pin assignments to the probe wiring and instrument drawing.',
+    related: ['RTD Connectors', '/temperature-sensors/rtd/connectors/'],
   },
   {
     id: 'rtd-self-heating', name: 'RTD Self-Heating',
@@ -530,6 +545,11 @@ export const glossary = [
     related: ['Surface-Mount Thermocouples', '/thermocouples/surface-mount/'],
   },
   {
+    id: 'tankless-water-heater-element', name: 'Tankless Water Heater Element',
+    definition: 'An electric heating component fitted to a water flow chamber. Specify the chamber drawing, seal, electrical rating and minimum flow required by the equipment.',
+    related: ['Tankless Water Heater Elements', '/heating-elements/immersion-heaters/tankless-water-heaters/'],
+  },
+  {
     id: 'temperature-limit-controller', name: 'Temperature Limit Controller',
     definition: 'A device that monitors a temperature input and changes its output at a defined limit. Verify the sensing, output and reset requirements for the complete equipment circuit.',
     related: ['Temperature Limit Controllers', '/temperature-controls/temperature-limit-controllers/'],
@@ -570,6 +590,11 @@ export const glossary = [
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
+    id: 'thermocouple-signal-calibrator', name: 'Thermocouple Signal Calibrator',
+    definition: 'An instrument used to source a simulated thermocouple signal or measure an applied signal in supported modes. Specify the supported types, range, accuracy and compensation method.',
+    related: ['Thermocouple Signal Calibrators', '/temperature-controls/thermocouple-calibrators/'],
+  },
+  {
     id: 'thermocouple-terminal-block', name: 'Thermocouple Terminal Block',
     definition: 'An insulated set of terminals that joins probe leads to field wiring. The thermocouple type, polarity, contact materials and temperature at the connections are specified for the circuit.',
     related: ['Thermocouple Terminal Blocks', '/temperature-sensors/accessories/terminal-blocks/'],
@@ -578,6 +603,11 @@ export const glossary = [
     id: 'thermocouple-transmitter', name: 'Thermocouple Transmitter',
     definition: 'An instrument that converts a thermocouple signal to an output such as 4–20 mA. It uses the configured thermocouple type and cold-junction compensation to calculate temperature and scales it to the specified output span.',
     related: ['4–20 mA Thermocouple Transmitters', '/temperature-controls/thermocouple-transmitters/'],
+  },
+  {
+    id: 'thermocouple-vacuum-gauge-tube', name: 'Thermocouple Vacuum Gauge Tube',
+    definition: 'A sensing tube that uses heat transfer to indicate vacuum pressure when paired with a compatible gauge. Match the instrument, gas, pressure range, vacuum port and pinout.',
+    related: ['Thermocouple Vacuum Gauge Tubes', '/temperature-sensors/accessories/vacuum-gauge-tubes/'],
   },
   {
     id: 'thermostat-switching-differential', name: 'Thermostat Switching Differential',
