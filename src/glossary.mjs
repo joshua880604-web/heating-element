@@ -125,6 +125,11 @@ export const glossary = [
     related: ['Waterproof DS18B20 Temperature Sensors', '/temperature-sensors/ds18b20/'],
   },
   {
+    id: 'diesel-fuel-tank-heater', name: 'Diesel Fuel Tank Heater',
+    definition: 'An immersion heater assembly specified to a stationary diesel fuel tank. Review the approved tank drawing, fuel and level conditions, and required installation documentation.',
+    related: ['Stationary Diesel Fuel Tank Heaters', '/heating-elements/immersion-heaters/oil/diesel-fuel-tanks/'],
+  },
+  {
     id: 'distiller-heating-element', name: 'Distiller Heating Element',
     definition: 'A heater that supplies heat to the feedwater in a water distiller. The boiling chamber, minimum operating water level and sealing interface define its installation.',
     related: ['Water Distiller Heating Elements', '/heating-elements/immersion-heaters/water-distiller/'],
@@ -335,6 +340,11 @@ export const glossary = [
     related: ['Melt Bolt Thermocouples', '/thermocouples/melt-bolt/'],
   },
   {
+    id: 'metal-jacketed-drum-heater', name: 'Metal-Jacketed Drum Heater',
+    definition: 'An external heater with a metal jacket fitted around a compatible drum. Specify the measured drum diameter, heated height, latch clearance and permitted wall and contents temperatures.',
+    related: ['Metal-Jacketed Drum Heaters', '/heating-elements/metal-jacketed-drum-heaters/'],
+  },
+  {
     id: 'mica-strip-heater', name: 'Mica Strip Heater',
     definition: 'A flat heater with an electrical resistance element insulated by mica. The contact face, mounting pressure and heated area determine how heat is transferred into the equipment.',
     related: ['Mica Strip Heaters', '/heating-elements/strip-heaters/mica/'],
@@ -423,6 +433,11 @@ export const glossary = [
     id: 'right-angle-cartridge-heater', name: 'Right-Angle Cartridge Heater',
     definition: 'A cartridge heater with a straight cylindrical heating body and a lead outlet that turns 90 degrees at the unheated end. The elbow fits outside the tool bore.',
     related: ['Right-Angle Cartridge Heaters', '/heating-elements/cartridge-heaters/right-angle/'],
+  },
+  {
+    id: 'roller-surface-thermocouple', name: 'Roller Surface Thermocouple',
+    definition: 'A contact probe with a head intended for measuring the temperature of a moving surface. Selection depends on the surface material, speed, temperature and permitted contact.',
+    related: ['Roller Surface Thermocouple Probes', '/thermocouples/surface-mount/roller/'],
   },
   {
     id: 'rtd', name: 'RTD',
@@ -515,6 +530,11 @@ export const glossary = [
     related: ['Surface-Mount Thermocouples', '/thermocouples/surface-mount/'],
   },
   {
+    id: 'temperature-limit-controller', name: 'Temperature Limit Controller',
+    definition: 'A device that monitors a temperature input and changes its output at a defined limit. Verify the sensing, output and reset requirements for the complete equipment circuit.',
+    related: ['Temperature Limit Controllers', '/temperature-controls/temperature-limit-controllers/'],
+  },
+  {
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
@@ -573,6 +593,11 @@ export const glossary = [
     id: 'thermowell-insertion-length', name: 'Thermowell Insertion Length',
     definition: 'The length from the specified process connection reference to the thermowell tip. Check the drawing datum and the nozzle length to determine how far the tip extends into the process.',
     related: ['Thermowell Selection Guide', '/guides/thermowell-selection-guide/'],
+  },
+  {
+    id: 'thin-film-rtd-element', name: 'Thin-Film RTD Element',
+    definition: 'A resistance temperature sensing element made from a patterned resistive film on a substrate. Select it by nominal resistance, temperature curve, tolerance, chip size and leads.',
+    related: ['Thin-Film Platinum RTD Elements', '/temperature-sensors/rtd/thin-film-elements/'],
   },
   {
     id: 'threaded-rtd-probe', name: 'Threaded RTD Probe',
@@ -658,5 +683,10 @@ export const glossary = [
     id: 'watt-density', name: 'Watt Density',
     definition: 'Electrical power divided by active heating surface area, often expressed in W/cm² or W/in². For a cylindrical tubular sheath, surface area is π times sheath diameter times active heated length.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
+  },
+  {
+    id: 'wireless-thermocouple-system', name: 'Wireless Thermocouple System',
+    definition: 'A thermocouple, transmitter and compatible receiver or gateway used to report readings remotely. Specify the input, site conditions, reporting interval and receiving interface.',
+    related: ['Wireless Thermocouple Systems', '/temperature-controls/wireless-thermocouples/'],
   },
 ];
