@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bearing-rtd', name: 'Bearing RTD',
+    definition: 'A resistance temperature detector fitted to a pocket in a stationary bearing shell or housing. The pocket and probe dimensions locate the sensing point, and the cable route must clear the moving parts.',
+    related: ['Bearing RTD Probes', '/temperature-sensors/rtd/bearing-probes/'],
+  },
+  {
     id: 'bimetal-thermometer', name: 'Bimetal Thermometer',
     definition: 'A mechanical thermometer whose bonded metals deform in response to temperature and move a dial pointer. The dial, stem and connection are sized for the measurement point and viewing position.',
     related: ['Bimetal Thermometers', '/temperature-sensors/bimetal-thermometers/'],
@@ -23,6 +28,11 @@ export const glossary = [
     id: 'cartridge-heater-bore-clearance', name: 'Cartridge Heater Bore Clearance',
     definition: 'The difference between the bore diameter and the heater outside diameter at a specified temperature. The allowable fit depends on heat transfer, machining tolerance, operating temperature and removal needs.',
     related: ['Custom Cartridge Heaters', '/heating-elements/cartridge-heaters/'],
+  },
+  {
+    id: 'cast-iron-plate-heater', name: 'Cast Iron Plate Heater',
+    definition: 'An electric heater with a cast iron body that transfers heat through a contact face. The finished plate, mounting points and heating zone are specified for the equipment drawing.',
+    related: ['Cast Iron Plate Heaters', '/heating-elements/cast-iron-heaters/'],
   },
   {
     id: 'ceramic-infrared-heating-element', name: 'Ceramic Infrared Heating Element',
@@ -243,6 +253,11 @@ export const glossary = [
     id: 'reference-junction', name: 'Reference Junction',
     definition: 'The connection where thermocouple conductors transition to the measuring circuit, also called the cold junction. The instrument uses its temperature to calculate the sensing-junction temperature.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'right-angle-cartridge-heater', name: 'Right-Angle Cartridge Heater',
+    definition: 'A cartridge heater with a straight cylindrical heating body and a lead outlet that turns 90 degrees at the unheated end. The elbow fits outside the tool bore.',
+    related: ['Right-Angle Cartridge Heaters', '/heating-elements/cartridge-heaters/right-angle/'],
   },
   {
     id: 'rtd', name: 'RTD',
