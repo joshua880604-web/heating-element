@@ -113,6 +113,12 @@ const photoTones = [
       'constant-wattage-heating-cables', 'handheld-thermocouple-probes',
       'silicon-carbide-thermocouple-protection-tubes', 'plating-tank-heaters'],
   },
+  {
+    id: 'cool-gray',
+    source: [221, 219, 228],
+    images: ['infrared-heating-panels', 'inline-oil-heaters', 'heated-hoses',
+      'thermocouple-data-loggers', 'handheld-thermocouple-readers', 'scr-power-controllers'],
+  },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
 

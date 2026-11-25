@@ -240,6 +240,16 @@ export const glossary = [
     related: ['Handheld Thermocouple Probes', '/thermocouples/handheld-probes/'],
   },
   {
+    id: 'handheld-thermocouple-reader', name: 'Handheld Thermocouple Reader',
+    definition: 'A portable instrument that displays temperature from a compatible thermocouple probe. Match the input type, connector, measurement range and uncertainty requirements.',
+    related: ['Handheld Thermocouple Readers', '/temperature-controls/handheld-thermocouple-readers/'],
+  },
+  {
+    id: 'heated-hose', name: 'Heated Hose',
+    definition: 'A flexible transfer hose with an integrated heater and insulation. Specify the medium, fittings, working temperature and pressure, and the installed bend and movement.',
+    related: ['Industrial Electrically Heated Hoses', '/heating-elements/flexible-heaters/heated-hoses/'],
+  },
+  {
     id: 'heater-control-panel', name: 'Heater Control Panel',
     definition: 'A cabinet that houses the controls and power interfaces specified for one or more heater circuits. Define the supply, zone loads, sensor inputs and protection requirements.',
     related: ['Heater Control Panels', '/temperature-controls/heater-control-panels/'],
@@ -298,6 +308,16 @@ export const glossary = [
     id: 'infrared-heating-element', name: 'Infrared Heating Element',
     definition: 'An element that warms a target by radiation. Absorption at the target, working distance and exposure time affect the heating result.',
     related: ['Infrared Heating Elements', '/heating-elements/infrared-heaters/'],
+  },
+  {
+    id: 'infrared-heating-panel', name: 'Infrared Heating Panel',
+    definition: 'A mounted radiant heater assembly that directs heat toward a workpiece. Emitter spacing, working distance, exposure and zone power determine the panel specification.',
+    related: ['Industrial Infrared Heating Panels', '/heating-elements/infrared-heaters/panels/'],
+  },
+  {
+    id: 'inline-oil-heater', name: 'In-Line Oil Heater',
+    definition: 'An electric circulation heater that transfers heat to oil as it passes through a chamber. Specify the oil properties, flow, temperature rise and pressure limits.',
+    related: ['In-Line Oil Heaters', '/heating-elements/circulation-heaters/inline-oil/'],
   },
   {
     id: 'insertion-length', name: 'Insertion Length',
@@ -425,6 +445,11 @@ export const glossary = [
     related: ['Sanitary RTD Probes', '/temperature-sensors/rtd/sanitary/'],
   },
   {
+    id: 'scr-power-controller', name: 'SCR Power Controller',
+    definition: 'An electronic controller that modulates AC power using silicon-controlled rectifiers. Select it for the supply, heater load, command signal, firing mode and cooling.',
+    related: ['SCR Power Controllers for Electric Heaters', '/temperature-controls/scr-power-controllers/'],
+  },
+  {
     id: 'screw-plug-immersion-heater', name: 'Screw Plug Immersion Heater',
     definition: 'An immersion heater with a threaded plug for mounting into a matching tank or vessel port. Thread form, size, sealing and insertion clearance are key dimensions.',
     related: ['Screw Plug Immersion Heaters', '/heating-elements/immersion-heaters/screw-plug/'],
@@ -498,6 +523,11 @@ export const glossary = [
     id: 'thermocouple-connection-head', name: 'Thermocouple Connection Head',
     definition: 'An enclosure at the probe termination where sensor leads connect to field wiring. The head layout is specified by cable entry, terminals, installed clearance and operating temperature.',
     related: ['Thermocouple Connection Head Housings', '/temperature-sensors/accessories/connection-heads/'],
+  },
+  {
+    id: 'thermocouple-data-logger', name: 'Thermocouple Data Logger',
+    definition: 'An instrument that records temperatures over time from compatible thermocouple inputs. Specify the channel count, recording interval, isolation, run time and data export.',
+    related: ['Thermocouple Data Loggers', '/temperature-controls/thermocouple-data-loggers/'],
   },
   {
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',
