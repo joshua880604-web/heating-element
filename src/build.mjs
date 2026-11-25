@@ -137,7 +137,9 @@ const photoTones = [
       'coffee-machine-heating-elements', 'temperature-calibration-baths', 'rtd-calibrators',
       'multipoint-thermocouples', 'silicon-nitride-thermocouple-protection-tubes', 'industrial-unit-heaters',
       'heat-trace-controllers', 'thermocouple-welders', 'hot-runner-temperature-controllers',
-      'brew-kettle-heating-elements', 'ceramic-fiber-heaters', 'quartz-immersion-heaters'],
+      'brew-kettle-heating-elements', 'ceramic-fiber-heaters', 'quartz-immersion-heaters',
+      'miniature-rtd-probes', 'industrial-digital-thermometers', 'micro-thermocouples',
+      'duct-temperature-sensors', 'industrial-radiant-heaters', 'vacuum-chamber-heaters'],
   },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));

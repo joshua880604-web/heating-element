@@ -165,6 +165,11 @@ export const glossary = [
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
   },
   {
+    id: 'duct-temperature-sensor', name: 'Duct Temperature Sensor',
+    definition: 'A probe that measures air temperature at a specified position in a duct. Its insertion depth and sensing location determine which part of the air stream it measures.',
+    related: ['Duct Temperature Sensors', '/temperature-sensors/duct-temperature-sensors/'],
+  },
+  {
     id: 'dual-element-rtd', name: 'Dual-Element RTD',
     definition: 'A resistance temperature probe with two separately wired sensing elements. Specify the sensing positions, lead groups and instrument inputs for both circuits.',
     related: ['Dual-Element RTD Probes', '/temperature-sensors/rtd/dual-element/'],
@@ -350,6 +355,16 @@ export const glossary = [
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
   },
   {
+    id: 'industrial-digital-thermometer', name: 'Industrial Digital Thermometer',
+    definition: 'An industrial instrument that combines a temperature sensor with an electronic readout. Its process connection positions the sensor and the display is oriented for the operator.',
+    related: ['Industrial Digital Thermometers', '/temperature-sensors/digital-thermometers/'],
+  },
+  {
+    id: 'industrial-radiant-space-heater', name: 'Industrial Radiant Space Heater',
+    definition: 'A heater that directs radiant energy toward a work area. Mounting height, orientation and obstructions affect the area it covers.',
+    related: ['Industrial Electric Radiant Space Heaters', '/heating-elements/infrared-heaters/space-heaters/'],
+  },
+  {
     id: 'industrial-unit-heater', name: 'Industrial Unit Heater',
     definition: 'A packaged space heater that moves air across a heating element with a fan. Its output, air throw and mounting position determine where it can supply heat.',
     related: ['Industrial Electric Unit Heaters', '/heating-elements/unit-heaters/'],
@@ -403,6 +418,16 @@ export const glossary = [
     id: 'mineral-insulated-thermocouple', name: 'Mineral Insulated (MI) Thermocouple',
     definition: 'A thermocouple construction in which compacted mineral insulation separates the conductors within a metal sheath.',
     related: ['Mineral Insulated Thermocouples', '/thermocouples/mineral-insulated/'],
+  },
+  {
+    id: 'miniature-rtd-probe', name: 'Miniature RTD Probe',
+    definition: 'A compact resistance temperature detector assembly for confined locations. The available diameter, insertion depth and lead transition define the probe envelope.',
+    related: ['Miniature RTD Probes', '/temperature-sensors/rtd/miniature/'],
+  },
+  {
+    id: 'miniature-sheathed-thermocouple', name: 'Miniature Sheathed Thermocouple',
+    definition: 'A small-diameter thermocouple probe with a measuring junction inside a metal sheath. Sheath geometry, junction construction and installed heat transfer influence its response.',
+    related: ['Miniature Sheathed Thermocouples', '/thermocouples/mineral-insulated/miniature/'],
   },
   {
     id: 'minimum-submergence', name: 'Minimum Submergence',
@@ -788,6 +813,11 @@ export const glossary = [
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
     definition: 'A thermocouple junction separated from the metal sheath by insulation. This construction provides electrical isolation between the junction and sheath.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'vacuum-chamber-heater', name: 'Vacuum Chamber Heater',
+    definition: 'A heater that supplies heat to a vacuum chamber wall or an internal plate or fixture. Its position relative to the vacuum boundary determines material and connection requirements.',
+    related: ['Vacuum Chamber Heaters', '/heating-elements/vacuum-chamber-heaters/'],
   },
   {
     id: 'washing-machine-heating-element', name: 'Washing Machine Heating Element',
