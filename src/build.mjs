@@ -638,6 +638,7 @@ ${callout('Compare products and specifications', 'Use the engineering guides to 
 `, { trail: glossaryTrail, type: 'CollectionPage', terms: glossary });
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
+const businessLicense = '/assets/lichengda-business-license-redacted.webp';
 const workshopPhotos = [
   {
     image: 'lichengda-workshop',
@@ -679,6 +680,13 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       <p>${escape(companyName)}<br><span lang="zh-CN">${escape(chineseCompanyName)}</span></p>
       ${salesContacts()}
       <div class="actions">${btn('Request a Quote', quoteLink(), 'primary', 'external')}</div>
+      <section class="business-license" id="business-license" aria-labelledby="business-license-heading">
+        <h3 id="business-license-heading">Business License</h3>
+        <figure>
+          <img src="${businessLicense}" width="976" height="692" loading="lazy" decoding="async" alt="Redacted business license showing Lichengda’s registered Chinese company name">
+          <figcaption><a href="${businessLicense}">View redacted copy at full size</a></figcaption>
+        </figure>
+      </section>
     </aside>
   </div>
   <div class="about-photo about-reception" id="reception">

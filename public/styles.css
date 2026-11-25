@@ -1042,6 +1042,7 @@ svg.photo-filters {
   margin-block: 28px 0;
 }
 .about-photo img,
+.business-license img,
 .workshop-gallery img,
 .product-photos-grid img {
   display: block;
@@ -1050,11 +1051,26 @@ svg.photo-filters {
   border-radius: 7px;
 }
 .about-photo figcaption,
+.business-license figcaption,
 .workshop-gallery figcaption,
 .product-photos-grid figcaption {
   color: var(--muted);
   font-size: 0.85rem;
   margin-top: 7px;
+}
+.business-license {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.business-license h3 {
+  margin-bottom: 10px;
+  font-size: 1.12rem;
+}
+.business-license a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 .workshop {
   margin-top: 38px;
