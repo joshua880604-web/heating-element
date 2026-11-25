@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bimetal-thermometer', name: 'Bimetal Thermometer',
+    definition: 'A mechanical thermometer whose bonded metals deform in response to temperature and move a dial pointer. The dial, stem and connection are sized for the measurement point and viewing position.',
+    related: ['Bimetal Thermometers', '/temperature-sensors/bimetal-thermometers/'],
+  },
+  {
     id: 'bulb-and-capillary-thermostat', name: 'Bulb and Capillary Thermostat',
     definition: 'A mechanical temperature switch that senses at a remote bulb. A sealed capillary carries the pressure change from the bulb to the switch mechanism.',
     related: ['Bulb and Capillary Thermostats', '/temperature-controls/capillary-thermostats/'],
@@ -58,6 +63,11 @@ export const glossary = [
     id: 'dual-element-thermocouple', name: 'Dual Element Thermocouple',
     definition: 'A probe with two thermocouple sensing elements and two identified lead pairs in one assembly. Specify both junction positions and any isolation requirements between the circuits and the sheath.',
     related: ['Dual Element Thermocouples', '/thermocouples/dual-element/'],
+  },
+  {
+    id: 'electric-grill-heating-element', name: 'Electric Grill Heating Element',
+    definition: 'A resistance heater shaped to fit a cooking zone in an electric grill. Its tube profile, active length, placement and power help determine the heat distribution at the cooking surface.',
+    related: ['Electric Grill Heating Elements', '/heating-elements/tubular-heaters/electric-grill/'],
   },
   {
     id: 'exhaust-gas-temperature', name: 'Exhaust Gas Temperature (EGT)',
@@ -278,6 +288,11 @@ export const glossary = [
     id: 'split-sheath-cartridge-heater', name: 'Split-Sheath Cartridge Heater',
     definition: 'A cartridge heater with a longitudinal division in the sheath that allows its sections to move as the heater warms. Fit depends on the finished bore tolerance and operating conditions.',
     related: ['Split-Sheath Cartridge Heaters', '/heating-elements/cartridge-heaters/split-sheath/'],
+  },
+  {
+    id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
+    definition: 'A resistance temperature detector with a contact pad or similar body that sits against an equipment surface. Contact quality and heat exchange with the surroundings affect the installed reading.',
+    related: ['Surface-Mount RTD Probes', '/temperature-sensors/rtd/surface-mount/'],
   },
   {
     id: 'surface-mount-thermocouple', name: 'Surface-Mount Thermocouple',
