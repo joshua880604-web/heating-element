@@ -2318,9 +2318,10 @@ export const products = [
       { table: [
         ['Specification', 'Pt100', 'Pt1000'],
         [['Nominal element resistance at 0 °C', '/guides/pt100-vs-pt1000/'], '100 Ω', '1,000 Ω'],
-        ['Instrument input', 'Confirm the Pt100 curve and supported wire count.', ['Configure a Pt1000 probe', rtd + 'pt1000/']],
+        [['Instrument input', '/guides/pt100-wiring-diagram/#connect-rtd-to-plc'], 'Confirm the Pt100 curve and supported wire count.', ['Configure a Pt1000 probe', rtd + 'pt1000/']],
         [['Thin-film element', rtd + 'thin-film-elements/'], 'Give the chip dimensions, curve, tolerance and lead layout for the probe assembly.', 'Specify the Pt1000 element curve and dimensions separately from the complete probe wiring.'],
-        [['Two-wire lead error', '/guides/pt100-wiring-diagram/'], 'The same lead resistance causes a larger temperature error than with Pt1000.', 'The same lead resistance causes a smaller temperature error than with Pt100.'],
+        [['Two-wire lead error', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'The same lead resistance causes a larger temperature error than with Pt1000.', 'The same lead resistance causes a smaller temperature error than with Pt100.'],
+        [['Check the probe resistance', '/guides/pt100-wiring-diagram/#check-rtd-sensor'], 'Compare a reading at a known temperature with the Pt100 curve and the expected lead resistance.', 'Repeat the comparison using the configured Pt1000 curve.'],
         [['RTD connector and pinout', rtd + 'connectors/'], 'Show how the Pt100 leads map to the mating contacts and instrument input.', 'Include the Pt1000 lead configuration, mating connector and shielding requirements.'],
         [['Threaded process mounting', rtd + 'threaded-probes/'], 'Specify port threads, sealing face and insertion depth.', 'Specify the same mounting dimensions and confirm the Pt1000 instrument input.'],
         [['Flanged process mounting', rtd + 'flanged-probes/'], 'Specify the mating flange, bolt pattern, sealing face and probe depth.', 'Confirm the mounting drawing and Pt1000 wiring for the receiving input.'],
@@ -2336,8 +2337,9 @@ export const products = [
     guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
     questions: [
       ['How do I check a Pt100 sensor with a multimeter?', 'Isolate the probe, identify the lead pairs and measure at a known temperature. Compare the reading with the correct Pt100 resistance curve and account for lead resistance. Use a controlled temperature source and a reference for a calibration check.'],
-      ['What is an RTD sensor and how does it work?', 'An RTD is a resistance temperature detector. In a platinum RTD such as a Pt100 or Pt1000, the element resistance rises with temperature. The instrument applies a small measuring current, reads the resulting voltage and converts the resistance to temperature using the configured platinum curve.'],
+      ['What is a Pt100 RTD sensor and how does it work?', 'A Pt100 is a platinum resistance temperature detector with a nominal resistance of 100 Ω at 0 °C. Its resistance increases with temperature. A compatible input applies a small measuring current, measures the resulting voltage and converts the resistance to temperature using the configured Pt100 curve.'],
       ['How do I choose the wiring for a Pt100 temperature sensor?', 'Match the instrument input first. Two-wire measurement includes lead resistance. Three-wire measurement can compensate for balanced lead resistance. Four-wire measurement separates the current and voltage paths. Send the wiring diagram, lead length and required tolerance.'],
+      ['What should I check before connecting a replacement Pt100 to a PLC?', 'If the PLC has a compatible RTD input, match the Pt100 curve, wire count and terminal assignments. For a 4–20 mA input, use a compatible RTD transmitter and match the temperature span at both ends. Also confirm the replacement probe’s insertion, mounting and tolerance.'],
     ],
   },
   {
@@ -2616,14 +2618,15 @@ export const products = [
         [['Platinum resistance curve', '/guides/pt100-vs-pt1000/'], 'State the nominal Pt1000 resistance and required curve or standard, such as IEC 60751 where specified by the instrument.'],
         ['Wire count and lead layout', 'Match the supported two-, three- or four-wire input. Provide lead length, conductor details, connector or terminals and pinout.'],
         ['Sheath and process fit', 'Locate insertion length, mounting, required sensor position and sheath diameter. Include the medium and working range at the probe and lead transition.'],
-        ['Required accuracy', 'Provide the requested element or assembly tolerance and the operating interval where it applies. Include controller accuracy or system targets where available.'],
+        [['Required accuracy', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'Provide the requested element or assembly tolerance and the operating interval where it applies. Include controller accuracy or system targets where available.'],
       ] },
     ],
     use: 'Typical inquiries include Pt1000 probes for temperature monitoring in machines, process vessels and compatible instrumentation.',
     questions: [
-      ['How do I check a Pt1000 sensor with a multimeter?', 'With the probe isolated, identify the sensor leads and measure its resistance at a known temperature. Use the specified Pt1000 curve for that temperature. The nominal 1,000 Ω value applies at 0 °C.'],
+      ['How do I check a Pt1000 sensor with a multimeter?', 'Isolate the probe and measure between leads on opposite ends of the element at a known temperature. An IEC 60751 Pt1000 measures about 1,097 Ω at 25 °C before lead resistance and tolerance. Compare against the curve at the actual probe temperature.'],
       ['Do Pt1000 and Pt100 use the same instrument input?', 'Confirm which nominal resistance and curve the instrument can be configured to read. A Pt1000 input uses 1,000 Ω at 0 °C and must also match the probe wiring.'],
       ['Which wire count should I specify for a Pt1000 sensor?', 'Use the configuration supported by the measuring instrument and required by the accuracy target. Send the input diagram and lead length so lead resistance and compensation can be reviewed.'],
+      ['Does a Pt1000 always measure more accurately than a Pt100?', 'For the same lead resistance in a two-wire circuit, Pt1000 has a smaller error from the leads because its resistance changes more per degree. Compare the full measurement accuracy, including element tolerance, the instrument, excitation current and how the sensor is mounted.'],
     ],
     related: ['rtd-temperature-transmitters', 'threaded-rtd-probes', 'rtd', 'thermowells', 'sensor-accessories'],
     guides: ['pt100-vs-pt1000', 'pt100-wiring-diagram', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
@@ -6007,15 +6010,24 @@ export const guides = [
         diagram: ['Two leads to each end of the element', ['A1 ────────┐             ┌────── B1', 'A2 ────────┴──[ Pt100 ]──┴────── B2']],
       }],
       ['How do I check an RTD sensor?', 'Isolate power to the instrument input and disconnect the sensor. Let the probe stabilize at a known temperature. Use a resistance meter across leads from opposite ends and compare the reading with the curve for that RTD. At 25 °C, a nominal IEC 60751 Pt100 measures about 109.7 Ω and a Pt1000 about 1,097 Ω, before lead resistance and tolerance. A spot check can identify common wiring faults. Verify calibration separately when the process requires it.', {
+        anchor: 'check-rtd-sensor',
         table: [
           ['Observation', 'What to check'],
           ['Low resistance between leads on the same end', 'That reading can be normal for a shared element end. Identify the opposite lead pair and measure across the element.'],
           ['Open or overrange across the element', 'Confirm the selected meter range and check for a disconnected terminal, broken lead or open element.'],
           ['Unusually low resistance across the element', 'Double-check the lead pairing before checking for a short across the leads or inside the probe.'],
+          [['Resistance above the expected value at a known temperature', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'Check the correct nominal curve and temperature first. Account for lead resistance and look for poor connections in the measured path.'],
           ['Normal probe reading with an incorrect controller reading', 'Verify the selected Pt100 or Pt1000 curve, wire count and terminal assignments at the input.'],
         ],
       }],
-      ['Check the transmitter or PLC input', 'Set the input to the correct platinum curve and wire count. The manufacturer’s diagram specifies terminal numbers, any jumpers for supported two-wire connections, and shield termination. For a custom probe, send the instrument model, lead length, wiring mode, operating temperature and the required system accuracy.'],
+      ['Connect a Pt100 or Pt1000 to a PLC or transmitter', 'Use the device diagrams for terminal numbers, any approved jumpers and shield termination. Confirm the input channel type and check the displayed value against a reference after configuration.', {
+        anchor: 'connect-rtd-to-plc',
+        table: [
+          ['Input at the PLC', 'What to verify'],
+          ['Direct RTD input', 'Confirm the module supports the actual Pt100 or Pt1000 curve and wire count. Match each lead pair to the correct terminals.'],
+          [['4–20 mA input with an RTD transmitter', '/temperature-controls/rtd-transmitters/'], 'Match the probe curve and wire count to the transmitter input. Confirm loop power, polarity and the same temperatures at 4 mA and 20 mA in both devices.'],
+        ],
+      }],
       ['Match the replacement probe to the installation', 'Once you know the wire count and the instrument input, compare the installed probe dimensions. Use the mating port and seating face as the reference for a threaded assembly.', {
         table: [
           ['Replacement type', 'Check before requesting a quote'],
@@ -6048,7 +6060,14 @@ export const guides = [
           ['Instrument input', 'Pt100 curve and wire count', 'Pt1000 curve and wire count'],
         ],
       }],
-      ['Estimate lead-wire error', 'In a two-wire circuit, 2 Ω of total lead resistance corresponds to about 5.2 °C error for Pt100 or 0.52 °C for Pt1000 using the average sensitivity in the table. This example assumes constant lead resistance. Three-wire and four-wire inputs with compatible probes can reduce lead error when a longer cable or tighter tolerance is required.'],
+      ['Estimate lead-wire error for Pt100 and Pt1000', 'For a two-wire connection, estimate the temperature error by dividing total lead resistance by the element sensitivity near the measurement range. With 2 Ω of total lead resistance and the average sensitivities above, the error is about +5.2 °C for Pt100 and +0.52 °C for Pt1000. Allow for changes in lead resistance over the cable’s operating temperature.', {
+        anchor: 'lead-resistance-and-accuracy',
+        table: [
+          ['When selecting the circuit', 'What to check'],
+          ['Two-wire connection', 'Estimate the combined resistance of both leads at the installed length and at their expected temperatures. Compare its contribution with the allowed measurement error.'],
+          [['Tighter error budget or long cable', '/guides/pt100-wiring-diagram/'], 'Check whether the instrument supports three-wire compensation with matched leads or four-wire sensing. Include element tolerance, instrument accuracy and self-heating in the comparison.'],
+        ],
+      }],
       ['Check excitation and self-heating', 'An RTD dissipates electrical power from the measuring current. At the same current a Pt1000 dissipates more power than a Pt100 at the same temperature. Use the excitation specified for the input and element. Probe size, mounting and the process medium affect how much sensor temperature rises.'],
       ['Check whether the sensors can be interchanged', 'Choose the type supported by the controller or transmitter. A replacement also needs the correct wire count, tolerance class, insertion dimensions and sheath. The complete error budget includes the element, lead wiring, electronics, mounting and any thermal gradients.'],
     ],
