@@ -190,6 +190,11 @@ export const glossary = [
     related: ['Electric Grill Heating Elements', '/heating-elements/tubular-heaters/electric-grill/'],
   },
   {
+    id: 'evaporator-defrost-heater', name: 'Evaporator Defrost Heater',
+    definition: 'An element positioned near a refrigeration evaporator coil to melt frost during a controlled defrost cycle. Specify the coil envelope, active span, support clips and sealed lead ends.',
+    related: ['Evaporator Defrost Heaters', '/heating-elements/defrost-heaters/evaporators/'],
+  },
+  {
     id: 'exhaust-gas-temperature', name: 'Exhaust Gas Temperature (EGT)',
     definition: 'Temperature measured at a defined point in an exhaust stream. Probe insertion, gas flow, sensor construction and installation affect the measured value and response.',
     related: ['Type K Exhaust Gas Thermocouples', '/thermocouples/exhaust-gas/'],
@@ -485,6 +490,11 @@ export const glossary = [
     related: ['Over-the-Side Immersion Heaters', '/heating-elements/immersion-heaters/over-the-side/'],
   },
   {
+    id: 'panel-mount-thermometer', name: 'Panel Mount Thermometer',
+    definition: 'An instrument mounted in a panel opening to display temperature from a sensor. Match the instrument input, cutout, rear clearance, supply and reading range.',
+    related: ['Panel Mount Thermometers', '/temperature-sensors/digital-thermometers/panel-mount/'],
+  },
+  {
     id: 'pid-temperature-control', name: 'PID Temperature Control',
     definition: 'A control method that adjusts an output using proportional, integral and derivative terms derived from the difference between the measured temperature and setpoint.',
     related: ['PID Temperature Controllers', '/temperature-controls/pid/'],
@@ -503,6 +513,11 @@ export const glossary = [
     id: 'plating-tank-heater', name: 'Plating Tank Heater',
     definition: 'An immersion heater for an electroplating or surface-treatment bath. Selection depends on bath chemistry, temperature, minimum liquid level and clearance inside the tank.',
     related: ['Plating Tank Heaters', '/heating-elements/immersion-heaters/plating-tanks/'],
+  },
+  {
+    id: 'process-gas-heater', name: 'Process Gas Heater',
+    definition: 'A heater that transfers heat to a flowing gas stream. Specify gas composition, minimum and normal flow, temperature rise, pressure limits and required shutdown functions.',
+    related: ['Inline Process Gas Heaters', '/heating-elements/circulation-heaters/process-gas/'],
   },
   {
     id: 'pt100', name: 'Pt100',
@@ -548,6 +563,11 @@ export const glossary = [
     id: 'reference-junction', name: 'Reference Junction',
     definition: 'The connection where thermocouple conductors transition to the measuring circuit, also called the cold junction. The instrument uses its temperature to calculate the sensing-junction temperature.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'retractable-melt-bolt-thermocouple', name: 'Retractable Melt Bolt Thermocouple',
+    definition: 'An extrusion temperature probe with adjustable tip projection relative to the mounted seat. The approved tool drawing defines the port, seal and permitted tip travel.',
+    related: ['Retractable Melt Bolt Thermocouples', '/thermocouples/melt-bolt/retractable/'],
   },
   {
     id: 'right-angle-cartridge-heater', name: 'Right-Angle Cartridge Heater',
@@ -613,6 +633,11 @@ export const glossary = [
     id: 'sheath', name: 'Sheath',
     definition: 'The outer protective tube of a sheathed sensor or heater. Material and thickness affect compatibility with the process, mechanical protection and heat transfer.',
     related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
+  },
+  {
+    id: 'self-adhesive-thermocouple', name: 'Self-Adhesive Thermocouple',
+    definition: 'A surface temperature sensor in which an adhesive-backed pad holds the junction against the measurement point. Match adhesive limits, surface finish and lead routing to the installation.',
+    related: ['Self-Adhesive Thermocouples', '/thermocouples/surface-mount/self-adhesive/'],
   },
   {
     id: 'self-regulating-heating-cable', name: 'Self-Regulating Heating Cable',
@@ -703,6 +728,11 @@ export const glossary = [
     id: 'thermocouple-connection-head', name: 'Thermocouple Connection Head',
     definition: 'An enclosure at the probe termination where sensor leads connect to field wiring. The head layout is specified by cable entry, terminals, installed clearance and operating temperature.',
     related: ['Thermocouple Connection Head Housings', '/temperature-sensors/accessories/connection-heads/'],
+  },
+  {
+    id: 'thermocouple-crimp-connector', name: 'Thermocouple Crimp Connector',
+    definition: 'A sleeve or contact crimped onto a thermocouple or extension conductor to form a permanent splice. Specify the conductor alloy and gauge, polarity, temperature and tooling.',
+    related: ['Thermocouple Crimp Connectors', '/temperature-sensors/accessories/connectors/crimp-splices/'],
   },
   {
     id: 'thermocouple-data-logger', name: 'Thermocouple Data Logger',
