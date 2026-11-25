@@ -80,6 +80,11 @@ export const glossary = [
     related: ['Ceramic Strip Heaters', '/heating-elements/strip-heaters/ceramic/'],
   },
   {
+    id: 'ceramic-terminal-block', name: 'Ceramic Terminal Block',
+    definition: 'A set of insulated terminals for equipment wiring with a ceramic body. Select the complete block by voltage, current, conductor range, pole spacing and installed temperature.',
+    related: ['Ceramic Terminal Blocks for Heaters', '/temperature-controls/ceramic-terminal-blocks/'],
+  },
+  {
     id: 'ceramic-thermocouple-protection-tube', name: 'Ceramic Thermocouple Protection Tube',
     definition: 'A ceramic tube that shields a thermocouple sensing element during furnace or kiln service. Its material, bore, wall thickness and supports depend on the installed geometry, atmosphere and thermal cycle.',
     related: ['Ceramic Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/'],
@@ -98,6 +103,11 @@ export const glossary = [
     id: 'cold-junction-compensation', name: 'Cold-Junction Compensation',
     definition: 'A correction an instrument applies for the temperature at the thermocouple reference connection so it can convert measured voltage into the temperature at the sensing junction.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+  },
+  {
+    id: 'compression-fitting-thermocouple', name: 'Compression Fitting Thermocouple',
+    definition: 'A sheathed thermocouple mounted using a ferrule and fitting. Specify the sheath diameter, process connection, sealing requirement and installed sensing depth.',
+    related: ['Compression Fitting Thermocouples', '/thermocouples/threaded-probes/compression-fitting/'],
   },
   {
     id: 'ds18b20', name: 'DS18B20 Temperature Sensor',
@@ -133,6 +143,11 @@ export const glossary = [
     id: 'exhaust-gas-temperature', name: 'Exhaust Gas Temperature (EGT)',
     definition: 'Temperature measured at a defined point in an exhaust stream. Probe insertion, gas flow, sensor construction and installation affect the measured value and response.',
     related: ['Type K Exhaust Gas Thermocouples', '/thermocouples/exhaust-gas/'],
+  },
+  {
+    id: 'enclosure-heater', name: 'Enclosure Heater',
+    definition: 'A heater installed inside an electrical or instrument cabinet to maintain temperature or help control condensation. Heat loss, ambient conditions and the switching scheme determine the specification.',
+    related: ['Electrical Enclosure Heaters', '/heating-elements/enclosure-heaters/'],
   },
   {
     id: 'exposed-junction', name: 'Exposed Junction',
@@ -183,6 +198,11 @@ export const glossary = [
     id: 'flanged-thermocouple', name: 'Flanged Thermocouple',
     definition: 'A thermocouple probe mounted by a flange. The mating face provides the reference for the installed insertion length and the probe position.',
     related: ['Flanged Thermocouple Probes', '/thermocouples/flanged/'],
+  },
+  {
+    id: 'flanged-thermowell', name: 'Flanged Thermowell',
+    definition: 'A closed-end probe housing mounted by a bolted flange. Match the mating flange and nozzle and review the stem and bore for the probe and process conditions.',
+    related: ['Flanged Thermowells', '/temperature-sensors/accessories/thermowells/flanged/'],
   },
   {
     id: 'grounded-junction', name: 'Grounded Junction',
@@ -323,6 +343,11 @@ export const glossary = [
     id: 'platinum-rhodium-thermocouple', name: 'Platinum–Rhodium Thermocouple',
     definition: 'A platinum-based thermocouple family covering Types S, R and B. Each type has its own alloy pair and temperature-to-voltage reference relationship.',
     related: ['Platinum–Rhodium Thermocouples', '/thermocouples/high-temperature/#platinum-rhodium'],
+  },
+  {
+    id: 'pipe-clamp-thermocouple', name: 'Pipe Clamp Thermocouple',
+    definition: 'A contact sensor held against a pipe wall by a clamp. Specify the actual pipe outside diameter, contact point, available clearance and instrument input.',
+    related: ['Pipe Clamp Thermocouples', '/thermocouples/surface-mount/pipe-clamp/'],
   },
   {
     id: 'pt100', name: 'Pt100',
@@ -498,6 +523,11 @@ export const glossary = [
     id: 'threaded-thermocouple-probe', name: 'Threaded Thermocouple Probe',
     definition: 'A thermocouple installed through a threaded body or fitting. Thread form, sealing interface and insertion length from the installed reference face determine its fit.',
     related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
+  },
+  {
+    id: 'threaded-thermowell', name: 'Threaded Thermowell',
+    definition: 'A closed-end probe housing screwed into a matching process port. Specify the process thread and seal, the instrument connection, the installed insertion length and the bore separately.',
+    related: ['Threaded Thermowells', '/temperature-sensors/accessories/thermowells/threaded/'],
   },
   {
     id: 'tubular-heating-element', name: 'Tubular Heating Element',

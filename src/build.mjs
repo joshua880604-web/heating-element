@@ -100,6 +100,12 @@ const photoTones = [
       'explosion-proof-thermocouples', 'thermocouple-feedthroughs', 'heater-control-panels',
       'ibc-immersion-heaters', 'melt-bolt-thermocouples', 'square-cartridge-heaters'],
   },
+  {
+    id: 'light-cool-gray',
+    source: [230, 229, 235],
+    images: ['enclosure-heaters', 'ceramic-power-terminal-blocks', 'pipe-clamp-thermocouples',
+      'compression-fitting-thermocouples', 'threaded-thermowells', 'flanged-thermowells'],
+  },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
