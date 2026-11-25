@@ -52,7 +52,7 @@ export const groups = {
 
 export const products = [
   {
-    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', featured: true, image: 'thermocouples',
+    id: 'thermocouples', path: thermo, group: 'sensing', name: 'Industrial Thermocouples', image: 'thermocouples',
     imageAlt: 'Illustration of threaded thermocouple probes with braided leads',
     photographs: [
       {
@@ -108,7 +108,7 @@ export const products = [
     guides: ['how-thermocouples-work', 'thermocouple-types', 'how-to-test-a-thermocouple', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
   },
   {
-    id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', featured: true, image: 'tubular-heaters',
+    id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', image: 'tubular-heaters',
     imageAlt: 'Illustration of formed tubular heating elements with threaded terminals',
     title: 'Custom Tubular Heaters & Tubular Heating Elements',
     description: 'Request straight, U-shaped or multi-bend tubular heating elements to drawing. Specify active length, cold ends, mounting and watts per circuit.',
@@ -158,7 +158,7 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
   },
   {
-    id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', featured: true, image: 'finned-tubular-heaters',
+    id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', image: 'finned-tubular-heaters',
     title: 'Custom Finned Tubular Heaters for Air & Ducts',
     description: 'Specify a custom U-shaped, W-shaped or flange-mounted finned tubular heater by minimum airflow, fin diameter, tube profile and mounting dimensions.',
     text: 'Finned tubular elements for forced-air heating, duct assemblies and industrial ovens.',
@@ -328,7 +328,7 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
   },
   {
-    id: 'immersion-heaters', path: immersion, group: 'tubular', name: 'Industrial Immersion Heaters', featured: true, image: 'immersion-heaters',
+    id: 'immersion-heaters', path: immersion, group: 'tubular', name: 'Industrial Immersion Heaters', image: 'immersion-heaters',
     imageAlt: 'Illustration of a flanged immersion heater with multiple tubular elements',
     title: 'Industrial Immersion Heaters for Water & Oil',
     description: 'Specify custom industrial immersion heaters for water, oil and chemical tanks. Compare flange, screw plug, clamp and tank-rim mounting.',
@@ -722,7 +722,7 @@ export const products = [
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
   },
   {
-    id: 'cartridge-heaters', path: cartridge, group: 'specialty', name: 'Cartridge Heaters', featured: true, image: 'cartridge-heaters',
+    id: 'cartridge-heaters', path: cartridge, group: 'specialty', name: 'Cartridge Heaters', image: 'cartridge-heaters',
     title: 'Custom Cartridge Heaters for Molds, Dies & Tooling',
     description: 'Specify custom cartridge heaters for molds and dies. Compare bore tolerance, heated and cold lengths, lead exit and integrated thermocouple requirements.',
     text: 'Compact cylindrical heaters for dies, molds, sealing jaws and other heated tooling.',
@@ -1033,7 +1033,7 @@ export const products = [
     guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'heating-element-watt-density'],
   },
   {
-    id: 'band-heaters', path: band, group: 'specialty', name: 'Band Heaters', featured: true, image: 'band-heaters',
+    id: 'band-heaters', path: band, group: 'specialty', name: 'Band Heaters', image: 'band-heaters',
     photographs: [ceramicBandHeaterPhoto],
     title: 'Custom Band Heaters for Injection Molding & Extrusion',
     description: 'Compare mica and ceramic band heater configurations for barrels and nozzles. Specify diameter, width, clamp style and electrical connections.',

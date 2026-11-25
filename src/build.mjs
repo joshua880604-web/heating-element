@@ -424,6 +424,12 @@ function applicationsGrid(heading, withSpecifications = false) {
   </article>`).join('')}</div>`;
 }
 
+const homeProducts = catalogOrder([
+  'thermocouples', 'tubular-heaters', 'cartridge-heaters',
+  'rtd', 'immersion-heaters', 'band-heaters',
+  'flexible-heaters', 'strip-heaters', 'pid-temperature-controllers',
+].map(id => lookup.get(id)));
+
 const home = `
 <section class="hero">
   <div class="container hero-inner">
@@ -436,7 +442,7 @@ const home = `
 ${capabilities()}
 <section class="section catalog-section" id="products"><div class="container">
   ${sectionHead('Product catalog', 'Explore Our Products', 'Start with the product family, then specify the dimensions, materials and electrical requirements for your equipment.')}
-  ${catalog(products.filter(p => p.featured))}
+  ${catalog(homeProducts)}
   <div class="catalog-footer">
     ${btn('View All Products', '/products/', 'secondary')}
     <a class="capacity-link" href="${capacityPath}">Production Capacity &amp; Lead Times</a>
@@ -456,7 +462,7 @@ ${callout('Have a drawing or a part to replace?', 'Share the operating condition
 await rm(dist, { recursive: true, force: true });
 await cp(staticRoot, dist, { recursive: true });
 await page('/', 'Custom Thermocouples & Industrial Heating Elements', 'Lichengda supplies made-to-spec industrial thermocouples, tubular heaters and heating elements for OEM equipment. Review configurations and request a quote.', home,
-  { image: '/assets/industrial-heating.webp' });
+  { image: '/assets/industrial-heating.webp', items: homeProducts });
 
 await page('/products/', 'Industrial Heaters, Sensors & Temperature Controls', 'Find industrial temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Compare configurations and RFQ requirements.', `
 ${pageIntro('Product catalog', 'Industrial Heating, Sensing & Controls', 'Search temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Open a product family for installation details and selection guides.', productsTrail)}
