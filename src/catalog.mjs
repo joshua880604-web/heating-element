@@ -12,6 +12,7 @@ const heatingCables = '/heating-elements/heating-cables/';
 const circulation = '/heating-elements/circulation-heaters/';
 const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
 const typeKMillivoltChart = '/guides/how-to-test-a-thermocouple/#type-k-millivolt-chart';
+const contactHeaterMounting = '/guides/choose-a-heating-element/#mount-contact-heaters';
 
 const connectionHeadPhoto = {
   image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
@@ -1112,7 +1113,7 @@ export const products = [
         [['Extruder barrel heaters', band + 'extruder-barrel/'], 'Give the barrel outside diameter, axial width and power of each zone, including cutouts and clamp clearance.'],
         [['Band heaters with a thermocouple', band + 'with-thermocouple/'], 'Mark the sensing point and identify the heater and sensor connections separately.'],
         [['Cast aluminum bands', '/heating-elements/cast-in-heaters/'], 'For a shaped casting, include the barrel profile, contact dimensions, split geometry and allowances for locating and fastening the halves.'],
-        ['One-piece or split installation', 'Show how the band can be fitted and removed. Mark any split lines, clamp positions and separate power leads on the drawing.'],
+        [['One-piece or split installation', contactHeaterMounting], 'Show how the band can be fitted and removed. Mark any split lines, clamp positions and separate power leads on the drawing.'],
         ['Terminal and connection layout', 'Locate the terminal block or lead exit relative to the clamp and cutouts. Include the permitted direction and space for cable routing.'],
       ] },
     ],
@@ -1120,7 +1121,9 @@ export const products = [
     related: ['coil-heaters', 'type-j', 'crankcase-heaters'],
     guides: ['choose-a-heating-element'],
     questions: [
+      ['What is a band heater and how does it heat a barrel?', 'A band heater fits around a barrel or nozzle. The electrical resistance element generates heat, and the mating inside surface transfers it into the equipment. Match the band to the outside diameter and specified clamp arrangement so it makes consistent contact.'],
       ['How do mica and ceramic band heaters differ?', 'Mica bands typically use a thin layered construction. Ceramic bands use ceramic insulation around the heating winding. Compare the allowable thickness, barrel temperature, heat loss, mounting clearance and terminal position for the actual barrel or nozzle.'],
+      ['How do I measure the diameter for a replacement band heater?', 'Measure the outside diameter of the mounting surface with the equipment cool and give the usable width. Mark any steps or protrusions, terminal and clamp positions, and the operating temperature so fit through the heating cycle can be checked.'],
     ],
   },
   {
@@ -3577,13 +3580,14 @@ export const products = [
         ['Design detail', 'What to send'],
         ['Film envelope', 'Outline dimensions and tolerances, maximum installed thickness, hole and slot dimensions, and clearances at nearby components.'],
         [['Foil pattern and electrical load', '/guides/heating-element-watt-density/'], 'Voltage, wattage and duty cycle. Mark separate heat zones and any areas that need to remain unheated.'],
-        ['Bond and contour', 'Mating surface material and finish, installed bend radius, attachment method and thermal cycling. Describe any motion during use.'],
+        [['Bond and contour', contactHeaterMounting], 'Mating surface material and finish, installed bend radius, attachment method and thermal cycling. Describe any motion during use.'],
         ['Lead tab and sensing', 'Show the lead tab position, thickness clearance, lead length and bend space. Locate any specified temperature sensor on the assembly drawing.'],
       ] },
     ],
     use: 'Typical inquiries include instrument assemblies, compact enclosures and fixtures with a limited installation envelope.',
     questions: [
       ['What determines the usable temperature of a polyimide film heater?', 'The complete laminate, attachment, lead insulation and heat transfer into the mating surface determine the operating limits. Include temperature at the bonding surface and lead tab, plus the normal heating cycle and peak conditions.'],
+      ['How should a polyimide film heater be mounted to a heated plate?', 'Specify the plate material and finish, heater outline and approved bonding or retention method. Keep the active area in uniform contact with the plate and provide enough clearance for the lead tab and strain relief. Show any edges or openings that interrupt contact.'],
       ['Can a polyimide film heater fit a curved surface?', 'Send the installed curvature and the assembly method. Distinguish a fixed contour from repeated movement during service, and identify the lead tab position relative to the bend.'],
       ['What should a drawing show around holes and cutouts?', 'Dimension the openings, required edge clearance and areas where heat is needed. Include the mounting orientation and lead tab location so the circuit can be laid out within the usable film.'],
     ],
@@ -3608,7 +3612,7 @@ export const products = [
         ['Installation detail', 'What to specify'],
         ['Contact surface', 'Give sizes for a flat face or the radius and wrap length for a contoured installation. Include surface finish and any protrusions or seams.'],
         ['Heat layout', 'Mark holes and clearances, areas that must stay cool, and the power or temperature target for each heated zone.'],
-        ['Attachment and exposure', 'Describe the bonding or mechanical retention arrangement, removal requirements and exposure to moisture, cleaning agents or repeated thermal cycles.'],
+        [['Attachment and exposure', contactHeaterMounting], 'Describe the bonding or mechanical retention arrangement, removal requirements and exposure to moisture, cleaning agents or repeated thermal cycles.'],
         [['Drum bands and blankets', flexible + 'silicone-rubber/drum-heaters/'], 'Give the actual drum diameter, circumference and heated height, and show the seams, ribs and closure clearance.'],
         [['Lead exit and sensing', '/guides/choose-a-heating-element/'], 'Show the lead exit direction and available bend space. Mark the temperature-sensing position and any specified control or limit device.'],
       ] },
@@ -3616,6 +3620,7 @@ export const products = [
     use: 'Applications include platen surfaces, machine housings, enclosures and custom fixtures that transfer heat through contact.',
     questions: [
       ['How should a silicone rubber heater pad be attached?', 'The attachment depends on the surface material, temperature cycle and whether the pad must be removable. Describe the surface finish, bonding or clamping arrangement, and how contact is maintained across the active area.'],
+      ['What limits the operating temperature of a silicone rubber heater?', 'Check the ratings of the complete pad, its adhesive or retention system and the lead exit. Specify the continuous and peak temperatures, wattage, mounting surface and expected exposure. A local gap can reduce heat transfer and raise the pad temperature.'],
       ['Can the pad have holes or areas that stay cool?', 'Mark each cutout and unheated area on the drawing. Include the position of mounting screws and the lead outlet so the available heating area can be reviewed.'],
       ['Where should I specify the temperature-sensing point?', 'Show the process point that the controller needs to measure. Include the target surface, expected temperature range and any separate temperature limit or control requirements.'],
     ],
@@ -3692,7 +3697,7 @@ export const products = [
       { table: [
         ['Drawing detail', 'What to mark'],
         ['Heated surface', 'Mating surface dimensions and finish, tool material, heated length and any cold ends.'],
-        ['Clamps and holes', 'Hole and slot positions, allowable contact pressure or retention method, and clearance for thermal expansion.'],
+        [['Clamps and holes', contactHeaterMounting], 'Hole and slot positions, allowable contact pressure or retention method, and clearance for thermal expansion.'],
         ['Terminals and leads', 'Terminal position, lead exit direction, space for tools and operating temperature near the termination.'],
         [['Mica-insulated contact strip', strip + 'mica/'], 'Show the flat mating area, heater thickness, clamping points and clearance around the electrical terminals.'],
         [['Ceramic-insulated channel strip', strip + 'ceramic/'], 'Show the channel cross-section, heated length, terminal clearance and how heat reaches the load.'],
@@ -3703,7 +3708,9 @@ export const products = [
     related: ['finned-tubular-heaters', 'flexible-heaters', 'duct-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
+      ['What is an industrial strip heater used for?', 'A strip heater is an elongated resistance heater used on platens, sealing tools and machine compartments or in an air path. Start with the part or air stream to be heated, then specify the active length and mounting arrangement.'],
       ['What is the difference between a flat strip heater and a finned strip heater?', 'A flat strip can transfer heat to a mating surface when properly mounted. A finned strip increases exposed surface area for air heating. Include the available mounting space and either the contact conditions or minimum airflow for the application.'],
+      ['What should I measure for a replacement strip heater?', 'Measure overall and active lengths, width, thickness, mounting-hole centers and terminal clearance. Send the voltage and wattage from the equipment drawing or heater marking, plus the contact or airflow conditions.'],
     ],
   },
   {
@@ -4414,12 +4421,15 @@ export const products = [
         [['Output to the heater circuit', '/temperature-controls/solid-state-relays/'], 'Give relay contact, SSR drive or analog signal requirements. Identify the external power device, heater voltage and load so the output interface can be checked.'],
         ['Panel fit and supply', 'Specify controller supply voltage, face and cutout dimensions, panel thickness and clearance behind the terminals.'],
         ['Alarms and limits', 'Specify any alarm contacts, separate temperature sensors or independent protection functions required by the equipment.'],
+        [['Controller setup and tuning', '/guides/choose-a-heating-element/#pid-controller-setup'], 'List the input setup, output device and expected heat cycle. Include the required setpoint, overshoot limits and conditions for checking control performance.'],
       ] },
     ],
     use: 'Typical inquiries include temperature control for industrial heaters, test fixtures and heated OEM equipment.',
     questions: [
+      ['What is a PID temperature controller and how does it work?', 'A PID temperature controller adjusts heater output from the difference between measured temperature and the setpoint. Proportional action responds to the current error, integral action to accumulated error, and derivative action to how quickly the measurement or error changes, depending on the controller.'],
       ['Can a PID controller work with both a thermocouple and an RTD?', 'Input modes depend on the controller model. Specify the thermocouple type or RTD curve and wiring so the input configuration can be checked.'],
       ['What do I provide for a controller with an external solid-state relay?', 'Send the relay input specification, required control output, heater supply and load, and the existing circuit drawing. The drive signal and power device must be compatible.'],
+      ['What should I configure before tuning a PID temperature controller?', 'Confirm the sensor type and readings, heating control action, output and switching device, and required temperature limits. Establish the normal thermal load and use the controller manufacturer’s tuning sequence for that equipment.'],
     ],
     related: ['temperature-limit-controllers', 'hot-runner-temperature-controllers', 'type-k', 'rtd', 'solid-state-relays', 'heater-control-panels', 'capillary-thermostats', 'cartridge-heaters'],
     guides: ['thermocouple-vs-rtd', 'choose-a-heating-element'],
@@ -5698,7 +5708,7 @@ export const guides = [
   {
     slug: 'choose-a-heating-element', group: 'heating', name: 'How to Choose an Industrial Heating Element',
     quoteProduct: 'tubular-heaters',
-    description: 'Choose an industrial heating element by heating medium, installation geometry, temperature target and electrical load. Compare tubular and cartridge heaters.',
+    description: 'Choose an industrial heating element by heat transfer, installation and electrical load. Compare heater types, contact mounting and PID controller setup.',
     answer: ['How do I choose an industrial heating element?', 'Identify what the heater must warm and how heat will reach it. Match the heater family to the fluid, moving air, solid contact or radiant load. Then check the available geometry, supply and required temperature rise.'],
     readNext: ['immersion-heater-sizing', 'heating-element-watt-density'],
     related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters', 'industrial-convection-heaters', 'pvc-conduit-heaters', 'industrial-unit-heaters', 'ceramic-fiber-heaters', 'heat-trace-controllers', 'hot-runner-temperature-controllers', 'industrial-radiant-heaters', 'vacuum-chamber-heaters'],
@@ -5713,6 +5723,16 @@ export const guides = [
           ['Ceramic terminal blocks for heater power wiring', '/temperature-controls/ceramic-terminal-blocks/'],
           ['Self-regulating heating cable and cold startup', heatingCables + 'self-regulating/'],
           ['Constant wattage heating cable and circuit layout', heatingCables + 'constant-wattage/'],
+        ],
+      }],
+      ['Set up and tune a PID temperature controller', 'Match the sensor input and switching device before tuning. Use the controller manual and approved equipment drawings for wiring and setup. Isolate power before checking terminals. Assess the tuned loop under a representative heating cycle with the required limits in service.', {
+        anchor: 'pid-controller-setup',
+        table: [
+          ['Step', 'What to check'],
+          [['1. Match the measurement input', '/guides/thermocouple-vs-rtd/'], 'Select the actual thermocouple type or RTD curve and wire count. Verify the temperature units and compare the displayed value with a suitable reference.'],
+          [['2. Check the output and protection', '/temperature-controls/solid-state-relays/'], 'Match the controller output to the switching device. Confirm heating control action, output cycle limits where applicable and the specified independent overtemperature protection.'],
+          ['3. Tune with the normal load', 'Use the approved tuning or autotune procedure for the controller. Account for normal process load and heat loss. Check whether the tuning cycle can stay within the permitted temperature range.'],
+          [['4. Verify the operating cycle', '/temperature-controls/pid/'], 'Record heat-up time, overshoot, settling and steady temperature with the intended load. Compare the results with process limits and save the validated settings.'],
         ],
       }],
       ['Compare tubular and cartridge heaters', 'A formed tubular element fits an envelope and can be evaluated for air, liquid or contact heating. A cartridge heater fits a cylindrical bore in a mold, die or tool. The choice affects what you specify: sheath and bend geometry for tubular elements, bore fit and lead exit for cartridge heaters.', {
@@ -5756,6 +5776,16 @@ export const guides = [
           [['Quartz infrared element', infrared + 'quartz/'], 'Tube length, support spacing, working distance and reflector layout.'],
           [['Ceramic infrared element', infrared + 'ceramic/'], 'Face profile, emitter spacing, rear mounting and distance to the target surface.'],
           [['Industrial infrared heating panel', infrared + 'panels/'], 'Panel envelope, active coverage, working distance and power zones for the workpiece.'],
+        ],
+      }],
+      ['Plan the mounting for band, strip and flexible heaters', 'Mark the active area on both the heater and equipment drawings. Check that the specified attachment maintains contact during thermal cycling and leaves access to leads, clamps and fasteners.', {
+        anchor: 'mount-contact-heaters',
+        table: [
+          ['Heater type', 'Mounting check'],
+          [['Band heater', band], 'Measure the barrel outside diameter and usable width. Check radial clearance for clamps and terminals. Mark openings and specify how a one-piece or split band will be installed.'],
+          [['Flat strip heater', strip], 'Check the mating surface flatness, clamping points and room for thermal expansion. Use any interface material only if the heater and equipment specifications allow it.'],
+          [['Silicone rubber pad', flexible + 'silicone-rubber/'], 'Check the pad and attachment ratings for the operating cycle. Locate the lead exit and use the approved bonding or retention method to maintain contact over the active area.'],
+          [['Polyimide film heater', flexible + 'polyimide/'], 'Check the thickness limit, substrate finish, film outline and lead tab clearance. Follow the approved bonding or retention process and verify that gaps or edges do not interrupt contact.'],
         ],
       }],
       ['Specify the sheath material for the working medium', 'Record the liquid chemistry or air atmosphere, minimum flow, maximum temperature and cleaning process. For alloy callouts such as 800 or 840, provide the complete material designation or datasheet so chemical compatibility, allowable sheath temperature and forming constraints can be reviewed.'],
