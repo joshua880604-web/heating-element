@@ -546,7 +546,7 @@ const guideCalculators = {
   },
 };
 
-function guideCalculator(kind) {
+function guideCalculator(kind, quoteProduct) {
   const { title, instructions, fields } = guideCalculators[kind];
   return `<section class="spec-card" id="${kind}-calculator" aria-labelledby="${kind}-calculator-title">
     <h2 id="${kind}-calculator-title">${escape(title)}</h2><p>${escape(instructions)}</p>
@@ -556,6 +556,7 @@ function guideCalculator(kind) {
         <div class="form-actions"><button class="button button-primary" type="submit">Calculate</button></div>
       </fieldset>
       <output class="calculator-result" aria-live="polite" aria-atomic="true"></output>
+      <a class="button button-secondary calculator-quote" data-calculator-quote href="${escape(quoteLink(quoteProduct))}" hidden>Use in RFQ ${icon('arrow')}</a>
       <noscript><p class="form-hint">Use the formula and worked example below to calculate manually.</p></noscript>
     </form>
   </section>
@@ -588,7 +589,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
   <article class="prose">
     <p class="guide-byline">By <a href="/about-us/">${escape(brand)}</a></p>
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
-    ${guide.calculator ? guideCalculator(guide.calculator) : ''}
+    ${guide.calculator ? guideCalculator(guide.calculator, guide.quoteProduct) : ''}
     ${guide.sections.map(section => referenceSection(section)).join('')}
   </article>
   <aside class="spec-card">
@@ -706,7 +707,7 @@ ${pageIntro('Made to specification', 'Request a Quote', 'Share your equipment sp
       <label>Destination country<input name="country" autocomplete="country-name" maxlength="100"></label>
       <label>Quantity<input type="number" name="quantity" min="1" max="100000000" placeholder="e.g. 100"></label>
       <label>Application<input name="application" maxlength="200" placeholder="e.g. Packaging sealing jaw"></label>
-      <div class="full"><label>Technical requirements *<textarea name="requirements" rows="5" required maxlength="6000" aria-describedby="spec-hint"></textarea></label><p class="form-hint" id="spec-hint">Include dimensions, operating conditions and any required materials.</p></div>
+      <div class="full"><label>Technical requirements *<textarea name="requirements" rows="5" required maxlength="6000" aria-describedby="spec-hint"></textarea></label><p class="form-hint" id="calculation-hint" hidden>Review the calculator estimate and add any installation and operating details.</p><p class="form-hint" id="spec-hint">Include dimensions, operating conditions and any required materials.</p></div>
       <div class="full"><label>Drawings or photos<input type="file" name="drawings" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.dxf,.dwg,.step,.stp" aria-describedby="file-hint"></label><p class="form-hint" id="file-hint">Add files in WhatsApp after opening the chat, or download an email draft with attachments. PDF, images or CAD files, up to 10 MB combined per draft.</p></div>
     </div>
     <div class="form-actions">

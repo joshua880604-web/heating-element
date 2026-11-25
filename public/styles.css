@@ -1198,6 +1198,9 @@ svg.photo-filters {
   border-radius: 5px;
   background: #f0f3f5;
 }
+.calculator-quote {
+  margin-top: 10px;
+}
 .quote-aside h3 {
   font-size: 1rem;
   margin-top: 15px;

@@ -124,7 +124,16 @@ if (quote) {
   }
 
   const initialProduct = new URLSearchParams(location.search).get('product');
-  if ([...product.options].some(option => option.value === initialProduct)) product.value = initialProduct;
+  if (initialProduct && [...product.options].some(option => option.value === initialProduct)) {
+    product.value = initialProduct;
+    const requirements = quote.elements.requirements;
+    const estimate = new URLSearchParams(location.hash.slice(1)).get('estimate')?.trim();
+    if (estimate && !requirements.value && estimate.length + 2 <= requirements.maxLength) {
+      requirements.value = estimate + '\n\n';
+      quote.querySelector('#calculation-hint').hidden = false;
+      requirements.setAttribute('aria-describedby', 'calculation-hint spec-hint');
+    }
+  }
   setSpecHint();
   product.addEventListener('change', setSpecHint);
   function updateAttachmentActions() {

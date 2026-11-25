@@ -1,5 +1,7 @@
 const form = document.querySelector('[data-calculator]');
 const output = form.querySelector('output');
+const quoteLink = form.querySelector('[data-calculator-quote]');
+const quoteUrl = new URL(quoteLink.href);
 const inputs = form.elements;
 const number = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 4 });
 
@@ -8,16 +10,25 @@ function wattDensity() {
   const diameter = inputs.namedItem('diameter').valueAsNumber;
   const length = inputs.namedItem('length').valueAsNumber;
   if ([power, diameter, length].some(value => !Number.isFinite(value) || value <= 0)) {
-    return 'Enter positive values for power, diameter and active heated length.';
+    return { message: 'Enter positive values for power, diameter and active heated length.' };
   }
-  const mmPerUnit = inputs.namedItem('lengthUnit').value === 'in' ? 25.4 : 1;
+  const lengthUnit = inputs.namedItem('lengthUnit').value;
+  const mmPerUnit = lengthUnit === 'in' ? 25.4 : 1;
   const areaCm2 = Math.PI * diameter * length * (mmPerUnit / 10) ** 2;
   const wattsPerCm2 = power / areaCm2;
   const wattsPerIn2 = wattsPerCm2 * 2.54 ** 2;
   if (![areaCm2, wattsPerCm2, wattsPerIn2].every(value => Number.isFinite(value) && value > 0)) {
-    return 'Check the scale and units of the entered values.';
+    return { message: 'Check the scale and units of the entered values.' };
   }
-  return `Surface watt density: ${number.format(wattsPerCm2)} W/cm² or ${number.format(wattsPerIn2)} W/in². Active sheath area: ${number.format(areaCm2)} cm².`;
+  return {
+    message: `Surface watt density: ${number.format(wattsPerCm2)} W/cm² or ${number.format(wattsPerIn2)} W/in². Active sheath area: ${number.format(areaCm2)} cm².`,
+    details: [
+      'Preliminary tubular heater calculation',
+      `Element power: ${power} W`,
+      `Sheath outside diameter: ${diameter} ${lengthUnit}`,
+      `Active heated length: ${length} ${lengthUnit}`,
+    ],
+  };
 }
 
 const waterSpecificHeat = 4.186;
@@ -27,28 +38,36 @@ function waterHeating() {
   const volume = inputs.namedItem('volume').valueAsNumber;
   const amount = inputs.namedItem('amount').valueAsNumber;
   if (![volume, amount].every(value => Number.isFinite(value) && value > 0)) {
-    return 'Enter a positive water volume and heat-up time or power.';
+    return { message: 'Enter a positive water volume and heat-up time or power.' };
   }
   const start = inputs.namedItem('start').valueAsNumber;
   const target = inputs.namedItem('target').valueAsNumber;
   const fahrenheit = inputs.namedItem('temperatureUnit').value === 'f';
   const [freezing, boiling] = fahrenheit ? [32, 212] : [0, 100];
   if (!Number.isFinite(start) || !Number.isFinite(target) || start < freezing || target >= boiling || target <= start) {
-    return fahrenheit
-      ? 'Use a starting temperature of at least 32 °F and a higher target below 212 °F.'
-      : 'Use a starting temperature of at least 0 °C and a higher target below 100 °C.';
+    const units = fahrenheit ? '°F' : '°C';
+    return { message: `Use a starting temperature of at least ${freezing} ${units} and a higher target below ${boiling} ${units}.` };
   }
-  const liters = volume * (inputs.namedItem('volumeUnit').value === 'gal' ? litersPerUsGallon : 1);
+  const gallons = inputs.namedItem('volumeUnit').value === 'gal';
+  const liters = volume * (gallons ? litersPerUsGallon : 1);
   const riseC = (target - start) * (fahrenheit ? 5 / 9 : 1);
   const energyKj = liters * waterSpecificHeat * riseC; // Approximate liquid water mass as 1 kg per liter.
   const powerMode = inputs.namedItem('mode').value === 'power';
   const result = energyKj / amount / 60;
   if (!Number.isFinite(result) || result <= 0 || (powerMode && !Number.isFinite(result * 1000))) {
-    return 'Check the scale and units of the entered values.';
+    return { message: 'Check the scale and units of the entered values.' };
   }
-  return powerMode
-    ? `Ideal heat-up power: ${number.format(result)} kW (${number.format(result * 1000)} W).`
-    : `Ideal heat-up time: ${number.format(result)} minutes.`;
+  return {
+    message: powerMode
+      ? `Ideal heat-up power: ${number.format(result)} kW (${number.format(result * 1000)} W).`
+      : `Ideal heat-up time: ${number.format(result)} minutes.`,
+    details: [
+      'Preliminary water heat-up calculation (liquid only)',
+      `Water volume: ${volume} ${gallons ? 'US gal' : 'L'}`,
+      `Water temperatures: ${start} to ${target} ${fahrenheit ? '°F' : '°C'}`,
+      powerMode ? `Allowed heat-up time: ${amount} minutes` : `Available heater power: ${amount} kW`,
+    ],
+  };
 }
 
 const isWater = form.dataset.calculator === 'water-heating';
@@ -65,9 +84,19 @@ if (isWater) {
   });
 }
 
-form.addEventListener('input', () => { output.textContent = ''; });
+form.addEventListener('input', () => {
+  output.textContent = '';
+  quoteLink.hidden = true;
+});
 form.addEventListener('submit', event => {
   event.preventDefault();
-  output.textContent = isWater ? waterHeating() : wattDensity();
+  const { message, details } = isWater ? waterHeating() : wattDensity();
+  output.textContent = message;
+  quoteLink.hidden = !details;
+  if (details) {
+    // Transport the calculation in the fragment, which stays out of the HTTP request.
+    quoteUrl.hash = new URLSearchParams({ estimate: [...details, message].join('\n') }).toString();
+    quoteLink.href = quoteUrl.href;
+  }
 });
 form.querySelector('fieldset').disabled = false;
