@@ -95,6 +95,11 @@ export const glossary = [
     related: ['Coil Immersion Heaters', '/heating-elements/immersion-heaters/coil/'],
   },
   {
+    id: 'coffee-machine-heating-element', name: 'Coffee Machine Heating Element',
+    definition: 'A resistance heater fitted to a coffee machine boiler for hot water or steam. Its mount, seal, heated length and electrical rating match the boiler specification.',
+    related: ['Coffee Machine Heating Elements', '/heating-elements/immersion-heaters/coffee-machine/'],
+  },
+  {
     id: 'cold-end', name: 'Cold End',
     definition: 'The length of a heater outside the active heated section, often near a termination or mounting point. Adjacent hot sections can still transfer heat into the cold end.',
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
@@ -325,6 +330,11 @@ export const glossary = [
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
   },
   {
+    id: 'industrial-unit-heater', name: 'Industrial Unit Heater',
+    definition: 'A packaged space heater that moves air across a heating element with a fan. Its output, air throw and mounting position determine where it can supply heat.',
+    related: ['Industrial Electric Unit Heaters', '/heating-elements/unit-heaters/'],
+  },
+  {
     id: 'infrared-heating-element', name: 'Infrared Heating Element',
     definition: 'An element that warms a target by radiation. Absorption at the target, working distance and exposure time affect the heating result.',
     related: ['Infrared Heating Elements', '/heating-elements/infrared-heaters/'],
@@ -383,6 +393,11 @@ export const glossary = [
     id: 'mosi2-heating-element', name: 'MoSi2 Heating Element',
     definition: 'A furnace resistance element made from molybdenum disilicide. Its hot section, terminal legs and support arrangement are specified for the original furnace.',
     related: ['MoSi2 Heating Elements', '/heating-elements/mosi2-heating-elements/'],
+  },
+  {
+    id: 'multipoint-thermocouple', name: 'Multipoint Thermocouple',
+    definition: 'A thermocouple assembly with sensing junctions at several defined locations and a common mounting interface. Each junction position is mapped to its readout channel.',
+    related: ['Multipoint Thermocouples', '/thermocouples/multipoint/'],
   },
   {
     id: 'natural-convection-heater', name: 'Natural Convection Heater',
@@ -490,6 +505,11 @@ export const glossary = [
     related: ['Pt100 vs. Pt1000 RTD Sensors', '/guides/pt100-vs-pt1000/'],
   },
   {
+    id: 'rtd-signal-calibrator', name: 'RTD Signal Calibrator',
+    definition: 'An instrument that simulates resistance values representing an RTD at known temperatures. Match the resistance curve and electrical interface to the instrument being checked.',
+    related: ['RTD Signal Calibrators', '/temperature-controls/rtd-calibrators/'],
+  },
+  {
     id: 'rtd-temperature-transmitter', name: 'RTD Temperature Transmitter',
     definition: 'A device that converts an RTD resistance measurement to an output signal, such as 4–20 mA. The input curve, wire count and temperature scale must match the sensor and receiving instrument.',
     related: ['4–20 mA RTD Temperature Transmitters', '/temperature-controls/rtd-transmitters/'],
@@ -540,6 +560,11 @@ export const glossary = [
     related: ['Silicon Carbide Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/silicon-carbide/'],
   },
   {
+    id: 'silicon-nitride-protection-tube', name: 'Silicon Nitride Protection Tube',
+    definition: 'A ceramic sleeve made from a silicon nitride grade that shields a temperature sensor from the process. Its suitability depends on the grade, contacting medium, thermal cycle and support.',
+    related: ['Silicon Nitride Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/silicon-nitride/'],
+  },
+  {
     id: 'silicone-rubber-heater', name: 'Silicone Rubber Heater',
     definition: 'A flexible heater with a resistive element incorporated into a silicone rubber construction, shaped to fit a surface, enclosure or assembly.',
     related: ['Silicone Rubber Heaters', '/heating-elements/flexible-heaters/silicone-rubber/'],
@@ -578,6 +603,11 @@ export const glossary = [
     id: 'tankless-water-heater-element', name: 'Tankless Water Heater Element',
     definition: 'An electric heating component fitted to a water flow chamber. Specify the chamber drawing, seal, electrical rating and minimum flow required by the equipment.',
     related: ['Tankless Water Heater Elements', '/heating-elements/immersion-heaters/tankless-water-heaters/'],
+  },
+  {
+    id: 'temperature-calibration-bath', name: 'Temperature Calibration Bath',
+    definition: 'A controlled liquid reservoir used to compare temperature probes with a reference. Fluid choice, usable immersion depth, stability and temperature uniformity affect the comparison.',
+    related: ['Liquid Temperature Calibration Baths', '/temperature-controls/calibration-baths/'],
   },
   {
     id: 'temperature-limit-controller', name: 'Temperature Limit Controller',
