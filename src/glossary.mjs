@@ -15,6 +15,11 @@ export const glossary = [
     related: ['Bimetal Thermometers', '/temperature-sensors/bimetal-thermometers/'],
   },
   {
+    id: 'bimetal-temperature-switch', name: 'Bimetal Temperature Switch',
+    definition: 'A mechanical switch that opens or closes contacts when a bimetal sensing element reaches a specified temperature. Specify trip and reset behavior, contact action and the electrical load.',
+    related: ['Bimetal Temperature Switches', '/temperature-controls/bimetal-switches/'],
+  },
+  {
     id: 'bulb-and-capillary-thermostat', name: 'Bulb and Capillary Thermostat',
     definition: 'A mechanical temperature switch that senses at a remote bulb. A sealed capillary carries the pressure change from the bulb to the switch mechanism.',
     related: ['Bulb and Capillary Thermostats', '/temperature-controls/capillary-thermostats/'],
@@ -210,6 +215,11 @@ export const glossary = [
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
   },
   {
+    id: 'nozzle-band-heater', name: 'Nozzle Band Heater',
+    definition: 'A compact band heater clamped around a molding or extrusion nozzle. Its fit depends on the nozzle diameter, available width, clamp access and lead clearance.',
+    related: ['Nozzle Band Heaters', '/heating-elements/band-heaters/nozzle/'],
+  },
+  {
     id: 'ntc-thermistor', name: 'NTC Thermistor',
     definition: 'A temperature-sensitive resistor whose resistance decreases as temperature rises. Specify the nominal resistance at 25 °C and the resistance–temperature curve or beta value with its reference temperatures.',
     related: ['NTC Thermistor Probes', '/temperature-sensors/ntc-thermistor-probes/'],
@@ -338,6 +348,11 @@ export const glossary = [
     id: 'thermocouple-response-time', name: 'Thermocouple Response Time',
     definition: 'The time a thermocouple assembly takes to indicate a specified fraction of a temperature step. The specified fraction, probe construction, medium, flow and mounting are needed to compare measurements.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'thermocouple-terminal-block', name: 'Thermocouple Terminal Block',
+    definition: 'An insulated set of terminals that joins probe leads to field wiring. The thermocouple type, polarity, contact materials and temperature at the connections are specified for the circuit.',
+    related: ['Thermocouple Terminal Blocks', '/temperature-sensors/accessories/terminal-blocks/'],
   },
   {
     id: 'thermocouple-transmitter', name: 'Thermocouple Transmitter',
