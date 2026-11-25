@@ -120,6 +120,11 @@ export const glossary = [
     related: ['Constant Wattage Heating Cables', '/heating-elements/heating-cables/constant-wattage/'],
   },
   {
+    id: 'copper-sheathed-immersion-element', name: 'Copper-Sheathed Immersion Element',
+    definition: 'A tubular heater with a copper outer sheath that transfers heat to the surrounding water. Water chemistry and operating conditions determine whether the sheath and other wetted components are suitable.',
+    related: ['Copper-Sheathed Immersion Heating Elements', '/heating-elements/immersion-heaters/copper/'],
+  },
+  {
     id: 'ds18b20', name: 'DS18B20 Temperature Sensor',
     definition: 'A digital temperature sensor that sends readings over a 1-Wire interface. Specify the host, power mode and enclosure or probe sealing for the installation.',
     related: ['Waterproof DS18B20 Temperature Sensors', '/temperature-sensors/ds18b20/'],
@@ -133,6 +138,11 @@ export const glossary = [
     id: 'distiller-heating-element', name: 'Distiller Heating Element',
     definition: 'A heater that supplies heat to the feedwater in a water distiller. The boiling chamber, minimum operating water level and sealing interface define its installation.',
     related: ['Water Distiller Heating Elements', '/heating-elements/immersion-heaters/water-distiller/'],
+  },
+  {
+    id: 'dry-block-calibrator', name: 'Dry Block Calibrator',
+    definition: 'A controlled temperature source with an insert that accepts temperature probes for comparison measurements. Bore fit, immersion depth and the reference setup affect the result.',
+    related: ['Dry Block Temperature Calibrators', '/temperature-controls/dry-block-calibrators/'],
   },
   {
     id: 'duct-heater', name: 'Duct Heater',
@@ -325,6 +335,11 @@ export const glossary = [
     related: ['Industrial Infrared Heating Panels', '/heating-elements/infrared-heaters/panels/'],
   },
   {
+    id: 'infrared-spot-size', name: 'Infrared Spot Size',
+    definition: 'The diameter or extent of the area an infrared instrument measures at a specified distance. The measured target should fill the spot so that surrounding surfaces have limited influence on the reading.',
+    related: ['Handheld Infrared Pyrometers', '/temperature-sensors/handheld-infrared-pyrometers/'],
+  },
+  {
     id: 'inline-oil-heater', name: 'In-Line Oil Heater',
     definition: 'An electric circulation heater that transfers heat to oil as it passes through a chamber. Specify the oil properties, flow, temperature rise and pressure limits.',
     related: ['In-Line Oil Heaters', '/heating-elements/circulation-heaters/inline-oil/'],
@@ -368,6 +383,11 @@ export const glossary = [
     id: 'mosi2-heating-element', name: 'MoSi2 Heating Element',
     definition: 'A furnace resistance element made from molybdenum disilicide. Its hot section, terminal legs and support arrangement are specified for the original furnace.',
     related: ['MoSi2 Heating Elements', '/heating-elements/mosi2-heating-elements/'],
+  },
+  {
+    id: 'natural-convection-heater', name: 'Natural Convection Heater',
+    definition: 'A heater that uses the buoyancy of warmed air to move it through an enclosure. Its mounting and required inlet and outlet clearances support the natural circulation.',
+    related: ['Industrial Electric Convection Heaters', '/heating-elements/convection-heaters/'],
   },
   {
     id: 'nichrome-heating-element', name: 'Nichrome Heating Element',
@@ -430,6 +450,11 @@ export const glossary = [
     related: ['PTC & Ceramic Heating Elements', '/heating-elements/ptc-ceramic-heaters/'],
   },
   {
+    id: 'pvc-conduit-heater', name: 'PVC Conduit Heater',
+    definition: 'A wrap heater that warms a specified section of PVC conduit for bending. Its active length, fit and control requirements depend on the conduit dimensions, material and allowable heating conditions.',
+    related: ['PVC Conduit Bending Heaters', '/heating-elements/flexible-heaters/pvc-conduit-heaters/'],
+  },
+  {
     id: 'radiator-heating-element', name: 'Radiator Heating Element',
     definition: 'An electric immersion rod that transfers heat to the fill medium in a compatible radiator. Match its mount, installed dimensions, rating and controls to the radiator drawing.',
     related: ['Electric Radiator Heating Elements', '/heating-elements/immersion-heaters/radiator/'],
@@ -473,6 +498,11 @@ export const glossary = [
     id: 'sanitary-rtd', name: 'Sanitary RTD',
     definition: 'A resistance temperature probe fitted to a hygienic process connection. Specify the mating fitting, wetted materials and finish, insertion depth and cleaning conditions for the assembly.',
     related: ['Sanitary RTD Probes', '/temperature-sensors/rtd/sanitary/'],
+  },
+  {
+    id: 'sanitary-thermowell', name: 'Sanitary Thermowell',
+    definition: 'A protective well that isolates a temperature probe from a process at a hygienic connection. Specify the mating seal, wetted finish, insertion length, probe fit and cleaning conditions.',
+    related: ['Sanitary Thermowells', '/temperature-sensors/accessories/thermowells/sanitary/'],
   },
   {
     id: 'scr-power-controller', name: 'SCR Power Controller',

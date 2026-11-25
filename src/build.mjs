@@ -125,7 +125,9 @@ const photoTones = [
     id: 'lavender-gray',
     source: [216, 214, 224],
     images: ['wireless-thermocouple-systems', 'diesel-fuel-tank-heaters', 'thin-film-rtd-elements',
-      'metal-jacketed-drum-heaters', 'temperature-limit-controllers', 'roller-surface-thermocouples'],
+      'metal-jacketed-drum-heaters', 'temperature-limit-controllers', 'roller-surface-thermocouples',
+      'industrial-convection-heaters', 'dry-block-calibrators', 'handheld-infrared-pyrometers',
+      'pvc-conduit-heaters', 'copper-immersion-heaters', 'sanitary-thermowells'],
   },
   {
     id: 'muted-lavender',
