@@ -690,7 +690,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
       <section class="business-license" id="business-license" aria-labelledby="business-license-heading">
         <h3 id="business-license-heading">Business License</h3>
         <figure>
-          <img src="${businessLicense}" width="976" height="692" loading="lazy" decoding="async" alt="Redacted business license showing Lichengda’s registered Chinese company name">
+          <img src="${businessLicense}" width="976" height="692" loading="lazy" decoding="async" alt="Redacted business license showing Lichengda’s registered Chinese company name, company type and establishment date">
           <figcaption><a href="${businessLicense}">View redacted copy at full size</a></figcaption>
         </figure>
       </section>
