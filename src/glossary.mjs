@@ -112,7 +112,7 @@ export const glossary = [
   {
     id: 'heater-insulation-resistance', name: 'Heater Insulation Resistance',
     definition: 'The electrical resistance of the insulation path between a heater’s live conductors and its metallic sheath or other accessible metal parts. Test conditions, moisture and temperature affect the measured value.',
-    related: ['Custom Tubular Heaters', '/heating-elements/tubular-heaters/'],
+    related: ['Heating Element Resistance & Test Guide', '/guides/heating-element-resistance/#cold-and-insulation-resistance'],
   },
   {
     id: 'heater-lead-wire-insulation', name: 'Heater Lead Wire Insulation',

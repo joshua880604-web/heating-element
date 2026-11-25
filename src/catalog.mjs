@@ -144,7 +144,7 @@ export const products = [
       ['Can the same tubular heater design be used in air and liquid?', 'Review each application separately. Airflow, fluid type and movement, sheath compatibility and watt density determine the sheath temperature and how effectively the element transfers heat.'],
     ],
     related: ['finned-tubular-heaters', 'immersion-heaters', 'duct-heaters', 'defrost-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
   },
   {
     id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', featured: true, image: 'finned-tubular-heaters',
@@ -322,7 +322,7 @@ export const products = [
       ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
-    guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'choose-a-heating-element'],
+    guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'heating-element-resistance', 'choose-a-heating-element'],
   },
   {
     id: 'oil-immersion-heaters', path: immersion + 'oil/', parent: 'immersion-heaters', group: 'tubular', name: 'Oil Immersion Heaters',
@@ -536,7 +536,7 @@ export const products = [
       ],
     },
     related: ['type-k', 'strip-heaters', 'coil-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
     questions: [
       ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
       ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Confirm that the active section is in the intended heating zone and the leads have room at the exit. If the heater includes a thermocouple, identify its lead pair and input separately from the power leads.'],
@@ -3087,7 +3087,7 @@ export const guides = [
     quoteProduct: 'tubular-heaters',
     related: ['tubular-heaters', 'finned-tubular-heaters', 'immersion-heaters', 'cartridge-heaters', 'high-density-cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
     answer: ['How do I calculate heating element watt density?', 'Divide electrical power in watts by the active surface area of the element. For the cylindrical sheath of a tubular heater, that area is π × sheath diameter × active heated length. Use consistent length units and exclude cold ends.'],
-    readNext: ['immersion-heater-sizing', 'choose-a-heating-element'],
+    readNext: ['immersion-heater-sizing', 'heating-element-resistance', 'choose-a-heating-element'],
     sections: [
       ['What surface watt density measures', 'Surface watt density is electrical power divided by the active surface area of the element, typically expressed in W/cm² or W/in². At the same power, an element with a smaller active area has a higher watt density. How hot its sheath gets also depends on how quickly heat leaves that surface.'],
       ['Calculate watt density for a round tubular element', 'Use the sheath diameter and active heated length in consistent units. For the cylindrical surface, area is π × diameter × heated length. For example, a 100 W element with a 10 mm sheath and 100 mm of active heated length has an area of about 31.4 cm² and a watt density of about 3.2 W/cm². Exclude unheated ends. This example shows the calculation only.'],
@@ -3099,6 +3099,44 @@ export const guides = [
         ],
       }],
       ['What to include in an RFQ', 'Share target power and voltage, sheath or bore dimensions, the active heated length and mounting. For air or liquid service, include minimum and maximum flow, medium and temperature. For a cartridge heater, include the bore fit, heated material and operating cycle.'],
+    ],
+  },
+  {
+    slug: 'heating-element-resistance', group: 'heating', name: 'Heating Element Resistance Calculator & Test Guide',
+    description: 'Calculate nominal heater resistance from rated voltage and watts. Learn how to check a de-energized element and interpret cold and insulation resistance.',
+    calculator: 'heater-resistance',
+    quoteProduct: 'tubular-heaters',
+    answer: ['How do I calculate heating element resistance?', 'For one resistive heater circuit, divide the square of its rated voltage by the watts for that same circuit (R = V² ÷ P). A 240 V, 1,000 W circuit gives a nominal 57.6 Ω at rated conditions. Compare a cold meter reading with the heater’s specified resistance at the measured temperature.'],
+    related: ['tubular-heaters', 'cartridge-heaters', 'immersion-heaters', 'water-boiler-heating-elements'],
+    readNext: ['heating-element-watt-density', 'immersion-heater-sizing', 'choose-a-heating-element'],
+    terms: ['heater-insulation-resistance', 'watt-density'],
+    sections: [
+      ['Calculate resistance for the circuit across the terminals', 'Use the rated voltage across the heater circuit and the power dissipated by that circuit. For a multi-element assembly, identify which terminals and circuits the rating covers. A reading at line terminals can include several branches connected in series or parallel. Use the wiring drawing and per-circuit ratings when checking a bank or three-phase assembly.', {
+        table: [
+          ['Rated circuit voltage', 'Rated circuit power', 'Nominal resistance (V² ÷ P)'],
+          ['120 V', '500 W', '28.8 Ω'],
+          ['230 V', '2,000 W', '26.45 Ω'],
+          ['240 V', '1,000 W', '57.6 Ω'],
+        ],
+      }],
+      ['How to test an industrial heating element', 'Have qualified personnel follow the equipment isolation procedure and verify the circuit is de-energized. With the element circuit isolated from parallel branches and disconnected as specified in the equipment documentation, let the element stabilize at a known temperature. Measure across its power terminals in resistance mode and record the reading and temperature.', {
+        table: [
+          ['Meter reading', 'What to verify'],
+          ['Open or overrange', 'Verify meter range, probe contact and terminal identification. An open heating circuit may have a broken conductor or lead connection.'],
+          ['Unusually low resistance', 'Check meter lead resistance, the circuit diagram and whether another element remains connected in parallel. Compare with the specified cold resistance for that circuit.'],
+          ['A stable reading near specification', 'Record the test temperature and circuit identification. Insulation and operating checks have their own test procedures and acceptance criteria.'],
+        ],
+      }],
+      ['Compare nominal, cold and insulation resistance', 'The rated calculation estimates resistance under the stated electrical rating. A cooled heater may read differently because resistance changes with temperature and the actual part has a manufacturing tolerance. Use the part drawing or test specification to evaluate a measured value.', {
+        anchor: 'cold-and-insulation-resistance',
+        table: [
+          ['Measurement', 'What it represents'],
+          ['Calculated nominal resistance', 'A value derived from the voltage and power of the same rated circuit.'],
+          ['Cold resistance across the power leads', 'The electrical path through the heating conductor. The expected cold value depends on heater construction, measurement temperature and tolerance.'],
+          [['Insulation resistance to the sheath', '/glossary/#heater-insulation-resistance'], 'A separate measurement from the live conductors to the metal sheath. Follow the equipment’s specified method, test voltage and acceptance limits.'],
+        ],
+      }],
+      ['What to send for a replacement heater quote', 'Share the original part marking or drawing, connection diagram, supply voltage and watts per circuit. Include the mounting dimensions, the process medium and the operating temperature. If you have a resistance reading, record the terminal pair and test temperature.'],
     ],
   },
   {

@@ -524,6 +524,13 @@ ${callout('Working on an OEM project?', 'Share the equipment and operating condi
 `, { trail: applicationsTrail, type: 'CollectionPage', items: applications.map(app => ({ name: app.name, path: `/applications/#${app.id}` })) });
 
 const guideCalculators = {
+  'heater-resistance': {
+    title: 'Heating Element Resistance Calculator',
+    instructions: 'Enter the rated voltage and power for one resistive circuit. For AC, use the rated RMS voltage across that circuit. Convert kilowatts to watts before entering the power.',
+    fields: `
+      <label>Rated circuit voltage (V)<input name="voltage" type="number" inputmode="decimal" min="0" step="any" required></label>
+      <label>Rated circuit power (W)<input name="power" type="number" inputmode="decimal" min="0" step="any" required></label>`,
+  },
   'watt-density': {
     title: 'Tubular Heater Watt Density Calculator',
     instructions: 'Enter the power and dimensions of one round tubular element. Measure the active heated span along the tube centerline, excluding cold ends. The calculation uses the round sheath surface.',

@@ -5,6 +5,26 @@ const quoteUrl = new URL(quoteLink.href);
 const inputs = form.elements;
 const number = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 4 });
 
+function heaterResistance() {
+  const voltage = inputs.namedItem('voltage').valueAsNumber;
+  const power = inputs.namedItem('power').valueAsNumber;
+  if (![voltage, power].every(value => Number.isFinite(value) && value > 0)) {
+    return { message: 'Enter positive values for rated circuit voltage and power.' };
+  }
+  const resistance = voltage ** 2 / power;
+  if (!Number.isFinite(resistance) || resistance <= 0) {
+    return { message: 'Check the scale and units of the entered values.' };
+  }
+  return {
+    message: `Nominal resistance at the rated conditions: ${number.format(resistance)} Ω.`,
+    details: [
+      'Preliminary resistance calculation for one heater circuit',
+      `Rated circuit voltage: ${voltage} V`,
+      `Rated circuit power: ${power} W`,
+    ],
+  };
+}
+
 function wattDensity() {
   const power = inputs.namedItem('power').valueAsNumber;
   const diameter = inputs.namedItem('diameter').valueAsNumber;
@@ -70,8 +90,12 @@ function waterHeating() {
   };
 }
 
-const isWater = form.dataset.calculator === 'water-heating';
-if (isWater) {
+const calculate = {
+  'heater-resistance': heaterResistance,
+  'watt-density': wattDensity,
+  'water-heating': waterHeating,
+}[form.dataset.calculator];
+if (calculate === waterHeating) {
   const mode = inputs.namedItem('mode');
   const label = form.querySelector('[data-amount-label]');
   function setAmountLabel() {
@@ -90,7 +114,7 @@ form.addEventListener('input', () => {
 });
 form.addEventListener('submit', event => {
   event.preventDefault();
-  const { message, details } = isWater ? waterHeating() : wattDensity();
+  const { message, details } = calculate();
   output.textContent = message;
   quoteLink.hidden = !details;
   if (details) {
