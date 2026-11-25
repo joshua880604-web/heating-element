@@ -844,4 +844,9 @@ export const glossary = [
     definition: 'A thermocouple, transmitter and compatible receiver or gateway used to report readings remotely. Specify the input, site conditions, reporting interval and receiving interface.',
     related: ['Wireless Thermocouple Systems', '/temperature-controls/wireless-thermocouples/'],
   },
+  {
+    id: 'zero-cross-switching', name: 'Zero-Cross Switching',
+    definition: 'A method of switching an AC load on near the supply-voltage zero crossing after a control signal is applied. Check the device’s switching behavior against the load and control strategy.',
+    related: ['Match the SSR to the controller and heater', '/guides/solid-state-relay-heater-guide/#match-ssr-to-heater'],
+  },
 ];

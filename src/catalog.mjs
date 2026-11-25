@@ -4493,7 +4493,7 @@ export const products = [
       ['Which project documents define the panel configuration?', 'Provide the circuit and control requirements, installation environment and applicable documentation or testing requirements. The panel configuration is reviewed against those inputs.'],
     ],
     related: ['temperature-limit-controllers', 'pid-temperature-controllers', 'scr-power-controllers', 'solid-state-relays', 'rtd-temperature-transmitters', 'immersion-heaters', 'enclosure-heaters', 'ceramic-power-terminal-blocks'],
-    guides: ['choose-a-heating-element', 'thermocouple-vs-rtd'],
+    guides: ['choose-a-heating-element', 'thermocouple-vs-rtd', 'solid-state-relay-heater-guide'],
   },
   {
     id: 'temperature-limit-controllers', path: '/temperature-controls/temperature-limit-controllers/', group: 'controls',
@@ -4568,17 +4568,20 @@ export const products = [
         ['Selection detail', 'What to specify'],
         [['Control input', '/temperature-controls/pid/'], 'Give the controller drive output type and its voltage and current. Include switching cadence or cycle time if specified.'],
         ['Load output', 'Specify AC or DC, operating voltage, current per switched channel and the required switching behavior such as zero-cross for a compatible AC load.'],
-        ['Mounting and thermal conditions', 'Provide the enclosure temperature, installed orientation, available heat sink and ventilation. Include dimensions around the terminals.'],
+        [['Mounting and thermal conditions', '/guides/solid-state-relay-heater-guide/#ssr-heat-sink'], 'Provide the enclosure temperature, installed orientation, available heat sink and ventilation. Include dimensions around the terminals.'],
+        [['Checks before replacing a relay', '/guides/solid-state-relay-heater-guide/#check-a-heater-ssr'], 'Describe the heater response, the controller command and any checks already performed. Include the original relay model and circuit diagram.'],
       ] },
     ],
     use: 'Typical inquiries include switching resistive electric heaters in temperature-controlled machinery and process equipment.',
     questions: [
       ['How does a solid-state relay switch an industrial heater?', 'An SSR uses a control input to turn a semiconductor output on and off. When that output conducts, the heater supply delivers power through the load circuit. Match the control input, AC or DC output type, load and heat sink to the installation.'],
       ['What do I send to request an SSR for a heater?', 'Send the panel circuit, controller output specification and heater voltage and power per switched channel. Include the load type, duty cycle, maximum panel temperature and heat sink arrangement.'],
-      ['How does the enclosure temperature affect relay selection?', 'The relay dissipates heat while carrying current. Check its usable current against the installed ambient temperature and heat sink conditions for the chosen device.'],
+      ['Does a solid-state relay need a heat sink?', 'Check the relay’s current derating curves and mounting requirements at the highest expected air temperature around the relay. Use the specified heat sink, thermal interface and orientation when the rating depends on them.'],
+      ['Can an AC solid-state relay switch a DC heater?', 'Use a relay with an output rated for the DC heater supply and current. A typical triac or SCR output used in an AC relay relies on the load current falling below its holding current to turn off. Check the control input and load output ratings separately.'],
+      ['Why can an SSR show voltage when the command is off?', 'Off-state leakage through a semiconductor output can produce a reading on a high-impedance meter. A wiring fault or failed output can also leave the circuit energized. Use the equipment’s isolation procedure and verify that the circuit is de-energized before checking terminals.'],
     ],
     related: ['scr-power-controllers', 'pid-temperature-controllers', 'cartridge-heaters', 'high-temperature-lead-wire'],
-    guides: ['choose-a-heating-element'],
+    guides: ['solid-state-relay-heater-guide', 'choose-a-heating-element'],
   },
   {
     id: 'scr-power-controllers', path: '/temperature-controls/scr-power-controllers/', group: 'controls',
@@ -4596,18 +4599,20 @@ export const products = [
       { table: [
         ['Selection detail', 'Include in your inquiry'],
         ['Supply and load', 'Give phase, voltage, rated current, load connection and heater type. Include how the load changes from cold to hot and the switching requirements.'],
-        [['Control and firing mode', '/temperature-controls/pid/'], 'Give the command signal from the process controller and any required burst firing or phase-angle behavior. Identify monitoring, alarms and interlocks.'],
+        [['Control input', '/temperature-controls/pid/'], 'Give the process controller model and command signal. Identify monitoring, alarms and interlocks.'],
+        [['Firing mode', '/guides/solid-state-relay-heater-guide/#scr-firing-modes'], 'Specify burst firing or phase-angle behavior if known. Include any load response or supply requirements that affect the firing pattern.'],
         [['Cabinet and protection', '/temperature-controls/heater-control-panels/'], 'Show mounting, service access, ambient temperature and cooling. Include project protection and documentation requirements.'],
       ] },
     ],
     use: 'Typical inquiries include power modulation for resistive heating zones in process equipment, infrared panels and OEM machines.',
     questions: [
+      ['How does an SCR power controller differ from a solid-state relay?', 'A typical heater SSR follows an on or off command from a temperature controller. An SCR power controller can take a power demand signal and apply its own firing strategy to the AC load. Some models add load monitoring or current limiting. Check the supported functions, input and load ratings for the model.'],
       ['Can one SCR controller be used for both single-phase and three-phase loads?', 'Use a controller designed for the supply and load connection. Provide the supply phases, wiring diagram and current per circuit. Confirm the applicable firing mode and sensing arrangement for that load.'],
       ['What information is needed to select an SCR controller?', 'Provide the AC supply, load type and current per circuit, and the required command and firing mode. Include enclosure temperature, cooling and protective device requirements.'],
       ['When should I specify burst firing or phase-angle control?', 'Burst firing switches power over groups of AC cycles. Phase-angle control changes the conducting portion of the cycle. Select the method against the load, process response and applicable line and equipment requirements.'],
     ],
     related: ['heater-control-panels', 'pid-temperature-controllers', 'solid-state-relays', 'infrared-heating-panels'],
-    guides: ['choose-a-heating-element', 'heating-element-resistance'],
+    guides: ['solid-state-relay-heater-guide', 'choose-a-heating-element', 'heating-element-resistance'],
   },
   {
     id: 'rtd-temperature-transmitters', path: '/temperature-controls/rtd-transmitters/', group: 'controls',
@@ -5589,6 +5594,49 @@ export const applications = [
 
 export const guides = [
   {
+    slug: 'solid-state-relay-heater-guide', group: 'heating', name: 'Solid-State Relays and SCR Power Control for Heaters',
+    description: 'Learn how a solid-state relay switches a heater, when to use an SCR power controller, and how to check load ratings, heat sinks and common faults.',
+    quoteProduct: 'solid-state-relays',
+    answer: ['What is a solid-state relay and how does it work?', 'A solid-state relay (SSR) uses a control signal to switch a semiconductor output. When the output conducts, the separate load supply powers the heater. Match the SSR input to the temperature controller output and the SSR output to the heater supply and current.'],
+    readNext: ['choose-a-heating-element', 'heating-element-resistance'],
+    related: ['solid-state-relays', 'scr-power-controllers', 'pid-temperature-controllers', 'heater-control-panels', 'temperature-limit-controllers'],
+    terms: ['solid-state-relay', 'scr-power-controller', 'zero-cross-switching'],
+    sections: [
+      ['Match the SSR to the controller and heater', 'An SSR has a control input and a load output. Read both ratings on the model data sheet and compare them with the control drawing. For example, a PID controller’s DC drive signal can command an SSR rated to switch an AC heater supply.', {
+        anchor: 'match-ssr-to-heater',
+        table: [
+          ['Check', 'What to verify'],
+          [['Control input', '/temperature-controls/pid/'], 'Confirm the command type and input voltage and current. Check that the controller output can drive the relay and that the switching interval meets both devices’ specifications.'],
+          [['Heater circuit', '/temperature-controls/solid-state-relays/'], 'Match the SSR output to the AC or DC supply, operating voltage and current per switched channel. Include startup current where it differs from running current.'],
+          [['AC switching behavior', '/glossary/#zero-cross-switching'], 'A zero-cross SSR waits until the AC voltage is near zero before turning on. A random-turn-on SSR can switch on during the AC cycle. Check the approved switching method for the load and control strategy.'],
+        ],
+      }],
+      ['Compare SCR power control modes', 'An SCR power controller uses silicon-controlled rectifiers to adjust power to an AC load. Some AC SSRs use the same type of semiconductor. A power controller can translate a demand signal into a firing pattern and may include current limiting or load monitoring, depending on the model.', {
+        anchor: 'scr-firing-modes',
+        table: [
+          ['Mode', 'How power changes', 'What to check'],
+          ['Burst firing', 'Switches whole AC cycles on and off to vary average power.', 'Check whether the heater’s thermal response and the electrical supply can accommodate that cycle pattern.'],
+          ['Phase-angle control', 'Varies the conducting portion of each AC half-cycle.', 'Check the load and review harmonic current and emissions requirements for the installation.'],
+        ],
+        links: [['Specify an SCR power controller', '/temperature-controls/scr-power-controllers/']],
+      }],
+      ['Size the heat sink for the installed panel', 'Use the relay manufacturer’s loss and current derating data at the expected current, duty and maximum air temperature around the relay. Check the heat sink, thermal interface, mounting orientation and airflow together. For a cabinet with several heater zones, add the heat dissipated by the equipment inside the enclosure when reviewing the cooling requirements.', {
+        anchor: 'ssr-heat-sink',
+        links: [['Review heater control panel requirements', '/temperature-controls/heater-control-panels/']],
+      }],
+      ['How to check an SSR in a heater circuit', 'Isolate all power sources and verify that the equipment is de-energized before checking terminals. An SSR can pass small off-state leakage current and can fail open or shorted. Use the equipment’s specified disconnect for isolation.', {
+        anchor: 'check-a-heater-ssr',
+        table: [
+          ['Symptom', 'What to check'],
+          ['Heater stays cold', 'Review the controller settings and protection status. With the circuit isolated, inspect connections against the drawing. Compare the isolated heater’s cold resistance with its specification.'],
+          ['Heater keeps heating with the command off', 'Isolate the circuit before service. A shorted output, a wiring fault or an unintended command can cause this symptom. Check the circuit drawing and have a qualified technician evaluate the relay using the manufacturer’s test procedure.'],
+          ['A meter showed voltage with the command off', 'A high-impedance meter can register voltage from off-state leakage. Compare the observation with the wiring and the relay’s specifications. A single resistance reading of the SSR output cannot verify normal switching under load.'],
+        ],
+        links: [['Check heating element resistance', '/guides/heating-element-resistance/']],
+      }],
+    ],
+  },
+  {
     slug: 'ntc-thermistor-guide', group: 'sensing', name: 'What Is an NTC Thermistor? Selection & Testing',
     description: 'Learn how NTC thermistors work, compare NTC and PTC sensors, and test a replacement temperature probe against its resistance curve.',
     quoteProduct: 'ntc-thermistor-probes',
@@ -5846,7 +5894,7 @@ export const guides = [
     quoteProduct: 'tubular-heaters',
     description: 'Choose an industrial heating element by heat transfer, installation and electrical load. Compare heater types, contact mounting and PID controller setup.',
     answer: ['How do I choose an industrial heating element?', 'Identify what the heater must warm and how heat will reach it. Match the heater family to the fluid, moving air, solid contact or radiant load. Then check the available geometry, supply and required temperature rise.'],
-    readNext: ['immersion-heater-sizing', 'heating-element-watt-density'],
+    readNext: ['immersion-heater-sizing', 'heating-element-watt-density', 'solid-state-relay-heater-guide'],
     related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters', 'industrial-convection-heaters', 'pvc-conduit-heaters', 'industrial-unit-heaters', 'ceramic-fiber-heaters', 'heat-trace-controllers', 'hot-runner-temperature-controllers', 'industrial-radiant-heaters', 'vacuum-chamber-heaters'],
     sections: [
       ['Start with heat transfer', 'An element may heat a solid tool by contact, heat fluid by immersion, heat air moving around it or transfer heat by radiation. Define the medium and typical operating cycle first.'],
