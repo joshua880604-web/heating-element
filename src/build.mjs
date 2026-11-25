@@ -91,7 +91,8 @@ const photoTones = [
       'ceramic-strip-heaters', 'bimetal-thermometers', 'surface-mount-rtd-probes', 'electric-grill-heating-elements',
       'bearing-rtd-probes', 'right-angle-cartridge-heaters', 'cast-iron-plate-heaters',
       'nozzle-band-heaters', 'bimetal-temperature-switches', 'thermocouple-terminal-blocks',
-      'kiln-thermocouples', 'sanitary-rtd-probes', 'aluminum-foil-heaters'],
+      'kiln-thermocouples', 'sanitary-rtd-probes', 'aluminum-foil-heaters',
+      'extruder-barrel-heaters', 'bolt-on-thermocouples', 'autoclave-heating-elements'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];

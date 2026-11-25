@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Aluminum Foil Heaters', '/heating-elements/flexible-heaters/aluminum-foil/'],
   },
   {
+    id: 'autoclave-heating-element', name: 'Autoclave Heating Element',
+    definition: 'A heater that supplies heat to water in an autoclave steam generator. The equipment drawing defines the connection, tube envelope, operating conditions and electrical rating.',
+    related: ['Autoclave Heating Elements', '/heating-elements/immersion-heaters/autoclave/'],
+  },
+  {
     id: 'bayonet-thermocouple', name: 'Bayonet Thermocouple',
     definition: 'A thermocouple with a bayonet cap that engages a matching adapter. Some assemblies use a spring to maintain contact between the probe tip and the measurement surface.',
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
@@ -23,6 +28,11 @@ export const glossary = [
     id: 'bimetal-temperature-switch', name: 'Bimetal Temperature Switch',
     definition: 'A mechanical switch that opens or closes contacts when a bimetal sensing element reaches a specified temperature. Specify trip and reset behavior, contact action and the electrical load.',
     related: ['Bimetal Temperature Switches', '/temperature-controls/bimetal-switches/'],
+  },
+  {
+    id: 'bolt-on-thermocouple', name: 'Bolt-On Thermocouple',
+    definition: 'A contact temperature sensor secured to equipment by a sensing bolt or ring lug. The seating surface, fastener geometry and lead route determine its installed position.',
+    related: ['Bolt-On Thermocouples', '/thermocouples/surface-mount/bolt-on/'],
   },
   {
     id: 'bulb-and-capillary-thermostat', name: 'Bulb and Capillary Thermostat',
@@ -98,6 +108,11 @@ export const glossary = [
     id: 'exposed-junction', name: 'Exposed Junction',
     definition: 'A thermocouple junction where the joined conductors are exposed to the measurement medium. Direct exposure can reduce response time when the conductors can tolerate the environment.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
+  },
+  {
+    id: 'extruder-barrel-heater', name: 'Extruder Barrel Heater',
+    definition: 'A heater that fits around a barrel section on extrusion equipment. Its diameter, width, mounting and electrical rating are specified for the individual heating zone.',
+    related: ['Extruder Barrel Heaters', '/heating-elements/band-heaters/extruder-barrel/'],
   },
   {
     id: 'fine-wire-thermocouple', name: 'Fine-Wire Thermocouple',
