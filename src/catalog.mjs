@@ -1291,6 +1291,7 @@ export const products = [
     ],
     use: 'Mica band heaters are used on injection molding barrels, extrusion equipment and nozzles with a defined cylindrical heating area.',
     questions: [
+      ['What determines how long a mica band heater takes to heat up a barrel?', 'Heat-up time depends on the barrel mass, starting and target temperatures, heater power, surface contact and process heat losses. Provide the barrel or nozzle drawing and heating cycle so the duty can be reviewed.'],
       ['What dimensions do you need to quote a mica band heater?', 'Send the outside diameter of the barrel or nozzle, band width, radial clearance and the position of clamps, terminals and cutouts. Include voltage, wattage and operating temperature.'],
       ['Can a mica band heater be made in two sections?', 'Specify where the joints and clamps can sit, how each section can be installed, and whether the sections need separate connections. The split layout is reviewed with the drawing.'],
     ],
@@ -1320,6 +1321,7 @@ export const products = [
     ],
     use: 'Ceramic bands are used on extrusion and injection molding barrels with space for the insulated construction and its terminations.',
     questions: [
+      ['Can I tell how hot a ceramic band heater gets from its wattage?', 'Wattage tells you the electrical input. Surface temperature also depends on heated area, contact with the barrel, insulation, heat losses and cycling. Give the temperature target, barrel drawing and control details to review the configuration.'],
       ['How do I check whether a ceramic band will fit an existing barrel?', 'Send the barrel diameter and width, then measure the available space around the barrel including covers and nearby fittings. Show where the clamps and leads can be reached after installation.'],
       ['What information is needed for a multi-zone barrel?', 'Mark the length and location of each heating zone. Give the voltage, desired wattage and connection layout for each zone, and show any sensor or cooling features between the bands.'],
     ],
@@ -2258,6 +2260,7 @@ export const products = [
     related: ['type-s', 'type-r', 'type-b', 'type-c', 'type-n', 'mineral-insulated', 'type-k', 'sensor-accessories'],
     guides: ['thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
     questions: [
+      ['Why are thermocouples used for high-temperature measurement?', 'Suitable thermocouple alloys generate a measurable voltage across a wide temperature range. The usable limit of an installed probe also depends on the sheath or protection tube, insulation, atmosphere and heating cycle. Specify both the continuous and peak temperatures.'],
       ['When should I specify a ceramic protection tube for a furnace thermocouple?', 'Consider a ceramic protection tube when its material suits the furnace atmosphere and temperature. Include thermal cycling, possible mechanical impact, insertion depth and mounting. Sensor alloy and protection tube limits should be evaluated together.'],
     ],
   },
@@ -2319,8 +2322,9 @@ export const products = [
     ],
     use: 'RTDs are frequently considered for process monitoring where measurement stability and repeatability are important.',
     related: ['duct-temperature-sensors', 'rtd-temperature-transmitters', 'ntc-thermistor-probes', 'type-k', 'thermocouples', 'sensor-accessories', 'pid-temperature-controllers'],
-    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd'],
+    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
     questions: [
+      ['How do I check a Pt100 sensor with a multimeter?', 'Isolate the probe, identify the lead pairs and measure at a known temperature. Compare the reading with the correct Pt100 resistance curve and account for lead resistance. Use a controlled temperature source and a reference for a calibration check.'],
       ['What is an RTD sensor and how does it work?', 'An RTD is a resistance temperature detector. In a platinum RTD such as a Pt100 or Pt1000, the element resistance rises with temperature. The instrument applies a small measuring current, reads the resulting voltage and converts the resistance to temperature using the configured platinum curve.'],
       ['How do I choose the wiring for a Pt100 temperature sensor?', 'Match the instrument input first. Two-wire measurement includes lead resistance. Three-wire measurement can compensate for balanced lead resistance. Four-wire measurement separates the current and voltage paths. Send the wiring diagram, lead length and required tolerance.'],
     ],
@@ -2606,11 +2610,12 @@ export const products = [
     ],
     use: 'Typical inquiries include Pt1000 probes for temperature monitoring in machines, process vessels and compatible instrumentation.',
     questions: [
+      ['How do I check a Pt1000 sensor with a multimeter?', 'With the probe isolated, identify the sensor leads and measure its resistance at a known temperature. Use the specified Pt1000 curve for that temperature. The nominal 1,000 Ω value applies at 0 °C.'],
       ['Do Pt1000 and Pt100 use the same instrument input?', 'Confirm which nominal resistance and curve the instrument can be configured to read. A Pt1000 input uses 1,000 Ω at 0 °C and must also match the probe wiring.'],
       ['Which wire count should I specify for a Pt1000 sensor?', 'Use the configuration supported by the measuring instrument and required by the accuracy target. Send the input diagram and lead length so lead resistance and compensation can be reviewed.'],
     ],
     related: ['rtd-temperature-transmitters', 'threaded-rtd-probes', 'rtd', 'thermowells', 'sensor-accessories'],
-    guides: ['pt100-vs-pt1000', 'pt100-wiring-diagram', 'thermocouple-vs-rtd'],
+    guides: ['pt100-vs-pt1000', 'pt100-wiring-diagram', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
   },
   {
     id: 'ds18b20-sensors', path: '/temperature-sensors/ds18b20/', group: 'sensing',
@@ -2634,6 +2639,7 @@ export const products = [
     ],
     use: 'Typical inquiries include water temperature monitoring and equipment with a compatible 1-Wire input and defined wet conditions.',
     questions: [
+      ['How does a DS18B20 report temperature on a 1-Wire bus?', 'The sensor converts temperature to a digital reading inside the device. The host addresses each compatible sensor by its device identifier and reads its value through the shared bus. Check the host pinout, supply mode and cable layout before specifying the probe.'],
       ['What input does a DS18B20 temperature probe require?', 'The host must support the DS18B20 1-Wire interface and planned power arrangement. Send the host model or circuit and pinout with the inquiry.'],
       ['What should I provide for a probe that will be immersed?', 'Specify the liquid, depth, duration and temperature, as well as the expected exposure of the cable entry. Include the required ingress protection and mounting arrangement.'],
     ],
@@ -2663,6 +2669,7 @@ export const products = [
     ],
     use: 'Typical inquiries include threaded or sealed probes for machinery and appliances with a specified NTC input.',
     questions: [
+      ['How can I check an NTC thermistor probe with a multimeter?', 'With the probe isolated from the controller, measure its resistance at a known, stable temperature and compare it with the specified resistance curve and tolerance. Record the temperature and any lead or connector resistance that matters to the reading.'],
       ['Will any 10 kΩ NTC probe work with the same controller?', 'Confirm the curve and tolerance as well as 10 kΩ at 25 °C. Two thermistors with the same R25 can produce different resistance readings at other temperatures.'],
       ['What dimensions do I need for a threaded thermistor probe?', 'Provide the thread standard and pitch, sealing face, insertion depth, and cable exit clearance. Include the medium, temperature and pressure if the port is part of a process vessel.'],
     ],
@@ -2725,6 +2732,7 @@ export const products = [
     ],
     use: 'Typical inquiries include thermocouple wiring for vacuum furnaces and chambers with an established flange and specified sealing requirements.',
     questions: [
+      ['Can an RTD use the same feedthrough as a thermocouple?', 'Review the feedthrough pin materials, conductor count, insulation, current and temperature ratings and connector wiring. An RTD circuit needs the specified number of conductors and lead arrangement. Confirm the proposed feedthrough with the chamber and instrument drawings.'],
       ['Which details identify a replacement thermocouple feedthrough?', 'Provide the original flange drawing, pin layout and contact specification, with required leak-rate test conditions and temperatures.'],
       ['How should I identify multiple thermocouple pairs?', 'Label each pair and its positive and negative contacts on both sides of the flange. Include the instrument input and conductor requirements for each channel.'],
     ],
@@ -2960,6 +2968,7 @@ export const products = [
     ],
     use: 'Typical applications include pipeline or vessel temperature measurement with a removable thermocouple or RTD in a compatible thermowell.',
     questions: [
+      ['Why is a thermowell used in process piping?', 'A thermowell lets a sensor measure through a protective wall that separates it from the process fluid. It can allow probe removal while the well stays installed when the system is designed for that procedure. The process conditions determine the required well material and geometry.'],
       ['How do I measure thermowell insertion length?', 'Identify the installed process connection reference on the drawing and measure from that face to the thermowell tip. Include the wall or nozzle length so the depth into the process can be determined.'],
       ['What dimensions keep the sensor fitted to the thermowell?', 'Specify the bore diameter and usable depth, probe diameter and insertion length, and the connection at the top. Show the intended seating position and include spring travel when the probe uses a spring-loaded fitting.'],
       ['What data is needed for flow-induced loading review?', 'Provide the pipe and nozzle dimensions, installed stem profile and fluid properties, including density and viscosity. Include normal and maximum flow, process pressure and temperature, and any applicable standard or evaluation requirement.'],
@@ -3047,12 +3056,13 @@ export const products = [
     ],
     use: 'Typical applications include local temperature indication on tanks, piping and industrial equipment. Send the mounting drawing and state any response-time or inspection requirements for the assembly.',
     questions: [
+      ['What temperature should an industrial bimetal thermometer be checked at?', 'Choose check points within the working range that represent normal operation and any critical limits. Use a suitable temperature source and reference thermometer, and verify the required stem immersion. Follow the approved procedure for a check or adjustment.'],
       ['How do I choose between rear and bottom entry?', 'Check how the port is oriented and where the operator will stand. Rear entry puts the stem behind the dial. Bottom entry puts it below the dial. Mark the viewing direction and available clearance on the drawing.'],
       ['Can a bimetal thermometer be installed in a thermowell?', 'Yes, when the stem diameter, insertion length and connection match the thermowell. Send its bore and seating dimensions together with the process conditions so the fit and expected measurement response can be reviewed.'],
       ['What do you need to quote a replacement bimetal thermometer?', 'Send a photo of the dial and markings plus a side view showing the stem entry and process connection. Include the dial diameter, scale range and units, stem length and diameter, thread, process conditions and required quantity.'],
     ],
     related: ['industrial-digital-thermometers', 'bimetal-temperature-switches', 'thermowells', 'rtd', 'threaded-rtd-probes', 'thermocouples'],
-    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd'],
+    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
   },
   {
     id: 'flanged-immersion', path: immersion + 'flanged/', parent: 'immersion-heaters', group: 'tubular', name: 'Flanged Immersion Heaters', image: 'immersion-heaters',
@@ -4112,6 +4122,7 @@ export const products = [
     ],
     use: 'Typical inquiries include OEM pellet stove ignition assemblies and made-to-drawing igniter replacements.',
     questions: [
+      ['How does a pellet stove igniter heat the fuel?', 'The electrical element supplies heat at the ignition point. Depending on the stove design, the igniter heats the air entering the burn area or transfers heat near the pellets. Match the element position, airflow, clearances and electrical rating to the approved assembly.'],
       ['What should I include with a pellet stove igniter inquiry?', 'Send the stove model and original part number if known, heater photos, the mounting and insertion dimensions, rated voltage and wattage, and the lead connector details.'],
       ['How do I identify the igniter construction?', 'Use the original part drawing or markings and provide a photo of the full component. Note the heater body profile, mounting collar, insertion length and lead termination so the construction can be reviewed.'],
     ],
@@ -4195,13 +4206,14 @@ export const products = [
         ['Pipe or vessel geometry', 'Outside diameter or surface dimensions, material and traced length. Mark valves, flanges, supports and dead legs.'],
         ['Insulation and environment', 'Insulation type and thickness, minimum ambient temperature, exposure to wind or washdown and any area classification specified by the project.'],
         ['Process temperatures', 'Target maintenance temperature and maximum exposure, including shutdown and cleaning conditions. State whether the duty is freeze protection or process temperature maintenance.'],
-        ['Circuit and controls', 'Voltage, proposed circuit lengths, start-up conditions, termination locations and control sensor position. Confirm the circuit and protection requirements for the cable selected.'],
+        [['Circuit and controls', '/guides/choose-a-heating-element/#heat-trace-installation'], 'Voltage, proposed circuit lengths, start-up conditions, termination locations and control sensor position. Confirm the circuit and protection requirements for the cable selected.'],
       ] },
     ],
     use: 'Applications include temperature maintenance, freeze protection and heating along pipes or equipment surfaces.',
     related: ['heat-trace-controllers', 'flexible-heaters', 'crankcase-heaters', 'high-temperature-lead-wire', 'rtd'],
     guides: ['choose-a-heating-element'],
     questions: [
+      ['How hot does heat trace cable get?', 'Cable temperature depends on its output, pipe temperature, insulation and surroundings. Confirm the maximum maintenance and exposure temperatures for the cable and the pipe or vessel limit. Include cold-start conditions and any control requirements in the inquiry.'],
       ['When should I consider self-regulating heat trace cable?', 'Consider it where heat loss or temperature varies along the installation. Specify the pipe or equipment material, insulation, minimum ambient temperature, maintenance temperature and supply voltage. Include circuit length and control requirements in the inquiry.'],
     ],
   },
@@ -4314,6 +4326,7 @@ export const products = [
     related: ['duct-temperature-sensors', 'industrial-unit-heaters', 'industrial-convection-heaters', 'compressed-air-heaters', 'finned-tubular-heaters', 'tubular-heaters', 'open-coil-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
+      ['What is an electric duct heater used for?', 'An electric duct heater transfers heat from resistance elements to air moving through a duct. Specify the required outlet temperature, inlet conditions and normal and minimum airflow for the operating cycle. The mounting and controls depend on the duct and equipment design.'],
       ['What is required to size a duct heater for process air?', 'Provide the duct dimensions, minimum and maximum airflow, inlet and target outlet temperatures, supply and mounting. Include airflow proving and temperature-limit requirements for the system so the heater can be evaluated at reduced flow as well as normal operation.'],
     ],
   },
@@ -4397,8 +4410,9 @@ export const products = [
     ],
     use: 'Common projects include evaporator and refrigeration equipment heating.',
     related: ['tubular-heaters', 'aluminum-foil-heaters', 'crankcase-heaters', 'type-k'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
     questions: [
+      ['How can I check the resistance of a defrost heater element?', 'Isolate the element according to the equipment service procedure and measure cold resistance at the specified terminals. Compare it with the manufacturer’s specification for that circuit. For a known resistive circuit, rated voltage squared divided by rated power gives a nominal estimate.'],
       ['What should a drawing for a replacement defrost heating element include?', 'Show the overall shape, mounting points, tube diameter, terminal ends, seals and lead exit. Include the original electrical rating and control cycle. Clearance from the evaporator, drain and nearby materials matters when fitting a replacement.'],
     ],
   },
@@ -4456,6 +4470,7 @@ export const products = [
     ],
     use: 'Typical inquiries include control cabinets for industrial heaters, process tanks and OEM equipment with documented control and load requirements.',
     questions: [
+      ['What determines the heat load inside a heater control panel?', 'Estimate the heat dissipated inside the cabinet by relays, power controllers, transformers and other components at the expected load and duty. Use component loss data and the cabinet ambient and ventilation conditions to review cooling. The heater loads belong in the circuit schedule.'],
       ['What should I send when quoting a multi-zone heater control panel?', 'Provide a load schedule with supply, watts and current for each zone, sensor type, operator controls, alarm and interlock requirements, and an enclosure layout.'],
       ['Which project documents define the panel configuration?', 'Provide the circuit and control requirements, installation environment and applicable documentation or testing requirements. The panel configuration is reviewed against those inputs.'],
     ],
@@ -4540,6 +4555,7 @@ export const products = [
     ],
     use: 'Typical inquiries include switching resistive electric heaters in temperature-controlled machinery and process equipment.',
     questions: [
+      ['How does a solid-state relay switch an industrial heater?', 'An SSR uses a control input to turn a semiconductor output on and off. When that output conducts, the heater supply delivers power through the load circuit. Match the control input, AC or DC output type, load and heat sink to the installation.'],
       ['What do I send to request an SSR for a heater?', 'Send the panel circuit, controller output specification and heater voltage and power per switched channel. Include the load type, duty cycle, maximum panel temperature and heat sink arrangement.'],
       ['How does the enclosure temperature affect relay selection?', 'The relay dissipates heat while carrying current. Check its usable current against the installed ambient temperature and heat sink conditions for the chosen device.'],
     ],
@@ -4568,6 +4584,7 @@ export const products = [
     ],
     use: 'Typical inquiries include power modulation for resistive heating zones in process equipment, infrared panels and OEM machines.',
     questions: [
+      ['Can one SCR controller be used for both single-phase and three-phase loads?', 'Use a controller designed for the supply and load connection. Provide the supply phases, wiring diagram and current per circuit. Confirm the applicable firing mode and sensing arrangement for that load.'],
       ['What information is needed to select an SCR controller?', 'Provide the AC supply, load type and current per circuit, and the required command and firing mode. Include enclosure temperature, cooling and protective device requirements.'],
       ['When should I specify burst firing or phase-angle control?', 'Burst firing switches power over groups of AC cycles. Phase-angle control changes the conducting portion of the cycle. Select the method against the load, process response and applicable line and equipment requirements.'],
     ],
@@ -4597,11 +4614,12 @@ export const products = [
     ],
     use: 'Typical inquiries include sending a platinum RTD measurement to a compatible PLC, panel meter or process controller over a 4–20 mA loop.',
     questions: [
+      ['How can I verify an RTD transmitter’s 4–20 mA output?', 'Apply known resistance values for the configured Pt100 or Pt1000 curve using the specified wire configuration. Compare measured loop current with the expected output at selected points in the programmed span. Use a reference probe and temperature source to assess the complete sensor.'],
       ['Can the same transmitter accept Pt100 and Pt1000?', 'Input support depends on the device. Specify the required sensor curve, nominal resistance and wire count so the correct configuration can be reviewed.'],
       ['Which temperatures should I give for the 4–20 mA span?', 'Provide the temperature corresponding to 4 mA and the temperature corresponding to 20 mA. Include the required process interval and confirm the same scaling in the receiving device.'],
     ],
     related: ['rtd-calibrators', 'rtd', 'pt1000-sensors', 'thermocouple-temperature-transmitters', 'pid-temperature-controllers'],
-    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000'],
+    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'temperature-sensor-calibration'],
   },
   {
     id: 'thermocouple-temperature-transmitters', path: '/temperature-controls/thermocouple-transmitters/', group: 'controls',
@@ -4626,11 +4644,12 @@ export const products = [
     ],
     use: 'Typical inquiries include sending a thermocouple measurement to an industrial PLC, panel meter or controller with a compatible current input.',
     questions: [
+      ['How can I check a thermocouple transmitter’s calibration?', 'Use a compatible thermocouple signal source at defined test points. Match the type, polarity and reference-junction compensation method. Compare the measured loop current with the configured 4–20 mA span and record the error before any authorized adjustment.'],
       ['How do I specify a Type K thermocouple to 4–20 mA transmitter?', 'Specify a Type K input, temperatures at 4 mA and 20 mA, and the loop supply and load. Include thermocouple extension wiring, the mounting drawing and any fault indication requirement.'],
       ['Can I connect an RTD to a thermocouple transmitter?', 'Check which input modes the module supports. A thermocouple input measures millivolts with cold-junction compensation. A Pt100 or Pt1000 requires a resistance input and the appropriate wire configuration.'],
     ],
     related: ['thermocouple-calibrators', 'wireless-thermocouple-systems', 'thermocouple-data-loggers', 'type-k', 'connection-head-thermocouples', 'thermocouple-extension-wire', 'rtd-temperature-transmitters'],
-    guides: ['how-thermocouples-work', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
+    guides: ['how-thermocouples-work', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
   },
   {
     id: 'wireless-thermocouple-systems', path: '/temperature-controls/wireless-thermocouples/', group: 'controls',
@@ -4682,6 +4701,7 @@ export const products = [
     ],
     use: 'Typical inquiries include process trials, thermal profiling, equipment verification and multi-point temperature monitoring.',
     questions: [
+      ['How do I connect a thermocouple to a data logger?', 'Use a channel that supports the thermocouple type and cold-junction compensation. Match the connector, polarity and extension-wire type to the instrument drawing. Confirm the input setting and compare the logged value with a reference before recording the process.'],
       ['How do I select the channel count for a thermocouple data logger?', 'Count the inputs that must be recorded during the same test. Specify the thermocouple type at each point and any spare channels or isolation needed for the installation.'],
       ['What recording rate should I specify?', 'State how quickly the process changes and give the required interval for each channel. The time to scan all channels can differ from the time to convert one input.'],
     ],
@@ -4742,7 +4762,7 @@ export const products = [
       ['What is needed to check a complete thermocouple probe?', 'For a complete probe test, specify a suitable temperature source and reference measurement, test points and acceptance criteria. Signal simulation is used when checking the receiving instrument input.'],
     ],
     related: ['dry-block-calibrators', 'rtd-calibrators', 'handheld-thermocouple-readers', 'thermocouple-temperature-transmitters', 'thermocouple-data-loggers', 'thermocouple-connectors'],
-    guides: ['how-to-test-a-thermocouple', 'thermocouple-types'],
+    guides: ['how-to-test-a-thermocouple', 'thermocouple-types', 'temperature-sensor-calibration'],
   },
   {
     id: 'capillary-thermostats', path: '/temperature-controls/capillary-thermostats/', group: 'controls',
@@ -4767,6 +4787,7 @@ export const products = [
     ],
     use: 'Typical inquiries include mechanical on-off temperature control for heating equipment, ovens and heated vessels where the sensor and switch are in different locations.',
     questions: [
+      ['Can I shorten the capillary on a replacement thermostat?', 'Order the capillary length and bulb geometry required by the equipment. The bulb and capillary form a sealed sensing system, so cutting the capillary changes or disables its operation. Show the route and any clearance limits on the drawing.'],
       ['What is the difference between a capillary thermostat and a temperature probe?', 'The bulb and capillary assembly operates a mechanical switch at its switching temperatures. A standalone probe such as an RTD provides a measurement signal to a compatible instrument. Specify the control function and interface required by the equipment.'],
       ['What dimensions matter when replacing a capillary thermostat?', 'Match the bulb diameter and length, capillary route length, body mounting, shaft or adjustment clearance and terminals. Confirm the setpoint range and contact rating from the original specification.'],
     ],
@@ -4796,6 +4817,7 @@ export const products = [
     ],
     use: 'Typical inquiries include local on-off sensing for heating equipment and thermal monitoring circuits with a defined switch mounting surface.',
     questions: [
+      ['How does a bimetal thermostat switch a heater?', 'The bonded metals bend as temperature changes. In a snap-disc thermostat, that movement triggers a rapid change in contact state at the specified trip temperature. Confirm the contact action and reset behavior for the heater circuit.'],
       ['What is the difference between the trip and reset temperatures?', 'The trip temperature is where the contacts change state. The reset temperature is where an automatic design returns to its normal state as it cools. Specify both points and the required tolerances for the installed conditions.'],
       ['What should I check for a replacement bimetal thermostat?', 'Match the sensing face, mounting holes, contact action, trip and reset specifications, reset method and rated load. Send the original markings, circuit and mounting drawing for review.'],
     ],
@@ -4858,7 +4880,7 @@ export const products = [
       ['Do block stability and calibration uncertainty mean the same thing?', 'Stability describes variation over time at a test point. The uncertainty of a probe comparison also depends on the reference, block uniformity, immersion, probe loading and readout.'],
     ],
     related: ['temperature-calibration-baths', 'thermocouple-calibrators', 'handheld-thermocouple-readers', 'thermocouples', 'rtd'],
-    guides: ['how-to-test-a-thermocouple', 'thermocouple-vs-rtd'],
+    guides: ['how-to-test-a-thermocouple', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
   },
   {
     id: 'handheld-infrared-pyrometers', path: '/temperature-sensors/handheld-infrared-pyrometers/', group: 'sensing',
@@ -5028,11 +5050,12 @@ export const products = [
     ],
     use: 'Typical inquiries include inspection and maintenance stations that compare contact probes of different diameters using the same temperature source.',
     questions: [
+      ['Can I use the bath display as the calibration reference?', 'Use the reference specified by the calibration procedure. The bath display reports the control reading. Check whether the reference measures the temperature at the probe locations with the required uncertainty.'],
       ['Can probes of different sizes be tested in one bath?', 'This can work if the opening, fluid depth and holders accommodate the probes and their sensing regions can be placed in a suitable working zone. Confirm uniformity at the planned loading.'],
       ['What limits the accuracy of a bath comparison?', 'The result depends on the reference and readout, bath stability and uniformity, probe loading and immersion. State the target uncertainty and how it will be evaluated.'],
     ],
     related: ['dry-block-calibrators', 'rtd-calibrators', 'thermocouple-calibrators', 'rtd'],
-    guides: ['how-to-test-a-thermocouple', 'thermocouple-vs-rtd'],
+    guides: ['how-to-test-a-thermocouple', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
   },
   {
     id: 'rtd-calibrators', path: '/temperature-controls/rtd-calibrators/', group: 'controls',
@@ -5061,7 +5084,7 @@ export const products = [
       ['Does a signal check verify the RTD probe itself?', 'A simulated input checks the instrument response to a known resistance. To verify the probe, compare its reading with a reference probe in a suitable temperature source.'],
     ],
     related: ['rtd-temperature-transmitters', 'rtd', 'thermocouple-calibrators', 'temperature-calibration-baths'],
-    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000'],
+    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'temperature-sensor-calibration'],
   },
   {
     id: 'multipoint-thermocouples', path: thermo + 'multipoint/', parent: 'thermocouples', group: 'sensing',
@@ -5213,6 +5236,7 @@ export const products = [
     ],
     use: 'Typical inquiries include exposed-bead sensor production, industrial sensor assembly benches and laboratory thermocouple fabrication.',
     questions: [
+      ['How does a thermocouple junction welder work?', 'The fixture holds two dissimilar thermocouple wires in position while the welder applies controlled energy at their ends to form a measuring bead. Evaluate samples for bead size, alignment and continuity against the intended wire alloy pair and diameters.'],
       ['What information is needed for a trial weld?', 'Provide samples of both conductors, their alloys and diameters, a drawing of the target bead and the acceptance criteria for the finished junction.'],
       ['What should be checked on a completed junction?', 'Follow the approved inspection procedure for bead geometry, continuity and mechanical condition. If temperature response or accuracy is part of acceptance, define the reference conditions and pass criteria.'],
     ],
@@ -5445,6 +5469,7 @@ export const products = [
     ],
     use: 'Typical inquiries include supply and return air ducts and process air systems that need temperature feedback at a defined location.',
     questions: [
+      ['How does a duct temperature sensor send a reading to the controller?', 'The probe senses air at the installed tip. An RTD or thermistor varies resistance, a thermocouple produces a small voltage, and a transmitter can convert a sensor reading to a standard signal. Match the actual wiring and sensor curve or input type to the controller.'],
       ['Can a single probe represent the temperature across the whole duct?', 'A single probe measures its local air stream. For a duct with temperature gradients, specify the target measurement and provide the flow profile to review the sensor position or an averaging arrangement.'],
       ['How do I specify the installed insertion length?', 'Measure from the indicated mounting face to the sensing point, accounting for insulation, bracket standoff and duct wall geometry. Show the datum on the drawing.'],
     ],
@@ -5544,6 +5569,48 @@ export const applications = [
 
 export const guides = [
   {
+    slug: 'temperature-sensor-calibration', group: 'sensing', name: 'Thermocouple and RTD Calibration Guide',
+    description: 'Learn how to calibrate thermocouples and Pt100 or Pt1000 RTDs with a reference, and verify instrument inputs and 4–20 mA transmitters separately.',
+    quoteProduct: 'dry-block-calibrators',
+    answer: ['Can thermocouples and RTDs be calibrated?', 'Yes. Compare the probe reading with a suitable reference at defined temperatures in a stable source. Record the deviation at each point. To check the receiving instrument separately, simulate the expected thermocouple or RTD signal.'],
+    readNext: ['how-to-test-a-thermocouple', 'pt100-wiring-diagram', 'pt100-vs-pt1000'],
+    related: ['dry-block-calibrators', 'temperature-calibration-baths', 'thermocouple-calibrators', 'rtd-calibrators', 'rtd-temperature-transmitters', 'thermocouple-temperature-transmitters', 'bimetal-thermometers'],
+    terms: ['dry-block-calibrator', 'temperature-calibration-bath', 'cold-junction-compensation', 'rtd-signal-calibrator'],
+    sections: [
+      ['Decide which part of the measurement chain to check', 'Define whether you need the error of the probe, the receiving instrument or the installed measurement chain. Record which wiring, transmitter and display are included.', {
+        table: [
+          ['Check', 'Method'],
+          ['Probe comparison', 'Place the test probe and a suitable reference in a controlled temperature source and record both readings.'],
+          ['Electronic input verification', 'Apply known millivolts or resistance values at the instrument input using the appropriate sensor settings.'],
+          ['Complete measurement chain', 'Apply known temperatures at the probe and record the final display or loop output with the intended wiring and configuration.'],
+        ],
+      }],
+      ['Choose the temperatures, reference and source', 'Use test points that reflect process conditions and any critical limits. Check that the reference, readout and temperature source can meet the uncertainty required by the procedure.', {
+        table: [
+          ['Source', 'What to check'],
+          [['Dry block', '/temperature-controls/dry-block-calibrators/'], 'Check insert bore fit, usable depth, working zone and loading for the test and reference probes.'],
+          [['Liquid calibration bath', '/temperature-controls/calibration-baths/'], 'Check fluid compatibility, usable depth, probe holders and uniformity where the sensing regions are placed.'],
+        ],
+      }],
+      ['Compare readings at stable test points', 'Place the reference and test sensing regions in the verified working zone. Reach the intended immersion depth and let both readings stabilize. Record the reference temperature and the device reading at each point. Calculate the deviation by subtracting the reference reading from the device reading. For a dial thermometer, follow the stem immersion requirements.', {
+        table: [
+          ['Sensor', 'Configuration to confirm'],
+          [['Thermocouple', '/guides/thermocouple-wire-color-code/'], 'Match the thermocouple type, polarity, extension wire and reference-junction treatment to the readout.'],
+          [['Pt100 or Pt1000 RTD', '/guides/pt100-wiring-diagram/'], 'Confirm the resistance curve, wire count and measurement setup. Include lead resistance and self-heating in the review where they affect the result.'],
+        ],
+      }],
+      ['Verify a transmitter or controller input', 'Apply known inputs over the configured range. Match the input configuration and use the specified reference-junction arrangement for thermocouple simulation. For a linear 4–20 mA temperature span from 0 to 100 °C, the expected outputs are 4 mA at 0 °C, 12 mA at 50 °C and 20 mA at 100 °C. Use the actual configured span and transfer function for the equipment.', {
+        links: [
+          ['Thermocouple signal calibrators', '/temperature-controls/thermocouple-calibrators/'],
+          ['Pt100 and Pt1000 signal calibrators', '/temperature-controls/rtd-calibrators/'],
+          ['RTD transmitter selection', '/temperature-controls/rtd-transmitters/'],
+          ['Thermocouple transmitter selection', '/temperature-controls/thermocouple-transmitters/'],
+        ],
+      }],
+      ['Record the as-found results and pass criteria', 'Record the reference and device identifiers, test conditions, points, deviations, uncertainty and acceptance limits. Calibration establishes the measurement relationship. If adjustment is authorized, document it and repeat the checks to record the as-left condition.'],
+    ],
+  },
+  {
     slug: 'how-thermocouples-work', group: 'sensing', name: 'What Is a Thermocouple and How Does It Work?',
     description: 'Learn how a thermocouple generates a millivolt signal, how cold-junction compensation works, and what an industrial probe measures.',
     answer: ['What is a thermocouple?', 'A thermocouple is a temperature sensor made from two different conductors joined at a sensing junction. The two conductors produce a small voltage that depends on the sensing and reference temperatures. An instrument converts this voltage to temperature using the reference function for the thermocouple type.'],
@@ -5633,7 +5700,7 @@ export const guides = [
     description: 'Test industrial thermocouple continuity, sheath isolation and voltage with a multimeter. Use the Type K millivolt chart with a 0 °C reference.',
     quoteProduct: 'thermocouples',
     related: ['dry-block-calibrators', 'temperature-calibration-baths', 'thermocouple-calibrators', 'thermocouple-welders', 'handheld-thermocouple-readers', 'thermocouples', 'type-k', 'threaded-thermocouple', 'thermocouple-extension-wire', 'thermocouple-connectors'],
-    readNext: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-types'],
+    readNext: ['temperature-sensor-calibration', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-types'],
     terms: ['cold-junction-compensation', 'thermocouple-polarity', 'thermocouple-response-time'],
     answer: ['How do I test a thermocouple with a multimeter?', 'With the probe isolated from the instrument and process equipment, check continuity between its two leads. Compare lead-to-sheath continuity with the specified junction type. Then use a DC millivolt meter and a controlled temperature source to check signal polarity and response. Use a thermocouple meter or calibrator for a compensated temperature reading.'],
     sections: [
@@ -5788,6 +5855,16 @@ export const guides = [
           [['Polyimide film heater', flexible + 'polyimide/'], 'Check the thickness limit, substrate finish, film outline and lead tab clearance. Follow the approved bonding or retention process and verify that gaps or edges do not interrupt contact.'],
         ],
       }],
+      ['Plan electric heat trace installation and checks', 'Start with the pipe or vessel drawing, required maintenance temperature and the lowest ambient temperature. Use the cable manufacturer’s approved layout and installation procedure for the specified system.', {
+        anchor: 'heat-trace-installation',
+        table: [
+          ['Step', 'What to confirm'],
+          [['1. Select the cable and circuits', heatingCables], 'Estimate heat loss with the specified insulation. Confirm cable output at the maintenance temperature, exposure limits, circuit lengths and supply.'],
+          [['2. Lay out the pipe run', heatingCables + 'self-regulating/'], 'Mark valves, supports and other heat sinks, plus cable routing and attachment. Verify bending, crossings and any overlap against the approved cable layout.'],
+          [['3. Define the sensors and controls', '/temperature-controls/heat-trace-controllers/'], 'Mark sensor positions and control setpoints. Check cold-start load, circuit protection and the approved termination kits and enclosures.'],
+          ['4. Document the checks', 'Follow the cable and equipment procedure for electrical checks before and after insulation. Record circuit identification, test results and final insulation and sensor locations.'],
+        ],
+      }],
       ['Specify the sheath material for the working medium', 'Record the liquid chemistry or air atmosphere, minimum flow, maximum temperature and cleaning process. For alloy callouts such as 800 or 840, provide the complete material designation or datasheet so chemical compatibility, allowable sheath temperature and forming constraints can be reviewed.'],
       ['Match furnace element materials and geometry', 'Use the furnace drawing, atmosphere and original electrical specification to identify the element construction and support requirements.', {
         table: [
@@ -5841,7 +5918,7 @@ export const guides = [
     calculator: 'heater-resistance',
     quoteProduct: 'tubular-heaters',
     answer: ['How do I calculate heating element resistance?', 'For one resistive heater circuit, divide the square of its rated voltage by the watts for that same circuit (R = V² ÷ P). A 240 V, 1,000 W circuit gives a nominal 57.6 Ω at rated conditions. Compare a cold meter reading with the heater’s specified resistance at the measured temperature.'],
-    related: ['tubular-heaters', 'cartridge-heaters', 'immersion-heaters', 'water-boiler-heating-elements'],
+    related: ['tubular-heaters', 'cartridge-heaters', 'immersion-heaters', 'water-boiler-heating-elements', 'defrost-heaters'],
     readNext: ['heating-element-watt-density', 'immersion-heater-sizing', 'choose-a-heating-element'],
     terms: ['heater-insulation-resistance', 'watt-density'],
     sections: [
@@ -5878,7 +5955,7 @@ export const guides = [
     quoteProduct: 'rtd',
     description: 'Use 2-, 3- and 4-wire Pt100 diagrams to identify leads, check RTD resistance and match the sensor to your transmitter, PLC input or controller.',
     related: ['rtd', 'rtd-connectors', 'threaded-rtd-probes', 'flanged-rtd-probes', 'surface-mount-rtd-probes', 'rtd-temperature-transmitters', 'rtd-calibrators', 'sensor-accessories'],
-    readNext: ['pt100-vs-pt1000', 'thermocouple-vs-rtd'],
+    readNext: ['pt100-vs-pt1000', 'temperature-sensor-calibration', 'thermocouple-vs-rtd'],
     terms: ['pt100', 'rtd', 'rtd-self-heating'],
     answer: ['How do I wire a Pt100 RTD?', 'Identify the two ends of the platinum element and select the matching RTD input mode. A two-wire sensor has one lead per end, a three-wire sensor has two leads at one end, and a four-wire sensor has two leads at each end. Match these pairs to the terminal drawing for your instrument.'],
     sections: [
@@ -5921,7 +5998,7 @@ export const guides = [
     slug: 'pt100-vs-pt1000', group: 'sensing', name: 'Pt100 vs. Pt1000 RTD Sensors',
     description: 'Compare Pt100 and Pt1000 resistance, lead-wire error, self-heating and instrument compatibility before specifying a platinum RTD.',
     related: ['rtd', 'miniature-rtd-probes', 'thin-film-rtd-elements', 'pt1000-sensors', 'rtd-temperature-transmitters', 'sensor-accessories'],
-    readNext: ['pt100-wiring-diagram', 'thermocouple-vs-rtd'],
+    readNext: ['pt100-wiring-diagram', 'temperature-sensor-calibration', 'thermocouple-vs-rtd'],
     terms: ['pt1000-sensor', 'iec-60751', 'pt100-tolerance-class', 'rtd-self-heating'],
     answer: ['What is the difference between Pt100 and Pt1000?', 'A Pt100 has a nominal resistance of 100 Ω at 0 °C. A Pt1000 has 1,000 Ω at 0 °C. For the same platinum curve, the Pt1000 changes resistance by ten times as much per degree. The instrument must support the chosen nominal resistance and wiring.'],
     sections: [
@@ -6007,11 +6084,11 @@ export const guides = [
           ['Weld-in', 'Pipe or vessel geometry, weld preparation and material compatibility'],
         ],
       }],
-      ['Measure insertion length and probe fit', 'Identify the reference face and distance from it to the thermowell tip on the drawing. Account for the nozzle or pipe wall so the tip reaches representative process flow. Confirm the bore diameter, bore depth and sensor seating, and allow room for removal. A spring-loaded probe can maintain tip contact when the assembly is designed for it.'],
+      ['How far should a thermowell protrude into a pipe?', 'Mark the distance from the mounting face to the tip and the actual projection beyond the inside pipe wall on the drawing. Put the tip where it can sample representative flow and confirm that the proposed projection is mechanically suitable for that flow. Check bore diameter, depth and sensing-tip seating separately, and leave room for removal.'],
       ['Fit a local dial thermometer', 'With a bimetal dial thermometer, verify both the thermowell connection to the process and the thermometer connection at the top of the well. Measure the usable bore from the instrument seating reference. Show where the sensing section will sit and confirm that the dial faces the operator when installed.', {
         links: [['Bimetal thermometer drawing checklist', '/temperature-sensors/bimetal-thermometers/#bimetal-thermometer-drawing']],
       }],
-      ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. In flowing service, include or identify the pipe diameter, flow velocity, density and viscosity for the mechanical review. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.'],
+      ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. Include pipe diameter, flow velocity, density and viscosity. As fluid passes the well, shedding vortices can apply a repeating load. Wake frequency describes how often that load repeats. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.'],
       ['Account for measurement response', 'A thermowell adds metal mass and an interface between the process and probe. Bore clearance, wall thickness, immersion and process flow affect response time. If a response limit applies, specify the medium and the definition of response time used in the acceptance test.'],
     ],
   },
