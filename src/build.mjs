@@ -674,6 +674,13 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
         <h2>From Drawing to Quotation</h2>
         <p>Start with a drawing, part dimensions or a photo of an existing component. Add the working medium, temperature, mounting and required quantity. Include voltage and wattage for heaters, and the sensor type, junction and instrument input for temperature probes.</p>
       </section>
+      <div class="about-photo about-reception" id="reception">
+        ${photoFigure({
+          image: 'lichengda-reception', width: 1400, height: 788,
+          alt: 'Lichengda reception wall with the company logo and name in Chinese and English',
+          caption: 'Lichengda reception',
+        })}
+      </div>
     </div>
     <aside class="spec-card">
       <h2>Company &amp; Sales</h2>
@@ -688,13 +695,6 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
         </figure>
       </section>
     </aside>
-  </div>
-  <div class="about-photo about-reception" id="reception">
-    ${photoFigure({
-      image: 'lichengda-reception', width: 1400, height: 788,
-      alt: 'Lichengda reception wall with the company logo and name in Chinese and English',
-      caption: 'Lichengda reception',
-    })}
   </div>
   <section class="workshop" aria-labelledby="workshop-heading">
     <h2 id="workshop-heading">Inside the Workshop</h2>
