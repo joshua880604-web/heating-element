@@ -97,14 +97,15 @@ export const products = [
       ], diagram: [
         'Threaded probe drawing example. Measure insertion length from the installed seating face of the fitting to the probe tip. Mark the sensing junction separately if its position is specified.',
         ['Head   Fitting           Probe tip', '[ ]────[###]│────────────────────●', '           │<─ Insertion length ─>│'],
-      ] },
+      ], links: [['Troubleshoot readings from an existing thermocouple', '/guides/how-to-test-a-thermocouple/#thermocouple-troubleshooting']] },
     ],
     use: 'Typical integration points include heat-treatment furnaces, plastics machinery, process vessels, industrial ovens and heated tooling.',
     questions: [
       ['How should I specify a threaded or spring-loaded thermocouple?', 'For a threaded probe, identify the thread standard, sealing interface and insertion length from the seating face. For a spring-loaded assembly, include the installed travel and mating feature so the tip can stay in contact at the measurement point.'],
       ['What should I specify for a replacement thermocouple probe?', 'Match the instrument input and thermocouple type first. Then check the insertion length, sheath diameter, mounting thread or flange, junction and electrical termination. A drawing or label photo can help identify the original configuration.'],
       ['When should I specify a thermocouple with a connection head?', 'Specify a connection head when the installation calls for a terminal point for field wiring near the probe. Check the head temperature, cable entry, lid access and clearance around the mount.'],
-      ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance and service history. If a probe fails early, share whether the reading drifted, became intermittent or went open circuit, along with the operating conditions and original drawing.'],
+      ['How can I tell if an industrial thermocouple is failing?', 'An open-input alarm, intermittent readings or a repeatable offset from a reference are reasons to check the circuit. Verify the terminal connections, polarity, extension cable and configured input. Use continuity and a controlled temperature response to help isolate the cause, and compare against a reference to assess drift.'],
+      ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance. Record the probe’s operating time, exposure at peak temperatures and last accepted calibration check when reviewing the interval.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
     guides: ['how-thermocouples-work', 'thermocouple-types', 'how-to-test-a-thermocouple', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
@@ -1350,7 +1351,7 @@ export const products = [
         ['Temperature or accuracy check', 'What it tells you'],
         [['Type K thermocouple millivolt chart', typeKMillivoltChart], 'Look up selected thermoelectric voltages with a 0 °C reference junction and see how to compare readings taken at room temperature.'],
         ['Probe assembly working range', 'Confirm continuous and peak exposure at the tip, process atmosphere, sheath and insulation, plus operating temperatures at the cable transition and connector.'],
-        [['Installed accuracy and troubleshooting', '/guides/how-to-test-a-thermocouple/'], 'Check probe tolerance, insertion and the instrument input, reference junction compensation and wiring. Include the required accuracy over your working interval.'],
+        [['Installed accuracy and troubleshooting', '/guides/how-to-test-a-thermocouple/#thermocouple-troubleshooting'], 'Check probe tolerance, insertion and the instrument input, reference junction compensation and wiring. Include the required accuracy over your working interval.'],
       ] },
     ],
     selection: [
@@ -1366,11 +1367,14 @@ export const products = [
         [['Needle insertion probe', thermo + 'needle-probes/'], 'For a pointed Type K probe, specify the needle diameter, tip shape and usable insertion depth.'],
         [['Exhaust gas temperature probe', thermo + 'exhaust-gas/'], 'Mark the sensing point in the exhaust stream, fitting dimensions, insertion depth and conditions at the lead transition.'],
         [['Electrical connection', '/guides/thermocouple-wire-color-code/'], 'Type K input, compatible lead and connector type, polarity convention and temperature at the termination.'],
+        [['Changing from Type J to Type K', '/guides/type-k-vs-type-j-thermocouple/#switching-thermocouple-types'], 'Confirm that the instrument supports Type K and that the extension cable and connector can be matched to the new probe.'],
       ] },
     ],
     use: 'Type K assemblies are frequently selected for furnaces, hot tooling and process temperature monitoring.',
     questions: [
       ['What is a Type K thermocouple?', 'Type K identifies a thermocouple with a nickel-chromium positive leg and a nickel-aluminum negative leg. The instrument uses the Type K voltage-to-temperature reference function. When choosing a probe, also specify the junction, sheath, mounting and compatible extension cable.'],
+      ['Are all Type K thermocouples interchangeable?', 'Type K probes use the same voltage-to-temperature reference function. For a replacement, match the sheath, mount, insertion depth, junction, tolerance and termination. Check whether the allowable temperatures and response suit the installation and working medium.'],
+      ['Can I replace a Type J thermocouple with Type K?', 'Review the entire measurement circuit before switching types. The instrument must support Type K and be configured for it. Match the extension cable and connector to Type K, and confirm the replacement probe fits the mount and process conditions.'],
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
       ['What do you need to quote a replacement Type K thermocouple?', 'Send the original drawing or photos of the probe, fitting and termination. Include the sheath diameter, installed insertion depth, mounting and grounding details, cable length and the Type K input used by the instrument. Flag any unknown dimensions or changes in service conditions.'],
@@ -5732,6 +5736,16 @@ export const guides = [
           [['Tip and reference at the same temperature', '/glossary/#cold-junction-compensation'], 'Approximately 0 mV. The two reference voltages cancel when both junctions are at the same temperature.'],
         ],
       }],
+      ['Troubleshoot open, drifting or intermittent readings', 'Record the symptom and the process conditions when it occurs. Follow the equipment isolation procedure before checking wiring or disconnecting the probe.', {
+        anchor: 'thermocouple-troubleshooting',
+        table: [
+          ['Observed symptom', 'What to check'],
+          ['Open-input alarm or loss of signal', 'Confirm the configured input and trace continuity through the probe and extension leads. Check accessible terminals to locate an open section.'],
+          [['Reading falls when the tip is warmed', '/guides/thermocouple-wire-color-code/'], 'With the reference connections at a stable temperature, compare lead polarity at the probe, connector and instrument.'],
+          ['Intermittent jumps during operation', 'Look for loose terminals and damage at flex points. Note vibration, switching loads and cable routing when the fault occurs.'],
+          [['Drift or a persistent offset', '/guides/temperature-sensor-calibration/'], 'Confirm the input type, extension cable, cold-junction compensation and installed tip position. Compare with a suitable reference at defined test points to separate probe drift from a circuit or installation issue.'],
+        ],
+      }],
       ['Type K Thermocouple Millivolt Chart', 'These selected NIST ITS-90 values use a 0 °C (32 °F) reference junction. For a DC millivolt reading at another known terminal temperature, subtract the chart value for the reference junction from the chart value for the sensing tip. Use the full NIST reference for intermediate values.', {
         anchor: 'type-k-millivolt-chart',
         table: [
@@ -6088,7 +6102,9 @@ export const guides = [
       }],
       ['Check the working range of the assembled probe', 'Reference tables describe the voltage–temperature relationship of the alloy pair. The usable range depends on wire diameter, sheath, insulation, junction, protection and atmosphere. Include continuous and peak temperatures, duration and thermal cycling when asking for a range.'],
       ['Match the process atmosphere', 'Assess moisture, oxidation and contaminants when using iron-based Type J. Type K performance also depends on atmosphere and protection, especially at elevated temperatures. Share the operating environment and any existing probe failure so the sheath and installation can be reviewed.'],
-      ['Check the measurement chain before switching types', 'Confirm the instrument supports the requested type and select its matching input mode. Check extension wire, connector and cold-junction compensation. Match the original probe’s insertion, sheath diameter and junction construction if response time or fit matters.'],
+      ['Can Type K and Type J thermocouples be interchanged?', 'Type K and Type J use different voltage-to-temperature curves. When changing types, configure a compatible instrument for the replacement probe and review its extension wire, connector and cold-junction compensation. Match the original probe’s insertion, sheath diameter and junction construction if response time or fit matters.', {
+        anchor: 'switching-thermocouple-types',
+      }],
     ],
   },
   {
