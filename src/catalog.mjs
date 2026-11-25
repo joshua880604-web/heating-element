@@ -9,6 +9,7 @@ const strip = '/heating-elements/strip-heaters/';
 const flexible = '/heating-elements/flexible-heaters/';
 const infrared = '/heating-elements/infrared-heaters/';
 const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
+const typeKMillivoltChart = '/guides/how-to-test-a-thermocouple/#type-k-millivolt-chart';
 
 const connectionHeadPhoto = {
   image: 'industrial-temperature-probes-photo', width: 750, height: 1000,
@@ -814,7 +815,7 @@ export const products = [
       'The NIST ITS-90 Type K reference function covers −270 to 1,372 °C. The usable range and measurement accuracy of an installed probe depend on its materials, the process and the input instrument.',
       { anchor: 'temperature-range', table: [
         ['Temperature or accuracy check', 'What it tells you'],
-        [['NIST Type K reference function', nistThermocoupleReference], 'Provides the expected thermoelectric voltage with the reference junction at 0 °C. Use the reference data or a Type K instrument for conversion.'],
+        [['Type K thermocouple millivolt chart', typeKMillivoltChart], 'Look up selected thermoelectric voltages with a 0 °C reference junction and see how to compare readings taken at room temperature.'],
         ['Probe assembly working range', 'Confirm continuous and peak exposure at the tip, process atmosphere, sheath and insulation, plus operating temperatures at the cable transition and connector.'],
         [['Installed accuracy and troubleshooting', '/guides/how-to-test-a-thermocouple/'], 'Check probe tolerance, insertion and the instrument input, reference junction compensation and wiring. Include the required accuracy over your working interval.'],
       ] },
@@ -2953,7 +2954,7 @@ export const guides = [
   },
   {
     slug: 'how-to-test-a-thermocouple', group: 'sensing', name: 'How to Test an Industrial Thermocouple',
-    description: 'Test industrial thermocouple continuity, sheath isolation and millivolt response. See how a Type K reference reading changes with terminal temperature.',
+    description: 'Test industrial thermocouple continuity, sheath isolation and voltage with a multimeter. Use the Type K millivolt chart with a 0 °C reference.',
     quoteProduct: 'thermocouples',
     related: ['thermocouples', 'type-k', 'threaded-thermocouple', 'thermocouple-extension-wire', 'thermocouple-connectors'],
     readNext: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-types'],
@@ -2975,7 +2976,34 @@ export const guides = [
           ['Type K example', 'Expected result'],
           [['100 °C tip and 0 °C reference', nistThermocoupleReference], 'Approximately +4.096 mV at the specified polarity.'],
           [['100 °C tip and 25 °C reference', nistThermocoupleReference], 'Approximately +3.096 mV, the difference between about 4.096 mV and 1.000 mV.'],
-          [['Tip and reference at the same temperature', '/glossary/#cold-junction-compensation'], 'Approximately 0 mV. A raw millivolt reading reflects the difference between the junction temperatures.'],
+          [['Tip and reference at the same temperature', '/glossary/#cold-junction-compensation'], 'Approximately 0 mV. The two reference voltages cancel when both junctions are at the same temperature.'],
+        ],
+      }],
+      ['Type K Thermocouple Millivolt Chart', 'These selected NIST ITS-90 values use a 0 °C (32 °F) reference junction. For a DC millivolt reading at another known terminal temperature, subtract the chart value for the reference junction from the chart value for the sensing tip. Use the full NIST reference for intermediate values.', {
+        anchor: 'type-k-millivolt-chart',
+        table: [
+          ['Sensing tip (°C)', 'Sensing tip (°F)', 'Voltage relative to 0 °C'],
+          ['−200 °C', '−328 °F', '−5.891 mV'],
+          ['−100 °C', '−148 °F', '−3.554 mV'],
+          ['−50 °C', '−58 °F', '−1.889 mV'],
+          ['0 °C', '32 °F', '0.000 mV'],
+          ['25 °C', '77 °F', '1.000 mV'],
+          ['50 °C', '122 °F', '2.023 mV'],
+          ['100 °C', '212 °F', '4.096 mV'],
+          ['150 °C', '302 °F', '6.138 mV'],
+          ['200 °C', '392 °F', '8.138 mV'],
+          ['300 °C', '572 °F', '12.209 mV'],
+          ['400 °C', '752 °F', '16.397 mV'],
+          ['500 °C', '932 °F', '20.644 mV'],
+          ['600 °C', '1112 °F', '24.905 mV'],
+          ['800 °C', '1472 °F', '33.275 mV'],
+          ['1000 °C', '1832 °F', '41.276 mV'],
+          ['1200 °C', '2192 °F', '48.838 mV'],
+        ],
+        links: [
+          ['Full NIST ITS-90 reference tables', nistThermocoupleReference],
+          ['View Type K thermocouple specifications', thermo + 'type-k/#temperature-range'],
+          ['Request a quote for a Type K probe', '/request-a-quote/?product=type-k'],
         ],
       }],
       ['Check the controller if the probe responds', 'Confirm the instrument is set to the correct thermocouple type. Compare its terminal polarity and extension cable designation with the probe. Check that the instrument reference compensation uses the temperature at the actual reference connections. For calibration, compare against a traceable reference at the required test points.'],

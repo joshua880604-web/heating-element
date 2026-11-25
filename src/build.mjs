@@ -332,7 +332,7 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
-function referenceSection([title, copy, { table, diagram, anchor } = {}], className = '') {
+function referenceSection([title, copy, { table, diagram, anchor, links } = {}], className = '') {
   const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
   return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
     ${table ? `<div class="reference-table"><table>
@@ -343,7 +343,8 @@ function referenceSection([title, copy, { table, diagram, anchor } = {}], classN
     ${diagram ? `<figure class="reference-diagram">
       <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
       <figcaption>${escape(diagram[0])}</figcaption>
-    </figure>` : ''}
+    </figure>` : ''}${links ? `
+    <ul class="link-list">${links.map(link => `<li>${cell(link)}</li>`).join('')}</ul>` : ''}
   </section>`;
 }
 
