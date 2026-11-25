@@ -96,7 +96,9 @@ const photoTones = [
       'ceramic-cartridge-heaters', 'silicon-carbide-heating-elements', 'mosi2-heating-elements',
       'band-heaters-with-thermocouples', 'spring-loaded-rtd-probes', 'thermocouple-connection-heads',
       'coil-immersion-heaters', 'dual-element-rtd-probes', 'radiator-heating-elements',
-      'finned-cartridge-heaters', 'distiller-heating-elements', 'autoclave-thermocouples'],
+      'finned-cartridge-heaters', 'distiller-heating-elements', 'autoclave-thermocouples',
+      'explosion-proof-thermocouples', 'thermocouple-feedthroughs', 'heater-control-panels',
+      'ibc-immersion-heaters', 'melt-bolt-thermocouples', 'square-cartridge-heaters'],
   },
   { id: 'blue-gray', source: [225, 227, 231], images: ['type-t', 'type-s', 'type-e'] },
 ];

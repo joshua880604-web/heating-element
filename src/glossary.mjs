@@ -140,6 +140,11 @@ export const glossary = [
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
+    id: 'explosion-proof-thermocouple', name: 'Explosion-Proof Thermocouple',
+    definition: 'A thermocouple configuration for a specified hazardous-area protection requirement. Verify the applicable approval and marking for the complete assembly and its installation conditions.',
+    related: ['Explosion-Proof Thermocouple Configurations', '/thermocouples/explosion-proof/'],
+  },
+  {
     id: 'extruder-barrel-heater', name: 'Extruder Barrel Heater',
     definition: 'A heater that fits around a barrel section on extrusion equipment. Its diameter, width, mounting and electrical rating are specified for the individual heating zone.',
     related: ['Extruder Barrel Heaters', '/heating-elements/band-heaters/extruder-barrel/'],
@@ -200,6 +205,11 @@ export const glossary = [
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
   },
   {
+    id: 'heater-control-panel', name: 'Heater Control Panel',
+    definition: 'A cabinet that houses the controls and power interfaces specified for one or more heater circuits. Define the supply, zone loads, sensor inputs and protection requirements.',
+    related: ['Heater Control Panels', '/temperature-controls/heater-control-panels/'],
+  },
+  {
     id: 'heater-insulation-resistance', name: 'Heater Insulation Resistance',
     definition: 'The electrical resistance of the insulation path between a heater’s live conductors and its metallic sheath or other accessible metal parts. Test conditions, moisture and temperature affect the measured value.',
     related: ['Heating Element Resistance & Test Guide', '/guides/heating-element-resistance/#cold-and-insulation-resistance'],
@@ -218,6 +228,11 @@ export const glossary = [
     id: 'hot-runner-coil-heater', name: 'Hot Runner Coil Heater',
     definition: 'A coiled heating element wrapped around a hot runner nozzle in molding equipment. Nozzle fit, heated length, lead exit and sensor position affect the specification.',
     related: ['Coil & Hot Runner Heaters', '/heating-elements/coil-heaters/'],
+  },
+  {
+    id: 'ibc-tote-immersion-heater', name: 'IBC Tote Immersion Heater',
+    definition: 'A submerged element mounted through an opening in a compatible intermediate bulk container. Review the support, tube clearance, liquid level and container material for the installation.',
+    related: ['IBC Tote Immersion Heaters', '/heating-elements/immersion-heaters/ibc-tote/'],
   },
   {
     id: 'iec-60584', name: 'IEC 60584',
@@ -258,6 +273,11 @@ export const glossary = [
     id: 'kiln-thermocouple', name: 'Kiln Thermocouple',
     definition: 'A thermocouple assembly that measures temperature at a specified location in a kiln. The probe type, protection tube, hot-face projection and firing conditions determine the assembly requirements.',
     related: ['Kiln Thermocouples', '/thermocouples/high-temperature/kiln/'],
+  },
+  {
+    id: 'melt-bolt-thermocouple', name: 'Melt Bolt Thermocouple',
+    definition: 'A threaded temperature probe whose sensing tip is located in a polymer melt channel. Specify the thread, seat, tip position and process conditions using the equipment drawing.',
+    related: ['Melt Bolt Thermocouples', '/thermocouples/melt-bolt/'],
   },
   {
     id: 'mica-strip-heater', name: 'Mica Strip Heater',
@@ -400,6 +420,11 @@ export const glossary = [
     related: ['Spring-Loaded RTD Probes', '/temperature-sensors/rtd/spring-loaded/'],
   },
   {
+    id: 'square-cartridge-heater', name: 'Square Cartridge Heater',
+    definition: 'A cartridge heater with a square cross-section for a specified tool pocket. Match the dimensions across flats, corner geometry and thermal contact faces.',
+    related: ['Square Cartridge Heaters', '/heating-elements/cartridge-heaters/square/'],
+  },
+  {
     id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
     definition: 'A resistance temperature detector with a contact pad or similar body that sits against an equipment surface. Contact quality and heat exchange with the surroundings affect the installed reading.',
     related: ['Surface-Mount RTD Probes', '/temperature-sensors/rtd/surface-mount/'],
@@ -423,6 +448,11 @@ export const glossary = [
     id: 'thermocouple-extension-wire', name: 'Thermocouple Extension Wire',
     definition: 'A cable that extends a thermocouple circuit to an instrument or terminal block. Its extension-grade conductors match the nominal alloys of the thermocouple pair and are rated for a specified temperature interval.',
     related: ['Thermocouple Extension & Compensating Wire', '/temperature-sensors/accessories/extension-wire/'],
+  },
+  {
+    id: 'thermocouple-feedthrough', name: 'Thermocouple Feedthrough',
+    definition: 'A sealed interface for routing thermocouple circuits through a chamber wall. Specify the flange, seal performance, contact materials and polarity of each pair.',
+    related: ['Thermocouple Vacuum Feedthroughs', '/temperature-sensors/accessories/vacuum-feedthroughs/'],
   },
   {
     id: 'thermocouple-polarity', name: 'Thermocouple Polarity',
