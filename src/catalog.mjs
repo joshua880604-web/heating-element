@@ -7852,6 +7852,16 @@ export const guides = [
         anchor: 'ssr-heat-sink',
         links: [['Review heater control panel requirements', '/temperature-controls/heater-control-panels/']],
       }],
+      ['Example load calculation for an SSR-controlled heater', 'A single-phase resistive heater rated 3,000 W at 240 V draws 12.5 A at its rated conditions. Use that load current and the installation conditions to read the relay’s current derating and loss curves.', {
+        anchor: 'ssr-heater-load-example',
+        table: [
+          ['Step', 'Example or required input'],
+          ['Calculate the nominal load current', '3,000 W ÷ 240 V = 12.5 A. Check any specified cold-start current and supply variation separately.'],
+          ['Review the current rating at cabinet temperature', 'Use the expected maximum temperature at the relay and the installed heat sink. Check the rated current under those conditions and the required control duty.'],
+          ['Add losses for simultaneous zones', 'If two relays are expected to dissipate 16 W and 10 W at their loads, include 26 W from those relays in the cabinet thermal review. Use the actual model data for the design.'],
+        ],
+        links: [['Compare solid-state relay specifications', '/temperature-controls/solid-state-relays/#specifications']],
+      }],
       ['How to check an SSR in a heater circuit', 'Isolate all power sources and verify that the equipment is de-energized before checking terminals. An SSR can pass small off-state leakage current and can fail open or shorted. Use the equipment’s specified disconnect for isolation.', {
         anchor: 'check-a-heater-ssr',
         table: [
@@ -7926,6 +7936,14 @@ export const guides = [
           ['3. Check the measurement chain', 'If both readings are within the specified tolerance, verify the controller’s configured curve and wiring. If the reading is open or unstable, check the terminals and cable before evaluating the sensor.'],
         ],
         tableNote: 'Use two resistance readings for an initial check. Before accepting a replacement, compare its specified resistance–temperature curve and tolerance with the controller requirements across the intended operating range.',
+      }],
+      ['Example two-point check for a 10 kΩ NTC probe', 'Suppose the controller requires a 10 kΩ probe at 25 °C and specifies about 3.59 kΩ at 50 °C. Compare readings from the disconnected probe at both stable temperatures, using the tolerance in the equipment documentation.', {
+        anchor: 'ntc-two-point-resistance-check',
+        table: [
+          ['Example result', 'What it tells you'],
+          ['10.0 kΩ at 25 °C and 3.59 kΩ at 50 °C', 'The readings agree with the nominal curve at these two points. If the installed display still reads incorrectly, check the controller curve and harness.'],
+          ['10.0 kΩ at 25 °C and 4.10 kΩ at 50 °C', 'The 25 °C point matches. Verify the reference temperature and test setup, then check the specified curve and tolerance to explain the difference at 50 °C.'],
+        ],
       }],
       ['NTC probe selection by application', 'Use the controller’s specified resistance curve in each application. Then check how the probe contacts the temperature target and what the housing, seal and lead will be exposed to.', {
         anchor: 'ntc-probe-applications',
@@ -8058,8 +8076,25 @@ export const guides = [
           ['Sensing end      Instrument', '┌── Alloy A ───────── (+)', '│', '└── Alloy B ───────── (−)'],
         ],
       }],
-      ['What is a reference junction?', 'The reference junction is where the thermocouple conductors transition to the input circuit, often at the instrument terminals. Its temperature can differ from the sensing tip and can change as the enclosure warms up. Cold-junction compensation uses the measured reference temperature to correct the voltage before applying the temperature conversion.'],
-      ['How much voltage does a thermocouple produce?', 'Thermocouple signals are typically measured in millivolts. For example, the NIST ITS-90 reference table gives about 4.096 mV for a Type K junction at 100 °C with a 0 °C reference. If the reference is instead at 25 °C, the measured voltage is about 3.096 mV. The instrument compensates for that reference temperature and uses the Type K reference function to recover the sensing temperature.'],
+      ['What is a reference junction?', [
+        'The ', ['reference junction', '/glossary/#reference-junction'],
+        ' is where the thermocouple conductors transition to the input circuit, often at the instrument terminals. Its temperature can differ from the sensing tip and can change as the enclosure warms up. ',
+        ['Cold-junction compensation', '/glossary/#cold-junction-compensation'],
+        ' uses the measured reference temperature to correct the voltage before applying the temperature conversion.',
+      ]],
+      ['How much voltage does a thermocouple produce?', [
+        'A Type K junction at 100 °C gives about 4.096 mV with a 0 °C reference. When the input terminals warm up, the measured voltage falls even if the tip stays at 100 °C. With ',
+        ['NIST ITS-90 reference values', nistThermocoupleReference],
+        ', the instrument adds the reference voltage for the terminal temperature to the measured voltage, then converts the sum to the sensing temperature.',
+      ], {
+        table: [
+          ['Terminal temperature', 'Reference value for terminals', 'Measured voltage with tip at 100 °C'],
+          ['0 °C', '0.000 mV', '4.096 mV'],
+          ['25 °C', '1.000 mV', '3.096 mV'],
+          ['50 °C', '2.023 mV', '2.073 mV'],
+        ],
+        links: [['Type K millivolt chart and multimeter test', typeKMillivoltChart]],
+      }],
       ['What changes when the junction is built into a probe?', 'A probe adds mechanical protection, mounting and a wiring connection around the sensing junction. Those choices affect where the probe measures, how fast it responds and what environments it can tolerate.', {
         table: [
           ['Part of the assembly', 'What it affects'],
@@ -8130,10 +8165,15 @@ export const guides = [
         table: [
           ['Type', 'NIST ITS-90 reference function interval'],
           [['K', thermo + 'type-k/#temperature-range'], ['−270 to 1,372 °C', nistThermocoupleReference]],
+          [['J', thermo + 'type-j/'], ['−210 to 1,200 °C', nistThermocoupleReference]],
+          [['T', thermo + 'type-t/'], ['−270 to 400 °C', nistThermocoupleReference]],
           [['N', thermo + 'type-n/'], ['−270 to 1,300 °C', nistThermocoupleReference]],
+          [['E', thermo + 'type-e/'], ['−270 to 1,000 °C', nistThermocoupleReference]],
           [['R', thermo + 'type-r/'], ['−50 to 1,768.1 °C', nistThermocoupleReference]],
+          [['S', thermo + 'type-s/'], ['−50 to 1,768.1 °C', nistThermocoupleReference]],
           [['B', thermo + 'type-b/'], ['0 to 1,820 °C', nistThermocoupleReference]],
         ],
+        tableNote: 'These are reference function intervals. Use the specified working limits of the complete probe, cable and instrument when selecting an assembly.',
       }],
       ['Define the complete assembly', 'The alloy type is only one input. Sheath, insulation, junction, connector and extension wire can impose their own limits. Include expected peak temperature, probe depth, vibration and the mounting interface in a request.'],
       ['Match the mounting to the sensing point', 'For a threaded port, specify the thread and measure the desired insertion from the installed reference face. For spring-loaded contact, describe the mating feature and installed travel. A drawing that identifies the sensing point helps connect these dimensions to the probe design.', {
@@ -8279,7 +8319,14 @@ export const guides = [
           ['Request a quote for a Type K probe', '/request-a-quote/?product=type-k'],
         ],
       }],
-      ['Check the controller if the probe responds', 'Confirm the instrument is set to the correct thermocouple type. Compare its terminal polarity and extension cable designation with the probe. Check that the instrument reference compensation uses the temperature at the actual reference connections. For calibration, compare against a traceable reference at the required test points.'],
+      ['Check the controller if the probe responds', 'Suppose a Type K probe gives about +3.10 mV on the bench with a 100 °C tip and 25 °C reference connections, yet the installed channel reads low. Check the receiving input separately using a compatible simulator and its specified reference-junction setup. Then review the extension circuit and probe installation.', {
+        table: [
+          ['Check', 'What the result helps isolate'],
+          [['Simulate Type K at the instrument input', '/temperature-controls/thermocouple-calibrators/'], 'If the display differs from the simulator setpoint beyond the specified limit, review the configured type, polarity, compensation setting and input accuracy.'],
+          ['Verify the extension circuit separately', 'If the direct input check passes, follow the approved test procedure for the extension circuit. Check the cable designation, splices and temperature at the actual reference connections.'],
+          [['Compare the installed probe with a reference', '/guides/temperature-sensor-calibration/'], 'If the input and wiring checks pass, verify sensing position, thermal contact and process gradients. Compare at the required test points before accepting or replacing the probe.'],
+        ],
+      }],
     ],
     faq: [
       ['Does a continuity reading prove a thermocouple is accurate?', 'A continuity reading checks the electrical path. Check temperature response against a reference under controlled conditions and apply the accuracy and acceptance requirements for the installed measurement.'],
@@ -8383,7 +8430,16 @@ export const guides = [
     readNext: ['immersion-heater-sizing', 'heating-element-watt-density', 'solid-state-relay-heater-guide'],
     related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters', 'industrial-convection-heaters', 'pvc-conduit-heaters', 'industrial-unit-heaters', 'ceramic-fiber-heaters', 'heat-trace-controllers', 'hot-runner-temperature-controllers', 'industrial-radiant-heaters', 'vacuum-chamber-heaters', 'aluminum-platen-heaters'],
     sections: [
-      ['Start with heat transfer', 'An element may heat a solid tool by contact, heat fluid by immersion, heat air moving around it or transfer heat by radiation. Define the medium and typical operating cycle first.'],
+      ['Start with heat transfer', 'Identify where the heat must go and how it will reach the load. Use the installation and operating cycle to select a heater family for review.', {
+        table: [
+          ['Where heat goes', 'Heater family to evaluate', 'First detail to confirm'],
+          ['Into a solid mold or die', ['Cartridge heater', cartridge], 'Bore diameter, tolerance and depth.'],
+          ['Against the outside of a barrel', ['Band heater', band], 'Barrel diameter, available width and obstructions.'],
+          ['Into moving air', ['Finned tubular heater', tubular + 'finned/'], 'Minimum airflow and installation envelope.'],
+          ['Directly into liquid in a tank', ['Immersion heater', immersion], 'Liquid composition, minimum fill and available port.'],
+          ['Into a target across an air gap', ['Infrared heater', infrared], 'Emitter-to-target distance, coverage and target surface.'],
+        ],
+      }],
       ['Fit the available space', 'Record the installation envelope, heated length, mounting points and lead exit. Cartridge heaters are often fitted into bores, while tubular elements can be formed around a defined envelope.'],
       ['Define the electrical and thermal requirements', [
         'Specify voltage, phase, operating temperature and power if known. ',
@@ -8843,7 +8899,19 @@ export const guides = [
           [['Tighter error budget or long cable', '/guides/pt100-wiring-diagram/'], 'Check whether the instrument supports three-wire compensation with matched leads or four-wire sensing. Include element tolerance, instrument accuracy and self-heating in the comparison.'],
         ],
       }],
-      ['Check excitation and self-heating', 'An RTD dissipates electrical power from the measuring current. At the same current a Pt1000 dissipates more power than a Pt100 at the same temperature. Use the excitation specified for the input and element. Probe size, mounting and the process medium affect how much sensor temperature rises.'],
+      ['Check excitation and self-heating', [
+        'Measuring current dissipates power in the element according to P = I²R. The table shows the calculated power at 0 °C. The resulting ',
+        ['RTD self-heating', '/glossary/#rtd-self-heating'],
+        ' in degrees depends on how well the probe transfers heat to its surroundings.',
+      ], {
+        table: [
+          ['RTD at 0 °C', 'Example current', 'Power in the element'],
+          ['Pt100 at 100 Ω', '0.50 mA', '25 µW'],
+          ['Pt1000 at 1,000 Ω', '0.50 mA', '250 µW'],
+          ['Pt1000 at 1,000 Ω', '0.16 mA', '25.6 µW'],
+        ],
+        tableNote: 'The values illustrate the effect of excitation current. Use the current specified or provided by the instrument and check it against the probe’s rating and self-heating data in the intended installation.',
+      }],
       ['Check whether the sensors can be interchanged', 'Choose the type supported by the controller or transmitter. A replacement also needs the correct wire count, tolerance class, insertion dimensions and sheath. The complete error budget includes the element, lead wiring, electronics, mounting and any thermal gradients.', { anchor: 'pt100-pt1000-compatibility' }],
     ],
     faq: [
@@ -9035,7 +9103,18 @@ export const guides = [
         'Mark the ',
         ['thermowell insertion length', '/glossary/#thermowell-insertion-length'],
         ' from the specified mounting reference to the tip. Record the actual projection beyond the inside pipe wall separately. Put the tip where it can sample representative flow and confirm that the proposed projection is mechanically suitable for that flow. Check bore diameter, depth and sensing-tip seating separately, and leave room for removal.',
-      ], { anchor: 'thermowell-insertion' }],
+      ], {
+        anchor: 'thermowell-insertion',
+        diagram: [
+          'Example along the well axis. The face-to-tip insertion length is 150 mm. The inner pipe wall is 40 mm from that face, giving 110 mm of projection into the process. Use the actual mounting references and flow conditions to review the proposed length.',
+          [
+            'Face   Inner wall          Tip',
+            ' |─────────|────────────────|',
+            ' |  40 mm  |     110 mm     |',
+            ' |          150 mm          |',
+          ],
+        ],
+      }],
       ['Fit a local dial thermometer', 'With a bimetal dial thermometer, verify both the thermowell connection to the process and the thermometer connection at the top of the well. Measure the usable bore from the instrument seating reference. Show where the sensing section will sit and confirm that the dial faces the operator when installed.', {
         links: [['Bimetal thermometer drawing checklist', '/temperature-sensors/bimetal-thermometers/#bimetal-thermometer-drawing']],
       }],
@@ -9098,7 +9177,15 @@ export const guides = [
           ['Review tank layout and element selection', immersion],
         ],
       }],
-      ['Distinguish warm-up, holding and flow-through loads', 'For holding temperature, estimate the steady heat losses and any heat carried away by the process. For continuous flow, multiply mass flow in kg/s by specific heat and the required temperature rise to estimate ideal power in kW. Check conditions across the flow range, as low flow can raise element surface temperature at a given power.'],
+      ['Distinguish warm-up, holding and flow-through loads', 'Warm-up depends on energy and allowed time. Holding conditions depend on ongoing heat losses and any heat removed by the process. Continuous flow depends on mass flow and the required rise in temperature.', {
+        table: [
+          ['Operating duty', 'Water example', 'Heat input for the stated conditions'],
+          ['Batch warm-up', 'Bring 100 L from 20 °C to 60 °C in one hour.', 'About 4.65 kW for the water. Account for tank heating and losses during warm-up.'],
+          ['Hold a tank at temperature', 'A covered tank at 60 °C loses an estimated 0.8 kW with no incoming cold water.', 'About 0.8 kW to offset those losses. Account for makeup water or other process loads if present.'],
+          [['Continuous flow', circulation], 'Heat 3 L/min from 20 °C to 60 °C. Approximate the mass flow as 0.05 kg/s.', '0.05 × 4.186 × 40 ≈ 8.37 kW for the water before heat losses. Check the full flow range and allowable sheath temperature.'],
+        ],
+        tableNote: 'The examples illustrate different operating duties. Evaluate the loads that occur together and verify heater construction at the lowest liquid level or flow.',
+      }],
       ['Match the heater to the tank opening', 'Check the available opening, insertion clearance and how the heater can be removed for service.', {
         table: [
           ['Mount', 'What to supply'],
