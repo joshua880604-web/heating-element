@@ -330,6 +330,11 @@ export const glossary = [
     related: ['Finned Cartridge Heaters', '/heating-elements/cartridge-heaters/finned/'],
   },
   {
+    id: 'finned-ceramic-strip-heater', name: 'Finned Ceramic Strip Heater',
+    definition: 'A ceramic-insulated strip heating element in a flat metal channel with fins for heating moving air. Specify the active span, fin envelope, mounting, rated circuit and airflow.',
+    related: ['Finned Ceramic Strip Heaters', '/heating-elements/strip-heaters/finned/ceramic/#finned-ceramic-strip-air-path'],
+  },
+  {
     id: 'finned-strip-heater', name: 'Finned Strip Heater',
     definition: 'A flat-bodied electric heating element with fins that add surface area for air heating. The strip and fin profile determine the mounting and airflow clearances.',
     related: ['Finned Strip Heaters', '/heating-elements/strip-heaters/finned/'],
@@ -608,6 +613,11 @@ export const glossary = [
     id: 'inline-oil-heater', name: 'In-Line Oil Heater',
     definition: 'An electric circulation heater that transfers heat to oil as it passes through a chamber. Specify the oil properties, flow, temperature rise and pressure limits.',
     related: ['In-Line Oil Heaters', '/heating-elements/circulation-heaters/inline-oil/'],
+  },
+  {
+    id: 'inline-duct-heater', name: 'Inline Duct Heater',
+    definition: 'An electric heater bank installed in a separate section between upstream and downstream ductwork. Specify the connections, airflow, required temperature rise and permitted pressure drop.',
+    related: ['Inline Duct Heaters', '/heating-elements/duct-heaters/inline/#inline-duct-heater-sizing-and-fit'],
   },
   {
     id: 'insertion-length', name: 'Insertion Length',
@@ -995,6 +1005,11 @@ export const glossary = [
     related: ['Stainless Steel Immersion Heaters', '/heating-elements/immersion-heaters/stainless-steel/'],
   },
   {
+    id: 'stainless-steel-tubular-heater', name: 'Stainless Steel Tubular Heater',
+    definition: 'A resistive element with a straight or formed stainless steel sheath. The grade, active surface area, geometry and installation conditions define the selection.',
+    related: ['Stainless Steel Tubular Heaters', '/heating-elements/tubular-heaters/stainless-steel/#stainless-tubular-heater-sheath-selection'],
+  },
+  {
     id: 'shielded-thermocouple-wire', name: 'Shielded Thermocouple Wire',
     definition: 'An extension or compensating cable with a conductive screen around its signal pair. Match the cable designation, foil or braid construction, drain wire and shield terminations to the equipment.',
     related: ['Shielded Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/shielded/'],
@@ -1200,9 +1215,19 @@ export const glossary = [
     related: ['Type K Thermocouples', '/thermocouples/type-k/'],
   },
   {
+    id: 'type-k-thermocouple-wire', name: 'Type K Thermocouple Wire',
+    definition: 'Nickel–chromium and nickel–aluminum sensing conductors for Type K circuits. Specify sensing grade or an approved KX extension grade and verify cable polarity and temperature limits.',
+    related: ['Type K Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-k/#type-k-wire-grade-and-polarity'],
+  },
+  {
     id: 'type-n-thermocouple', name: 'Type N Thermocouple',
     definition: 'A thermocouple that pairs a nickel–chromium–silicon positive leg with a nickel–silicon negative leg. It is considered for elevated-temperature applications where stability matters.',
     related: ['Type N Thermocouples', '/thermocouples/type-n/'],
+  },
+  {
+    id: 'type-n-thermocouple-wire', name: 'Type N Thermocouple Wire',
+    definition: 'A nickel–chromium–silicon positive and nickel–silicon negative pair for Type N circuits. Specify the sensing pair or approved NX extension grade and the temperatures at their connections.',
+    related: ['Type N Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-n/#type-n-wire-hot-zone-transition'],
   },
   {
     id: 'type-r-thermocouple', name: 'Type R Thermocouple',
@@ -1218,6 +1243,11 @@ export const glossary = [
     id: 'type-t-thermocouple', name: 'Type T Thermocouple',
     definition: 'A copper and copper–nickel thermocouple often used for lower-temperature measurement. Select the probe, lead insulation and termination for the installed environment.',
     related: ['Type T Thermocouples', '/thermocouples/type-t/'],
+  },
+  {
+    id: 'type-t-thermocouple-wire', name: 'Type T Thermocouple Wire',
+    definition: 'A copper positive and copper–nickel negative pair for a Type T measuring circuit. Identify the sensing section and any TX extension run, and check the insulation and connection temperatures.',
+    related: ['Type T Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-t/#type-t-wire-for-cold-routing'],
   },
   {
     id: 'u-shaped-tubular-heating-element', name: 'U-Shaped Tubular Heating Element',
