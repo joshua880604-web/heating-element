@@ -40,6 +40,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bare-wire-thermocouple', name: 'Bare Wire Thermocouple',
+    definition: 'Two uninsulated thermocouple alloy wires joined at a measuring bead. The fixture or insulating spacers support and separate the bare conductors away from the junction.',
+    related: ['Bare Wire Thermocouples', '/thermocouples/fine-wire/bare-wire/'],
+  },
+  {
     id: 'bearing-metal-thermocouple', name: 'Bearing Metal Thermocouple',
     definition: 'A thermocouple fitted to a specified point in a bearing pad or shell. Match the sensing depth, pocket, retention, lubrication exposure and monitor input to the assembly.',
     related: ['Bearing Metal Thermocouples', '/thermocouples/bearing-metal/'],
@@ -465,6 +470,11 @@ export const glossary = [
     related: ['Industrial Digital Thermometers', '/temperature-sensors/digital-thermometers/'],
   },
   {
+    id: 'industrial-oven-thermocouple', name: 'Industrial Oven Thermocouple',
+    definition: 'A sheathed sensor arranged to measure temperature at a specified position in an industrial oven chamber. Mounting, insertion depth, airflow and radiation influence the installed reading.',
+    related: ['Industrial Oven Thermocouples', '/thermocouples/industrial-ovens/'],
+  },
+  {
     id: 'industrial-radiant-space-heater', name: 'Industrial Radiant Space Heater',
     definition: 'A heater that directs radiant energy toward a work area. Mounting height, orientation and obstructions affect the area it covers.',
     related: ['Industrial Electric Radiant Space Heaters', '/heating-elements/infrared-heaters/space-heaters/'],
@@ -613,6 +623,11 @@ export const glossary = [
     id: 'platinum-rhodium-thermocouple', name: 'Platinum–Rhodium Thermocouple',
     definition: 'A platinum-based thermocouple family covering Types S, R and B. Each type has its own alloy pair and temperature-to-voltage reference relationship.',
     related: ['Platinum–Rhodium Thermocouples', '/thermocouples/high-temperature/#platinum-rhodium'],
+  },
+  {
+    id: 'parts-washer-heating-element', name: 'Parts Washer Heating Element',
+    definition: 'A resistive immersion heater for the wash sump of an aqueous parts cleaner. Operating fluid levels, cleaning chemistry, deposits, pump clearance and the mount define the design.',
+    related: ['Parts Washer Heating Elements', '/heating-elements/immersion-heaters/parts-washers/'],
   },
   {
     id: 'pipe-clamp-thermocouple', name: 'Pipe Clamp Thermocouple',
@@ -825,6 +840,11 @@ export const glossary = [
     related: ['Steam Iron Heating Elements', '/heating-elements/cast-in-heaters/steam-irons/'],
   },
   {
+    id: 'straight-tubular-heating-element', name: 'Straight Tubular Heating Element',
+    definition: 'An unbent metal-sheathed resistance heater with an active length along its axis. The overall length can also include cold ends and electrical terminals.',
+    related: ['Straight Tubular Heating Elements', '/heating-elements/tubular-heaters/straight/'],
+  },
+  {
     id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
     definition: 'A resistance temperature detector with a contact pad or similar body that sits against an equipment surface. Contact quality and heat exchange with the surroundings affect the installed reading.',
     related: ['Surface-Mount RTD Probes', '/temperature-sensors/rtd/surface-mount/'],
@@ -960,6 +980,11 @@ export const glossary = [
     related: ['Threaded Thermowells', '/temperature-sensors/accessories/thermowells/threaded/'],
   },
   {
+    id: 'toaster-oven-heating-element', name: 'Toaster Oven Heating Element',
+    definition: 'An electric heater for an upper or lower zone in a countertop oven. A tubular configuration is specified by its metal sheath profile, cavity clearances, mounting and watts per circuit.',
+    related: ['Toaster Oven Heating Elements', '/heating-elements/tubular-heaters/toaster-ovens/'],
+  },
+  {
     id: 'tube-skin-thermocouple', name: 'Tube Skin Thermocouple',
     definition: 'A probe with a contact shoe that measures the external metal temperature at a specified point on a tube. Shoe curvature, attachment and heat exchange at the contact affect the reading.',
     related: ['Tube Skin Thermocouples', '/thermocouples/surface-mount/tube-skin/'],
@@ -1033,6 +1058,11 @@ export const glossary = [
     id: 'washing-machine-heating-element', name: 'Washing Machine Heating Element',
     definition: 'A tubular heater that transfers heat to wash water in a washing machine tub. Its installed profile, gasket, retention and terminals must match the washer assembly.',
     related: ['Washing Machine Heating Elements', '/heating-elements/immersion-heaters/washing-machine/'],
+  },
+  {
+    id: 'washer-thermocouple', name: 'Washer Thermocouple',
+    definition: 'A surface temperature sensor built into a flat ring held beneath a fastener. The ring thickness, seating face and edge clearance for the lead are part of the installed fit.',
+    related: ['Washer Thermocouples', '/thermocouples/surface-mount/bolt-on/washer/'],
   },
   {
     id: 'waterproof-thermocouple', name: 'Waterproof Thermocouple',
