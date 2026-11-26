@@ -385,10 +385,12 @@ function related(ids) {
   return `<ul class="link-list">${ids.map(id => lookup.get(id)).filter(Boolean).map(product => `<li><a href="${product.path}">${escape(product.name)} ${icon('arrow')}</a></li>`).join('')}</ul>`;
 }
 
-function selectionGuides(slugs) {
-  return `<ul class="link-list">${slugs.map(slug => {
+function selectionGuides(references) {
+  return `<ul class="link-list">${references.map(reference => {
+    const [slug, anchor, label] = Array.isArray(reference) ? reference : [reference];
     const guide = guideLookup.get(slug);
-    return `<li><a href="/guides/${guide.slug}/">${escape(guide.name)} ${icon('arrow')}</a></li>`;
+    const path = `/guides/${guide.slug}/${anchor ? `#${anchor}` : ''}`;
+    return `<li><a href="${escape(path)}">${escape(label ?? guide.name)} ${icon('arrow')}</a></li>`;
   }).join('')}</ul>`;
 }
 
@@ -673,15 +675,36 @@ const guideGroups = [
   ['Temperature Measurement', guides.filter(guide => guide.group === 'sensing')],
   ['Electric Heating', guides.filter(guide => guide.group === 'heating')],
 ];
+const guideTasks = [
+  ['Test or Wire a Sensor', [
+    ['how-to-test-a-thermocouple', 'thermocouple-test-setup', 'Test a thermocouple with a multimeter'],
+    ['thermocouple-wire-color-code', 'thermocouple-wire-colors', 'Look up thermocouple wire colors'],
+    ['pt100-wiring-diagram', 'pt100-element-ends', 'Find 2-, 3- and 4-wire Pt100 diagrams'],
+    ['ntc-thermistor-guide', 'test-ntc-thermistor', 'Check an NTC thermistor probe'],
+  ]],
+  ['Choose a Sensor or Heater', [
+    ['thermocouple-types', 'thermocouple-types-chart', 'Compare thermocouple types'],
+    ['thermocouple-vs-rtd', 'thermocouple-rtd-selection-examples', 'Choose between a thermocouple and an RTD'],
+    ['thermowell-selection-guide', 'thermowell-insertion', 'Measure thermowell insertion length'],
+    ['choose-a-heating-element', 'start-with-heat-transfer', 'Match a heating element to the application'],
+  ]],
+  ['Calculate Heater Requirements', [
+    ['immersion-heater-sizing', 'water-heating-calculator', 'Water heat-up power or time'],
+    ['heating-element-watt-density', 'watt-density-calculator', 'Tubular heater watt density'],
+    ['heating-element-resistance', 'heater-resistance-calculator', 'Heating element resistance'],
+  ]],
+];
 await page('/guides/', 'Thermocouple, RTD & Heating Element Guides', 'Find thermocouple testing steps, Pt100 wiring diagrams, thermowell selection and calculators for immersion heater sizing and watt density.', `
 ${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Test a thermocouple, find wiring diagrams, compare sensors, and calculate heat-up power and heater watt density.', guidesTrail)}
 <div class="section"><div class="container guide-library">
+  <section class="guide-tasks" aria-labelledby="guide-tasks-title">
+    <h2 id="guide-tasks-title">Find a Guide by Task</h2>
+    <div class="resource-grid">${guideTasks.map(([heading, references]) =>
+      `<section class="spec-card"><h3>${escape(heading)}</h3>${selectionGuides(references)}</section>`).join('')}</div>
+  </section>
   ${guideGroups.map(([heading, entries]) => `<section><h2>${heading}</h2><div class="resource-grid">
     ${entries.map(guide => `<article class="resource-card"><a href="/guides/${guide.slug}/"><h3>${escape(guide.name)}</h3><p>${escape(guide.description)}</p><span class="card-action">Read the guide ${icon('arrow')}</span></a></article>`).join('')}
   </div></section>`).join('')}
-  ${questionsSection('Which Guide Should I Read First?', [
-    ['Where should I start for a sensor or heater project?', 'For a sensor, start with thermocouple type and instrument compatibility, then review junction construction or compare an RTD. For a heater, match the heater family to the medium and mounting, then use the watt density guide to review the active surface area.'],
-  ])}
   ${btn('Browse the Glossary', '/glossary/', 'secondary')}
 </div></div>
 `, { trail: guidesTrail, type: 'CollectionPage', items: guideGroups.flatMap(([, entries]) =>

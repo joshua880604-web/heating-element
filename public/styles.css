@@ -1013,8 +1013,16 @@ svg.photo-filters {
 .guide-library > section > h2 {
   margin-bottom: 16px;
 }
-.guide-library > .use-case {
-  margin-top: 0;
+.guide-tasks .spec-card {
+  padding: 16px 20px 12px;
+  background: #f4f6f7;
+}
+.guide-tasks .link-list {
+  margin-top: 8px;
+}
+.guide-tasks .link-list a {
+  min-height: 44px;
+  font-size: 0.875rem;
 }
 .guide-library > .button {
   justify-self: start;

@@ -130,7 +130,14 @@ export const products = [
       ['How often do industrial thermocouples need replacement?', 'Service life depends on the probe construction, temperature cycling, atmosphere, vibration and handling. Review replacement or calibration intervals against the process tolerance. Record the probe’s operating time, exposure at peak temperatures and last accepted calibration check when reviewing the interval.'],
     ],
     related: ['type-k', 'mineral-insulated', 'high-temperature', 'sensor-accessories'],
-    guides: ['how-thermocouples-work', 'thermocouple-types', 'how-to-test-a-thermocouple', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-wire-color-code', 'thermocouple-vs-rtd'],
+    guides: [
+      'how-thermocouples-work',
+      ['thermocouple-types', 'thermocouple-types-chart', 'Compare thermocouple types by application'],
+      ['how-to-test-a-thermocouple', 'thermocouple-test-setup', 'Test a thermocouple with a multimeter'],
+      ['grounded-vs-ungrounded-thermocouples', 'thermocouple-junction-comparison', 'Compare grounded, ungrounded and exposed junctions'],
+      'thermocouple-wire-color-code',
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'tubular-heaters', path: tubular, group: 'tubular', name: 'Tubular Heaters', image: 'tubular-heaters',
@@ -189,7 +196,11 @@ export const products = [
       ['Can the same tubular heater design be used in air and liquid?', 'Review each application separately. Airflow, fluid type and movement, sheath compatibility and watt density determine the sheath temperature and how effectively the element transfers heat.'],
     ],
     related: ['finned-tubular-heaters', 'immersion-heaters', 'duct-heaters', 'defrost-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
+    guides: [
+      ['choose-a-heating-element', 'industrial-tubular-heater-options', 'Compare tubular heater shapes and uses'],
+      ['heating-element-watt-density', 'watt-density-calculator', 'Calculate tubular heater watt density'],
+      ['heating-element-resistance', 'heater-resistance-calculator', 'Calculate nominal heater resistance'],
+    ],
   },
   {
     id: 'finned-tubular-heaters', path: tubular + 'finned/', parent: 'tubular-heaters', group: 'tubular', name: 'Finned Tubular Heaters', image: 'finned-tubular-heaters',
@@ -236,7 +247,10 @@ export const products = [
       ],
     },
     related: ['tubular-heaters', 'industrial-oven-heating-elements', 'duct-heaters', 'finned-strip-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: [
+      'choose-a-heating-element',
+      ['heating-element-watt-density', 'sheath-temperature-in-service', 'Check watt density and sheath temperature in moving air'],
+    ],
     questions: [
       ['When does a finned tubular heater make sense?', 'Consider a finned element when the heater will transfer heat to moving air. Fins provide additional surface area. Specify the minimum airflow, maximum inlet temperature, mounting clearance and maximum fin diameter so the assembly can be evaluated in the duct.'],
       ['Why does minimum airflow matter for a finned tubular heater?', 'At the same electrical power, less air moving across the fins can raise the sheath temperature. Provide the lowest airflow expected while the heater is powered, including conditions at startup or with a loaded filter.'],
@@ -420,7 +434,12 @@ export const products = [
       ['What should I include when requesting an oil immersion heater?', 'For a tank, provide the oil grade, working volume, starting and target temperatures, and required warm-up time. For a circulating system, provide minimum flow and desired outlet temperature. Include the mounting, electrical supply and any deposits or fouling concerns so that the sheath and surface watt density can be reviewed.'],
     ],
     related: ['flanged-immersion', 'screw-plug-immersion', 'circulation-heaters', 'tubular-heaters'],
-    guides: ['immersion-heater-sizing', 'heating-element-watt-density', 'heating-element-resistance', 'choose-a-heating-element'],
+    guides: [
+      ['immersion-heater-sizing', 'water-heating-calculator', 'Calculate water heat-up power or time'],
+      ['heating-element-watt-density', 'sheath-temperature-in-service', 'Review watt density and minimum liquid level'],
+      'heating-element-resistance',
+      'choose-a-heating-element',
+    ],
   },
   {
     id: 'ibc-immersion-heaters', path: immersion + 'ibc-tote/', parent: 'immersion-heaters', group: 'tubular',
@@ -869,7 +888,11 @@ export const products = [
       ],
     },
     related: ['type-k', 'strip-heaters', 'coil-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density', 'heating-element-resistance'],
+    guides: [
+      ['choose-a-heating-element', 'cartridge-heater-installation', 'Check bore fit and cartridge heater installation'],
+      'heating-element-watt-density',
+      'heating-element-resistance',
+    ],
     questions: [
       ['What is a cartridge heater?', 'A cartridge heater is a cylindrical electric heating element built to fit into a bore in a tool or machine part. Its sheath transfers heat to the surrounding solid, as in a mold, die or sealing jaw. The bore fit and location of the heated section affect heat transfer.'],
       ['What should I check before installing a cartridge heater?', 'For a replacement, isolate power and check the equipment installation drawing. Verify the actual bore diameter, tolerance and usable depth, and inspect the bore for damage or deposits. Match the installed depth and retention to the drawing so the active section aligns with the heating zone. Allow lead clearance and identify any thermocouple pair separately from the power leads.'],
@@ -1168,7 +1191,9 @@ export const products = [
     ],
     use: 'Common applications include injection molding barrels, extrusion equipment and nozzles.',
     related: ['coil-heaters', 'type-j', 'crankcase-heaters'],
-    guides: ['choose-a-heating-element'],
+    guides: [
+      ['choose-a-heating-element', 'mount-contact-heaters', 'Check band heater mounting and contact'],
+    ],
     questions: [
       ['What is a band heater and how does it heat a barrel?', 'A band heater fits around a barrel or nozzle. The electrical resistance element generates heat, and the mating inside surface transfers it into the equipment. Match the band to the outside diameter and specified clamp arrangement so it makes consistent contact.'],
       ['How do mica and ceramic band heaters differ?', 'Mica bands typically use a thin layered construction. Ceramic bands use ceramic insulation around the heating winding. Compare the allowable thickness, barrel temperature, heat loss, mounting clearance and terminal position for the actual barrel or nozzle.'],
@@ -1428,7 +1453,14 @@ export const products = [
       ['What do you need to quote a replacement Type K thermocouple?', 'Send the original drawing or photos of the probe, fitting and termination. Include the sheath diameter, installed insertion depth, mounting and grounding details, cable length and the Type K input used by the instrument. Flag any unknown dimensions or changes in service conditions.'],
     ],
     related: ['type-j', 'threaded-thermocouple', 'mineral-insulated', 'waterproof-thermocouples', 'high-temperature', 'sensor-accessories', 'thermocouple-temperature-transmitters', 'pid-temperature-controllers'],
-    guides: ['type-k-vs-type-j-thermocouple', 'how-to-test-a-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd'],
+    guides: [
+      ['type-k-vs-type-j-thermocouple', 'type-k-type-j-comparison', 'Compare Type K and Type J'],
+      ['how-to-test-a-thermocouple', 'type-k-millivolt-chart', 'Look up Type K millivolt values'],
+      ['thermocouple-wire-color-code', 'thermocouple-wire-colors', 'Look up thermocouple wire colors'],
+      'thermocouple-types',
+      'grounded-vs-ungrounded-thermocouples',
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'waterproof-thermocouples', path: thermo + 'waterproof/', parent: 'thermocouples', group: 'sensing',
@@ -1545,7 +1577,12 @@ export const products = [
     ],
     use: 'Type J sensors are used in selected plastics machinery, hot tooling and existing industrial temperature measurement systems.',
     related: ['type-k', 'threaded-thermocouple', 'band-heaters', 'sensor-accessories'],
-    guides: ['type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'thermocouple-types', 'grounded-vs-ungrounded-thermocouples'],
+    guides: [
+      ['type-k-vs-type-j-thermocouple', 'switching-thermocouple-types', 'Check whether Type K can replace Type J'],
+      'thermocouple-wire-color-code',
+      'thermocouple-types',
+      'grounded-vs-ungrounded-thermocouples',
+    ],
     questions: [
       ['Can a Type J thermocouple replace a Type K probe with the same mounting?', 'The external fit alone is insufficient. Type J and Type K produce different voltage-to-temperature relationships. The instrument input, extension wiring and connector must match the sensor type. Confirm the operating environment and probe construction before selecting a replacement.'],
     ],
@@ -2406,7 +2443,12 @@ export const products = [
     ],
     use: 'RTDs are frequently considered for process monitoring where measurement stability and repeatability are important.',
     related: ['duct-temperature-sensors', 'rtd-temperature-transmitters', 'ntc-thermistor-probes', 'type-k', 'thermocouples', 'sensor-accessories', 'pid-temperature-controllers'],
-    guides: ['pt100-wiring-diagram', 'pt100-vs-pt1000', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
+    guides: [
+      ['pt100-wiring-diagram', 'pt100-element-ends', 'Find 2-, 3- and 4-wire Pt100 diagrams'],
+      ['pt100-vs-pt1000', 'lead-resistance-and-accuracy', 'Estimate lead-wire error for Pt100 and Pt1000'],
+      'thermocouple-vs-rtd',
+      'temperature-sensor-calibration',
+    ],
     questions: [
       ['How do I check a Pt100 sensor with a multimeter?', 'Isolate the probe, identify the lead pairs and measure at a known temperature. Compare the reading with the correct Pt100 resistance curve and account for lead resistance. Use a controlled temperature source and a reference for a calibration check.'],
       ['What is a Pt100 RTD sensor and how does it work?', 'A Pt100 is a platinum resistance temperature detector with a nominal resistance of 100 Ω at 0 °C. Its resistance increases with temperature. A compatible input applies a small measuring current, measures the resulting voltage and converts the resistance to temperature using the configured Pt100 curve.'],
@@ -2701,7 +2743,12 @@ export const products = [
       ['Does a Pt1000 always measure more accurately than a Pt100?', 'For the same lead resistance in a two-wire circuit, Pt1000 has a smaller error from the leads because its resistance changes more per degree. Compare the full measurement accuracy, including element tolerance, the instrument, excitation current and how the sensor is mounted.'],
     ],
     related: ['rtd-temperature-transmitters', 'threaded-rtd-probes', 'rtd', 'thermowells', 'sensor-accessories'],
-    guides: ['pt100-vs-pt1000', 'pt100-wiring-diagram', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
+    guides: [
+      ['pt100-vs-pt1000', 'pt100-pt1000-compatibility', 'Check Pt1000 input compatibility'],
+      ['pt100-wiring-diagram', 'connect-rtd-to-plc', 'Connect an RTD to a PLC or transmitter'],
+      'thermocouple-vs-rtd',
+      'temperature-sensor-calibration',
+    ],
   },
   {
     id: 'ds18b20-sensors', path: '/temperature-sensors/ds18b20/', group: 'sensing',
@@ -2763,7 +2810,10 @@ export const products = [
       ['What dimensions do I need for a threaded thermistor probe?', 'Provide the thread standard and pitch, sealing face, insertion depth, and cable exit clearance. Include the medium, temperature and pressure if the port is part of a process vessel.'],
     ],
     related: ['rtd', 'pt1000-sensors', 'ds18b20-sensors'],
-    guides: ['ntc-thermistor-guide', 'thermocouple-vs-rtd'],
+    guides: [
+      ['ntc-thermistor-guide', 'ntc-resistance-curve', 'Compare NTC resistance curves and beta values'],
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'sensor-accessories', path: accessories, group: 'sensing', name: 'Thermocouple Accessories',
@@ -2915,7 +2965,10 @@ export const products = [
       ['Which color code should I specify for Type K extension wire?', 'Specify the standard used by the assembly. Type K positive and negative conductors are yellow and red under US ANSI/ASTM conventions, and green and white under IEC 60584-3. Check cable and terminal markings before connecting.'],
     ],
     related: ['thermocouple-connectors', 'sensor-accessories', 'connection-head-thermocouples', 'type-k', 'type-n'],
-    guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
+    guides: [
+      ['thermocouple-wire-color-code', 'identify-thermocouple-wire-polarity', 'Match polarity across US and IEC cable colors'],
+      'thermocouple-types',
+    ],
   },
   {
     id: 'thermocouple-connectors', path: accessories + 'connectors/', parent: 'sensor-accessories', group: 'sensing',
@@ -3076,7 +3129,10 @@ export const products = [
       ['What data is needed for flow-induced loading review?', 'Provide the pipe and nozzle dimensions, installed stem profile and fluid properties, including density and viscosity. Include normal and maximum flow, process pressure and temperature, and any applicable standard or evaluation requirement.'],
     ],
     related: ['sensor-accessories', 'bimetal-thermometers', 'flanged-thermocouple', 'threaded-thermocouple', 'flanged-rtd-probes', 'threaded-rtd-probes', 'rtd'],
-    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd'],
+    guides: [
+      ['thermowell-selection-guide', 'thermowell-insertion', 'Measure thermowell insertion and projection'],
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'threaded-thermowells', path: accessories + 'thermowells/threaded/', parent: 'thermowells', group: 'sensing',
@@ -3104,7 +3160,10 @@ export const products = [
       ['What is the difference between insertion length and bore depth?', 'Insertion length locates the outer tip relative to the installed reference face. Bore depth is the usable internal length for the probe. Specify both on the drawing.'],
     ],
     related: ['thermowells', 'flanged-thermowells', 'threaded-rtd-probes', 'compression-fitting-thermocouples'],
-    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd'],
+    guides: [
+      ['thermowell-selection-guide', 'thermowell-insertion', 'Measure from the thermowell mounting reference'],
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'flanged-thermowells', path: accessories + 'thermowells/flanged/', parent: 'thermowells', group: 'sensing',
@@ -3132,7 +3191,10 @@ export const products = [
       ['What process data is needed for a wake-frequency review?', 'Supply line size, installed stem profile, fluid density and viscosity, normal and maximum flow, temperature and pressure, and the project evaluation criteria.'],
     ],
     related: ['thermowells', 'threaded-thermowells', 'flanged-rtd-probes', 'flanged-thermocouple'],
-    guides: ['thermowell-selection-guide', 'thermocouple-vs-rtd'],
+    guides: [
+      ['thermowell-selection-guide', 'review-material-and-flow-conditions', 'Prepare process data for a thermowell flow review'],
+      'thermocouple-vs-rtd',
+    ],
   },
   {
     id: 'bimetal-thermometers', path: '/temperature-sensors/bimetal-thermometers/', group: 'sensing',
@@ -4675,7 +4737,10 @@ export const products = [
       ['Why can an SSR show voltage when the command is off?', 'Off-state leakage through a semiconductor output can produce a reading on a high-impedance meter. A wiring fault or failed output can also leave the circuit energized. Use the equipment’s isolation procedure and verify that the circuit is de-energized before checking terminals.'],
     ],
     related: ['scr-power-controllers', 'pid-temperature-controllers', 'cartridge-heaters', 'high-temperature-lead-wire'],
-    guides: ['solid-state-relay-heater-guide', 'choose-a-heating-element'],
+    guides: [
+      ['solid-state-relay-heater-guide', 'ssr-heater-load-example', 'Estimate heater load current for an SSR'],
+      'choose-a-heating-element',
+    ],
   },
   {
     id: 'scr-power-controllers', path: '/temperature-controls/scr-power-controllers/', group: 'controls',
@@ -4706,7 +4771,11 @@ export const products = [
       ['When should I specify burst firing or phase-angle control?', 'Burst firing switches power over groups of AC cycles. Phase-angle control changes the conducting portion of the cycle. Select the method against the load, process response and applicable line and equipment requirements.'],
     ],
     related: ['heater-control-panels', 'pid-temperature-controllers', 'solid-state-relays', 'infrared-heating-panels'],
-    guides: ['solid-state-relay-heater-guide', 'choose-a-heating-element', 'heating-element-resistance'],
+    guides: [
+      ['solid-state-relay-heater-guide', 'scr-firing-modes', 'Compare burst firing and phase-angle control'],
+      'choose-a-heating-element',
+      'heating-element-resistance',
+    ],
   },
   {
     id: 'rtd-temperature-transmitters', path: '/temperature-controls/rtd-transmitters/', group: 'controls',
@@ -4997,7 +5066,11 @@ export const products = [
       ['Do block stability and calibration uncertainty mean the same thing?', 'Stability describes variation over time at a test point. The uncertainty of a probe comparison also depends on the reference, block uniformity, immersion, probe loading and readout.'],
     ],
     related: ['temperature-calibration-baths', 'thermocouple-calibrators', 'handheld-thermocouple-readers', 'thermocouples', 'rtd'],
-    guides: ['how-to-test-a-thermocouple', 'thermocouple-vs-rtd', 'temperature-sensor-calibration'],
+    guides: [
+      'how-to-test-a-thermocouple',
+      'thermocouple-vs-rtd',
+      ['temperature-sensor-calibration', 'calibration-reference-and-source', 'Choose a calibration source and reference'],
+    ],
   },
   {
     id: 'handheld-infrared-pyrometers', path: '/temperature-sensors/handheld-infrared-pyrometers/', group: 'sensing',
@@ -8431,6 +8504,7 @@ export const guides = [
     related: ['tubular-heaters', 'finned-strip-heaters', 'immersion-heaters', 'over-the-side-immersion', 'cartridge-heaters', 'industrial-convection-heaters', 'pvc-conduit-heaters', 'industrial-unit-heaters', 'ceramic-fiber-heaters', 'heat-trace-controllers', 'hot-runner-temperature-controllers', 'industrial-radiant-heaters', 'vacuum-chamber-heaters', 'aluminum-platen-heaters'],
     sections: [
       ['Start with heat transfer', 'Identify where the heat must go and how it will reach the load. Use the installation and operating cycle to select a heater family for review.', {
+        anchor: 'start-with-heat-transfer',
         table: [
           ['Where heat goes', 'Heater family to evaluate', 'First detail to confirm'],
           ['Into a solid mold or die', ['Cartridge heater', cartridge], 'Bore diameter, tolerance and depth.'],
@@ -9124,7 +9198,9 @@ export const guides = [
           ['Remote reading digital thermometers with cabled probes', '/temperature-sensors/digital-thermometers/remote-reading/'],
         ],
       }],
-      ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. Include pipe diameter, flow velocity, density and viscosity. As fluid passes the well, shedding vortices can apply a repeating load. Wake frequency describes how often that load repeats. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.'],
+      ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. Include pipe diameter, flow velocity, density and viscosity. As fluid passes the well, shedding vortices can apply a repeating load. Wake frequency describes how often that load repeats. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.', {
+        anchor: 'review-material-and-flow-conditions',
+      }],
       ['Account for measurement response', 'A thermowell adds metal mass and an interface between the process and probe. Bore clearance, wall thickness, immersion and process flow affect response time. If a response limit applies, specify the medium and the definition of response time used in the acceptance test.'],
       ['Thermowell selection by installation', 'Mark the sensing location and the connection on the assembly drawing. Give the dimensions needed to fit the probe and the process data needed for mechanical review.', {
         anchor: 'thermowell-installations',
