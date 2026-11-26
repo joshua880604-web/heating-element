@@ -856,6 +856,21 @@ export const products = [
     intro: 'Specify the bore, heated length and electrical requirements to scope a custom cartridge heater. Lead exit and fit matter when the heater is built into a tool or machine.',
     options: ['Low- and high-density designs by application', 'Axial or angled lead exit', 'Application-specific heated zones', 'Integrated temperature sensing options'],
     specs: ['Bore diameter and tolerance, usable depth and mounting details', 'Heated and cold lengths, voltage, wattage and duty cycle', 'Lead exit direction, length and insulation', 'Tool material, working temperature, and sensor type and location if required'],
+    comparison: [
+      'Cartridge Heater Fit and Power Example',
+      'On a drawing, give the finished bore diameter and heater outside diameter with their tolerances. Mark the active length separately from the overall body length. Those dimensions tell you the cold fit and the area used to calculate surface watt density.',
+      {
+        anchor: 'cartridge-heater-fit-and-power',
+        table: [
+          ['Check', 'Example from a cylindrical heater drawing'],
+          ['Diametral clearance', 'A 6.00 mm bore and a 5.95 mm measured heater diameter give 0.05 mm of diametral clearance at the measurement temperature. Use the actual tolerances and operating temperatures to review the fit.'],
+          ['Heated length', 'For a 40 mm body with a 30 mm active span, use the 30 mm span when calculating heated surface area. Show where the remaining cold length sits in the tool.'],
+          [['Nominal electrical resistance', '/guides/heating-element-resistance/#heater-resistance-calculator'], 'At a rating of 24 V and 40 W, V² ÷ P gives 14.4 Ω at rated conditions. Compare a cold meter reading with the specified cold resistance.'],
+          [['Surface watt density', '/guides/heating-element-watt-density/#watt-density-calculator'], 'A 5.95 mm sheath with 30 mm of active length has about 5.61 cm² of active cylindrical surface. At 40 W, that gives about 7.13 W/cm².'],
+        ],
+        tableNote: 'The values illustrate how to read a drawing and calculate loading. Confirm the allowable fit and surface loading for the selected sheath, tool material and operating conditions.',
+      },
+    ],
     selection: [
       'Cartridge Heater Drawing Checklist',
       'Mark the heater body, the bore and the area of the tool that must be heated. These dimensions determine insertion depth, heat transfer and the space available for connections.',
@@ -865,7 +880,8 @@ export const products = [
         [['Installation checks', '/guides/choose-a-heating-element/#cartridge-heater-installation'], 'Check the bore and heater fit, insertion depth, retention, wiring clearance and sensor position against the equipment drawing.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         [['High temperature power leads', '/heating-elements/high-temperature-lead-wire/'], 'Include the current, lead insulation, lead exit temperature and equipment termination.'],
-        ['Power and temperature', 'Supply voltage, power or heat-up target, normal tool temperature and operating cycle.'],
+        ['Power and temperature', 'Give the supply voltage, power or heat-up target, operating cycle and tool temperature. Identify any separate temperature limits for the sheath and lead exit.'],
+        ['Sheath material', 'Identify the required alloy if specified. Include the tool material and exposure to moisture or chemicals around the heater body and lead end.'],
         [['High watt density in a compact bore', cartridge + 'high-density/'], 'Include active surface area and bore tolerance so the power and heat transfer can be reviewed together.'],
         [['Split-sheath cartridge', cartridge + 'split-sheath/'], 'Send the finished bore tolerance and cold insertion envelope along with the tool temperature and removal access.'],
         [['3D printer hotend cartridge', cartridge + '3d-printer/'], 'Include the heater block drawing, per-cartridge electrical rating and hotend harness connection.'],
@@ -1786,6 +1802,21 @@ export const products = [
     intro: 'A threaded thermocouple probe uses a threaded body or fitting to mount the sensor in an equipment port. Match the thread and sealing interface, then specify the position of the sensing tip from the installed reference face.',
     options: ['Fixed-thread probe body or compression fitting by application', 'Type K, Type J or other thermocouple input as specified', 'Grounded, ungrounded or exposed junction', 'Lead, connector or terminal-head termination'],
     specs: ['Thread standard, size, pitch and usable thread length', 'Seating or sealing face and mating-port drawing', 'Probe diameter and insertion length measured from the installed face to the tip', 'Medium, temperature, applicable pressure, sensor type and termination'],
+    comparison: [
+      'Thread Forms and Sealing Interfaces',
+      'Identify the thread and the sealing surface on the equipment drawing. Pipe thread sizes are nominal, so use the specified standard and pitch when identifying a replacement.',
+      {
+        anchor: 'thread-form-and-seal',
+        table: [
+          ['Connection', 'How to identify it and check fit'],
+          ['Fixed parallel thread', 'M10 × 1 and G 1/4 are examples of parallel thread callouts. If the design uses a gasket or O-ring, check its seating face, dimensions and material against the port drawing.'],
+          ['Fixed tapered pipe thread', '1/4–18 NPT is an example of a tapered thread callout. Match the specified thread standard, engagement and sealing method. Use the installed position shown on the drawing to locate the tip.'],
+          [['Adjustable compression fitting', thermo + 'threaded-probes/compression-fitting/'], 'Select from the fitting and sheath together. Check the sheath outside diameter, allowable adjustment and seating position, plus the temperature and pressure requirements if the fitting seals the process.'],
+          [['Probe installed in a thermowell', '/guides/thermowell-selection-guide/#thermowell-insertion'], 'Match the probe to the instrument-side connection, usable bore and seating depth. Verify the thermowell connection and process seal separately.'],
+        ],
+        tableNote: 'The thread callouts illustrate how to identify an interface. Confirm the thread, seal and dimensions for the required assembly before ordering.',
+      },
+    ],
     selection: [
       'Measure From the Installed Reference Face',
       'On a shoulder-seated assembly, mark the seating face and measure along the probe axis to the tip. Use the mating-port drawing to confirm the corresponding reference for a tapered thread or adjustable fitting.',

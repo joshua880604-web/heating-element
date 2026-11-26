@@ -1285,7 +1285,8 @@ html:has([data-glossary]) {
   text-decoration: underline;
   text-underline-offset: 0.14em;
 }
-.guide-grid > .prose > section[id] {
+.guide-grid > .prose > section[id],
+.product-selection[id] {
   scroll-margin-top: 12px;
 }
 .read-next {
