@@ -1444,6 +1444,17 @@ export const products = [
     intro: 'A mica band heater uses thin mica insulation around a resistance element inside a metal band. Specify the measured barrel or nozzle dimensions and the surface temperature to review a heater for a compact installation.',
     options: ['One-piece or split construction by installation drawing', 'Lead wires or insulated screw terminals', 'Application-specific clamping and cutouts'],
     specs: ['Measured outside diameter, usable band width and available radial space', 'Supply voltage, total wattage and power per section if split', 'Operating surface temperature, duty cycle and nearby obstructions', 'Clamp position, terminal orientation, lead length and hole locations'],
+    comparison: [
+      'Locate Mica Band Heater Cutouts, Clamps and Terminals',
+      'Use a fixed angular reference in the end view and a barrel shoulder as the axial reference in the side view. For a replacement, identify the reference features on the equipment before dimensioning the band.',
+      { anchor: 'mica-band-heater-cutout-layout', table: [
+        ['Drawing check', 'Example or detail to confirm'],
+        [['Angular position on the barrel', band + '#band-heater-barrel-fit-and-clearance'], 'For an 80 mm outside diameter barrel, a quarter turn of 90° is about 62.8 mm of arc along the barrel surface. If the clamp centerline is 0°, mark the cutout clockwise or counterclockwise from that line and name the end you are viewing.'],
+        ['Axial position and cutout size', 'Measure the opening center from the same barrel shoulder used for the band position. Give the opening shape and size, the clearance around the fitting and its protrusion through the band.'],
+        [['Clamping and installation access', contactHeaterMounting], 'Show the path over the end of the barrel for a one-piece band, or the intended split and clamp access. Check tool clearance to tighten each clamp with the band installed.'],
+        ['Terminals and lead route', 'Give the angular and axial position of the terminal or lead outlet, the cable route and the space under the guard. Show separate electrical feeds and ratings when the design calls for them.'],
+      ] },
+    ],
     selection: [
       'Specify a Mica Band Heater by Drawing',
       'Provide an end view for the clamp and terminals, and a side view for width and openings. Include a photo of the installed heater when replacing an existing band.',
@@ -1459,6 +1470,7 @@ export const products = [
       ['What determines how long a mica band heater takes to heat up a barrel?', 'Heat-up time depends on the barrel mass, starting and target temperatures, heater power, surface contact and process heat losses. Provide the barrel or nozzle drawing and heating cycle so the duty can be reviewed.'],
       ['What dimensions do you need to quote a mica band heater?', 'Send the outside diameter of the barrel or nozzle, band width, radial clearance and the position of clamps, terminals and cutouts. Include voltage, wattage and operating temperature.'],
       ['Can a mica band heater be made in two sections?', 'Specify where the joints and clamps can sit, how each section can be installed, and whether the sections need separate connections. The split layout is reviewed with the drawing.'],
+      ['How do I locate a thermocouple opening in a replacement mica band heater?', 'Show the fitting on the installed drawing. Give the opening center as an angle from a fixed feature and an axial distance from a shoulder. Mark the required opening size, fitting projection and wrench access.'],
     ],
     related: ['band-heaters', 'ceramic-band-heaters', 'coil-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
@@ -3162,6 +3174,17 @@ export const products = [
     intro: 'A thermocouple connector joins a probe or extension cable to a matching plug or socket in the measurement circuit. Confirm the thermocouple type and the physical fit before choosing the connector. Contact materials and polarity must suit the circuit.',
     options: ['Standard round-pin and miniature flat-pin formats by mating connector', 'Male plug, female socket or mating pair', 'Cable or panel mounting reviewed against the drawing and operating environment'],
     specs: ['Thermocouple type, wiring standard and required contact or terminal markings', 'Existing connector make or drawing, pin shape and spacing, and mating dimensions', 'Plug, socket or pair, mounting arrangement, conductor gauge and cable outside diameter', 'Ambient temperature at the plug, exposure conditions, quantity and any required strain relief'],
+    comparison: [
+      'Check Clearance and Signal Compatibility for a Replacement Connector',
+      'Start with a front view of the mating connector, a side view of the available space, and the instrument input type. Use the same circuit drawing to mark the contact polarity and each transition from the probe to the readout.',
+      { anchor: 'thermocouple-connector-replacement-checks', table: [
+        ['Replacement check', 'Example or detail to confirm'],
+        [['Recessed socket clearance', accessories + 'connectors/miniature/'], 'In a centered fit example, an 18 mm recess and a 17 mm wide plug body leave a nominal 0.5 mm per side. Check height, tolerances, full pin engagement and space to grip and withdraw the plug.'],
+        [['Contact compatibility and polarity', '/guides/thermocouple-wire-color-code/#identify-thermocouple-wire-polarity'], 'For a Type K circuit, specify Type K compatible contacts and verify the marked positive and negative poles on the probe, both sides of the connector and the instrument. Confirm the wiring standard for the actual cable.'],
+        [['Connectors in a temperature gradient', '/glossary/#cold-junction-compensation'], 'Identify the reference junction at the readout or transmitter. Give the expected temperature at the connector and describe nearby hot surfaces or cooling drafts. Using different contact metals where the transitions are at different temperatures can add a voltage error.'],
+        [['Check the circuit after replacement', '/guides/how-to-test-a-thermocouple/#check-millivolt-polarity-and-response'], 'Verify response at a known probe temperature and check for a stable reading. Give the cable jacket diameter, conductor size and the strain relief used at the connector.'],
+      ] },
+    ],
     selection: [
       'Match Connector Size, Contact Materials and Polarity',
       'Identify the existing connector from its markings or send a dimensioned front view. The physical format, contact alloy compatibility and polarity all matter.',
@@ -3180,6 +3203,7 @@ export const products = [
     questions: [
       ['How do I tell whether a thermocouple connector is standard or miniature?', 'Standard connectors typically use round pins. Miniature connectors typically have flat blades. Confirm the dimensions and contact materials of the mating connector before ordering.'],
       ['Is the housing color enough to identify a thermocouple connector?', 'Housing color follows the applicable wiring convention and can vary by standard. Check the marked thermocouple type, contact materials and polarity with the probe and instrument documentation.'],
+      ['Can a physically matching plug be used with a different thermocouple type?', 'Choose a connector approved for the thermocouple type and wiring system. Check contact materials and terminal polarity as well as pin shape and spacing. For a replacement, send the existing markings or the instrument and probe drawings.'],
     ],
     related: ['rtd-connectors', 'sensor-accessories', 'thermocouple-extension-wire', 'connection-head-thermocouples', 'type-k'],
     guides: ['thermocouple-wire-color-code', 'thermocouple-types'],
@@ -4051,6 +4075,17 @@ export const products = [
     intro: 'A silicone rubber heater pad transfers heat into the equipment surface it contacts. Specify the panel, tool or enclosure shape, the active heating area, and how the pad will stay in contact during operation. Include the working temperatures and what the pad and leads will be exposed to.',
     options: ['Flat or contoured mounting surface review', 'Pad outline, cutouts and heated zones by drawing', 'Attachment, lead exit and temperature-sensing requirements by assembly'],
     specs: ['Contact surface shape and material, surface finish, thickness limits and any bend radius', 'Heater outline, heated area, holes, unheated margins, voltage and wattage', 'Retention or bonding requirements, temperature cycle, moisture and cleaning exposure', 'Lead exit location, insulation, length, termination and sensing or control requirements'],
+    comparison: [
+      'Calculate Silicone Rubber Heater Watt Density From the Heated Area',
+      'For a flat pad, divide electrical power by the active heating area on one face. The example uses a 200 × 120 mm pad at 120 W with an unheated border and a rectangular keep-out inside the heating zone.',
+      { anchor: 'silicone-heater-active-area-and-watt-density', table: [
+        ['Design check', 'Worked example or detail to verify'],
+        ['Heated area inside the border', 'A 10 mm unheated border on all four sides leaves a 180 × 100 mm rectangle, or 180 cm², before accounting for the internal keep-out.'],
+        ['Unheated area for a mounting feature', 'A 40 × 30 mm keep-out occupies 12 cm². Excluding that area leaves 168 cm² of active heating area in this layout.'],
+        [['Average watt density', '/guides/heating-element-watt-density/#surface-watt-density'], 'Divide 120 W by 168 cm² to get about 0.71 W/cm². For multiple zones, mark each active area and specify its watts separately.'],
+        [['Contact and lead transition', contactHeaterMounting], 'Identify where the pad is bonded or held against the equipment and where the lead transition needs extra space. Review local heat transfer and temperature limits under the expected duty cycle.'],
+      ] },
+    ],
     selection: [
       'Specify a Silicone Rubber Heating Pad',
       'Show the surface, pad outline and attachment points on the same drawing. Identify the areas where the pad contacts the equipment throughout the operating cycle.',
@@ -4069,6 +4104,7 @@ export const products = [
       ['What limits the operating temperature of a silicone rubber heater?', 'Check the ratings of the complete pad, its adhesive or retention system and the lead exit. Specify the continuous and peak temperatures, wattage, mounting surface and expected exposure. A local gap can reduce heat transfer and raise the pad temperature.'],
       ['Can the pad have holes or areas that stay cool?', 'Mark each cutout and unheated area on the drawing. Include the position of mounting screws and the lead outlet so the available heating area can be reviewed.'],
       ['Where should I specify the temperature-sensing point?', 'Show the process point that the controller needs to measure. Include the target surface, expected temperature range and any separate temperature limit or control requirements.'],
+      ['What changes if I keep the same wattage and make the heated area smaller?', 'The average watt density increases. Give the revised heated area, contact material, mounting arrangement and operating temperatures so the revised heat load can be reviewed.'],
     ],
     related: ['flexible-heaters', 'polyimide-heaters', 'strip-heaters'],
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
