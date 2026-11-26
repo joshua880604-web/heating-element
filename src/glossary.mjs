@@ -95,6 +95,11 @@ export const glossary = [
     related: ['Custom Cartridge Heaters', '/heating-elements/cartridge-heaters/'],
   },
   {
+    id: 'cartridge-heater-controller-kit', name: 'Cartridge Heater Controller Kit',
+    definition: 'A specified cartridge heater together with temperature sensing and control components for a defined heating zone. Identify the heater duty, sensor input, controller output and switching requirements.',
+    related: ['Cartridge Heaters with Controllers', '/heating-elements/cartridge-heaters/with-controller/#cartridge-heater-controller-matching'],
+  },
+  {
     id: 'cast-iron-plate-heater', name: 'Cast Iron Plate Heater',
     definition: 'An electric heater with a cast iron body that transfers heat through a contact face. The finished plate, mounting points and heating zone are specified for the equipment drawing.',
     related: ['Cast Iron Plate Heaters', '/heating-elements/cast-iron-heaters/'],
@@ -350,6 +355,11 @@ export const glossary = [
     related: ['Flanged Immersion Heaters', '/heating-elements/immersion-heaters/flanged/'],
   },
   {
+    id: 'flat-ring-heater', name: 'Flat Ring Heater',
+    definition: 'An annular contact heater that transfers heat through a flat mating face. Specify the inner and outer diameters, contact shape, fastener positions and active footprint.',
+    related: ['Flat Ring Heaters', '/heating-elements/strip-heaters/ring/#flat-ring-heater-contact-and-fit'],
+  },
+  {
     id: 'flanged-rtd-probe', name: 'Flanged RTD Probe',
     definition: 'A resistance temperature probe mounted by a flange. The flange and installed seating face define the mounting interface and the reference for probe insertion depth.',
     related: ['Flanged RTD Probes', '/temperature-sensors/rtd/flanged-probes/'],
@@ -538,6 +548,11 @@ export const glossary = [
     id: 'immersion-heater', name: 'Immersion Heater',
     definition: 'A heating element whose active section runs submerged to transfer heat directly to a liquid. Fluid compatibility, minimum submergence and watt density affect selection.',
     related: ['Industrial Immersion Heaters', '/heating-elements/immersion-heaters/'],
+  },
+  {
+    id: 'immersion-cartridge-heater', name: 'Immersion Cartridge Heater',
+    definition: 'A cylindrical cartridge heater specified for direct liquid heating. The wetted sheath, mounting seal, active span, minimum fill and dry-side termination are part of the assembly requirements.',
+    related: ['Immersion Cartridge Heaters', '/heating-elements/cartridge-heaters/immersion/#immersion-cartridge-heater-seal-and-depth'],
   },
   {
     id: 'immersion-heater-dry-firing', name: 'Immersion Heater Dry Firing',
@@ -783,6 +798,11 @@ export const glossary = [
     id: 'process-gas-heater', name: 'Process Gas Heater',
     definition: 'A heater that transfers heat to a flowing gas stream. Specify gas composition, minimum and normal flow, temperature rise, pressure limits and required shutdown functions.',
     related: ['Inline Process Gas Heaters', '/heating-elements/circulation-heaters/process-gas/'],
+  },
+  {
+    id: 'ptfe-flanged-immersion-heater', name: 'PTFE Flanged Immersion Heater',
+    definition: 'A flange-mounted liquid heater with specified PTFE coverage on wetted surfaces. Define the bath chemistry and temperatures, covered areas, exposed materials and vessel seal.',
+    related: ['PTFE Flanged Immersion Heaters', '/heating-elements/immersion-heaters/flanged/ptfe/#ptfe-flanged-heater-wetted-construction'],
   },
   {
     id: 'pt100', name: 'Pt100',
@@ -1200,6 +1220,11 @@ export const glossary = [
     related: ['Type E Thermocouples', '/thermocouples/type-e/'],
   },
   {
+    id: 'type-e-thermocouple-wire', name: 'Type E Thermocouple Wire',
+    definition: 'A nickel–chromium positive and copper–nickel negative pair for a Type E circuit. Specify sensing grade or an approved EX extension grade, conductor identification and transition temperatures.',
+    related: ['Type E Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-e/#type-e-wire-grade-and-polarity'],
+  },
+  {
     id: 'type-j-thermocouple', name: 'Type J Thermocouple',
     definition: 'An iron–copper-nickel thermocouple. The probe, extension wire and instrument input must match Type J for the measurement to use the correct voltage-to-temperature relationship.',
     related: ['Type J Thermocouples', '/thermocouples/type-j/'],
@@ -1238,6 +1263,11 @@ export const glossary = [
     id: 'type-s-thermocouple', name: 'Type S Thermocouple',
     definition: 'A platinum-based thermocouple with a platinum–10% rhodium positive leg and a platinum negative leg. It is used in selected furnace and kiln applications with a compatible instrument input and protection tube.',
     related: ['Type S Thermocouples', '/thermocouples/type-s/'],
+  },
+  {
+    id: 'type-s-thermocouple-compensating-wire', name: 'Type S Thermocouple Compensating Wire',
+    definition: 'A cable grade that reproduces the specified Type S thermoelectric response over a defined compensation interval. Verify the grade, polarity and temperatures at the connection points.',
+    related: ['Type S Thermocouple Compensating Wire', '/temperature-sensors/accessories/extension-wire/type-s/#type-s-compensating-cable-selection'],
   },
   {
     id: 'type-t-thermocouple', name: 'Type T Thermocouple',

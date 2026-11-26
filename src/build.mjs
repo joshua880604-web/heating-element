@@ -149,7 +149,9 @@ const photoTones = [
       'miniature-rtd-probes', 'industrial-digital-thermometers', 'micro-thermocouples',
       'duct-temperature-sensors', 'industrial-radiant-heaters', 'vacuum-chamber-heaters',
       'type-k-thermocouple-wire', 'type-t-thermocouple-wire', 'type-n-thermocouple-wire',
-      'inline-duct-heaters', 'finned-ceramic-strip-heaters', 'stainless-steel-tubular-heaters'],
+      'inline-duct-heaters', 'finned-ceramic-strip-heaters', 'stainless-steel-tubular-heaters',
+      'cartridge-heaters-with-controllers', 'type-s-thermocouple-compensating-wire', 'ring-heaters',
+      'immersion-cartridge-heaters', 'type-e-thermocouple-wire', 'ptfe-flanged-immersion-heaters'],
   },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
