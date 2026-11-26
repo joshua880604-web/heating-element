@@ -100,6 +100,11 @@ export const glossary = [
     related: ['Cast Iron Plate Heaters', '/heating-elements/cast-iron-heaters/'],
   },
   {
+    id: 'chemical-immersion-heater', name: 'Chemical Immersion Heater',
+    definition: 'A heater used in a chemical process bath. The full bath and cleaning chemistry, wetted materials, active loading and lowest operating liquid level define the assembly requirements.',
+    related: ['Chemical Tank Immersion Heaters', '/heating-elements/immersion-heaters/chemical-tanks/'],
+  },
+  {
     id: 'ceramic-cartridge-heater', name: 'Ceramic Cartridge Heater',
     definition: 'A compact resistance heater with a ceramic body supporting or insulating its heating element. Body fit, active zone and termination are specified to the assembly.',
     related: ['Ceramic Cartridge Heaters', '/heating-elements/cartridge-heaters/ceramic/'],
@@ -310,6 +315,11 @@ export const glossary = [
     related: ['Fast-Response Thermocouple Probes', '/thermocouples/fast-response/'],
   },
   {
+    id: 'flexible-tubular-heater', name: 'Flexible Tubular Heater',
+    definition: 'A formable metal-sheathed heater specified by installed centerline shape, allowed bends, active span, support and cold-end dimensions.',
+    related: ['Flexible Tubular Heating Elements', '/heating-elements/tubular-heaters/flexible/'],
+  },
+  {
     id: 'finned-cartridge-heater', name: 'Finned Cartridge Heater',
     definition: 'A cylindrical cartridge heater with fins for transferring heat to moving air and electrical leads at one end. Specify the fin envelope, airflow and available wiring clearance.',
     related: ['Finned Cartridge Heaters', '/heating-elements/cartridge-heaters/finned/'],
@@ -495,6 +505,21 @@ export const glossary = [
     related: ['Hot Runner Temperature Controllers', '/temperature-controls/hot-runner-controllers/'],
   },
   {
+    id: 'immersion-thermocouple', name: 'Immersion Thermocouple',
+    definition: 'A temperature probe that locates the sensing point at a specified depth in a liquid, with a directly immersed sheath or a probe fitted inside a thermowell.',
+    related: ['Liquid Immersion Thermocouple Probes', '/thermocouples/immersion/'],
+  },
+  {
+    id: 'incoloy-heating-element', name: 'Incoloy Heating Element',
+    definition: 'A sheathed heater with a specified iron–nickel–chromium alloy tube. The alloy grade, working medium, temperature and active surface loading form part of the heater specification.',
+    related: ['Incoloy-Sheathed Tubular Heating Elements', '/heating-elements/tubular-heaters/incoloy/'],
+  },
+  {
+    id: 'high-temperature-cartridge-heater', name: 'High-Temperature Cartridge Heater',
+    definition: 'A cartridge heater for a bore in elevated-temperature tooling. The tool and sheath temperatures, surface loading, lead transition and actual bore fit define its installed duty.',
+    related: ['High-Temperature Cartridge Heaters', '/heating-elements/cartridge-heaters/high-temperature/'],
+  },
+  {
     id: 'immersion-heater', name: 'Immersion Heater',
     definition: 'A heating element whose active section runs submerged to transfer heat directly to a liquid. Fluid compatibility, minimum submergence and watt density affect selection.',
     related: ['Industrial Immersion Heaters', '/heating-elements/immersion-heaters/'],
@@ -623,6 +648,11 @@ export const glossary = [
     id: 'miniature-thermocouple-connector', name: 'Miniature Thermocouple Connector',
     definition: 'A compact plug or socket for a thermocouple circuit, typically with two flat contacts. Match the blade dimensions, polarity and contact materials to the sensor type and mating connector.',
     related: ['Miniature Thermocouple Connectors', '/temperature-sensors/accessories/connectors/miniature/'],
+  },
+  {
+    id: 'multipair-thermocouple-extension-cable', name: 'Multipair Thermocouple Extension Cable',
+    definition: 'A cable containing multiple thermocouple extension circuits under a common jacket. Specify each pair designation and polarity, screen and drain structure and termination mapping.',
+    related: ['Multipair Thermocouple Extension Cable', '/temperature-sensors/accessories/extension-wire/multipair/'],
   },
   {
     id: 'minimum-submergence', name: 'Minimum Submergence',

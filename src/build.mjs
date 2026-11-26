@@ -117,7 +117,9 @@ const photoTones = [
     source: [225, 227, 231],
     images: ['type-t', 'type-s', 'type-e', 'self-regulating-heating-cables', 'compressed-air-heaters',
       'constant-wattage-heating-cables', 'handheld-thermocouple-probes',
-      'silicon-carbide-thermocouple-protection-tubes', 'plating-tank-heaters'],
+      'silicon-carbide-thermocouple-protection-tubes', 'plating-tank-heaters',
+      'immersion-thermocouples', 'incoloy-tubular-heating-elements', 'multipair-thermocouple-extension-cable',
+      'chemical-immersion-heaters', 'high-temperature-cartridge-heaters', 'flexible-tubular-heaters'],
   },
   {
     id: 'cool-gray',
