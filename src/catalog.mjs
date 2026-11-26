@@ -8002,13 +8002,19 @@ export const guides = [
   {
     slug: 'thermocouple-types', group: 'sensing', name: 'Thermocouple Types and Selection',
     quoteProduct: 'thermocouples',
+    inlineQuote: {
+      after: 'thermocouple-types-chart',
+      title: 'Have a thermocouple type or an original probe drawing?',
+      text: 'Send the controller input, normal and peak temperatures, and probe dimensions. Include the process atmosphere and the connection at the cold end so we can review the complete assembly.',
+    },
     description: 'Compare Type K, J, T, N, E, R, S and B thermocouples, then select the junction, sheath and connection for your process and instrument.',
     answer: ['How do I choose a thermocouple type?', 'Start with the instrument input and the continuous and peak temperatures. Then check the atmosphere, required tolerance and whether the sheath, junction and wiring can operate at their installed temperatures.'],
     readNext: ['how-thermocouples-work', 'type-k-vs-type-j-thermocouple', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples', 'thermocouple-vs-rtd', 'how-to-test-a-thermocouple'],
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature', 'type-c', 'multipoint-thermocouples', 'silicon-nitride-thermocouple-protection-tubes', 'micro-thermocouples'],
-    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple', 'platinum-rhodium-thermocouple', 'type-c-thermocouple'],
+    terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple', 'platinum-rhodium-thermocouple', 'type-c-thermocouple', 'iec-60584'],
     sections: [
       ['Compare thermocouple types by application', 'K, J, T, N and E are common base-metal types. R, S and B use platinum-based alloys. Start with the instrument input, normal and peak temperatures, and process atmosphere, then check the limits of the protected assembly.', {
+        anchor: 'thermocouple-types-chart',
         table: [
           ['Type', 'Selection context'],
           [['K', thermo + 'type-k/'], 'General industrial use, including ovens and process equipment, subject to the atmosphere and sheath.'],
@@ -8024,7 +8030,12 @@ export const guides = [
       ['Compare Type K and Type J', 'Type K uses nickel-based conductors and is widely used for general industrial measurement. Type J uses an iron positive conductor that may need protection in oxidizing or moisture-prone service. For a replacement, confirm which type the instrument is configured to read, then compare the full probe assembly limits.'],
       ['Compare Type N and Type K', 'Both use nickel-based alloys. Type N is often considered when stability during extended exposure to elevated temperatures is important. Compare behavior for the actual thermal cycle and atmosphere, and configure the instrument and wiring for the selected type.'],
       ['Compare Type R and Type S', 'Both use a platinum negative leg. The positive leg contains 13% rhodium in Type R and 10% in Type S. Each has its own voltage-to-temperature reference function. Confirm the required instrument input and the specified furnace protection tube, mount and wiring.'],
-      ['Read the ITS-90 reference intervals', 'These NIST reference functions describe thermoelectric voltage over a defined temperature interval. To specify a probe, confirm the instrument span and review the sheath or protection tube, atmosphere, exposure duration, insulation and lead connection at their installed temperatures.', {
+      ['Read the ITS-90 reference intervals', [
+        'These NIST reference functions describe thermoelectric voltage over a defined temperature interval. To specify a probe, confirm the instrument span and review the sheath or protection tube, atmosphere, exposure duration, insulation and lead connection at their installed temperatures. If the purchase specification calls for ',
+        ['IEC 60584', '/glossary/#iec-60584'],
+        ', give the applicable part and tolerance class.',
+      ], {
+        anchor: 'thermocouple-reference-intervals',
         table: [
           ['Type', 'NIST ITS-90 reference function interval'],
           [['K', thermo + 'type-k/#temperature-range'], ['−270 to 1,372 °C', nistThermocoupleReference]],
@@ -8074,7 +8085,35 @@ export const guides = [
           ['Wireless thermocouple systems for remote monitoring', '/temperature-controls/wireless-thermocouples/'],
         ],
       }],
+      ['Thermocouple selection by installation', 'Use the equipment drawing to locate the measuring junction. Include the conditions at the sensing point and at the cable or head, which may see different temperatures.', {
+        anchor: 'thermocouple-installations',
+        table: [
+          ['Application', 'Selection check', 'What to send'],
+          [['Oven or kiln', thermo + 'high-temperature/'], 'Check atmosphere, thermal cycling and support for the sheath or protection tube.', 'Normal and peak temperatures, process atmosphere, wall thickness and installed projection.'],
+          [['Heated tooling', thermo + 'spring-loaded/'], 'Confirm how the probe tip contacts the tool and stays in position during operation.', 'Tooling bore, contact depth, spring travel if applicable, and space for the cable.'],
+          [['Process pipe or vessel', accessories + 'thermowells/'], 'Check the process interface and whether the drawing specifies a thermowell.', 'Fluid, operating conditions, port and insertion drawing, plus the bore if a well is used.'],
+        ],
+      }],
     ],
+    faq: [
+      ['Can a Type K probe replace a Type J probe?', 'Confirm that the instrument can be configured for Type K and that the connector and extension cable are compatible with Type K. Compare the replacement’s sheath, junction, dimensions and usable range with the installation requirements.'],
+      ['Does the ITS-90 interval give the maximum operating temperature of a probe?', 'The ITS-90 reference function gives the relationship between thermocouple voltage and temperature over a stated interval. The probe’s usable range also depends on its sheath or protection tube, insulation, process atmosphere, exposure time and connection.'],
+      ['Which junction construction should I specify?', 'State the required electrical isolation, the medium and the response-time target. A grounded junction is bonded to the sheath, an ungrounded junction is insulated from it, and an exposed junction contacts the medium directly. Compare response for the complete assembly.'],
+    ],
+    rfqChecklist: ['What to send for a thermocouple quote', 'Use the list below when requesting a new probe or a replacement. If the alloy type or junction is unknown, share the original part reference and controller input.', {
+      anchor: 'thermocouple-rfq-checklist',
+      table: [
+        ['Item', 'What to include'],
+        ['Equipment and input', 'Application, controller model and thermocouple type. Include the original part number for a replacement.'],
+        ['Process conditions', 'Normal and peak temperatures, time at peak, medium or atmosphere, and any vibration, flow or pressure conditions.'],
+        ['Probe construction', 'Sheath or protection tube material and diameter, junction construction, required tolerance and response time if specified.'],
+        ['Mount and sensing point', 'Connection, insertion depth from the installed reference face, sensing point, and support and removal clearance.'],
+        ['Electrical termination', 'Lead length and insulation, connector or terminal head, and the thermocouple type and polarity at each transition.'],
+        ['Quantity and drawings', 'Required quantity, assembly drawing or photos of the original probe, and any acceptance or documentation requirements.'],
+      ],
+      links: [['View Industrial Thermocouple Specifications', thermo + '#specifications']],
+      download: ['Download RFQ Checklist (PDF)', '/assets/thermocouple-rfq-checklist.pdf'],
+    }],
   },
   {
     slug: 'how-to-test-a-thermocouple', group: 'sensing', name: 'How to Test an Industrial Thermocouple',
@@ -8526,6 +8565,12 @@ export const guides = [
   {
     slug: 'thermowell-selection-guide', group: 'sensing', name: 'Thermowell Selection Guide',
     description: 'Specify a thermowell by process connection, material, insertion length and probe fit. Identify the pressure and flow inputs needed for mechanical review.',
+    quoteProduct: 'thermowells',
+    inlineQuote: {
+      after: 'thermowell-insertion',
+      title: 'Have the port drawing and operating conditions?',
+      text: 'Send the process connection, insertion length and probe dimensions. Include the fluid, pressure, temperature and flow so the fit and mechanical review requirements can be assessed.',
+    },
     related: ['thermowells', 'sanitary-thermowells', 'bimetal-thermometers', 'industrial-digital-thermometers', 'sensor-accessories', 'flanged-thermocouple', 'thermocouples', 'rtd', 'threaded-thermocouple'],
     readNext: ['thermocouple-types', 'thermocouple-vs-rtd'],
     terms: ['thermowell', 'threaded-thermowell', 'flanged-thermowell', 'thermowell-insertion-length', 'thermocouple-response-time', 'bimetal-thermometer'],
@@ -8539,7 +8584,11 @@ export const guides = [
           ['Weld-in', 'Pipe or vessel geometry, weld preparation and material compatibility'],
         ],
       }],
-      ['How far should a thermowell protrude into a pipe?', 'Mark the distance from the mounting face to the tip and the actual projection beyond the inside pipe wall on the drawing. Put the tip where it can sample representative flow and confirm that the proposed projection is mechanically suitable for that flow. Check bore diameter, depth and sensing-tip seating separately, and leave room for removal.'],
+      ['How far should a thermowell protrude into a pipe?', [
+        'Mark the ',
+        ['thermowell insertion length', '/glossary/#thermowell-insertion-length'],
+        ' from the specified mounting reference to the tip. Record the actual projection beyond the inside pipe wall separately. Put the tip where it can sample representative flow and confirm that the proposed projection is mechanically suitable for that flow. Check bore diameter, depth and sensing-tip seating separately, and leave room for removal.',
+      ], { anchor: 'thermowell-insertion' }],
       ['Fit a local dial thermometer', 'With a bimetal dial thermometer, verify both the thermowell connection to the process and the thermometer connection at the top of the well. Measure the usable bore from the instrument seating reference. Show where the sensing section will sit and confirm that the dial faces the operator when installed.', {
         links: [['Bimetal thermometer drawing checklist', '/temperature-sensors/bimetal-thermometers/#bimetal-thermometer-drawing']],
       }],
@@ -8551,7 +8600,35 @@ export const guides = [
       }],
       ['Review material and flow conditions', 'Provide fluid composition, temperature and pressure at normal and extreme operation. Include pipe diameter, flow velocity, density and viscosity. As fluid passes the well, shedding vortices can apply a repeating load. Wake frequency describes how often that load repeats. Where applicable, use a qualified evaluation under ASME PTC 19.3 TW for wake frequency and associated loading checks.'],
       ['Account for measurement response', 'A thermowell adds metal mass and an interface between the process and probe. Bore clearance, wall thickness, immersion and process flow affect response time. If a response limit applies, specify the medium and the definition of response time used in the acceptance test.'],
+      ['Thermowell selection by installation', 'Mark the sensing location and the connection on the assembly drawing. Give the dimensions needed to fit the probe and the process data needed for mechanical review.', {
+        anchor: 'thermowell-installations',
+        table: [
+          ['Application', 'Selection check', 'What to send'],
+          [['Flowing process pipe', accessories + 'thermowells/flanged/'], 'Check actual projection, local flow and the load on the well.', 'Pipe inside diameter, nozzle drawing, fluid properties, operating flow range, pressure and temperature.'],
+          ['Process vessel', 'Check where the well tip sits during normal operation and its clearance from internals.', 'Nozzle and vessel section, process levels, clearances to moving equipment, pressure and temperature.'],
+          [['Hygienic processing line', accessories + 'thermowells/sanitary/'], 'Match the specified connection, wetted finish and seal to the equipment and cleaning method.', 'Mating connection and seal drawing, finish requirement, cleaning conditions and operating limits.'],
+        ],
+      }],
     ],
+    faq: [
+      ['Is thermowell insertion length the same as projection into the process?', 'Insertion length is measured from the specified connection reference to the tip. Projection is the length that extends past the inner wall into the process. Show both dimensions on the drawing when a nozzle or fitting separates the reference face from the inner wall.'],
+      ['What bore size do I need for a thermowell?', 'Start with the sensor stem diameter, insertion length and seating reference. Confirm usable bore depth, clearance and the tip contact arrangement against the probe drawing. Required removal clearance belongs in the installation review.'],
+      ['What data are needed for a thermowell wake frequency review?', 'Provide the actual well and pipe geometry, material, fluid density and viscosity, and the operating flow, pressure and temperature range. The responsible engineer can determine whether ASME PTC 19.3 TW applies to the installation.'],
+    ],
+    rfqChecklist: ['What to send for a thermowell quote', 'Provide a section view with the process connection, sensor seating face and sensing position. Include the operating cases the well must be assessed against.', {
+      anchor: 'thermowell-rfq-checklist',
+      table: [
+        ['Item', 'What to include'],
+        ['Process connection', 'Pipe or vessel drawing, mating thread, flange or weld interface, seal details and installed reference face.'],
+        ['Insertion and clearance', 'Insertion length, projection into the process, support details and clearance for sensor removal.'],
+        ['Sensor fit', 'Sensor stem diameter, insertion length, bore and seating depth, tip contact and required response time.'],
+        ['Material and process', 'Fluid composition, minimum and maximum temperatures and pressures, wetted material and finish requirements.'],
+        ['Flow and mechanical review', 'Pipe diameter, flow range or local velocity, fluid density and viscosity, and applicable mechanical review requirements.'],
+        ['Quantity and documents', 'Required quantity, drawing revision, original part reference and any inspection or documentation requirements.'],
+      ],
+      links: [['View Thermowell Specifications', accessories + 'thermowells/#specifications']],
+      download: ['Download RFQ Checklist (PDF)', '/assets/thermowell-rfq-checklist.pdf'],
+    }],
   },
   {
     slug: 'immersion-heater-sizing', group: 'heating', name: 'Industrial Immersion Heater Sizing & Water Heating Calculator',
@@ -8600,8 +8677,41 @@ export const guides = [
           [['Plating tank', immersion + 'plating-tanks/'], 'Bath formulation, operating temperatures, tank lining, rack clearance and minimum liquid level'],
         ],
       }],
-      ['Verify surface loading and submergence', 'Divide the power by the total active sheath surface area to estimate watt density. Check the liquid chemistry, viscosity, agitation, deposit buildup and sheath compatibility. Show the active section and the minimum operating level on the drawing, including any level changes during operation. Define independent low-level and over-temperature protection for the equipment as appropriate to the design.'],
-      ['Prepare the sizing inputs for a quote', 'Send the working volume or flow, start and target temperatures, allowed warm-up time, liquid composition, operating pressure, minimum level, mounting and available voltage and phase. Include the tank drawing and any heat-loss estimate so the rating and element layout can be reviewed together.'],
+      ['Verify surface loading and submergence', [
+        'Divide the power by the total active sheath surface area to estimate ',
+        ['watt density', '/glossary/#watt-density'],
+        '. Check the liquid chemistry, viscosity, agitation, deposit buildup and sheath compatibility. Show the active section and the lowest operating level on the drawing to check ',
+        ['minimum submergence', '/glossary/#minimum-submergence'],
+        ', including any level changes during operation. Define independent low-level and over-temperature protection for the equipment as appropriate to the design.',
+      ], { anchor: 'immersion-heater-submergence' }],
+      ['Size the heater for the duty', 'Select the calculation and operating inputs that match how the equipment is used. Check the resulting heater layout and surface loading at the lowest specified level or flow.', {
+        anchor: 'immersion-heater-applications',
+        table: [
+          ['Application', 'What determines the load', 'What to send'],
+          [['Batch water heating', immersion + 'water-boiler/'], 'The water, tank and other thermal loads must heat within the allowed time. Heat is also lost to the surroundings.', 'Working volume, start and target temperatures, heat-up time, tank material and insulation.'],
+          [['Oil tank heating or holding', immersion + 'oil/'], 'Viscosity, circulation and allowable oil film temperature affect heat transfer at the sheath.', 'Oil grade, temperature range, warm-up and holding requirements, agitation and any film temperature limit.'],
+          [['Flow-through heating', '/heating-elements/circulation-heaters/'], 'Mass flow and temperature rise determine the ideal heat input. Minimum flow affects sheath temperature.', 'Minimum and maximum flow, inlet and outlet temperatures, pressure and connection drawing.'],
+        ],
+      }],
     ],
+    faq: [
+      ['Can I use the water calculator result as the heater rating?', 'Treat it as an ideal water-only estimate. Review the heat absorbed by the tank and other loads and the heat lost during warm-up. Then confirm available electrical power, compatible materials, surface loading and element fit.'],
+      ['Can I use the water calculator for oil or a chemical solution?', 'Use the actual liquid mass and specific heat over the operating range to estimate the duty. Provide the fluid grade or composition, circulation conditions and any allowable film temperature for heater selection.'],
+      ['Where do I measure the minimum operating liquid level?', 'Use the lowest liquid level expected during normal operation in the approved installation. Mark it on the drawing relative to the entire energized heated span, including the installed orientation and normal level changes.'],
+    ],
+    rfqChecklist: ['What to send for an immersion heater quote', 'Send the calculator estimate if it applies and the equipment information below. Include the tank drawing or original heater reference for a replacement.', {
+      anchor: 'immersion-heater-rfq-checklist',
+      table: [
+        ['Item', 'What to include'],
+        ['Heating duty', 'Working volume or flow, starting and target temperatures, allowed heat-up time, holding duty and any heat-loss estimate.'],
+        ['Liquid and process', 'Liquid grade or composition, operating temperature and pressure, agitation or circulation, deposits and cleaning conditions.'],
+        ['Level and heated span', 'Lowest operating level or flow, active length and unheated ends, installed orientation and protection requirements.'],
+        ['Mounting drawing', 'Port, flange, ferrule or rim geometry, sealing details, available immersion depth and room for removal.'],
+        ['Electrical supply', 'Available voltage and phase, required watts per circuit if known, terminal clearance and equipment controls.'],
+        ['Quantity and documents', 'Required quantity, tank or original heater drawing and any material or verification requirements.'],
+      ],
+      links: [['View Industrial Immersion Heater Specifications', immersion + '#specifications']],
+      download: ['Download RFQ Checklist (PDF)', '/assets/immersion-heater-rfq-checklist.pdf'],
+    }],
   },
 ];

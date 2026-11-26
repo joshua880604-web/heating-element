@@ -637,6 +637,7 @@ const guideCalculators = {
   'water-heating': {
     title: 'Water Heating Power and Time Calculator',
     instructions: 'Estimate the ideal heat-up power or time for liquid water at atmospheric pressure. Allow separately for the tank, losses and other loads when sizing the heater.',
+    quoteHint: 'Use in RFQ carries over this estimate. Add the liquid composition, lowest operating liquid level, mounting drawing, available voltage and phase before sending your inquiry.',
     fields: `
       <label class="full">Calculate<select name="mode"><option value="power">Required heat-up power</option><option value="time">Heat-up time</option></select></label>
       <label>Water volume<input name="volume" type="number" inputmode="decimal" min="0" step="any" required></label>
@@ -649,7 +650,7 @@ const guideCalculators = {
 };
 
 function guideCalculator(kind, quoteProduct) {
-  const { title, instructions, fields } = guideCalculators[kind];
+  const { title, instructions, fields, quoteHint } = guideCalculators[kind];
   return `<section class="spec-card" id="${kind}-calculator" aria-labelledby="${kind}-calculator-title">
     <h2 id="${kind}-calculator-title">${escape(title)}</h2><p>${escape(instructions)}</p>
     <form class="engineering-calculator" data-calculator="${kind}" aria-labelledby="${kind}-calculator-title">
@@ -658,7 +659,8 @@ function guideCalculator(kind, quoteProduct) {
         <div class="form-actions"><button class="button button-primary" type="submit">Calculate</button></div>
       </fieldset>
       <output class="calculator-result" aria-live="polite" aria-atomic="true"></output>
-      <a class="button button-secondary calculator-quote" data-calculator-quote href="${escape(quoteLink(quoteProduct))}" hidden>Use in RFQ ${icon('arrow')}</a>
+      <a class="button button-secondary calculator-quote" data-calculator-quote href="${escape(quoteLink(quoteProduct))}" hidden>Use in RFQ ${icon('arrow')}</a>${quoteHint ? `
+      <p class="form-hint" data-calculator-quote-hint hidden>${escape(quoteHint)}</p>` : ''}
       <noscript><p class="form-hint">Use the formula and worked example below to calculate manually.</p></noscript>
     </form>
   </section>

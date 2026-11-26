@@ -462,7 +462,7 @@ export const glossary = [
   {
     id: 'iec-60584', name: 'IEC 60584',
     definition: 'A series of International Electrotechnical Commission standards for thermocouples. Part 1 covers reference electromotive force and tolerances, and Part 3 covers extension and compensating cables.',
-    related: ['Thermocouple Types and Selection', '/guides/thermocouple-types/'],
+    related: ['Thermocouple Types and Selection', '/guides/thermocouple-types/#thermocouple-reference-intervals'],
   },
   {
     id: 'iec-60584-3', name: 'IEC 60584-3',
@@ -607,7 +607,7 @@ export const glossary = [
   {
     id: 'minimum-submergence', name: 'Minimum Submergence',
     definition: 'The minimum liquid coverage required above the active section of an immersion heater for its specified installation. The reference point, mounting orientation and level limits belong on the heater or tank drawing.',
-    related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
+    related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/#immersion-heater-submergence'],
   },
   {
     id: 'molten-metal-thermocouple', name: 'Molten Metal Thermocouple',
@@ -1047,7 +1047,7 @@ export const glossary = [
   {
     id: 'thermowell-insertion-length', name: 'Thermowell Insertion Length',
     definition: 'The length from the specified process connection reference to the thermowell tip. Check the drawing datum and the nozzle length to determine how far the tip extends into the process.',
-    related: ['Thermowell Selection Guide', '/guides/thermowell-selection-guide/'],
+    related: ['Thermowell Selection Guide', '/guides/thermowell-selection-guide/#thermowell-insertion'],
   },
   {
     id: 'thin-film-rtd-element', name: 'Thin-Film RTD Element',

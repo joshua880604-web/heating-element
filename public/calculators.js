@@ -1,6 +1,7 @@
 const form = document.querySelector('[data-calculator]');
 const output = form.querySelector('output');
 const quoteLink = form.querySelector('[data-calculator-quote]');
+const quoteHint = form.querySelector('[data-calculator-quote-hint]');
 const quoteUrl = new URL(quoteLink.href);
 const inputs = form.elements;
 const number = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 4 });
@@ -108,15 +109,20 @@ if (calculate === waterHeating) {
   });
 }
 
+function showQuoteAction(visible) {
+  quoteLink.hidden = !visible;
+  if (quoteHint) quoteHint.hidden = !visible;
+}
+
 form.addEventListener('input', () => {
   output.textContent = '';
-  quoteLink.hidden = true;
+  showQuoteAction(false);
 });
 form.addEventListener('submit', event => {
   event.preventDefault();
   const { message, details } = calculate();
   output.textContent = message;
-  quoteLink.hidden = !details;
+  showQuoteAction(Boolean(details));
   if (details) {
     // Transport the calculation in the fragment, which stays out of the HTTP request.
     quoteUrl.hash = new URLSearchParams({ estimate: [...details, message].join('\n') }).toString();
