@@ -1338,6 +1338,18 @@ html:has([data-glossary]) {
 .form-grid textarea {
   resize: vertical;
 }
+.quote-details {
+  border-block: 1px solid var(--line);
+}
+.quote-details summary {
+  padding-block: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.quote-details .form-grid {
+  margin: 0 0 14px;
+}
 .form-hint {
   color: var(--muted);
   font-size: 0.8rem;

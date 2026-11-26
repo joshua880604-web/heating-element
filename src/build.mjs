@@ -332,8 +332,9 @@ if (location.origin === '${analyticsOrigin}') {
 }
 </script>` : '';
 
-function layout({ path, title, description, body, trail, type, article, image, items, terms, faq }) {
+function layout({ path, title, description, body, trail, type, article, image, items, terms, faq, quoteProduct }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
+  const quoteHref = quoteLink(quoteProduct);
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -358,7 +359,7 @@ ${photoFilters}
     ${brandMark()}
     <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="header-nav" aria-label="Open menu">${icon('menu')}</button>
     <nav class="site-nav" id="header-nav" aria-label="Main navigation">${navigation}</nav>
-    <div class="header-actions"><a class="icon-button search-link" href="/products/?search=1" aria-label="Search products">${icon('search')}</a>${btn('Request a Quote', quoteLink(), 'primary', 'external')}</div>
+    <div class="header-actions"><a class="icon-button search-link" href="/products/?search=1" aria-label="Search products">${icon('search')}</a>${btn('Request a Quote', quoteHref, 'primary', 'external')}</div>
   </div>
 </header>
 <main id="main">${body}</main>
@@ -366,7 +367,7 @@ ${photoFilters}
   <div class="container footer-grid">
     <div>${brandMark()}<p>${escape(companyName)}<br><span lang="zh-CN">${escape(chineseCompanyName)}</span></p></div>
     <nav aria-label="Product families"><strong>Products</strong><a href="/thermocouples/">Industrial Thermocouples</a><a href="/heating-elements/tubular-heaters/">Tubular Heaters</a><a href="/heating-elements/">Heating Elements</a></nav>
-    <nav aria-label="Footer navigation"><strong>Explore</strong><a href="/applications/">Applications</a><a href="/guides/">Guides</a><a href="/glossary/">Glossary</a><a href="/about-us/">About Us</a><a href="/request-a-quote/">Request a Quote</a></nav>
+    <nav aria-label="Footer navigation"><strong>Explore</strong><a href="/applications/">Applications</a><a href="/guides/">Guides</a><a href="/glossary/">Glossary</a><a href="/about-us/">About Us</a><a href="${escape(quoteHref)}">Request a Quote</a></nav>
     <div class="footer-contact"><strong>Contact Sales</strong>${salesContacts()}</div>
   </div>
   <div class="container footer-bottom"><small>© ${new Date().getUTCFullYear()} ${escape(brand)}</small><small>Made to specification</small></div>
@@ -377,12 +378,12 @@ ${photoFilters}
 }
 
 async function page(path, title, description, body, {
-  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [],
+  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [], quoteProduct,
 } = {}) {
   pageDescriptions.set(path, description);
   const destination = resolve(dist, '.' + path, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
-  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq }));
+  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq, quoteProduct }));
 }
 
 function crumb(items) {
@@ -587,7 +588,7 @@ for (const product of products) {
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
   await page(product.path, product.title, product.description, `
-<section class="detail-hero" data-product-id="${escape(product.id)}"><div class="container">
+<section class="detail-hero"><div class="container">
   ${crumb(trail)}
   <div class="detail-grid${image ? '' : ' text-only'}"><div>
     <p class="eyebrow">${groups[product.group]}</p>
@@ -622,7 +623,7 @@ for (const product of products) {
   ${catalog(relatedProducts)}
 </div></section>
 ${callout('Request this configuration', 'Include your technical requirements, target quantity and any supporting drawings.', 'Request a Quote', quoteLink(product.id))}
-`, { trail, type: 'ItemPage', image });
+`, { trail, type: 'ItemPage', image, quoteProduct: product.id });
 }
 
 await page('/applications/', 'Industrial Heating Applications for OEM Equipment', 'Find heating elements and sensors for injection molding, extrusion, industrial ovens, process tanks and packaging equipment. Compare inputs for each RFQ.', `
@@ -779,7 +780,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
   </aside>
 </div></section>
 ${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.', 'Request a Quote', quoteLink(guide.quoteProduct))}
-`, { trail, article: true, faq: guide.faq });
+`, { trail, article: true, faq: guide.faq, quoteProduct: guide.quoteProduct });
 }
 
 const alphabet = Object.entries(Object.groupBy(glossary, term => term.name[0]));
@@ -932,13 +933,18 @@ ${pageIntro('Made to specification', 'Request a Quote', 'Share your equipment sp
     <p class="form-hint">Fields marked * are required.</p><noscript><p>Use the email or WhatsApp link under Contact Sales to send your specifications.</p></noscript>
     <div class="form-grid">
       <label class="full">Product family *<select name="product" id="quote-product" required><option value="">Select a product family</option>${productOptions}<option value="other">Other custom product</option></select></label>
+      <div class="full"><label>Technical requirements *<textarea name="requirements" rows="5" required maxlength="6000" aria-describedby="spec-hint"></textarea></label><p class="form-hint" id="calculation-hint" hidden>Review the calculator estimate and add any installation and operating details.</p><p class="form-hint" id="spec-hint">Include dimensions, operating conditions and any required materials.</p></div>
       <label>Your name *<input name="name" autocomplete="name" required maxlength="120"></label>
       <label>Work email<input name="email" type="email" autocomplete="email" maxlength="160"></label>
-      <label>Company<input name="company" autocomplete="organization" maxlength="160"></label>
-      <label>Destination country<input name="country" autocomplete="country-name" maxlength="100"></label>
-      <label>Quantity<input type="number" name="quantity" min="1" max="100000000" placeholder="e.g. 100"></label>
-      <label>Application<input name="application" maxlength="200" placeholder="e.g. Packaging sealing jaw"></label>
-      <div class="full"><label>Technical requirements *<textarea name="requirements" rows="5" required maxlength="6000" aria-describedby="spec-hint"></textarea></label><p class="form-hint" id="calculation-hint" hidden>Review the calculator estimate and add any installation and operating details.</p><p class="form-hint" id="spec-hint">Include dimensions, operating conditions and any required materials.</p></div>
+      <details class="quote-details full">
+        <summary>Company, quantity and other project details</summary>
+        <div class="form-grid">
+          <label>Company<input name="company" autocomplete="organization" maxlength="160"></label>
+          <label>Quantity<input type="number" name="quantity" min="1" max="100000000" placeholder="e.g. 100"></label>
+          <label>Destination country<input name="country" autocomplete="country-name" maxlength="100"></label>
+          <label>Application<input name="application" maxlength="200" placeholder="e.g. Packaging sealing jaw"></label>
+        </div>
+      </details>
       <div class="full"><label>Drawings or photos<input type="file" name="drawings" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.dxf,.dwg,.step,.stp" aria-describedby="file-hint"></label><p class="form-hint" id="file-hint">Add files in WhatsApp after opening the chat, or download an email draft with attachments. PDF, images or CAD files, up to 10 MB combined per draft.</p></div>
     </div>
     <div class="form-actions">

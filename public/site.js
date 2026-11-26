@@ -1,16 +1,18 @@
 document.body.classList.add('enhanced');
 
-function trackInquiry(eventName, productId) {
-  window.gtag?.('event', eventName, productId ? { product_id: productId } : {});
+function trackInquiry(eventName, productId, sourcePage) {
+  const params = {};
+  if (productId) params.product_id = productId;
+  if (sourcePage) params.rfq_source_page = sourcePage;
+  window.gtag?.('event', eventName, params);
 }
 
 if (window.gtag) {
-  const pageProductId = document.querySelector('[data-product-id]')?.dataset.productId;
   document.addEventListener('click', event => {
     const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
     if (!link || link.origin !== location.origin || link.pathname !== '/request-a-quote/') return;
-    const productId = new URLSearchParams(link.search).get('product') || pageProductId;
-    trackInquiry('quote_click', productId);
+    const productId = new URLSearchParams(link.search).get('product');
+    trackInquiry('quote_click', productId, location.pathname);
   });
 }
 
@@ -140,6 +142,9 @@ if (quote) {
   const attachments = quote.elements.drawings;
   const actions = [...quote.querySelectorAll('button[type="submit"]')];
   const emailAction = quote.querySelector('button[value="email"]');
+  const referrer = document.referrer ? new URL(document.referrer) : null;
+  const sourcePage = referrer?.origin === location.origin && referrer.pathname !== location.pathname
+    ? referrer.pathname : '';
   const maxBytes = 10 * 1024 * 1024;
   const types = new Map([
     ['pdf', 'application/pdf'], ['png', 'image/png'], ['jpg', 'image/jpeg'],
@@ -169,6 +174,12 @@ if (quote) {
   }
   setSpecHint();
   product.addEventListener('change', setSpecHint);
+  trackInquiry('rfq_view', product.value, sourcePage);
+  quote.addEventListener('input', () => trackInquiry('rfq_start', product.value, sourcePage), { once: true });
+  quote.addEventListener('invalid', event => {
+    const details = event.target.closest('details');
+    if (details) details.open = true;
+  }, true);
   function updateAttachmentActions() {
     emailAction.hidden = attachments.files.length > 0;
     feedback.textContent = '';
@@ -243,7 +254,7 @@ if (quote) {
         feedback.textContent = 'This message is too long to open in WhatsApp. Shorten the requirements or use Download RFQ.';
         return;
       }
-      trackInquiry('rfq_whatsapp_open', productId);
+      trackInquiry('rfq_whatsapp_open', productId, sourcePage);
       // The message contains form fields. Keep the URL out of click analytics.
       window.open(url.href, '_blank', 'noopener,noreferrer');
       feedback.textContent = files.length
@@ -255,7 +266,7 @@ if (quote) {
       const recipient = encodeURIComponent(quote.dataset.email).replace('%40', '@');
       const url = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
       if (url.length <= 2000) {
-        trackInquiry('rfq_email_draft_open', productId);
+        trackInquiry('rfq_email_draft_open', productId, sourcePage);
         window.location.assign(url);
         feedback.textContent = 'Review and send the draft in your email app.';
         return;
@@ -279,7 +290,7 @@ if (quote) {
       document.body.append(link);
       link.click();
       link.remove();
-      trackInquiry('rfq_download', productId);
+      trackInquiry('rfq_download', productId, sourcePage);
       setTimeout(() => URL.revokeObjectURL(link.href), 30000);
       feedback.textContent = 'Open the downloaded RFQ in your email app to review and send it.';
     } catch {
