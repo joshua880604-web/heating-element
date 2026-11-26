@@ -270,6 +270,11 @@ export const glossary = [
     related: ['Flanged Thermowells', '/temperature-sensors/accessories/thermowells/flanged/'],
   },
   {
+    id: 'garment-steamer-heating-element', name: 'Garment Steamer Heating Element',
+    definition: 'An element that heats water in a garment steamer boiler. Specify the boiler opening, tube dimensions, gasket, active span and electrical rating.',
+    related: ['Garment Steamer Heating Elements', '/heating-elements/immersion-heaters/garment-steamer/'],
+  },
+  {
     id: 'gas-turbine-exhaust-thermocouple', name: 'Gas Turbine Exhaust Thermocouple',
     definition: 'A temperature probe mounted at a specified measurement point in a stationary turbine exhaust system. The installation drawing defines insertion depth, orientation and channel assignment.',
     related: ['Gas Turbine Exhaust Thermocouples', '/thermocouples/high-temperature/gas-turbine-exhaust/'],
@@ -333,6 +338,16 @@ export const glossary = [
     id: 'heater-lead-wire-insulation', name: 'Heater Lead Wire Insulation',
     definition: 'The dielectric covering around heater lead conductors. Select it for the voltage, local temperature at the lead exit, routing and environmental exposure.',
     related: ['How to Choose an Industrial Heating Element', '/guides/choose-a-heating-element/'],
+  },
+  {
+    id: 'heat-gun-heating-element', name: 'Heat Gun Heating Element',
+    definition: 'A heater core that transfers heat to air moving through a hot air tool. The ceramic support, coil circuit and airflow must suit the equipment.',
+    related: ['Heat Gun Heating Elements', '/heating-elements/open-coil-heaters/heat-gun/'],
+  },
+  {
+    id: 'heat-treatment-furnace-element', name: 'Heat Treatment Furnace Element',
+    definition: 'A resistive heating element that supplies heat to a furnace zone. For supported metal coils, specify the alloy, pitch, supports, atmosphere and load for that zone.',
+    related: ['Heat Treatment Furnace Elements', '/heating-elements/open-coil-heaters/heat-treatment-furnaces/'],
   },
   {
     id: 'heater-sheath-temperature', name: 'Heater Sheath Temperature',
@@ -420,6 +435,11 @@ export const glossary = [
     related: ['Industrial Infrared Heating Panels', '/heating-elements/infrared-heaters/panels/'],
   },
   {
+    id: 'infrared-thermocouple-sensor', name: 'Infrared Thermocouple Sensor',
+    definition: 'A noncontact infrared temperature sensor with an output intended for a specified thermocouple input. Check the calibrated span, optical spot, emissivity and input configuration.',
+    related: ['Infrared Thermocouple Sensors', '/temperature-sensors/infrared-thermocouples/'],
+  },
+  {
     id: 'infrared-spot-size', name: 'Infrared Spot Size',
     definition: 'The diameter or extent of the area an infrared instrument measures at a specified distance. The measured target should fill the spot so that surrounding surfaces have limited influence on the reading.',
     related: ['Handheld Infrared Pyrometers', '/temperature-sensors/handheld-infrared-pyrometers/'],
@@ -483,6 +503,11 @@ export const glossary = [
     id: 'mosi2-heating-element', name: 'MoSi2 Heating Element',
     definition: 'A furnace resistance element made from molybdenum disilicide. Its hot section, terminal legs and support arrangement are specified for the original furnace.',
     related: ['MoSi2 Heating Elements', '/heating-elements/mosi2-heating-elements/'],
+  },
+  {
+    id: 'muffle-furnace-thermocouple', name: 'Muffle Furnace Thermocouple',
+    definition: 'A probe that measures temperature at a specified point in or beside a muffle furnace chamber. Match the wall port, tip projection, protection tube and configured input.',
+    related: ['Muffle Furnace Thermocouples', '/thermocouples/high-temperature/muffle-furnaces/'],
   },
   {
     id: 'multipoint-thermocouple', name: 'Multipoint Thermocouple',
@@ -908,6 +933,11 @@ export const glossary = [
     id: 'vacuum-chamber-heater', name: 'Vacuum Chamber Heater',
     definition: 'A heater that supplies heat to a vacuum chamber wall or an internal plate or fixture. Its position relative to the vacuum boundary determines material and connection requirements.',
     related: ['Vacuum Chamber Heaters', '/heating-elements/vacuum-chamber-heaters/'],
+  },
+  {
+    id: 'vacuum-furnace-heating-element', name: 'Vacuum Furnace Heating Element',
+    definition: 'A resistance element that radiates heat inside a vacuum furnace hot zone. Specify the material, geometry, supports, power interfaces and pressure and gas cycle.',
+    related: ['Vacuum Furnace Heating Elements', '/heating-elements/vacuum-chamber-heaters/furnace-elements/'],
   },
   {
     id: 'washing-machine-heating-element', name: 'Washing Machine Heating Element',
