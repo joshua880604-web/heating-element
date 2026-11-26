@@ -173,8 +173,8 @@ const photoFilters = `<svg class="photo-filters" aria-hidden="true"><defs>${phot
 
 function photoFigure({ image, width, height, alt, caption, href }) {
   return `<figure>
-    <img src="/assets/${image}.webp" width="${width}" height="${height}" loading="lazy" decoding="async" alt="${escape(alt)}">
-    <figcaption>${href ? `<a href="${escape(href)}">${escape(caption)}</a>` : escape(caption)}</figcaption>
+    <img src="/assets/${image}.webp" width="${width}" height="${height}" loading="lazy" decoding="async" alt="${escape(alt)}">${caption ? `
+    <figcaption>${href ? `<a href="${escape(href)}">${escape(caption)}</a>` : escape(caption)}</figcaption>` : ''}
   </figure>`;
 }
 
@@ -563,6 +563,7 @@ for (const product of products) {
   const relatedProducts = [...new Set([...children, ...product.related.map(id => lookup.get(id))])];
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
+  const imageCaption = product.imageCaption ?? 'Illustrative configuration';
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
@@ -570,7 +571,7 @@ for (const product of products) {
     <p class="eyebrow">${groups[product.group]}</p>
     <h1>${escape(product.name)}</h1><p class="intro-copy">${escape(product.intro)}</p>
     <div class="actions">${btn('Request a Quote', quoteLink(product.id), 'primary', 'external')}${btn('View Specifications', '#specifications', 'secondary', '')}</div>
-  </div>${image ? `<figure class="detail-image"${photoToneStyle(product)}><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512"><figcaption>Illustrative configuration</figcaption></figure>` : ''}</div>
+  </div>${image ? `<figure class="detail-image"${photoToneStyle(product)}><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512">${imageCaption ? `<figcaption>${escape(imageCaption)}</figcaption>` : ''}</figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}
@@ -970,7 +971,7 @@ if (origin) {
   const llms = [
     `# ${brand} Industrial Heating`,
     '> Custom industrial thermocouples, electric heaters and temperature controls for OEM equipment and process applications.',
-    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. Applications includes equipment illustrations and workshop photos of components. About Us includes photos of the factory exterior, reception, assembly and packing.`,
+    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Product imagery shows configurations and component details. Applications includes equipment illustrations and workshop photos of components. About Us includes photos of the factory exterior, reception, assembly and packing.`,
     `See [production capacity, lead times and minimum order quantities](${origin}${capacityPath}) for typical standard configurations. Lead times are estimates and are confirmed after specifications, availability of materials and order quantity are reviewed.`,
     ...lists,
   ].join('\n\n');

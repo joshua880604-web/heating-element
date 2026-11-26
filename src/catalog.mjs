@@ -150,7 +150,7 @@ export const products = [
     specs: ['Sheath outside diameter, overall envelope, bend centerline radii, leg spacing and mounting hole centers', 'Supply voltage and phase, voltage and watts per heating circuit, and connection diagram', 'Active length and cold ends measured along the tube centerline, terminal projection and wiring clearance', 'Medium and flow conditions, normal and peak temperatures, sheath material if specified and required quantity'],
     comparison: [
       'Low Watt Density Tubular Heating Elements',
-      'A lower surface watt density spreads the electrical load over more active sheath area. If the equipment envelope is fixed, compare longer heated spans, more elements or lower power per element for the same process duty.',
+      'A lower surface watt density spreads the electrical load over more active sheath area. If the equipment envelope is fixed, compare longer heated spans, more elements or lower power per element for the same process duty. Use the medium, minimum flow or liquid level, and sheath temperature limit to review the allowable loading.',
       { anchor: 'low-watt-density', table: [
         ['Design input', 'What to compare'],
         [['Active sheath area and power', '/guides/heating-element-watt-density/#watt-density-calculator'], 'Use the tube outside diameter, active length along the centerline and watts per element. Check each powered zone separately.'],
@@ -158,7 +158,7 @@ export const products = [
         ['Watt density for that example', 'An 8 mm sheath with 312.8 mm of active length has about 78.6 cm² of active surface. At 240 W, the average surface watt density is about 3.05 W/cm².'],
         [['Heat transfer and sheath temperature', '/guides/heating-element-watt-density/#sheath-temperature-in-service'], 'Provide liquid grade or air composition, minimum flow, operating temperature, any film temperature limit and expected deposits.'],
         ['Installed envelope', 'Show the mount, spacing between heated runs and clearance to the vessel or duct. For immersion, mark the lowest normal liquid level.'],
-      ], tableNote: 'The U-bend dimensions and calculated watt density illustrate the method. Review the allowable loading against the medium, minimum flow or liquid level, and the sheath temperature limit.' },
+      ] },
     ],
     selection: [
       'Tubular Heating Element Shapes and Terminations',
@@ -234,17 +234,14 @@ export const products = [
         {
           image: 'u-shaped-finned-tubular-heater', width: 600, height: 600,
           alt: 'U-shaped finned tubular heater with two parallel finned legs and a single return bend',
-          caption: 'U-shaped finned tubular heater · Reference photo',
         },
         {
           image: 'w-shaped-finned-tubular-heater', width: 600, height: 600,
           alt: 'W-shaped finned tubular heater with multiple parallel finned runs and two electrical terminals',
-          caption: 'W-shaped finned tubular heater · Reference photo',
         },
         {
           image: 'flange-mounted-finned-tubular-heater', width: 600, height: 600,
           alt: 'Multiple finned tubular elements mounted through a rectangular flange plate with corner mounting holes',
-          caption: 'Flange-mounted finned heater · Reference photo',
         },
       ],
     },
@@ -284,12 +281,11 @@ export const products = [
     ],
     use: 'Custom elements are considered for industrial batch ovens, drying chambers and conveyor ovens. Provide an equipment drawing or an existing part reference for a replacement.',
     variants: {
-      title: 'Straight Oven Element Reference',
+      title: 'Straight Tubular Oven Elements',
       photos: [
         {
           image: 'straight-oven-element-reference', width: 600, height: 600,
           alt: 'Straight tubular oven heating elements with electrical terminals at opposite ends',
-          caption: 'Straight tubular oven elements · Reference photo',
         },
       ],
     },
@@ -353,22 +349,19 @@ export const products = [
     ],
     use: 'Applications include OEM electric sauna stoves and replacement inquiries where the original element drawing, dimensions and rating are available for review.',
     variants: {
-      title: 'Sauna Heating Element Profile Examples',
+      title: 'Sauna Heating Element Profiles',
       photos: [
         {
           image: 'side-entry-sauna-element-reference', width: 600, height: 600,
           alt: 'Sauna heating element with an L-shaped outline and two terminal legs raised at one side',
-          caption: 'Side-entry profile · Reference photo',
         },
         {
           image: 'flat-sauna-element-reference', width: 600, height: 600,
           alt: 'Flat serpentine sauna heating element with parallel runs and centered terminal legs',
-          caption: 'Flat serpentine profile · Reference photo',
         },
         {
           image: 'angled-sauna-element-reference', width: 600, height: 600,
           alt: 'Multi-pass sauna heating element with a diagonal outer run and two off-center terminals',
-          caption: 'Angled profile · Reference photo',
         },
       ],
     },
@@ -394,7 +387,7 @@ export const products = [
       [
         'Measure the lowest operating liquid level and the highest heated point on the sheath from the same tank reference. Compare the resulting ',
         ['submergence', '/glossary/#minimum-submergence'],
-        ' with the specified minimum over the operating cycle. Include drawdown during draining or circulation if the heater can be energized then.',
+        ' with the minimum required by the heater and equipment specifications. Include drawdown during draining or circulation if the heater can be energized then.',
       ], {
         anchor: 'minimum-liquid-level-example',
         table: [
@@ -404,7 +397,6 @@ export const products = [
           ['Liquid cover over the active section', '150 mm − 110 mm leaves 40 mm of liquid cover at the highest heated point.'],
           [['Compare with the specified minimum', '/guides/immersion-heater-sizing/#immersion-heater-submergence'], 'If the assembly drawing requires 50 mm of cover, the example falls short by 10 mm. Review the mounting or operating level, and confirm the required low-level protection.'],
         ],
-        tableNote: 'The levels and cover requirement in this example illustrate how to read a tank drawing. Use the heater and equipment specifications to set the minimum operating level.',
       },
     ],
     selection: [
@@ -581,7 +573,8 @@ export const products = [
   {
     id: 'ptfe-immersion-heaters', path: immersion + 'ptfe/', parent: 'immersion-heaters', group: 'tubular', name: 'PTFE Immersion Heaters',
     image: 'ptfe-immersion-heater',
-    imageAlt: 'Reference photo of an L-shaped PTFE immersion heater with a coiled active section and a terminal head',
+    imageAlt: 'L-shaped PTFE immersion heater with a coiled active section and a terminal head',
+    imageCaption: '',
     title: 'Custom PTFE Immersion Heaters for Chemical Tanks',
     description: 'Specify a PTFE immersion heater for a chemical tank by bath composition, temperature, liquid level, element geometry, mounting and electrical load.',
     text: 'PTFE immersion heater configurations for compatible chemical baths and process tanks.',
@@ -878,7 +871,7 @@ export const products = [
     specs: ['Bore diameter and tolerance, usable depth and mounting details', 'Heated and cold lengths, voltage, wattage and duty cycle', 'Lead exit direction, length and insulation', 'Tool material, working temperature, and sensor type and location if required'],
     comparison: [
       'Cartridge Heater Fit and Power Example',
-      'On a drawing, give the finished bore diameter and heater outside diameter with their tolerances. Mark the active length separately from the overall body length. Those dimensions tell you the cold fit and the area used to calculate surface watt density.',
+      'On a drawing, give the finished bore diameter and heater outside diameter with their tolerances. Mark the active length separately from the overall body length. Use those dimensions to calculate cold fit and surface watt density, then review the allowable fit and loading for the sheath, tool material and operating conditions.',
       {
         anchor: 'cartridge-heater-fit-and-power',
         table: [
@@ -888,7 +881,6 @@ export const products = [
           [['Nominal electrical resistance', '/guides/heating-element-resistance/#heater-resistance-calculator'], 'At a rating of 24 V and 40 W, V² ÷ P gives 14.4 Ω at rated conditions. Compare a cold meter reading with the specified cold resistance.'],
           [['Surface watt density', '/guides/heating-element-watt-density/#watt-density-calculator'], 'A 5.95 mm sheath with 30 mm of active length has about 5.61 cm² of active cylindrical surface. At 40 W, that gives about 7.13 W/cm².'],
         ],
-        tableNote: 'The values illustrate how to read a drawing and calculate loading. Confirm the allowable fit and surface loading for the selected sheath, tool material and operating conditions.',
       },
     ],
     selection: [
@@ -919,7 +911,6 @@ export const products = [
         {
           image: 'right-angle-cartridge-heater-reference', width: 600, height: 600,
           alt: 'Cartridge heater with a straight main body, right-angle lead end and two red wires',
-          caption: 'Right-angle lead exit · Reference photo',
         },
       ],
     },
@@ -1044,8 +1035,7 @@ export const products = [
     use: 'Typical inquiries include molds, dies and sealing jaws with shallow wiring compartments or hardware immediately behind the cartridge bore.',
     photographs: [{
       image: 'right-angle-cartridge-heater-reference', width: 600, height: 600,
-      alt: 'Right-angle cartridge heater reference with a straight main body and two red leads at the elbow',
-      caption: 'Right-angle lead exit · Reference photo',
+      alt: 'Right-angle cartridge heater with a straight main body and two red leads at the elbow',
     }],
     questions: [
       ['Which part of a right-angle cartridge heater turns 90 degrees?', 'The lead outlet turns at the cold end. The cylindrical heated section remains straight and fits into the tool bore. Show the elbow and wire exit outside the bore on the installed drawing.'],
@@ -1115,7 +1105,8 @@ export const products = [
     id: 'miniature-cartridge-heaters', path: cartridge + 'miniature/', parent: 'cartridge-heaters', group: 'specialty',
     name: 'Miniature Cartridge Heaters',
     image: 'miniature-cartridge-heater',
-    imageAlt: 'Reference photo of three short miniature cartridge heaters with red sleeves and braided leads',
+    imageAlt: 'Three short miniature cartridge heaters with red sleeves and braided leads',
+    imageCaption: '',
     title: 'Custom Miniature Cartridge Heaters for Small Bores',
     description: 'Specify a miniature cartridge heater by bore tolerance, body and heated length, lead routing, voltage and power for compact OEM tooling.',
     text: 'Small-diameter cartridge heaters matched to compact bores and limited lead clearance.',
@@ -1834,7 +1825,6 @@ export const products = [
           [['Adjustable compression fitting', thermo + 'threaded-probes/compression-fitting/'], 'Select from the fitting and sheath together. Check the sheath outside diameter, allowable adjustment and seating position, plus the temperature and pressure requirements if the fitting seals the process.'],
           [['Probe installed in a thermowell', '/guides/thermowell-selection-guide/#thermowell-insertion'], 'Match the probe to the instrument-side connection, usable bore and seating depth. Verify the thermowell connection and process seal separately.'],
         ],
-        tableNote: 'The thread callouts illustrate how to identify an interface. Confirm the thread, seal and dimensions for the required assembly before ordering.',
       },
     ],
     selection: [
@@ -3289,17 +3279,16 @@ export const products = [
     specs: ['Flange standard, nominal size, pressure class, facing and bolt pattern', 'Liquid composition, working temperature, pressure and minimum liquid level', 'Insertion length from the flange face, bundle envelope and removal clearance', 'Terminal enclosure and entry orientation, voltage, phase and wattage'],
     comparison: [
       'Flange Fit and Acceptance Checks',
-      'For a replacement, compare the vessel connection and heater drawings before selecting the flange and element bundle. Give the required acceptance tests with the operating conditions.',
+      'For a replacement, compare the approved vessel connection and heater drawings before selecting the flange and element bundle. Give the required acceptance tests with the operating conditions.',
       {
         anchor: 'flange-fit-and-acceptance',
         table: [
           ['Check', 'How to verify it'],
-          ['Round bolt pattern', 'For a four-hole pattern with equal 90° spacing, 100 mm between adjacent hole centers corresponds to a bolt circle diameter of about 141.4 mm. Measure between opposite hole centers when possible, then record hole diameter and clocking.'],
+          ['Round bolt pattern', 'In a four-hole example with equal 90° spacing, 100 mm between adjacent hole centers gives a bolt circle diameter of about 141.4 mm. Measure between opposite hole centers when possible, then record hole diameter and clocking.'],
           ['Square mounting plate', 'Record the center spacing in both directions, hole diameter and plate orientation. Mark the position of the terminal enclosure relative to the vessel so the bolt pattern and bundle orientation can be checked together.'],
           ['Sealing face and service conditions', 'Match the facing and gasket seat on the mating drawing. Confirm flange, gasket and complete assembly suitability at the specified pressure and temperature.'],
           [['Electrical checks', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'Specify the expected cold resistance per circuit and any required insulation resistance or dielectric withstand tests. Give the test method, voltage where applicable, duration and acceptance limits for the specified assembly.'],
         ],
-        tableNote: 'The bolt-circle example illustrates how to dimension a drawing. Use the approved mating dimensions and test requirements for the actual heater.',
       },
     ],
     selection: [
@@ -3322,12 +3311,10 @@ export const products = [
         {
           image: 'round-flange-immersion-heater', width: 600, height: 600,
           alt: 'Round immersion heater flange with bolt holes around the circular plate',
-          caption: 'Round flange detail · Reference photo',
         },
         {
           image: 'square-flange-immersion-heater', width: 600, height: 600,
           alt: 'Square immersion heater flange with four corner mounting holes and a tubular bundle',
-          caption: 'Square flange immersion heater · Reference photo',
         },
       ],
     },
@@ -3360,12 +3347,11 @@ export const products = [
     ],
     use: 'Clamp-mounted heaters can be evaluated for compatible liquid tanks and OEM equipment where the connection must allow element removal for service.',
     variants: {
-      title: 'Clamp Connection Reference',
+      title: 'Clamp-Mounted Immersion Element',
       photos: [
         {
           image: 'clamp-mounted-immersion-heater-reference', width: 600, height: 600,
           alt: 'Clamp-mounted liquid heating element with a U-shaped tube and circular ferrule',
-          caption: 'Clamp-mounted liquid heating element · Reference photo',
         },
       ],
     },
@@ -3399,12 +3385,11 @@ export const products = [
     ],
     use: 'Typical inquiries include wet-well commercial steam tables and buffet warming equipment where the tubular element heats the water beneath food pans.',
     variants: {
-      title: 'T-Shaped Steam Table Element Reference',
+      title: 'T-Shaped Steam Table Element',
       photos: [
         {
           image: 't-shaped-steam-table-element-reference', width: 600, height: 600,
           alt: 'T-shaped steam table tubular element with a wide lower loop and two central terminals',
-          caption: 'T-shaped wet-well heating element · Reference photo',
         },
       ],
     },
@@ -3499,12 +3484,10 @@ export const products = [
         {
           image: 'squared-food-steamer-element-reference', width: 600, height: 600,
           alt: 'Three squared U-shaped food steamer elements with parallel legs and bent corners',
-          caption: 'Squared steamer element profiles · Reference photo',
         },
         {
           image: 'curved-food-steamer-element-reference', width: 600, height: 600,
           alt: 'Three curved U-shaped food steamer heating elements with different widths',
-          caption: 'Curved steamer element profiles · Reference photo',
         },
       ],
     },
