@@ -1084,6 +1084,17 @@ export const products = [
     intro: 'A high density cartridge heater delivers electrical power over a small active sheath area in a tool bore. Review the bore tolerance, heated length and required power together. The achievable loading depends on how well the installed heater transfers heat into the tooling.',
     options: ['Active and unheated lengths by tooling drawing', 'Body dimensions and bore fit reviewed for the operating temperature', 'Lead exit, insulation and termination matched to the installation'],
     specs: ['Measured bore diameter and tolerance, usable depth, surface condition and tool material', 'Heater diameter, active length, unheated ends and available clearance for extraction', 'Voltage, watts per heater, target temperature, warm-up time and operating duty', 'Lead routing and exit temperature, temperature sensor position and control cycling'],
+    comparison: [
+      'Compare Cartridge Heater Watt Density at the Same Power',
+      'In this example, two 8 mm diameter heaters deliver 240 W each. Calculate watt density from the heated length, excluding cold ends. Shortening the active section concentrates the same power on a smaller part of the sheath.',
+      { anchor: 'high-density-cartridge-heater-loading', table: [
+        ['Design check', 'Worked example or installation detail'],
+        [['80 mm heated length', '/guides/heating-element-watt-density/#watt-density-calculator'], 'The active cylindrical area is about 20.11 cm². At 240 W, the surface watt density is about 11.94 W/cm².'],
+        ['60 mm heated length', 'The active cylindrical area is about 15.08 cm². At 240 W, the surface watt density rises to about 15.92 W/cm².'],
+        [['Bore fit at operating temperature', '/glossary/#cartridge-heater-bore-clearance'], 'Check fit, bore wear and deposits. Poor contact reduces heat transfer into the tool and can raise the sheath temperature at the same power.'],
+        ['Heated span and sensor location', 'Show where the active section sits in the tool and where the controller measures temperature. Check the temperature near the lead exit for the proposed heating cycle.'],
+      ] },
+    ],
     selection: [
       'Match Surface Watt Density to the Tool Bore',
       'Specify the power and active sheath area together. Include the actual tool bore and operating conditions so the load and fit can be reviewed at temperature.',
@@ -1099,6 +1110,7 @@ export const products = [
     questions: [
       ['How do you calculate cartridge heater watt density?', 'Divide power by the active cylindrical sheath area. For a uniformly heated section, use π × sheath diameter × active heated length, with consistent units. Mark any unheated ends or separate heating zones.'],
       ['Can I use a higher wattage in the same cartridge bore?', 'Review the actual bore fit, active length, tool material, temperature and controller duty before changing power. Higher power in the same area increases surface watt density and can increase the sheath temperature.'],
+      ['Where should the active section sit in the tool bore?', 'Show the intended heated span relative to the bore opening, blind end and tool temperature sensor. Verify that the active sheath has the required contact throughout that span and that the cold end places the lead transition within its temperature limit.'],
     ],
     related: ['cartridge-heaters', 'miniature-cartridge-heaters', 'cartridge-heaters-with-thermocouple'],
     guides: ['heating-element-watt-density', 'choose-a-heating-element'],
@@ -1495,6 +1507,7 @@ export const products = [
       { anchor: 'temperature-range', table: [
         ['Temperature or accuracy check', 'What it tells you'],
         [['Type K thermocouple millivolt chart', typeKMillivoltChart], 'Look up selected thermoelectric voltages with a 0 °C reference junction and see how to compare readings taken at room temperature.'],
+        [['Raw millivolts with a warm reference', '/glossary/#cold-junction-compensation'], 'With the tip at 100 °C, Type K gives about +4.096 mV at a 0 °C reference and +3.096 mV at a 25 °C reference. Compare an uncompensated meter reading using the temperature at the reference connections.'],
         ['Probe assembly working range', 'Confirm continuous and peak exposure at the tip, process atmosphere, sheath and insulation, plus operating temperatures at the cable transition and connector.'],
         [['Installed accuracy and troubleshooting', '/guides/how-to-test-a-thermocouple/#thermocouple-troubleshooting'], 'Check probe tolerance, insertion and the instrument input, reference junction compensation and wiring. Include the required accuracy over your working interval.'],
       ] },
@@ -1511,7 +1524,7 @@ export const products = [
         [['Surface contact probe', thermo + 'surface-mount/'], 'Show the sensing contact point, pad or lug footprint, fastening and lead exit. Specify the surface temperature at that point.'],
         [['Needle insertion probe', thermo + 'needle-probes/'], 'For a pointed Type K probe, specify the needle diameter, tip shape and usable insertion depth.'],
         [['Exhaust gas temperature probe', thermo + 'exhaust-gas/'], 'Mark the sensing point in the exhaust stream, fitting dimensions, insertion depth and conditions at the lead transition.'],
-        [['Electrical connection', '/guides/thermocouple-wire-color-code/'], 'Type K input, compatible lead and connector type, polarity convention and temperature at the termination.'],
+        [['Electrical connection', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors'], 'Specify the Type K input, matching extension cable and connector, and temperature at the termination. US Type K conductor colors are yellow positive and red negative. IEC colors are green positive and white negative. Confirm the wiring convention and terminal markings on the installed assembly.'],
         [['Changing from Type J to Type K', '/guides/type-k-vs-type-j-thermocouple/#switching-thermocouple-types'], 'Confirm that the instrument supports Type K and that the extension cable and connector can be matched to the new probe.'],
       ] },
     ],
@@ -1521,6 +1534,7 @@ export const products = [
       ['Are all Type K thermocouples interchangeable?', 'Type K probes use the same voltage-to-temperature reference function. For a replacement, match the sheath, mount, insertion depth, junction, tolerance and termination. Check whether the allowable temperatures and response suit the installation and working medium.'],
       ['Can I replace a Type J thermocouple with Type K?', 'Review the entire measurement circuit before switching types. The instrument must support Type K and be configured for it. Match the extension cable and connector to Type K, and confirm the replacement probe fits the mount and process conditions.'],
       ['What determines the accuracy of an installed Type K thermocouple?', 'Consider the thermocouple tolerance, instrument input, cold-junction compensation and installation. Insertion depth, heat conduction through the sheath and the process temperature gradient can affect the reading at the intended measurement point.'],
+      ['Why does the Type K reading fall when the probe tip is warmed?', 'With the reference temperature stable, reversed polarity can make the indicated temperature fall as the tip warms. Verify the Type K input setting and check positive and negative at the probe, extension wiring and instrument. Recheck the response using a controlled temperature source.'],
       ['What temperature range can a Type K thermocouple probe handle?', 'The usable range is specified for the entire assembly. Ask about continuous and peak temperatures, the process atmosphere and the temperature at the cable or connector. These conditions affect the sheath, junction and lead materials required.'],
       ['What do you need to quote a replacement Type K thermocouple?', 'Send the original drawing or photos of the probe, fitting and termination. Include the sheath diameter, installed insertion depth, mounting and grounding details, cable length and the Type K input used by the instrument. Flag any unknown dimensions or changes in service conditions.'],
     ],
@@ -4525,6 +4539,17 @@ export const products = [
     intro: 'For a ceramic or PTC element, describe supply voltage, target temperature and how the heater transfers heat in your equipment.',
     options: ['PTC and resistive ceramic formats', 'Contact and air-heating assemblies', 'Mechanical interface by drawing'],
     specs: ['Supply voltage and tolerance, cold-start current limit and target temperature', 'Mounting envelope, lead clearance and required thermal contact or airflow', 'Minimum ambient temperature, expected heating load and duty cycle', 'Control, temperature sensing and protection requirements'],
+    comparison: [
+      'Check PTC Cold-Start Current and Operating Power',
+      'This example uses a constant 24 V DC supply and two assumed resistance values for one PTC element. At each point, current is voltage divided by resistance and electrical power is voltage squared divided by resistance. The installed load determines where the element stabilizes.',
+      { anchor: 'ptc-heater-cold-start-and-power', table: [
+        ['Operating condition', 'Electrical load or design check'],
+        ['Cold element at 12 Ω', 'At the assumed starting resistance, current is 2.0 A and electrical input is 48 W.'],
+        ['Warm element at 24 Ω', 'At the assumed stabilized resistance, current is 1.0 A and electrical input is 24 W.'],
+        ['Size the supply and switch for startup', 'Review the current versus time at the lowest startup temperature and across the supply voltage range. Include all branches that can start together and verify the supply, switching device and protection against that load.'],
+        ['Check the installed heat transfer', 'Measure the controlled point under the expected airflow or contact load. For an air heater, also review minimum flow. Specify the sensor position, operating control and protective temperature limit for the equipment.'],
+      ] },
+    ],
     selection: [
       'PTC and Ceramic Heater Selection Inputs',
       'A PTC heater increases its resistance as it warms through its designed operating region. A conventional resistive ceramic heater can use ceramic for support or electrical insulation around a heating circuit. Specify the electrical behavior and heat transfer conditions for the assembly.',
@@ -4542,6 +4567,8 @@ export const products = [
     guides: ['choose-a-heating-element'],
     questions: [
       ['How does a PTC heating element differ from a conventional resistive heater?', 'The resistance of a PTC element rises with temperature over its designed region, changing its electrical power at a given supply voltage. Operating temperature still depends on heat transfer and the assembly design. State the supply, ambient conditions, airflow or contact load and required temperature.'],
+      ['What current should I use to select a PTC heater power supply?', 'Use startup current over time at the lowest expected starting temperature and applicable supply voltage, including heaters that switch on together. Check the supply’s current limit and how long it can support the load while the elements warm up.'],
+      ['Does a self-regulating PTC heater need a temperature controller?', 'Use the application’s required tolerance and maximum temperature to decide. PTC resistance affects the element’s power as it heats, while the controlled temperature also depends on sensor position and heat transfer. Specify the controls and protective limits required by the equipment.'],
     ],
   },
   {
