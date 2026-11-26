@@ -170,6 +170,11 @@ export const glossary = [
     related: ['Constant Wattage Heating Cables', '/heating-elements/heating-cables/constant-wattage/'],
   },
   {
+    id: 'convection-oven-heating-element', name: 'Convection Oven Heating Element',
+    definition: 'A tubular resistance heater in the air path of a fan-driven oven. The ring or formed profile is specified by the fan opening, baffle, mounts and electrical rating.',
+    related: ['Convection Oven Heating Elements', '/heating-elements/tubular-heaters/convection-ovens/'],
+  },
+  {
     id: 'copper-sheathed-immersion-element', name: 'Copper-Sheathed Immersion Element',
     definition: 'A tubular heater with a copper outer sheath that transfers heat to the surrounding water. Water chemistry and operating conditions determine whether the sheath and other wetted components are suitable.',
     related: ['Copper-Sheathed Immersion Heating Elements', '/heating-elements/immersion-heaters/copper/'],
@@ -308,6 +313,11 @@ export const glossary = [
     id: 'flanged-thermowell', name: 'Flanged Thermowell',
     definition: 'A closed-end probe housing mounted by a bolted flange. Match the mating flange and nozzle and review the stem and bore for the probe and process conditions.',
     related: ['Flanged Thermowells', '/temperature-sensors/accessories/thermowells/flanged/'],
+  },
+  {
+    id: 'food-thermocouple-probe', name: 'Food Thermocouple Probe',
+    definition: 'A pointed thermocouple used to measure temperature at a defined location within food. Specify the sensing depth, product-contact materials, cleaning conditions and instrument connection.',
+    related: ['Food Thermocouple Probes', '/thermocouples/needle-probes/food/'],
   },
   {
     id: 'garment-steamer-heating-element', name: 'Garment Steamer Heating Element',
@@ -790,6 +800,11 @@ export const glossary = [
     related: ['Self-Regulating Heating Cables', '/heating-elements/heating-cables/self-regulating/'],
   },
   {
+    id: 'shielded-thermocouple', name: 'Shielded Thermocouple',
+    definition: 'A thermocouple with a conductive shield around the signal leads. The shield and its termination are part of the wiring design. Junction isolation from the probe sheath is specified separately.',
+    related: ['Shielded Thermocouple Probes', '/thermocouples/shielded/'],
+  },
+  {
     id: 'silicon-carbide-heating-element', name: 'Silicon Carbide Heating Element',
     definition: 'A ceramic resistance element used in furnaces and kilns. The rod geometry, hot and cold lengths and electrical reference conditions are specified for the installation.',
     related: ['Silicon Carbide Heating Elements', '/heating-elements/silicon-carbide-heating-elements/'],
@@ -913,6 +928,11 @@ export const glossary = [
     id: 'thermocouple-junction-welder', name: 'Thermocouple Junction Welder',
     definition: 'A device that joins a specified pair of thermocouple wires to form a measuring junction. Select it by alloy pair, wire diameters, junction geometry and production needs.',
     related: ['Thermocouple Junction Welders', '/temperature-sensors/accessories/thermocouple-welders/'],
+  },
+  {
+    id: 'thermocouple-panel-jack', name: 'Thermocouple Panel Jack',
+    definition: 'A female socket mounted in a panel cutout for a matching thermocouple plug. Specify the contact materials, polarity, panel thickness and rear wiring clearance.',
+    related: ['Thermocouple Panel Jacks', '/temperature-sensors/accessories/connectors/panel-jacks/'],
   },
   {
     id: 'thermocouple-polarity', name: 'Thermocouple Polarity',
@@ -1040,6 +1060,11 @@ export const glossary = [
     related: ['Type T Thermocouples', '/thermocouples/type-t/'],
   },
   {
+    id: 'u-shaped-tubular-heating-element', name: 'U-Shaped Tubular Heating Element',
+    definition: 'A metal-sheathed heater with two legs joined by a return bend. The two tube ends can enter the same side of an assembly. Specify leg centers, bend radius and the active centerline span.',
+    related: ['U-Shaped Tubular Heating Elements', '/heating-elements/tubular-heaters/u-shaped/'],
+  },
+  {
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
     definition: 'A thermocouple junction separated from the metal sheath by insulation. This construction provides electrical isolation between the junction and sheath.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
@@ -1063,6 +1088,11 @@ export const glossary = [
     id: 'washer-thermocouple', name: 'Washer Thermocouple',
     definition: 'A surface temperature sensor built into a flat ring held beneath a fastener. The ring thickness, seating face and edge clearance for the lead are part of the installed fit.',
     related: ['Washer Thermocouples', '/thermocouples/surface-mount/bolt-on/washer/'],
+  },
+  {
+    id: 'water-dispenser-heating-element', name: 'Water Dispenser Heating Element',
+    definition: 'A heater for the hot reservoir in a water dispenser. The tank determines the mount, seal, liquid level and clearances, while the equipment specification sets wetted-material requirements.',
+    related: ['Water Dispenser Heating Elements', '/heating-elements/immersion-heaters/water-dispensers/'],
   },
   {
     id: 'waterproof-thermocouple', name: 'Waterproof Thermocouple',
