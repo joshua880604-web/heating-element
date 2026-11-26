@@ -20,6 +20,25 @@ document.addEventListener('keydown', event => {
   }
 });
 
+const backToTop = document.querySelector('.back-to-top');
+const backToTopThreshold = 2;
+
+function updateBackToTop() {
+  const hide = window.scrollY <= backToTopThreshold * window.innerHeight;
+  if (hide !== backToTop.hidden) backToTop.hidden = hide;
+}
+
+backToTop.addEventListener('click', () => {
+  if (document.activeElement === backToTop) {
+    document.querySelector('.site-header .brand').focus({ preventScroll: true });
+  }
+  window.scrollTo({ top: 0 });
+});
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+window.addEventListener('resize', updateBackToTop);
+window.addEventListener('pageshow', updateBackToTop);
+updateBackToTop();
+
 const catalog = document.querySelector('[data-catalog]');
 if (catalog) {
   const filters = [...catalog.querySelectorAll('[data-filter]')];

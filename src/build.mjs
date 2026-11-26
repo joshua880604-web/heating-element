@@ -349,6 +349,7 @@ ${photoFilters}
   </div>
   <div class="container footer-bottom"><small>© ${new Date().getUTCFullYear()} ${escape(brand)}</small><small>Made to specification</small></div>
 </footer>
+<button class="icon-button back-to-top" type="button" aria-label="Back to top" hidden>${icon('arrow')}</button>
 </body>
 </html>`;
 }

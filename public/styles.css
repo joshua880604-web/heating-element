@@ -198,6 +198,22 @@ svg:not(.symbols) {
   background: var(--soft);
   color: var(--accent-dark);
 }
+.back-to-top {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 4;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--accent-dark);
+  box-shadow: 0 3px 14px #141b2220;
+}
+.back-to-top svg {
+  transform: rotate(-90deg);
+}
 .menu-toggle {
   display: none;
 }
