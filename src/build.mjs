@@ -15,6 +15,8 @@ const chineseCompanyName = '厦门利诚达精密制造有限公司';
 const email = process.env.RFQ_EMAIL?.trim() || 'stella@lichengdaheating.com';
 const whatsAppNumber = '+86 18606007249';
 const origin = process.env.SITE_URL?.trim() ? new URL(process.env.SITE_URL).origin : '';
+const analyticsOrigin = 'https://heatthermo.com';
+const analyticsId = 'G-LHJM04DXQH';
 if (!/^[\w.!#$%&'*+/=?^_\x60{|}~-]+@[\w.-]+\.[a-z]{2,}$/i.test(email)) throw new Error('Set RFQ_EMAIL to a valid email address.');
 if (origin && !/^https?:\/\//.test(origin)) throw new Error('Set SITE_URL to an HTTP(S) origin.');
 const inquiryEmail = `mailto:${encodeURIComponent(email).replace('%40', '@')}?subject=${encodeURIComponent('Industrial Heating Product Inquiry')}`;
@@ -311,6 +313,25 @@ function searchMetadata({ path, title, description, trail, type, article, image,
 <script type="application/ld+json">${json}</script>`;
 }
 
+const analyticsTag = origin === analyticsOrigin ? `<script>
+if (location.origin === '${analyticsOrigin}') {
+  const referrer = document.referrer ? new URL(document.referrer) : null;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', '${analyticsId}', {
+    page_location: location.origin + location.pathname,
+    page_referrer: referrer ? referrer.origin + (referrer.origin === location.origin ? referrer.pathname : '/') : '',
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+  const tag = document.createElement('script');
+  tag.async = true;
+  tag.src = 'https://www.googletagmanager.com/gtag/js?id=${analyticsId}';
+  document.head.append(tag);
+}
+</script>` : '';
+
 function layout({ path, title, description, body, trail, type, article, image, items, terms, faq }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   return `<!doctype html>
@@ -325,6 +346,7 @@ function layout({ path, title, description, body, trail, type, article, image, i
 <link rel="stylesheet" href="/styles.css">
 ${searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq })}
 ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heating.webp">' : ''}
+${analyticsTag}
 <script type="module" src="/site.js"></script>
 </head>
 <body>
@@ -565,7 +587,7 @@ for (const product of products) {
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
   await page(product.path, product.title, product.description, `
-<section class="detail-hero"><div class="container">
+<section class="detail-hero" data-product-id="${escape(product.id)}"><div class="container">
   ${crumb(trail)}
   <div class="detail-grid${image ? '' : ' text-only'}"><div>
     <p class="eyebrow">${groups[product.group]}</p>

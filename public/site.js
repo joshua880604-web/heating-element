@@ -1,5 +1,19 @@
 document.body.classList.add('enhanced');
 
+function trackInquiry(eventName, productId) {
+  window.gtag?.('event', eventName, productId ? { product_id: productId } : {});
+}
+
+if (window.gtag) {
+  const pageProductId = document.querySelector('[data-product-id]')?.dataset.productId;
+  document.addEventListener('click', event => {
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link || link.origin !== location.origin || link.pathname !== '/request-a-quote/') return;
+    const productId = new URLSearchParams(link.search).get('product') || pageProductId;
+    trackInquiry('quote_click', productId);
+  });
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#header-nav');
 
@@ -189,18 +203,6 @@ if (quote) {
     ].join('\r\n');
   }
 
-  function openDraft(url, newTab = false) {
-    const link = document.createElement('a');
-    link.href = url;
-    if (newTab) {
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-    }
-    document.body.append(link);
-    link.click();
-    link.remove();
-  }
-
   async function draft(files, subject, text) {
     const headers = ['X-Unsent: 1', 'MIME-Version: 1.0'];
     if (quote.dataset.email) headers.push(`To: ${quote.dataset.email}`);
@@ -241,7 +243,9 @@ if (quote) {
         feedback.textContent = 'This message is too long to open in WhatsApp. Shorten the requirements or use Download RFQ.';
         return;
       }
-      openDraft(url.href, true);
+      trackInquiry('rfq_whatsapp_open', productId);
+      // The message contains form fields. Keep the URL out of click analytics.
+      window.open(url.href, '_blank', 'noopener,noreferrer');
       feedback.textContent = files.length
         ? 'Review the message in WhatsApp, add your drawings in the chat and tap Send.'
         : 'Review the message and tap Send in WhatsApp.';
@@ -251,7 +255,8 @@ if (quote) {
       const recipient = encodeURIComponent(quote.dataset.email).replace('%40', '@');
       const url = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
       if (url.length <= 2000) {
-        openDraft(url);
+        trackInquiry('rfq_email_draft_open', productId);
+        window.location.assign(url);
         feedback.textContent = 'Review and send the draft in your email app.';
         return;
       }
@@ -274,6 +279,7 @@ if (quote) {
       document.body.append(link);
       link.click();
       link.remove();
+      trackInquiry('rfq_download', productId);
       setTimeout(() => URL.revokeObjectURL(link.href), 30000);
       feedback.textContent = 'Open the downloaded RFQ in your email app to review and send it.';
     } catch {
