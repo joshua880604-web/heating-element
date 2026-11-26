@@ -2,7 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { applications, groups, guides, products } from './catalog.mjs';
+import { applicationPhotoExamples, applications, groups, guides, products } from './catalog.mjs';
 import { glossary } from './glossary.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -171,10 +171,10 @@ function photoToneFilter({ id, source }) {
 
 const photoFilters = `<svg class="photo-filters" aria-hidden="true"><defs>${photoTones.map(photoToneFilter).join('')}</defs></svg>`;
 
-function photoFigure({ image, width, height, alt, caption }) {
+function photoFigure({ image, width, height, alt, caption, href }) {
   return `<figure>
     <img src="/assets/${image}.webp" width="${width}" height="${height}" loading="lazy" decoding="async" alt="${escape(alt)}">
-    <figcaption>${escape(caption)}</figcaption>
+    <figcaption>${href ? `<a href="${escape(href)}">${escape(caption)}</a>` : escape(caption)}</figcaption>
   </figure>`;
 }
 
@@ -592,6 +592,12 @@ await page('/applications/', 'Industrial Heating Applications for OEM Equipment'
 ${pageIntro('Industries', 'Industrial Heating & Sensing Applications', 'Find suitable heating elements and temperature sensors for plastics machinery, process air, liquid heating and packaging. Start with the equipment and heat transfer conditions.', applicationsTrail)}
 <section class="section"><div class="container">
   <div class="application-grid application-grid-scenes">${applications.map(applicationSceneCard).join('')}</div>
+  <section class="workshop factory-examples" aria-labelledby="factory-examples-heading">
+    <h2 id="factory-examples-heading">Heaters and Sensors From Our Workshop</h2>
+    <div class="workshop-gallery">
+      ${applicationPhotoExamples.map(([id, photo]) => photoFigure({ ...photo, href: lookup.get(id).path + '#product-photos-heading' })).join('')}
+    </div>
+  </section>
   ${questionsSection('When the Equipment Requires Both Heat and Measurement', [
     ['Should the heater and temperature sensor be specified together?', 'For a heated machine or process vessel, identify the heating zone, measurement point and control input before selecting parts. Send a layout showing both locations, intended temperature and duty cycle so the heater and probe can be evaluated in the same equipment.'],
   ])}
@@ -727,19 +733,34 @@ const productionCapacity = [
 ];
 const workshopPhotos = [
   {
-    image: 'lichengda-workshop',
+    image: 'lichengda-workshop', width: 960, height: 720,
     alt: 'Lichengda workshop with a cable reel feeding a machine beside an operator',
     caption: 'Workshop equipment and workstations',
   },
   {
-    image: 'lichengda-cable-assembly',
+    image: 'lichengda-cable-assembly', width: 960, height: 720,
     alt: 'Operator using hand tools to assemble braided leads at a workbench',
     caption: 'Cable assembly at the workbench',
   },
   {
-    image: 'lichengda-sensor-packaging',
+    image: 'lichengda-sensor-packaging', width: 960, height: 720,
     alt: 'Temperature probe assemblies with coiled leads in individual bags',
     caption: 'Individually packed temperature probes',
+  },
+  {
+    image: 'lichengda-lead-assembly-fixture', width: 720, height: 960,
+    alt: 'Hands handling short green leads beside an assembly fixture on the Lichengda workshop bench',
+    caption: 'Preparing leads at an assembly fixture',
+  },
+  {
+    image: 'lichengda-assembly-workbench', width: 1000, height: 750,
+    alt: 'An operator at a Lichengda workbench with parts trays and bagged cable assemblies',
+    caption: 'Parts and bagged lead assemblies at the workbench',
+  },
+  {
+    image: 'lichengda-probe-crating', width: 720, height: 960,
+    alt: 'An operator placing long wrapped temperature probes in a wooden crate',
+    caption: 'Packing long probe assemblies into a wooden crate',
   },
 ];
 await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'See Lichengda’s Xiamen factory and typical production capacity, sample and bulk lead times, and minimum order quantities for industrial heaters and sensors.', `
@@ -805,7 +826,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
   <section class="workshop" aria-labelledby="workshop-heading">
     <h2 id="workshop-heading">Inside the Workshop</h2>
     <div class="workshop-gallery">
-      ${workshopPhotos.map(photo => photoFigure({ ...photo, width: 960, height: 720 })).join('')}
+      ${workshopPhotos.map(photoFigure).join('')}
     </div>
   </section>
   ${questionsSection('Working with Lichengda', [
@@ -885,7 +906,7 @@ if (origin) {
   const llms = [
     `# ${brand} Industrial Heating`,
     '> Custom industrial thermocouples, electric heaters and temperature controls for OEM equipment and process applications.',
-    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. About Us includes photos of the factory exterior, reception and workshop.`,
+    `${companyName} (${chineseCompanyName}) supplies made-to-spec heating and sensing products. The product pages describe configuration options and information to include in an RFQ. Final specifications depend on the drawing and operating conditions. Main product images illustrate configurations. Sections labeled Product Photos show factory examples. Applications includes equipment illustrations and workshop photos of components. About Us includes photos of the factory exterior, reception, assembly and packing.`,
     `See [production capacity, lead times and minimum order quantities](${origin}${capacityPath}) for typical standard configurations. Lead times are estimates and are confirmed after specifications, availability of materials and order quantity are reviewed.`,
     ...lists,
   ].join('\n\n');
