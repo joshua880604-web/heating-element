@@ -115,9 +115,19 @@ export const glossary = [
     related: ['Ceramic Terminal Blocks for Heaters', '/temperature-controls/ceramic-terminal-blocks/'],
   },
   {
+    id: 'ceramic-thermocouple-insulator', name: 'Ceramic Thermocouple Insulator',
+    definition: 'A ceramic piece with one or more bores that supports and separates conductors in a thermocouple assembly. Specify the bore geometry, fit, material and service conditions.',
+    related: ['Ceramic Thermocouple Insulators', '/temperature-sensors/accessories/ceramic-insulators/'],
+  },
+  {
     id: 'ceramic-thermocouple-protection-tube', name: 'Ceramic Thermocouple Protection Tube',
     definition: 'A ceramic tube that shields a thermocouple sensing element during furnace or kiln service. Its material, bore, wall thickness and supports depend on the installed geometry, atmosphere and thermal cycle.',
     related: ['Ceramic Thermocouple Protection Tubes', '/temperature-sensors/accessories/ceramic-protection-tubes/'],
+  },
+  {
+    id: 'cf-thermocouple-feedthrough', name: 'CF Thermocouple Feedthrough',
+    definition: 'A thermocouple signal connection through a vacuum boundary with a CF knife-edge flange. Specify the mating seal, pin pairs, alloys and vacuum and bakeout requirements.',
+    related: ['CF Flange Thermocouple Feedthroughs', '/temperature-sensors/accessories/vacuum-feedthroughs/cf-flange/'],
   },
   {
     id: 'coil-immersion-heater', name: 'Coil Immersion Heater',
@@ -168,6 +178,11 @@ export const glossary = [
     id: 'diesel-fuel-tank-heater', name: 'Diesel Fuel Tank Heater',
     definition: 'An immersion heater assembly specified to a stationary diesel fuel tank. Review the approved tank drawing, fuel and level conditions, and required installation documentation.',
     related: ['Stationary Diesel Fuel Tank Heaters', '/heating-elements/immersion-heaters/oil/diesel-fuel-tanks/'],
+  },
+  {
+    id: 'din-rail-temperature-transmitter', name: 'DIN Rail Temperature Transmitter',
+    definition: 'A rail-mounted module converting a specified temperature sensor input to an output such as 4–20 mA. Check input, scaling, isolation, supply, loop load and cabinet space.',
+    related: ['DIN Rail Temperature Transmitters', '/temperature-controls/din-rail-temperature-transmitters/'],
   },
   {
     id: 'distiller-heating-element', name: 'Distiller Heating Element',
@@ -288,6 +303,11 @@ export const glossary = [
     id: 'garment-steamer-heating-element', name: 'Garment Steamer Heating Element',
     definition: 'An element that heats water in a garment steamer boiler. Specify the boiler opening, tube dimensions, gasket, active span and electrical rating.',
     related: ['Garment Steamer Heating Elements', '/heating-elements/immersion-heaters/garment-steamer/'],
+  },
+  {
+    id: 'gas-actuated-thermometer', name: 'Gas Actuated Thermometer',
+    definition: 'A mechanical thermometer in which pressure changes in a sealed gas-filled bulb operate a dial. A capillary can connect the bulb to a dial at a separate location.',
+    related: ['Gas Actuated Thermometers', '/temperature-sensors/gas-actuated-thermometers/'],
   },
   {
     id: 'gas-turbine-exhaust-thermocouple', name: 'Gas Turbine Exhaust Thermocouple',
@@ -645,6 +665,11 @@ export const glossary = [
     related: ['Reference Thermometers for Calibration', '/temperature-sensors/digital-thermometers/reference/'],
   },
   {
+    id: 'remote-reading-digital-thermometer', name: 'Remote Reading Digital Thermometer',
+    definition: 'A digital instrument with a cabled temperature probe and separate display. Match the process connection, probe, cable and readout for the installed measurement.',
+    related: ['Remote Reading Digital Thermometers', '/temperature-sensors/digital-thermometers/remote-reading/'],
+  },
+  {
     id: 'retractable-melt-bolt-thermocouple', name: 'Retractable Melt Bolt Thermocouple',
     definition: 'An extrusion temperature probe with adjustable tip projection relative to the mounted seat. The approved tool drawing defines the port, seal and permitted tip travel.',
     related: ['Retractable Melt Bolt Thermocouples', '/thermocouples/melt-bolt/retractable/'],
@@ -768,6 +793,11 @@ export const glossary = [
     id: 'square-cartridge-heater', name: 'Square Cartridge Heater',
     definition: 'A cartridge heater with a square cross-section for a specified tool pocket. Match the dimensions across flats, corner geometry and thermal contact faces.',
     related: ['Square Cartridge Heaters', '/heating-elements/cartridge-heaters/square/'],
+  },
+  {
+    id: 'steam-iron-heating-element', name: 'Steam Iron Heating Element',
+    definition: 'A resistive element that heats a steam iron soleplate. For a cast-in design, specify the heat path, steam passages, sensor position, controls and electrical rating together.',
+    related: ['Steam Iron Heating Elements', '/heating-elements/cast-in-heaters/steam-irons/'],
   },
   {
     id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
