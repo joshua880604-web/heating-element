@@ -93,6 +93,20 @@ export const products = [
     intro: 'Lichengda supplies custom industrial thermocouples for OEM equipment and replacement projects. Share the instrument input, operating temperatures, mounting details and a drawing or dimensions of the original probe.',
     options: ['Base-metal types K, J, T, N and E', 'High-temperature types R, S and B', 'Mineral-insulated and protection-tube assemblies', 'Threaded, flanged, surface and bayonet mounting'],
     specs: ['Thermocouple type and instrument input', 'Process medium, continuous and peak temperatures, and sheath material', 'Probe diameter and insertion length from the installed reference face', 'Mount dimensions, junction, connector and lead length'],
+    comparison: [
+      'Choose a Thermocouple by Measurement Location',
+      'Mark the actual measurement point on the equipment drawing. Use the local medium, temperature and response requirement to choose the probe construction and junction. Match the thermocouple type, extension leads and connector to the instrument input.',
+      {
+        anchor: 'industrial-thermocouple-measurement-location',
+        table: [
+          ['Measurement point', 'Probe construction to evaluate', 'Selection check'],
+          ['Outside of a tool or pipe', ['Surface pad or clamp', thermo + 'surface-mount/'], 'Verify contact at the specified surface. Include pipe outside diameter or tool curvature, surface finish and any insulation around the sensing point.'],
+          ['Bottom of a hole in heated tooling', ['Spring-loaded probe', thermo + 'spring-loaded/'], 'Match the tip shape, hole depth and seated position. Verify the spring travel available in the installed assembly.'],
+          ['Fluid inside a process pipe or vessel', ['Inserted probe or thermowell assembly', accessories + 'thermowells/'], 'Place the sensing region where it can sample the process. Review process pressure, flow, wetted materials and the complete insertion and sealing arrangement.'],
+          ['Hot zone in a furnace or oven', ['Protected high-temperature probe', thermo + 'high-temperature/'], 'Identify the atmosphere, continuous and peak temperatures and sensing depth. Review radiant exposure and lead-transition temperature separately from the measuring tip.'],
+        ],
+      },
+    ],
     selection: [
       'Industrial Thermocouple Configurations and Connections',
       'Locate the sensing point on the equipment drawing. Choose the mount that fixes the probe at that point and the wiring termination that suits the instrument and service access.',
@@ -124,6 +138,7 @@ export const products = [
     use: 'Typical integration points include heat-treatment furnaces, plastics machinery, process vessels, industrial ovens and heated tooling.',
     questions: [
       ['How should I specify a threaded or spring-loaded thermocouple?', 'For a threaded probe, identify the thread standard, sealing interface and insertion length from the seating face. For a spring-loaded assembly, include the installed travel and mating feature so the tip can stay in contact at the measurement point.'],
+      ['What temperature does a pipe-clamp thermocouple measure?', 'A pipe-clamp probe measures the pipe wall. The relationship to fluid temperature depends on heat transfer, wall material, insulation and flow. If fluid temperature is the required measurement, assess an insertion point or verify the wall reading against a suitable process reference.'],
       ['What should I specify for a replacement thermocouple probe?', 'Match the instrument input and thermocouple type first. Then check the insertion length, sheath diameter, mounting thread or flange, junction and electrical termination. A drawing or label photo can help identify the original configuration.'],
       ['When should I specify a thermocouple with a connection head?', 'Specify a connection head when the installation calls for a terminal point for field wiring near the probe. Check the head temperature, cable entry, lid access and clearance around the mount.'],
       ['How can I tell if an industrial thermocouple is failing?', 'An open-input alarm, intermittent readings or a repeatable offset from a reference are reasons to check the circuit. Verify the terminal connections, polarity, extension cable and configured input. Use continuity and a controlled temperature response to help isolate the cause, and compare against a reference to assess drift.'],
@@ -3645,9 +3660,23 @@ export const products = [
     title: 'Industrial Circulation Heaters for Process Fluids',
     description: 'Specify an industrial circulation heater by fluid, minimum and maximum flow, required temperature rise, pressure, electrical supply and connections.',
     text: 'Flow-through process heating assemblies for specified flow and temperature rise.',
-    intro: 'A circulation heating inquiry starts with the medium, flow range and temperature rise. Include the mechanical interface and pressure requirements.',
+    intro: 'An electric circulation heater transfers heat to a process fluid as it passes through a chamber. Specify the medium, flow range and required temperature rise, along with the line connections and design and operating pressures.',
     options: ['In-line heating assembly', 'Flanged or threaded connections by drawing', 'Sensing and control interface requirements'],
     specs: ['Liquid composition, viscosity if known, and minimum, normal and maximum flow', 'Inlet and target outlet temperatures across the flow range', 'Normal and maximum operating pressure, port sizes and flow direction', 'Electrical supply, sensor locations and required low-flow and temperature controls'],
+    comparison: [
+      'Calculate Flow-Through Heating Power and Temperature Rise',
+      'Estimate power delivered to the fluid by multiplying mass flow in kg/s by specific heat in kJ/(kg·°C) and the required temperature rise. Use fluid properties for the operating conditions and account for system losses when reviewing electrical power.',
+      {
+        anchor: 'circulation-heater-flow-and-power',
+        table: [
+          ['Flow-through check', 'Worked water example and selection detail'],
+          ['Convert volume flow to mass flow', 'Using an approximate density of 1 kg/L, 12 L/min of water is 0.20 kg/s. Use the density at the stated inlet conditions for the actual fluid.'],
+          ['Calculate power for the target rise', 'At 0.20 kg/s with a specific heat of 4.186 kJ/(kg·°C), a 25 °C rise requires about 20.9 kW delivered to the water before losses.'],
+          ['Review the low-flow case', 'At half the flow and the same delivered power, the ideal temperature rise doubles to 50 °C. Use the specified minimum flow, outlet limit and approved protective controls for the actual equipment.'],
+          [['Check sheath temperature and pressure drop', '/guides/heating-element-watt-density/#sheath-temperature-in-service'], 'Review heat transfer at the lowest flow and the highest expected viscosity or fouling. Specify the allowable pressure drop at the stated flow separately from the chamber design pressure.'],
+        ],
+      },
+    ],
     selection: [
       'Specify the Flow and Temperature Rise',
       'A circulation heater warms a liquid as it passes through a chamber. Provide the normal duty and the lowest operating flow so the power and the conditions at the heating surface can both be reviewed.',
@@ -3666,6 +3695,8 @@ export const products = [
     guides: ['immersion-heater-sizing', 'choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['How is a circulation heater different from a tank immersion heater?', 'A circulation heater transfers heat as fluid passes through a heater chamber. Power depends on flow and temperature rise, while the minimum operating flow affects element cooling. For a tank heater, the liquid inventory and time to reach temperature are also key sizing inputs.'],
+      ['What changes if flow falls while the power stays the same?', 'The bulk fluid temperature rise increases as mass flow falls. Lower flow can also reduce heat removal at the sheath. Give the minimum flow, target outlet temperature, fluid properties and specified flow and temperature protections when selecting the heater.'],
+      ['What pressure data should I send for a circulation heater?', 'Give the required chamber design pressure and temperature, the normal operating inlet pressure and the range of flow. State the allowable pressure drop across the heater at the specified flow and fluid conditions.'],
     ],
   },
   {
@@ -3986,10 +4017,24 @@ export const products = [
     intro: 'Choose a strip configuration by defining how the heater transfers heat, how it mounts and where the termination fits.',
     options: ['Flat and finned strip formats', 'Mounting holes and slots', 'Terminal placement to match equipment'],
     specs: ['Overall and heated lengths, strip width and thickness', 'Mounting-hole and slot dimensions, clamp positions and contact surface', 'Terminal orientation, lead clearance, voltage and wattage', 'Working surface temperature or airflow and duty cycle'],
+    comparison: [
+      'Check Strip Heater Contact and Thermal Expansion',
+      'Compare the heater and equipment drawings under the expected temperature cycle. For contact heating, review how the clamp or mounting arrangement maintains contact across the active area and accommodates movement.',
+      {
+        anchor: 'strip-heater-contact-and-expansion',
+        table: [
+          ['Installation check', 'What to verify'],
+          ['Contact with the tool', 'Check the mating surface for flatness, steps or recesses under the active span. Show the clamp positions and use the specified pressure or retention arrangement to maintain contact.'],
+          ['Mounting centers and movement', 'Mark each hole center or slot from the same drawing reference. Identify the locating point and any end where the design permits movement along the length.'],
+          ['Estimate thermal growth', 'For a 300 mm heated part with an assumed expansion coefficient of 16 × 10⁻⁶ per °C and a uniform 200 °C rise, the free length grows by about 0.96 mm. Check relative movement using the actual heater and support materials, temperatures and mounting arrangement.'],
+          ['Terminal end clearance', 'Locate the terminal end and the cold section relative to nearby parts. Check wiring clearance and the temperature at the terminals throughout the cycle.'],
+        ],
+      },
+    ],
     selection: [
       'Flat Strip Heater Mounting and Terminal Layout',
       'When the heater transfers heat through contact, show the mating surface and the locations of the clamping points. Keep the active span, mounting holes and terminal area distinct on the drawing.',
-      { table: [
+      { anchor: 'strip-heater-mounting-layout', table: [
         ['Drawing detail', 'What to mark'],
         ['Heated surface', 'Mating surface dimensions and finish, tool material, heated length and any cold ends.'],
         [['Clamps and holes', contactHeaterMounting], 'Hole and slot positions, allowable contact pressure or retention method, and clearance for thermal expansion.'],
@@ -3997,6 +4042,9 @@ export const products = [
         [['Mica-insulated contact strip', strip + 'mica/'], 'Show the flat mating area, heater thickness, clamping points and clearance around the electrical terminals.'],
         [['Ceramic-insulated channel strip', strip + 'ceramic/'], 'Show the channel cross-section, heated length, terminal clearance and how heat reaches the load.'],
         [['Air-heating option', strip + 'finned/'], 'For an air path, include minimum airflow and the allowed fin envelope so a finned strip heater can be reviewed.'],
+      ], diagram: [
+        'Top view of a strip layout. The circles mark mounting-hole centers, the double line marks the active span and T marks the terminal end. Dimension each from the drawing reference.',
+        ['Mount      Active span    Mount', '  ○─────┊════════════┊──────○─T'],
       ] },
     ],
     use: 'Typical uses include heating flat tooling, equipment compartments or moving air.',
@@ -4006,6 +4054,7 @@ export const products = [
       ['What is an industrial strip heater used for?', 'A strip heater is an elongated resistance heater used on platens, sealing tools and machine compartments or in an air path. Start with the part or air stream to be heated, then specify the active length and mounting arrangement.'],
       ['What is the difference between a flat strip heater and a finned strip heater?', 'A flat strip can transfer heat to a mating surface when properly mounted. A finned strip increases exposed surface area for air heating. Include the available mounting space and either the contact conditions or minimum airflow for the application.'],
       ['What should I measure for a replacement strip heater?', 'Measure overall and active lengths, width, thickness, mounting-hole centers and terminal clearance. Send the voltage and wattage from the equipment drawing or heater marking, plus the contact or airflow conditions.'],
+      ['Why might one end of a strip heater use a mounting slot?', 'A correctly oriented slot can accommodate movement along the strip during temperature changes if the equipment drawing calls for it. Confirm the locating point, slot direction and available travel for the complete assembly.'],
     ],
   },
   {
