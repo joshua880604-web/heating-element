@@ -2542,6 +2542,20 @@ export const products = [
     intro: 'Match the Pt100 or Pt1000 sensing element to the instrument input, then specify the wire count, tolerance and probe dimensions for a custom RTD assembly.',
     options: ['Pt100 and Pt1000 options', 'Two-, three- and four-wire configurations', 'Probe and assembly formats'],
     specs: ['Pt100 or Pt1000, instrument model and input curve', 'Two-, three- or four-wire input, lead length and termination', 'Temperature range and tolerance class or system accuracy target', 'Sheath material, diameter, insertion length and mount'],
+    comparison: [
+      'Check RTD Probe Fit and Installed Measurement Accuracy',
+      'Mark the seating reference and where the sensing element will sit in the installed assembly. Record the instrument input, wiring and accuracy required at the measurement point.',
+      {
+        anchor: 'rtd-installation-and-accuracy',
+        table: [
+          ['Installation check', 'How to verify it'],
+          [['Depth in a thermowell', '/guides/thermowell-selection-guide/#thermowell-insertion'], 'If the usable bore is 120 mm deep and the installed reach to the probe tip is 115 mm, both measured from the same seating face, the nominal tip gap is 5 mm. Check the specified tip position, bore diameter and any required spring travel.'],
+          [['Surface contact', rtd + 'surface-mount/'], 'Locate the sensing pad on the target surface. Check contact, attachment and lead routing, and consider how surrounding airflow and heat loss through the leads affect the reading.'],
+          [['Instrument input and wiring', '/guides/pt100-wiring-diagram/#connect-rtd-to-plc'], 'Match the resistance curve and wire count to the instrument. If a transmitter feeds a 4–20 mA input, verify the configured temperature span and the terminal assignments at both devices.'],
+          [['Tolerance and accuracy', '/glossary/#pt100-tolerance-class'], 'Confirm the tolerance class over the required temperature interval. Evaluate the installed measurement with lead resistance, self-heating, instrument accuracy and the thermal contact at the measuring point.'],
+        ],
+      },
+    ],
     selection: [
       'Pt100 and Pt1000 Specifications for an RFQ',
       'Share the instrument make and model, its available input modes and the probe drawing. Confirm the circuit and the required measuring range before specifying the assembly.',
@@ -2575,6 +2589,7 @@ export const products = [
       ['What is a Pt100 RTD sensor and how does it work?', 'A Pt100 is a platinum resistance temperature detector with a nominal resistance of 100 Ω at 0 °C. Its resistance increases with temperature. A compatible input applies a small measuring current, measures the resulting voltage and converts the resistance to temperature using the configured Pt100 curve.'],
       ['How do I choose the wiring for a Pt100 temperature sensor?', 'Match the instrument input first. Two-wire measurement includes lead resistance. Three-wire measurement can compensate for balanced lead resistance. Four-wire measurement separates the current and voltage paths. Send the wiring diagram, lead length and required tolerance.'],
       ['What should I check before connecting a replacement Pt100 to a PLC?', 'If the PLC has a compatible RTD input, match the Pt100 curve, wire count and terminal assignments. For a 4–20 mA input, use a compatible RTD transmitter and match the temperature span at both ends. Also confirm the replacement probe’s insertion, mounting and tolerance.'],
+      ['What affects accuracy after an RTD probe is installed?', 'Review the stated sensor tolerance together with wiring and input error, self-heating, immersion or surface contact and temperature gradients. Compare the installed channel against a suitable reference under the operating conditions if the application requires a system accuracy check.'],
     ],
   },
   {
@@ -4315,6 +4330,20 @@ export const products = [
     intro: 'Radiant heating inquiries depend on the target surface, distance and required exposure pattern. Provide machine layout and cycle time where available.',
     options: ['Quartz, ceramic and halogen formats', 'Specified lead and mounting configuration', 'Single element or assembly inquiries'],
     specs: ['Target surface material, heated area and required surface temperature', 'Emitter-to-target distance, reflector layout and installation envelope', 'Line speed or exposure time, duty cycle and operating environment', 'Supply voltage, power by zone, mounting orientation and terminal layout'],
+    comparison: [
+      'Check Infrared Heater Working Distance and Exposure Time',
+      'Measure distance from the emitting face to the target surface in its operating position. For a moving workpiece, identify the effective heated zone along the direction of travel and check surface temperature at the required line speeds.',
+      {
+        anchor: 'infrared-working-distance-and-exposure',
+        table: [
+          ['Process check', 'How to verify it'],
+          ['Emitter-to-target distance', 'Show the closest and farthest target surfaces, reflector position and any obstructions to the radiant path. Evaluate coverage across the target width and at the edges.'],
+          ['Exposure time on a moving line', 'For an effective heated zone 600 mm long in the direction of travel, a line speed of 6 m/min gives about 6 seconds of exposure. At 12 m/min, the same zone gives about 3 seconds.'],
+          ['Material and surface changes', 'Compare representative parts with the actual surface finish, coating or moisture level. Use the production target temperature and the measured temperature distribution when adjusting distance, exposure and power.'],
+          [['Temperature measurement', '/temperature-sensors/handheld-infrared-pyrometers/'], 'Match the measurement spot and emissivity setting to the target. Radiation from nearby emitters can reflect off the surface and affect the reading, so verify the method against a suitable reference during process trials.'],
+        ],
+      },
+    ],
     selection: [
       'Infrared Element Layout and Exposure',
       'Start with the surface being heated and its path through the machine. Compare quartz and ceramic infrared elements against the target, working distance and heating cycle.',
@@ -4334,6 +4363,7 @@ export const products = [
     guides: ['choose-a-heating-element'],
     questions: [
       ['What determines whether an infrared element fits a process?', 'Consider how the target material absorbs radiant heat, the working distance, required heated area and time under the element. Include the reflector or machine layout, target temperature and exposure cycle when comparing quartz and ceramic formats.'],
+      ['How do I check whether the infrared heater covers the full workpiece?', 'Measure the surface temperature at several positions across the width, including the edges, under the specified line speed and loading. Give the target material, allowed temperature variation and working distance when reviewing the emitter layout.'],
     ],
   },
   {
@@ -4725,9 +4755,23 @@ export const products = [
     title: 'Industrial Duct Heaters & Process Air Heating Elements',
     description: 'Specify an electric duct heater by duct cross-section, minimum airflow, temperature rise, voltage, phase and controls interface for process air.',
     text: 'Element assemblies specified for duct geometry, airflow and process temperature.',
-    intro: 'Provide the duct cross-section and airflow range so the heating element layout can be evaluated. Include temperature rise requirements and how the assembly will mount.',
+    intro: 'An electric duct heater raises the temperature of air as it passes through a mounted heater bank. Give the duct cross-section, actual airflow range and required temperature rise to review the element layout and electrical stages.',
     options: ['Tubular and finned tubular elements', 'Flanged or slide-in construction inquiries', 'Terminal and zone layout by drawing'],
     specs: ['Minimum, normal and maximum airflow, with units and measurement conditions', 'Inlet and target outlet temperatures and air composition', 'Duct opening, flow direction, mounting and allowable pressure drop', 'Voltage, phase, power stages and airflow and temperature control requirements'],
+    comparison: [
+      'Estimate Duct Heating Power and Check Operating Stages',
+      'Estimate power transferred to the air from mass flow, specific heat and the temperature rise. Review actual electrical input, permitted power stages and pressure drop for the installed duct and fan.',
+      {
+        anchor: 'duct-heater-power-and-staging',
+        table: [
+          ['Design check', 'How to evaluate it'],
+          ['Convert actual flow to mass flow', 'At an inlet density of 1.2 kg/m³, an actual flow of 600 m³/h corresponds to about 0.20 kg/s. Use the density at the airflow measurement conditions for the real project.'],
+          ['Estimate the air heating duty', 'Using that mass flow, a specific heat of 1.005 kJ/(kg·°C) and a 25 °C rise, the example needs about 5.0 kW delivered to the air before losses.'],
+          ['Review power stages at low flow', 'List the rated voltage and power for each stage. Check which stages can operate at each airflow and inlet temperature, and include the specified flow-proving and independent temperature-limit requirements.'],
+          [['Position of the outlet sensor', '/temperature-sensors/duct-temperature-sensors/'], 'Locate the normal control sensor to measure representative outlet air. Show the heater bank, elbows and branches, and identify separate limit sensor locations from the equipment drawing.'],
+        ],
+      },
+    ],
     selection: [
       'Process Air Duct Heater Sizing Inputs',
       'Provide the heat duty and airflow range with the duct drawing. The minimum airflow is used to review element cooling and temperature limits.',
@@ -4746,6 +4790,7 @@ export const products = [
     questions: [
       ['What is an electric duct heater used for?', 'An electric duct heater transfers heat from resistance elements to air moving through a duct. Specify the required outlet temperature, inlet conditions and normal and minimum airflow for the operating cycle. The mounting and controls depend on the duct and equipment design.'],
       ['What is required to size a duct heater for process air?', 'Provide the duct dimensions, minimum and maximum airflow, inlet and target outlet temperatures, supply and mounting. Include airflow proving and temperature-limit requirements for the system so the heater can be evaluated at reduced flow as well as normal operation.'],
+      ['How should I report standard or actual airflow for a duct heater?', 'Label the flow as actual or standard and give the corresponding temperature and pressure. The actual density is used with actual volume flow to calculate mass flow, while standard volume flow uses its stated standard reference conditions.'],
     ],
   },
   {
