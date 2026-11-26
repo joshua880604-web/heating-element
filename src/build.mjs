@@ -391,14 +391,15 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
-function referenceSection([title, copy, { table, diagram, anchor, links, download } = {}], className = '') {
+function referenceSection([title, copy, { table, tableNote, diagram, anchor, links, download } = {}], className = '') {
   const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
   return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
     ${table ? `<div class="reference-table"><table>
       <caption class="sr-only">${escape(title)}</caption>
       <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
       <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${cell(row)}</th>${cells.map(value => `<td>${cell(value)}</td>`).join('')}</tr>`).join('')}</tbody>
-    </table></div>` : ''}
+    </table></div>` : ''}${tableNote ? `
+    <p class="reference-note">${escape(tableNote)}</p>` : ''}
     ${diagram ? `<figure class="reference-diagram">
       <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
       <figcaption>${escape(diagram[0])}</figcaption>

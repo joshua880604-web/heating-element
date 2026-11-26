@@ -947,6 +947,9 @@ svg.photo-filters {
   border: 1px solid var(--line);
   border-radius: 7px;
 }
+.reference-note {
+  margin-top: 10px;
+}
 .reference-table table {
   width: 100%;
   border-collapse: collapse;
