@@ -230,6 +230,11 @@ export const glossary = [
     related: ['Electric Grill Heating Elements', '/heating-elements/tubular-heaters/electric-grill/'],
   },
   {
+    id: 'electric-stove-coil-heating-element', name: 'Electric Stove Coil Heating Element',
+    definition: 'A flat spiral tubular heater for an exposed-coil electric cooktop. Specify the coil diameter, supports, socket geometry and electrical rating per burner.',
+    related: ['Electric Stove Coil Heating Elements', '/heating-elements/tubular-heaters/electric-stove-coils/'],
+  },
+  {
     id: 'evaporator-defrost-heater', name: 'Evaporator Defrost Heater',
     definition: 'An element positioned near a refrigeration evaporator coil to melt frost during a controlled defrost cycle. Specify the coil envelope, active span, support clips and sealed lead ends.',
     related: ['Evaporator Defrost Heaters', '/heating-elements/defrost-heaters/evaporators/'],
@@ -505,6 +510,11 @@ export const glossary = [
     related: ['Kiln Thermocouples', '/thermocouples/high-temperature/kiln/'],
   },
   {
+    id: 'low-watt-density-water-heater-element', name: 'Low Watt Density Water Heater Element',
+    definition: 'A tubular immersion element with a relatively large active surface area for its power. Its allowable watt density depends on water conditions, heat transfer and the installed layout.',
+    related: ['Low Watt Density Water Heater Elements', '/heating-elements/immersion-heaters/low-watt-density-water/'],
+  },
+  {
     id: 'melt-bolt-thermocouple', name: 'Melt Bolt Thermocouple',
     definition: 'A threaded temperature probe whose sensing tip is located in a polymer melt channel. Specify the thread, seat, tip position and process conditions using the equipment drawing.',
     related: ['Melt Bolt Thermocouples', '/thermocouples/melt-bolt/'],
@@ -543,6 +553,11 @@ export const glossary = [
     id: 'minimum-submergence', name: 'Minimum Submergence',
     definition: 'The minimum liquid coverage required above the active section of an immersion heater for its specified installation. The reference point, mounting orientation and level limits belong on the heater or tank drawing.',
     related: ['Industrial Immersion Heater Sizing Guide', '/guides/immersion-heater-sizing/'],
+  },
+  {
+    id: 'molten-metal-thermocouple', name: 'Molten Metal Thermocouple',
+    definition: 'A temperature probe with a protection tube for contact with a specified molten metal bath. The alloy, exposure cycle, tube material and holder define the service conditions.',
+    related: ['Molten Metal Thermocouples', '/thermocouples/high-temperature/molten-metal/'],
   },
   {
     id: 'mosi2-heating-element', name: 'MoSi2 Heating Element',
@@ -648,6 +663,11 @@ export const glossary = [
     id: 'quartz-thermocouple-protection-tube', name: 'Quartz Thermocouple Protection Tube',
     definition: 'A fused-silica sleeve used to separate a temperature probe from its surroundings. Check the usable bore, support, process atmosphere and temperature cycle for the selected grade.',
     related: ['Quartz Thermocouple Protection Tubes', '/temperature-sensors/accessories/quartz-protection-tubes/'],
+  },
+  {
+    id: 'quick-disconnect-thermocouple', name: 'Quick Disconnect Thermocouple',
+    definition: 'A rigid thermocouple probe with a plug attached to the sheath. Match the connector geometry, polarity, contact materials and temperature limits to the mating socket and instrument.',
+    related: ['Quick Disconnect Thermocouple Probes', '/thermocouples/quick-disconnect/'],
   },
   {
     id: 'radiator-heating-element', name: 'Radiator Heating Element',
@@ -795,6 +815,11 @@ export const glossary = [
     related: ['Square Cartridge Heaters', '/heating-elements/cartridge-heaters/square/'],
   },
   {
+    id: 'steam-humidifier-heating-element', name: 'Steam Humidifier Heating Element',
+    definition: 'A tubular resistance heater that boils water in a steam humidifier reservoir. The chamber drawing defines the mounting, seal and position of the active section below the minimum water level.',
+    related: ['Steam Humidifier Heating Elements', '/heating-elements/immersion-heaters/steam-humidifiers/'],
+  },
+  {
     id: 'steam-iron-heating-element', name: 'Steam Iron Heating Element',
     definition: 'A resistive element that heats a steam iron soleplate. For a cast-in design, specify the heat path, steam passages, sensor position, controls and electrical rating together.',
     related: ['Steam Iron Heating Elements', '/heating-elements/cast-in-heaters/steam-irons/'],
@@ -933,6 +958,11 @@ export const glossary = [
     id: 'threaded-thermowell', name: 'Threaded Thermowell',
     definition: 'A closed-end probe housing screwed into a matching process port. Specify the process thread and seal, the instrument connection, the installed insertion length and the bore separately.',
     related: ['Threaded Thermowells', '/temperature-sensors/accessories/thermowells/threaded/'],
+  },
+  {
+    id: 'tube-skin-thermocouple', name: 'Tube Skin Thermocouple',
+    definition: 'A probe with a contact shoe that measures the external metal temperature at a specified point on a tube. Shoe curvature, attachment and heat exchange at the contact affect the reading.',
+    related: ['Tube Skin Thermocouples', '/thermocouples/surface-mount/tube-skin/'],
   },
   {
     id: 'tubular-heating-element', name: 'Tubular Heating Element',
