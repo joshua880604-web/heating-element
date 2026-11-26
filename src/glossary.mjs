@@ -5,6 +5,11 @@ export const glossary = [
     related: ['Air Fryer Heating Elements', '/heating-elements/tubular-heaters/air-fryer/'],
   },
   {
+    id: 'air-handler-heating-element', name: 'Air Handler Heating Element',
+    definition: 'An electrical heater in the path of air moving through a cabinet or duct section. A tubular rack is specified by its air path, stage ratings, mounting and protection requirements.',
+    related: ['Air Handler Heating Elements', '/heating-elements/duct-heaters/air-handlers/'],
+  },
+  {
     id: 'aluminum-foil-heater', name: 'Aluminum Foil Heater',
     definition: 'A low-profile heater with an insulated resistance element and an aluminum foil facing that spreads heat into the mating surface. Its outline, heated area and mounting method depend on the equipment.',
     related: ['Aluminum Foil Heaters', '/heating-elements/flexible-heaters/aluminum-foil/'],
@@ -168,6 +173,11 @@ export const glossary = [
     id: 'constant-wattage-heating-cable', name: 'Constant Wattage Heating Cable',
     definition: 'A heat trace cable rated for a specified output per unit length at the design supply. Construction, circuit length and the temperature controls determine how it is specified.',
     related: ['Constant Wattage Heating Cables', '/heating-elements/heating-cables/constant-wattage/'],
+  },
+  {
+    id: 'concrete-curing-tank-heater', name: 'Concrete Curing Tank Heater',
+    definition: 'An immersion heater for water surrounding concrete test specimens during curing. The mounting rim, specimen racks, water level and thermal duty define the installed layout.',
+    related: ['Concrete Curing Tank Heaters', '/heating-elements/immersion-heaters/over-the-side/curing-tanks/'],
   },
   {
     id: 'convection-oven-heating-element', name: 'Convection Oven Heating Element',
@@ -645,6 +655,11 @@ export const glossary = [
     related: ['PID Temperature Controllers', '/temperature-controls/pid/'],
   },
   {
+    id: 'platinum-thermocouple-wire', name: 'Platinum Thermocouple Wire',
+    definition: 'A platinum or platinum–rhodium conductor used as a sensing leg in Type R, S or B thermocouples. Specify the alloy, diameter and polarity of each leg.',
+    related: ['Platinum & Platinum–Rhodium Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/platinum-rhodium/'],
+  },
+  {
     id: 'platinum-rhodium-thermocouple', name: 'Platinum–Rhodium Thermocouple',
     definition: 'A platinum-based thermocouple family covering Types S, R and B. Each type has its own alloy pair and temperature-to-voltage reference relationship.',
     related: ['Platinum–Rhodium Thermocouples', '/thermocouples/high-temperature/#platinum-rhodium'],
@@ -738,6 +753,11 @@ export const glossary = [
     id: 'remote-reading-digital-thermometer', name: 'Remote Reading Digital Thermometer',
     definition: 'A digital instrument with a cabled temperature probe and separate display. Match the process connection, probe, cable and readout for the installed measurement.',
     related: ['Remote Reading Digital Thermometers', '/temperature-sensors/digital-thermometers/remote-reading/'],
+  },
+  {
+    id: 'retort-thermocouple', name: 'Retort Thermocouple',
+    definition: 'A temperature probe matched to a measuring point in a food processing vessel. The equipment drawing defines the port, sealing surface, projection and recorder input.',
+    related: ['Retort Thermocouples', '/thermocouples/autoclave/retort/'],
   },
   {
     id: 'retractable-melt-bolt-thermocouple', name: 'Retractable Melt Bolt Thermocouple',
@@ -868,6 +888,11 @@ export const glossary = [
     id: 'square-cartridge-heater', name: 'Square Cartridge Heater',
     definition: 'A cartridge heater with a square cross-section for a specified tool pocket. Match the dimensions across flats, corner geometry and thermal contact faces.',
     related: ['Square Cartridge Heaters', '/heating-elements/cartridge-heaters/square/'],
+  },
+  {
+    id: 'steam-generator-heating-element', name: 'Steam Generator Heating Element',
+    definition: 'A tubular immersion heater that supplies heat to a steam generator’s water chamber. Specify the vessel interface, active span, minimum water level and per-circuit rating.',
+    related: ['Steam Generator Heating Elements', '/heating-elements/immersion-heaters/steam-generators/'],
   },
   {
     id: 'steam-humidifier-heating-element', name: 'Steam Humidifier Heating Element',
@@ -1098,6 +1123,11 @@ export const glossary = [
     id: 'vacuum-chamber-heater', name: 'Vacuum Chamber Heater',
     definition: 'A heater that supplies heat to a vacuum chamber wall or an internal plate or fixture. Its position relative to the vacuum boundary determines material and connection requirements.',
     related: ['Vacuum Chamber Heaters', '/heating-elements/vacuum-chamber-heaters/'],
+  },
+  {
+    id: 'vacuum-chamber-thermocouple', name: 'Vacuum Chamber Thermocouple',
+    definition: 'A probe for temperature measurement at a point in an evacuated enclosure. The process cycle, exposed materials, probe support and feedthrough interface inform its design.',
+    related: ['Vacuum Chamber Thermocouples', '/thermocouples/vacuum-chambers/'],
   },
   {
     id: 'vacuum-furnace-heating-element', name: 'Vacuum Furnace Heating Element',
