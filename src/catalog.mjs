@@ -1588,9 +1588,23 @@ export const products = [
     title: 'Type J Thermocouple Probes for Industrial Tooling',
     description: 'Configure Type J thermocouples for heated tooling and existing Type J inputs. Specify a bayonet or threaded mount, junction, probe size and leads.',
     text: 'Type J assemblies for industrial equipment and existing Type J instruments.',
-    intro: 'Specify the working temperature, atmosphere and instrument input for a Type J probe. The iron-positive conductor makes material selection and protection important in some environments.',
+    intro: 'A Type J thermocouple pairs an iron positive conductor with a copper–nickel negative conductor. It is used in heated tooling and equipment with Type J inputs. Specify the temperatures at the probe tip and lead transition, plus the atmosphere and instrument input.',
     options: ['Threaded and bayonet mounting', 'Exposed or sheathed probes', 'Connector and terminal-head configurations'],
     specs: ['Type J instrument input, continuous and peak temperatures, and atmosphere', 'Probe diameter, insertion length and sheath material', 'Mounting dimensions, junction type and required contact position', 'Type J extension wire, lead length and termination'],
+    comparison: [
+      'Type J Operating Conditions and Replacement Checks',
+      'Review conditions at the sensing tip, sheath and cable transition separately. The working range of the assembly depends on its sheath, junction, insulation and termination as well as the thermocouple type.',
+      {
+        anchor: 'type-j-operating-conditions',
+        table: [
+          ['Operating condition', 'What to check'],
+          ['Continuous heat and short peaks', 'Give the continuous temperature, peak temperature and time at the peak. Include thermal cycling and the separate temperature at the connector or lead exit.'],
+          ['Moisture and oxidation', 'The iron leg is susceptible to corrosion in damp conditions and oxidation when exposed at elevated temperature. Check the sheath and seal against the atmosphere, condensation and cleaning conditions.'],
+          [['Instrument input and polarity', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors'], 'Confirm the Type J setting and compatible extension cable. US Type J conductor colors are white positive and red negative. IEC colors are black positive and white negative. Verify the convention and terminal markings for the actual assembly.'],
+          [['Millivolt check under known conditions', '/guides/type-k-vs-type-j-thermocouple/#type-k-type-j-comparison'], 'For a 100 °C sensing tip, the Type J reference voltage is about +5.269 mV with a 0 °C reference junction, or about +3.992 mV with a 25 °C reference junction. Use the applicable reference temperature when comparing a raw voltage reading.'],
+        ],
+      },
+    ],
     selection: [
       'Type J Probe Mounting and Input Checklist',
       'Start with the Type J input and the original sensor drawing. Identify where the probe tip should make contact or sit in the process and where the wiring connects.',
@@ -1606,12 +1620,14 @@ export const products = [
     related: ['type-k', 'threaded-thermocouple', 'band-heaters', 'sensor-accessories'],
     guides: [
       ['type-k-vs-type-j-thermocouple', 'switching-thermocouple-types', 'Check whether Type K can replace Type J'],
-      'thermocouple-wire-color-code',
+      ['thermocouple-wire-color-code', 'thermocouple-wire-colors', 'Check US and IEC conductor colors'],
       'thermocouple-types',
       'grounded-vs-ungrounded-thermocouples',
     ],
     questions: [
       ['Can a Type J thermocouple replace a Type K probe with the same mounting?', 'The external fit alone is insufficient. Type J and Type K produce different voltage-to-temperature relationships. The instrument input, extension wiring and connector must match the sensor type. Confirm the operating environment and probe construction before selecting a replacement.'],
+      ['What determines the maximum working temperature of a Type J probe?', 'Check the approved limits for the assembled probe, including the sheath, junction, insulation and lead transition. Provide the continuous and peak tip temperatures, time at peak and process atmosphere to review the construction.'],
+      ['What should I check when replacing a bayonet Type J probe in a heated tool?', 'Match the bayonet adapter, available spring travel and seated tip position. Confirm the junction, Type J input and connector pinout, then compare the complete channel against the equipment’s test requirements.'],
     ],
   },
   {
@@ -2140,15 +2156,32 @@ export const products = [
     intro: 'Mineral insulation separates the thermocouple conductors inside a metal sheath. Select the construction according to process compatibility, response needs and routing constraints.',
     options: ['Single or dual sensing circuits', 'Grounded and ungrounded constructions', 'Straight or pre-formed sheaths', 'Compression fitting and fixed mounts'],
     specs: ['Thermocouple alloy type, sensing circuit and junction construction', 'Sheath outside diameter, material and total length', 'Bend locations, actual centerline radius and mounting path', 'Transition fitting, lead routing and termination temperature'],
+    comparison: [
+      'Choose an MI Sheath and Junction for the Installation',
+      'Locate the measuring tip and the sheath-to-lead transition on the equipment drawing. Use the conditions at each position to select the sheath, junction and termination.',
+      {
+        anchor: 'mi-sheath-and-junction-selection',
+        table: [
+          ['Installation', 'How to choose'],
+          ['Hot zone with a cooler exit', 'Evaluate sheath material against the process atmosphere, continuous temperature and cycling. Locate the transition where the lead and connection can stay within their specified temperature limits.'],
+          [['Electrical isolation or response requirement', '/guides/grounded-vs-ungrounded-thermocouples/#thermocouple-junction-comparison'], 'A grounded junction is connected to the sheath. An ungrounded junction separates it electrically from the sheath. Check how the instrument and equipment are grounded, and compare the required response under the actual process conditions.'],
+          [['Fixed route around equipment', thermo + 'mineral-insulated/flexible/'], 'Use a straight sheath for an unobstructed insertion path or evaluate a formed sheath for a fixed route. Keep the mounting and transition sections straight where the assembly drawing requires it.'],
+        ],
+      },
+    ],
     selection: [
       'Specify the Sheath, Bends and Sensing Junction',
       'Send the installed route for a formed mineral insulated thermocouple. Evaluate the bends with the actual sheath material, outside diameter and internal construction.',
-      { table: [
+      { anchor: 'mi-probe-route', table: [
         ['Probe detail', 'Drawing or application input'],
         [['Sheath and sensing circuits', thermo + 'dual-element/'], 'Give the outside diameter, sheath material, overall length and single or dual circuit requirement. Identify where the probe enters the process.'],
         [['Flexible sheath and fixed routing', thermo + 'mineral-insulated/flexible/'], 'Draw each bend and its centerline radius. Show nearby hardware, planned supports and any area that must stay straight for the mount or transition.'],
+        ['Inside radius and centerline radius', 'For a round 4 mm sheath with an inside radius of 10 mm, the drawing centerline radius is 12 mm. Use the approved bend limit for the actual sheath and probe construction.'],
         [['Grounded or ungrounded junction', '/guides/grounded-vs-ungrounded-thermocouples/'], 'State the isolation or response requirement at the measuring point and the device that reads the signal.'],
         ['Transition to extension leads', 'Locate the transition and connector on the drawing and give the temperatures and clearance at both points.'],
+      ], diagram: [
+        'A fixed-route probe drawing locates the sensing tip, bend and sheath-to-lead transition. Mark the bend radius, mounting position and space required to remove the probe on the installed drawing.',
+        ['    Tip      Bend', '     ●─────────╮', '               │', '              [ ] Transition', '               │  Lead'],
       ] },
     ],
     use: 'MI assemblies are often used in industrial furnaces, process equipment and machinery where probes need mechanical protection.',
@@ -2156,6 +2189,8 @@ export const products = [
     guides: ['grounded-vs-ungrounded-thermocouples', 'thermocouple-types'],
     questions: [
       ['What is a mineral insulated thermocouple?', 'An MI thermocouple contains conductors separated by compacted mineral insulation within a metal sheath. When specifying a routed or formed probe, include the sheath material and diameter, bend locations, junction type and a drawing of the installed path.'],
+      ['Can a mineral insulated thermocouple be bent on site?', 'Check the assembly’s allowed bending zones and minimum centerline radius. A design approved for a one-time bend may have different requirements from an installation with repeated movement. Give the route, bending conditions and transition position for review.'],
+      ['Where should I locate the transition to the extension leads?', 'Mark a supported point with enough clearance for the joint and cable. Compare the maximum temperature and exposure there with the ratings of the transition, seal and extension leads.'],
     ],
   },
   {
@@ -3682,10 +3717,23 @@ export const products = [
     intro: 'Start with the available contact surface, power and operating temperature. The substrate, pattern and attachment method depend on the assembly.',
     options: ['Silicone rubber pads', 'Polyimide and etched-foil configurations', 'Custom outlines and cutouts'],
     specs: ['Surface outline, thickness, curvature, holes and cutouts', 'Surface material, finish and adhesive or mechanical retention requirement', 'Voltage, power, heated zones, lead exit and temperature sensor location if required', 'Operating temperature, moisture exposure and any flexing during use'],
+    comparison: [
+      'Silicone Rubber, Polyimide and Aluminum Foil Heater Selection',
+      'Compare the installed heater and attachment together. Measure the space for the heater body, bonding layer and lead reinforcement, then review temperature and exposure at the mounting interface.',
+      {
+        anchor: 'flexible-heater-material-selection',
+        table: [
+          ['Heater construction', 'Application to evaluate', 'Installation check'],
+          [['Silicone rubber pad', flexible + 'silicone-rubber/'], 'Contact heating on a machine housing, tool surface or fixed contour.', 'Check the surface finish, contour and retention method. Verify that the pad maintains contact through the temperature cycle.'],
+          [['Polyimide film heater', flexible + 'polyimide/'], 'An instrument or compact assembly with limited space for the heating layer.', 'Give the maximum assembled thickness and clearance for the reinforced lead tab. Mark cutouts and unheated margins on the drawing.'],
+          [['Aluminum foil heater', flexible + 'aluminum-foil/'], 'Broad surface warming, condensation control or defrost on a panel.', 'Check contact with the panel and verify electrical insulation and moisture exposure at the edges and lead exit.'],
+        ],
+      },
+    ],
     selection: [
       'Specify the Flexible Heater Outline and Attachment',
       'Mark the areas that can receive heat, the openings to leave clear and the positions of leads and sensors. Share the surface material and the method used to retain the heater against it.',
-      { table: [
+      { anchor: 'flexible-heater-drawing', table: [
         ['Design detail', 'What to include'],
         [['Silicone rubber heater pads', flexible + 'silicone-rubber/'], 'Specify the mating surface, any curvature, the required attachment and exposure to moisture or cleaning.'],
         [['Polyimide film heaters', flexible + 'polyimide/'], 'Give the available thickness, the active pattern, the position of cutouts and the envelope for the reinforced lead tab.'],
@@ -3693,15 +3741,21 @@ export const products = [
         [['Electrically heated hoses', flexible + 'heated-hoses/'], 'For heated fluid transfer, give the medium, hose length, temperature, pressure and fittings. Include the installed bend and movement requirements.'],
         [['Flexible heating tape with controller', flexible + 'heating-tapes-with-controller/'], 'For a controlled tape assembly, give the contact path, active width, sensor position and temperature limits.'],
         ['Outline and heated area', 'Dimension the outer shape, holes, cutouts and any separate heating zones. Identify sections that need to stay unheated.'],
+        [['Active-area calculation', '/glossary/#watt-density'], 'In a 120 × 80 mm outline with a 20 × 30 mm cutout, the remaining area is 90 cm². If that entire area is heated, 18 W gives an average of 0.20 W/cm². Subtract any unheated margins when calculating the actual active area.'],
         ['Attachment', 'Describe the mating surface and any adhesive, clamp pressure or removable mounting requirement. State whether the heater flexes while installed.'],
         ['Leads and sensing point', 'Mark lead exit direction, bend clearance, supply requirements and the preferred temperature measurement location.'],
       ] },
     ],
     use: 'Consider flexible heaters for equipment surfaces, enclosures and compact assemblies with limited installation depth.',
     related: ['strip-heaters', 'heating-cables', 'band-heaters'],
-    guides: ['choose-a-heating-element', 'heating-element-watt-density'],
+    guides: [
+      ['choose-a-heating-element', 'mount-contact-heaters', 'Check mounting and surface contact'],
+      ['heating-element-watt-density', 'surface-watt-density', 'Review active area and watt density'],
+    ],
     questions: [
       ['How do I choose between a silicone rubber heater and a polyimide heater?', 'Compare the required thickness, profile, flexing during installation, operating temperature and bond to the heated surface. Send an outline with cutouts, the mounting surface material and adhesive or retention requirements. Material suitability depends on the complete heater construction.'],
+      ['Can a flexible heater bend repeatedly during use?', 'State whether the heater is formed once during installation or moves during every equipment cycle. For repeated motion, give the bend radius, direction and expected cycles, and locate the lead tab so its strain can be reviewed.'],
+      ['What should I check before using an adhesive-backed flexible heater?', 'Verify adhesive compatibility with the surface finish, continuous and peak service temperatures, moisture and cleaning conditions. Include the full assembled thickness and check contact across the active area.'],
     ],
   },
   {
