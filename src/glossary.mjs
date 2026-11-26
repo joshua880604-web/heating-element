@@ -20,6 +20,11 @@ export const glossary = [
     related: ['Aluminum Platen Heaters', '/heating-elements/cast-in-heaters/aluminum-platens/'],
   },
   {
+    id: 'armored-thermocouple', name: 'Armored Thermocouple',
+    definition: 'A thermocouple assembly with mechanical protection around a length of its signal cable. Specify the armor length and dimensions, transition fittings, route and environment.',
+    related: ['Armored Thermocouple Probes', '/thermocouples/armored/#armored-thermocouple-lead-route'],
+  },
+  {
     id: 'autoclave-heating-element', name: 'Autoclave Heating Element',
     definition: 'A heater that supplies heat to water in an autoclave steam generator. The equipment drawing defines the connection, tube envelope, operating conditions and electrical rating.',
     related: ['Autoclave Heating Elements', '/heating-elements/immersion-heaters/autoclave/'],
@@ -98,6 +103,11 @@ export const glossary = [
     id: 'cartridge-heater-controller-kit', name: 'Cartridge Heater Controller Kit',
     definition: 'A specified cartridge heater together with temperature sensing and control components for a defined heating zone. Identify the heater duty, sensor input, controller output and switching requirements.',
     related: ['Cartridge Heaters with Controllers', '/heating-elements/cartridge-heaters/with-controller/#cartridge-heater-controller-matching'],
+  },
+  {
+    id: 'cast-barrel-heater', name: 'Cast Barrel Heater',
+    definition: 'A cast-metal heater with an embedded element and a machined face that transfers heat into an extruder barrel. Specify the zone and split casting, element load, and cooling layout where applicable.',
+    related: ['Cast Aluminum Extruder Barrel Heaters', '/heating-elements/cast-in-heaters/extruder-barrel/#cast-barrel-heater-zone-and-cooling'],
   },
   {
     id: 'cast-iron-plate-heater', name: 'Cast Iron Plate Heater',
@@ -233,6 +243,11 @@ export const glossary = [
     id: 'drain-pan-heating-element', name: 'Drain Pan Heating Element',
     definition: 'A heater positioned along the water path in a refrigeration drain pan to help keep defrost water moving to the outlet. Match the tray, heated route, mount and lead seals.',
     related: ['Refrigeration Drain Pan Heating Elements', '/heating-elements/defrost-heaters/drain-pans/'],
+  },
+  {
+    id: 'drum-base-heater', name: 'Drum Base Heater',
+    definition: 'A heater placed beneath a compatible drum to transfer heat through the bottom contact area. Specify the drum geometry, loaded mass, contents and allowable temperatures.',
+    related: ['Drum Base Heaters', '/heating-elements/drum-base-heaters/#drum-base-heater-contact-and-load'],
   },
   {
     id: 'dry-block-calibrator', name: 'Dry Block Calibrator',
@@ -755,6 +770,11 @@ export const glossary = [
     related: ['Panel Mount Thermometers', '/temperature-sensors/digital-thermometers/panel-mount/'],
   },
   {
+    id: 'pcb-thermocouple-connector', name: 'PCB-Mount Thermocouple Connector',
+    definition: 'A thermocouple socket with terminals for a printed circuit board. Specify the mating plug and polarity, contact alloys, footprint, mounting and location of reference-junction sensing.',
+    related: ['PCB-Mount Thermocouple Connectors', '/temperature-sensors/accessories/connectors/pcb/#pcb-thermocouple-connector-footprint'],
+  },
+  {
     id: 'pid-temperature-control', name: 'PID Temperature Control',
     definition: 'A control method that adjusts an output using proportional, integral and derivative terms derived from the difference between the measured temperature and setpoint.',
     related: ['PID Temperature Controllers', '/temperature-controls/pid/'],
@@ -1080,6 +1100,11 @@ export const glossary = [
     related: ['NTC Thermistor Resistance Curve', '/guides/ntc-thermistor-guide/#ntc-resistance-curve'],
   },
   {
+    id: 'thermostatic-silicone-heater-pad', name: 'Thermostatic Silicone Heater Pad',
+    definition: 'A silicone contact heater specified with a temperature-actuated switch at a defined location. Specify attachment, switching and reset temperatures, electrical rating and any separate protection.',
+    related: ['Silicone Heater Pads with Thermostats', '/heating-elements/flexible-heaters/silicone-rubber/with-thermostat/#silicone-pad-thermostat-selection'],
+  },
+  {
     id: 'thermocouple', name: 'Thermocouple',
     definition: 'A temperature sensor made from two dissimilar conductors. Its thermoelectric voltage depends on the temperatures at the sensing junction and reference connection.',
     related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
@@ -1213,6 +1238,11 @@ export const glossary = [
     id: 'type-c-thermocouple', name: 'Type C Thermocouple',
     definition: 'A tungsten–rhenium thermocouple with a tungsten–5% rhenium positive leg and a tungsten–26% rhenium negative leg. Its use depends on the atmosphere, protection and instrument input.',
     related: ['Type C Tungsten–Rhenium Thermocouples', '/thermocouples/type-c/'],
+  },
+  {
+    id: 'type-c-thermocouple-wire', name: 'Type C Thermocouple Wire',
+    definition: 'Sensing conductors made of tungsten–5% rhenium for the positive leg and tungsten–26% rhenium for the negative leg. Specify each diameter and length, and review the hot-zone atmosphere and supports.',
+    related: ['Type C Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-c/#type-c-wire-alloy-and-hot-zone'],
   },
   {
     id: 'type-e-thermocouple', name: 'Type E Thermocouple',

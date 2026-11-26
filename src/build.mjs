@@ -153,6 +153,12 @@ const photoTones = [
       'cartridge-heaters-with-controllers', 'type-s-thermocouple-compensating-wire', 'ring-heaters',
       'immersion-cartridge-heaters', 'type-e-thermocouple-wire', 'ptfe-flanged-immersion-heaters'],
   },
+  {
+    id: 'slate-gray',
+    source: [200, 198, 211],
+    images: ['armored-thermocouples', 'drum-base-heaters', 'type-c-thermocouple-wire',
+      'pcb-thermocouple-connectors', 'cast-barrel-extrusion-heaters', 'thermostatic-silicone-pad-heaters'],
+  },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));
 
