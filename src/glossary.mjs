@@ -115,6 +115,11 @@ export const glossary = [
     related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
   },
   {
+    id: 'ceramic-sheathed-thermocouple', name: 'Ceramic-Sheathed Thermocouple',
+    definition: 'A temperature sensor assembly with a ceramic protection tube around the measuring element. Tube material, supports, atmosphere and cycling are specified with its instrument connection.',
+    related: ['Ceramic-Sheathed Thermocouples', '/thermocouples/high-temperature/ceramic-sheathed/'],
+  },
+  {
     id: 'ceramic-strip-heater', name: 'Ceramic Strip Heater',
     definition: 'A strip or channel heater with ceramic insulation around its resistance element. The installed profile, terminal clearance and heat transfer path determine its configuration.',
     related: ['Ceramic Strip Heaters', '/heating-elements/strip-heaters/ceramic/'],
@@ -438,6 +443,11 @@ export const glossary = [
     id: 'hot-tub-heating-element', name: 'Hot Tub Heating Element',
     definition: 'A tubular element that heats spa water circulating through a heater chamber. Match terminal seals, wetted materials, water chemistry and the equipment’s flow and electrical requirements.',
     related: ['Hot Tub & Spa Heating Elements', '/heating-elements/immersion-heaters/hot-tub/'],
+  },
+  {
+    id: 'high-pressure-thermocouple', name: 'High Pressure Thermocouple',
+    definition: 'A process temperature probe specified with the approved pressure boundary and mating connection. Equipment design pressure, temperature, loads and required verification define the installation.',
+    related: ['High Pressure Thermocouple Probes', '/thermocouples/threaded-probes/high-pressure/'],
   },
   {
     id: 'hydraulic-tank-immersion-heater', name: 'Hydraulic Tank Immersion Heater',
@@ -905,9 +915,19 @@ export const glossary = [
     related: ['Steam Iron Heating Elements', '/heating-elements/cast-in-heaters/steam-irons/'],
   },
   {
+    id: 'stock-tank-heating-element', name: 'Stock Tank Heating Element',
+    definition: 'A heater for livestock water tank warming or deicing equipment. The approved assembly defines tank materials, guard geometry, minimum fill and controls.',
+    related: ['Stock Tank Heating Elements', '/heating-elements/immersion-heaters/stock-tanks/'],
+  },
+  {
     id: 'straight-tubular-heating-element', name: 'Straight Tubular Heating Element',
     definition: 'An unbent metal-sheathed resistance heater with an active length along its axis. The overall length can also include cold ends and electrical terminals.',
     related: ['Straight Tubular Heating Elements', '/heating-elements/tubular-heaters/straight/'],
+  },
+  {
+    id: 'stranded-thermocouple-wire', name: 'Stranded Thermocouple Wire',
+    definition: 'Thermocouple wire with multiple fine strands per conductor leg. Specify the alloy or cable designation, strand construction, insulation and termination.',
+    related: ['Stranded Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/stranded/'],
   },
   {
     id: 'surface-mount-rtd', name: 'Surface-Mount RTD',
@@ -1115,6 +1135,11 @@ export const glossary = [
     related: ['U-Shaped Tubular Heating Elements', '/heating-elements/tubular-heaters/u-shaped/'],
   },
   {
+    id: 'ultrasonic-cleaner-heating-element', name: 'Ultrasonic Cleaner Heating Element',
+    definition: 'An electric heater that supplies heat to an ultrasonic cleaning bath. An external design transfers heat through the tank wall and is specified with the transducer and sensor layout.',
+    related: ['Ultrasonic Cleaner Heating Elements', '/heating-elements/tubular-heaters/ultrasonic-cleaners/'],
+  },
+  {
     id: 'ungrounded-junction', name: 'Ungrounded Junction',
     definition: 'A thermocouple junction separated from the metal sheath by insulation. This construction provides electrical isolation between the junction and sheath.',
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
@@ -1143,6 +1168,11 @@ export const glossary = [
     id: 'washer-thermocouple', name: 'Washer Thermocouple',
     definition: 'A surface temperature sensor built into a flat ring held beneath a fastener. The ring thickness, seating face and edge clearance for the lead are part of the installed fit.',
     related: ['Washer Thermocouples', '/thermocouples/surface-mount/bolt-on/washer/'],
+  },
+  {
+    id: 'washdown-unit-heater', name: 'Washdown Unit Heater',
+    definition: 'An electric space heater for an installation with defined cleaning exposure. Air delivery, enclosure and wiring protection, materials and mounting must be considered together.',
+    related: ['Electric Washdown Unit Heaters', '/heating-elements/unit-heaters/washdown/'],
   },
   {
     id: 'water-bath-heating-element', name: 'Water Bath Heating Element',
