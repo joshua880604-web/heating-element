@@ -411,8 +411,8 @@ function referenceSection([title, copy, { table, tableNote, diagram, anchor, lin
   </section>`;
 }
 
-function questionsSection(title, questions) {
-  return `<section class="use-case"><h2>${escape(title)}</h2><dl class="ordering-questions">${questions.map(([question, answer]) =>
+function questionsSection(title, questions, anchor) {
+  return `<section class="use-case"${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><dl class="ordering-questions">${questions.map(([question, answer]) =>
     `<dt>${escape(question)}</dt><dd>${escape(answer)}</dd>`).join('')}</dl></section>`;
 }
 
@@ -689,9 +689,13 @@ ${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Test a
 for (const guide of guides) {
   const trail = [...guidesTrail, [guide.name]];
   const terms = (guide.terms || []).map(id => termLookup.get(id));
-  const sections = guide.sections.map(section => {
-    const content = referenceSection(section);
-    if (!guide.inlineQuote || section[2]?.anchor !== guide.inlineQuote.after) return content;
+  const contents = [];
+  if (guide.calculator) contents.push([guideCalculators[guide.calculator].title, `${guide.calculator}-calculator`]);
+  const sections = guide.sections.map(([title, copy, options = {}]) => {
+    const anchor = options.anchor ?? title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+    contents.push([title, anchor]);
+    const content = referenceSection([title, copy, { ...options, anchor }]);
+    if (!guide.inlineQuote || anchor !== guide.inlineQuote.after) return content;
     return content + `
     <section class="use-case">
       <h2>${escape(guide.inlineQuote.title)}</h2>
@@ -699,14 +703,25 @@ for (const guide of guides) {
       <div class="actions">${btn('Request a Quote', quoteLink(guide.quoteProduct), 'primary', 'external')}</div>
     </section>`;
   }).join('');
+  const faqTitle = 'Frequently Asked Questions';
+  const faq = guide.faq?.length ? questionsSection(faqTitle, guide.faq, 'faq') : '';
+  if (faq) contents.push([faqTitle, 'faq']);
+  const checklist = guide.rfqChecklist;
+  if (checklist) contents.push([checklist[0], checklist[2].anchor]);
   await page(`/guides/${guide.slug}/`, guide.name, guide.description, `
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
   <article class="prose">
     <p class="guide-byline">By <a href="/about-us/">${escape(brand)}</a></p>
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
+    <details class="guide-contents">
+      <summary>On this page</summary>
+      <nav aria-label="Guide sections"><ul>
+        ${contents.map(([label, anchor]) => `<li><a href="#${escape(anchor)}">${escape(label)}</a></li>`).join('')}
+      </ul></nav>
+    </details>
     ${guide.calculator ? guideCalculator(guide.calculator, guide.quoteProduct) : ''}
-    ${sections}${guide.faq?.length ? '\n    ' + questionsSection('Frequently Asked Questions', guide.faq) : ''}${guide.rfqChecklist ? '\n    ' + referenceSection(guide.rfqChecklist) : ''}
+    ${sections}${faq}${checklist ? referenceSection(checklist) : ''}
   </article>
   <aside class="spec-card">
     <h2>Related Products</h2>${related(guide.related)}

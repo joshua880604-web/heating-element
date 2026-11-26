@@ -1256,6 +1256,30 @@ html:has([data-glossary]) {
 .guide-answer {
   margin-top: 0;
 }
+.guide-contents {
+  margin-block: 16px 22px;
+  border-block: 1px solid var(--line);
+}
+.guide-contents summary {
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 680;
+}
+.guide-contents ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 8px 24px;
+  margin: 0 0 12px;
+  padding-inline-start: 22px;
+}
+.guide-contents a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+.guide-grid > .prose > section[id] {
+  scroll-margin-top: 12px;
+}
 .read-next {
   margin-top: 24px;
 }

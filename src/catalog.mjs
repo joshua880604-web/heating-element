@@ -7998,6 +7998,16 @@ export const guides = [
           [['Pt100 or Pt1000 RTD', '/guides/pt100-wiring-diagram/'], 'Confirm the resistance curve, wire count and measurement setup. Include lead resistance and self-heating in the review where they affect the result.'],
         ],
       }],
+      ['Example calibration record at three temperatures', 'Use the measured reference temperature to calculate the deviation. For example, a device reading of 50.15 °C and a reference reading of 49.98 °C give a deviation of +0.17 °C.', {
+        anchor: 'calibration-record-example',
+        table: [
+          ['Nominal point', 'Reference', 'Device reading', 'Deviation'],
+          ['0 °C', '0.02 °C', '0.12 °C', '+0.10 °C'],
+          ['50 °C', '49.98 °C', '50.15 °C', '+0.17 °C'],
+          ['100 °C', '100.04 °C', '99.86 °C', '−0.18 °C'],
+        ],
+        tableNote: 'These readings illustrate the calculation. Use the acceptance limits, measurement uncertainty and decision rule specified for the equipment to determine whether it passes.',
+      }],
       ['Verify a transmitter or controller input', 'Apply known inputs over the configured range. Match the input configuration and use the specified reference-junction arrangement for thermocouple simulation. For a linear 4–20 mA temperature span from 0 to 100 °C, the expected outputs are 4 mA at 0 °C, 12 mA at 50 °C and 20 mA at 100 °C. Use the actual configured span and transfer function for the equipment.', {
         links: [
           ['Thermocouple signal calibrators', '/temperature-controls/thermocouple-calibrators/'],
@@ -8321,7 +8331,18 @@ export const guides = [
           [['Exposed', thermo + 'fine-wire/'], 'The junction is directly exposed to the process medium.', 'Consider for fast response in a compatible environment. Review abrasion, corrosion and other loads on the exposed conductors.'],
         ],
       }],
-      ['Compare response in the actual assembly', 'Compare probes of the same type and diameter in the intended medium. Junction construction affects thermal response, but sheath diameter, immersion depth, flow and contact with a surface can also change the reading and response time.', {
+      ['Compare response in the actual assembly', [
+        'Specify the fraction of a temperature step the sensor must indicate. In a step from 20 °C to 100 °C, the ',
+        ['response time', '/glossary/#thermocouple-response-time'],
+        ' to 63.2% (t₆₃) is the time to reach about 70.6 °C. A 90% response (t₉₀) is the time to reach 92 °C. Compare probes at the same stated fraction, medium, flow, immersion depth and mounting.',
+      ], {
+        anchor: 'compare-junction-response-time',
+        table: [
+          ['Installation', 'What to verify'],
+          ['Probe in an electrically bonded machine', 'For a grounded junction, check the electrical path from the process to the input and the instrument’s grounding requirements.'],
+          ['Probe on equipment with different ground potentials', 'Consider an ungrounded junction and verify the insulation rating and the instrument’s isolation requirements.'],
+          ['Fast measurement in a compatible air stream', 'Consider an exposed fine-wire junction. Review vibration, airflow and how the leads will be supported.'],
+        ],
         links: [
           ['Rigid exposed junction probes for fixed mounting', thermo + 'exposed-junction/'],
           ['Bare wire thermocouples with fixture-supported legs', thermo + 'fine-wire/bare-wire/'],
@@ -8520,7 +8541,16 @@ export const guides = [
         ['Pt100 RTD', '/glossary/#rtd'],
         ' uses the resistance of platinum, nominally 100 ohms at 0 °C. Its instrument measures resistance using an excitation current.',
       ]],
-      ['Compare the usable temperature range and response', 'A thermocouple is often considered for elevated temperatures and applications that need a small junction. A platinum RTD is often considered when stability and repeatability within its operating range are more important. Response time and usable temperature depend on the full assembly, including the sheath, diameter, mounting and process medium.'],
+      ['Compare the usable temperature range and response', 'Choose for the measurement point and the whole assembly. Include the sheath or thermowell, diameter, mounting, medium and the electronics when comparing usable temperature range, response and uncertainty.', {
+        anchor: 'thermocouple-rtd-selection-examples',
+        table: [
+          ['Measurement task', 'Sensor to evaluate', 'Check before selecting'],
+          ['Furnace or kiln with high peak temperatures', ['Thermocouple', '/guides/thermocouple-types/'], 'Match the type and protection tube to the peak temperature, dwell time and atmosphere. Confirm the configured input.'],
+          ['Process vessel with a narrow control band', ['Pt100 RTD', rtd + '#specifications'], 'Review sensor tolerance with readout and lead errors. Include immersion and any thermowell in the response review.'],
+          ['Fast changes in a compatible air stream', ['Fine-wire thermocouple', thermo + 'fine-wire/'], 'Check response in the intended airflow and temperature step. Verify the support and exposure limits of the junction.'],
+          ['Replacement for an existing PLC input', 'Match the configured input', 'Confirm the thermocouple type or RTD curve and wire count, as well as the pinout and installed dimensions.'],
+        ],
+      }],
       ['Match the instrument and wiring', 'For a thermocouple, confirm the instrument input type and the matching extension cable. For a Pt100, check the input configuration and the number of wires. Lead resistance affects a two-wire RTD. Three-wire measurement compensates for matched lead resistance, and four-wire measurement separates sensing from excitation to reduce lead resistance error.', {
         links: [
           ['Panel mount thermometers for local display', '/temperature-sensors/digital-thermometers/panel-mount/'],
@@ -8563,7 +8593,16 @@ export const guides = [
         ['Surface watt density', '/glossary/#watt-density'],
         ' is electrical power divided by the active surface area of the element, typically expressed in W/cm² or W/in². At the same power, an element with a smaller active area has a higher watt density. How hot its sheath gets also depends on how quickly heat leaves that surface.',
       ], { anchor: 'surface-watt-density' }],
-      ['Calculate watt density for a round tubular element', 'Use the sheath diameter and active heated length in consistent units. For the cylindrical surface, area is π × diameter × heated length. For example, a 100 W element with a 10 mm sheath and 100 mm of active heated length has an area of about 31.4 cm² and a watt density of about 3.2 W/cm². Exclude unheated ends. This example shows the calculation only.'],
+      ['Calculate watt density for a round tubular element', 'For the cylindrical surface, multiply π by the outside sheath diameter and the active centerline length. Convert both lengths to centimeters for a result in W/cm². At 100 W, a 10 mm diameter with 100 mm of active length gives about 31.4 cm² and 3.18 W/cm². The table shows how geometry changes the result at the same power.', {
+        anchor: 'tubular-watt-density-examples',
+        table: [
+          ['Sheath diameter', 'Active length', 'Area', 'Watt density at 100 W'],
+          ['10 mm', '100 mm', '31.4 cm²', '3.18 W/cm²'],
+          ['10 mm', '150 mm', '47.1 cm²', '2.12 W/cm²'],
+          ['12 mm', '100 mm', '37.7 cm²', '2.65 W/cm²'],
+        ],
+        tableNote: 'Exclude unheated ends. These are calculated examples. Suitability depends on the working medium, minimum flow or liquid level, and sheath temperature limits.',
+      }],
       ['Check total surface area and separate heating zones', 'For a bundle, add the active surface areas of its elements when calculating an average across the assembly. Also check each separately powered zone. For example, two 10 mm tubes with 80 mm and 120 mm of active length have about 62.8 cm² of total active area. With 120 W in each tube, the bundle average is about 3.8 W/cm². The shorter tube is about 4.8 W/cm² and the longer tube about 3.2 W/cm².'],
       ['Check the medium and allowable sheath temperature', 'Air velocity, liquid flow, oil viscosity, deposits and contact with a solid block all change heat transfer. Check the target process temperature and the allowed sheath temperature separately. Review heat removal at the minimum expected airflow or liquid flow and, for immersion, at the lowest specified liquid level. For a finned element, distinguish the tube surface used to specify watt density from the fin area that helps transfer heat into air.', {
         anchor: 'sheath-temperature-in-service',
@@ -8616,6 +8655,16 @@ export const guides = [
           ['230 V', '2,000 W', '26.45 Ω'],
           ['240 V', '1,000 W', '57.6 Ω'],
         ],
+      }],
+      ['Example resistance for a parallel heater bank', 'Each of three identical 240 V, 1,200 W elements has a calculated resistance of 48 Ω at rated conditions. If all three elements are wired in parallel across the same two terminals, the nominal bank resistance is 16 Ω. If one branch is open, the two remaining 48 Ω branches give a nominal equivalent of 24 Ω.', {
+        anchor: 'parallel-heater-bank-resistance',
+        table: [
+          ['Circuit in the example', 'Nominal resistance'],
+          ['One element measured separately', '48 Ω'],
+          ['All three branches connected in parallel', '16 Ω'],
+          ['Two intact parallel branches with one branch open', '24 Ω'],
+        ],
+        tableNote: 'Use the actual wiring drawing and specified cold resistance to evaluate a meter reading. A bank reading alone cannot identify which branch is open.',
       }],
       ['How to test an industrial heating element', 'Have qualified personnel follow the equipment isolation procedure and verify the circuit is de-energized. With the element circuit isolated from parallel branches and disconnected as specified in the equipment documentation, let the element stabilize at a known temperature. Measure across its power terminals in resistance mode and record the reading and temperature.', {
         table: [
@@ -8699,6 +8748,20 @@ export const guides = [
           [['Resistance above the expected value at a known temperature', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'Check the correct nominal curve and temperature first. Account for lead resistance and look for poor connections in the measured path.'],
           ['Normal probe reading with an incorrect controller reading', 'Verify the selected Pt100 or Pt1000 curve, wire count and terminal assignments at the input.'],
         ],
+      }],
+      ['Example meter readings for a three-wire Pt100', [
+        'For a disconnected nominal ',
+        ['IEC 60751 Pt100', '/glossary/#iec-60751'],
+        ' at 25 °C, suppose each lead adds about 0.6 Ω. The pair on the same end reads about 1.2 Ω. Both opposite-end pairs read about 110.9 Ω, which includes the sensing element and two leads.',
+      ], {
+        anchor: 'pt100-three-wire-meter-readings',
+        table: [
+          ['Lead pair', 'Path measured', 'Example reading'],
+          ['A1 to A2', 'Two leads on the same element end', '≈ 1.2 Ω'],
+          ['A1 to B', 'Two leads and the element', '≈ 110.9 Ω'],
+          ['A2 to B', 'Two leads and the element', '≈ 110.9 Ω'],
+        ],
+        tableNote: 'Actual readings depend on probe temperature, element tolerance and lead resistance. Use the probe drawing and the instrument terminal diagram to confirm the wiring.',
       }],
       ['Connect a Pt100 or Pt1000 to a PLC or transmitter', 'Use the device diagrams for terminal numbers, any approved jumpers and shield termination. Confirm the input channel type and check the displayed value against a reference after configuration.', {
         anchor: 'connect-rtd-to-plc',
@@ -8832,7 +8895,19 @@ export const guides = [
           [['N', thermo + 'type-n/'], 'Orange', 'Red', 'Pink', 'White'],
         ],
       }],
-      ['Identify the pair before making a connection', 'Read the printing on the cable or probe label. Check the type and polarity markings on the connector and the input terminals. Set the transmitter to the same alloy type. If the markings are unclear, identify the assembly from its part documentation or verify its response with a known reference before putting it into service.'],
+      ['Identify the pair before making a connection', [
+        'Read the cable marking and the ',
+        ['polarity', '/glossary/#thermocouple-polarity'],
+        ' marks at the connector and instrument. If the installation mixes color standards, identify each cable separately. A white conductor is negative on an IEC Type K cable and positive on a US Type J cable.',
+      ], {
+        anchor: 'identify-thermocouple-wire-polarity',
+        table: [
+          ['Check', 'Example for a US-to-IEC Type K transition'],
+          ['Identify both cables', 'Confirm that both are documented as compatible with Type K and check the approved cable designations for the installation.'],
+          ['Match conductor polarity', 'Under the documented conventions, US yellow and IEC green are positive. US red and IEC white are negative. Match by polarity at each marked terminal.'],
+          [['Verify the assembled channel', '/guides/how-to-test-a-thermocouple/'], 'Set the readout to Type K and check the response at a known temperature before returning the channel to service.'],
+        ],
+      }],
       ['Extension wire and compensating cable', 'Extension-grade cable uses conductors of the same nominal composition as the corresponding thermocouple pair. Compensating cable uses different alloys chosen to reproduce the needed thermoelectric behavior over a specified temperature interval. Select an approved cable designation for the thermocouple and verify the range for the junctions and the insulation.'],
       ['Type R and Type B cable and polarity', 'Match the extension or compensating cable designation to the instrument and probe documentation. Use the conductor colors specified for that cable grade and standard, and verify polarity at the connector and input. Include the expected temperature at each transition in the wiring specification.', {
         table: [
@@ -8887,13 +8962,16 @@ export const guides = [
     answer: ['When should I choose Type K or Type J?', 'Choose the thermocouple type required by the instrument, then verify the probe assembly against the process. Type K is commonly considered for higher-temperature service. Type J often suits compatible equipment with an existing Type J input. Its iron conductor needs protection in conditions that promote oxidation or corrosion.'],
     sections: [
       ['Compare the alloys and installation', 'K and J generate different thermoelectric voltages at the same temperature. Check the conductor combination and complete signal chain when selecting a replacement.', {
+        anchor: 'type-k-type-j-comparison',
         table: [
           ['Selection factor', 'Type K', 'Type J'],
           ['Positive leg', 'Nickel-chromium alloy', 'Iron'],
           ['Negative leg', 'Nickel-aluminum alloy', 'Copper-nickel alloy'],
           ['US lead colors', 'Yellow + / red −', 'White + / red −'],
           ['Input and extension cable', 'Type K', 'Type J'],
+          [['Output at 100 °C with a 0 °C reference', nistThermocoupleReference], '4.096 mV', '5.269 mV'],
         ],
+        tableNote: 'The voltage values are NIST ITS-90 reference values at the stated measuring and reference temperatures. The installed circuit also depends on correct polarity and reference-junction compensation.',
       }],
       ['Check the working range of the assembled probe', 'Reference tables describe the voltage–temperature relationship of the alloy pair. The usable range depends on wire diameter, sheath, insulation, junction, protection and atmosphere. Include continuous and peak temperatures, duration and thermal cycling when asking for a range.'],
       ['Match the process atmosphere', 'Assess moisture, oxidation and contaminants when using iron-based Type J. Type K performance also depends on atmosphere and protection, especially at elevated temperatures. Share the operating environment and any existing probe failure so the sheath and installation can be reviewed.'],
@@ -8903,6 +8981,12 @@ export const guides = [
         '. Match the original probe’s insertion, sheath diameter and junction construction if response time or fit matters.',
       ], {
         anchor: 'switching-thermocouple-types',
+        table: [
+          ['Replacement scenario', 'What to confirm'],
+          ['The input supports only Type J', 'Select a compatible Type J assembly, or plan an approved change to the receiving instrument and wiring.'],
+          ['The input can be configured for Type K or J', 'Set the channel for the replacement type. Verify the cable, connectors and measured response as part of the change.'],
+          ['The new process exceeds the old assembly’s limits', 'Review the alloy type, sheath, insulation and junction against the actual process before selecting a replacement.'],
+        ],
       }],
     ],
     faq: [
