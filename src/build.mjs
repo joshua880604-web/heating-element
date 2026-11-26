@@ -189,7 +189,7 @@ function salesContacts() {
   </address>`;
 }
 
-function searchMetadata({ path, title, description, trail, type, article, image, items, terms }) {
+function searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq }) {
   if (!origin) return '';
 
   const url = origin + path;
@@ -290,6 +290,14 @@ function searchMetadata({ path, title, description, trail, type, article, image,
       })),
     });
   }
+  if (faq.length) {
+    webPage['@type'] = [type, 'FAQPage'];
+    webPage.mainEntity = faq.map(([question, answer]) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    }));
+  }
   const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
     .replaceAll('<', '\\u003c');
   return `<link rel="canonical" href="${escape(url)}">
@@ -303,7 +311,7 @@ function searchMetadata({ path, title, description, trail, type, article, image,
 <script type="application/ld+json">${json}</script>`;
 }
 
-function layout({ path, title, description, body, trail, type, article, image, items, terms }) {
+function layout({ path, title, description, body, trail, type, article, image, items, terms, faq }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   return `<!doctype html>
 <html lang="en">
@@ -315,7 +323,7 @@ function layout({ path, title, description, body, trail, type, article, image, i
 <title>${escape(title)} | ${escape(brand)}</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
-${searchMetadata({ path, title, description, trail, type, article, image, items, terms })}
+${searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq })}
 ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heating.webp">' : ''}
 <script type="module" src="/site.js"></script>
 </head>
@@ -346,12 +354,12 @@ ${photoFilters}
 }
 
 async function page(path, title, description, body, {
-  trail = [], type = 'WebPage', article = false, image, items = [], terms = [],
+  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [],
 } = {}) {
   pageDescriptions.set(path, description);
   const destination = resolve(dist, '.' + path, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
-  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms }));
+  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq }));
 }
 
 function crumb(items) {
@@ -383,7 +391,7 @@ function selectionGuides(slugs) {
   }).join('')}</ul>`;
 }
 
-function referenceSection([title, copy, { table, diagram, anchor, links } = {}], className = '') {
+function referenceSection([title, copy, { table, diagram, anchor, links, download } = {}], className = '') {
   const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
   return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
     ${table ? `<div class="reference-table"><table>
@@ -395,7 +403,8 @@ function referenceSection([title, copy, { table, diagram, anchor, links } = {}],
       <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
       <figcaption>${escape(diagram[0])}</figcaption>
     </figure>` : ''}${links ? `
-    <ul class="link-list">${links.map(link => `<li>${cell(link)}</li>`).join('')}</ul>` : ''}
+    <ul class="link-list">${links.map(link => `<li>${cell(link)}</li>`).join('')}</ul>` : ''}${download ? `
+    <div class="actions"><a class="button button-secondary" href="${escape(download[1])}" download>${escape(download[0])}</a></div>` : ''}
   </section>`;
 }
 
@@ -673,6 +682,16 @@ ${pageIntro('Engineering guides', 'Heating & Temperature Sensor Guides', 'Test a
 for (const guide of guides) {
   const trail = [...guidesTrail, [guide.name]];
   const terms = (guide.terms || []).map(id => termLookup.get(id));
+  const sections = guide.sections.map(section => {
+    const content = referenceSection(section);
+    if (!guide.inlineQuote || section[2]?.anchor !== guide.inlineQuote.after) return content;
+    return content + `
+    <section class="use-case">
+      <h2>${escape(guide.inlineQuote.title)}</h2>
+      <p>${escape(guide.inlineQuote.text)}</p>
+      <div class="actions">${btn('Request a Quote', quoteLink(guide.quoteProduct), 'primary', 'external')}</div>
+    </section>`;
+  }).join('');
   await page(`/guides/${guide.slug}/`, guide.name, guide.description, `
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
@@ -680,7 +699,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
     <p class="guide-byline">By <a href="/about-us/">${escape(brand)}</a></p>
     <section class="use-case guide-answer"><h2>${escape(guide.answer[0])}</h2><p>${escape(guide.answer[1])}</p></section>
     ${guide.calculator ? guideCalculator(guide.calculator, guide.quoteProduct) : ''}
-    ${guide.sections.map(section => referenceSection(section)).join('')}
+    ${sections}${guide.faq?.length ? '\n    ' + questionsSection('Frequently Asked Questions', guide.faq) : ''}${guide.rfqChecklist ? '\n    ' + referenceSection(guide.rfqChecklist) : ''}
   </article>
   <aside class="spec-card">
     <h2>Related Products</h2>${related(guide.related)}
@@ -692,7 +711,7 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
   </aside>
 </div></section>
 ${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.', 'Request a Quote', quoteLink(guide.quoteProduct))}
-`, { trail, article: true });
+`, { trail, article: true, faq: guide.faq });
 }
 
 const alphabet = Object.entries(Object.groupBy(glossary, term => term.name[0]));

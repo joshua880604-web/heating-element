@@ -7859,6 +7859,11 @@ export const guides = [
     slug: 'ntc-thermistor-guide', group: 'sensing', name: 'What Is an NTC Thermistor? Selection & Testing',
     description: 'Learn how NTC thermistors work, compare NTC and PTC sensors, and test a replacement temperature probe against its resistance curve.',
     quoteProduct: 'ntc-thermistor-probes',
+    inlineQuote: {
+      after: 'ntc-resistance-curve',
+      title: 'Have a curve or an original part number?',
+      text: 'Send the controller model, probe drawing or dimensions, and the resistance table if available. Lichengda can review a threaded or straight probe against your mounting and cable requirements.',
+    },
     answer: ['What is an NTC thermistor?', 'An NTC thermistor is a temperature-sensitive resistor with a negative temperature coefficient. Its resistance decreases as it gets warmer. A compatible controller reads that resistance and uses the specified resistance–temperature curve to report temperature.'],
     readNext: ['thermocouple-vs-rtd', 'temperature-sensor-calibration'],
     related: ['ntc-thermistor-probes', 'rtd', 'pt1000-sensors', 'ds18b20-sensors'],
@@ -7889,10 +7894,35 @@ export const guides = [
           ['3. Check the measurement chain', 'If the probe agrees with its table, verify the controller’s configured curve and wiring. If the reading is open or unstable, check the terminals and cable before evaluating the sensor.'],
         ],
       }],
-      ['What to send for a replacement probe', 'Provide the original part reference, controller model and resistance table or R25 and beta value with its temperature pair. Include the tolerance, operating range, mount, insertion length, seal, cable and pinout. Record the temperatures used for any resistance checks.', {
-        links: [['Specify an NTC thermistor probe', '/temperature-sensors/ntc-thermistor-probes/']],
+      ['NTC probe selection by application', 'Use the controller’s specified resistance curve in each application. Then check how the probe contacts the temperature target and what the housing, seal and lead will be exposed to.', {
+        anchor: 'ntc-probe-applications',
+        table: [
+          ['Application', 'What to check', 'What to send'],
+          ['Water heaters', 'Confirm whether the probe senses water through an immersed port or measures a tank surface. Review the seal and wetted materials for an immersed configuration.', 'Port or attachment drawing, insertion depth, water conditions, temperature range and pressure if applicable.'],
+          ['HVAC equipment', 'Identify return-air, duct or coil measurement. A coil probe needs defined contact with the tube. An air probe needs a location representative of the measured airflow.', 'Sensor location, attachment, airflow and temperature range, condensation exposure and connector details.'],
+          ['Battery packs', 'Identify the cell or module measurement point from the pack drawing. Contact, electrical insulation and cable routing affect the installed sensor.', 'Mounting footprint, electrical insulation requirements, temperature limits, response target and battery management system input and pinout.'],
+        ],
       }],
     ],
+    faq: [
+      ['Can any 10 kΩ NTC thermistor replace a 10 kΩ probe?', 'Confirm the controller’s resistance–temperature curve and tolerance, as well as 10 kΩ at 25 °C. The example above shows two 10 kΩ probes with different resistance at 50 °C. Match the mount, connector and operating range as well.'],
+      ['What does B25/85 mean on an NTC thermistor?', 'B25/85 is the beta value in kelvin calculated from resistance at 25 °C and 85 °C. Compare beta values defined over the same temperature pair. Use the controller’s specified resistance table to check compatibility across the working range.'],
+      ['Should I use an NTC or PTC thermistor for temperature measurement?', 'Use the thermistor type and curve supported by the measuring circuit. NTCs are commonly used for continuous temperature feedback. A PTC with a steep resistance change can suit a circuit designed to detect an overtemperature threshold.'],
+    ],
+    rfqChecklist: ['What to send for an NTC probe quote', 'Copy the items below into your inquiry or use the one-page checklist. Include the required quantity and attach a drawing or a photo of the original probe if available.', {
+      anchor: 'ntc-probe-rfq-checklist',
+      table: [
+        ['Item', 'What to include'],
+        ['Equipment and controller', 'Application, controller model and original probe part number or drawing.'],
+        ['Resistance curve', 'R25 and the required resistance table, or the beta value and its temperature pair. Include tolerance and the working range.'],
+        ['Probe and mounting', 'Thread and seal, sheath dimensions, insertion depth from the installed reference face, or the specified contact footprint.'],
+        ['Operating conditions', 'Medium, temperature extremes, moisture or cleaning exposure, and pressure and response-time requirements where applicable.'],
+        ['Cable and connection', 'Lead length, insulation, connector dimensions, pinout and routing constraints.'],
+        ['Quantity and test notes', 'Required quantity. For a replacement, include the measured resistance and reference temperature at each test point if available.'],
+      ],
+      links: [['Specify an NTC thermistor probe', '/temperature-sensors/ntc-thermistor-probes/']],
+      download: ['Download RFQ Checklist (PDF)', '/assets/ntc-probe-rfq-checklist.pdf'],
+    }],
   },
   {
     slug: 'temperature-sensor-calibration', group: 'sensing', name: 'Thermocouple and RTD Calibration Guide',
