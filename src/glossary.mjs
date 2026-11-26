@@ -315,6 +315,11 @@ export const glossary = [
     related: ['Flanged Thermowells', '/temperature-sensors/accessories/thermowells/flanged/'],
   },
   {
+    id: 'flexible-sheathed-thermocouple', name: 'Flexible Sheathed Thermocouple',
+    definition: 'A mineral-insulated probe with a formable metal sheath for a fixed bend path. Specify the allowable bend radius, straight sections, probe support and sensing position.',
+    related: ['Flexible Sheathed Thermocouples', '/thermocouples/mineral-insulated/flexible/'],
+  },
+  {
     id: 'food-thermocouple-probe', name: 'Food Thermocouple Probe',
     definition: 'A pointed thermocouple used to measure temperature at a defined location within food. Specify the sensing depth, product-contact materials, cleaning conditions and instrument connection.',
     related: ['Food Thermocouple Probes', '/thermocouples/needle-probes/food/'],
@@ -473,6 +478,16 @@ export const glossary = [
     id: 'incubator-heating-element', name: 'Incubator Heating Element',
     definition: 'An element that warms the air in a hatching cabinet. Match the tube profile, active length and electrical rating to the cabinet airflow and mounting requirements.',
     related: ['Incubator Heating Elements', '/heating-elements/tubular-heaters/incubators/'],
+  },
+  {
+    id: 'high-temperature-thermocouple-wire', name: 'High Temperature Thermocouple Wire',
+    definition: 'Thermocouple wire with insulation selected for elevated temperatures along the installed route. Verify the alloy or cable designation, insulation, termination and exposure at each transition.',
+    related: ['High Temperature Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/high-temperature/'],
+  },
+  {
+    id: 'ice-maker-heating-element', name: 'Ice Maker Heating Element',
+    definition: 'A heater that briefly warms an ice mold to release ice during harvest. The mold contact area, mounting geometry and specified electrical duty determine the assembly.',
+    related: ['Ice Maker Heating Elements', '/heating-elements/tubular-heaters/ice-makers/'],
   },
   {
     id: 'industrial-digital-thermometer', name: 'Industrial Digital Thermometer',
@@ -643,6 +658,16 @@ export const glossary = [
     id: 'pipe-clamp-thermocouple', name: 'Pipe Clamp Thermocouple',
     definition: 'A contact sensor held against a pipe wall by a clamp. Specify the actual pipe outside diameter, contact point, available clearance and instrument input.',
     related: ['Pipe Clamp Thermocouples', '/thermocouples/surface-mount/pipe-clamp/'],
+  },
+  {
+    id: 'pizza-oven-heating-element', name: 'Pizza Oven Heating Element',
+    definition: 'A resistance element supplying heat to a zone in an electric pizza oven. For a tubular element, specify the deck coverage, mounting, air gap and electrical rating.',
+    related: ['Pizza Oven Heating Elements', '/heating-elements/tubular-heaters/industrial-oven/pizza/'],
+  },
+  {
+    id: 'pizza-oven-thermocouple', name: 'Pizza Oven Thermocouple',
+    definition: 'A temperature probe located at a defined electric pizza oven sensing point. Liner projection, local radiant exposure, lead route and controller input define the installation.',
+    related: ['Pizza Oven Thermocouples', '/thermocouples/industrial-ovens/pizza/'],
   },
   {
     id: 'plating-tank-heater', name: 'Plating Tank Heater',
@@ -1088,6 +1113,11 @@ export const glossary = [
     id: 'washer-thermocouple', name: 'Washer Thermocouple',
     definition: 'A surface temperature sensor built into a flat ring held beneath a fastener. The ring thickness, seating face and edge clearance for the lead are part of the installed fit.',
     related: ['Washer Thermocouples', '/thermocouples/surface-mount/bolt-on/washer/'],
+  },
+  {
+    id: 'water-bath-heating-element', name: 'Water Bath Heating Element',
+    definition: 'An immersion heater for a laboratory or process water bath. Tank and tray geometry, minimum water level and available circulation determine the installed heater layout.',
+    related: ['Water Bath Heating Elements', '/heating-elements/immersion-heaters/water-baths/'],
   },
   {
     id: 'water-dispenser-heating-element', name: 'Water Dispenser Heating Element',
