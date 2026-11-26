@@ -227,6 +227,20 @@ export const products = [
     intro: 'A finned tubular heater uses fins around a round metal sheath to transfer heat to moving air. For a custom element, send the duct cross-section, normal and minimum airflow, tube shape and fin envelope along with the electrical ratings.',
     options: ['Straight, U-shaped and W-shaped elements by drawing', 'Fin and sheath material selection', 'Flange plates, brackets and terminal layouts by drawing'],
     specs: ['Duct cross-section, air direction, minimum and normal airflow, maximum inlet temperature and target outlet temperature', 'Supply voltage and phase, voltage and watts per heating circuit, and zone layout', 'Sheath diameter, fin outside diameter and pitch, finned and heated lengths, and tube centerline profile', 'Mounting hole centers, terminal projection, fin clearance, allowable pressure drop and required quantity'],
+    comparison: [
+      'Check Fin Clearance and the Installed Envelope',
+      'Draw the outside fin profile around the tube centerline. Give the clear opening through the duct wall, brackets and liner, along with the shape and orientation of the heater during installation and removal.',
+      {
+        anchor: 'finned-tubular-heater-clearance',
+        table: [
+          ['Fit or load check', 'How to read the drawing'],
+          ['Clearance between parallel legs', 'In a drawing with two parallel tubes on 48 mm centers and concentric fins of 36 mm outside diameter, the nominal gap between the fin edges is 12 mm. Evaluate the smallest installed gap using the actual tolerances and supports.'],
+          ['Clearance through the mounting opening', 'Check the widest part of a bend or fin bank against the clear cutout. Include the thickness of the wall or liner, flange seating face and insertion angle available during service.'],
+          [['Finned length and heated length', '/guides/heating-element-watt-density/#sheath-temperature-in-service'], 'Mark the finned span, electrically heated span and cold ends separately. Some of the sheath may be fin-free near a bend or mount. For an electrical loading calculation based on the round sheath, use its outside diameter and active centerline length.'],
+          ['Location of fins in the air path', 'Check the fin position against supports, ducts and baffles. Review flow through the installed bank and the allowable pressure drop at the specified flow.'],
+        ],
+      },
+    ],
     selection: [
       'Finned Tubular Heater Geometry for Forced Air',
       'For a formed finned tubular heating element, show the tube centerline and the outside envelope of the fins. Mark which areas are heated and which areas carry fins so both clearances and heat transfer can be reviewed.',
@@ -269,6 +283,7 @@ export const products = [
       ['When does a finned tubular heater make sense?', 'Consider a finned element when the heater will transfer heat to moving air. Fins provide additional surface area. Specify the minimum airflow, maximum inlet temperature, mounting clearance and maximum fin diameter so the assembly can be evaluated in the duct.'],
       ['Why does minimum airflow matter for a finned tubular heater?', 'At the same electrical power, less air moving across the fins can raise the sheath temperature. Provide the lowest airflow expected while the heater is powered, including conditions at startup or with a loaded filter.'],
       ['What do I send for a replacement finned tubular heater?', 'Send the voltage and wattage markings, photos of the finned tube and its terminals, and the duct dimensions. Include fin diameter and pitch, mounting hole spacing, cold ends, minimum airflow and terminal clearance.'],
+      ['Which diameter is used for tubular sheath watt density?', 'For a round-sheath calculation, use the tube outside diameter and the heated centerline length. Record fin outside diameter and pitch separately for installation clearance and heat-transfer review.'],
     ],
   },
   {
@@ -1216,6 +1231,20 @@ export const products = [
     intro: 'Band heaters fit around cylindrical equipment. Define the barrel diameter, available width, cutouts and terminal position before requesting a configuration.',
     options: ['Mica and ceramic constructions', 'One-piece or split bands', 'Nozzle and barrel variants', 'Mounting lugs and cutouts'],
     specs: ['Barrel or nozzle diameter, available width and clamp gap', 'Voltage, total wattage and power per section if split', 'Working surface temperature, duty cycle and available radial clearance', 'Clamp layout, openings, terminal location and lead direction'],
+    comparison: [
+      'Check Barrel Diameter, Band Contact and Clamp Clearance',
+      'Measure the equipment at the actual mounting location with the barrel cool. Identify the usable width and the room around the barrel for the band body, clamps and terminals.',
+      {
+        anchor: 'band-heater-barrel-fit-and-clearance',
+        table: [
+          ['Fit check', 'How to verify it'],
+          ['Barrel outside diameter', 'For a round barrel, a circumference of about 188.5 mm corresponds to a diameter of about 60.0 mm. When possible, check the diameter directly at several positions along and across the mounting zone to identify steps or out-of-round areas.'],
+          [['Contact and clamp gap', contactHeaterMounting], 'Check the contact face for gaps or raised features. Use the installed drawing to verify clamp position, tightening requirements and the specified gap after the band is fitted and tightened.'],
+          ['Cutouts and terminal orientation', 'Give the axial distance from a shoulder and the angle from a fixed feature such as a port. State the end-view direction and show the room needed to tighten clamps or route the leads.'],
+          ['Radial clearance', 'Include the outer shell, clamp hardware and terminal projection in the available envelope. Check removal and service access with the surrounding guards or covers in place.'],
+        ],
+      },
+    ],
     selection: [
       'Mica and Ceramic Band Heater Selection',
       'Start with the measured outside diameter of the barrel and the space around it. Identify the circumferential position of holes, protrusions and terminals on the drawing.',
@@ -1240,6 +1269,7 @@ export const products = [
       ['What is a band heater and how does it heat a barrel?', 'A band heater fits around a barrel or nozzle. The electrical resistance element generates heat, and the mating inside surface transfers it into the equipment. Match the band to the outside diameter and specified clamp arrangement so it makes consistent contact.'],
       ['How do mica and ceramic band heaters differ?', 'Mica bands typically use a thin layered construction. Ceramic bands use ceramic insulation around the heating winding. Compare the allowable thickness, barrel temperature, heat loss, mounting clearance and terminal position for the actual barrel or nozzle.'],
       ['How do I measure the diameter for a replacement band heater?', 'Measure the outside diameter of the mounting surface with the equipment cool and give the usable width. Mark any steps or protrusions, terminal and clamp positions, and the operating temperature so fit through the heating cycle can be checked.'],
+      ['When should I consider a split band heater?', 'Consider a split assembly when shoulders, flanges or fixed equipment prevent an approved one-piece band from reaching the mounting zone. Show the installation path, split positions, clamp access and the electrical connection for each section.'],
     ],
   },
   {
@@ -3555,9 +3585,26 @@ export const products = [
     title: 'Screw Plug Immersion Heaters for Threaded Ports',
     description: 'Specify a screw plug immersion heater by thread form and size, liquid, insertion clearance, wattage, voltage and terminal enclosure requirements.',
     text: 'Threaded immersion assemblies sized around your port and fluid conditions.',
-    intro: 'Share the thread standard and available insertion envelope when scoping a screw plug immersion heater. Application details guide material and element selection.',
+    intro: 'A screw plug immersion heater mounts through a threaded tank port and puts the heated sheath into the liquid. Match the thread and seal, then locate the active section from the installed plug reference on the vessel drawing.',
     options: ['Threaded plug connection', 'Single or multiple elements', 'Lead and terminal enclosure choices'],
     specs: ['Thread standard, size and pitch, plus the mating port and seal drawing', 'Liquid, pressure, working temperature and minimum liquid level', 'Insertion length and clearance to the vessel wall or internals', 'Voltage, phase, wattage, terminal enclosure and cable-entry direction'],
+    comparison: [
+      'Check Screw Plug Insertion and the First Heated Point',
+      'Use the installed reference face specified by the port drawing for all axial dimensions. For a tapered thread, confirm the seated position so the heated span and clearances can be checked in the actual assembly.',
+      {
+        anchor: 'screw-plug-heater-insertion',
+        table: [
+          ['Installed dimension', 'Worked fit check'],
+          ['Port depth and active start', 'If the inner vessel wall is 30 mm from the reference face and the heated span starts at 55 mm, the first heated point is 25 mm inside the vessel. Show both dimensions when a nozzle or fitting stands off from the wall.'],
+          ['Tip clearance', 'If the farthest point of the element is 185 mm from the reference face and an obstruction on the same path is 210 mm from it, the nominal axial clearance is 25 mm. Check the full tube envelope and its orientation too.'],
+          [['Active section at the lowest fill', '/guides/immersion-heater-sizing/#immersion-heater-submergence'], 'Mark the minimum operating liquid level and the highest point of the active sheath in the installed orientation. Verify the required cover for the complete heated section.'],
+        ],
+        diagram: [
+          'Side-entry layout showing the installed reference face, inner vessel wall and start of the active span. Measure to the highest heated point separately when checking liquid cover.',
+          ['Face Wall       Heated span', ' │────│─────┊══════════════●'],
+        ],
+      },
+    ],
     selection: [
       'Match the Screw Plug to the Tank Port',
       'Use the port drawing to identify the thread and sealing interface before measuring the heater envelope. Include both the vessel-side clearance and the space for wiring outside the tank.',
@@ -3573,6 +3620,8 @@ export const products = [
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
     questions: [
       ['Can threaded immersion heaters with similar-looking plugs be interchanged?', 'Confirm thread form, pitch, size and sealing method before choosing the plug. A tapered and a parallel thread can look similar while requiring different fittings. Also verify the immersion length and clearance from the threaded port to the vessel wall.'],
+      ['Where do I measure screw plug heater insertion length?', 'Use the installed mounting or sealing reference defined on the vessel drawing and measure along the insertion axis to the farthest point of the sheath. Record the first heated point and inner wall position from the same reference.'],
+      ['What should I check if the tank port has a deep nozzle?', 'Measure the nozzle stand-off and usable bore. Check which part of the element sits within the nozzle, where the active section begins and how the bundle clears the nozzle and tank internals during installation and removal.'],
     ],
   },
   {
