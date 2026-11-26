@@ -115,6 +115,11 @@ export const glossary = [
     related: ['Ceramic Fiber Heaters', '/heating-elements/ceramic-fiber-heaters/'],
   },
   {
+    id: 'ceramic-heating-element-insulator', name: 'Ceramic Heating Element Insulator',
+    definition: 'A ceramic support or spacer that locates a heating conductor and helps maintain electrical separation. Specify the wire seat, mounting, expansion clearance, material and exposure.',
+    related: ['Ceramic Insulators for Heating Elements', '/heating-elements/open-coil-heaters/ceramic-insulators/#ceramic-heater-insulator-fit'],
+  },
+  {
     id: 'ceramic-infrared-heating-element', name: 'Ceramic Infrared Heating Element',
     definition: 'A radiant heater in which an electrical resistance conductor heats a ceramic body. Face profile, emitter spacing and working distance affect how radiation reaches the work surface.',
     related: ['Ceramic Infrared Heating Elements', '/heating-elements/infrared-heaters/ceramic/'],
@@ -510,6 +515,11 @@ export const glossary = [
     related: ['Liquid Immersion Thermocouple Probes', '/thermocouples/immersion/'],
   },
   {
+    id: 'inconel-thermocouple', name: 'Inconel-Sheathed Thermocouple',
+    definition: 'A thermocouple probe with a specified Inconel outer sheath. The sheath alloy is specified for the process, and the sensing conductor type sets the instrument input.',
+    related: ['Inconel-Sheathed Thermocouple Probes', '/thermocouples/mineral-insulated/inconel/#inconel-probe-sheath-selection'],
+  },
+  {
     id: 'incoloy-heating-element', name: 'Incoloy Heating Element',
     definition: 'A sheathed heater with a specified iron–nickel–chromium alloy tube. The alloy grade, working medium, temperature and active surface loading form part of the heater specification.',
     related: ['Incoloy-Sheathed Tubular Heating Elements', '/heating-elements/tubular-heaters/incoloy/'],
@@ -553,6 +563,11 @@ export const glossary = [
     id: 'industrial-digital-thermometer', name: 'Industrial Digital Thermometer',
     definition: 'An industrial instrument that combines a temperature sensor with an electronic readout. Its process connection positions the sensor and the display is oriented for the operator.',
     related: ['Industrial Digital Thermometers', '/temperature-sensors/digital-thermometers/'],
+  },
+  {
+    id: 'industrial-inline-water-heater', name: 'Industrial Inline Water Heater',
+    definition: 'A chamber assembly that adds heat to flowing water. Specify flow and temperature rise, water quality, connections, design pressure and allowable pressure drop.',
+    related: ['Industrial Inline Water Heaters', '/heating-elements/circulation-heaters/inline-water/#inline-water-heater-sizing'],
   },
   {
     id: 'industrial-oven-thermocouple', name: 'Industrial Oven Thermocouple',
@@ -608,6 +623,11 @@ export const glossary = [
     id: 'kiln-thermocouple', name: 'Kiln Thermocouple',
     definition: 'A thermocouple assembly that measures temperature at a specified location in a kiln. The probe type, protection tube, hot-face projection and firing conditions determine the assembly requirements.',
     related: ['Kiln Thermocouples', '/thermocouples/high-temperature/kiln/'],
+  },
+  {
+    id: 'low-density-cartridge-heater', name: 'Low Density Cartridge Heater',
+    definition: 'A cartridge heater specified for lower power per unit of active sheath area. Review the average surface loading with heat transfer in the actual bore and the required heating cycle.',
+    related: ['Low Density Cartridge Heaters', '/heating-elements/cartridge-heaters/low-density/#low-density-cartridge-heater-loading'],
   },
   {
     id: 'low-watt-density-water-heater-element', name: 'Low Watt Density Water Heater Element',
@@ -930,6 +950,11 @@ export const glossary = [
     related: ['Silicone Rubber Heaters', '/heating-elements/flexible-heaters/silicone-rubber/'],
   },
   {
+    id: 'soldering-iron-heating-element', name: 'Soldering Iron Heating Element',
+    definition: 'A resistive heater core that transfers heat to a soldering iron tip. The tip and holder geometry, voltage and power, and any separate sensor circuit define the replacement.',
+    related: ['Soldering Iron Heating Elements', '/heating-elements/cartridge-heaters/ceramic/soldering-iron/#soldering-iron-heater-core-fit'],
+  },
+  {
     id: 'solid-state-relay', name: 'Solid-State Relay',
     definition: 'A relay that switches a load with semiconductor devices. For heater control, match its input to the controller and check load voltage, current and heat dissipation.',
     related: ['Solid-State Relays for Heating Elements', '/temperature-controls/solid-state-relays/'],
@@ -1163,6 +1188,11 @@ export const glossary = [
     id: 'type-j-thermocouple', name: 'Type J Thermocouple',
     definition: 'An iron–copper-nickel thermocouple. The probe, extension wire and instrument input must match Type J for the measurement to use the correct voltage-to-temperature relationship.',
     related: ['Type J Thermocouples', '/thermocouples/type-j/'],
+  },
+  {
+    id: 'type-j-thermocouple-wire', name: 'Type J Thermocouple Wire',
+    definition: 'Iron positive and copper–nickel negative conductors for a Type J circuit. Specify sensing grade or approved JX extension grade and verify the wiring convention and transition temperature.',
+    related: ['Type J Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/type-j/#type-j-wire-grade-and-polarity'],
   },
   {
     id: 'type-k-thermocouple', name: 'Type K Thermocouple',

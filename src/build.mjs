@@ -125,7 +125,9 @@ const photoTones = [
     id: 'cool-gray',
     source: [221, 219, 228],
     images: ['infrared-heating-panels', 'inline-oil-heaters', 'heated-hoses',
-      'thermocouple-data-loggers', 'handheld-thermocouple-readers', 'scr-power-controllers'],
+      'thermocouple-data-loggers', 'handheld-thermocouple-readers', 'scr-power-controllers',
+      'type-j-thermocouple-wire', 'soldering-iron-heating-elements', 'ceramic-heating-element-insulators',
+      'industrial-inline-water-heaters', 'inconel-thermocouples', 'low-density-cartridge-heaters'],
   },
   {
     id: 'lavender-gray',
