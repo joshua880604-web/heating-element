@@ -392,19 +392,20 @@ function selectionGuides(slugs) {
 }
 
 function referenceSection([title, copy, { table, tableNote, diagram, anchor, links, download } = {}], className = '') {
-  const cell = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
-  return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${escape(copy)}</p>
+  const textOrLink = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
+  const paragraph = Array.isArray(copy) ? copy.map(textOrLink).join('') : escape(copy);
+  return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${paragraph}</p>
     ${table ? `<div class="reference-table"><table>
       <caption class="sr-only">${escape(title)}</caption>
       <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
-      <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${cell(row)}</th>${cells.map(value => `<td>${cell(value)}</td>`).join('')}</tr>`).join('')}</tbody>
+      <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${textOrLink(row)}</th>${cells.map(value => `<td>${textOrLink(value)}</td>`).join('')}</tr>`).join('')}</tbody>
     </table></div>` : ''}${tableNote ? `
     <p class="reference-note">${escape(tableNote)}</p>` : ''}
     ${diagram ? `<figure class="reference-diagram">
       <pre aria-hidden="true">${escape(diagram[1].join('\n'))}</pre>
       <figcaption>${escape(diagram[0])}</figcaption>
     </figure>` : ''}${links ? `
-    <ul class="link-list">${links.map(link => `<li>${cell(link)}</li>`).join('')}</ul>` : ''}${download ? `
+    <ul class="link-list">${links.map(link => `<li>${textOrLink(link)}</li>`).join('')}</ul>` : ''}${download ? `
     <div class="actions"><a class="button button-secondary" href="${escape(download[1])}" download>${escape(download[0])}</a></div>` : ''}
   </section>`;
 }

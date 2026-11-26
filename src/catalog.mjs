@@ -7877,7 +7877,11 @@ export const guides = [
           ['PTC thermistor', 'Increases in its specified operating region.', 'Some PTC designs provide a sharp resistance change for overtemperature detection.'],
         ],
       }],
-      ['Match R25 and the resistance–temperature curve', 'R25 is the nominal resistance at 25 °C. The beta value describes the curve over a specified pair of temperatures. In the simple beta approximation, R(T) = R25 × exp[B × (1/T − 1/298.15)], where T is in kelvin. The example shows how two sensors can share the same R25 and differ once they warm up. Use the specified resistance table and tolerance for selection and acceptance.', {
+      ['Match R25 and the resistance–temperature curve', [
+        'R25 is the nominal resistance at 25 °C. The ',
+        ['beta value', '/glossary/#thermistor-beta-value'],
+        ' describes the curve over a specified pair of temperatures. In the simple beta approximation, R(T) = R25 × exp[B × (1/T − 1/298.15)], where T is in kelvin. The example shows how two sensors can share the same R25 and differ once they warm up. Use the specified resistance table and tolerance for selection and acceptance.',
+      ], {
         anchor: 'ntc-resistance-curve',
         table: [
           ['Illustrative beta-model inputs', 'Resistance at 25 °C', 'Approximate resistance at 50 °C'],

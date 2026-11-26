@@ -969,7 +969,8 @@ svg.photo-filters {
 .reference-table tbody tr {
   border-top: 1px solid var(--line);
 }
-.reference-table a {
+.reference-table a,
+.guide-grid > article.prose section > p > a {
   color: var(--accent-dark);
   text-decoration: underline;
   text-underline-offset: 0.14em;
