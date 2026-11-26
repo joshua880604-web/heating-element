@@ -621,6 +621,7 @@ const guideCalculators = {
   'heater-resistance': {
     title: 'Heating Element Resistance Calculator',
     instructions: 'Enter the rated voltage and power for one resistive circuit. For AC, use the rated RMS voltage across that circuit. Convert kilowatts to watts before entering the power.',
+    quoteHint: 'Add the original circuit drawing, tested terminal pair, measured cold resistance and test temperature before sending. Include insulation resistance results separately if available.',
     fields: `
       <label>Rated circuit voltage (V)<input name="voltage" type="number" inputmode="decimal" min="0" step="any" required></label>
       <label>Rated circuit power (W)<input name="power" type="number" inputmode="decimal" min="0" step="any" required></label>`,
@@ -628,6 +629,7 @@ const guideCalculators = {
   'watt-density': {
     title: 'Tubular Heater Watt Density Calculator',
     instructions: 'Enter the power and dimensions of one round tubular element. Measure the active heated span along the tube centerline, excluding cold ends. The calculation uses the round sheath surface.',
+    quoteHint: 'Add the working medium, minimum flow or liquid level, sheath temperature limit and installed tube drawing to the estimate before sending.',
     fields: `
       <label>Length units<select name="lengthUnit"><option value="mm">Millimeters (mm)</option><option value="in">Inches (in)</option></select></label>
       <label>Element power (W)<input name="power" type="number" inputmode="decimal" min="0" step="any" required></label>

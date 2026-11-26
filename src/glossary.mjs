@@ -467,7 +467,7 @@ export const glossary = [
   {
     id: 'iec-60584-3', name: 'IEC 60584-3',
     definition: 'The part of IEC 60584 that specifies tolerances and identification for thermocouple extension and compensating cables, including the IEC color convention.',
-    related: ['Thermocouple Wire Color Codes and Polarity', '/guides/thermocouple-wire-color-code/'],
+    related: ['Thermocouple Wire Color Codes and Polarity', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors'],
   },
   {
     id: 'iec-60751', name: 'IEC 60751',
@@ -837,7 +837,7 @@ export const glossary = [
   {
     id: 'seebeck-effect', name: 'Seebeck Effect',
     definition: 'The development of an electrical potential along a conductor in a temperature gradient. The different responses of the two conductor materials produce a thermocouple’s measurable voltage.',
-    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/'],
+    related: ['What Is a Thermocouple and How Does It Work?', '/guides/how-thermocouples-work/#seebeck-effect-in-thermocouples'],
   },
   {
     id: 'sheath', name: 'Sheath',
@@ -1192,7 +1192,7 @@ export const glossary = [
   {
     id: 'watt-density', name: 'Watt Density',
     definition: 'Electrical power divided by active heating surface area, often expressed in W/cm² or W/in². For a cylindrical tubular sheath, surface area is π times sheath diameter times active heated length.',
-    related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
+    related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/#surface-watt-density'],
   },
   {
     id: 'wireless-thermocouple-system', name: 'Wireless Thermocouple System',
