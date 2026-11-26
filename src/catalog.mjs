@@ -1786,6 +1786,17 @@ export const products = [
     intro: 'A Type N thermocouple uses a nickel–chromium–silicon positive leg and a nickel–silicon negative leg. Consider Type N for elevated-temperature processes where stability is important. For a custom probe, describe the atmosphere, exposure duration, sheath and instrument input alongside the drawing.',
     options: ['Metal-sheathed or mineral-insulated configurations reviewed by application', 'Junction and mounting selected for the sensing location', 'Type N leads, connector or terminal-head termination'],
     specs: ['Continuous and peak temperatures, time at peak, thermal cycling and process atmosphere', 'Sheath material and diameter, insertion length and mounting dimensions', 'Junction construction, response target and electrical isolation requirements', 'Type N instrument input, extension wire designation, termination and lead temperature'],
+    comparison: [
+      'Check the Instrument and Wiring When Switching to Type N',
+      'Type N and Type K generate different voltages at the same temperature. Before replacing a Type K probe, confirm the Type N setting on the instrument or transmitter and match the extension wire and connector to the new probe.',
+      { anchor: 'type-n-replacement-wiring', table: [
+        ['Circuit check', 'Reference values or details to confirm'],
+        [['Type N vs. Type K output', '/guides/thermocouple-types/#compare-type-n-and-type-k'], 'With a 500 °C sensing junction and a 0 °C reference junction, nominal output is about +16.748 mV for Type N and +20.644 mV for Type K. Select the matching input curve.'],
+        [['Type N wire colors and polarity', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors'], 'US Type N conductor colors are orange positive and red negative. IEC colors are pink positive and white negative. Check the cable marking, wiring convention and terminal polarity on the installed assembly.'],
+        [['Reference junction', '/glossary/#cold-junction-compensation'], 'Identify the input terminals where the thermocouple or matching extension wire ends. Confirm how the instrument or transmitter compensates for the reference temperature at that point.'],
+        ['Mechanical replacement', 'Match the probe mounting, tip position and junction requirements. Review the sheath, insulation and lead transition for the actual furnace atmosphere and temperature cycle.'],
+      ] },
+    ],
     selection: [
       'Specify the Type N Probe and Extension Wiring',
       'Show the installed sensing point, mounting reference and lead exit. Document the temperatures at each location so the sheath, transition and wiring can be reviewed together.',
@@ -1802,6 +1813,7 @@ export const products = [
       ['What is a Type N thermocouple used for?', 'Type N is a nickel-based thermocouple often considered for stability at elevated temperatures. Match the instrument to Type N and evaluate the sheath and junction for the atmosphere, duration and temperature cycle.'],
       ['How should I read the Type N temperature range?', 'The NIST ITS-90 reference function gives the Type N temperature-to-voltage relationship. Confirm the instrument supports Type N and the required measurement span. Specify the continuous and peak conditions so the sheath, junction, insulation and leads can be reviewed for the installation.'],
       ['Which extension wire should I specify for a Type N probe?', 'Specify the Type N cable designation, applicable wiring standard, lead length and temperature at the probe-to-cable junction. Confirm the connector polarity and the Type N instrument input.'],
+      ['Can a Type N thermocouple replace a Type K probe in an existing furnace?', 'Check that the controller or transmitter supports Type N. Review the matching cable and connectors, then confirm the probe assembly fits and suits the furnace conditions. After installation, verify the reading with a controlled reference appropriate to the process.'],
     ],
     related: ['type-k', 'mineral-insulated', 'threaded-thermocouple', 'high-temperature'],
     guides: ['thermocouple-types', 'thermocouple-wire-color-code', 'grounded-vs-ungrounded-thermocouples'],
@@ -2874,6 +2886,17 @@ export const products = [
     intro: 'A Pt1000 temperature sensor is a platinum RTD with a nominal resistance of 1,000 Ω at 0 °C. For a custom probe, confirm the instrument input curve and wire count, then supply the sheath, insertion and mounting dimensions. Include the required measuring range and tolerance.',
     options: ['Two-, three- or four-wire circuit by instrument input', 'Sheathed insertion probe and mounting by drawing', 'Lead length, insulation and connector or stripped ends by specification'],
     specs: ['Instrument model and Pt1000 curve, wire count and terminal or pinout drawing', 'Required temperature interval, tolerance class or installed accuracy target', 'Sheath material and diameter, installed length from the mounting reference and process medium', 'Mount type, lead length, insulation, transition temperature and termination'],
+    comparison: [
+      'Check Pt1000 Resistance and Lead-Wire Error',
+      'Start with the nominal resistance for the instrument curve at the actual probe temperature. The example below uses an IEC 60751 Pt1000 at 25 °C and shows how uncompensated lead resistance affects a two-wire reading.',
+      { anchor: 'pt1000-resistance-and-lead-wire', table: [
+        ['Measurement check', 'Example or condition to confirm'],
+        [['Nominal element resistance', '/glossary/#iec-60751'], 'About 1,097.35 Ω at 25 °C for the nominal curve. Compare the reading with the curve at the stabilized probe temperature, allowing for sensor tolerance and the meter uncertainty.'],
+        [['Two-wire reading with 2 Ω of total lead resistance', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'The meter sees about 1,099.35 Ω across the circuit. Near 25 °C, that added resistance corresponds to about +0.52 °C when the instrument interprets it as part of the element resistance.'],
+        [['Three- or four-wire input', '/guides/pt100-wiring-diagram/#connect-rtd-to-plc'], 'Match the instrument terminals to the probe pinout. Check lead balance for three-wire compensation and the separate sensing connections for a four-wire input.'],
+        [['Excitation and self-heating', '/glossary/#rtd-self-heating'], 'Confirm the instrument excitation current and how the probe is mounted. Heat transfer from the element to its surroundings affects the temperature error from self-heating.'],
+      ] },
+    ],
     selection: [
       'Specify the Pt1000 Input, Probe Fit and Wiring',
       'Identify the controller or transmitter configuration and probe drawing. Mark the measurement location, reference face and lead exit so electrical and mechanical fit can be evaluated together.',
@@ -2891,6 +2914,7 @@ export const products = [
       ['Do Pt1000 and Pt100 use the same instrument input?', 'Confirm which nominal resistance and curve the instrument can be configured to read. A Pt1000 input uses 1,000 Ω at 0 °C and must also match the probe wiring.'],
       ['Which wire count should I specify for a Pt1000 sensor?', 'Use the configuration supported by the measuring instrument and required by the accuracy target. Send the input diagram and lead length so lead resistance and compensation can be reviewed.'],
       ['Does a Pt1000 always measure more accurately than a Pt100?', 'For the same lead resistance in a two-wire circuit, Pt1000 has a smaller error from the leads because its resistance changes more per degree. Compare the full measurement accuracy, including element tolerance, the instrument, excitation current and how the sensor is mounted.'],
+      ['Why can a two-wire Pt1000 read high after extending the cable?', 'The added resistance from both leads and their connections can appear as a higher temperature. Check the expected lead resistance at the installed length and temperature, then assess compatible wiring or compensation against the required accuracy.'],
     ],
     related: ['rtd-temperature-transmitters', 'threaded-rtd-probes', 'rtd', 'thermowells', 'sensor-accessories'],
     guides: [
@@ -4610,6 +4634,17 @@ export const products = [
     intro: 'Open-coil inquiries need the electrical load, airflow or heat transfer conditions and available support structure. Wire inquiries should include alloy and dimensions.',
     options: ['Coil geometry by drawing', 'Resistance wire and alloy requirements', 'Support and terminal interface'],
     specs: ['Alloy grade and wire cross-section if known, plus the installed operating atmosphere', 'Cold resistance and reference temperature, or voltage and wattage per circuit', 'Coil diameter, turn count, installed span and pitch', 'Minimum airflow, supports, clearances, guarding and terminal details'],
+    comparison: [
+      'Compare Open-Coil Heater Loads by Circuit',
+      'This example compares two resistive heater layouts with a 240 V supply and 1,200 W of total input when fully energized. The calculated resistances are nominal values at operating load. Specify measured cold resistance separately and include the temperature at which it was measured.',
+      { anchor: 'open-coil-heater-circuit-load', table: [
+        ['Example circuit or design check', 'What to calculate or document'],
+        [['One 1,200 W coil at 240 V', '/guides/heating-element-resistance/#heater-resistance-calculator'], 'The nominal operating resistance is 48 Ω and the current is 5 A. Include the coil terminals and supported spans on the drawing.'],
+        [['Two 600 W coils in parallel at 240 V', '/guides/heating-element-resistance/#parallel-heater-bank-resistance'], 'Each coil has a nominal operating resistance of 96 Ω and draws 2.5 A. With both branches energized, the equivalent resistance is 48 Ω and total current is 5 A.'],
+        [['Cold resistance for a replacement', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'With the equipment isolated, record the resistance between the identified terminals for each disconnected circuit at a known temperature. Supply the wiring diagram so the reading can be matched to the correct branch.'],
+        ['Supports, airflow and protection', 'Provide the installed pitch, unsupported spans, expansion clearance, minimum airflow and thermal protection requirements. The same total wattage can produce different coil temperatures when the geometry or cooling changes.'],
+      ] },
+    ],
     selection: [
       'Specify the Resistance Wire or Formed Open Coil',
       'Identify whether the inquiry is for resistance wire or a coil formed to the equipment drawing. Use the installed span and support locations when specifying a coil.',
@@ -4630,6 +4665,8 @@ export const products = [
     guides: ['choose-a-heating-element'],
     questions: [
       ['What information is needed to specify a nichrome or other resistance heating coil?', 'Supply the alloy if known, wire size, cold resistance or electrical design target, coil diameter, pitch and installed span. Include operating atmosphere, airflow and details of ceramic supports, terminals and guarding. Resistance depends on wire geometry and alloy.'],
+      ['Why does a cold coil measure a different resistance from the value calculated from watts?', 'Voltage and rated watts give a nominal resistance at the operating load. The cold reading depends on the alloy, temperature and circuit measured. Compare it with the specified cold resistance and tolerance at the stated reference temperature.'],
+      ['What should I send for a heater with separately switched coils?', 'Provide the supply voltage, wattage for each branch, and a terminal diagram showing which branches energize together. Include the installed coil layout, supports and thermal protection for each zone.'],
     ],
   },
   {
