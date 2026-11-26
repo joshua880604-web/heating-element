@@ -2510,9 +2510,11 @@ export const products = [
     selection: [
       'Furnace Thermocouple Protection and Operating Conditions',
       'Specify the probe as an assembly. The sensing alloys, protection tube, mount and terminal can reach different temperatures and each has its own service conditions.',
-      { table: [
+      { anchor: 'furnace-thermocouple-installation', table: [
         ['Assembly decision', 'Information to include'],
         ['Continuous and peak temperature', 'Document the normal setpoint, maximum exposure, time at the peak and heating or cooling cycles.'],
+        [['Tube projection into the chamber', '/guides/thermocouple-types/#match-the-mounting-to-the-sensing-point'], 'For example, if the distance from the mounting face to the outer tube tip is 250 mm and the refractory hot face is 170 mm from that reference, the tube projects 80 mm into the chamber. Mark the support position and clearance to the load.'],
+        ['Sensing junction inside the tube', 'In the same example, a sensing junction 15 mm back from the outer tube tip sits 65 mm beyond the hot face. Give the intended sensing position and verify the actual junction location on the assembly drawing.'],
         [['Ceramic protection tube', accessories + 'ceramic-protection-tubes/'], 'Give the furnace atmosphere, supported length, orientation and exposure to thermal shock or impact. The photos below show examples of ceramic-tube construction.'],
         [['Complete ceramic-sheathed assembly', thermo + 'high-temperature/ceramic-sheathed/'], 'Give the ceramic tube and support drawing, sensing element, junction position and cold-end connection.'],
         [['Silicon carbide protection tube', accessories + 'ceramic-protection-tubes/silicon-carbide/'], 'Give the material grade, furnace conditions, tube drawing and sensor assembly requirements.'],
@@ -2529,6 +2531,7 @@ export const products = [
     questions: [
       ['Why are thermocouples used for high-temperature measurement?', 'Suitable thermocouple alloys generate a measurable voltage across a wide temperature range. The usable limit of an installed probe also depends on the sheath or protection tube, insulation, atmosphere and heating cycle. Specify both the continuous and peak temperatures.'],
       ['When should I specify a ceramic protection tube for a furnace thermocouple?', 'Consider a ceramic protection tube when its material suits the furnace atmosphere and temperature. Include thermal cycling, possible mechanical impact, insertion depth and mounting. Sensor alloy and protection tube limits should be evaluated together.'],
+      ['How do I specify furnace thermocouple insertion depth for a replacement?', 'Mark the mounting face, refractory hot face, outer protection tube tip and sensing junction on one section drawing. Include the wall or port dimensions, tube support and clearance to the charge so the sensing point can be checked in the installed position.'],
     ],
   },
   {
@@ -3282,6 +3285,17 @@ export const products = [
     intro: 'A thermowell is a closed-end fitting that separates a thermocouple or RTD from the process fluid. Specify the vessel or pipe connection, the desired insertion length, and the sensor dimensions on the same drawing. Include the process conditions needed to review the material and mechanical design.',
     options: ['Threaded and flanged process connections by drawing', 'Stem profile and material by service conditions', 'Sensor entry and bore dimensions matched to the probe installation'],
     specs: ['Process connection standard, thread or flange dimensions, sealing interface and installed reference face', 'Insertion length from the process connection, stem outline and clearance in the pipe or vessel', 'Sensor diameter, installed length, bore depth, internal clearance and sensor connection', 'Fluid composition, temperature, pressure, and flow conditions for mechanical review'],
+    comparison: [
+      'Check Thermowell Projection, Bore Depth and Probe Fit',
+      'Show two reference points on the installed drawing. Dimension the well tip and inner wall from the process mounting face to calculate projection into the fluid. Use the instrument seating face to check the fit of the probe inside the well.',
+      { anchor: 'thermowell-projection-and-probe-fit', table: [
+        ['Drawing check', 'Worked example or details to verify'],
+        [['Projection beyond the pipe wall', '/guides/thermowell-selection-guide/#thermowell-insertion'], 'For example, with 145 mm from the process mounting face to the well tip and 55 mm from that face to the inner pipe wall along the well axis, the well projects 90 mm into the fluid.'],
+        [['Fixed probe tip in the bore', '/guides/thermowell-selection-guide/#account-for-measurement-response'], 'For example, a usable bore depth of 165 mm and a fixed probe reach of 162 mm leave a nominal 3 mm gap at the tip when both dimensions use the instrument seating face. Check this gap against the intended tip contact and response requirements.'],
+        ['Bore diameter and service access', 'Compare the smallest bore with the largest probe diameter, including tolerances and any steps or shoulders. For a spring-loaded probe, check the installed tip contact and spring travel. Include space to withdraw the probe.'],
+        [['Flow-induced loads', '/guides/thermowell-selection-guide/#review-material-and-flow-conditions'], 'Use the installed well geometry and service conditions in the mechanical review. Provide the fluid properties and flow range for a wake frequency assessment where applicable.'],
+      ] },
+    ],
     selection: [
       'Match the Thermowell to the Process and Probe',
       'Use a section view of the installed assembly. Mark the process connection reference face, tip position in the fluid, and available clearance to remove the sensor.',
@@ -3301,6 +3315,7 @@ export const products = [
       ['How do I measure thermowell insertion length?', 'Identify the installed process connection reference on the drawing and measure from that face to the thermowell tip. Include the wall or nozzle length so the depth into the process can be determined.'],
       ['What dimensions keep the sensor fitted to the thermowell?', 'Specify the bore diameter and usable depth, probe diameter and insertion length, and the connection at the top. Show the intended seating position and include spring travel when the probe uses a spring-loaded fitting.'],
       ['What data is needed for flow-induced loading review?', 'Provide the pipe and nozzle dimensions, installed stem profile and fluid properties, including density and viscosity. Include normal and maximum flow, process pressure and temperature, and any applicable standard or evaluation requirement.'],
+      ['Why can a replacement probe respond slowly in the same thermowell?', 'Check whether the new tip reaches the specified position and makes the intended contact. A larger tip gap or a different probe diameter can change heat transfer. Compare the assemblies under comparable flow and temperature conditions if a response time is specified.'],
     ],
     related: ['sensor-accessories', 'bimetal-thermometers', 'flanged-thermocouple', 'threaded-thermocouple', 'flanged-rtd-probes', 'threaded-rtd-probes', 'rtd'],
     guides: [
@@ -3427,13 +3442,15 @@ export const products = [
     selection: [
       'Flanged Immersion Heater Drawing Requirements',
       'Use the vessel flange face as the reference for bundle dimensions. Check the flange and complete heater assembly against the actual fluid, temperature and operating pressure.',
-      { table: [
+      { anchor: 'flanged-heater-installation-drawing', table: [
         ['Drawing area', 'What to mark'],
         ['Flange interface', 'Standard and pressure class where applicable, face type, thickness, gasket seat, and bolt hole count and diameter.'],
         ['Round flange', 'Specify the outside diameter, bolt circle diameter and angular hole positions. Use the mating face as the depth reference.'],
         ['Square flange', 'Mark the outside width and length, hole spacing in both directions and the orientation of the bundle and terminals on the drawing.'],
         [['Inside the vessel', immersion + '#minimum-liquid-level-example'], 'Insertion length from the mating face, maximum bundle envelope, active section and the minimum liquid level in the installed orientation.'],
+        ['Clear passage through the nozzle', 'Check the bundle through the full opening, including spacers, support plates and any projecting sensor pocket. Dimension the narrowest opening and any obstructions along the installation path.'],
         ['Outside the vessel', 'Terminal box position, cable entry, access to the flange bolts and space to withdraw the assembly.'],
+        ['Straight withdrawal example', 'If the furthest part of the heater extends 420 mm past the mating face and the assembly can travel only 390 mm before contacting an obstruction, the straight withdrawal path is at least 30 mm short. Check additional space for studs, handling and disconnection on the installed drawing.'],
         [['Heat-up and materials', '/guides/immersion-heater-sizing/'], 'Liquid and working volume, heat-up time or target power, fluid conditions and cleaning cycle.'],
       ] },
     ],
@@ -3455,6 +3472,7 @@ export const products = [
     guides: ['immersion-heater-sizing', 'heating-element-watt-density'],
     questions: [
       ['What flange details are needed for a replacement immersion heater?', 'Provide the flange standard or drawing, nominal size, pressure class, facing and bolt pattern. Show the insertion length from the mounting face and the internal vessel clearance. Include the fluid, operating pressure and power requirements.'],
+      ['What electrical details are needed for a flanged heater with multiple circuits?', 'Send the nameplate and wiring diagram with the supply voltage, phase and power per circuit. Identify separately switched stages, terminal designations and any temperature or level protection interfaces so the replacement can be checked against the vessel controls.'],
     ],
   },
   {
