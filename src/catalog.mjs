@@ -154,9 +154,11 @@ export const products = [
       { anchor: 'low-watt-density', table: [
         ['Design input', 'What to compare'],
         [['Active sheath area and power', '/guides/heating-element-watt-density/#watt-density-calculator'], 'Use the tube outside diameter, active length along the centerline and watts per element. Check each powered zone separately.'],
+        ['U-bend centerline example', 'Two 150 mm straight sections and a semicircular bend with a 20 mm centerline radius give 362.8 mm of tube along the centerline. With 25 mm of cold length at each end, the active length is 312.8 mm.'],
+        ['Watt density for that example', 'An 8 mm sheath with 312.8 mm of active length has about 78.6 cm² of active surface. At 240 W, the average surface watt density is about 3.05 W/cm².'],
         [['Heat transfer and sheath temperature', '/guides/heating-element-watt-density/#sheath-temperature-in-service'], 'Provide liquid grade or air composition, minimum flow, operating temperature, any film temperature limit and expected deposits.'],
         ['Installed envelope', 'Show the mount, spacing between heated runs and clearance to the vessel or duct. For immersion, mark the lowest normal liquid level.'],
-      ] },
+      ], tableNote: 'The U-bend dimensions and calculated watt density illustrate the method. Review the allowable loading against the medium, minimum flow or liquid level, and the sheath temperature limit.' },
     ],
     selection: [
       'Tubular Heating Element Shapes and Terminations',
@@ -387,6 +389,24 @@ export const products = [
     intro: 'Industrial immersion heaters transfer heat directly into water, oil or another compatible process fluid. Start with the fluid composition, target temperature and tank connection. Those inputs inform the sheath, surface watt density and mounting style.',
     options: ['Flanged assemblies', 'Screw plug assemblies', 'Clamp-mounted assemblies by connection drawing', 'Over-the-side mounting', 'Tank and circulation system integration'],
     specs: ['Liquid composition, starting and target temperatures, and warm-up time', 'Tank volume, minimum liquid level or circulation flow', 'Voltage, phase and wattage if known', 'Port or rim drawing, operating pressure, insertion depth and removal clearance', 'For a clamp mount, the mating ferrule standard, connection dimensions and gasket requirements'],
+    comparison: [
+      'Check the Minimum Liquid Level',
+      [
+        'Measure the lowest operating liquid level and the highest heated point on the sheath from the same tank reference. Compare the resulting ',
+        ['submergence', '/glossary/#minimum-submergence'],
+        ' with the specified minimum over the operating cycle. Include drawdown during draining or circulation if the heater can be energized then.',
+      ], {
+        anchor: 'minimum-liquid-level-example',
+        table: [
+          ['Tank drawing check', 'Worked example using the tank floor as the reference'],
+          ['Highest heated point', 'The highest surface of the active sheath is 110 mm above the tank floor in the installed orientation.'],
+          ['Lowest energized level', 'The lowest liquid level while heat is on is 150 mm above the same floor.'],
+          ['Liquid cover over the active section', '150 mm − 110 mm leaves 40 mm of liquid cover at the highest heated point.'],
+          [['Compare with the specified minimum', '/guides/immersion-heater-sizing/#immersion-heater-submergence'], 'If the assembly drawing requires 50 mm of cover, the example falls short by 10 mm. Review the mounting or operating level, and confirm the required low-level protection.'],
+        ],
+        tableNote: 'The levels and cover requirement in this example illustrate how to read a tank drawing. Use the heater and equipment specifications to set the minimum operating level.',
+      },
+    ],
     selection: [
       'Specify an Immersion Heater by Liquid',
       'Share the liquid and operating conditions so the sheath and watt density can be reviewed. For tank service, show the lowest operating liquid level and the heated zone in the installed orientation.',
@@ -3267,6 +3287,21 @@ export const products = [
     intro: 'Specify the vessel flange and operating conditions when requesting a custom flanged immersion assembly.',
     options: ['Round or square flange connection by drawing', 'Element bundle and sheath options', 'Terminal enclosure requirements'],
     specs: ['Flange standard, nominal size, pressure class, facing and bolt pattern', 'Liquid composition, working temperature, pressure and minimum liquid level', 'Insertion length from the flange face, bundle envelope and removal clearance', 'Terminal enclosure and entry orientation, voltage, phase and wattage'],
+    comparison: [
+      'Flange Fit and Acceptance Checks',
+      'For a replacement, compare the vessel connection and heater drawings before selecting the flange and element bundle. Give the required acceptance tests with the operating conditions.',
+      {
+        anchor: 'flange-fit-and-acceptance',
+        table: [
+          ['Check', 'How to verify it'],
+          ['Round bolt pattern', 'For a four-hole pattern with equal 90° spacing, 100 mm between adjacent hole centers corresponds to a bolt circle diameter of about 141.4 mm. Measure between opposite hole centers when possible, then record hole diameter and clocking.'],
+          ['Square mounting plate', 'Record the center spacing in both directions, hole diameter and plate orientation. Mark the position of the terminal enclosure relative to the vessel so the bolt pattern and bundle orientation can be checked together.'],
+          ['Sealing face and service conditions', 'Match the facing and gasket seat on the mating drawing. Confirm flange, gasket and complete assembly suitability at the specified pressure and temperature.'],
+          [['Electrical checks', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'Specify the expected cold resistance per circuit and any required insulation resistance or dielectric withstand tests. Give the test method, voltage where applicable, duration and acceptance limits for the specified assembly.'],
+        ],
+        tableNote: 'The bolt-circle example illustrates how to dimension a drawing. Use the approved mating dimensions and test requirements for the actual heater.',
+      },
+    ],
     selection: [
       'Flanged Immersion Heater Drawing Requirements',
       'Use the vessel flange face as the reference for bundle dimensions. Check the flange and complete heater assembly against the actual fluid, temperature and operating pressure.',
@@ -3275,7 +3310,7 @@ export const products = [
         ['Flange interface', 'Standard and pressure class where applicable, face type, thickness, gasket seat, and bolt hole count and diameter.'],
         ['Round flange', 'Specify the outside diameter, bolt circle diameter and angular hole positions. Use the mating face as the depth reference.'],
         ['Square flange', 'Mark the outside width and length, hole spacing in both directions and the orientation of the bundle and terminals on the drawing.'],
-        ['Inside the vessel', 'Insertion length from the mating face, maximum bundle envelope, active section and the minimum liquid level in the installed orientation.'],
+        [['Inside the vessel', immersion + '#minimum-liquid-level-example'], 'Insertion length from the mating face, maximum bundle envelope, active section and the minimum liquid level in the installed orientation.'],
         ['Outside the vessel', 'Terminal box position, cable entry, access to the flange bolts and space to withdraw the assembly.'],
         [['Heat-up and materials', '/guides/immersion-heater-sizing/'], 'Liquid and working volume, heat-up time or target power, fluid conditions and cleaning cycle.'],
       ] },
