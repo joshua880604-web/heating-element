@@ -1,5 +1,10 @@
 export const glossary = [
   {
+    id: 'air-fryer-heating-element', name: 'Air Fryer Heating Element',
+    definition: 'A heating element fitted in a forced-air cooking chamber. Match the tube profile, fan and guard clearance, mount and original electrical rating.',
+    related: ['Air Fryer Heating Elements', '/heating-elements/tubular-heaters/air-fryer/'],
+  },
+  {
     id: 'aluminum-foil-heater', name: 'Aluminum Foil Heater',
     definition: 'A low-profile heater with an insulated resistance element and an aluminum foil facing that spreads heat into the mating surface. Its outline, heated area and mounting method depend on the equipment.',
     related: ['Aluminum Foil Heaters', '/heating-elements/flexible-heaters/aluminum-foil/'],
@@ -23,6 +28,11 @@ export const glossary = [
     id: 'band-heater-with-thermocouple', name: 'Band Heater with Thermocouple',
     definition: 'A band heater assembly with a thermocouple at a defined sensing point. The heater load and the thermocouple circuit have separate wiring requirements.',
     related: ['Band Heaters with Thermocouples', '/heating-elements/band-heaters/with-thermocouple/'],
+  },
+  {
+    id: 'baseboard-heating-element', name: 'Baseboard Heating Element',
+    definition: 'A finned electric heater core for an enclosure that directs warm air into a room. Specify the fin envelope, supports, expansion clearance and electrical rating.',
+    related: ['Electric Baseboard Heating Elements', '/heating-elements/tubular-heaters/finned/baseboard/'],
   },
   {
     id: 'bayonet-thermocouple', name: 'Bayonet Thermocouple',
@@ -195,6 +205,11 @@ export const glossary = [
     related: ['Dual Element Thermocouples', '/thermocouples/dual-element/'],
   },
   {
+    id: 'electric-dryer-heating-element', name: 'Electric Dryer Heating Element',
+    definition: 'A resistance heater that warms air passing through an electric clothes dryer. Specify the coil or channel assembly, support and terminal layout, rated airflow and thermal limit interfaces.',
+    related: ['Electric Clothes Dryer Heating Elements', '/heating-elements/open-coil-heaters/clothes-dryers/'],
+  },
+  {
     id: 'electric-grill-heating-element', name: 'Electric Grill Heating Element',
     definition: 'A resistance heater shaped to fit a cooking zone in an electric grill. Its tube profile, active length, placement and power help determine the heat distribution at the cooking surface.',
     related: ['Electric Grill Heating Elements', '/heating-elements/tubular-heaters/electric-grill/'],
@@ -355,9 +370,19 @@ export const glossary = [
     related: ['Heating Element Watt Density', '/guides/heating-element-watt-density/'],
   },
   {
+    id: 'hot-plate-heating-element', name: 'Hot Plate Heating Element',
+    definition: 'A resistive heater fitted beneath a working plate. Define the contact footprint, openings, fasteners, sensor position and rating for the assembly.',
+    related: ['Hot Plate Heating Elements', '/heating-elements/hot-plate-heating-elements/'],
+  },
+  {
     id: 'hot-runner-coil-heater', name: 'Hot Runner Coil Heater',
     definition: 'A coiled heating element wrapped around a hot runner nozzle in molding equipment. Nozzle fit, heated length, lead exit and sensor position affect the specification.',
     related: ['Coil & Hot Runner Heaters', '/heating-elements/coil-heaters/'],
+  },
+  {
+    id: 'hot-tub-heating-element', name: 'Hot Tub Heating Element',
+    definition: 'A tubular element that heats spa water circulating through a heater chamber. Match terminal seals, wetted materials, water chemistry and the equipment’s flow and electrical requirements.',
+    related: ['Hot Tub & Spa Heating Elements', '/heating-elements/immersion-heaters/hot-tub/'],
   },
   {
     id: 'hydraulic-tank-immersion-heater', name: 'Hydraulic Tank Immersion Heater',
@@ -623,6 +648,11 @@ export const glossary = [
     id: 'retractable-melt-bolt-thermocouple', name: 'Retractable Melt Bolt Thermocouple',
     definition: 'An extrusion temperature probe with adjustable tip projection relative to the mounted seat. The approved tool drawing defines the port, seal and permitted tip travel.',
     related: ['Retractable Melt Bolt Thermocouples', '/thermocouples/melt-bolt/retractable/'],
+  },
+  {
+    id: 'rigid-exposed-junction-probe', name: 'Rigid Exposed Junction Probe',
+    definition: 'A thermocouple with a rigid mount that locates its exposed sensing bead at a defined point in the medium. Specify insertion, wire and bead geometry, clearances and flow conditions.',
+    related: ['Rigid Exposed Junction Thermocouple Probes', '/thermocouples/exposed-junction/'],
   },
   {
     id: 'right-angle-cartridge-heater', name: 'Right-Angle Cartridge Heater',
