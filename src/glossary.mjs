@@ -230,6 +230,11 @@ export const glossary = [
     related: ['Industrial Duct Heaters', '/heating-elements/duct-heaters/'],
   },
   {
+    id: 'dc-cartridge-heater', name: 'DC Cartridge Heater',
+    definition: 'A bore-mounted electric heater designed for a specified direct-current supply. Match voltage and watts at the heater, mounting bore, wire and connector current and the operating cycle.',
+    related: ['Low-Voltage DC Cartridge Heaters', '/heating-elements/cartridge-heaters/low-voltage-dc/'],
+  },
+  {
     id: 'duct-temperature-sensor', name: 'Duct Temperature Sensor',
     definition: 'A probe that measures air temperature at a specified position in a duct. Its insertion depth and sensing location determine which part of the air stream it measures.',
     related: ['Duct Temperature Sensors', '/temperature-sensors/duct-temperature-sensors/'],
@@ -253,6 +258,11 @@ export const glossary = [
     id: 'electric-grill-heating-element', name: 'Electric Grill Heating Element',
     definition: 'A resistance heater shaped to fit a cooking zone in an electric grill. Its tube profile, active length, placement and power help determine the heat distribution at the cooking surface.',
     related: ['Electric Grill Heating Elements', '/heating-elements/tubular-heaters/electric-grill/'],
+  },
+  {
+    id: 'electric-smoker-heating-element', name: 'Electric Smoker Heating Element',
+    definition: 'A shaped tubular element fitted in a smoking cabinet. The tube profile, mounting plate, tray clearance and electrical rating locate it within the original equipment.',
+    related: ['Electric Smoker Heating Elements', '/heating-elements/tubular-heaters/electric-smokers/'],
   },
   {
     id: 'electric-stove-coil-heating-element', name: 'Electric Stove Coil Heating Element',
@@ -293,6 +303,11 @@ export const glossary = [
     id: 'fine-wire-thermocouple', name: 'Fine-Wire Thermocouple',
     definition: 'A thermocouple with small-diameter conductors joined at a small sensing bead. Wire size, bead geometry, mounting and the measurement medium affect the response.',
     related: ['Fine-Wire Thermocouples', '/thermocouples/fine-wire/'],
+  },
+  {
+    id: 'fast-response-thermocouple', name: 'Fast-Response Thermocouple',
+    definition: 'A thermocouple probe specified to reach a defined fraction of a temperature change in a stated test setup. Junction, tip geometry, medium, flow and installation affect the measured time.',
+    related: ['Fast-Response Thermocouple Probes', '/thermocouples/fast-response/'],
   },
   {
     id: 'finned-cartridge-heater', name: 'Finned Cartridge Heater',
@@ -558,6 +573,11 @@ export const glossary = [
     id: 'insertion-length', name: 'Insertion Length',
     definition: 'The distance a probe or immersion heater extends from a specified reference face into the equipment, typically measured from the seating surface shown on its drawing.',
     related: ['Threaded Thermocouple Probes', '/thermocouples/threaded-probes/'],
+  },
+  {
+    id: 'kiln-heating-element', name: 'Kiln Heating Element',
+    definition: 'A resistive heating component for a kiln. A formed coil is specified by the firing cycle, support or groove profile, installed span, terminal tails and electrical circuit.',
+    related: ['Electric Kiln Heating Elements', '/heating-elements/open-coil-heaters/kilns/'],
   },
   {
     id: 'kiln-thermocouple', name: 'Kiln Thermocouple',
@@ -913,6 +933,16 @@ export const glossary = [
     id: 'steam-iron-heating-element', name: 'Steam Iron Heating Element',
     definition: 'A resistive element that heats a steam iron soleplate. For a cast-in design, specify the heat path, steam passages, sensor position, controls and electrical rating together.',
     related: ['Steam Iron Heating Elements', '/heating-elements/cast-in-heaters/steam-irons/'],
+  },
+  {
+    id: 'stainless-steel-immersion-heater', name: 'Stainless Steel Immersion Heater',
+    definition: 'An immersion assembly with stainless steel heating sheath. Specify the wetted grades, liquid chemistry, tank connection, active sheath area and minimum operating liquid level.',
+    related: ['Stainless Steel Immersion Heaters', '/heating-elements/immersion-heaters/stainless-steel/'],
+  },
+  {
+    id: 'shielded-thermocouple-wire', name: 'Shielded Thermocouple Wire',
+    definition: 'An extension or compensating cable with a conductive screen around its signal pair. Match the cable designation, foil or braid construction, drain wire and shield terminations to the equipment.',
+    related: ['Shielded Thermocouple Wire', '/temperature-sensors/accessories/extension-wire/shielded/'],
   },
   {
     id: 'stock-tank-heating-element', name: 'Stock Tank Heating Element',

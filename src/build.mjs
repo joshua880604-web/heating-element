@@ -108,7 +108,9 @@ const photoTones = [
     id: 'light-cool-gray',
     source: [230, 229, 235],
     images: ['enclosure-heaters', 'ceramic-power-terminal-blocks', 'pipe-clamp-thermocouples',
-      'compression-fitting-thermocouples', 'threaded-thermowells', 'flanged-thermowells'],
+      'compression-fitting-thermocouples', 'threaded-thermowells', 'flanged-thermowells',
+      'dc-cartridge-heaters', 'electric-smoker-heating-elements', 'stainless-steel-immersion-heaters',
+      'shielded-thermocouple-wire', 'kiln-heating-elements', 'fast-response-thermocouples'],
   },
   {
     id: 'blue-gray',
