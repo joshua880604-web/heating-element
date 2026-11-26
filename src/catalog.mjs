@@ -3571,6 +3571,20 @@ export const products = [
     intro: 'An over-the-side immersion heater enters an open tank from above and mounts at the rim or on a support. It can suit tanks with top access. The layout must keep the active section submerged at the minimum operating liquid level and leave enough clearance to remove the assembly.',
     options: ['Rim or support mounting by tank drawing', 'Vertical drop and formed active section by tank geometry', 'Sheath and cold-zone length selected for the medium and liquid level', 'Lead or terminal enclosure placement above the intended liquid level'],
     specs: ['Tank dimensions, rim profile and mounting details', 'Minimum and maximum liquid levels, including operating changes', 'Liquid chemistry, working temperatures and warm-up time', 'Heated depth, removal clearance, voltage, phase and target power'],
+    comparison: [
+      'Check Submergence and Lift-Out Clearance From the Tank Rim',
+      'Use the rim or support face as the dimension reference and measure down into the tank. Check both the installed position during operation and the full path the heater takes during removal.',
+      {
+        anchor: 'over-the-side-rim-and-lift-clearance',
+        table: [
+          ['Fit check', 'How to read the installed drawing'],
+          [['Liquid cover at the highest heated point', '/guides/immersion-heater-sizing/#immersion-heater-submergence'], 'In a tank example, the lowest liquid surface while heating is 210 mm below the rim and the highest active sheath surface is 245 mm below it. The difference is 35 mm of liquid cover. Compare that value with the specified minimum.'],
+          ['Clearance below the heater', 'If the lowest point of the sheath is 390 mm below the rim and a rack immediately beneath it is 420 mm below the rim, the vertical gap is 30 mm. Check the closest clearances to walls, racks and baskets in each operating position.'],
+          ['Lift-out path above the rim', 'Show how far the deepest part must rise to clear the tank opening. Include space for the terminal enclosure, lifting equipment and any cover or frame along the removal path.'],
+          ['Maximum fill and splashing', 'Check the highest liquid level and splash or cleaning exposure at the support, lead entry and terminal enclosure. Compare those conditions with the specified protection for the assembly.'],
+        ],
+      },
+    ],
     selection: [
       'Measure From the Tank Rim to the Heated Section',
       'Show the mounting reference and the liquid levels on the same drawing. The unheated drop passes through the surface and the active section stays below the minimum operating level.',
@@ -3593,6 +3607,7 @@ export const products = [
       ['When does an over-the-side heater suit a process tank?', 'Consider this mounting when the vessel can be accessed from above and the rim or an independent support can carry the assembly. Confirm the path for insertion and removal. A flanged or screw plug design uses a compatible tank connection instead.'],
       ['How do I specify immersion depth and the cold zone?', 'Show the mounting reference, minimum liquid level, tank bottom and the boundaries of the heated section on the drawing. These dimensions define where the unheated section passes through the liquid surface and where the active section remains submerged.'],
       ['What must be checked before choosing the sheath and power?', 'Provide the liquid composition, volume, operating temperature range and warm-up target. Include agitation or flow, possible deposits, minimum level and the available electrical supply so the element surface loading and materials can be evaluated.'],
+      ['How much space should I leave above the tank for removal?', 'Show the movement from the installed position until the complete heater clears the opening. Include the cold drop, formed section, terminal enclosure and any lifting point. Check clearance at covers, frames and nearby equipment against the approved service procedure.'],
     ],
   },
   {
@@ -4060,6 +4075,19 @@ export const products = [
     intro: 'A finned strip heater uses fins on a flat strip assembly to increase surface area for air heating. Choose the strip and fin envelope to suit the air path, support points and electrical clearances.',
     options: ['Strip length and mounting-hole centers by equipment drawing', 'Fin envelope with clearance for airflow and nearby parts', 'Terminal locations and lead or screw connection by specification', 'Material and surface loading review for the air temperature and process environment'],
     specs: ['Overall length, strip width, fin height and mounting centers', 'Minimum and maximum airflow, inlet and outlet temperatures', 'Supply voltage, phase, target wattage and duty cycle', 'Terminal clearance, air direction and installation orientation'],
+    comparison: [
+      'Check Duct Airflow Across Finned Strip Heaters',
+      'Use the airflow available in the equipment at the heater location. Record the minimum flow while heating, the maximum inlet temperature and the arrangement of the heater rows, fan and filters.',
+      {
+        anchor: 'finned-strip-duct-airflow',
+        table: [
+          ['Design check', 'What to verify'],
+          ['Average approach air speed', 'For a 200 × 100 mm duct carrying 180 m³/h, divide 0.05 m³/s by the gross area of 0.020 m² to get 2.5 m/s. This is the average before the heater bank. To assess local flow over the fins, review the open area and flow distribution at the bank.'],
+          ['Flow through each row', 'Mark fin spacing, row layout, baffles and gaps around the bank. Air bypass or uneven flow can leave part of the heater with less cooling than the duct average suggests.'],
+          [['Fan and airflow limits', '/heating-elements/duct-heaters/'], 'Use measured or specified flow at operating conditions, including the filter and damper states that limit flow. Include available fan pressure and any airflow or independent overtemperature protection specified for the equipment.'],
+        ],
+      },
+    ],
     selection: [
       'Compare Finned Strip and Finned Tubular Heater Layouts',
       'Use the opening and mounting drawing to choose the heater body. For either form, mark the airflow direction and provide the minimum flow, inlet temperature and required temperature rise.',
@@ -4077,6 +4105,7 @@ export const products = [
       ['How does a finned strip heater differ from a finned tubular heater?', 'Both use fins to transfer heat to air. A finned strip has a flat body and is typically specified by width, fin profile and mounting centers. A finned tubular heater uses a round sheath, so sheath diameter and element geometry are key inputs.'],
       ['Which dimensions matter for a replacement finned strip heater?', 'Show the overall strip and fin envelope, heated length, distance between mounting centers and terminal location. Include the direction of airflow, electrical rating and available clearance around the existing element.'],
       ['Why does minimum airflow matter?', 'Airflow affects heat transfer away from the fins and therefore the operating temperature of the element. Provide the minimum and maximum normal flow and the required air temperature rise. Include details of temperature limits or airflow controls used in the equipment.'],
+      ['Can I fit a higher-wattage finned strip heater on the same mounting?', 'Review the minimum airflow, inlet temperature, air path, power per stage and current drawn by the proposed heater. Confirm that the controls and electrical ratings of the equipment suit the new load.'],
     ],
   },
   {
@@ -4084,9 +4113,23 @@ export const products = [
     title: 'Coil & Hot Runner Heaters for Mold Nozzles',
     description: 'Specify a custom nozzle coil or hot runner heater by nozzle diameter, heated length, pitch, voltage, wattage, lead exit and sensing requirements.',
     text: 'Coiled heating elements specified around hot runner nozzles and compact tooling.',
-    intro: 'For a coil heater inquiry, provide the nozzle diameter, heated length and desired exit orientation. Specify any integrated temperature-sensing requirements.',
+    intro: 'A hot runner coil heater wraps around a mold nozzle to transfer heat into a defined zone. Specify the nozzle diameter and profile, where the heat is needed, and the lead exit orientation. Mark the sensing point when the heater includes a thermocouple.',
     options: ['Helical nozzle heaters', 'Custom coil geometry and cold section', 'Integrated sensor requirements'],
     specs: ['Nozzle diameter and tolerance, available outside envelope and mounting drawing', 'Active heated length, coil pitch or turn count, and cold section', 'Voltage, wattage, nozzle temperature and operating cycle', 'Lead exit direction, clearance and thermocouple type and location if required'],
+    comparison: [
+      'Check Nozzle Fit, Coil Pitch and Lead Exit',
+      'Measure diameters and lengths on the nozzle drawing. Use a defined shoulder as the axial reference and a feature such as a flat or keyway to set the angular direction of the lead outlet.',
+      {
+        anchor: 'hot-runner-coil-fit-and-pitch',
+        table: [
+          ['Selection check', 'How to specify it'],
+          ['Coil fit on the nozzle', 'Give the nozzle outside diameter and tolerance across the heated zone. Show shoulders or changes in diameter, the retaining method and the space available around the installed coil.'],
+          ['Turn pitch and heated span', 'Measure pitch axially between corresponding points on neighboring turns. In a drawing with five turn centers 4 mm apart, the first to fifth centers span four intervals, or 16 mm. Mark the overall coil length and the boundaries of the heated zone separately.'],
+          ['Lead outlet angle and clearance', 'State the viewing direction for the end view and mark the lead outlet angle relative to the chosen nozzle feature. Show the cold section, lead bend space and nearby tooling.'],
+          [['Thermocouple and controller connection', '/temperature-controls/hot-runner-controllers/'], 'Locate the thermocouple in the heated zone on the drawing as required by the tool design. List sensor type and connector pinout separately from the heater supply and power leads.'],
+        ],
+      },
+    ],
     selection: [
       'Hot Runner Coil Heater Drawing Checklist',
       'Dimension the coil on the nozzle drawing. Mark the part of the nozzle to heat and the area available for the cold section and wiring.',
@@ -4103,6 +4146,8 @@ export const products = [
     guides: ['choose-a-heating-element', 'heating-element-watt-density'],
     questions: [
       ['What dimensions matter for a hot runner coil heater?', 'Use the nozzle dimensions and a drawing to define inside diameter, active heated length, pitch or turn locations, cold section and lead exit direction. Include fit tolerance and any integrated thermocouple position to keep the heated zone and sensor aligned with the tool.'],
+      ['How do I measure a coil heater for a stepped nozzle?', 'Measure each diameter and the axial position of each shoulder. Mark which section supports the coil, where the heated zone starts and ends, and which direction the heater must move during installation and removal.'],
+      ['Which electrical details matter when replacing a hot runner coil heater?', 'Compare the rated voltage and watts per zone and the heater connector pinout. For an integrated thermocouple, verify the sensor type, polarity and controller input against the original assembly drawing.'],
     ],
   },
   {
