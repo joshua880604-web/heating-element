@@ -183,7 +183,57 @@ const awgReference = [
   },
 ];
 
-export const productReferences = new Map([
+const rtdToleranceBands = [
+  { className: 'AA', base: '0.10', slope: '0.0017', filmRange: '0 to 150', woundProbeRange: '−50 to 250', woundElementRange: '−100 to 350' },
+  { className: 'A', base: '0.15', slope: '0.002', filmRange: '−30 to 300', woundProbeRange: '−100 to 450', woundElementRange: '−100 to 450' },
+  { className: 'B', base: '0.30', slope: '0.005', filmRange: '−50 to 500', woundProbeRange: '−196 to 600', woundElementRange: '−196 to 660' },
+  { className: 'C', base: '0.60', slope: '0.01', filmRange: '−50 to 600', woundProbeRange: '−196 to 600', woundElementRange: '−196 to 660' },
+];
+const rtdTemperatureLimit = ({ base, slope }) => `±(${base} + ${slope} × |t|)`;
+const rtdToleranceNote = 'In the tolerance formula, |t| is the absolute value of the temperature in °C.';
+
+const rtdThermometerTolerance = [
+  'IEC 60751 Tolerance Classes for Assembled RTDs',
+  [
+    'Use the class and element construction to specify an assembled platinum RTD. The class limits and temperature intervals follow ',
+    ['IEC 60751:2022', '/glossary/#iec-60751'],
+    ' Table 2. At 100 °C, the limits are ±0.27 °C for Class AA, ±0.35 °C for Class A and ±0.80 °C for Class B. Confirm the declared class and range of the specific probe. Include lead resistance, instrument error, self-heating and mounting effects when checking the installed measurement.',
+  ],
+  {
+    anchor: 'rtd-tolerance-classes',
+    table: [
+      ['Thermometer class', 'Temperature tolerance (°C)', 'Wire-wound range (°C)', 'Film range (°C)'],
+      ...rtdToleranceBands.map(band => [band.className, rtdTemperatureLimit(band), band.woundProbeRange, band.filmRange]),
+    ],
+    tableNote: rtdToleranceNote,
+  },
+];
+
+const rtdElementToleranceReferences = [
+  ['thin-film-rtd-elements', 'Thin-Film Platinum Element Tolerance Classes', 'F', 'filmRange'],
+  ['wire-wound-rtd-elements', 'Wire-Wound Platinum Element Tolerance Classes', 'W', 'woundElementRange'],
+].map(([id, heading, prefix, range]) => [
+  id,
+  [
+    heading,
+    [
+      'These bare-element tolerance classes follow ',
+      ['IEC 60751:2022', '/glossary/#iec-60751'],
+      ' Table 1. Confirm the specified element class and temperature interval, and check the completed thermometer against the required probe specification after assembly.',
+    ],
+    {
+      anchor: 'rtd-element-tolerance',
+      table: [
+        ['Bare-element class', 'Temperature tolerance (°C)', 'Class range (°C)'],
+        ...rtdToleranceBands.map(band => [`${prefix}${Number(band.base)}`, rtdTemperatureLimit(band), band[range]]),
+      ],
+      tableNote: rtdToleranceNote,
+      links: [['Compare assembled RTD tolerance classes', '/temperature-sensors/rtd/#rtd-tolerance-classes']],
+    },
+  ],
+]);
+
+const referenceEntries = [
   ...thermocoupleReferences,
   ['thermocouples', thermocoupleFamilyReference],
   ['rtd', platinumRtdReference],
@@ -201,4 +251,13 @@ export const productReferences = new Map([
   ['high-temperature-lead-wire', awgReference],
   ['ceramic-power-terminal-blocks', awgReference],
   ['stranded-thermocouple-wire', awgReference],
-]);
+  ...['rtd', 'pt1000-sensors', 'threaded-rtd-probes', 'flanged-rtd-probes', 'surface-mount-rtd-probes', 'dual-element-rtd-probes']
+    .map(id => [id, rtdThermometerTolerance]),
+  ...rtdElementToleranceReferences,
+];
+
+export const productReferences = new Map();
+for (const [id, section] of referenceEntries) {
+  if (!productReferences.has(id)) productReferences.set(id, []);
+  productReferences.get(id).push(section);
+}

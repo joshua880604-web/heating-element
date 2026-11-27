@@ -657,7 +657,7 @@ for (const product of products) {
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
-  const technicalReference = productReferences.get(product.id);
+  const technicalReferences = productReferences.get(product.id) ?? [];
   const capacity = productionCapacity.find(([category]) => category === productCapacityCategories.get(product.id));
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
@@ -674,7 +674,7 @@ for (const product of products) {
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
-  ${technicalReference ? `${referenceSection(technicalReference, 'product-selection')}\n  ` : ''}${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
+  ${technicalReferences.map(reference => `${referenceSection(reference, 'product-selection')}\n  `).join('')}${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   ${product.variants ? `<section class="product-photos product-variants" aria-labelledby="product-variants-heading">
     <h2 id="product-variants-heading">${escape(product.variants.title)}</h2>
