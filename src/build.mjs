@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applicationPhotoExamples, applications, groups, guides, products } from './catalog.mjs';
 import { glossary } from './glossary.mjs';
+import { productModelRecords } from './product-order-records.mjs';
 import { productReferences } from './product-references.mjs';
 import { catalogPageSize, catalogPagePath, catalogPagination, catalogResultCount } from '../public/catalog.js';
 
@@ -669,12 +670,20 @@ for (const product of products) {
   </div>${image ? `<figure class="detail-image"${photoToneStyle(product)}><img src="${image}" alt="${escape(imageAlt)}" width="512" height="512">${imageCaption ? `<figcaption>${escape(imageCaption)}</figcaption>` : ''}</figure>` : ''}</div>
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
-  ${sectionHead('Configuration', 'Specify Your Requirements', 'The final construction depends on your drawing and operating conditions.')}
+  ${sectionHead('', 'Specifications and Ordering', 'For a replacement, include the original part number or a label photo. For a new design, share the installation drawing and intended operating conditions.')}
   <div class="spec-grid">
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
-  ${technicalReferences.map(reference => `${referenceSection(reference, 'product-selection')}\n  `).join('')}${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
+  ${technicalReferences.map(reference => `${referenceSection(reference, 'product-selection')}\n  `).join('')}${referenceSection([
+    'Model and Verification Records',
+    'Use the drawing revision and specification for the same configuration to check model fit and rated conditions.',
+    {
+      anchor: 'model-verification',
+      table: [['Record', 'What to check'], ...productModelRecords(product, lookup)],
+    },
+  ], 'product-selection')}
+  ${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   ${product.variants ? `<section class="product-photos product-variants" aria-labelledby="product-variants-heading">
     <h2 id="product-variants-heading">${escape(product.variants.title)}</h2>
