@@ -3902,9 +3902,11 @@ export const products = [
     selection: [
       'Measure From the Tank Rim to the Heated Section',
       'Show the mounting reference and the liquid levels on the same drawing. The unheated drop passes through the surface and the active section stays below the minimum operating level.',
-      { table: [
+      { anchor: 'over-the-side-heater-tank-layout', table: [
         ['Reference', 'What to mark'],
         ['Rim or independent support', 'Support height and profile, mounting holes, clamp clearance and available lifting space.'],
+        ['Heater alongside the tank wall', 'Mark the wall and any lining, the usable width beside the load, and the clearances to baskets and moving equipment. Show the closest points when the tank is loaded and when it is serviced.'],
+        ['Formed leg below the work area', 'Show the horizontal reach, clearance under the rack, and the path the full element must follow to lift out. Identify obstructions in both the normal and lowered rack positions.'],
         [['Drum or pail installation', immersion + 'drum/'], 'Give the container opening or rim profile, available insertion depth and clearances to the walls and bottom.'],
         [['Concrete curing tank installation', immersion + 'over-the-side/curing-tanks/'], 'Give the rim profile, bath fill range, specimen rack and loading path, and the heat-up and holding duty.'],
         [['Minimum liquid level', '/glossary/#minimum-submergence'], 'Lowest operating level, including drawdown and other normal level changes. Mark the clearance above the entire heated span.'],
@@ -5432,6 +5434,19 @@ export const products = [
     intro: 'A thermocouple transmitter reads the sensor’s millivolt signal, applies cold-junction compensation, and converts the measured temperature to a 4–20 mA signal over a specified span. For a custom configuration, send the thermocouple type, temperature span, loop circuit and available mounting space.',
     options: ['Input configured for the specified thermocouple type and temperature span', '4–20 mA output scaled to the receiving instrument', 'Head-mount or enclosure fit reviewed against the assembly drawing'],
     specs: ['Thermocouple type, polarity, junction grounding and extension wire details', 'Temperature at 4 mA and 20 mA, accuracy target and required response to an open sensor', 'Loop supply, load at PLC or panel meter, wiring and any required isolation', 'Head or enclosure dimensions, terminal access and ambient temperature at the module'],
+    comparison: [
+      'Check the Voltage Budget for a 4–20 mA Thermocouple Transmitter',
+      'For a two-wire loop-powered transmitter, subtract the voltage drops across the receiver, wiring and any series devices from the lowest available supply voltage. Compare what remains with the selected transmitter’s minimum terminal voltage at the highest loop current required by the application.',
+      {
+        anchor: 'thermocouple-transmitter-loop-voltage',
+        table: [
+          ['Check', 'How to verify it'],
+          ['Receiver voltage drop', 'In an illustrative 24 V loop, a 250 Ω receiver drops 5 V at 20 mA. That leaves 19 V across the transmitter and any other series loads at that test point.'],
+          ['Series loads and supply tolerance', 'Include both cable conductors and any barrier or isolator. Use the minimum supply voltage and the device’s documented maximum output current if the fault output can exceed 20 mA.'],
+          [['Temperature scaling at the receiver', '/guides/temperature-sensor-calibration/#verify-a-transmitter-or-controller-input'], 'Match the temperatures assigned to 4 mA and 20 mA in the transmitter and receiver. Check the configured fault indication separately from normal span points.'],
+        ],
+      },
+    ],
     selection: [
       'Match the Thermocouple Input to the Current Loop',
       'Send the sensor wiring and the receiving circuit. Confirm the signal type on each side of the transmitter and use the same temperature scaling in the receiver.',
@@ -5464,6 +5479,19 @@ export const products = [
     intro: 'A wireless thermocouple system sends readings from a thermocouple transmitter to a compatible receiver or gateway. Specify the probe input, number of points and reporting interval. Provide the equipment layout and receiving interface so the transmitter, receiver and site requirements can be reviewed together.',
     options: ['Transmitter and compatible receiver or gateway by project needs', 'Thermocouple input and probe connection by measurement point', 'Power, reporting interval and data interface reviewed for the installation'],
     specs: ['Number of measuring points, thermocouple type, sensor junction, probe range and connector', 'Transmitter and receiver locations, operating conditions, obstructions and movement', 'Power source, reporting interval, event or alarm requirements and expected behavior during data gaps', 'Requested receiver or gateway interface, site requirements for radio use, and data integration requirements'],
+    comparison: [
+      'Choose a Wireless Thermocouple or a Wired 4–20 mA Loop',
+      'Begin with the measurement point and the existing receiving system. The thermocouple still connects to the local transmitter. The link from that transmitter to the receiving system determines the interfaces and acceptance checks.',
+      {
+        anchor: 'wireless-vs-wired-thermocouple',
+        table: [
+          ['Installation', 'Configuration to review', 'Acceptance check'],
+          ['Moving equipment or a point with limited cable access', 'Wireless transmitter with a compatible receiver or gateway.', 'Check the required reporting interval, missed updates and time stamps during a trial with covers and machinery in normal positions.'],
+          ['Fixed measurement point with a current input at the PLC', ['Wired 4–20 mA thermocouple transmitter', '/temperature-controls/thermocouple-transmitters/#thermocouple-transmitter-loop-voltage'], 'Check the loop voltage at maximum current and verify the receiver’s temperature scale and response to a sensor fault.'],
+          ['Temperature records from several channels', ['Thermocouple data logger or receiver with recording', '/temperature-controls/thermocouple-data-loggers/'], 'Define the time base, recording interval, handling of missing data and report format.'],
+        ],
+      },
+    ],
     selection: [
       'Match the Thermocouple, Wireless Link and Receiving System',
       'Send a point list and a site drawing showing where the probes, transmitters and receiver will be installed. Identify the receiving equipment or software.',
@@ -10598,6 +10626,16 @@ export const guides = [
           [['Exposed', thermo + 'fine-wire/'], 'The junction is directly exposed to the process medium.', 'Consider for fast response in a compatible environment. Review abrasion, corrosion and other loads on the exposed conductors.'],
         ],
       }],
+      ['When to Choose a Grounded or Ungrounded Thermocouple', 'Use the instrument input and the way the sheath contacts the equipment to choose the junction. Junction-to-sheath isolation in the probe and channel isolation in the instrument are separate specifications.', {
+        anchor: 'choose-grounded-or-ungrounded-thermocouple',
+        table: [
+          ['Installation question', 'What to verify'],
+          ['Can the instrument accept a grounded probe?', 'Check the input manual for grounded thermocouples and allowable input-to-ground voltage. Identify the sheath bond and other ground connections on the equipment drawing.'],
+          ['Are probes tied to different grounding points?', 'On a shared-input module, check isolation between channels and whether the inputs share a common return. Evaluate an ungrounded probe if the sensing circuit must be isolated from the sheath.'],
+          [['Is the original junction type unknown?', '/guides/how-to-test-a-thermocouple/#check-conductor-continuity-and-sheath-isolation'], 'Look for the junction designation on the probe drawing or datasheet. A lead-to-sheath check on an isolated probe can help identify the connection. Compare unexpected results with the specified insulation test.'],
+        ],
+        links: [['Specify sheath and junction options for a mineral insulated probe', thermo + 'mineral-insulated/#mi-sheath-and-junction-selection']],
+      }],
       ['Compare response in the actual assembly', [
         'Specify the fraction of a temperature step the sensor must indicate. In a step from 20 °C to 100 °C, the ',
         ['response time', '/glossary/#thermocouple-response-time'],
@@ -10606,8 +10644,8 @@ export const guides = [
         anchor: 'compare-junction-response-time',
         table: [
           ['Installation', 'What to verify'],
-          ['Probe in an electrically bonded machine', 'For a grounded junction, check the electrical path from the process to the input and the instrument’s grounding requirements.'],
-          ['Probe on equipment with different ground potentials', 'Consider an ungrounded junction and verify the insulation rating and the instrument’s isolation requirements.'],
+          ['Compare two sheathed probes', 'Use the same sheath diameter, tip geometry, mounting and temperature step to isolate the effect of the junction construction on the result.'],
+          ['Compare tests in air and liquid', 'Record the medium and flow for each result. A different medium or flow can change heat transfer at the same tip.'],
           ['Fast measurement in a compatible air stream', 'Consider an exposed fine-wire junction. Review vibration, airflow and how the leads will be supported.'],
         ],
         links: [
@@ -11458,7 +11496,7 @@ export const guides = [
           ['Screw plug', 'Thread standard and size, port clearance and seating or sealing details'],
           ['Flanged', 'Flange drawing, pressure class, facing and bolt pattern'],
           [['Clamp-mounted', immersion + 'tri-clamp/'], 'Mating ferrule standard and size, seal and clamp details, operating temperature and pressure'],
-          ['Over-the-side', 'Rim geometry, tank depth, minimum liquid level and removal access'],
+          [['Over-the-side', immersion + 'over-the-side/#over-the-side-heater-tank-layout'], 'Rim geometry, tank depth, minimum liquid level and removal access'],
           [['Steam table wet well', immersion + 'steam-table/'], 'Well and mounting hole dimensions, seal and terminal details, and minimum operating water level'],
           [['Commercial dishwasher', immersion + 'dishwasher/'], 'Wash tank or rinse booster location, heater mount, water level or flow, pressure where applicable and original element rating'],
           [['Electric water boiler', immersion + 'water-boiler/'], 'Port or flange drawing, boiler water level, pressure requirements and power per element'],
