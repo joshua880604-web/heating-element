@@ -157,7 +157,9 @@ const photoTones = [
     id: 'slate-gray',
     source: [200, 198, 211],
     images: ['armored-thermocouples', 'drum-base-heaters', 'type-c-thermocouple-wire',
-      'pcb-thermocouple-connectors', 'cast-barrel-extrusion-heaters', 'thermostatic-silicone-pad-heaters'],
+      'pcb-thermocouple-connectors', 'cast-barrel-extrusion-heaters', 'thermostatic-silicone-pad-heaters',
+      'thermocouple-selector-switches', 'ceramic-plate-heaters', 'thermocouple-signal-conditioners',
+      'bayonet-tank-heaters', 'mineral-insulated-thermocouple-cables', 'composite-repair-heating-blankets'],
   },
 ];
 const photoToneByImage = new Map(photoTones.flatMap(({ id, images }) => images.map(image => [image, id])));

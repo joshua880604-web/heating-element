@@ -50,6 +50,11 @@ export const glossary = [
     related: ['Spring-Loaded & Bayonet Thermocouples', '/thermocouples/spring-loaded/'],
   },
   {
+    id: 'bayonet-tank-heater', name: 'Bayonet Tank Heater',
+    definition: 'A tank heater configuration with a removable electric insert and a separate closed sleeve in contact with the liquid. Specify the vessel interface, sleeve and insert dimensions and withdrawal clearance.',
+    related: ['Bayonet Tank Heaters', '/heating-elements/immersion-heaters/bayonet/#bayonet-heater-insert-and-sleeve'],
+  },
+  {
     id: 'bare-wire-thermocouple', name: 'Bare Wire Thermocouple',
     definition: 'Two uninsulated thermocouple alloy wires joined at a measuring bead. The fixture or insulating spacers support and separate the bare conductors away from the junction.',
     related: ['Bare Wire Thermocouples', '/thermocouples/fine-wire/bare-wire/'],
@@ -125,6 +130,11 @@ export const glossary = [
     related: ['Ceramic Cartridge Heaters', '/heating-elements/cartridge-heaters/ceramic/'],
   },
   {
+    id: 'ceramic-contact-plate-heater', name: 'Ceramic Contact Plate Heater',
+    definition: 'A rigid ceramic heater plate that transfers heat through a contact face. Specify the plate and mating geometry, support, heated footprint, loads and uniformity requirements.',
+    related: ['Ceramic Contact Plate Heaters', '/heating-elements/ptc-ceramic-heaters/contact-plates/#ceramic-plate-heater-contact-layout'],
+  },
+  {
     id: 'ceramic-fiber-heater', name: 'Ceramic Fiber Heater',
     definition: 'A furnace heater module with an electrical resistance element mounted in a formed ceramic fiber insulation body. The hot-face shape and zone layout match the chamber.',
     related: ['Ceramic Fiber Heaters', '/heating-elements/ceramic-fiber-heaters/'],
@@ -198,6 +208,11 @@ export const glossary = [
     id: 'compression-fitting-thermocouple', name: 'Compression Fitting Thermocouple',
     definition: 'A sheathed thermocouple mounted using a ferrule and fitting. Specify the sheath diameter, process connection, sealing requirement and installed sensing depth.',
     related: ['Compression Fitting Thermocouples', '/thermocouples/threaded-probes/compression-fitting/'],
+  },
+  {
+    id: 'composite-repair-heating-blanket', name: 'Composite Repair Heating Blanket',
+    definition: 'A flexible contact heater specified for a composite part or repair area with a documented cure schedule. Include the heated footprint, part shape, required temperature profile and sensor locations.',
+    related: ['Composite Repair Heating Blankets', '/heating-elements/flexible-heaters/silicone-rubber/composite-repair-blankets/#composite-blanket-footprint-and-cure-cycle'],
   },
   {
     id: 'constant-wattage-heating-cable', name: 'Constant Wattage Heating Cable',
@@ -695,6 +710,11 @@ export const glossary = [
     related: ['Mineral Insulated Thermocouples', '/thermocouples/mineral-insulated/'],
   },
   {
+    id: 'mineral-insulated-thermocouple-cable', name: 'Mineral Insulated Thermocouple Cable',
+    definition: 'Cable stock containing thermocouple conductors in compacted mineral insulation within a metal sheath. Specify the conductor pair and count, sheath material, diameter and supplied form.',
+    related: ['Mineral Insulated Thermocouple Cables', '/temperature-sensors/accessories/extension-wire/mineral-insulated/#mi-thermocouple-cable-stock-selection'],
+  },
+  {
     id: 'miniature-rtd-probe', name: 'Miniature RTD Probe',
     definition: 'A compact resistance temperature detector assembly for confined locations. The available diameter, insertion depth and lead transition define the probe envelope.',
     related: ['Miniature RTD Probes', '/temperature-sensors/rtd/miniature/'],
@@ -1160,9 +1180,19 @@ export const glossary = [
     related: ['Grounded vs. Ungrounded Thermocouples', '/guides/grounded-vs-ungrounded-thermocouples/'],
   },
   {
+    id: 'thermocouple-selector-switch', name: 'Thermocouple Selector Switch',
+    definition: 'A switch that connects a selected thermocouple circuit to a compatible shared readout. Specify contact materials, channel count, poles, wiring and panel layout.',
+    related: ['Thermocouple Selector Switches', '/temperature-controls/thermocouple-selector-switches/#thermocouple-selector-switch-channel-mapping'],
+  },
+  {
     id: 'thermocouple-signal-calibrator', name: 'Thermocouple Signal Calibrator',
     definition: 'An instrument used to source a simulated thermocouple signal or measure an applied signal in supported modes. Specify the supported types, range, accuracy and compensation method.',
     related: ['Thermocouple Signal Calibrators', '/temperature-controls/thermocouple-calibrators/'],
+  },
+  {
+    id: 'thermocouple-signal-conditioner', name: 'Thermocouple Signal Conditioner',
+    definition: 'A module that converts a thermocouple signal to a specified output for receiving equipment. Specify the input type and span, reference-junction compensation, output range, load and isolation.',
+    related: ['Thermocouple Signal Conditioners', '/temperature-controls/thermocouple-signal-conditioners/#thermocouple-signal-conditioner-input-and-output'],
   },
   {
     id: 'thermocouple-terminal-block', name: 'Thermocouple Terminal Block',
