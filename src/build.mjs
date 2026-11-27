@@ -16,6 +16,8 @@ const symbols = await readFile(new URL('symbols.svg', import.meta.url), 'utf8');
 const brand = process.env.SITE_NAME?.trim() || 'Lichengda';
 const companyName = 'Xiamen Lichengda Precision Manufacturing Co., Ltd.';
 const chineseCompanyName = '厦门利诚达精密制造有限公司';
+const companyCity = 'Xiamen';
+const companyCountry = 'China';
 const email = process.env.RFQ_EMAIL?.trim() || 'stella@lichengdaheating.com';
 const whatsAppNumber = '+86 18606007249';
 const origin = process.env.SITE_URL?.trim() ? new URL(process.env.SITE_URL).origin : '';
@@ -235,7 +237,7 @@ function salesContacts() {
   </address>`;
 }
 
-function searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq, product }) {
+function searchMetadata({ path, title, description, trail, type, article, image, photos, items, terms, faq, product }) {
   if (!origin) return '';
 
   const url = origin + path;
@@ -251,6 +253,12 @@ function searchMetadata({ path, title, description, trail, type, article, image,
     isPartOf: { '@id': websiteId },
     ...(trail.length ? { breadcrumb: { '@id': url + '#breadcrumb' } } : {}),
     ...(image ? { primaryImageOfPage: { '@type': 'ImageObject', url: origin + image } } : {}),
+    ...(photos.length ? { image: photos.map(photo => ({
+      '@type': 'ImageObject',
+      contentUrl: `${origin}/assets/${photo.image}.webp`,
+      caption: photo.caption,
+      description: photo.alt,
+    })) } : {}),
   };
   const graph = [webPage, {
     '@type': 'Organization',
@@ -262,12 +270,15 @@ function searchMetadata({ path, title, description, trail, type, article, image,
     logo: { '@type': 'ImageObject', url: origin + '/assets/mark.svg' },
     email,
     description: 'Made-to-spec industrial thermocouples, RTD sensors and electric heating elements for OEM equipment and process applications.',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'sales',
-      email,
-      url: origin + '/request-a-quote/',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: companyCity,
+      addressCountry: companyCountry,
     },
+    contactPoint: [
+      { '@type': 'ContactPoint', contactType: 'sales', email, url: origin + '/request-a-quote/' },
+      { '@type': 'ContactPoint', contactType: 'WhatsApp sales', telephone: whatsAppNumber, url: whatsApp },
+    ],
   }, {
     '@type': 'WebSite',
     '@id': websiteId,
@@ -294,16 +305,27 @@ function searchMetadata({ path, title, description, trail, type, article, image,
     });
   }
   if (article) {
-    webPage.mainEntity = { '@id': url + '#article' };
+    const articleId = url + '#article';
+    if (faq.length) webPage.hasPart = { '@id': articleId };
+    else webPage.mainEntity = { '@id': articleId };
     graph.push({
       '@type': 'Article',
-      '@id': url + '#article',
+      '@id': articleId,
+      url,
       headline: title,
       description,
       inLanguage: 'en',
+      articleSection: article.section,
+      isPartOf: { '@id': origin + '/guides/#webpage' },
       mainEntityOfPage: { '@id': url + '#webpage' },
       author: { '@id': organizationId },
       publisher: { '@id': organizationId },
+      ...(article.download ? { associatedMedia: {
+        '@type': 'MediaObject',
+        name: article.download[0],
+        contentUrl: origin + article.download[1],
+        encodingFormat: 'application/pdf',
+      } } : {}),
     });
   }
   if (product) {
@@ -391,7 +413,7 @@ if (location.origin === '${analyticsOrigin}') {
 }
 </script>` : '';
 
-function layout({ path, title, description, body, trail, type, article, image, items, terms, faq, product, quoteProduct }) {
+function layout({ path, title, description, body, trail, type, article, image, photos, items, terms, faq, product, quoteProduct }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   const quoteHref = quoteLink(quoteProduct);
   return `<!doctype html>
@@ -404,7 +426,7 @@ function layout({ path, title, description, body, trail, type, article, image, i
 <title>${escape(title)} | ${escape(brand)}</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
-${searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq, product })}
+${searchMetadata({ path, title, description, trail, type, article, image, photos, items, terms, faq, product })}
 ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heating.webp">' : ''}
 ${analyticsTag}
 <script type="module" src="/site.js"></script>
@@ -437,12 +459,12 @@ ${photoFilters}
 }
 
 async function page(path, title, description, body, {
-  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [], product, quoteProduct,
+  trail = [], type = 'WebPage', article, image, photos = [], items = [], terms = [], faq = [], product, quoteProduct,
 } = {}) {
   pageDescriptions.set(path, description);
   const destination = resolve(dist, '.' + path, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
-  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq, product, quoteProduct }));
+  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, photos, items, terms, faq, product, quoteProduct }));
 }
 
 function crumb(items) {
@@ -864,6 +886,7 @@ for (const guide of guides) {
   if (faq) contents.push([faqTitle, 'faq']);
   const checklist = guide.rfqChecklist;
   if (checklist) contents.push([checklist[0], checklist[2].anchor]);
+  const [guideSection] = guideGroups.find(([, entries]) => entries.includes(guide));
   await page(`/guides/${guide.slug}/`, guide.name, guide.description, `
 ${pageIntro('Selection guide', guide.name, guide.description, trail)}
 <section class="section"><div class="container guide-grid">
@@ -889,7 +912,12 @@ ${pageIntro('Selection guide', guide.name, guide.description, trail)}
   </aside>
 </div></section>
 ${callout('Have a specification to review?', 'Share your equipment, operating conditions and dimensions in a custom RFQ.', 'Request a Quote', quoteLink(guide.quoteProduct))}
-`, { trail, article: true, faq: guide.faq, quoteProduct: guide.quoteProduct });
+`, {
+  trail,
+  article: { section: guideSection, download: checklist?.[2].download },
+  faq: guide.faq,
+  quoteProduct: guide.quoteProduct,
+});
 }
 
 const alphabet = Object.entries(Object.groupBy(glossary, term => term.name[0]));
@@ -915,7 +943,17 @@ ${pageIntro('Engineering resources', 'Industrial Heating & Thermocouple Glossary
 ${callout('Compare products and specifications', 'Use the engineering guides to compare sensor types, heater families and watt density.', 'Read the Guides', '/guides/')}
 `, { trail: glossaryTrail, type: 'CollectionPage', terms: glossary });
 
-const factoryPhoto = '/assets/lichengda-factory.webp';
+const factoryExterior = {
+  image: 'lichengda-factory', width: 2172, height: 724,
+  alt: 'Exterior of the Lichengda factory buildings and main entrance',
+  caption: 'Lichengda factory exterior',
+};
+const receptionPhoto = {
+  image: 'lichengda-reception', width: 1400, height: 788,
+  alt: 'Lichengda reception wall with the company logo and name in Chinese and English',
+  caption: 'Lichengda reception',
+};
+const factoryPhoto = `/assets/${factoryExterior.image}.webp`;
 const businessLicense = '/assets/lichengda-business-license-redacted.webp';
 const workshopPhotos = [
   {
@@ -965,11 +1003,11 @@ const workshopPhotos = [
   },
 ];
 await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'See Lichengda’s Xiamen factory and typical production capacity, sample and bulk lead times, and minimum order quantities for industrial heaters and sensors.', `
-${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
+${pageIntro(`${companyCity}, ${companyCountry}`, 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
 <div class="section"><div class="container">
   <figure class="about-photo">
-    <img src="${factoryPhoto}" width="2172" height="724" alt="Exterior of the Lichengda factory buildings and main entrance">
-    <figcaption>Lichengda factory exterior</figcaption>
+    <img src="${factoryPhoto}" width="${factoryExterior.width}" height="${factoryExterior.height}" alt="${escape(factoryExterior.alt)}">
+    <figcaption>${escape(factoryExterior.caption)}</figcaption>
   </figure>
   <div class="guide-grid">
     <div class="prose">
@@ -984,11 +1022,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
         <p class="capacity-jump"><a class="capacity-link" href="${capacityPath}">Check lead times and minimum order quantities</a></p>
       </section>
       <div class="about-photo about-reception" id="reception">
-        ${photoFigure({
-          image: 'lichengda-reception', width: 1400, height: 788,
-          alt: 'Lichengda reception wall with the company logo and name in Chinese and English',
-          caption: 'Lichengda reception',
-        })}
+        ${photoFigure(receptionPhoto)}
       </div>
     </div>
     <aside class="spec-card">
@@ -1034,7 +1068,7 @@ ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manu
     ['Can Lichengda review an existing heater or sensor drawing?', 'Yes. Send the drawing or part reference, the actual operating conditions and the quantity. Include notes on any differences from the existing design, such as a new mount, a different electrical supply or a change in the process medium.'],
   ])}
 </div></div>
-`, { trail: aboutTrail, type: 'AboutPage', image: factoryPhoto });
+`, { trail: aboutTrail, type: 'AboutPage', image: factoryPhoto, photos: [factoryExterior, receptionPhoto, ...workshopPhotos] });
 
 const productOptions = Object.entries(groups).map(([id, label]) => `<optgroup label="${label}">${products.filter(p => p.group === id).map(p => `<option value="${p.id}" data-specs="${escape(p.specs.join(' · '))}">${escape(p.name)}</option>`).join('')}</optgroup>`).join('');
 
