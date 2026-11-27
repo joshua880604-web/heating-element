@@ -69,9 +69,26 @@ const platinumRtdReference = [
   },
 ];
 
+const ds18b20Reference = [
+  'DS18B20 IC Specifications',
+  'These values apply to the DS18B20 sensing IC under the conditions in its Rev. 4 datasheet. Confirm the assembled probe’s temperature and immersion limits, cable rating and response time for the installation.',
+  {
+    anchor: 'ds18b20-ic-specifications',
+    table: [
+      ['IC parameter', 'Value and condition'],
+      ['Measurement range', '−55 to +125 °C'],
+      ['Temperature error', '±0.5 °C from −10 to +85 °C'],
+      ['Local supply (VDD)', '3.0 to 5.5 V DC'],
+      ['Resolution and maximum conversion time', '93.75 ms at 9 bits, 187.5 ms at 10 bits, 375 ms at 11 bits and 750 ms at 12 bits.'],
+    ],
+    links: [['Check the digital input and wiring', '/guides/thermocouple-vs-rtd/#identify-a-digital-probe-input']],
+  },
+];
+
 export const productReferences = new Map([
   ...thermocoupleReferences,
   ['thermocouples', thermocoupleFamilyReference],
   ['rtd', platinumRtdReference],
   ['pt1000-sensors', platinumRtdReference],
+  ['ds18b20-sensors', ds18b20Reference],
 ]);
