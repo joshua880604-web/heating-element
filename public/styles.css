@@ -1043,6 +1043,17 @@ svg.photo-filters {
   color: var(--muted);
   font-size: 0.85rem;
 }
+.reference-drawing img {
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+}
+.reference-drawing figcaption a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
 .guide-library {
   display: grid;
   gap: 25px;

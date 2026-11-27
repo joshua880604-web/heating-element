@@ -1995,7 +1995,11 @@ export const products = [
     selection: [
       'Measure From the Installed Reference Face',
       'On a shoulder-seated assembly, mark the seating face and measure along the probe axis to the tip. Use the mating-port drawing to confirm the corresponding reference for a tapered thread or adjustable fitting.',
-      { anchor: 'threaded-probe-measurements', table: [
+      { anchor: 'threaded-probe-measurements', drawing: {
+        src: '/assets/pt-threaded-thermocouple-drawing.png', width: 1020, height: 343,
+        alt: 'Dimensioned drawing of a thermocouple probe with a PT 3/8 thread and attached lead',
+        caption: 'This drawing shows a PT 3/8 thread, a 6 mm probe diameter, 100 mm from the fitting face to the tip and a 5 m lead. Confirm the mating thread and installed reference face for your probe.',
+      }, table: [
         ['Dimension or feature', 'Where to measure or specify'],
         ['Threaded body', 'Give the thread standard, size, pitch and usable length. Show the matching port and sealing method.'],
         [['Adjustable compression fitting', thermo + 'threaded-probes/compression-fitting/'], 'Specify the sheath outside diameter, the mating thread, the fitting material and the required tip position after seating.'],
@@ -2030,7 +2034,11 @@ export const products = [
     selection: [
       'Match the Sheath, Ferrule and Installed Tip Position',
       'Send the probe and port dimensions on the same drawing. Identify the required sealing interface and whether the probe needs to be repositioned during service.',
-      { table: [
+      { anchor: 'compression-fitting-thermocouple-drawing', drawing: {
+        src: '/assets/npt-compression-thermocouple-drawing.png', width: 1280, height: 620,
+        alt: 'Dimensioned connection-head thermocouple drawing with a 1/2 NPT adjustable compression fitting',
+        caption: 'This example uses a 1/2 NPT adjustable fitting on a 6 mm probe. At the position shown, the tip extends 100 mm past the fitting face. Mark the required tip position from the installed reference face on your drawing.',
+      }, table: [
         ['Selection detail', 'Include in your inquiry'],
         ['Sheath and ferrule', 'Give the actual diameter and tolerance at the grip point, straight usable length and preferred ferrule material. Specify if the fitting will be reused or repositioned.'],
         ['Process connection', 'Give the port thread and sealing face, medium, operating and peak temperatures, and any required pressure and leak-test criteria.'],
@@ -2059,7 +2067,11 @@ export const products = [
     selection: [
       'Specify Bayonet Engagement and Spring Travel',
       'Use the installed drawing to show the contact point and the distance from the adapter seat to the sensing tip. Include movement or tolerance in the equipment across the operating cycle.',
-      { table: [
+      { anchor: 'bayonet-thermocouple-drawing', drawing: {
+        src: '/assets/spring-loaded-bayonet-thermocouple-drawing.png', width: 932, height: 300,
+        alt: 'Spring-loaded bayonet thermocouple drawing with a slotted cap and dimensions A through D',
+        caption: 'A marks the exposed tip length, B the span from the tip shoulder to the spring exit, C the probe diameter and D the lead length shown. Give the installed spring travel with the mating bayonet adapter dimensions.',
+      }, table: [
         ['Drawing detail', 'What to include'],
         [['Cap and adapter', accessories + 'bayonet-adapters/'], 'Give the cap diameter, slot pattern, mating adapter features and clearance to engage or remove the cap.'],
         ['Installed spring travel', 'Show the free and installed positions of the tip and the working range needed to maintain contact without bottoming out the spring.'],
@@ -2277,7 +2289,11 @@ export const products = [
     selection: [
       'Specify the Flange Interface and Probe Insertion',
       'Measure the flange and probe from the installed reference face. Show the insertion path, nearby hardware and the space needed to remove the sensor for service.',
-      { table: [
+      { anchor: 'flanged-thermocouple-drawing', drawing: {
+        src: '/assets/flanged-thermocouple-section-drawing.png', width: 1075, height: 493,
+        alt: 'Section drawing of a thermocouple assembly showing the connection head, flange and protected probe tip',
+        caption: 'The section shows the head, mounting flange and protection tube. The L dimension starts on the head side of the flange. For installation, give the distance from the mating flange face to the probe tip.',
+      }, table: [
         ['Drawing detail', 'What to supply'],
         ['Mating flange', 'Provide the applicable standard or drawing, outside diameter, thickness, seating geometry and any bolt circle, hole count and hole diameter.'],
         ['Insertion and clearance', 'Dimension from the installed flange face to the tip. Show the probe diameter, protective tube or sheath details and clearance on both sides of the face.'],
@@ -9003,6 +9019,7 @@ export const products = [
         [['Measuring circuit and junction', '/guides/grounded-vs-ungrounded-thermocouples/#thermocouple-junction-comparison'], 'Identify the required thermocouple type and instrument input. Give isolation, grounding and response requirements for the installation.'],
         [['Exposed length and routing', thermo + 'mineral-insulated/#mi-probe-route'], 'Dimension the exposed tip, insertion depth, sheath diameter and any bends. Include areas that must stay straight at the mounting and transition.'],
         ['Transition and lead limits', 'Record the highest expected temperatures at the sheath-to-lead joint and connector. Include strain relief and confirm cable and connector requirements for the thermocouple type.'],
+        ['Type K drawing example', 'One Type K design specifies an Inconel 600 sheath with an outside diameter of 2.0 ± 0.1 mm and a tip-to-transition dimension of 232 mm (+2/0 mm). Give the required insertion length and the installed reference face for your application.'],
       ] },
     ],
     use: 'Typical inquiries include furnaces, heated process equipment and instrumented industrial tooling with a nickel-alloy sheath requirement.',

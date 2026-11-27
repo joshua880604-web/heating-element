@@ -498,11 +498,15 @@ function selectionGuides(references) {
   }).join('')}</ul>`;
 }
 
-function referenceSection([title, copy, { table, tableNote, diagram, anchor, links, download } = {}], className = '') {
+function referenceSection([title, copy, { table, tableNote, diagram, drawing, anchor, links, download } = {}], className = '') {
   const textOrLink = value => Array.isArray(value) ? `<a href="${escape(value[1])}">${escape(value[0])}</a>` : escape(value);
   const paragraph = Array.isArray(copy) ? copy.map(textOrLink).join('') : escape(copy);
   return `<section${className ? ` class="${className}"` : ''}${anchor ? ` id="${escape(anchor)}"` : ''}><h2>${escape(title)}</h2><p>${paragraph}</p>
-    ${table ? `<div class="reference-table"><table>
+    ${drawing ? `<figure class="reference-diagram reference-drawing">
+      <img src="${escape(drawing.src)}" width="${drawing.width}" height="${drawing.height}" loading="lazy" decoding="async" alt="${escape(drawing.alt)}">
+      <figcaption>${escape(drawing.caption)} <a href="${escape(drawing.src)}">View full-size drawing</a></figcaption>
+    </figure>
+    ` : ''}${table ? `<div class="reference-table"><table>
       <caption class="sr-only">${escape(title)}</caption>
       <thead><tr>${table[0].map(column => `<th scope="col">${escape(column)}</th>`).join('')}</tr></thead>
       <tbody>${table.slice(1).map(([row, ...cells]) => `<tr><th scope="row">${textOrLink(row)}</th>${cells.map(value => `<td>${textOrLink(value)}</td>`).join('')}</tr>`).join('')}</tbody>
