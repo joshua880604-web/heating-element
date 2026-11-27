@@ -320,7 +320,7 @@ function searchMetadata({ path, title, description, trail, type, article, image,
       mainEntityOfPage: { '@id': url + '#webpage' },
       author: { '@id': organizationId },
       publisher: { '@id': organizationId },
-      ...(article.download ? { associatedMedia: {
+      ...(article.download ? { hasPart: {
         '@type': 'MediaObject',
         name: article.download[0],
         contentUrl: origin + article.download[1],
