@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applicationPhotoExamples, applications, groups, guides, products } from './catalog.mjs';
 import { glossary } from './glossary.mjs';
+import { productReferences } from './product-references.mjs';
 import { catalogPageSize, catalogPagePath, catalogPagination, catalogResultCount } from '../public/catalog.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -36,6 +37,26 @@ const aboutTrail = [['About Us', '/about-us/']];
 const quoteTrail = [['Request a Quote', '/request-a-quote/']];
 const capacityAnchor = 'production-capacity';
 const capacityPath = aboutTrail[0][1] + '#' + capacityAnchor;
+const capacityColumns = ['Sample lead time', 'Bulk lead time', 'Monthly capacity', 'MOQ'];
+const productionCapacity = [
+  ['Cartridge Heaters', '3–5 days', '7–12 days', '40,000 pcs', '5 pcs'],
+  ['Tubular Heaters', '3–5 days', '7–15 days', '25,000 pcs', '5 pcs'],
+  ['Immersion Heaters', '5–7 days', '10–15 days', '5,000 pcs', '1 pc'],
+  ['Band Heaters', '3–5 days', '7–12 days', '10,000 pcs', '2 pcs'],
+  ['Flexible Heaters', '5–7 days', '10–15 days', '15,000 pcs', '5 pcs'],
+  ['Ceramic Heaters', '5–7 days', '10–15 days', '8,000 pcs', '5 pcs'],
+  ['Thermocouples & RTDs', '3–5 days', '7–12 days', '20,000 pcs', '5 pcs'],
+  ['Custom Heating Elements', '5–10 days', '10–20 days', 'Project-based', '1 pc'],
+];
+const productCapacityCategories = new Map([
+  ['cartridge-heaters', 'Cartridge Heaters'],
+  ['tubular-heaters', 'Tubular Heaters'],
+  ['immersion-heaters', 'Immersion Heaters'],
+  ['band-heaters', 'Band Heaters'],
+  ['flexible-heaters', 'Flexible Heaters'],
+  ['thermocouples', 'Thermocouples & RTDs'],
+  ['rtd', 'Thermocouples & RTDs'],
+]);
 const pageDescriptions = new Map();
 const nav = [
   ['/', 'Home', navPath => navPath === '/'],
@@ -636,6 +657,8 @@ for (const product of products) {
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
+  const technicalReference = productReferences.get(product.id);
+  const capacity = productionCapacity.find(([category]) => category === productCapacityCategories.get(product.id));
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
@@ -651,13 +674,23 @@ for (const product of products) {
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
-  ${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
+  ${technicalReference ? `${referenceSection(technicalReference, 'product-selection')}\n  ` : ''}${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   ${product.variants ? `<section class="product-photos product-variants" aria-labelledby="product-variants-heading">
     <h2 id="product-variants-heading">${escape(product.variants.title)}</h2>
     <div class="product-photos-grid">${product.variants.photos.map(photoFigure).join('')}</div>
   </section>` : ''}
-  <section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
+  ${capacity ? `${referenceSection([
+    'Typical Production & Ordering',
+    `${capacity[0] === 'Thermocouples & RTDs'
+      ? 'These typical figures cover standard thermocouple and RTD configurations, with monthly capacity shared across both.'
+      : `These figures are typical for standard ${capacity[0].toLowerCase()} configurations.`} We confirm timing after reviewing specifications, materials and order quantity.`,
+    {
+      anchor: 'production-and-ordering',
+      table: [['Order detail', 'Typical family figure'], ...capacityColumns.map((label, index) => [label, capacity[index + 1]])],
+      links: [['View production capacity across product families', capacityPath]],
+    },
+  ], 'product-selection')}\n  ` : ''}<section class="use-case"><h2>Typical Applications</h2><p>${escape(product.use)}</p></section>
   ${product.photographs?.length ? `<section class="product-photos" aria-labelledby="product-photos-heading">
     <h2 id="product-photos-heading">Product Photos</h2>
     <div class="product-photos-grid">${product.photographs.map(photoFigure).join('')}</div>
@@ -857,17 +890,6 @@ ${callout('Compare products and specifications', 'Use the engineering guides to 
 
 const factoryPhoto = '/assets/lichengda-factory.webp';
 const businessLicense = '/assets/lichengda-business-license-redacted.webp';
-const capacityColumns = ['Sample lead time', 'Bulk lead time', 'Monthly capacity', 'MOQ'];
-const productionCapacity = [
-  ['Cartridge Heaters', '3–5 days', '7–12 days', '40,000 pcs', '5 pcs'],
-  ['Tubular Heaters', '3–5 days', '7–15 days', '25,000 pcs', '5 pcs'],
-  ['Immersion Heaters', '5–7 days', '10–15 days', '5,000 pcs', '1 pc'],
-  ['Band Heaters', '3–5 days', '7–12 days', '10,000 pcs', '2 pcs'],
-  ['Flexible Heaters', '5–7 days', '10–15 days', '15,000 pcs', '5 pcs'],
-  ['Ceramic Heaters', '5–7 days', '10–15 days', '8,000 pcs', '5 pcs'],
-  ['Thermocouples & RTDs', '3–5 days', '7–12 days', '20,000 pcs', '5 pcs'],
-  ['Custom Heating Elements', '5–10 days', '10–20 days', 'Project-based', '1 pc'],
-];
 const workshopPhotos = [
   {
     image: 'lichengda-workshop', width: 960, height: 720,
