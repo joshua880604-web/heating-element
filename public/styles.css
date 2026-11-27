@@ -549,7 +549,44 @@ svg.photo-filters {
   display: flex;
   justify-content: space-between;
   gap: 13px;
-  margin-bottom: 21px;
+  margin-bottom: 12px;
+}
+.catalog-count {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.catalog-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 24px;
+}
+.catalog-pagination > * {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 40px;
+  padding: 0 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.catalog-pagination :is(a, button, [aria-current]) {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: white;
+  color: var(--ink);
+}
+.catalog-pagination :is(a, button):hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+.catalog-pagination [aria-current="page"] {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: white;
 }
 .filters {
   display: flex;

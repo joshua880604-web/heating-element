@@ -57,40 +57,7 @@ updateBackToTop();
 
 const catalog = document.querySelector('[data-catalog]');
 if (catalog) {
-  const filters = [...catalog.querySelectorAll('[data-filter]')];
-  const cards = [...catalog.querySelectorAll('.product-card')];
-  const search = catalog.querySelector('#product-search');
-  const empty = catalog.querySelector('.empty-state');
-  const status = catalog.querySelector('#result-status');
-  const termsByCard = cards.map(card => card.dataset.search.toLowerCase());
-  let group = 'all';
-
-  function refresh() {
-    const words = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
-    let matches = 0;
-    cards.forEach((card, index) => {
-      const match = (group === 'all' || group === card.dataset.group) &&
-        words.every(word => termsByCard[index].includes(word));
-      card.hidden = !match;
-      if (match) matches += 1;
-    });
-    filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === group)));
-    status.textContent = `${matches} ${matches === 1 ? 'product' : 'products'} found`;
-    empty.hidden = matches > 0;
-  }
-
-  filters.forEach(button => button.addEventListener('click', () => {
-    group = button.dataset.filter;
-    refresh();
-  }));
-  search.addEventListener('input', refresh);
-  empty.querySelector('[data-reset]').addEventListener('click', () => {
-    search.value = '';
-    group = 'all';
-    refresh();
-    search.focus();
-  });
-  if (new URLSearchParams(location.search).has('search')) search.focus();
+  import('./catalog.js').then(({ setupCatalog }) => setupCatalog(catalog));
 }
 
 const glossary = document.querySelector('[data-glossary]');

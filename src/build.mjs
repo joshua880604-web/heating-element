@@ -1,9 +1,11 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applicationPhotoExamples, applications, groups, guides, products } from './catalog.mjs';
 import { glossary } from './glossary.mjs';
+import { catalogPageSize, catalogPagePath, catalogPagination, catalogResultCount } from '../public/catalog.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const staticRoot = resolve(root, 'public');
@@ -416,7 +418,7 @@ function pageIntro(kicker, title, copy, trail) {
 
 function card(product) {
   const visual = photo(product) ? `<div class="card-image"${photoToneStyle(product)}><img src="/assets/${product.image}.webp" width="512" height="512" loading="lazy" alt=""></div>` : '';
-  return `<article class="product-card" data-group="${product.group}" data-search="${escape([product.name, product.text, ...product.options, product.use].join(' '))}">
+  return `<article class="product-card" data-group="${product.group}">
     <a href="${product.path}" class="card-link">
       ${visual}
       <div class="card-body"><p class="card-category">${groups[product.group]}</p><h3>${escape(product.name)}</h3><p>${escape(product.text)}</p><span class="card-action">View product ${icon('arrow')}</span></div>
@@ -462,7 +464,7 @@ function questionsSection(title, questions, anchor) {
 }
 
 function filters() {
-  return `<div class="catalog-tools">
+  return `<div class="catalog-tools" hidden>
     <div class="filters" role="group" aria-label="Filter product families">
       <button type="button" data-filter="all" aria-pressed="true">${icon('grid')} All Products</button>
       ${Object.entries(groups).map(([id, label]) => `<button type="button" data-filter="${id}" aria-pressed="false">${label}</button>`).join('')}
@@ -475,12 +477,8 @@ function catalogOrder(items) {
   return [...items.filter(photo), ...items.filter(item => !photo(item))];
 }
 
-function catalog(items, searchable = false) {
-  return `<div ${searchable ? 'data-catalog' : ''}>
-    ${searchable ? filters() + '<p class="sr-only" id="result-status" role="status"></p>' : ''}
-    <div class="product-grid">${catalogOrder(items).map(card).join('')}</div>
-    ${searchable ? '<div class="empty-state" hidden><h3>No matching products</h3><p>Try a different keyword or clear the filters.</p><button type="button" class="button button-primary" data-reset>Show all products</button></div>' : ''}
-  </div>`;
+function catalog(items) {
+  return `<div><div class="product-grid">${catalogOrder(items).map(card).join('')}</div></div>`;
 }
 
 function capabilities() {
@@ -557,17 +555,48 @@ await cp(staticRoot, dist, { recursive: true });
 await page('/', 'Custom Thermocouples & Industrial Heating Elements', 'Lichengda supplies made-to-spec industrial thermocouples, tubular heaters and heating elements for OEM equipment. Review configurations and request a quote.', home,
   { image: '/assets/industrial-heating.webp', items: homeProducts });
 
-await page('/products/', 'Industrial Heaters, Sensors & Temperature Controls', 'Find industrial temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Compare configurations and RFQ requirements.', `
-${pageIntro('Product catalog', 'Industrial Heating, Sensing & Controls', 'Search temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Open a product family for installation details and selection guides.', productsTrail)}
+const orderedCatalog = catalogOrder(products);
+const catalogCards = orderedCatalog.map(product => ({
+  group: product.group,
+  search: [product.name, product.text, ...product.options, product.use].join(' ').toLowerCase(),
+  html: card(product),
+}));
+const catalogSearch = JSON.stringify(catalogCards);
+const catalogSearchVersion = createHash('sha256').update(catalogSearch).digest('hex').slice(0, 12);
+const catalogSearchPath = `/assets/catalog-search.${catalogSearchVersion}.json`;
+await writeFile(resolve(dist, '.' + catalogSearchPath), catalogSearch);
+
+const catalogPageCount = Math.ceil(orderedCatalog.length / catalogPageSize);
+const catalogTitle = 'Industrial Heaters, Sensors & Temperature Controls';
+const catalogHeading = 'Industrial Heating, Sensing & Controls';
+const catalogDescription = 'Find industrial temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Compare configurations and RFQ requirements.';
+const catalogHelp = questionsSection('How to Use the Product Catalog', [
+  ['Which product group should I start with?', 'Choose Temperature Sensors for probes, thermowells and connectors, Tubular & Immersion for formed elements and liquid heaters, Specialty Heaters for cartridges, bands, strips, cables and flexible elements, or Temperature Controls for controllers, relays and transmitters.'],
+  ['How can I narrow down a product when I only have a drawing?', 'Look for the device function and the mounting interface first. A threaded probe points to a sensor family, a cylindrical bore can indicate a cartridge heater, and a heated loop through a tank port suggests an immersion configuration. Include uncertain details in the RFQ.'],
+]);
+for (let number = 1; number <= catalogPageCount; number += 1) {
+  const offset = (number - 1) * catalogPageSize;
+  const items = orderedCatalog.slice(offset, offset + catalogPageSize);
+  const cards = catalogCards.slice(offset, offset + catalogPageSize);
+  const suffix = number === 1 ? '' : ` – Page ${number}`;
+  const trail = number === 1 ? productsTrail : [...productsTrail, [`Page ${number}`]];
+  const description = number === 1 ? catalogDescription : `Browse page ${number} of the Lichengda product catalog for industrial heaters, sensors and temperature controls. Find specifications and request a quote.`;
+  const intro = number === 1 ? 'Search temperature sensors, tubular and immersion heaters, specialty elements and temperature controls. Open a product family for installation details and selection guides.' : 'Open a product for specifications, selection guides and inquiry details.';
+  await page(catalogPagePath(number), catalogTitle + suffix, description, `
+${pageIntro('Product catalog', catalogHeading + suffix, intro, trail)}
 <section class="section catalog-section catalog-page"><div class="container">
-  ${catalog(products, true)}
-  ${questionsSection('How to Use the Product Catalog', [
-    ['Which product group should I start with?', 'Choose Temperature Sensors for probes, thermowells and connectors, Tubular & Immersion for formed elements and liquid heaters, Specialty Heaters for cartridges, bands, strips, cables and flexible elements, or Temperature Controls for controllers, relays and transmitters.'],
-    ['How can I narrow down a product when I only have a drawing?', 'Look for the device function and the mounting interface first. A threaded probe points to a sensor family; a cylindrical bore can indicate a cartridge heater; a heated loop through a tank port suggests an immersion configuration. Include uncertain details in the RFQ.'],
-  ])}
+  <div id="catalog-results" data-catalog data-search-index="${catalogSearchPath}">
+    ${filters()}
+    <p class="catalog-count" id="result-status" role="status" tabindex="-1">${catalogResultCount(number, orderedCatalog.length)}</p>
+    <div class="product-grid">${cards.map(item => item.html).join('')}</div>
+    <div class="empty-state" hidden><h3>No matching products</h3><p>Try a different keyword or clear the filters.</p><button type="button" class="button button-primary" data-reset>Show all products</button></div>
+    <div data-pagination>${catalogPagination(number, catalogPageCount, catalogPagePath)}</div>
+  </div>
+  ${number === 1 ? catalogHelp : ''}
 </div></section>
 ${callout('Need a custom configuration?', 'Share your application, dimensions and requirements to prepare a quote request.')}
-`, { trail: productsTrail, type: 'CollectionPage', items: catalogOrder(products) });
+`, { trail, type: 'CollectionPage', items });
+}
 
 const heatingProducts = products.filter(product => product.group === 'tubular' || product.group === 'specialty');
 const heatingSelection = [
