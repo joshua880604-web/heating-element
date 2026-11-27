@@ -233,9 +233,67 @@ const rtdElementToleranceReferences = [
   ],
 ]);
 
+const thermocoupleToleranceBands = {
+  K: [[-40, 1000, 1.5, 0.004], [-40, 1200, 2.5, 0.0075], [-200, 40, 2.5, 0.015]],
+  J: [[-40, 750, 1.5, 0.004], [-40, 750, 2.5, 0.0075]],
+  T: [[-40, 350, 0.5, 0.004], [-40, 350, 1, 0.0075], [-200, 40, 1, 0.015]],
+  E: [[-40, 800, 1.5, 0.004], [-40, 900, 2.5, 0.0075], [-200, 40, 2.5, 0.015]],
+  N: [[-40, 1000, 1.5, 0.004], [-40, 1200, 2.5, 0.0075], [-200, 40, 2.5, 0.015]],
+};
+const thermocoupleClassRange = ([minimum, maximum]) => `${minimum} to ${maximum}`.replace('-', '−');
+const thermocoupleToleranceAnchor = 'iec-thermocouple-tolerance';
+const thermocoupleToleranceStandard = ['IEC 60584-1', '/glossary/#iec-60584'];
+
+const thermocoupleFamilyTolerance = [
+  'Thermocouple Tolerance Class Ranges',
+  [
+    'Choose the thermocouple type, tolerance class and required temperature interval together. The ranges below cover the base-metal types in ',
+    thermocoupleToleranceStandard,
+    '. Open the type page for its permissible deviation. Confirm the working temperature of the assembled probe, including its sheath, junction and lead transition.',
+  ],
+  {
+    anchor: thermocoupleToleranceAnchor,
+    table: [
+      ['Type', 'Class 1 (°C)', 'Class 2 (°C)', 'Class 3 (°C)'],
+      ...Object.entries(thermocoupleToleranceBands).map(([type, bands]) => [
+        [`Type ${type}`, `/thermocouples/type-${type.toLowerCase()}/#${thermocoupleToleranceAnchor}`],
+        ...[0, 1, 2].map(index => bands[index] ? thermocoupleClassRange(bands[index]) : '—'),
+      ]),
+    ],
+    tableNote: 'A dash indicates an unassigned class for the listed type.',
+  },
+];
+
+const thermocoupleToleranceReferences = Object.entries(thermocoupleToleranceBands).map(([type, bands]) => [
+  `type-${type.toLowerCase()}`,
+  [
+    `Type ${type} Tolerance Classes Under IEC 60584-1`,
+    [
+      'Use these permissible deviations for a new thermocouple over the specified class interval. ',
+      thermocoupleToleranceStandard,
+      ' defines the class limits. For acceptance, verify the ordered class and temperature range on the probe documentation. When evaluating the installed measurement, account for extension cable, instrument and reference-junction errors, as well as drift in service.',
+    ],
+    {
+      anchor: thermocoupleToleranceAnchor,
+      table: [
+        ['Tolerance class', 'Class range (°C)', 'Permissible deviation (°C)'],
+        ...bands.map((band, index) => [
+          `Class ${index + 1}`,
+          thermocoupleClassRange(band),
+          `±max(${band[2]}, ${band[3]} × |t|)`,
+        ]),
+      ],
+      tableNote: 'Use the larger of the fixed limit and the temperature-dependent term. The term |t| is the absolute value of the measuring junction temperature in °C.',
+      links: [['Compare the class ranges for other thermocouple types', `/thermocouples/#${thermocoupleToleranceAnchor}`]],
+    },
+  ],
+]);
+
 const referenceEntries = [
   ...thermocoupleReferences,
   ['thermocouples', thermocoupleFamilyReference],
+  ['thermocouples', thermocoupleFamilyTolerance],
+  ...thermocoupleToleranceReferences,
   ['rtd', platinumRtdReference],
   ['pt1000-sensors', platinumRtdReference],
   ['ds18b20-sensors', ds18b20Reference],
