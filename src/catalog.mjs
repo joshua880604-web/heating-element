@@ -1995,7 +1995,7 @@ export const products = [
     selection: [
       'Measure From the Installed Reference Face',
       'On a shoulder-seated assembly, mark the seating face and measure along the probe axis to the tip. Use the mating-port drawing to confirm the corresponding reference for a tapered thread or adjustable fitting.',
-      { table: [
+      { anchor: 'threaded-probe-measurements', table: [
         ['Dimension or feature', 'Where to measure or specify'],
         ['Threaded body', 'Give the thread standard, size, pitch and usable length. Show the matching port and sealing method.'],
         [['Adjustable compression fitting', thermo + 'threaded-probes/compression-fitting/'], 'Specify the sheath outside diameter, the mating thread, the fitting material and the required tip position after seating.'],
@@ -2006,7 +2006,7 @@ export const products = [
       ], diagram: [
         'Shoulder-seated example. Insertion length runs along the axis from the seating face to the probe tip.',
         ['       Face                 Tip', '        │                    │', '[Hex]───┼────────────────────●', '        └─ Insertion length ─┘'],
-      ] },
+      ], download: ['Download fillable RFQ worksheet (PDF)', '/assets/threaded-thermocouple-rfq-worksheet.pdf'] },
     ],
     use: 'Typical inquiries include probes for threaded ports on plastic processing equipment, heated tooling and process equipment. For a replacement, include the mating-port drawing or existing part photo and the room available for lead exit.',
     related: ['thermocouples', 'type-k', 'type-j', 'mineral-insulated', 'sensor-accessories'],
