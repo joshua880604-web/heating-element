@@ -85,10 +85,51 @@ const ds18b20Reference = [
   },
 ];
 
+const pipeThreadPitchReference = [
+  'NPT and BSPP Thread Pitch Reference',
+  'Use a pitch gauge to check the number of threads per inch and confirm the callout with the port drawing. ASME B1.20.1 NPT uses a tapered thread with a 60° form. ISO 228-1 BSPP (G) uses a parallel thread with a 55° form. For example, 1/2 NPT and G 1/2 both have 14 threads per inch. Confirm the full thread designation, engagement and sealing method before ordering.',
+  {
+    anchor: 'pipe-thread-pitch',
+    table: [
+      ['Nominal size', 'NPT (threads/in)', 'BSPP (threads/in)'],
+      ['1/8', '27', '28'],
+      ['1/4', '18', '19'],
+      ['3/8', '18', '19'],
+      ['1/2', '14', '14'],
+      ['3/4', '14', '14'],
+      ['1', '11.5', '11'],
+      ['1 1/4, 1 1/2 and 2', '11.5', '11'],
+    ],
+  },
+];
+
+const rtdLoopTestReference = [
+  'Five-Point Check for a 0–200 °C RTD Transmitter Span',
+  'This commissioning example uses nominal IEC platinum RTD resistance and a transmitter configured for linear 4–20 mA output over 0–200 °C. Select the configured sensor curve and wire mode before simulating the input. Use the instrument specification to set acceptable deviations at each point.',
+  {
+    anchor: 'rtd-loop-test-points',
+    table: [
+      ['Simulated temperature', 'Pt100 (Ω)', 'Pt1000 (Ω)', 'Expected output (mA)'],
+      ['0 °C', '100.00', '1,000.0', '4.00'],
+      ['50 °C', '119.40', '1,194.0', '8.00'],
+      ['100 °C', '138.51', '1,385.1', '12.00'],
+      ['150 °C', '157.33', '1,573.3', '16.00'],
+      ['200 °C', '175.86', '1,758.6', '20.00'],
+    ],
+    links: [['Verify a transmitter or controller input', '/guides/temperature-sensor-calibration/#verify-a-transmitter-or-controller-input']],
+  },
+];
+
 export const productReferences = new Map([
   ...thermocoupleReferences,
   ['thermocouples', thermocoupleFamilyReference],
   ['rtd', platinumRtdReference],
   ['pt1000-sensors', platinumRtdReference],
   ['ds18b20-sensors', ds18b20Reference],
+  ['threaded-thermocouple', pipeThreadPitchReference],
+  ['threaded-rtd-probes', pipeThreadPitchReference],
+  ['threaded-thermowells', pipeThreadPitchReference],
+  ['screw-plug-immersion', pipeThreadPitchReference],
+  ['rtd-temperature-transmitters', rtdLoopTestReference],
+  ['rtd-calibrators', rtdLoopTestReference],
 ]);

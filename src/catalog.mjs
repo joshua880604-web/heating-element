@@ -5382,7 +5382,7 @@ export const products = [
         ['4–20 mA scaling', 'State the temperatures that map to 4 mA and 20 mA. Specify the measurement accuracy and any required fault output.'],
         ['Current loop and receiver', 'Give the supply, controller or PLC input specification and all loop loads so the available loop voltage can be checked.'],
         [['Head or enclosure fit', '/temperature-controls/din-rail-temperature-transmitters/'], 'Show module diameter or footprint, rail or mounting details, terminal access and ambient temperature at the module.'],
-        [['Check the complete loop at a midspan point', '/guides/temperature-sensor-calibration/#verify-a-transmitter-or-controller-input'], 'For an example 0–200 °C range, a simulated 100 °C input should indicate about 12 mA on a linear loop. Confirm the receiver scaling as well as the transmitter output, and document the required accuracy.'],
+        [['Document the transmitter and receiver readings', '/guides/temperature-sensor-calibration/#verify-a-transmitter-or-controller-input'], 'At each check point, record the simulated resistance, measured loop current and displayed temperature. Include the installed receiver and loop loads to check the output at the upper end of the configured span.'],
       ] },
     ],
     use: 'Typical inquiries include sending a platinum RTD measurement to a compatible PLC, panel meter or process controller over a 4–20 mA loop.',
