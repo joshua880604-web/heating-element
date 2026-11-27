@@ -1,4 +1,4 @@
-import { platinumRtdResistanceTable } from './product-references.mjs';
+import { awgSolidConductorTable, platinumRtdResistanceTable } from './product-references.mjs';
 
 const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
@@ -5271,14 +5271,15 @@ export const products = [
     options: ['Thermocouple or RTD input reviewed for the selected model', 'Required limit output and reset behavior by equipment specification', 'Panel fit, electrical supply and documentation by project requirements'],
     specs: ['Sensor type and input range, intended sensing position, limit setpoint and tolerance requirement', 'Specified reset behavior and response to sensor or supply faults', 'Output contact or signal requirement and the receiving shutdown circuit', 'Supply voltage, mounting dimensions, cabinet conditions and required approvals and documentation'],
     selection: [
-      'Verify Sensor Input, Limit Behavior and Output Interface',
-      'Provide the equipment’s shutdown specification and control drawing. State what must happen when a limit is reached and when the unit is reset.',
-      { table: [
+      'Specify High-Limit Trip, Reset and Sensor Fault Behavior',
+      'For a safety limit temperature controller inquiry, provide the equipment shutdown specification and control drawing. Document the expected state of the controller output and the resulting state of the heater for each event below.',
+      { anchor: 'temperature-limit-trip-and-reset', table: [
         ['Review item', 'Include in your inquiry'],
-        ['Limit sensing', 'Give the required sensing point, sensor type, measurement and limit range, and the expected behavior on a sensor fault.'],
-        ['Output and reset', 'Identify the receiving circuit, required limit signal or contacts and the specified reset behavior after a trip or power interruption.'],
-        [['Panel and project requirements', '/temperature-controls/heater-control-panels/'], 'Provide supply, cabinet dimensions, environmental conditions and any required approval scope or test documents for the equipment.'],
-        [['Check the limit function from sensor to power cutoff', '/guides/temperature-sensor-calibration/#decide-which-part-of-the-measurement-chain-to-check'], 'Mark the limit sensor and operating sensor separately on the drawing. Specify the expected output state after a sensor fault, limit trip and loss of supply. Include the equipment\'s reset and functional test requirements.'],
+        ['High-limit trip', 'Mark the sensing point, input type, setpoint and allowable deviation. Give the required output contacts or signal, the receiving cutoff device and the expected state after a trip.'],
+        ['Manual reset', 'Describe what must be true before the trip can be reset, who can reset it and whether a separate restart command is required.'],
+        ['Sensor fault and power restoration', 'List the required response to an open or shorted sensor where applicable. Specify the output state on loss of control power and whether an existing trip must be retained when power returns.'],
+        [['Panel and model approval', '/temperature-controls/heater-control-panels/'], 'Provide the supply, mounting and cabinet conditions. State the required approval, model documentation and test records for the complete shutdown function.'],
+        [['Limit sensor and cutoff test', '/guides/temperature-sensor-calibration/#decide-which-part-of-the-measurement-chain-to-check'], 'Identify the limit sensor and operating sensor on the drawing. Specify the test conditions and the expected heater state for each shutdown and reset event.'],
       ] },
     ],
     use: 'Typical inquiries include heater systems with a specified temperature limit function, including ovens, tanks and OEM process equipment.',
@@ -5367,13 +5368,13 @@ export const products = [
     selection: [
       'Match the AC Load, Firing Mode and Cabinet',
       'Provide a circuit diagram and load schedule. Identify the controller output signal and the available cabinet space and cooling.',
-      { table: [
+      { anchor: 'scr-power-controller-load-and-firing', table: [
         ['Selection detail', 'Include in your inquiry'],
         ['Supply and load', 'Give phase, voltage, rated current, load connection and heater type. Include how the load changes from cold to hot and the switching requirements.'],
         [['Control input', '/temperature-controls/pid/'], 'Give the process controller model and command signal. Identify monitoring, alarms and interlocks.'],
-        [['Firing mode', '/guides/solid-state-relay-heater-guide/#scr-firing-modes'], 'Specify burst firing or phase-angle behavior if known. Include any load response or supply requirements that affect the firing pattern.'],
+        [['Phase-angle or burst firing', '/guides/solid-state-relay-heater-guide/#scr-firing-modes'], 'State the firing mode and the expected power response at the low end of the demand signal. For phase-fired operation, include cold and running current, any required current limit and applicable harmonic or electrical noise requirements.'],
         [['Cabinet and protection', '/temperature-controls/heater-control-panels/'], 'Show mounting, service access, ambient temperature and cooling. Include project protection and documentation requirements.'],
-        [['Match control mode to the heater load', '/guides/solid-state-relay-heater-guide/#scr-firing-modes'], 'Give the cold and operating resistance and describe its change during warm-up. Include the control signal, minimum stable output required and equipment requirements for line current and electrical noise.'],
+        [['Separate over-temperature limit', '/temperature-controls/temperature-limit-controllers/#temperature-limit-trip-and-reset'], 'If the equipment specification calls for a separate limit function, show its sensor and cutoff circuit on the drawing.'],
       ] },
     ],
     use: 'Typical inquiries include power modulation for resistive heating zones in process equipment, infrared panels and OEM machines.',
@@ -6828,14 +6829,15 @@ export const products = [
     options: ['Tip and body geometry by bearing pocket drawing', 'Thermocouple type, junction and leads by monitor and installation', 'Lead transition and retention by assembly conditions'],
     specs: ['Bearing and pocket geometry, sensing point, installed depth and clearance to the running surface', 'Tip and body dimensions, seat or retention and lead passage', 'Operating temperature, oil contact, vibration and expected operating cycle', 'Thermocouple type, junction, termination and monitor requirements'],
     selection: [
-      'Match the Pocket and the Bearing Monitoring Input',
-      'Send the approved section drawing with the sensing point, seat and lead exit marked.',
-      { table: [
+      'Locate the Sensing Point and Specify Bearing Probe Retention',
+      'Send the approved bearing section with the loaded area, intended sensing point, probe seat and lead exit marked. Use the same reference face for the fit dimensions.',
+      { anchor: 'bearing-thermocouple-pocket-and-retention', table: [
         ['Fit check', 'What to provide'],
-        ['Pocket and installed tip', 'Give the pocket diameter and depth, tip contact geometry, retention and available lead clearance.'],
+        ['Pocket and installed tip', 'Give the pocket diameter and depth from the seated stop. Mark the distance from the installed tip to the bearing running surface and identify any offset from the tip to the actual junction.'],
+        ['Contact and retention', 'Show the intended tip contact and how the probe is held at that position. Give the available installation clearance and route for removing the probe during service.'],
         ['Oil and heat exposure', 'Identify the lubricant and locations of oil contact. Give local temperature, vibration and cable routing limits.'],
         [['Thermocouple or resistance input', rtd + 'bearing-probes/'], 'Check the monitor specification. Match a thermocouple by type and polarity or an RTD by curve and wire count.'],
-        [['Locate the junction with respect to the bearing surface', '/guides/thermocouple-types/#match-the-mounting-to-the-sensing-point'], 'Show pocket depth and sensing tip position from the installed stop, then give the required lead bend and where it passes through the housing. Include the oil and vibration exposure.'],
+        ['Lead exit and protection', 'Mark the passage through the housing and where strain relief or lead protection is required. Specify the exit direction, available bend space and connection to the monitor.'],
       ] },
     ],
     use: 'Typical inquiries include bearing metal temperature measurement in rotating machinery with a specified probe pocket.',
@@ -9724,8 +9726,8 @@ export const products = [
       'Send the cable cross section and intended finished length along with the probe drawing. Identify which inspection or material records are needed on the purchase order.',
       { anchor: 'mi-thermocouple-cable-stock-selection', table: [
         ['Stock requirement', 'What to verify'],
-        [['Conductors and insulation', thermo + 'mineral-insulated/'], 'Specify the thermocouple type, core count and arrangement. Identify the required insulation and any electrical acceptance checks for the material.'],
-        [['Sheath dimensions and alloy', thermo + 'mineral-insulated/inconel/'], 'Give the sheath material, outside diameter and any specified wall requirement. Include the working exposure so the sheath and fabrication can be reviewed.'],
+        [['Core count and pair identification', thermo + 'mineral-insulated/'], 'Specify the alloy type for each pair. A single pair uses two conductors. A two-pair assembly can use four cores when specified by the design. Identify each pair and any required isolation between circuits and the sheath in the finished assembly.'],
+        [['Sheath outside diameter and alloy', thermo + 'mineral-insulated/inconel/#inconel-probe-sheath-selection'], 'Give the nominal outside diameter, tolerance, alloy grade and any wall requirement. Check the diameter against the fitting, feedthrough or transition called out on the fabrication drawing.'],
         [['Forming and cutting plan', thermo + 'mineral-insulated/flexible/'], 'State whether cable stock is supplied straight or coiled, and give lengths, forming zones and required bend geometry. Check the approved bend limits for the construction.'],
         ['End condition and storage', 'Give the required end protection, identification and packaging. Confirm the end-handling procedure for stock before junction fabrication or termination.'],
       ] },
@@ -10028,14 +10030,19 @@ export const guides = [
           [['AC switching behavior', '/glossary/#zero-cross-switching'], 'A zero-cross SSR waits until the AC voltage is near zero before turning on. A random-turn-on SSR can switch on during the AC cycle. Check the approved switching method for the load and control strategy.'],
         ],
       }],
-      ['Compare SCR power control modes', 'An SCR power controller uses silicon-controlled rectifiers to adjust power to an AC load. Some AC SSRs use the same type of semiconductor. A power controller can translate a demand signal into a firing pattern and may include current limiting or load monitoring, depending on the model.', {
+      ['Phase-Angle Control and Burst Firing', [
+        'With phase-angle control, the ',
+        ['SCR power controller', '/glossary/#scr-power-controller'],
+        ' delays turn-on after each AC voltage zero crossing. Increasing the delay reduces the conducting portion of each half-cycle and lowers the power delivered to a resistive heater. A phase-fired controller can vary power within a cycle. Burst firing varies average power over groups of cycles.',
+      ], {
         anchor: 'scr-firing-modes',
         table: [
           ['Mode', 'How power changes', 'What to check'],
-          ['Burst firing', 'Switches whole AC cycles on and off to vary average power.', 'Check whether the heater’s thermal response and the electrical supply can accommodate that cycle pattern.'],
-          ['Phase-angle control', 'Varies the conducting portion of each AC half-cycle.', 'Check the load and review harmonic current and emissions requirements for the installation.'],
+          ['Burst firing', 'Passes groups of complete AC cycles and varies their on-time.', 'Check whether the heater’s thermal response can tolerate off periods and whether switched load steps affect the supply.'],
+          ['Phase-angle control', 'Changes the turn-on delay on each AC half-cycle.', 'Check which loads the model supports, the power response at low demand, cold-start current and harmonic current or emissions requirements.'],
         ],
-        links: [['Specify an SCR power controller', '/temperature-controls/scr-power-controllers/']],
+        tableNote: 'Example for an ideal fixed-resistance, single-phase load. A 90° firing delay delivers half the full-on power at the same supply voltage, or 1.5 kW for a 3 kW heater. For an actual controller, check the model’s demand-to-power response and current limits.',
+        links: [['Specify an SCR power controller by load and firing mode', '/temperature-controls/scr-power-controllers/#scr-power-controller-load-and-firing']],
       }],
       ['Size the heat sink for the installed panel', 'Use the relay manufacturer’s loss and current derating data at the expected current, duty and maximum air temperature around the relay. Check the heat sink, thermal interface, mounting orientation and airflow together. For a cabinet with several heater zones, add the heat dissipated by the equipment inside the enclosure when reviewing the cooling requirements.', {
         anchor: 'ssr-heat-sink',
@@ -10344,6 +10351,23 @@ export const guides = [
           [['B', thermo + 'type-b/'], 'Two platinum–rhodium legs for selected high-temperature service. Check the measurement interval, tube support and terminal head temperature.'],
           [['Type C', thermo + 'type-c/#type-c-furnace-assembly'], 'Tungsten–rhenium for specified vacuum or compatible controlled-atmosphere furnaces. Confirm the Type C input, gas or vacuum conditions through the furnace cycle and the materials at the junction.'],
         ],
+      }],
+      ['Base-Metal Thermocouple Types and Alloy Pairs', [
+        'A base-metal thermocouple uses a pair of conductors made from non-precious metals or alloys. Types K, J, T, N and E each have their own ',
+        ['temperature-to-voltage relationship', nistThermocoupleReference],
+        '. For a replacement, check the alloy type at the instrument input and the approved extension or compensating cable designation.',
+      ], {
+        anchor: 'base-metal-thermocouples',
+        table: [
+          ['Type', 'Positive leg', 'Negative leg'],
+          [['K', thermo + 'type-k/'], 'Nickel–chromium alloy', 'Nickel–aluminum alloy'],
+          [['J', thermo + 'type-j/'], 'Iron', 'Copper–nickel alloy'],
+          [['T', thermo + 'type-t/'], 'Copper', 'Copper–nickel alloy'],
+          [['N', thermo + 'type-n/'], 'Nickel–chromium–silicon alloy', 'Nickel–silicon alloy'],
+          [['E', thermo + 'type-e/'], 'Nickel–chromium alloy', 'Copper–nickel alloy'],
+        ],
+        tableNote: 'The alloy names describe each conductor family. Order wire by the full thermocouple type and cable grade. Check the junction, sheath and wiring against their respective operating conditions.',
+        links: [['Check thermocouple conductor colors and cable grades', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors']],
       }],
       ['Compare Type K and Type J', 'Type K uses nickel-based conductors and is widely used for general industrial measurement. Type J uses an iron positive conductor that may need protection in oxidizing or moisture-prone service. For a replacement, confirm which type the instrument is configured to read, then compare the full probe assembly limits.'],
       ['Compare Type N and Type K', 'Both use nickel-based alloys. Type N is often considered when stability during extended exposure to elevated temperatures is important. Compare behavior for the actual thermal cycle and atmosphere, and configure the instrument and wiring for the selected type.'],
@@ -11177,6 +11201,7 @@ export const guides = [
           [['E', accessories + 'extension-wire/type-e/#type-e-wire-grade-and-polarity'], 'Purple', 'Red', 'Violet', 'White'],
           [['N', accessories + 'extension-wire/type-n/#type-n-wire-hot-zone-transition'], 'Orange', 'Red', 'Pink', 'White'],
         ],
+        tableNote: 'On a US ANSI/ASTM Type K thermocouple, yellow is positive and red is negative. IEC Type K uses green for positive and white for negative. Check the cable marking and the standard used at each connection.',
       }],
       ['Identify the pair before making a connection', [
         'Read the cable marking and the ',
@@ -11192,6 +11217,21 @@ export const guides = [
         ],
       }],
       ['Extension wire and compensating cable', 'Extension-grade cable uses conductors of the same nominal composition as the corresponding thermocouple pair. Compensating cable uses different alloys chosen to reproduce the needed thermoelectric behavior over a specified temperature interval. Select an approved cable designation for the thermocouple and verify the range for the junctions and the insulation.'],
+      ['Thermocouple Wire Insulation Types', 'Check the temperature and exposure along the cable route as well as the thermocouple type. Verify the insulation rating for both the individual conductors and the outer jacket on the specified cable.', {
+        anchor: 'thermocouple-wire-insulation-types',
+        table: [
+          ['Construction', 'What to verify'],
+          ['Fluoropolymer insulation', 'Identify the exact material, such as PTFE, FEP or PFA. Check its rating for the route temperature, chemicals and bend conditions.'],
+          [['Glass-fiber braid', accessories + 'extension-wire/high-temperature/'], 'Review the conductor and outer braid ratings for the hot section. Check abrasion and moisture exposure against the documented coating or jacket.'],
+          [['Mineral insulation in a metal sheath', accessories + 'extension-wire/mineral-insulated/#mi-thermocouple-cable-stock-selection'], 'For probe fabrication or a formed hot-zone run, give the sheath alloy and outside diameter, core count, bend geometry and end-seal requirements.'],
+        ],
+      }],
+      ['Thermocouple Wire Gauge Selection', 'Choose the gauge for the wire length, allowable loop resistance at the instrument and terminal fit. Check the installed bend and flexing requirements as well as the jacket diameter.', {
+        anchor: 'thermocouple-wire-gauge-selection',
+        table: awgSolidConductorTable,
+        tableNote: 'These AWG dimensions are nominal for bare solid round conductors. For stranded wire, check the strand construction, bundle diameter and finished cable diameter on the cable specification.',
+        links: [['Check stranded thermocouple wire and termination details', accessories + 'extension-wire/stranded/#awg-conductor-dimensions']],
+      }],
       ['Type R, Type S and Type B cable and polarity', 'Match the extension or compensating cable designation to the instrument and probe documentation. Use the conductor colors specified for that cable grade and standard, and verify polarity at the connector and input. Include the expected temperature at each transition in the wiring specification.', {
         anchor: 'type-r-and-type-b-cable-and-polarity',
         table: [

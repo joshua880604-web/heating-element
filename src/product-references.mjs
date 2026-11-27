@@ -166,22 +166,24 @@ const thermocoupleWireReferences = wireBenchReadings.map(([type, ...voltages]) =
   ],
 ]);
 
+export const awgSolidConductorTable = [
+  ['Wire gauge', 'Bare solid diameter (mm)', 'Conductor area (mm²)'],
+  ['14 AWG', '1.628', '2.081'],
+  ['16 AWG', '1.291', '1.309'],
+  ['18 AWG', '1.024', '0.823'],
+  ['20 AWG', '0.812', '0.518'],
+  ['22 AWG', '0.644', '0.326'],
+  ['24 AWG', '0.511', '0.205'],
+  ['26 AWG', '0.405', '0.129'],
+  ['28 AWG', '0.321', '0.081'],
+];
+
 const awgReference = [
   'AWG Bare-Conductor Dimensions',
   'These nominal dimensions follow the American Wire Gauge diameter relationship for a solid round conductor. Use the conductor area when reviewing terminal fit. For stranded wires, confirm the strand count, individual strand size, bundle diameter and jacket outside diameter. Use the specified wire, terminal and installation conditions to check allowable current and temperature.',
   {
     anchor: 'awg-conductor-dimensions',
-    table: [
-      ['Wire gauge', 'Bare solid diameter (mm)', 'Conductor area (mm²)'],
-      ['14 AWG', '1.628', '2.081'],
-      ['16 AWG', '1.291', '1.309'],
-      ['18 AWG', '1.024', '0.823'],
-      ['20 AWG', '0.812', '0.518'],
-      ['22 AWG', '0.644', '0.326'],
-      ['24 AWG', '0.511', '0.205'],
-      ['26 AWG', '0.405', '0.129'],
-      ['28 AWG', '0.321', '0.081'],
-    ],
+    table: awgSolidConductorTable,
   },
 ];
 
