@@ -280,6 +280,11 @@ export const glossary = [
     related: ['Low-Voltage DC Cartridge Heaters', '/heating-elements/cartridge-heaters/low-voltage-dc/'],
   },
   {
+    id: 'dc-immersion-heater', name: 'DC Immersion Heater',
+    definition: 'A liquid heater designed for a specified direct-current supply. Specify the voltage at the heater, rated load, mounting and sealing, liquid and minimum operating level.',
+    related: ['12V DC Immersion Heaters', '/heating-elements/immersion-heaters/low-voltage-dc/#12v-immersion-heater-current-and-liquid-level'],
+  },
+  {
     id: 'duct-temperature-sensor', name: 'Duct Temperature Sensor',
     definition: 'A probe that measures air temperature at a specified position in a duct. Its insertion depth and sensing location determine which part of the air stream it measures.',
     related: ['Duct Temperature Sensors', '/temperature-sensors/duct-temperature-sensors/'],
@@ -373,6 +378,11 @@ export const glossary = [
     id: 'finned-strip-heater', name: 'Finned Strip Heater',
     definition: 'A flat-bodied electric heating element with fins that add surface area for air heating. The strip and fin profile determine the mounting and airflow clearances.',
     related: ['Finned Strip Heaters', '/heating-elements/strip-heaters/finned/'],
+  },
+  {
+    id: 'fan-assisted-inline-duct-heater', name: 'Fan-Assisted Inline Duct Heater',
+    definition: 'A heated duct section configured with a fan for a defined operating flow and static pressure. Specify the duct connections, supply scope, temperature rise and required protective controls.',
+    related: ['Inline Duct Heaters with Fans', '/heating-elements/duct-heaters/inline/with-fan/#fan-assisted-duct-heater-operating-point'],
   },
   {
     id: 'finned-tubular-heater', name: 'Finned Tubular Heater',
@@ -478,6 +488,11 @@ export const glossary = [
     id: 'heater-control-panel', name: 'Heater Control Panel',
     definition: 'A cabinet that houses the controls and power interfaces specified for one or more heater circuits. Define the supply, zone loads, sensor inputs and protection requirements.',
     related: ['Heater Control Panels', '/temperature-controls/heater-control-panels/'],
+  },
+  {
+    id: 'high-temperature-thermocouple-connector', name: 'High Temperature Thermocouple Connector',
+    definition: 'A thermocouple plug or socket specified for elevated temperature at its installed connection. Review the housing, contact alloy, mating geometry, cable termination and actual exposure.',
+    related: ['High Temperature Thermocouple Connectors', '/temperature-sensors/accessories/connectors/high-temperature/#high-temperature-thermocouple-connector-fit-and-exposure'],
   },
   {
     id: 'heater-insulation-resistance', name: 'Heater Insulation Resistance',
@@ -865,6 +880,11 @@ export const glossary = [
     related: ['PTC & Ceramic Heating Elements', '/heating-elements/ptc-ceramic-heaters/'],
   },
   {
+    id: 'ptc-air-heating-element', name: 'PTC Air Heating Element',
+    definition: 'An air heater core using positive-temperature-coefficient heating elements to heat an air path, often through a fin stack. Specify the air conditions, geometry, electrical startup and operating duty.',
+    related: ['Finned PTC Air Heating Elements', '/heating-elements/ptc-ceramic-heaters/air-heating/#ptc-air-heater-startup-and-airflow'],
+  },
+  {
     id: 'pvc-conduit-heater', name: 'PVC Conduit Heater',
     definition: 'A wrap heater that warms a specified section of PVC conduit for bending. Its active length, fit and control requirements depend on the conduit dimensions, material and allowable heating conditions.',
     related: ['PVC Conduit Bending Heaters', '/heating-elements/flexible-heaters/pvc-conduit-heaters/'],
@@ -1160,6 +1180,11 @@ export const glossary = [
     related: ['Thermocouple Vacuum Feedthroughs', '/temperature-sensors/accessories/vacuum-feedthroughs/'],
   },
   {
+    id: 'thermocouple-multiplexer', name: 'Thermocouple Multiplexer',
+    definition: 'A module that automatically switches thermocouple channels into an input in a defined sequence. Specify the channel map, scan timing, reference-junction handling and readout interface.',
+    related: ['Thermocouple Multiplexers', '/temperature-controls/thermocouple-multiplexers/#thermocouple-multiplexer-channel-and-scan'],
+  },
+  {
     id: 'thermocouple-junction-welder', name: 'Thermocouple Junction Welder',
     definition: 'A device that joins a specified pair of thermocouple wires to form a measuring junction. Select it by alloy pair, wire diameters, junction geometry and production needs.',
     related: ['Thermocouple Junction Welders', '/temperature-sensors/accessories/thermocouple-welders/'],
@@ -1343,6 +1368,11 @@ export const glossary = [
     id: 'u-shaped-tubular-heating-element', name: 'U-Shaped Tubular Heating Element',
     definition: 'A metal-sheathed heater with two legs joined by a return bend. The two tube ends can enter the same side of an assembly. Specify leg centers, bend radius and the active centerline span.',
     related: ['U-Shaped Tubular Heating Elements', '/heating-elements/tubular-heaters/u-shaped/'],
+  },
+  {
+    id: 'uhv-loop-thermocouple-feedthrough', name: 'UHV Loop Thermocouple Feedthrough',
+    definition: 'A thermocouple signal feedthrough with specified loop terminations for a vacuum interface. Specify flange and pinout, conductor alloys, loop geometry, bakeout and leak-test acceptance.',
+    related: ['UHV Loop Thermocouple Feedthroughs', '/temperature-sensors/accessories/vacuum-feedthroughs/uhv-loop/#uhv-loop-feedthrough-flange-and-termination'],
   },
   {
     id: 'ultrasonic-cleaner-heating-element', name: 'Ultrasonic Cleaner Heating Element',
