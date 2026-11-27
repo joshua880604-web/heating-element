@@ -930,6 +930,21 @@ const workshopPhotos = [
     alt: 'An operator placing long wrapped temperature probes in a wooden crate',
     caption: 'Packing long probe assemblies into a wooden crate',
   },
+  {
+    image: 'lichengda-wire-reels', width: 810, height: 1080,
+    alt: 'Reels of wire arranged on the floor of the Lichengda workshop',
+    caption: 'Wire reels on the production floor',
+  },
+  {
+    image: 'compact-band-heater-bank-photo', width: 1000, height: 562,
+    alt: 'Cylindrical metal band heater assemblies grouped on a green work surface',
+    caption: 'Band heater assemblies on the workbench',
+  },
+  {
+    image: 'lichengda-ceramic-probe-bench', width: 810, height: 1080,
+    alt: 'White ceramic temperature probes stacked on a bench with terminal ends facing forward',
+    caption: 'Ceramic probe assemblies on the workbench',
+  },
 ];
 await page('/about-us/', 'About Lichengda | Custom Industrial Heating from Xiamen', 'See Lichengda’s Xiamen factory and typical production capacity, sample and bulk lead times, and minimum order quantities for industrial heaters and sensors.', `
 ${pageIntro('Xiamen, China', 'About Lichengda', 'Xiamen Lichengda Precision Manufacturing Co., Ltd. supplies industrial thermocouples, temperature sensors and heating elements made to specification.', aboutTrail)}
