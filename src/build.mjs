@@ -704,6 +704,7 @@ for (const product of products) {
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
   const technicalReferences = productReferences.get(product.id) ?? [];
   const capacity = productionCapacity.find(([category]) => category === productCapacityCategories.get(product.id));
+  const comparison = product.comparison ? referenceSection(product.comparison, 'product-selection') : '';
   await page(product.path, product.title, product.description, `
 <section class="detail-hero"><div class="container">
   ${crumb(trail)}
@@ -715,7 +716,7 @@ for (const product of products) {
 </div></section>
 <section class="section detail-section" id="specifications"><div class="container">
   ${sectionHead('', 'Specifications and Ordering', 'For a replacement, include the original part number or a label photo. For a new design, share the installation drawing and intended operating conditions.')}
-  <div class="spec-grid">
+  ${product.comparisonBeforeSpecs ? `${comparison}\n  ` : ''}<div class="spec-grid">
     <article class="spec-card"><h3>Configuration Options</h3><ul>${product.options.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
     <article class="spec-card"><h3>Include in Your RFQ</h3><ul>${product.specs.map(item => `<li>${escape(item)}</li>`).join('')}</ul></article>
   </div>
@@ -727,7 +728,7 @@ for (const product of products) {
       table: [['Record', 'What to check'], ...productModelRecords(product, lookup)],
     },
   ], 'product-selection')}
-  ${product.comparison ? referenceSection(product.comparison, 'product-selection') : ''}
+  ${product.comparisonBeforeSpecs ? '' : comparison}
   ${product.selection ? referenceSection(product.selection, 'product-selection') : ''}
   ${product.variants ? `<section class="product-photos product-variants" aria-labelledby="product-variants-heading">
     <h2 id="product-variants-heading">${escape(product.variants.title)}</h2>

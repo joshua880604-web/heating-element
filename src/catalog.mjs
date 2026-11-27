@@ -1,3 +1,5 @@
+import { platinumRtdResistanceTable } from './product-references.mjs';
+
 const tubular = '/heating-elements/tubular-heaters/';
 const immersion = '/heating-elements/immersion-heaters/';
 const cartridge = '/heating-elements/cartridge-heaters/';
@@ -93,17 +95,21 @@ export const products = [
     intro: 'Lichengda supplies custom industrial thermocouples for OEM equipment and replacement projects. Share the instrument input, operating temperatures, mounting details and a drawing or dimensions of the original probe.',
     options: ['Base-metal types K, J, T, N and E', 'High-temperature types R, S and B', 'Mineral-insulated and protection-tube assemblies', 'Threaded, flanged, surface and bayonet mounting'],
     specs: ['Thermocouple type and instrument input', 'Process medium, continuous and peak temperatures, and sheath material', 'Probe diameter and insertion length from the installed reference face', 'Mount dimensions, junction, connector and lead length'],
+    comparisonBeforeSpecs: true,
     comparison: [
-      'Choose a Thermocouple by Measurement Location',
-      'Mark the actual measurement point on the equipment drawing. Use the local medium, temperature and response requirement to choose the probe construction and junction. Match the thermocouple type, extension leads and connector to the instrument input.',
+      'Choose an Industrial Thermocouple by Mounting and Measurement Point',
+      'Start with the measurement point and how the probe fits the equipment. Open the matching configuration to check mounting details and the dimensions to include in an inquiry.',
       {
         anchor: 'industrial-thermocouple-measurement-location',
         table: [
-          ['Measurement point', 'Probe construction to evaluate', 'Selection check'],
-          ['Outside of a tool or pipe', ['Surface pad or clamp', thermo + 'surface-mount/'], 'Verify contact at the specified surface. Include pipe outside diameter or tool curvature, surface finish and any insulation around the sensing point.'],
-          ['Bottom of a hole in heated tooling', ['Spring-loaded probe', thermo + 'spring-loaded/'], 'Match the tip shape, hole depth and seated position. Verify the spring travel available in the installed assembly.'],
-          ['Fluid inside a process pipe or vessel', ['Inserted probe or thermowell assembly', accessories + 'thermowells/'], 'Place the sensing region where it can sample the process. Review process pressure, flow, wetted materials and the complete insertion and sealing arrangement.'],
-          ['Hot zone in a furnace or oven', ['Protected high-temperature probe', thermo + 'high-temperature/'], 'Identify the atmosphere, continuous and peak temperatures and sensing depth. Review radiant exposure and lead-transition temperature separately from the measuring tip.'],
+          ['Installation', 'Probe configuration', 'First fit check'],
+          ['Threaded port in equipment', ['Threaded probe drawing', thermo + 'threaded-probes/#threaded-probe-measurements'], 'Match the port thread, seating or sealing face and required tip position.'],
+          ['Adjustable tip depth', ['Compression fitting drawing', thermo + 'threaded-probes/compression-fitting/#compression-fitting-thermocouple-drawing'], 'Match the ferrule to the sheath diameter and mark the tip position after the fitting is seated.'],
+          ['Flange on a vessel, duct or furnace wall', ['Flanged probe drawing', thermo + 'flanged/#flanged-thermocouple-drawing'], 'Match the mating face and bolt pattern. Measure the insertion from the installed flange face.'],
+          ['Bottom of a hole in heated tooling', ['Spring-loaded bayonet drawing', thermo + 'spring-loaded/#bayonet-thermocouple-drawing'], 'Match the tip, adapter and spring travel to the installed contact point.'],
+          ['Outside of a tool or pipe', ['Surface-mount probe', thermo + 'surface-mount/'], 'Identify the contact area, pipe diameter or tool curvature and lead exit.'],
+          ['Fluid inside a process pipe or vessel', ['Probe in a thermowell', accessories + 'thermowells/'], 'Check the thermowell insertion, usable bore and probe seating depth with the process conditions.'],
+          ['Hot zone in a furnace or oven', ['Protected high-temperature probe', thermo + 'high-temperature/'], 'Give the furnace atmosphere, normal and peak temperatures and distance to the measurement point.'],
         ],
       },
     ],
@@ -2572,14 +2578,14 @@ export const products = [
     specs: ['Type C alloy designation and instrument input, continuous and peak temperatures, dwell time and cycle', 'Vacuum level or process gas composition through heat-up, operation and cool-down', 'Hot junction position, insulator or protection requirements, insertion and supported length', 'Mount and lead arrangement, transition temperature, and instrument or feedthrough specifications'],
     selection: [
       'Specify the Type C Furnace Atmosphere and Assembly',
-      'Provide the installation drawing and the gas or vacuum conditions at the measuring junction throughout the cycle. Confirm the reference characteristic required by your instrument.',
-      { table: [
+      'Verify two temperature ranges when specifying Type C. The instrument range comes from the voltage-to-temperature curve configured in the readout. The working range of the probe assembly depends on its materials, construction and furnace conditions.',
+      { anchor: 'type-c-furnace-assembly', table: [
         ['Application input', 'What to send'],
         ['Atmosphere at the junction', 'Vacuum level or gas composition, oxygen exposure during the cycle and any process deposits or material contact.'],
-        ['Temperature profile', 'Normal and peak temperatures, time at peak, heating and cooling cycle, and the required instrument measurement span.'],
+        ['Temperature profile', 'Give the continuous and peak temperatures, time at peak and heating and cooling cycle. Include expected temperatures at the insulators, supports and lead transition.'],
         [['Protection and support', thermo + 'high-temperature/'], 'Junction location, tube or insulator requirements, support points, orientation and connection dimensions.'],
-        [['Instrumentation and wiring', '/guides/thermocouple-wire-color-code/'], 'Type C input or reference characteristic, cable or feedthrough details, polarity and the expected temperature at each transition.'],
-        [['Define exposure throughout startup and shutdown', '/guides/thermocouple-types/#thermocouple-reference-intervals'], 'Give the vacuum or protective gas conditions during heat-up, hold and cool-down, including transitions. Verify the instrument\'s tungsten–rhenium curve and specify conditions at the wire and support locations.'],
+        [['Instrument curve and measurement span', '/guides/thermocouple-types/#thermocouple-types-chart'], 'Give the instrument model, its Type C input curve and the measurement span needed. Confirm that the input supports the tungsten–5% rhenium and tungsten–26% rhenium pair.'],
+        [['Wiring and feedthrough', '/guides/thermocouple-wire-color-code/'], 'Provide cable or feedthrough details, polarity and the expected temperature at each transition.'],
       ] },
     ],
     use: 'Typical inquiries include vacuum furnaces and compatible controlled-atmosphere equipment specified for Type C measurement.',
@@ -3587,8 +3593,8 @@ export const products = [
     options: ['Round or square flange connection by drawing', 'Element bundle and sheath options', 'Terminal enclosure requirements'],
     specs: ['Flange standard, nominal size, pressure class, facing and bolt pattern', 'Liquid composition, working temperature, pressure and minimum liquid level', 'Insertion length from the flange face, bundle envelope and removal clearance', 'Terminal enclosure and entry orientation, voltage, phase and wattage'],
     comparison: [
-      'Flange Fit and Acceptance Checks',
-      'For a replacement, compare the approved vessel connection and heater drawings before selecting the flange and element bundle. Give the required acceptance tests with the operating conditions.',
+      'Flanged Immersion Heater Replacement Checklist',
+      'For a replacement quote, send the original heater nameplate or drawing, the mating vessel connection and any changes to the process conditions. Check the installed fit and the electrical ratings against the same drawing revision.',
       {
         anchor: 'flange-fit-and-acceptance',
         table: [
@@ -3596,8 +3602,10 @@ export const products = [
           ['Round bolt pattern', 'In a four-hole example with equal 90° spacing, 100 mm between adjacent hole centers gives a bolt circle diameter of about 141.4 mm. Measure between opposite hole centers when possible, then record hole diameter and clocking.'],
           ['Square mounting plate', 'Record the center spacing in both directions, hole diameter and plate orientation. Mark the position of the terminal enclosure relative to the vessel so the bolt pattern and bundle orientation can be checked together.'],
           ['Sealing face and service conditions', 'Match the facing and gasket seat on the mating drawing. Confirm flange, gasket and complete assembly suitability at the specified pressure and temperature.'],
+          ['Nameplate and wiring drawing', 'Record rated voltage, supply phase, total wattage and power per circuit. Include the terminal identification and wiring drawing for each circuit or heating stage. Mark any unreadable nameplate data for review.'],
+          ['Bundle and terminal enclosure', 'Check the projection from the mating face, maximum bundle envelope, clearance to withdraw the assembly and orientation of the cable entry.'],
           ['Rated power acceptance', 'Define the allowable power deviation at the assembly’s rated voltage and the circuits energized during the check. Record total power and power per circuit on the same wiring revision.'],
-        [['Cold insulation and dielectric tests', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'List cold resistance per circuit, and any required insulation resistance and dielectric withstand checks. Specify each test method, applied voltage where applicable, duration and its own acceptance limit.'],
+          [['Cold insulation and dielectric tests', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'List cold resistance per circuit, and any required insulation resistance and dielectric withstand checks. Specify each test method, applied voltage where applicable, duration and its own acceptance limit.'],
         ],
       },
     ],
@@ -3845,13 +3853,16 @@ export const products = [
       },
     ],
     selection: [
-      'Match the Screw Plug to the Tank Port',
+      'Specify a Screw Plug Immersion Heater for Water or Oil',
       'Use the port drawing to identify the thread and sealing interface before measuring the heater envelope. Include both the vessel-side clearance and the space for wiring outside the tank.',
-      { table: [
+      { anchor: 'screw-plug-water-and-oil-selection', table: [
         ['Fit check', 'What to confirm'],
         ['Thread and seal', 'Confirm the exact standard, such as NPT, BSPT or BSPP, where applicable. Mark the sealing method and installed reference face on the mating-port drawing.'],
         ['Inside clearance', 'Show the length to the nearest wall or internal obstruction, the bundle diameter and orientation, and the minimum operating liquid level.'],
         ['Terminal enclosure', 'Give the available envelope, cable-entry direction, ambient temperature and exposure to water, dust or cleaning. State the required enclosure rating if specified by the equipment design.'],
+        [['Water tank service', immersion + 'low-watt-density-water/'], 'Provide the water chemistry and treatment, operating temperature, scale history and cleaning method. Use these conditions and the lowest operating level to review the wetted materials and usable heated area.'],
+        [['Oil tank service', immersion + 'oil/'], 'Provide the exact oil grade, cold-start and operating temperatures, and circulation around the elements. Include the fluid supplier’s film temperature limit if available. Use these inputs to review local overheating and surface loading.'],
+        [['Watt density and heated area', '/guides/heating-element-watt-density/'], 'Give rated power and mark the heated span of each tube. The lowest operating liquid level and tank clearance limit the area available for heating.'],
       ] },
     ],
     use: 'Typical projects include water and oil heating through a threaded tank port.',
@@ -10319,7 +10330,7 @@ export const guides = [
     related: ['thermocouples', 'type-k', 'type-j', 'threaded-thermocouple', 'spring-loaded-thermocouple', 'surface-mount-thermocouple', 'high-temperature', 'type-c', 'multipoint-thermocouples', 'silicon-nitride-thermocouple-protection-tubes', 'micro-thermocouples'],
     terms: ['type-k-thermocouple', 'type-j-thermocouple', 'type-t-thermocouple', 'type-e-thermocouple', 'type-n-thermocouple', 'type-r-thermocouple', 'type-s-thermocouple', 'type-b-thermocouple', 'platinum-rhodium-thermocouple', 'type-c-thermocouple', 'iec-60584', 'inconel-thermocouple', 'armored-thermocouple', 'type-c-thermocouple-wire', 'mineral-insulated-thermocouple-cable'],
     sections: [
-      ['Compare thermocouple types by application', 'K, J, T, N and E are common base-metal types. R, S and B use platinum-based alloys. Start with the instrument input, normal and peak temperatures, and process atmosphere, then check the limits of the protected assembly.', {
+      ['Compare thermocouple types by application', 'K, J, T, N and E are common base-metal types. R, S and B use platinum-based alloys. Type C uses tungsten–rhenium alloys. Start with the instrument input, normal and peak temperatures, and process atmosphere, then check the limits of the protected assembly.', {
         anchor: 'thermocouple-types-chart',
         table: [
           ['Type', 'Selection context'],
@@ -10331,6 +10342,7 @@ export const guides = [
           [['R', thermo + 'type-r/'], 'Platinum–13% rhodium and platinum pair for furnace or kiln service. Confirm the Type R input, protection and insertion depth.'],
           [['S', thermo + 'type-s/'], 'Platinum and platinum–10% rhodium pair for selected furnace and kiln measurements. Review protection tube material and mounting.'],
           [['B', thermo + 'type-b/'], 'Two platinum–rhodium legs for selected high-temperature service. Check the measurement interval, tube support and terminal head temperature.'],
+          [['Type C', thermo + 'type-c/#type-c-furnace-assembly'], 'Tungsten–rhenium for specified vacuum or compatible controlled-atmosphere furnaces. Confirm the Type C input, gas or vacuum conditions through the furnace cycle and the materials at the junction.'],
         ],
       }],
       ['Compare Type K and Type J', 'Type K uses nickel-based conductors and is widely used for general industrial measurement. Type J uses an iron positive conductor that may need protection in oxidizing or moisture-prone service. For a replacement, confirm which type the instrument is configured to read, then compare the full probe assembly limits.'],
@@ -11085,20 +11097,16 @@ export const guides = [
     terms: ['pt1000-sensor', 'iec-60751', 'pt100-tolerance-class', 'rtd-self-heating'],
     answer: ['What is the difference between Pt100 and Pt1000?', 'A Pt100 has a nominal resistance of 100 Ω at 0 °C. A Pt1000 has 1,000 Ω at 0 °C. For the same platinum curve, the Pt1000 changes resistance by ten times as much per degree. The instrument must support the chosen nominal resistance and wiring.'],
     sections: [
-      ['Compare resistance and wiring', [
-        'The nominal values below use the ',
+      ['RTD Resistance Chart for Pt100 and Pt1000', [
+        'Look up the nominal element resistance at a known temperature. The values follow the ',
         ['IEC 60751', '/glossary/#iec-60751'],
-        ' platinum curve. Sensitivity is averaged from 0 °C to 100 °C and varies with temperature.',
+        ' platinum curve. When checking a measured value, account for the element’s tolerance and any lead resistance included in the reading.',
       ], {
-        table: [
-          ['Measurement', 'Pt100', 'Pt1000'],
-          ['Nominal resistance at 0 °C', '100 Ω', '1,000 Ω'],
-          ['Nominal resistance at 100 °C', '138.5 Ω', '1,385 Ω'],
-          ['Average sensitivity from 0 to 100 °C', '0.385 Ω/°C', '3.85 Ω/°C'],
-          ['Instrument input', 'Pt100 curve and wire count', 'Pt1000 curve and wire count'],
-        ],
+        anchor: 'compare-resistance-and-wiring',
+        table: platinumRtdResistanceTable,
+        links: [['Identify 2-, 3- and 4-wire Pt100 connections', '/guides/pt100-wiring-diagram/']],
       }],
-      ['Estimate lead-wire error for Pt100 and Pt1000', 'For a two-wire connection, estimate the temperature error by dividing total lead resistance by the element sensitivity near the measurement range. With 2 Ω of total lead resistance and the average sensitivities above, the error is about +5.2 °C for Pt100 and +0.52 °C for Pt1000. Allow for changes in lead resistance over the cable’s operating temperature.', {
+      ['Estimate lead-wire error for Pt100 and Pt1000', 'For a two-wire connection, estimate the temperature error by dividing the resistance of both leads by the element sensitivity near the measurement temperature. From 0 to 100 °C, the average sensitivities are 0.385 Ω/°C for Pt100 and 3.85 Ω/°C for Pt1000. With 2 Ω of total lead resistance, they give estimated errors of +5.2 °C and +0.52 °C respectively. Allow for changes in lead resistance over the cable’s operating temperature.', {
         anchor: 'lead-resistance-and-accuracy',
         table: [
           ['When selecting the circuit', 'What to check'],

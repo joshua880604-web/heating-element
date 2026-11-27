@@ -45,6 +45,15 @@ const thermocoupleFamilyReference = [
   },
 ];
 
+export const platinumRtdResistanceTable = [
+  ['Element temperature', 'Pt100 (Ω)', 'Pt1000 (Ω)'],
+  ['−50 °C', '80.31', '803.1'],
+  ['0 °C', '100.00', '1,000.0'],
+  ['25 °C', '109.73', '1,097.3'],
+  ['100 °C', '138.51', '1,385.1'],
+  ['200 °C', '175.86', '1,758.6'],
+];
+
 const platinumRtdReference = [
   'IEC 60751 Nominal Resistance for Pt100 and Pt1000',
   [
@@ -54,14 +63,7 @@ const platinumRtdReference = [
   ],
   {
     anchor: 'reference-resistance',
-    table: [
-      ['Element temperature', 'Pt100 (Ω)', 'Pt1000 (Ω)'],
-      ['−50 °C', '80.31', '803.1'],
-      ['0 °C', '100.00', '1,000.0'],
-      ['25 °C', '109.73', '1,097.3'],
-      ['100 °C', '138.51', '1,385.1'],
-      ['200 °C', '175.86', '1,758.6'],
-    ],
+    table: platinumRtdResistanceTable,
     links: [
       ['Compare Pt100 and Pt1000 input curves', '/guides/pt100-vs-pt1000/'],
       ['Check 2-, 3- and 4-wire RTD connections', '/guides/pt100-wiring-diagram/'],
