@@ -120,6 +120,69 @@ const rtdLoopTestReference = [
   },
 ];
 
+const wireBenchTemperatures = ['0 °C', '25 °C', '50 °C'];
+const wireBenchReadings = [
+  ['K', '+4.096', '+3.096', '+2.073'],
+  ['J', '+5.269', '+3.992', '+2.684'],
+  ['T', '+4.279', '+3.287', '+2.243'],
+  ['E', '+6.319', '+4.824', '+3.271'],
+  ['N', '+2.774', '+2.115', '+1.434'],
+];
+const wireBenchCopy = [
+  'For a bench check with a 100 °C sensing tip, use a complete thermocouple circuit with matching conductors and a DC millivolt meter. Keep both transitions to the meter’s copper leads at the same known temperature. Subtract the reference-temperature voltage from the sensing-tip voltage using the ',
+  ['NIST ITS-90 reference functions', nistReference],
+  '. These nominal outputs help check polarity and reference-junction effects. Check cable tolerance and insulation limits against the selected cable grade.',
+];
+const wireBenchLinks = [['Check cable markings and polarity', '/guides/thermocouple-wire-color-code/#thermocouple-wire-colors']];
+
+const wireBenchReference = [
+  'Thermocouple Circuit Output With a 100 °C Tip',
+  wireBenchCopy,
+  {
+    anchor: 'wire-millivolt-check',
+    table: [
+      ['Type', ...wireBenchTemperatures.map(temperature => `${temperature} ref. (mV)`)],
+      ...wireBenchReadings.map(([type, ...voltages]) => [`Type ${type}`, ...voltages]),
+    ],
+    links: wireBenchLinks,
+  },
+];
+
+const thermocoupleWireReferences = wireBenchReadings.map(([type, ...voltages]) => [
+  `type-${type.toLowerCase()}-thermocouple-wire`,
+  [
+    `Type ${type} Millivolt Check With a 100 °C Tip`,
+    wireBenchCopy,
+    {
+      anchor: 'wire-millivolt-check',
+      table: [
+        ['Reference connection temperature', 'Nominal meter reading (mV)'],
+        ...wireBenchTemperatures.map((temperature, index) => [temperature, voltages[index]]),
+      ],
+      links: wireBenchLinks,
+    },
+  ],
+]);
+
+const awgReference = [
+  'AWG Bare-Conductor Dimensions',
+  'These nominal dimensions follow the American Wire Gauge diameter relationship for a solid round conductor. Use the conductor area when reviewing terminal fit. For stranded wires, confirm the strand count, individual strand size, bundle diameter and jacket outside diameter. Use the specified wire, terminal and installation conditions to check allowable current and temperature.',
+  {
+    anchor: 'awg-conductor-dimensions',
+    table: [
+      ['Wire gauge', 'Bare solid diameter (mm)', 'Conductor area (mm²)'],
+      ['14 AWG', '1.628', '2.081'],
+      ['16 AWG', '1.291', '1.309'],
+      ['18 AWG', '1.024', '0.823'],
+      ['20 AWG', '0.812', '0.518'],
+      ['22 AWG', '0.644', '0.326'],
+      ['24 AWG', '0.511', '0.205'],
+      ['26 AWG', '0.405', '0.129'],
+      ['28 AWG', '0.321', '0.081'],
+    ],
+  },
+];
+
 export const productReferences = new Map([
   ...thermocoupleReferences,
   ['thermocouples', thermocoupleFamilyReference],
@@ -132,4 +195,10 @@ export const productReferences = new Map([
   ['screw-plug-immersion', pipeThreadPitchReference],
   ['rtd-temperature-transmitters', rtdLoopTestReference],
   ['rtd-calibrators', rtdLoopTestReference],
+  ['thermocouple-extension-wire', wireBenchReference],
+  ['thermocouple-connectors', wireBenchReference],
+  ...thermocoupleWireReferences,
+  ['high-temperature-lead-wire', awgReference],
+  ['ceramic-power-terminal-blocks', awgReference],
+  ['stranded-thermocouple-wire', awgReference],
 ]);
