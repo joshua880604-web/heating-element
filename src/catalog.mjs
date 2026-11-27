@@ -14,6 +14,7 @@ const heatingCables = '/heating-elements/heating-cables/';
 const circulation = '/heating-elements/circulation-heaters/';
 const nistThermocoupleReference = 'https://doi.org/10.6028/NIST.MONO.175';
 const typeKMillivoltChart = '/guides/how-to-test-a-thermocouple/#type-k-millivolt-chart';
+const typeKInconelDrawing = 'One Type K design specifies an Inconel 600 sheath with an outside diameter of 2.0 ± 0.1 mm and a tip-to-transition dimension of 232 mm (+2/0 mm).';
 const contactHeaterMounting = '/guides/choose-a-heating-element/#mount-contact-heaters';
 
 const connectionHeadPhoto = {
@@ -955,7 +956,7 @@ export const products = [
       'Mark the heater body, the bore and the area of the tool that must be heated. These dimensions determine insertion depth, heat transfer and the space available for connections.',
       { table: [
         ['Drawing field', 'What to include'],
-        [['Bore and fit', cartridge + 'miniature/'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, compare miniature cartridge heater configurations.'],
+        [['Bore and fit', cartridge + 'miniature/#miniature-cartridge-heater-bore-fit'], 'Measured bore diameter and tolerance, usable depth, tool material and clearance for removal. For a small bore, check the full clearance range against the heater diameter tolerance.'],
         [['Installation checks', '/guides/choose-a-heating-element/#cartridge-heater-installation'], 'Check the bore and heater fit, insertion depth, retention, wiring clearance and sensor position against the equipment drawing.'],
         ['Body and heating zone', 'Heater diameter and overall body length, locations of active and cold sections, and installed depth.'],
         [['High temperature power leads', '/heating-elements/high-temperature-lead-wire/'], 'Include the current, lead insulation, lead exit temperature and equipment termination.'],
@@ -1204,6 +1205,20 @@ export const products = [
     intro: 'A miniature cartridge heater fits into a small cylindrical bore in a fixture, instrument or compact tool. Specify the actual bore diameter and tolerance, where the tool needs heat, and the space available for the leads. Those dimensions are used to review the heater body, heated length and electrical rating.',
     options: ['Small-diameter and short heater bodies by drawing', 'Active and unheated lengths matched to the tool', 'Lead length, insulation and exit orientation by installation'],
     specs: ['Measured bore diameter and tolerance, usable depth, tool material and heater body envelope', 'Heated length, unheated lead end and installed position', 'Voltage, target wattage, working tool temperature and duty cycle', 'Lead exit direction, bend clearance, length, insulation and termination'],
+    comparison: [
+      'Check Bore Fit for a Miniature Cartridge Heater',
+      'Use the finished bore and heater body tolerances to check the cold fit. Give the tool material and operating temperature with the drawing so that the installed fit and heat transfer can be reviewed together.',
+      {
+        anchor: 'miniature-cartridge-heater-bore-fit',
+        table: [
+          ['Drawing check', 'How to verify it'],
+          ['Nominal inch size', 'A 1/8 in callout converts to 3.175 mm. Confirm whether it refers to the bore or the heater body, and supply the dimensional limits for both.'],
+          [['Cold diametral clearance', '/glossary/#cartridge-heater-bore-clearance'], 'Subtract the largest heater diameter from the smallest bore for minimum clearance. Subtract the smallest heater diameter from the largest bore for maximum clearance. Compare both with the fit specified for the installation.'],
+          ['Usable bore depth and body length', 'Measure from the bore mouth to the usable stop or bottom. On a blind bore, show the bottom profile and any required clearance at the heater tip. Include retention, lead exit and the space for removal.'],
+          [['Heated span and surface loading', '/guides/heating-element-watt-density/#watt-density-calculator'], 'Mark the beginning and end of the active section from the bore mouth. Use the active length and body diameter to calculate surface watt density at the requested power.'],
+        ],
+      },
+    ],
     selection: [
       'Specify a Small-Diameter Cartridge Heater',
       'Mark the bore entrance and the working zone on the tool drawing. Use the bore as the dimensional reference and locate the lead exit outside the working zone where the design permits.',
@@ -2346,6 +2361,8 @@ export const products = [
           ['Hot zone with a cooler exit', 'Evaluate sheath material against the process atmosphere, continuous temperature and cycling. Locate the transition where the lead and connection can stay within their specified temperature limits.'],
           [['Electrical isolation or response requirement', '/guides/grounded-vs-ungrounded-thermocouples/#thermocouple-junction-comparison'], 'A grounded junction is connected to the sheath. An ungrounded junction separates it electrically from the sheath. Check how the instrument and equipment are grounded, and compare the required response under the actual process conditions.'],
           [['Fixed route around equipment', thermo + 'mineral-insulated/flexible/'], 'Use a straight sheath for an unobstructed insertion path or evaluate a formed sheath for a fixed route. Keep the mounting and transition sections straight where the assembly drawing requires it.'],
+          [['Type K drawing example', thermo + 'mineral-insulated/inconel/#inconel-probe-sheath-selection'], `${typeKInconelDrawing} Give the installed insertion length from the mounting reference as a separate requirement.`],
+          [['MI cable for probe fabrication', accessories + 'extension-wire/mineral-insulated/#mi-thermocouple-cable-stock-selection'], 'For cable stock, specify the alloy pairs, sheath dimensions, supplied length and end protection. For a finished probe, also define the measuring junction, mounting and final termination.'],
         ],
       },
     ],
@@ -9060,7 +9077,7 @@ export const products = [
         [['Measuring circuit and junction', '/guides/grounded-vs-ungrounded-thermocouples/#thermocouple-junction-comparison'], 'Identify the required thermocouple type and instrument input. Give isolation, grounding and response requirements for the installation.'],
         [['Exposed length and routing', thermo + 'mineral-insulated/#mi-probe-route'], 'Dimension the exposed tip, insertion depth, sheath diameter and any bends. Include areas that must stay straight at the mounting and transition.'],
         ['Transition and lead limits', 'Record the highest expected temperatures at the sheath-to-lead joint and connector. Include strain relief and confirm cable and connector requirements for the thermocouple type.'],
-        ['Type K drawing example', 'One Type K design specifies an Inconel 600 sheath with an outside diameter of 2.0 ± 0.1 mm and a tip-to-transition dimension of 232 mm (+2/0 mm). Give the required insertion length and the installed reference face for your application.'],
+        ['Type K drawing example', `${typeKInconelDrawing} Give the required insertion length and the installed reference face for your application.`],
       ] },
     ],
     use: 'Typical inquiries include furnaces, heated process equipment and instrumented industrial tooling with a nickel-alloy sheath requirement.',
@@ -10734,6 +10751,7 @@ export const guides = [
         table: [
           ['Check', 'What to verify'],
           [['Bore and heater fit', cartridge], 'Measure the actual bore diameter and usable depth. Check straightness, surface condition and the clearance required by the heater and tool specifications.'],
+          [['Miniature cartridge heater bore fit', cartridge + 'miniature/#miniature-cartridge-heater-bore-fit'], 'Calculate the clearance range from the finished bore and heater diameter limits. Verify the usable depth, cold end and lead exit separately.'],
           ['Insertion and retention', 'Align the active length with the area to be heated. Verify the specified retention method, any expansion clearance and space to remove the heater later.'],
           [['Lead routing and sensing', cartridge + 'with-thermocouple/'], 'Keep wiring clear of pinch points and within its rated temperature. Identify power leads and any separate sensor pair, and confirm that the sensor measures the intended control location.'],
           [['Electrical rating', '/guides/heating-element-resistance/'], 'Match voltage and power per circuit to the drawing before energizing. For a resistance check, compare a cold reading from the specified isolated circuit with the heater specification.'],
