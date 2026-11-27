@@ -265,9 +265,10 @@ export const products = [
         ['W-shaped finned tube', 'Draw the complete centerline profile with each bend and leg spacing. Mark where the fins stop near bends, supports and terminals.'],
         ['Flange-mounted finned tube', 'Show the flange outline and thickness, cutout dimensions, mounting hole spacing and tube projection from the mounting face. Check service clearance on both sides.'],
         ['Air path', 'Show the duct width and height, flow direction and any obstructions. Give minimum and normal airflow, specify inlet conditions for volumetric flow, and include the pressure-drop limit where applicable.'],
+        [['Power stages and minimum airflow', strip + 'finned/#finned-strip-duct-airflow'], 'Give the watts energized and minimum airflow for each operating stage, including low fan speed and other flow restrictions. Use the air temperature rise estimate to review the duty. Verify the installed bank’s allowable loading with its airflow and temperature limits.'],
         ['Mount and terminals', 'Mounting and support locations, clearance around the fins and space to access the terminals.'],
         [['Finned baseboard heating elements', tubular + 'finned/baseboard/'], 'For a straight core, give the enclosure openings, fin envelope, end supports and room for expansion.'],
-        [['Flat finned strip option', strip + 'finned/'], 'Use strip width, fin height and mounting centers when the equipment drawing shows a flat strip body.'],
+        [['Flat finned strip option', strip + 'finned/#compare-finned-strip-and-tubular'], 'Use strip width, fin height and mounting centers when the equipment drawing shows a flat strip body.'],
       ] },
     ],
     use: 'Applications include process-air heating, drying equipment and duct assemblies with defined airflow.',
@@ -448,11 +449,13 @@ export const products = [
       },
     ],
     selection: [
-      'Specify an Immersion Heater by Liquid',
-      'Share the liquid and operating conditions so the sheath and watt density can be reviewed. For tank service, show the lowest operating liquid level and the heated zone in the installed orientation.',
-      { table: [
+      'Specify an Industrial Immersion Heater by Liquid and Duty',
+      'Identify whether the heater warms a batch, holds a tank at temperature or raises the temperature of a continuous flow. Include the duties that run together. Use the actual liquid and operating conditions to review the wetted materials, heated area and mounting.',
+      { anchor: 'industrial-immersion-heater-liquid-and-duty', table: [
         ['Liquid or service', 'Include in your inquiry', 'Selection check'],
-        [['Water heat-up power and time', '/guides/immersion-heater-sizing/#water-heating-calculator'], 'Working volume, starting and target temperatures, warm-up time and scale or deposits.', 'Check vessel heat losses, surface loading, sheath compatibility and the minimum level.'],
+        [['Batch water tank heat-up', '/guides/immersion-heater-sizing/#water-heating-calculator'], 'Working volume, starting and target temperatures, warm-up time and water chemistry.', 'Account for tank heating and heat loss in addition to the water load. Mark the lowest operating level and highest heated point.'],
+        [['Hot-water holding and makeup', '/guides/immersion-heater-sizing/#distinguish-warm-up-holding-and-flow-through-loads'], 'Tank setpoint, insulation, heat loss estimate, and the flow and inlet temperature of any cold makeup water.', 'Estimate the load from losses and makeup during the period when they occur together. Use the resulting duty to review the power and control requirements.'],
+        [['Continuous inline water heating', circulation + 'inline-water/'], 'Minimum, normal and maximum flow with inlet and target outlet temperatures. Give operating pressure and the connections.', 'Check the required rise at design flow and heat removal at minimum flow. Identify the specified flow and temperature protection for the equipment.'],
         [['Replacement circuit checks', '/guides/heating-element-resistance/#cold-and-insulation-resistance'], 'Original heater marking or drawing, rated voltage and power per circuit, and any cold resistance readings.', 'Compare the readings with the equipment specification and review the sheath and mount for the liquid and duty.'],
         [['Electric water boilers', immersion + 'water-boiler/'], 'Port or flange drawing, working water level, operating pressure and required heat output.', 'Confirm the mating connection, sheath loading and installed clearance.'],
         [['Water dispenser hot tanks', immersion + 'water-dispensers/'], 'Supply the hot tank drawing, seal, working volume, lowest fill and wetted-material requirements.', 'Check clearance to outlets and sensors and review the terminal space on the dry side.'],
@@ -4483,6 +4486,7 @@ export const products = [
         table: [
           ['Design check', 'What to verify'],
           ['Average approach air speed', 'For a 200 × 100 mm duct carrying 180 m³/h, divide 0.05 m³/s by the gross area of 0.020 m² to get 2.5 m/s. This is the average before the heater bank. To assess local flow over the fins, review the open area and flow distribution at the bank.'],
+          [['Temperature rise at reduced airflow', '/heating-elements/duct-heaters/#duct-heater-power-and-staging'], 'If 1.5 kW is transferred to air at an inlet density of 1.20 kg/m³ and a specific heat of 1.005 kJ/(kg·°C), the estimated mixed-air temperature rise is 24.9 °C at 180 m³/h and 37.3 °C at 120 m³/h. Specify the minimum airflow and permitted watts for each power stage.'],
           ['Flow through each row', 'Mark fin spacing, row layout, baffles and gaps around the bank. Air bypass or uneven flow can leave part of the heater with less cooling than the duct average suggests.'],
           [['Finned ceramic strip heaters', strip + 'finned/ceramic/'], 'Give the specified ceramic insulation construction, channel profile, fin envelope and allowed pressure drop.'],
           [['Fan and airflow limits', '/heating-elements/duct-heaters/'], 'Use measured or specified flow at operating conditions, including the filter and damper states that limit flow. Include available fan pressure and any airflow or independent overtemperature protection specified for the equipment.'],
@@ -4492,12 +4496,13 @@ export const products = [
     selection: [
       'Compare Finned Strip and Finned Tubular Heater Layouts',
       'Use the opening and mounting drawing to choose the heater body. For either form, mark the airflow direction and provide the minimum flow, inlet temperature and required temperature rise.',
-      { table: [
+      { anchor: 'compare-finned-strip-and-tubular', table: [
         ['Drawing detail', 'Finned strip', 'Finned tubular'],
         ['Body and fin envelope', 'Flat body with a specified strip width and fin height.', 'Round sheath with a specified tube diameter and maximum fin diameter.'],
         ['Mounting', 'Show the support surface and mounting centers.', 'Show the tube centerline, overall shape and support locations.'],
         ['Air path', 'Show the opening across the strip and clearance above the fins.', 'Show the clearance around the tube and any spacing between runs.'],
-      ] },
+        ['Replacement circuit', 'Confirm voltage, watts, circuit separation and terminal positions against the strip drawing.', 'Confirm voltage, number of circuits and terminal access at the mounting flange or supports.'],
+      ], links: [['Review U-shaped, W-shaped and flange-mounted tubular profiles', tubular + 'finned/#finned-heater-drawing']] },
     ],
     use: 'Applications include equipment enclosures with defined ventilation and industrial dryers or ducts that can support a straight strip assembly. Share the flow path and any obstructions around the fins.',
     related: ['strip-heaters', 'finned-tubular-heaters', 'duct-heaters'],
@@ -10767,6 +10772,9 @@ export const guides = [
       }],
       ['Compare installation options for air and liquid heating', 'For moving air, check whether the equipment supports a flat finned strip or a round finned tubular element and give the minimum airflow. For a liquid tank, start with the available flange, threaded port or top access. A top-entry design needs room for installation and enough liquid to cover the heated section.', {
         links: [
+          ['Compare flat finned strip and round finned tubular heater mounts', strip + 'finned/#compare-finned-strip-and-tubular'],
+          ['Check finned strip heater airflow and estimated temperature rise', strip + 'finned/#finned-strip-duct-airflow'],
+          ['Choose an industrial immersion heater by liquid and duty', immersion + '#industrial-immersion-heater-liquid-and-duty'],
           ['Electrical enclosure heaters for condensation control', '/heating-elements/enclosure-heaters/'],
           ['Electric unit heaters for specified washdown areas', '/heating-elements/unit-heaters/washdown/'],
           ['In-line compressed air heater selection', circulation + 'compressed-air/'],
@@ -11500,7 +11508,7 @@ export const guides = [
         ],
         links: [
           ['Calculate water heat-up power or time', '#water-heating-calculator'],
-          ['Review tank layout and element selection', immersion],
+          ['Choose an industrial immersion heater by liquid and duty', immersion + '#industrial-immersion-heater-liquid-and-duty'],
         ],
       }],
       ['Distinguish warm-up, holding and flow-through loads', 'Warm-up depends on energy and allowed time. Holding conditions depend on ongoing heat losses and any heat removed by the process. Continuous flow depends on mass flow and the required rise in temperature.', {
