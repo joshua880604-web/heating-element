@@ -1760,14 +1760,15 @@ export const products = [
       },
     ],
     selection: [
-      'Type J Probe Mounting and Input Checklist',
-      'Start with the Type J input and the original sensor drawing. Identify where the probe tip should make contact or sit in the process and where the wiring connects.',
-      { table: [
+      'Match a Replacement Type J Thermocouple Probe',
+      'Start with the original sensor drawing and the controller input. Mark the installed reference face, tip position and electrical connection. Include any changes to the process temperature or environment since the original probe was fitted.',
+      { anchor: 'type-j-probe-replacement', table: [
         ['Installation factor', 'What to check'],
-        [['Threaded mount', thermo + 'threaded-probes/'], 'Thread form, sealing face, clearance and insertion length from the installed reference.'],
-        [['Spring-loaded bayonet mount', thermo + 'spring-loaded/'], 'Mating adapter, working spring travel and contact position against the tooling.'],
+        [['Threaded mount and reference drawing', thermo + 'threaded-probes/#threaded-probe-measurements'], 'Give the thread standard and pitch, sealing face and insertion to the tip. Mark which face on the original drawing sets the installed position.'],
+        [['Spring-loaded bayonet mount and reference drawing', thermo + 'spring-loaded/#bayonet-thermocouple-drawing'], 'Give the mating adapter and cap engagement, installed distance from the seat to the contact point, and working spring travel.'],
         ['Probe protection', 'Moisture, oxidation and exposure to cleaning or process media. Include the existing sheath and junction where known.'],
-        [['Instrument and extension wire', '/guides/thermocouple-wire-color-code/'], 'Confirm the Type J input, matching cable and connector, and the polarity convention.'],
+        [['Type J sensing wire and JX extension grade', accessories + 'extension-wire/type-j/#type-j-wire-grade-and-polarity'], 'Confirm the Type J input and the grade called out for the extension run. Give the approved connector and polarity convention, with the expected temperatures at the probe and instrument transitions.'],
+        [['Changing between Type J and Type K', '/guides/type-k-vs-type-j-thermocouple/#switching-thermocouple-types'], 'Verify that the receiving input supports the replacement’s reference curve. Review the wire, connector and cold-junction compensation with the new configuration.'],
       ] },
     ],
     use: 'Type J sensors are used in selected plastics machinery, hot tooling and existing industrial temperature measurement systems.',
@@ -2732,6 +2733,7 @@ export const products = [
         ['Specification', 'Pt100', 'Pt1000'],
         [['Nominal element resistance at 0 °C', '/guides/pt100-vs-pt1000/'], '100 Ω', '1,000 Ω'],
         [['Instrument input', '/guides/pt100-wiring-diagram/#connect-rtd-to-plc'], 'Confirm the Pt100 curve and supported wire count.', ['Configure a Pt1000 probe', rtd + 'pt1000/']],
+        [['Four-wire terminal mapping', '/guides/pt100-wiring-diagram/#four-wire-pt100-wiring'], 'Map the current and sense terminals to the lead pair at each end of the element. Include the actual probe pinout.', 'Use a supported four-wire Pt1000 input and the documented lead pair at each element end.'],
         [['Thin-film element', rtd + 'thin-film-elements/'], 'Give the chip dimensions, curve, tolerance and lead layout for the probe assembly.', 'Specify the Pt1000 element curve and dimensions separately from the complete probe wiring.'],
         [['Two-wire lead error', '/guides/pt100-vs-pt1000/#lead-resistance-and-accuracy'], 'The same lead resistance causes a larger temperature error than with Pt1000.', 'The same lead resistance causes a smaller temperature error than with Pt100.'],
         [['Check the probe resistance', '/guides/pt100-wiring-diagram/#check-rtd-sensor'], 'Compare a reading at a known temperature with the Pt100 curve and the expected lead resistance.', 'Repeat the comparison using the configured Pt1000 curve.'],
@@ -11102,8 +11104,15 @@ export const guides = [
       ['Three-wire Pt100 wiring', 'Two leads connect to the same end of the element. A compatible three-wire input estimates lead resistance and compensates for it when the relevant lead resistances match. Use matched wire lengths and gauges through cable extensions and terminations.', {
         diagram: ['A1 and A2 connect to the same end', ['A1 ────────┐', 'A2 ────────┴──[ Pt100 ]──────── B']],
       }],
-      ['Four-wire Pt100 wiring', 'Each end has a current lead and a voltage-sense lead. With a compatible four-wire input, the voltage measurement excludes most of the drop along the current leads. Connect each pair to the instrument terminals marked for that end of the element.', {
-        diagram: ['Two leads to each end of the element', ['A1 ────────┐             ┌────── B1', 'A2 ────────┴──[ Pt100 ]──┴────── B2']],
+      ['Four-Wire Pt100 Wiring Diagram and Terminal Pairs', 'Each end of the element has a current lead and a voltage-sense lead. A compatible four-wire input measures the voltage at the element through the sense leads, reducing the effect of resistance in the current leads.', {
+        anchor: 'four-wire-pt100-wiring',
+        table: [
+          ['Element end', 'Probe leads', 'Instrument terminal roles'],
+          ['A', 'A1 and A2', 'Current or excitation positive and sense positive.'],
+          ['B', 'B1 and B2', 'Current or excitation negative and sense negative.'],
+        ],
+        tableNote: 'Instrument labels and pin numbers vary. Use the terminal drawing for the selected four-wire input. For an isolated single-element probe, the two same-end pairs have low resistance. The other four pairings include the element resistance. Verify the groups against the probe pinout before connecting.',
+        diagram: ['I and V show current and voltage-sense roles. Both conductors at each end connect to that same end of the Pt100 element.', ['I+ ────────┐             ┌──────── I−', 'V+ ────────┴──[ Pt100 ]──┴──────── V−']],
       }],
       ['How do I check an RTD sensor?', 'Isolate power to the instrument input and disconnect the sensor. Let the probe stabilize at a known temperature. Use a resistance meter across leads from opposite ends and compare the reading with the curve for that RTD. At 25 °C, a nominal IEC 60751 Pt100 measures about 109.7 Ω and a Pt1000 about 1,097 Ω, before lead resistance and tolerance. A spot check can identify common wiring faults. Verify calibration separately when the process requires it.', {
         anchor: 'check-rtd-sensor',
@@ -11386,6 +11395,8 @@ export const guides = [
           ['The input can be configured for Type K or J', 'Set the channel for the replacement type. Verify the cable, connectors and measured response as part of the change.'],
           ['The new process exceeds the old assembly’s limits', 'Review the alloy type, sheath, insulation and junction against the actual process before selecting a replacement.'],
         ],
+        tableNote: 'Example using a 0 °C reference for both curves. A simulated +5.269 mV signal represents 100 °C with the Type J curve. The Type K curve interprets the same signal as about 129 °C. Check the configured type and the reference-junction setup when verifying the installed channel.',
+        links: [['Match the mount and wiring for a Type J replacement', thermo + 'type-j/#type-j-probe-replacement']],
       }],
     ],
     faq: [
