@@ -235,7 +235,7 @@ function salesContacts() {
   </address>`;
 }
 
-function searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq }) {
+function searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq, product }) {
   if (!origin) return '';
 
   const url = origin + path;
@@ -304,6 +304,21 @@ function searchMetadata({ path, title, description, trail, type, article, image,
       mainEntityOfPage: { '@id': url + '#webpage' },
       author: { '@id': organizationId },
       publisher: { '@id': organizationId },
+    });
+  }
+  if (product) {
+    const productId = url + '#product';
+    webPage.mainEntity = { '@id': productId };
+    graph.push({
+      '@type': 'Product',
+      '@id': productId,
+      name: product.name,
+      description: product.intro,
+      url,
+      category: groups[product.group],
+      brand: { '@id': organizationId },
+      mainEntityOfPage: { '@id': webPage['@id'] },
+      ...(image ? { image: origin + image } : {}),
     });
   }
   if (items.length) {
@@ -376,7 +391,7 @@ if (location.origin === '${analyticsOrigin}') {
 }
 </script>` : '';
 
-function layout({ path, title, description, body, trail, type, article, image, items, terms, faq, quoteProduct }) {
+function layout({ path, title, description, body, trail, type, article, image, items, terms, faq, product, quoteProduct }) {
   const navigation = nav.map(([href, name, active]) => `<a href="${href}"${active(path) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   const quoteHref = quoteLink(quoteProduct);
   return `<!doctype html>
@@ -389,7 +404,7 @@ function layout({ path, title, description, body, trail, type, article, image, i
 <title>${escape(title)} | ${escape(brand)}</title>
 <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/styles.css">
-${searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq })}
+${searchMetadata({ path, title, description, trail, type, article, image, items, terms, faq, product })}
 ${path === '/' ? '<link rel="preload" as="image" href="/assets/industrial-heating.webp">' : ''}
 ${analyticsTag}
 <script type="module" src="/site.js"></script>
@@ -422,12 +437,12 @@ ${photoFilters}
 }
 
 async function page(path, title, description, body, {
-  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [], quoteProduct,
+  trail = [], type = 'WebPage', article = false, image, items = [], terms = [], faq = [], product, quoteProduct,
 } = {}) {
   pageDescriptions.set(path, description);
   const destination = resolve(dist, '.' + path, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
-  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq, quoteProduct }));
+  await writeFile(destination, layout({ path, title, description, body, trail, type, article, image, items, terms, faq, product, quoteProduct }));
 }
 
 function crumb(items) {
@@ -655,6 +670,9 @@ for (const product of products) {
   trail.push([product.name]);
   const children = products.filter(item => item.parent === product.id);
   const relatedProducts = [...new Set([...children, ...product.related.map(id => lookup.get(id))])];
+  const listing = children.length
+    ? { type: 'CollectionPage', items: catalogOrder(relatedProducts) }
+    : { type: 'ItemPage', product };
   const image = photo(product) ? `/assets/${product.image}.webp` : undefined;
   const imageAlt = product.imageAlt || `${product.name} configuration illustration`;
   const imageCaption = product.imageCaption ?? 'Illustrative configuration';
@@ -714,7 +732,7 @@ for (const product of products) {
   ${catalog(relatedProducts)}
 </div></section>
 ${callout('Request this configuration', 'Include your technical requirements, target quantity and any supporting drawings.', 'Request a Quote', quoteLink(product.id))}
-`, { trail, type: 'ItemPage', image, quoteProduct: product.id });
+`, { trail, ...listing, image, quoteProduct: product.id });
 }
 
 await page('/applications/', 'Industrial Heating Applications for OEM Equipment', 'Find heating elements and sensors for injection molding, extrusion, industrial ovens, process tanks and packaging equipment. Compare inputs for each RFQ.', `
